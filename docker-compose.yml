@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: pipeline_postgres
+    container_name: goldline_postgres
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -18,13 +18,13 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - pipeline_network
+      - goldline_network
 
   airflow-webserver:
     build:
       context: .
       dockerfile: Dockerfile.airflow
-    container_name: pipeline_airflow_webserver
+    container_name: goldline_airflow_webserver
     command: webserver
     environment:
       AIRFLOW__CORE__DAGS_FOLDER: /pipeline/dags
@@ -42,13 +42,13 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - pipeline_network
+      - goldline_network
 
   airflow-scheduler:
     build:
       context: .
       dockerfile: Dockerfile.airflow
-    container_name: pipeline_airflow_scheduler
+    container_name: goldline_airflow_scheduler
     command: scheduler
     environment:
       AIRFLOW__CORE__DAGS_FOLDER: /pipeline/dags
@@ -64,11 +64,11 @@ services:
       - ./dags:/pipeline/dags
       - ./logs:/pipeline/logs
     networks:
-      - pipeline_network
+      - goldline_network
 
 volumes:
   postgres_data:
 
 networks:
-  pipeline_network:
+  goldline_network:
     driver: bridge

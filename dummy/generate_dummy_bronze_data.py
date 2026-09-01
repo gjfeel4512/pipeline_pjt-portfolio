@@ -203,9 +203,9 @@ def generate_dummy_data(num_records=NUM_RECORDS_DEFAULT, output_name="youtube_du
     print(f"   - 속도: {records_per_second:.0f} records/sec")
     print(f"\n📂 다음 단계:")
     print(f"   1. AWS S3에 업로드:")
-    print(f"      aws s3 sync outputs/bronze_merged/ s3://pipeline-pjt-dev-bronze-[계정ID]/ --region us-west-2")
+    print(f"      aws s3 sync outputs/bronze_merged/ s3://goldline-dev-bronze-[계정ID]/ --region us-west-2")
     print(f"   2. Airflow DAG 실행: bronze_to_silver_with_s3")
-    print(f"   3. Silver 데이터 확인: s3://pipeline-pjt-dev-silver-[계정ID]/")
+    print(f"   3. Silver 데이터 확인: s3://goldline-dev-silver-[계정ID]/")
     print("=" * 60)
 
 

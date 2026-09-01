@@ -91,11 +91,11 @@ Copy the Terraform outputs to your `airflow_config/.env` file:
 ```bash
 # airflow_config/.env - Add these lines
 AWS_REGION=us-west-2
-AWS_S3_BRONZE_BUCKET=pipeline-pjt-dev-bronze-ACCOUNT_ID
-AWS_S3_SILVER_BUCKET=pipeline-pjt-dev-silver-ACCOUNT_ID
-AWS_S3_GOLD_BUCKET=pipeline-pjt-dev-gold-ACCOUNT_ID
-AWS_IAM_ROLE_ARN=arn:aws:iam::ACCOUNT_ID:role/pipeline-pjt-dev-airflow
-AWS_CLOUDWATCH_LOG_GROUP=/aws/airflow/pipeline-pjt-dev
+AWS_S3_BRONZE_BUCKET=goldline-dev-bronze-ACCOUNT_ID
+AWS_S3_SILVER_BUCKET=goldline-dev-silver-ACCOUNT_ID
+AWS_S3_GOLD_BUCKET=goldline-dev-gold-ACCOUNT_ID
+AWS_IAM_ROLE_ARN=arn:aws:iam::ACCOUNT_ID:role/goldline-dev-airflow
+AWS_CLOUDWATCH_LOG_GROUP=/aws/airflow/goldline-dev
 ```
 
 ### Step 2: Configure AWS CLI in Docker
@@ -177,16 +177,16 @@ aws logs tail ${LOG_GROUP} --follow --region us-west-2
 ```bash
 ACCOUNT_ID=$(terraform output -raw aws_account_id)
 
-aws s3 ls s3://pipeline-pjt-dev-bronze-${ACCOUNT_ID}/
-aws s3 ls s3://pipeline-pjt-dev-silver-${ACCOUNT_ID}/
-aws s3 ls s3://pipeline-pjt-dev-gold-${ACCOUNT_ID}/
+aws s3 ls s3://goldline-dev-bronze-${ACCOUNT_ID}/
+aws s3 ls s3://goldline-dev-silver-${ACCOUNT_ID}/
+aws s3 ls s3://goldline-dev-gold-${ACCOUNT_ID}/
 ```
 
 ### Check CloudWatch Alarms
 
 ```bash
 aws cloudwatch describe-alarms \
-  --alarm-name-prefix "pipeline-pjt-dev" \
+  --alarm-name-prefix "goldline-dev" \
   --region us-west-2
 ```
 

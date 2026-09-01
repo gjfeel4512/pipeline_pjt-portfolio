@@ -10,7 +10,7 @@ import boto3
 from pathlib import Path
 
 AWS_REGION = os.getenv("AWS_DEFAULT_REGION", "us-west-2")
-FIREHOSE_STREAM = os.getenv("FIREHOSE_STREAM_NAME", "pipeline-pjt-dev-bronze-stream")
+FIREHOSE_STREAM = os.getenv("FIREHOSE_STREAM_NAME", "goldline-dev-bronze-stream")
 
 firehose = boto3.client("firehose", region_name=AWS_REGION)
 

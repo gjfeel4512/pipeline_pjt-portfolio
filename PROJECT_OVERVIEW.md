@@ -106,7 +106,7 @@ C:\Pipeline_pjt/
            ▼ (Task 3: Upload)
 ┌─────────────────────────────────────────┐
 │      AWS S3 Silver Bucket                │
-│  s3://pipeline-pjt-dev-silver-{ID}/     │
+│  s3://goldline-dev-silver-{ID}/     │
 │  youtube/silver/year=2026/month=09/...  │
 └──────────┬──────────────────────────────┘
            │
@@ -148,17 +148,17 @@ Your Computer
 AWS Account (ap-northeast-2)
     │
     ├── S3 Buckets (3 total)
-    │   ├── pipeline-pjt-dev-bronze-{ID}    (Input data)
-    │   ├── pipeline-pjt-dev-silver-{ID}    (Transformed)
-    │   └── pipeline-pjt-dev-gold-{ID}      (Analytics)
+    │   ├── goldline-dev-bronze-{ID}    (Input data)
+    │   ├── goldline-dev-silver-{ID}    (Transformed)
+    │   └── goldline-dev-gold-{ID}      (Analytics)
     │
     ├── CloudWatch
-    │   ├── /aws/airflow/pipeline-pjt-dev   (DAG logs)
+    │   ├── /aws/airflow/goldline-dev   (DAG logs)
     │   ├── Metric filters                  (Error detection)
     │   └── Alarms                          (Notifications)
     │
     └── IAM
-        ├── Role: pipeline-pjt-dev-airflow
+        ├── Role: goldline-dev-airflow
         └── Policies
             ├── S3 access (by bucket)
             └── CloudWatch logs
@@ -320,11 +320,11 @@ Each Bronze record is transformed with:
 
 ```bash
 # Real-time DAG logs
-aws logs tail /aws/airflow/pipeline-pjt-dev --follow
+aws logs tail /aws/airflow/goldline-dev --follow
 
 # Last 1 hour
 aws logs filter-log-events \
-  --log-group-name /aws/airflow/pipeline-pjt-dev \
+  --log-group-name /aws/airflow/goldline-dev \
   --start-time $(($(date +%s%N)/1000000 - 3600000)) \
   --query 'events[*].[timestamp,message]'
 ```
@@ -436,7 +436,7 @@ curl http://localhost:8080/api/v1/dags/bronze_to_silver_with_s3
 # Should return DAG details
 
 # 6. Transformation
-aws s3 ls s3://pipeline-pjt-dev-silver-{ACCOUNT_ID}/youtube/silver/
+aws s3 ls s3://goldline-dev-silver-{ACCOUNT_ID}/youtube/silver/
 # Should show transformed data after DAG runs
 ```
 
@@ -508,7 +508,7 @@ aws s3 ls s3://pipeline-pjt-dev-silver-{ACCOUNT_ID}/youtube/silver/
 ### Getting Help
 1. Check relevant `.md` file for detailed info
 2. Run: `docker-compose logs -f` for container logs
-3. Run: `aws logs tail /aws/airflow/pipeline-pjt-dev --follow` for AWS logs
+3. Run: `aws logs tail /aws/airflow/goldline-dev --follow` for AWS logs
 4. Check Terraform state: `terraform state show aws_s3_bucket.silver`
 
 ---

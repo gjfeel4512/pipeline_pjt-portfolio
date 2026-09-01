@@ -41,10 +41,10 @@ REPORTS_DIR = f'{AIRFLOW_HOME}/reports'
 AWS_REGION = os.getenv('AWS_DEFAULT_REGION', 'us-west-2')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
-AWS_CLOUDWATCH_LOG_GROUP = os.getenv('AWS_CLOUDWATCH_LOG_GROUP', '/aws/airflow/pipeline-pjt-dev')
+AWS_CLOUDWATCH_LOG_GROUP = os.getenv('AWS_CLOUDWATCH_LOG_GROUP', '/aws/airflow/goldline-dev')
 
 # Firehose Configuration (Bronze 자동 적재)
-FIREHOSE_STREAM_NAME = os.getenv('FIREHOSE_STREAM_NAME', 'pipeline-pjt-dev-bronze-stream')
+FIREHOSE_STREAM_NAME = os.getenv('FIREHOSE_STREAM_NAME', 'goldline-dev-bronze-stream')
 
 # YouTube 카테고리 ID -> 영문 슬러그 매핑 (실제 Bronze 데이터의 category_id 필드 기준)
 CATEGORY_ID_MAP = {

@@ -360,7 +360,7 @@ After completing this project, you'll understand:
 docker-compose logs airflow-scheduler
 
 # View CloudWatch logs
-aws logs tail /aws/airflow/pipeline-pjt-dev --follow
+aws logs tail /aws/airflow/goldline-dev --follow
 
 # Check S3 buckets
 aws s3 ls
