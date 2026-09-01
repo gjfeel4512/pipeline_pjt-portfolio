@@ -1,6 +1,7 @@
 # S3 버킷: Bronze (원본 데이터)
 resource "aws_s3_bucket" "bronze" {
-  bucket = local.s3_bucket_names.bronze
+  bucket        = local.s3_bucket_names.bronze
+  force_destroy = true
 
   tags = merge(
     local.common_tags,
@@ -31,7 +32,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bronze" {
 
 # S3 버킷: Silver (정제된 데이터)
 resource "aws_s3_bucket" "silver" {
-  bucket = local.s3_bucket_names.silver
+  bucket        = local.s3_bucket_names.silver
+  force_destroy = true
 
   tags = merge(
     local.common_tags,
@@ -62,7 +64,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "silver" {
 
 # S3 버킷: Gold (최종 분석 데이터)
 resource "aws_s3_bucket" "gold" {
-  bucket = local.s3_bucket_names.gold
+  bucket        = local.s3_bucket_names.gold
+  force_destroy = true
 
   tags = merge(
     local.common_tags,
