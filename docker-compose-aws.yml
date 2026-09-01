@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  # PostgreSQL - Airflow 메타데이터 저장소
+  postgres:
+    image: postgres:15-alpine
+    container_name: pipeline_postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pipeline_network
+
+  # Redis - Airflow 메시지 브로커 (선택사항)
+  redis:
+    image: redis:7-alpine
+    container_name: pipeline_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pipeline_network
+
+  # Airflow Webserver
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: pipeline_airflow_webserver
+    command: webserver
+    environment:
+      AIRFLOW__CORE__DAGS_FOLDER: /pipeline/dags
+      AIRFLOW__CORE__PLUGINS_FOLDER: /pipeline/plugins
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS: 'false'
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__WEBSERVER__SECRET_KEY: pipeline-secret-key-change-me
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
+      AIRFLOW_HOME: /pipeline
+      # AWS Configuration
+      AWS_DEFAULT_REGION: us-west-2
+      AWS_DATA_PARTITION_YEAR: 2026
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      # AWS Credentials (mount from your local ~/.aws directory)
+      - ~/.aws:/home/airflow/.aws:ro
+      # Project volumes
+      - ./:/pipeline
+      - ./dags:/pipeline/dags
+      - ./logs:/pipeline/logs
+      - ./airflow_config:/pipeline/config
+      - ./outputs:/pipeline/outputs
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - pipeline_network
+
+  # Airflow Scheduler
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: pipeline_airflow_scheduler
+    command: scheduler
+    environment:
+      AIRFLOW__CORE__DAGS_FOLDER: /pipeline/dags
+      AIRFLOW__CORE__PLUGINS_FOLDER: /pipeline/plugins
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS: 'false'
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__WEBSERVER__SECRET_KEY: pipeline-secret-key-change-me
+      AIRFLOW_HOME: /pipeline
+      # AWS Configuration
+      AWS_DEFAULT_REGION: us-west-2
+      AWS_DATA_PARTITION_YEAR: 2026
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-webserver:
+        condition: service_healthy
+    volumes:
+      # AWS Credentials (mount from your local ~/.aws directory)
+      - ~/.aws:/home/airflow/.aws:ro
+      # Project volumes
+      - ./:/pipeline
+      - ./dags:/pipeline/dags
+      - ./logs:/pipeline/logs
+      - ./airflow_config:/pipeline/config
+      - ./outputs:/pipeline/outputs
+    networks:
+      - pipeline_network
+
+volumes:
+  postgres_data:
+
+networks:
+  pipeline_network:
+    driver: bridge

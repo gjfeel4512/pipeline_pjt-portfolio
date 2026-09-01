@@ -1,0 +1,46 @@
+# Airflow
+airflow.db
+airflow_home/
+AIRFLOW_HOME/
+**/airflow*.log
+
+# Output
+outputs/silver/
+reports/
+logs/airflow/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상환경
+venv/
+env/
+ENV/
+.venv
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+.dockerignore
+
+# 개발
+*.tmp
+test_*.jsonl
+test_output/
