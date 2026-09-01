@@ -43,6 +43,15 @@ AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_CLOUDWATCH_LOG_GROUP = os.getenv('AWS_CLOUDWATCH_LOG_GROUP', '/aws/airflow/pipeline-pjt-dev')
 
+# Firehose Configuration (Bronze 자동 적재)
+FIREHOSE_STREAM_NAME = os.getenv('FIREHOSE_STREAM_NAME', 'pipeline-pjt-dev-bronze-stream')
+CATEGORY_MAP = {
+    'film_animation': 'film_animation',
+    'autos_vehicles': 'autos_vehicles',
+    'gaming': 'gaming',
+    'people_blogs': 'people_blogs',
+}
+
 # DAG Configuration
 DAG_ID = 'bronze_to_silver_with_s3'
 DEFAULT_ARGS = {
@@ -117,6 +126,39 @@ def get_bronze_files_from_s3(prefix=''):
     except Exception as e:
         logger.error(f"Failed to list S3 files: {str(e)}")
         return []
+
+# ============================================================================
+# Firehose Helper Functions (Bronze -> S3 자동 적재)
+# ============================================================================
+
+def get_firehose_client():
+    """Initialize Firehose client with current AWS credentials"""
+    return boto3.client('firehose', region_name=AWS_REGION)
+
+def push_file_to_firehose(firehose_client, file_path, category):
+    """Push a single Bronze JSONL file's records to Firehose in batches of 500"""
+    records = []
+    sent = 0
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            row = json.loads(line)
+            row['category'] = category  # Firehose 동적 파티셔닝 키
+            records.append({'Data': (json.dumps(row, ensure_ascii=False) + '\n').encode('utf-8')})
+
+            if len(records) == 500:
+                firehose_client.put_record_batch(DeliveryStreamName=FIREHOSE_STREAM_NAME, Records=records)
+                sent += len(records)
+                records = []
+
+    if records:
+        firehose_client.put_record_batch(DeliveryStreamName=FIREHOSE_STREAM_NAME, Records=records)
+        sent += len(records)
+
+    return sent
 
 # ============================================================================
 # Data Transformation Functions (from transforms/silver_transform.py)
@@ -247,6 +289,56 @@ def transform_jsonl_file(file_path):
 # ============================================================================
 # DAG Tasks
 # ============================================================================
+
+def push_bronze_to_firehose(**context):
+    """TASK 0: Bronze 원본 데이터를 Firehose로 전송 -> S3 자동 파티셔닝 적재 (병렬 실행)"""
+    logger.info("=" * 80)
+    logger.info("TASK 0: Push Bronze -> Firehose (S3 자동 적재)")
+    logger.info("=" * 80)
+
+    bronze_path = Path(BRONZE_DIR)
+    jsonl_files = sorted(bronze_path.glob('*.jsonl'))
+
+    if not jsonl_files:
+        logger.warning(f"No JSONL files found in {BRONZE_DIR}. Skipping Firehose push.")
+        context['task_instance'].xcom_push(key='firehose_push_stats', value={'files_pushed': 0, 'records_sent': 0, 'files': []})
+        return
+
+    try:
+        firehose_client = get_firehose_client()
+    except Exception as e:
+        logger.error(f"Firehose client init failed: {e}")
+        logger.warning("Continuing without Firehose push (local mode)")
+        context['task_instance'].xcom_push(key='firehose_push_stats', value={'files_pushed': 0, 'records_sent': 0, 'files': [], 'error': str(e)})
+        return
+
+    push_stats = {'files_pushed': 0, 'records_sent': 0, 'files': []}
+
+    for jsonl_file in jsonl_files:
+        category = None
+        for key in CATEGORY_MAP:
+            if key in jsonl_file.name:
+                category = CATEGORY_MAP[key]
+                break
+
+        if category is None:
+            logger.warning(f"Unable to determine category for {jsonl_file.name}, skipping")
+            continue
+
+        try:
+            sent = push_file_to_firehose(firehose_client, jsonl_file, category)
+            push_stats['files_pushed'] += 1
+            push_stats['records_sent'] += sent
+            push_stats['files'].append(jsonl_file.name)
+            logger.info(f"{jsonl_file.name} -> Firehose 전송 완료 ({sent}건, category={category})")
+        except Exception as e:
+            logger.error(f"Failed to push {jsonl_file.name} to Firehose: {e}")
+            # Firehose 실패해도 파이프라인은 계속 진행 (Silver 변환은 로컬 파일 기준으로 별도 진행)
+
+    context['task_instance'].xcom_push(key='firehose_push_stats', value=push_stats)
+
+    logger.info(f"Firehose push complete: {push_stats['files_pushed']} files, {push_stats['records_sent']} records")
+    logger.info("=" * 80)
 
 def validate_bronze(**context):
     """Validate Bronze data directory and prepare file list"""
@@ -450,6 +542,14 @@ def summary_task(**context):
         logger.info(f"  ✓ Files uploaded to S3: {len(uploaded)}")
         logger.info(f"  ✓ S3 Bucket: {AWS_S3_SILVER_BUCKET}")
 
+    firehose_stats = task_instance.xcom_pull(
+        task_ids='push_bronze_to_firehose',
+        key='firehose_push_stats'
+    )
+    if firehose_stats:
+        logger.info(f"  ✓ Bronze files pushed to Firehose: {firehose_stats.get('files_pushed', 0)}")
+        logger.info(f"  ✓ Records sent to Firehose: {firehose_stats.get('records_sent', 0)}")
+
     logger.info(f"\n🎉 Pipeline completed successfully!")
     logger.info("=" * 80)
 
@@ -503,8 +603,21 @@ with dag:
         provide_context=True,
     )
 
+    # Task 0: Push Bronze to Firehose (S3 자동 적재, 메인 파이프라인과 병렬 실행)
+    push_firehose_task = PythonOperator(
+        task_id='push_bronze_to_firehose',
+        python_callable=push_bronze_to_firehose,
+        provide_context=True,
+    )
+
+    wait_for_firehose_buffer = BashOperator(
+        task_id='wait_for_firehose_buffer',
+        bash_command='sleep 90',  # Firehose 버퍼링 시간(60초) + 여유
+    )
+
     # Define dependencies
     validate_bronze_task >> transform_silver_task >> [upload_s3_task, report_task] >> summary_task_op
+    push_firehose_task >> wait_for_firehose_buffer >> summary_task_op
 
 if __name__ == "__main__":
     dag.cli()
