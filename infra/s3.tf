@@ -98,11 +98,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "bronze" {
   rule {
     id     = "delete-old-bronze"
     status = "Enabled"
-    
-    filter {
-      prefix = "youtube/bronze/"
+    filter {}
+
+    # 30일 후 INTELLIGENT_TIERING으로 전환
+    transition {
+      days          = var.s3_lifecycle_days
+      storage_class = "INTELLIGENT_TIERING"
     }
-    
+
     expiration {
       days = 90
     }
@@ -116,11 +119,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "silver" {
   rule {
     id     = "delete-old-silver"
     status = "Enabled"
-    
-    filter {
-      prefix = "youtube/silver/"
+    filter {}
+
+    # 60일 후 INTELLIGENT_TIERING으로 전환
+    transition {
+      days          = 60
+      storage_class = "INTELLIGENT_TIERING"
     }
-    
+
     expiration {
       days = 180
     }
@@ -134,11 +140,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "gold" {
   rule {
     id     = "delete-old-gold"
     status = "Enabled"
-    
-    filter {
-      prefix = "youtube/gold/"
+    filter {}
+
+    # 180일 후 INTELLIGENT_TIERING으로 전환
+    transition {
+      days          = 180
+      storage_class = "INTELLIGENT_TIERING"
     }
-    
+
     expiration {
       days = 365
     }

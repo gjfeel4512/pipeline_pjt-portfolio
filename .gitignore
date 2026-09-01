@@ -44,10 +44,22 @@ ENV/
 *.tmp
 test_*.jsonl
 test_output/
-infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.100.0/windows_amd64/LICENSE.txt
-infra/.terraform.lock.hcl
-프로젝트_일정표_9월1-8일.md
 
-infra/.terraform/
-infra/terraform.tfstate
-infra/terraform.tfstate.backup
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+infra/.*.zip
+secrets.auto.tfvars
+infra/.terraform.lock.hcl
+
+# 기타
+프로젝트_일정표_9월1-8일.md

@@ -36,6 +36,12 @@ output "cloudwatch_log_groups" {
   }
 }
 
+# SNS 알람 토픽
+output "sns_alert_topic_arn" {
+  description = "파이프라인 알람 SNS 토픽 ARN (구독 추가 시 사용)"
+  value       = aws_sns_topic.pipeline_alerts.arn
+}
+
 # 환경 정보
 output "deployment_info" {
   description = "배포 정보"
