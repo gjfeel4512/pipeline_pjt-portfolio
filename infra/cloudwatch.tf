@@ -59,10 +59,10 @@ resource "aws_cloudwatch_metric_alarm" "s3_bronze_size" {
 }
 
 # CloudWatch Log Metric Filter: 에러 감지
-resource "aws_cloudwatch_log_group_metric_filter" "airflow_errors" {
+resource "aws_cloudwatch_log_metric_filter" "airflow_errors" {
   name           = "${local.resource_prefix}-airflow-errors"
   log_group_name = aws_cloudwatch_log_group.airflow.name
-  filter_pattern = "[ERROR]"
+  pattern        = "[ERROR]"
 
   metric_transformation {
     name      = "AirflowErrorCount"
@@ -71,10 +71,10 @@ resource "aws_cloudwatch_log_group_metric_filter" "airflow_errors" {
   }
 }
 
-resource "aws_cloudwatch_log_group_metric_filter" "etl_errors" {
+resource "aws_cloudwatch_log_metric_filter" "etl_errors" {
   name           = "${local.resource_prefix}-etl-errors"
   log_group_name = aws_cloudwatch_log_group.etl.name
-  filter_pattern = "[ERROR]"
+  pattern        = "[ERROR]"
 
   metric_transformation {
     name      = "ETLErrorCount"

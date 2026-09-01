@@ -44,3 +44,16 @@ ENV/
 *.tmp
 test_*.jsonl
 test_output/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
