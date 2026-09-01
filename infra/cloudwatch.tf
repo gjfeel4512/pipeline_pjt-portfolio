@@ -51,9 +51,35 @@ resource "aws_cloudwatch_metric_alarm" "s3_bronze_size" {
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-    BucketName = aws_s3_bucket.bronze.id
+    BucketName  = aws_s3_bucket.bronze.id
     StorageType = "StandardStorage"
   }
+
+  alarm_actions = [aws_sns_topic.pipeline_alerts.arn]
+  ok_actions    = [aws_sns_topic.pipeline_alerts.arn]
+
+  tags = local.common_tags
+}
+
+# CloudWatch Alarm: 일일 수집 Lambda 실패 감지 (Lambda 내장 Errors 지표)
+resource "aws_cloudwatch_metric_alarm" "daily_collector_errors" {
+  alarm_name          = "${local.resource_prefix}-daily-collector-errors"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "Errors"
+  namespace           = "AWS/Lambda"
+  period              = "3600" # 1시간
+  statistic           = "Sum"
+  threshold           = 0
+  alarm_description   = "일일 수집 Lambda(daily_mostpopular_collector)에서 에러 발생"
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    FunctionName = aws_lambda_function.daily_mostpopular_collector.function_name
+  }
+
+  alarm_actions = [aws_sns_topic.pipeline_alerts.arn]
+  ok_actions    = [aws_sns_topic.pipeline_alerts.arn]
 
   tags = local.common_tags
 }
@@ -81,4 +107,39 @@ resource "aws_cloudwatch_log_metric_filter" "etl_errors" {
     namespace = "Pipeline/PJT"
     value     = "1"
   }
+}
+
+# CloudWatch Alarms: 로그 기반 에러 감지 -> SNS
+resource "aws_cloudwatch_metric_alarm" "airflow_errors" {
+  alarm_name          = "${local.resource_prefix}-airflow-errors-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "AirflowErrorCount"
+  namespace           = "Pipeline/PJT"
+  period              = "3600" # 1시간
+  statistic           = "Sum"
+  threshold           = 0
+  alarm_description   = "Airflow 로그에서 [ERROR] 패턴 감지"
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.pipeline_alerts.arn]
+
+  tags = local.common_tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "etl_errors" {
+  alarm_name          = "${local.resource_prefix}-etl-errors-alarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "ETLErrorCount"
+  namespace           = "Pipeline/PJT"
+  period              = "3600" # 1시간
+  statistic           = "Sum"
+  threshold           = 0
+  alarm_description   = "ETL 로그에서 [ERROR] 패턴 감지"
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.pipeline_alerts.arn]
+
+  tags = local.common_tags
 }
