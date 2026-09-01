@@ -58,27 +58,3 @@ resource "aws_cloudwatch_metric_alarm" "s3_bronze_size" {
   tags = local.common_tags
 }
 
-# CloudWatch Log Metric Filter: 에러 감지
-resource "aws_cloudwatch_log_group_metric_filter" "airflow_errors" {
-  name           = "${local.resource_prefix}-airflow-errors"
-  log_group_name = aws_cloudwatch_log_group.airflow.name
-  filter_pattern = "[ERROR]"
-
-  metric_transformation {
-    name      = "AirflowErrorCount"
-    namespace = "Pipeline/PJT"
-    value     = "1"
-  }
-}
-
-resource "aws_cloudwatch_log_group_metric_filter" "etl_errors" {
-  name           = "${local.resource_prefix}-etl-errors"
-  log_group_name = aws_cloudwatch_log_group.etl.name
-  filter_pattern = "[ERROR]"
-
-  metric_transformation {
-    name      = "ETLErrorCount"
-    namespace = "Pipeline/PJT"
-    value     = "1"
-  }
-}

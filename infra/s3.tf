@@ -96,24 +96,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "bronze" {
   bucket = aws_s3_bucket.bronze.id
 
   rule {
-    id     = "archive-old-bronze-data"
+    id     = "delete-old-bronze"
     status = "Enabled"
-
-    # 30일 후 INTELLIGENT_TIERING으로 전환
-    transition {
-      days          = var.s3_lifecycle_days
-      storage_class = "INTELLIGENT_TIERING"
+    
+    filter {
+      prefix = "youtube/bronze/"
     }
-
-    # 90일 후 GLACIER로 아카이빙
-    transition {
-      days          = 90
-      storage_class = "GLACIER"
-    }
-
-    # 180일 후 삭제
+    
     expiration {
-      days = 180
+      days = 90
     }
   }
 }
@@ -123,24 +114,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "silver" {
   bucket = aws_s3_bucket.silver.id
 
   rule {
-    id     = "archive-old-silver-data"
+    id     = "delete-old-silver"
     status = "Enabled"
-
-    # 60일 후 INTELLIGENT_TIERING으로 전환
-    transition {
-      days          = 60
-      storage_class = "INTELLIGENT_TIERING"
+    
+    filter {
+      prefix = "youtube/silver/"
     }
-
-    # 180일 후 GLACIER로 아카이빙
-    transition {
-      days          = 180
-      storage_class = "GLACIER"
-    }
-
-    # 365일 후 삭제
+    
     expiration {
-      days = 365
+      days = 180
     }
   }
 }
@@ -150,16 +132,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "gold" {
   bucket = aws_s3_bucket.gold.id
 
   rule {
-    id     = "archive-old-gold-data"
+    id     = "delete-old-gold"
     status = "Enabled"
-
-    # 180일 후 INTELLIGENT_TIERING으로 전환
-    transition {
-      days          = 180
-      storage_class = "INTELLIGENT_TIERING"
+    
+    filter {
+      prefix = "youtube/gold/"
     }
-
-    # 365일 후는 유지 (중요 데이터이므로 삭제 안 함)
+    
+    expiration {
+      days = 365
+    }
   }
 }
 
