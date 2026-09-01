@@ -56,6 +56,9 @@ services:
       # AWS Configuration
       AWS_DEFAULT_REGION: us-west-2
       AWS_DATA_PARTITION_YEAR: 2026
+      AWS_S3_BRONZE_BUCKET: pipeline-pjt-dev-bronze-827913617635
+      AWS_S3_SILVER_BUCKET: pipeline-pjt-dev-silver-827913617635
+      AWS_S3_GOLD_BUCKET: pipeline-pjt-dev-gold-827913617635
       FIREHOSE_STREAM_NAME: pipeline-pjt-dev-bronze-stream
     depends_on:
       postgres:
@@ -99,6 +102,9 @@ services:
       # AWS Configuration
       AWS_DEFAULT_REGION: us-west-2
       AWS_DATA_PARTITION_YEAR: 2026
+      AWS_S3_BRONZE_BUCKET: pipeline-pjt-dev-bronze-827913617635
+      AWS_S3_SILVER_BUCKET: pipeline-pjt-dev-silver-827913617635
+      AWS_S3_GOLD_BUCKET: pipeline-pjt-dev-gold-827913617635
       FIREHOSE_STREAM_NAME: pipeline-pjt-dev-bronze-stream
     depends_on:
       postgres:

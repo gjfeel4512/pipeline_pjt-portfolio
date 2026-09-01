@@ -1,12 +1,9 @@
 apache-airflow==2.7.3
-apache-airflow-providers-python==4.10.1
-apache-airflow-providers-bash==3.14.1
 apache-airflow-providers-amazon==8.12.0
 pandas==2.1.4
 numpy==1.26.3
 pyarrow==14.0.1
 psycopg2-binary==2.9.9
-sqlalchemy==2.0.23
 python-dateutil==2.8.2
 pytz==2023.3
 python-dotenv==1.0.0
