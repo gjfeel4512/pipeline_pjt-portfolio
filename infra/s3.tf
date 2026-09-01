@@ -98,6 +98,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "bronze" {
   rule {
     id     = "archive-old-bronze-data"
     status = "Enabled"
+    filter {}
 
     # 30일 후 INTELLIGENT_TIERING으로 전환
     transition {
@@ -125,6 +126,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "silver" {
   rule {
     id     = "archive-old-silver-data"
     status = "Enabled"
+    filter {}
 
     # 60일 후 INTELLIGENT_TIERING으로 전환
     transition {
@@ -152,6 +154,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "gold" {
   rule {
     id     = "archive-old-gold-data"
     status = "Enabled"
+    filter {}
 
     # 180일 후 INTELLIGENT_TIERING으로 전환
     transition {
