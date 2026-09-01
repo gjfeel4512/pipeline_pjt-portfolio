@@ -58,3 +58,11 @@ export AWS_IAM_ROLE_ARN=${aws_iam_role.airflow.arn}
 export AWS_CLOUDWATCH_LOG_GROUP=${aws_cloudwatch_log_group.airflow.name}
   EOT
 }
+
+output "firehose_stream_name" {
+  value = aws_kinesis_firehose_delivery_stream.bronze.name
+}
+
+output "glue_database_name" {
+  value = aws_glue_catalog_database.pipeline.name
+}

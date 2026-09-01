@@ -216,3 +216,22 @@ resource "aws_iam_policy" "vpc_endpoint" {
 
   tags = local.common_tags
 }
+
+resource "aws_iam_role_policy" "airflow_firehose_policy" {
+  name = "${local.resource_prefix}-airflow-firehose-policy"
+  role = aws_iam_role.airflow.id   # ← 실제 Airflow 역할 리소스명으로 확인/수정
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "firehose:PutRecord",
+          "firehose:PutRecordBatch"
+        ]
+        Resource = [aws_kinesis_firehose_delivery_stream.bronze.arn]
+      }
+    ]
+  })
+}
