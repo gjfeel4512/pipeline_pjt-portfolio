@@ -57,3 +57,5 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+infra/.*.zip
+secrets.auto.tfvars

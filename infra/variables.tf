@@ -54,3 +54,22 @@ variable "log_retention_days" {
   type        = number
   default     = 30
 }
+
+# Lambda 일일 수집 설정
+variable "youtube_api_keys" {
+  description = "YouTube Data API 키 목록 (콤마 없이 리스트로, 할당량 소진 시 순서대로 로테이션). secrets.auto.tfvars(gitignore)로 주입할 것 - 절대 커밋 금지."
+  type        = list(string)
+  sensitive   = true
+}
+
+variable "target_category_ids" {
+  description = "일일 수집 대상 YouTube videoCategoryId 목록 (영화·애니메이션/자동차·차량/게임/인물·블로그)"
+  type        = list(string)
+  default     = ["1", "2", "20", "22"]
+}
+
+variable "daily_collector_schedule_expression" {
+  description = "일일 수집 Lambda EventBridge 스케줄 (UTC 기준 cron). 기본값: KST 09시/17시/01시 = UTC 00,08,16시"
+  type        = string
+  default     = "cron(0 0,8,16 * * ? *)"
+}
