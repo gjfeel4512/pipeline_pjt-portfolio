@@ -64,3 +64,10 @@ infra/.terraform.lock.hcl
 # 기타
 프로젝트_일정표_9월1-8일.md
 infra/secrets.auto.tfvars.example
+
+# Airflow 로컬 런타임 산출물 (docker-compose-aws.yml로 기동 시 자동 생성)
+airflow.cfg
+webserver_config.py
+airflow-webserver.pid
+logs/
+response.json
