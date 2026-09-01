@@ -63,3 +63,4 @@ infra/.terraform.lock.hcl
 
 # 기타
 프로젝트_일정표_9월1-8일.md
+infra/secrets.auto.tfvars.example
