@@ -45,12 +45,20 @@ AWS_CLOUDWATCH_LOG_GROUP = os.getenv('AWS_CLOUDWATCH_LOG_GROUP', '/aws/airflow/p
 
 # Firehose Configuration (Bronze 자동 적재)
 FIREHOSE_STREAM_NAME = os.getenv('FIREHOSE_STREAM_NAME', 'pipeline-pjt-dev-bronze-stream')
-CATEGORY_MAP = {
-    'film_animation': 'film_animation',
-    'autos_vehicles': 'autos_vehicles',
-    'gaming': 'gaming',
-    'people_blogs': 'people_blogs',
+
+# YouTube 카테고리 ID -> 영문 슬러그 매핑 (실제 Bronze 데이터의 category_id 필드 기준)
+CATEGORY_ID_MAP = {
+    '1':  'film_animation',   # 영화_애니메이션
+    '2':  'autos_vehicles',   # 자동차_차량
+    '20': 'gaming',           # 게임
+    '22': 'people_blogs',     # 인물_블로그 (주의: 업로드시 카테고리 미선택시 YouTube 기본값)
 }
+
+# Silver 변환 시 오염 데이터로 처리할 category_id 목록
+# 22(인물·블로그)는 업로더가 카테고리를 지정하지 않았을 때 YouTube가 자동으로 부여하는
+# 기본값이라 실제 콘텐츠 성격을 신뢰할 수 없음 -> Silver에서는 정상 3개 카테고리
+# (1=영화·애니, 2=자동차·차량, 20=게임)와 분리하여 오염 데이터로 처리
+CONTAMINATED_CATEGORY_IDS = {'22'}
 
 # DAG Configuration
 DAG_ID = 'bronze_to_silver_with_s3'
@@ -135,8 +143,9 @@ def get_firehose_client():
     """Initialize Firehose client with current AWS credentials"""
     return boto3.client('firehose', region_name=AWS_REGION)
 
-def push_file_to_firehose(firehose_client, file_path, category):
-    """Push a single Bronze JSONL file's records to Firehose in batches of 500"""
+def push_file_to_firehose(firehose_client, file_path):
+    """Push a single Bronze JSONL file's records to Firehose in batches of 500
+    카테고리는 각 레코드의 category_id 필드에서 직접 추출 (파일명에 의존하지 않음)"""
     records = []
     sent = 0
 
@@ -146,7 +155,8 @@ def push_file_to_firehose(firehose_client, file_path, category):
             if not line:
                 continue
             row = json.loads(line)
-            row['category'] = category  # Firehose 동적 파티셔닝 키
+            cat_id = str(row.get('category_id', ''))
+            row['category'] = CATEGORY_ID_MAP.get(cat_id, 'unknown')  # Firehose 동적 파티셔닝 키
             records.append({'Data': (json.dumps(row, ensure_ascii=False) + '\n').encode('utf-8')})
 
             if len(records) == 500:
@@ -207,47 +217,91 @@ def convert_to_kst(utc_datetime_str):
         logger.warning(f"Error converting to KST: {e}")
         return utc_datetime_str
 
-def transform_to_silver(record):
-    """Transform individual record from Bronze to Silver format"""
+def safe_int(value):
+    """Bronze의 통계 필드(view_count 등)는 문자열로 저장되어 있어 안전하게 정수로 변환"""
+    if value is None:
+        return None
     try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+def get_video_type(duration_seconds):
+    """YouTube 영상 길이 분류 (수집 시 사용한 기준과 동일: short<4분, medium 4~20분, long>20분)"""
+    if duration_seconds is None:
+        return 'unknown'
+    if duration_seconds < 240:
+        return 'short'
+    elif duration_seconds <= 1200:
+        return 'medium'
+    else:
+        return 'long'
+
+def transform_to_silver(record):
+    """Transform individual record from Bronze(YouTube API 원본) to Silver format"""
+    try:
+        duration_seconds = parse_iso8601_duration(record.get('duration'))
+        view_count = safe_int(record.get('view_count'))
+        like_count = safe_int(record.get('like_count'))
+        comment_count = safe_int(record.get('comment_count'))
+
+        engagement_rate = None
+        if view_count and view_count > 0:
+            engagement_rate = round(((like_count or 0) + (comment_count or 0)) / view_count, 6)
+
+        category_id = str(record.get('category_id', ''))
+        published_at = record.get('published_at')
+
         silver_record = {
-            'record_id': record.get('_id'),
-            'domain': record.get('domain'),
-            'event_type': record.get('event_type'),
-            'occurred_at_kst': convert_to_kst(record.get('occurred_at')),
-            'generated_at_utc': record.get('generated_at_utc'),
-            'trace_id': record.get('trace_id'),
-            'run_id': record.get('run_id'),
+            'video_id': record.get('video_id'),
+            'title': record.get('title'),
+            'description': record.get('description'),
+            'channel_id': record.get('channel_id'),
+            'channel_name': record.get('channel_name'),
 
-            # Client Info
-            'client_country': record.get('client', {}).get('country'),
-            'client_platform': record.get('client', {}).get('platform'),
-            'client_device_type': record.get('client', {}).get('device_type'),
+            # 카테고리
+            'category_id': safe_int(category_id) if category_id else None,
+            'category_name': record.get('category_name'),
+            'category_slug': CATEGORY_ID_MAP.get(category_id, 'unknown'),
 
-            # Request Info
-            'request_method': record.get('request', {}).get('method'),
-            'request_path': record.get('request', {}).get('path'),
-            'request_bytes': record.get('request', {}).get('request_bytes'),
+            'tags': record.get('tags', []),
 
-            # Response Info
-            'response_status_code': record.get('response', {}).get('status_code'),
-            'response_latency_ms': record.get('response', {}).get('latency_ms'),
-            'response_bytes': record.get('response', {}).get('response_bytes'),
+            # 통계 (문자열 -> 정수 변환)
+            'view_count': view_count,
+            'like_count': like_count,
+            'comment_count': comment_count,
+            'engagement_rate': engagement_rate,
 
-            # Video Specific Data
-            'video_id': record.get('data', {}).get('video_id'),
-            'video_title': record.get('data', {}).get('title'),
-            'video_duration_seconds': parse_iso8601_duration(
-                record.get('data', {}).get('duration')
-            ),
-            'channel_name': record.get('data', {}).get('channel_name'),
-            'view_count': record.get('data', {}).get('view_count'),
-            'like_count': record.get('data', {}).get('like_count'),
-            'comment_count': record.get('data', {}).get('comment_count'),
+            # 영상 길이
+            'duration_iso8601': record.get('duration'),
+            'duration_seconds': duration_seconds,
+            'video_type': get_video_type(duration_seconds),
 
-            # Quality Metrics
+            # 화질/자막/공개상태
+            'definition': record.get('definition'),
+            'is_hd': record.get('definition') == 'hd',
+            'caption_available': str(record.get('caption')).lower() == 'true',
+            'privacy_status': record.get('privacy_status'),
+            'live_broadcast_content': record.get('live_broadcast_content'),
+            'is_live_content': record.get('live_broadcast_content') not in (None, 'none'),
+
+            # 시간 정보
+            'published_at_utc': published_at,
+            'published_at_kst': convert_to_kst(published_at),
+            'published_year_month': published_at[:7] if published_at else None,
+
+            # 채널 정보
+            'channel_published_at_utc': record.get('channel_published_at'),
+            'subscriber_count': safe_int(record.get('subscriber_count')),
+            'hidden_subscriber_count': bool(record.get('hidden_subscriber_count', False)),
+            'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
+            'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
+
+            'collected_at_utc': record.get('collected_at_utc'),
+
+            # 품질 지표
             'is_valid': validate_record(record),
-            'transformation_timestamp': datetime.utcnow().isoformat(),
+            'silver_transformed_at_utc': datetime.utcnow().isoformat(),
         }
 
         return silver_record
@@ -256,13 +310,29 @@ def transform_to_silver(record):
         return None
 
 def validate_record(record):
-    """Validate critical fields in Bronze record"""
-    required_fields = ['_id', 'domain', 'event_type']
-    return all(field in record and record[field] is not None for field in required_fields)
+    """Validate critical fields in Bronze record (실제 YouTube API 원본 스키마 기준)"""
+    required_fields = ['video_id', 'channel_id', 'published_at', 'title']
+    if not all(field in record and record[field] not in (None, '') for field in required_fields):
+        return False
+
+    # 통계 필드가 음수이거나 파싱 불가능하면 오염 데이터로 간주
+    for count_field in ('view_count', 'like_count', 'comment_count'):
+        val = safe_int(record.get(count_field))
+        if val is not None and val < 0:
+            return False
+
+    # category_id=22(인물·블로그)는 카테고리 미선택 시 YouTube 기본값으로 자동 지정되므로
+    # 신뢰할 수 없는 카테고리 정보 -> 오염 데이터로 간주하여 분리
+    if str(record.get('category_id')) in CONTAMINATED_CATEGORY_IDS:
+        return False
+
+    return True
 
 def transform_jsonl_file(file_path):
-    """Transform JSONL file from Bronze to Silver format"""
-    silver_records = []
+    """Transform JSONL file from Bronze to Silver format.
+    is_valid=False 레코드(category_id=22 '인물/블로그' 포함)는 별도로 분리하여 반환한다."""
+    valid_records = []
+    rejected_records = []
     error_count = 0
 
     try:
@@ -272,16 +342,19 @@ def transform_jsonl_file(file_path):
                     record = json.loads(line.strip())
                     silver_record = transform_to_silver(record)
                     if silver_record:
-                        silver_records.append(silver_record)
+                        if silver_record.get('is_valid'):
+                            valid_records.append(silver_record)
+                        else:
+                            rejected_records.append(silver_record)
                 except json.JSONDecodeError as e:
                     logger.warning(f"Invalid JSON at line {line_num}: {e}")
                     error_count += 1
 
-        logger.info(f"✓ Transformed {len(silver_records)} records from {file_path}")
+        logger.info(f"✓ Transformed {len(valid_records)} valid / {len(rejected_records)} rejected records from {file_path}")
         if error_count > 0:
             logger.warning(f"⚠ {error_count} records failed to parse")
 
-        return silver_records
+        return valid_records, rejected_records
     except Exception as e:
         logger.error(f"✗ Error transforming file {file_path}: {e}")
         raise
@@ -315,22 +388,12 @@ def push_bronze_to_firehose(**context):
     push_stats = {'files_pushed': 0, 'records_sent': 0, 'files': []}
 
     for jsonl_file in jsonl_files:
-        category = None
-        for key in CATEGORY_MAP:
-            if key in jsonl_file.name:
-                category = CATEGORY_MAP[key]
-                break
-
-        if category is None:
-            logger.warning(f"Unable to determine category for {jsonl_file.name}, skipping")
-            continue
-
         try:
-            sent = push_file_to_firehose(firehose_client, jsonl_file, category)
+            sent = push_file_to_firehose(firehose_client, jsonl_file)
             push_stats['files_pushed'] += 1
             push_stats['records_sent'] += sent
             push_stats['files'].append(jsonl_file.name)
-            logger.info(f"{jsonl_file.name} -> Firehose 전송 완료 ({sent}건, category={category})")
+            logger.info(f"{jsonl_file.name} -> Firehose 전송 완료 ({sent}건)")
         except Exception as e:
             logger.error(f"Failed to push {jsonl_file.name} to Firehose: {e}")
             # Firehose 실패해도 파이프라인은 계속 진행 (Silver 변환은 로컬 파일 기준으로 별도 진행)
@@ -371,66 +434,75 @@ def validate_bronze(**context):
     logger.info("=" * 80)
 
 def transform_to_silver_task(**context):
-    """Execute transformation from Bronze to Silver layer"""
+    """Execute transformation from Bronze to Silver layer.
+    정상 카테고리(1,2,20)는 silver/ 로, 오염 데이터(category_id=22 등)는 silver/rejected/ 로 분리 저장."""
     logger.info("=" * 80)
     logger.info("TASK 2: Transform Bronze → Silver")
     logger.info("=" * 80)
 
-    # Retrieve file list from previous task
     task_instance = context['task_instance']
     bronze_files = task_instance.xcom_pull(task_ids='validate_bronze', key='bronze_files')
 
     if not bronze_files:
         raise AirflowException("No Bronze files found from validation task")
 
-    # Create Silver directory
     silver_path = Path(SILVER_DIR)
     silver_path.mkdir(parents=True, exist_ok=True)
+    rejected_path = silver_path / 'rejected'
+    rejected_path.mkdir(parents=True, exist_ok=True)
 
-    all_silver_records = []
     transformation_stats = {
         'files_processed': 0,
         'total_records': 0,
-        'silver_files_created': []
+        'valid_records': 0,
+        'rejected_records': 0,
+        'silver_files_created': [],
+        'rejected_files_created': []
     }
 
-    # Process each Bronze file
     for bronze_file in bronze_files:
         logger.info(f"\nProcessing: {bronze_file}")
 
         try:
-            # Transform records
-            silver_records = transform_jsonl_file(bronze_file)
+            valid_records, rejected_records = transform_jsonl_file(bronze_file)
             transformation_stats['files_processed'] += 1
-            transformation_stats['total_records'] += len(silver_records)
+            transformation_stats['total_records'] += len(valid_records) + len(rejected_records)
+            transformation_stats['valid_records'] += len(valid_records)
+            transformation_stats['rejected_records'] += len(rejected_records)
 
-            # Write to Silver JSONL file
             file_name = Path(bronze_file).stem
-            silver_file = silver_path / f"silver_{file_name}.jsonl"
 
-            with open(silver_file, 'w', encoding='utf-8') as f:
-                for record in silver_records:
-                    f.write(json.dumps(record, ensure_ascii=False) + '\n')
+            if valid_records:
+                silver_file = silver_path / f"silver_{file_name}.jsonl"
+                with open(silver_file, 'w', encoding='utf-8') as f:
+                    for record in valid_records:
+                        f.write(json.dumps(record, ensure_ascii=False) + '\n')
+                transformation_stats['silver_files_created'].append(str(silver_file))
+                logger.info(f"✓ Saved {len(valid_records)} valid records to: {silver_file}")
 
-            transformation_stats['silver_files_created'].append(str(silver_file))
-            logger.info(f"✓ Saved to: {silver_file}")
-
-            all_silver_records.extend(silver_records)
+            if rejected_records:
+                rejected_file = rejected_path / f"rejected_{file_name}.jsonl"
+                with open(rejected_file, 'w', encoding='utf-8') as f:
+                    for record in rejected_records:
+                        f.write(json.dumps(record, ensure_ascii=False) + '\n')
+                transformation_stats['rejected_files_created'].append(str(rejected_file))
+                logger.info(f"⚠ Saved {len(rejected_records)} rejected records to: {rejected_file}")
         except Exception as e:
             logger.error(f"✗ Failed to process {bronze_file}: {e}")
             raise
 
-    # Push statistics to XCom
     task_instance.xcom_push(key='transformation_stats', value=transformation_stats)
 
     logger.info(f"\n✓ Transformation complete:")
     logger.info(f"  Files processed: {transformation_stats['files_processed']}")
-    logger.info(f"  Total records: {transformation_stats['total_records']}")
+    logger.info(f"  Valid records (1=영화·애니, 2=자동차·차량, 20=게임): {transformation_stats['valid_records']}")
+    logger.info(f"  Rejected records (22=인물·블로그 등 오염 데이터): {transformation_stats['rejected_records']}")
     logger.info(f"  Silver files created: {len(transformation_stats['silver_files_created'])}")
+    logger.info(f"  Rejected files created: {len(transformation_stats['rejected_files_created'])}")
     logger.info("=" * 80)
 
 def upload_to_s3_task(**context):
-    """Upload Silver data to AWS S3"""
+    """Upload Silver data (정상) + rejected(오염) data to AWS S3, 각각 다른 prefix로 저장"""
     logger.info("=" * 80)
     logger.info("TASK 3: Upload to AWS S3")
     logger.info("=" * 80)
@@ -440,13 +512,15 @@ def upload_to_s3_task(**context):
         return
 
     task_instance = context['task_instance']
-    silver_files = task_instance.xcom_pull(
+    stats = task_instance.xcom_pull(
         task_ids='transform_to_silver',
         key='transformation_stats'
-    )['silver_files_created']
+    )
+    silver_files = stats.get('silver_files_created', [])
+    rejected_files = stats.get('rejected_files_created', [])
 
-    if not silver_files:
-        logger.warning("No Silver files to upload")
+    if not silver_files and not rejected_files:
+        logger.warning("No Silver/rejected files to upload")
         return
 
     try:
@@ -457,22 +531,26 @@ def upload_to_s3_task(**context):
 
         uploaded_files = []
 
-        for silver_file in silver_files:
-            file_name = Path(silver_file).name
-            s3_key = f'youtube/silver/year={year}/month={month:02d}/day={day:02d}/{file_name}'
+        def upload_group(files, prefix_root, filename_strip):
+            for file_path in files:
+                file_name = Path(file_path).name
+                stem = Path(file_path).stem
+                name_no_prefix = stem[len(filename_strip):] if stem.startswith(filename_strip) else stem
+                category_slug = name_no_prefix.rsplit('_', 1)[0] if '_' in name_no_prefix else 'unknown'
+                s3_key = f'{prefix_root}/category={category_slug}/year={year}/month={month:02d}/day={day:02d}/{file_name}'
+                logger.info(f"Uploading: {file_name} -> s3://{AWS_S3_SILVER_BUCKET}/{s3_key}")
+                upload_to_s3(file_path, s3_key, AWS_S3_SILVER_BUCKET)
+                uploaded_files.append(s3_key)
 
-            logger.info(f"Uploading: {file_name}")
-            upload_to_s3(silver_file, s3_key, AWS_S3_SILVER_BUCKET)
-            uploaded_files.append(s3_key)
+        upload_group(silver_files, 'youtube/silver', 'silver_')
+        upload_group(rejected_files, 'youtube/silver-rejected', 'rejected_')
 
-        # Store uploaded paths
         task_instance.xcom_push(key='uploaded_s3_paths', value=uploaded_files)
 
         logger.info(f"\n✓ Successfully uploaded {len(uploaded_files)} files to S3")
         logger.info("=" * 80)
     except Exception as e:
         logger.error(f"✗ S3 upload failed: {e}")
-        # Don't fail the DAG if S3 is not available (for local dev)
         logger.warning("Continuing without S3 upload (local mode)")
 
 def generate_report(**context):
@@ -532,7 +610,10 @@ def summary_task(**context):
     logger.info(f"\n📊 Data Pipeline Results:")
     logger.info(f"  ✓ Files processed: {stats['files_processed']}")
     logger.info(f"  ✓ Records transformed: {stats['total_records']}")
+    logger.info(f"  ✓ Valid records (1=영화·애니, 2=자동차·차량, 20=게임): {stats.get('valid_records', 0)}")
+    logger.info(f"  ⚠ Rejected records (22=인물·블로그 등 오염 데이터): {stats.get('rejected_records', 0)}")
     logger.info(f"  ✓ Silver files created: {len(stats['silver_files_created'])}")
+    logger.info(f"  ⚠ Rejected files created: {len(stats.get('rejected_files_created', []))}")
 
     if AWS_S3_SILVER_BUCKET:
         uploaded = task_instance.xcom_pull(
