@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS fact_video_snapshot (
     like_count                      BIGINT,
     comment_count                   BIGINT,
     subscriber_count_at_collection  BIGINT,
+    trending_rank                   SMALLINT,  -- chart=mostPopular 응답 순서(1위=가장 인기). 배치(search 기반) 수집 레코드는 NULL
 
     collected_at_utc                TIMESTAMPTZ NOT NULL,
     collected_date                  DATE NOT NULL,
@@ -134,7 +135,8 @@ CREATE TABLE IF NOT EXISTS fact_video_snapshot (
     CONSTRAINT ck_snapshot_view_count CHECK (view_count >= 0),
     CONSTRAINT ck_snapshot_like_count CHECK (like_count IS NULL OR like_count >= 0),
     CONSTRAINT ck_snapshot_comment_count CHECK (comment_count IS NULL OR comment_count >= 0),
-    CONSTRAINT ck_snapshot_subscriber_count CHECK (subscriber_count_at_collection IS NULL OR subscriber_count_at_collection >= 0)
+    CONSTRAINT ck_snapshot_subscriber_count CHECK (subscriber_count_at_collection IS NULL OR subscriber_count_at_collection >= 0),
+    CONSTRAINT ck_snapshot_trending_rank CHECK (trending_rank IS NULL OR trending_rank >= 1)
 );
 
 CREATE INDEX IF NOT EXISTS idx_snapshot_category_published
@@ -247,6 +249,39 @@ CREATE TABLE IF NOT EXISTS gold_category_benchmark (
 
     CONSTRAINT pk_gold_category_benchmark PRIMARY KEY (analysis_week, category_id),
     CONSTRAINT fk_gold_benchmark_category FOREIGN KEY (category_id) REFERENCES dim_category(category_id)
+);
+
+CREATE TABLE IF NOT EXISTS gold_video_rank_trend (
+    video_id                      VARCHAR(32) PRIMARY KEY,
+    category_id                   VARCHAR(10) NOT NULL,
+    channel_id                    VARCHAR(64) NOT NULL,
+    title                         TEXT NOT NULL,
+    snapshot_count                INTEGER NOT NULL,
+
+    first_seen_date               DATE NOT NULL,
+    last_seen_date                DATE NOT NULL,
+    first_rank                    SMALLINT NOT NULL,
+    latest_rank                   SMALLINT NOT NULL,
+    best_rank                     SMALLINT NOT NULL,
+    rank_change                   SMALLINT NOT NULL,  -- first_rank - latest_rank (양수=순위 상승)
+    trend_direction                VARCHAR(20) NOT NULL,  -- rising/falling/stable/insufficient_data
+
+    first_view_count              BIGINT NOT NULL,
+    latest_view_count             BIGINT NOT NULL,
+    view_count_growth             BIGINT NOT NULL,
+    view_count_growth_rate        NUMERIC(12,6),
+
+    first_like_count              BIGINT,
+    latest_like_count             BIGINT,
+    like_count_growth             BIGINT,
+
+    created_at_utc                 TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at_utc                 TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    CONSTRAINT fk_gold_trend_category FOREIGN KEY (category_id) REFERENCES dim_category(category_id),
+    CONSTRAINT fk_gold_trend_channel FOREIGN KEY (channel_id) REFERENCES dim_channel(channel_id),
+    CONSTRAINT ck_gold_trend_direction CHECK (trend_direction IN ('rising', 'falling', 'stable', 'insufficient_data')),
+    CONSTRAINT ck_gold_trend_snapshot_count CHECK (snapshot_count >= 1)
 );
 
 CREATE TABLE IF NOT EXISTS gold_new_creator_guide (

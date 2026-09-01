@@ -144,6 +144,7 @@ def transform_flat_to_silver(record):
             'category_id': safe_int(category_id) if category_id else None,
             'category_name': record.get('category_name'),
             'category_slug': CATEGORY_ID_MAP.get(category_id, 'unknown'),
+            'trending_rank': record.get('trending_rank'),
 
             'tags': record.get('tags', []),
 
@@ -193,7 +194,7 @@ def flatten_daily_payload(payload):
 
     for category_id, videos in payload.get('videos_by_category', {}).items():
         category_name = CATEGORY_NAME_MAP.get(str(category_id), 'unknown')
-        for v in videos:
+        for rank, v in enumerate(videos, start=1):
             snippet = v.get('snippet', {})
             content_details = v.get('contentDetails', {})
             statistics = v.get('statistics', {})
@@ -206,6 +207,7 @@ def flatten_daily_payload(payload):
             flat_records.append({
                 'category_name': category_name,
                 'category_id': category_id,
+                'trending_rank': rank,
                 'video_id': v.get('id'),
                 'title': snippet.get('title'),
                 'description': snippet.get('description'),

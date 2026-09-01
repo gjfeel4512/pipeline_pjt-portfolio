@@ -195,6 +195,10 @@ resource "aws_glue_catalog_table" "silver_youtube" {
         type = "string"
       }
       columns {
+        name = "trending_rank"
+        type = "int"
+      }
+      columns {
         name = "tags"
         type = "array<string>"
       }
@@ -368,6 +372,10 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
       columns {
         name = "category_slug"
         type = "string"
+      }
+      columns {
+        name = "trending_rank"
+        type = "int"
       }
       columns {
         name = "tags"
