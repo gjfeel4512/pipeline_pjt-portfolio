@@ -1,0 +1,534 @@
+{
+  "request_params": {
+    "q": "\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"",
+    "videoCategoryId": "2",
+    "videoDuration": "long",
+    "publishedAfter": "2025-09-01T00:00:00Z",
+    "publishedBefore": "2025-09-06T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "KWYSxrhPNqOAB3R_u78dF3FPsBw",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 80230,
+      "resultsPerPage": 15
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "e6XaIH3lFmjxQvVP3geQS44cyOY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "r5tIvpgOYYM"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-04T11:46:20Z",
+          "channelId": "UCWVqtkSFKE_SB_r0JqB9rBQ",
+          "title": "ep19  테슬라 모델Y 주니퍼  장점 단점 주행기 시승기 리뷰 후기  테슬라 초기셋팅 31가지 테슬구매전 알아야할것  테슬라 구매방법",
+          "description": "00:00 인트로 01:24 주니퍼 1700km(6년차 테슬라 오너 소신리뷰 테슬라의 꽃(오토파일럿 지금도?) 주니펴 변경된 것들(실 주행 오너 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/r5tIvpgOYYM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/r5tIvpgOYYM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/r5tIvpgOYYM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "해피둥이가 간다  | 테슬라 백과사전",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-04T11:46:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DOx6cX1TqVveHwmtePFUQNtpv3Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dHbUS2uVsTU"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-03T23:00:49Z",
+          "channelId": "UCFUpTxU3nlGed-suY-FjjxA",
+          "title": "“26년형 쏘렌토 하이브리드&quot; 최초 시승기! 깡통 vs 풀옵션… 가격 차이 무려 1,300만 원!",
+          "description": "우파가 직접 운영하는 가장 합리적인 차 출고 원스톱 플랫폼 차맵 :https://chamap.co.kr/ 안녕하세요 자동차 유튜버 우파TV입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dHbUS2uVsTU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dHbUS2uVsTU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dHbUS2uVsTU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우파푸른하늘Woopa TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-03T23:00:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9lQJETZMKHRsIdBJkU23o2OUmfo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ehvk76oTY84"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-03T10:11:13Z",
+          "channelId": "UCP10oDmRzhVQaVSyjKZ4c3A",
+          "title": "패밀리카로만 쓰기엔 아까울 정도... 르노코리아 세닉 E-Tech 장거리&amp;와인딩 시승기",
+          "description": "르노코리아 #세닉 #패밀리카 ***구독과 좋아요, 알림 설정은 더 좋은 영상 제작에 큰 힘이 됩니다!*** 각종 자동차 관련 제보는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ehvk76oTY84/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ehvk76oTY84/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ehvk76oTY84/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "ROADTEST 로드테스트",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-03T10:11:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nqDckQhZIXSffKJ2m4JraK3RA-k",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EtwKIcu7c5w"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-03T09:15:03Z",
+          "channelId": "UCOGb_1FPYViRDGuw1i4-vdw",
+          "title": "디자인만 달라진 게 아니다! 현대 아이오닉6 페이스리프트 시승기 - 배터리셀? 주행가능거리? 승차감? 멀미?",
+          "description": "협찬 / 컨텐츠 제작 관련 문의 : cartistno1@gmail.com* 영상에 간접광고가 포함되어 있습니다. 현대자동차 행사초청 *제작지원 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EtwKIcu7c5w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EtwKIcu7c5w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EtwKIcu7c5w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카티Carti",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-03T09:15:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CFg16qLcZPSeZE4oI_PZR7WCTEk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ryNVRLQ12Ww"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-03T02:00:49Z",
+          "channelId": "UCrXkDAx7w0EbfnyM7yNzmpQ",
+          "title": "케데헌을 넣었어야지... 더 기아 EV5 신차 리뷰 The Kia EV5, 460km, 4,885만원부터, 4WD를 기다릴까?",
+          "description": "기아 EV5가 정식 출시됐습니다. 2WD, 160kW, 1회 주행거리 460km 가격은 4885만원부터 4WD가 아직 없는 것이 아쉽고... EV7에 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ryNVRLQ12Ww/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ryNVRLQ12Ww/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ryNVRLQ12Ww/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Motorian모터리언",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-03T02:00:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1sapuUMv7I99_ShXWf5HMl0fyEg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1JHnxygFpEw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T22:43:13Z",
+          "channelId": "UCtR90Y6otyrPHY6k-uT4MYw",
+          "title": "테슬라 모델Y 주니퍼 시승기.. 전기차알못 소신발언",
+          "description": "정말.. 궁금했던 #테슬라.. 저희 회사 직원분께서 #모델Y주니퍼 출고를 하셔서 함께 타보았습니다. 원래 옆자리서 타보기만 하려 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1JHnxygFpEw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1JHnxygFpEw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1JHnxygFpEw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이안카",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T22:43:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DJODtkSOkui6o54YV8LRzdxyJGw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7wVBDuWkL08"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T10:30:06Z",
+          "channelId": "UC4_AL-HBcYBjCTyNnMw0DOw",
+          "title": "8.5세대 신형 골프 GTI 페이스리프트 시승기 | 미니 JCW, BMW M135 다 타보고 말씀드립니다.",
+          "description": "비지니스 문의 : lsh6166@naver.com - '폭스바겐 코리아'를 통해 지원받아 제작되었으며, 별도의 금전적 혜택은 제공받지 않았음을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7wVBDuWkL08/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7wVBDuWkL08/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7wVBDuWkL08/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "자동차읽어주는남자(carreadingman)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T10:30:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "MD1jLBYRFxQ_bxXAWHxsAv2oF-0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "FaQSyoj8VNc"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T10:00:24Z",
+          "channelId": "UCG2PHnetcVllQFPW5BsE_LA",
+          "title": "코나 하이브리드 2026 시승기! - 가성비 더 좋아졌습니다! 옵션 야무지고, 알뜰해졌어요!",
+          "description": "오늘은 코나 하이브리드 2026 시승기입니다. 코나 하이브리드 2026은 옵션을 조정한 신규 트림이 출시되면서 가성비가 더 좋았 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/FaQSyoj8VNc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/FaQSyoj8VNc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/FaQSyoj8VNc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "홍시car",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T10:00:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "84GztyGGU44R_tC5XozkzvEa-EE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zzSj4dhrZK4"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T09:01:25Z",
+          "channelId": "UCa9H_LYm3uVYwMcYHHma8Xg",
+          "title": "제로백 7.6초, 연비 19.6km/L, 7,130만원, 동급 최고의 공간과 편의사양, 동급 최고의 승차감까지.ㅣ볼보 S90 B5 울트라 다크 잡소리 없는 42분 시승기",
+          "description": "볼보 #S90 #차또바기 안녕하세요. 디테일한 자동차 리뷰어 차,또바기입니다. 볼보 S90 B5 Ultra Dark 시승기 합본입니다. 볼보 XC90 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zzSj4dhrZK4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zzSj4dhrZK4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zzSj4dhrZK4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "차,또바기 - 디테일한 자동차 리뷰.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T09:01:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XSxdysMK3s1UNtVRjN1pvTcRCsA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6ORNph1mvr8"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T23:00:07Z",
+          "channelId": "UCcLFk30SVHIxueRIJtKrTdg",
+          "title": "[시승기] 현대 더 뉴 아이오닉 6. 아이오닉 6 PE. 진득하고 고급지다. 데드니스가 좋다.",
+          "description": "안녕하세요 라 팩터 나윤석입니다. 이젠 인사드리는 것도 부끄럽습니다. 이렇게 띄엄띄엄 와서 어디 유튜버라고 할 수 있을른지.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6ORNph1mvr8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6ORNph1mvr8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6ORNph1mvr8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "나윤석 RAH Factor (Stefan RAH)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T23:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xGkM1R9_sj3ho9M0ZDIFzMuxjRA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6VF-MlXOaLY"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T23:00:05Z",
+          "channelId": "UCFUpTxU3nlGed-suY-FjjxA",
+          "title": "&quot;26년형 카니발 하이브리드&quot; X라인 최초 시승기! 연비, 승차감 그냥 1등입니다!",
+          "description": "우파TV단독  ]휴대용 캠핑 냉장고 TB5101 16.5L (플루드미니+220v어댑터) 구매링크 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6VF-MlXOaLY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6VF-MlXOaLY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6VF-MlXOaLY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우파푸른하늘Woopa TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T23:00:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Ktaj-J-qywf_t350jKGRtoo93Ww",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "WAXjgoomXQM"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T16:46:44Z",
+          "channelId": "UCb4UJj1A6OVN0wOcoUBJ_og",
+          "title": "기아 EV9 GT 라인 시승기",
+          "description": "기아 EV9 GT 라인 시승기 My Camera Gear: https://amzn.to/3G3SuSo Essential Car Accessories: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/WAXjgoomXQM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/WAXjgoomXQM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/WAXjgoomXQM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Silent Roads",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T16:46:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DRJSXNKAP0nTEUpWVDb9nVcg0Ps",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dKW4Cj70c80"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T11:48:46Z",
+          "channelId": "UC-QNLjGvjEdwqtl3VtcuqgQ",
+          "title": "폭스바겐 아틀라스! 주행성능은 역시! 팰리세이드와 비교하면! 하체전문가  #PALISADE #ATLAS #volkswagen #더모스트 #시승기",
+          "description": "믿을 수 있는 연못구름! 신차구입! 2% 캐시백+놀라운 혜택! 리스&렌트 즉시출고 https://www.welcar.kr/recommend?userId=43049 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dKW4Cj70c80/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dKW4Cj70c80/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dKW4Cj70c80/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "신차정보 연못구름",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T11:48:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "95poHDgqGEcQPQEDe_QaV6-qbEI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XsdEgKBg85I"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T08:00:38Z",
+          "channelId": "UCXneYyIYkIDBq6J2ePNedVA",
+          "title": "[시승기] 한 가지 우려되는 부분이 있습니다… I BYD 씰 리뷰",
+          "description": "자동차를 사야한다면 주목!! 수입차 구입 고민중인데 제조사 할인율 알아보기 귀찮으셨나요? 겟차에서는 내가 고민중인 모든 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XsdEgKBg85I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XsdEgKBg85I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XsdEgKBg85I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카밥",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T08:00:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "V6vDkS68EaBkUANWxezfZ3gpHE0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TqpY-fz5EEE"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T05:04:53Z",
+          "channelId": "UCT29dZNPg6exiMyMrVLL0fg",
+          "title": "&#39;4억7천&#39;.. 벤틀리 컨티넨탈GT 스피드 시승기",
+          "description": "벤틀리 #컨티넨탈GT #스피드 00:00 벤틀리 컨티넨탈 gt speed 00:33 외관 디자인 04:39 트렁크 05:46 차원 광고 06:17 실내 디자인 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TqpY-fz5EEE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TqpY-fz5EEE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TqpY-fz5EEE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "mediaAUTO 미디어오토",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T05:04:53Z"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,704 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "long",
+    "publishedAfter": "2025-11-25T00:00:00Z",
+    "publishedBefore": "2025-12-15T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "8PGjdAJNCYyErW-8iUAwHYFJunE",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 1400,
+      "resultsPerPage": 20
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "92yJ3saJmphLS4XArOLjOwJCqAs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dPlmkROCJ2Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-13T04:10:17Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "🚐서울 한복판에서 사이버트럭 자가용으로 타고 다닐 수 있을까? [테슬라 사이버 트럭 비스트 솔직 시승기]",
+          "description": "오늘은 사이버 비스트를 리뷰해보는 시간을 가져봤습니다. 제 친구 현석이와 솔직하게 시승해보는 시간 가져보도록 하겠습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dPlmkROCJ2Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dPlmkROCJ2Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dPlmkROCJ2Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-13T04:10:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "45CUnHRup0F7ApJ5uRFKc9W_yR0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7CwHmwrrP-c"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-12T11:00:12Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "‘배틀로얄’ 리뷰 | 국가 공인 x인 게임",
+          "description": "이번에도 분량 조절 실패했네요 ㅠㅠㅠㅠ 후카사쿠 킨지 감독의 2002년작 '배틀로얄' 입니다. 배틀로얄은 영화를 뛰어넘어 새로운 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7CwHmwrrP-c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7CwHmwrrP-c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7CwHmwrrP-c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-12T11:00:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9X47INzVX9ZpeyGRUcbcHH-Ls34",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lfAyVDpMKGY"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-12T09:45:50Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥와..... 이런 [[호러] 띵작이 있었다고...?🔥생각보다 진짜 무섭습니다..... 클릭 조심하세요 (결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lfAyVDpMKGY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lfAyVDpMKGY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lfAyVDpMKGY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-12T09:45:50Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AF_BdeWASsR3UJgFAi92PTg_DgA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "v1jvwEnpyWQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-11T08:01:17Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "&quot;임창정&quot; 영화중에 제일 웃기다고 소문난 코믹의 결정판인 무엇을 상상하던 &quot;그 이상의 배꼽 빠지는 영화&quot;ㅋㅋㅋ",
+          "description": "임창정 #영화리뷰 #코미디영화 #시실리2km #권오중 #한국영화 #김윤석 #변희봉 오늘 소개해 드릴 작품은 \"시실리 2km\"입니다 바로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/v1jvwEnpyWQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/v1jvwEnpyWQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/v1jvwEnpyWQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-11T08:01:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ya46NQpYMUVyOYxRxvb8MTIjIEg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qRbBL88qR8s"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-10T09:45:06Z",
+          "channelId": "UCUKuK5j085SFmT_r12ZZHqQ",
+          "title": "여러분은 벤츠의 6기통 AMG를 본적있습니까? / 벤츠 C43 AMG 와인딩 시승기",
+          "description": "재미있게 보셨다면 구독과 좋아요 부탁드립니다 차량설명은 13:15 까지! 차량주행은 13:16 부터! 본격주행은 16:00 부터! 근데 근데 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qRbBL88qR8s/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qRbBL88qR8s/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qRbBL88qR8s/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "강군",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-10T09:45:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8QfMSnn_DhhgYsLGR6_dn-XqnZo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3dYxan-FAzw"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-09T11:00:06Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "&#39;충동조절장애&#39;가 있는 경호원을 건든 마피아 보스의 최후 [영화리뷰/결말포함]",
+          "description": "영화 제목: 와일드 카드 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3dYxan-FAzw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3dYxan-FAzw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3dYxan-FAzw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-09T11:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "J2siEAzdXhsCGGuCMNY8Ndj8EAA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "y6U-eL_4Psc"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-09T04:00:58Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥새로운 마을로 이사를 왔는데.....🔥나와 똑같은 사람이 있다....?!(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/y6U-eL_4Psc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/y6U-eL_4Psc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/y6U-eL_4Psc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-09T04:00:58Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Fjka0p54TG3_gx3MhyEGRcXVAVE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8-UHtxnEJmg"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-07T18:51:36Z",
+          "channelId": "UCqXfvW6a50UMi4D_VDcC2EA",
+          "title": "12월 4일 목요일 카지노 게임 후기 - 블랙잭, 슬롯머신, 홀덤 그리고 바카라까지 여러 게임들을 다 해 봤습니다.",
+          "description": "12월 4일 목요일 3회차 게임. 블랙잭, 슬롯머신, 홀덤 그리고 바카라까지.. 여러 게임들을 다 해봤습니다. 블랙잭이 재미있고 바카라가 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8-UHtxnEJmg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8-UHtxnEJmg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8-UHtxnEJmg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이겨울 카지노",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-07T18:51:36Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QUVBAA-msrZAuvzNr0_R8zFDrnI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2n5r4u3Ws7M"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-07T10:00:07Z",
+          "channelId": "UCwsEYFN_Mzleq7_V5MiR5ow",
+          "title": "와.......이 영화 진심 미쳤습니다....상공 140m 에서 벌어지는 &quot;소름돋는 역대급 액션 &quot;【영화리뷰/결말포함】",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2n5r4u3Ws7M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2n5r4u3Ws7M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2n5r4u3Ws7M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "멀더의 무비파일 season2",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-07T10:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mgSS3g0ft0Hf85dvfu_dOnndadI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "FIHP5Saz5xk"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-07T01:24:04Z",
+          "channelId": "UCk8KTDvCId_QIFK9p-pVRfg",
+          "title": "쭈니의 게임리뷰",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/FIHP5Saz5xk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/FIHP5Saz5xk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/FIHP5Saz5xk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쭈니의 일상",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-07T01:24:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Mo8Sra49dyiIrYL0cRxxsdxZdVk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "aD7UsbSpBH4"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-07T01:00:00Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "2025년 본 영화 중.....&quot;꼭 기억 해야 할 평점 9.14 받은 이동휘 X 유선 X 최명빈 주연의 칠곡 계모 아동X대 사망 사건 모티브로 제작된 영화&quot;",
+          "description": "어린의뢰인 #영화리뷰 #이동휘 #유선 오늘 소개해 드릴 작품은 \"어린 의뢰인\"다 구독과 좋아요 그리고 알림 설정은 영상을 제작하는데 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/aD7UsbSpBH4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/aD7UsbSpBH4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/aD7UsbSpBH4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-07T01:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "oxWwA08wck0lmhb23PLANsYAvDM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "p2eSsyWZvBw"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-06T11:00:03Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "아시아의 패권을 두고 싸우는 당나라 황실과 인도 최고의 비밀 조직 [영화리뷰/결말포함]",
+          "description": "영화 제목: 적인걸지사대천왕 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/p2eSsyWZvBw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/p2eSsyWZvBw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/p2eSsyWZvBw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-06T11:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WuToONSNlt9MkrFAtnUmq67z46g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XaJqQmIQYUg"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-05T10:15:04Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "&#39;호스텔&#39; 리뷰 l 여행지에서 생길 수 있는 최악의 일 no.1",
+          "description": "일라이 로스 감독의 2005년작 (국내 개봉 2007년) 영화 '호스텔' 입니다. 한때 가장 끔직한 영화였고 많은 사람들한테 충격을 안겨준 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XaJqQmIQYUg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XaJqQmIQYUg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XaJqQmIQYUg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-05T10:15:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kSa4Xnu6VUs9tcWJfBAXr5LkIno",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qMVqk3G2byg"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T22:29:48Z",
+          "channelId": "UCRrh85hNWbG_M2LyD1NzJIg",
+          "title": "[박다방 영화리뷰] 한란(寒蘭)",
+          "description": "제주민중항쟁에 대한 사실적 묘사 한란에 대한 리뷰입니다. #영화#독립영화#환란#제주#제주4.3#제주민중항쟁#제주평화공원# ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qMVqk3G2byg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qMVqk3G2byg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qMVqk3G2byg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "박상이의 Liberal Arts",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T22:29:48Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bVu4J-w2N13jAV813T15uz10RBQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lq12ul8hWAs"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T08:30:36Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "&quot;9억 주고 살만할까?&quot; 실제로 주행해봤습니다 [페라리 SF90 스파이더 시승기]",
+          "description": "페라리 sf90 스파이더를 다시 한번 시승할 수 있는 기회가 생겨 리뷰해보았습니다. 시청하시는 분들에게 도움이 되시길 바랍니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lq12ul8hWAs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lq12ul8hWAs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lq12ul8hWAs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T08:30:36Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "yxJ4Fa8E5kzXCJ0Tq_JoUyVtO0I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "mpx0WUCxGX0"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-02T08:30:26Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "와..진짜 미쳤다...&quot;침착맨&quot;이 강추한 처음부터 끝까지 미친 듯이 웃기는 액션 코미디 영화",
+          "description": "마지막방위 #영화리뷰 #코미디영화 #전쟁영화 #허준호 #김민종 오늘 소개해 드릴 작품은 \"마지막 방위\"입니다. 바로 보러가기 웨이브 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/mpx0WUCxGX0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/mpx0WUCxGX0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/mpx0WUCxGX0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-02T08:30:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "I4qTD1GnKKVz6hSkgZX-YebvEBM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7w0JPx5vIDQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-02T04:17:23Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥제가 [[올해]] 본 영화 중 제일 재밌습니다........🔥하필이면 &quot;불곰국&quot;에 떨어져버린 외계인들의 끔찍한 최후.......(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7w0JPx5vIDQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7w0JPx5vIDQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7w0JPx5vIDQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-02T04:17:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kZE-OSl8bpzVudRsqsnj4vkUxWY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "cBhS4VckIBw"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-29T17:09:28Z",
+          "channelId": "UCyc2IZAIYTCHqNXjklum5cQ",
+          "title": "방렬메랜 길쿰 feat.주토피아2 노스포리뷰",
+          "description": "행복한 메이플랜드.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/cBhS4VckIBw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/cBhS4VckIBw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/cBhS4VckIBw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "방렬",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-29T17:09:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KQv_S7ZdyAi6srdtf6M6OLxr7Jo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7oRGfNu7BXA"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-29T01:00:12Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "2025년 본 영화 중.....&quot;제일 소름 돋았던 류준열 X 박효주 X 배성우 주연의 신안 염전 노예 사건을 모티브로 제작된 스릴러 영화&quot;",
+          "description": "섬사라진사람들 #영화리뷰 #류준열 #배성우 #박효주 #이현욱 #스릴러 오늘 소개해 드릴 작품은 \"섬 사라진 사람들\"입니다. 웨이브 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7oRGfNu7BXA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7oRGfNu7BXA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7oRGfNu7BXA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-29T01:00:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8fMv47cwSGduq_3s9sJCiNi0nAw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QE516nAUPx8"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-28T12:25:36Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "핵폭탄으로도 죽일 수 없는  신급 초능력을 가진 남자 [영화리뷰/결말포함]",
+          "description": "영화 제목: 넥스트 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!!!! #영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QE516nAUPx8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QE516nAUPx8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QE516nAUPx8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-28T12:25:36Z"
+        }
+      }
+    ]
+  }
+}

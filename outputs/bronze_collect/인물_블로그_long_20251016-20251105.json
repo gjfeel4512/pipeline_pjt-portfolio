@@ -1,0 +1,840 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "long",
+    "publishedAfter": "2025-10-16T00:00:00Z",
+    "publishedBefore": "2025-11-05T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "gcbzxOUSoBOYaQT_XEGP_-M_hh0",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 463,
+      "resultsPerPage": 24
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lqIx2vrhSjbkxtUj2byNiZ_I-mU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4lnKfN8xInA"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-04T22:02:59Z",
+          "channelId": "UCB23SOOrXmHRFtmrkdw9EHA",
+          "title": "[25.10.02] talk(영화 리뷰 썰 + 모바일 게임 이야기 + 서브컬쳐 노래 월드컵)",
+          "description": "본 채널은 연시호 치지직 방송의 다시 보기를 올리는 채널입니다! 만약에 키리누키로 활용하고 싶으신 분들은 부담 없이 사용하셔도 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4lnKfN8xInA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4lnKfN8xInA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4lnKfN8xInA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "연플릭스",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-04T22:02:59Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7FoaFlpcXLZoMqNjoqSXgAXmaaw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "K9V-JA5IJSs"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-04T11:00:06Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "지옥의 절대 군주가 부활하며 &#39;헬게이트&#39;가 열리면 벌어지는 일 [영화리뷰/결말포함]",
+          "description": "영화 제목: 헬보이 (2019) 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/K9V-JA5IJSs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/K9V-JA5IJSs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/K9V-JA5IJSs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-04T11:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "FrTJ6bbxXJ6VRAF3nR2cUJaqKAE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ijG934qWl-k"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-02T08:08:57Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "괴물 성능과 공간감을 같이?! 남자들의 로망 M과 실용성이 만나다 [BMW M3 투어링 LCI 리뷰]",
+          "description": "오늘은 구독자님의 도움으로 M3 투어링 LCI 모델을 시승해보았습니다. 재밌게 봐주세요^^ [채널 회원가입 혜택] ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ijG934qWl-k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ijG934qWl-k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ijG934qWl-k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-02T08:08:57Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9v0EMIR0L7SkKcR9hLgyGbzYl5c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "iMVbey9PouY"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-02T01:00:49Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "2025년 본 영화 중.....&quot;제일 웃겼던 정준호 X 김원희 X 고은아 주연의 진짜 미친듯이 웃겨주는 코미디 영화&quot;",
+          "description": "영화리뷰 #코미디영화 #정준호 #김원희 #고은아 #임형준 오늘 소개해 드릴 작품은 \"사랑방 선수와 어머니\"입니다 바로 보러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/iMVbey9PouY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/iMVbey9PouY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/iMVbey9PouY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-02T01:00:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "p1QUK_-X61U6wme4ki1vJO_2_0E",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "SPyoZG_7M34"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-30T12:32:40Z",
+          "channelId": "UClHnG-t5uwnJqXOGpZGokkw",
+          "title": "[영화리뷰]대부를 본 나, 이젠 꽤나 시네필일지도?",
+          "description": "대부 #영화리뷰 #영화 Made with Vrew, the Al video editor.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/SPyoZG_7M34/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/SPyoZG_7M34/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/SPyoZG_7M34/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "팝콘 말아먹기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-30T12:32:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "O_xd_8akz9ckw6DyuTCWeWUlG1Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Es7kt_I9ujA"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-30T11:32:49Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "옥황상제도 ㅈ밥으로 아는 산적 두목 [영화리뷰/결말포함]",
+          "description": "영화 제목: 서유기 월광보합, 선리기연 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Es7kt_I9ujA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Es7kt_I9ujA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Es7kt_I9ujA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-30T11:32:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TBwYGTLTTyRLv0DgIfTexKZ6hTo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "pRY-xEBwG8Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-29T08:01:08Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "와...미친 반전을 볼 수 있는 최성국 X 신현준 X 권오중 X 박철민 등 웃긴 배우 다 때려 박은 처음부터 끝까지 눈물 콧물 나와버리는 웃긴 영화 끝판왕!!",
+          "description": "영화리뷰 #코미디영화 #최성국 #신현준 #권오중 #오승현 #노주현 # 이한위 #박철민 오늘 소개해 드릴 작품은 \"김관장 대 김관장 대 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/pRY-xEBwG8Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/pRY-xEBwG8Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/pRY-xEBwG8Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-29T08:01:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BBVbyLBRFoUd3xebc6HUeblMi_M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zQxs8wBo59I"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-28T10:30:45Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "기대 안 하고 봤다가 배꼽 빠지게 웃은 배우들의 코믹 연기를 제대로 볼 수 있는 레전드 코미디 영화",
+          "description": "영화리뷰 #코미디영화 #김보성 #이종원 #조윤희 오늘 소개해 드릴 작품은 \"최후의 만찬\"입니다 바로 보러가기 웨이브 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zQxs8wBo59I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zQxs8wBo59I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zQxs8wBo59I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-28T10:30:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "wiT-yWkobhn5GFJFUoPObMYpN3Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZzN9hgVj6c0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-28T10:31:26Z",
+          "channelId": "UCqfcTXEuYjLoiFlrJ0KD8Lg",
+          "title": "BMW를 처음 타보는 내가 1300RT를 타보고 정신이 나간 이유 | 시승기 | ASA | 디플렉터 | R1300RT",
+          "description": "BMW R1300RT(ASA) 첫 시승! 텔레레버 한 번에 '자동차 같은' 승차감이 왜 나오는지 몸으로 느껴봤습니다. 🏍️ 방지턱·시내·코너 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZzN9hgVj6c0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZzN9hgVj6c0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZzN9hgVj6c0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "심사장 SSJ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-28T10:31:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "GIKUVZlSS86rKf_vrBHByILyHqM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "g9TzEkIHQiU"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-25T03:01:16Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "퇴물된 벤츠, 이게 AMG냐? ... [GLE53AMG 시승기]",
+          "description": "오늘은 오랜만에 @오렌지커스텀TV 현석이와 함께 GLE53AMG를 시승해보았습니다. [채널 회원가입 혜택] ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/g9TzEkIHQiU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/g9TzEkIHQiU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/g9TzEkIHQiU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-25T03:01:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "faak73jUEgLW67AoBXnVd2GP5Nw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "NfL4El7b0M0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-24T10:00:44Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "&#39;착신아리&#39; 리뷰 l 받으면 얄짤없이 사망 ^^",
+          "description": "2000년대 초반 J-호러의 대표작중 하나 착신아리 입니다. 중간에 귀신 나오는데 좀 징그러워요 큰소리 의도치 않게 한번 나옵니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/NfL4El7b0M0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/NfL4El7b0M0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/NfL4El7b0M0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-24T10:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "rsGEitMaw9spWbGP3LyPhayAtDI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "G7E9KXTuJQM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-23T14:23:51Z",
+          "channelId": "UCRai-jFf7-Iwsxl0iaRZctg",
+          "title": "[디코 다시보기] 8번 출구 실사화 영화 후기! 20251023 다시보기",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/G7E9KXTuJQM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/G7E9KXTuJQM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/G7E9KXTuJQM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "루크베니아",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-23T14:23:51Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zgZanW4qn-UagtQo4rD84UBmhtw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qa8Da7-b-j0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-22T10:30:41Z",
+          "channelId": "UCqZxicl8W1E57_pm5QR5zuw",
+          "title": "8번 출구 영화 후기(스포X) 말하며 8번 승강장 플레이하기!",
+          "description": "버튜버 #대충인간 #8번출구 #8番出口 #8번승강장 #8番のりば 봐주셔서 감사합니다!!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qa8Da7-b-j0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qa8Da7-b-j0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qa8Da7-b-j0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "대충인간의 게임탐험",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-22T10:30:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "q6wG5F2FHg1UYrcc3MAwUyzFJBQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "d-Ivg0mexIo"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-21T16:09:45Z",
+          "channelId": "UCDOXsK8KBQfH-PTkRU24Uzw",
+          "title": "영화리뷰:미키 17과 미키 18은 같은 미키 일까?",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/d-Ivg0mexIo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/d-Ivg0mexIo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/d-Ivg0mexIo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "공민수",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-21T16:09:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "pC-muqTYKfLarwrr7EMsugaBP2k",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XdfHGWJpe2g"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-21T07:43:14Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥[[할리우드 마동석]] 떴다.......🔥하필이면 [[특수부대]] 출신 인간 병기를 건드려버리면 생기는 일.......(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XdfHGWJpe2g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XdfHGWJpe2g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XdfHGWJpe2g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-21T07:43:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BTsaBWuCBqwdNcd5ViCpWFzLJL4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dYzgkhEhK3Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-20T08:01:12Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "대한민국 아빠들의 로망, 전기모터 장착한 대형 SUV [아이오닉9 시승기]",
+          "description": "오늘은 구독자분의 협찬으로 현대 아이오닉9을 시승해보았습니다. [채널 회원가입 혜택] ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dYzgkhEhK3Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dYzgkhEhK3Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dYzgkhEhK3Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-20T08:01:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KGB0NWkGFF1dO2v55Z2nCyyiZnc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "g2iRjKcZycQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-19T10:30:27Z",
+          "channelId": "UCxnXl8szP2yYkI1hupfJ7kA",
+          "title": "2025 최신작❗와.......진짜 겨우 허락 받아왔습니다....공개되자마자 &quot;아마존 프라임 1위&quot;를 기록해버린 역대급 존잼 드라마【결말포함】",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/g2iRjKcZycQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/g2iRjKcZycQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/g2iRjKcZycQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "멀더의 무비파일",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-19T10:30:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1H8Nz6mIxmUB76z-QwpPi2JeT1s",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2adpqG9PUHA"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-19T10:00:10Z",
+          "channelId": "UCwM1awGisywZJ49aIjt27Fw",
+          "title": "와.........진짜 이 영화 미쳤습니다🔥어느날 갑자기 세상이 망해버리면 벌어지는 충격적인 사건들!!!【영화리뷰/결말포함】",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2adpqG9PUHA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2adpqG9PUHA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2adpqG9PUHA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화세상",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-19T10:00:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "5ufTZiUD76HpT0epCs941e05I2Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "H6EXFWBQBKw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-18T01:00:14Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "와.....유투브 최초 공개??? 박용우X 이보영 X 성동일 X 김응수 등 유명 배우 총출동 한 핵꿀잼 코미디 영화",
+          "description": "영화리뷰 #박용우 #성동일 #이보영 #김응수 #한국영화 #코미디영화 #액션영화 오늘 소개해 드릴 작품은 \"원스 어폰 어 타임\"입니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/H6EXFWBQBKw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/H6EXFWBQBKw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/H6EXFWBQBKw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-18T01:00:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BSQ1kYOvE4ZilsLjKh4g2bv2krs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "sj54av_Vp8c"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-17T15:35:44Z",
+          "channelId": "UCB_-HyztMPk2p4AeYf8D36A",
+          "title": "[멘붕 영화 리뷰]세상에서 가장 추악한 인간의 기행들 - 언더 그라운드 영화의 길을 터준 영화 [핑크 플라밍고 해석]  feat. 우르술라, 암컷대소동, 드랙퀸",
+          "description": "그리니들 안녕하세요! 오늘도 변함없이 돌아온 딥그린입니당 ㅎㅎ 사실 금요일이 아니네요 ㅋㅋㅋ토요일 새벽입니다 후후.. 이번주는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/sj54av_Vp8c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/sj54av_Vp8c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/sj54av_Vp8c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "\b딥그린",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-17T15:35:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QAvxzrg3Vl3tfv2XQ0Ae8GGNZZU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zrA3wTwtJps"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-17T12:02:14Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "&#39;세르비안 필름&#39; 리뷰 l 심약자 시청금지",
+          "description": "멘붕 시리즈 4부작, 그 마지막 작품. 바로 세르비안 필름입니다. '영화'라는 개념이 성립하려면, 최소한의 '선'이 존재해야 한다고 생각 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zrA3wTwtJps/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zrA3wTwtJps/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zrA3wTwtJps/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-17T12:02:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nhQQnxwkFmjTrv7lt9IV5rTmQXU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "brgFeGbDUf0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T23:15:02Z",
+          "channelId": "UCRrh85hNWbG_M2LyD1NzJIg",
+          "title": "[박다방 영화리뷰] 어쩔수가없다 2편",
+          "description": "노동자의 시선으로 바라본 어쩔수가없다 2편입니다 #영화#어쩔수가없다#박찬욱#이병헌#손예진#이성민#차승원#박희순#염혜란# ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/brgFeGbDUf0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/brgFeGbDUf0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/brgFeGbDUf0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "박상이의 Liberal Arts",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T23:15:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "w2DsG5Kz6s00prJc4vm4Po2Z-RI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9aF5kCuR8tw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T15:50:19Z",
+          "channelId": "UCLHGTMrtw2AIwAxqEE6nEsA",
+          "title": "250603 하얀 다시보기ㅣ릴로&amp;스티치 영화후기ㅣ악성코드 Malware 다운로드 전문 스트리머ㅣ후열 ASMR 소리연습",
+          "description": "치지직 #버튜버 #하얀다시보기 #백하얀 #vtuber #ASMR.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9aF5kCuR8tw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9aF5kCuR8tw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9aF5kCuR8tw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "하얀의 방구석",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T15:50:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "of--34cfrfblQYv1KlgCxHSBZRg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "l3x5k3E9crQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T06:23:53Z",
+          "channelId": "UCRrh85hNWbG_M2LyD1NzJIg",
+          "title": "[박다방 영화리뷰] 어쩔수가없다 1편",
+          "description": "노동자의 시선으로 영화리뷰하였습니다. #영화#어쩔수가없다#박찬욱#이병헌#손예진#이성민#차승원#박희순#염혜란#정리해고# ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/l3x5k3E9crQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/l3x5k3E9crQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/l3x5k3E9crQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "박상이의 Liberal Arts",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T06:23:53Z"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1486 @@
+{
+  "request_params": {
+    "q": "\"게임\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "20",
+    "videoDuration": "medium",
+    "publishedAfter": "2025-10-07T00:00:00Z",
+    "publishedBefore": "2025-10-14T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "KUogXSexAAc9iaN3CMGFoViwbMI",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 242091,
+      "resultsPerPage": 43
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "S5BWHfJpHzfAoCPTllizRYKdCkk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "U3CfMIAjdsI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T22:00:38Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "10월 신작 포함 !! 스팀 게임 할인 추천 30가지 !! [ Steam GAME SALE 스팀 게임 추천 ]",
+          "description": "Steam 스팀 할인 게임 추천 30가지 00:00 인트로 (리레이어 어드밴스드) 00:16 1.보더랜드 3 (Borderlands 3) 00:47 2.압솔룸 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/U3CfMIAjdsI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/U3CfMIAjdsI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/U3CfMIAjdsI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T22:00:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "gXmxjAIiBqUW2VB6WuDkXoxv6bo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DxuCu1CHgRE"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T12:25:49Z",
+          "channelId": "UCUzgcVDj2BFB3T7TCDlMhRw",
+          "title": "최적화? 가난하면 게임하지마! 베데스다 스타필드 괴씸한 이유, 노맨즈 스카이, 스타시티즌 비교되는..",
+          "description": "00:00 - 가난하면 게임하지 마 01:29 - 스타필드 플레이 썰 04:09 - 신작 게임은 출시하고 바로 구매할 필요가 없어 06:52 - 다시 스타 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DxuCu1CHgRE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DxuCu1CHgRE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DxuCu1CHgRE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "G띠",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T12:25:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "saNE75j60VKnMvk5g5QJmlExplk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UFEjJ-X3D9U"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T08:43:42Z",
+          "channelId": "UCS-X1uBDTNwAYyydiXjcX9A",
+          "title": "넥슨, 펄어비스 K-게임쇼 지스타는 패싱! G-STAR 2025 시작도 하기 전에 흥행 적신호!?",
+          "description": "안녕하세요 영상으로 게임매거진을 만들고 싶은 지토입니다 월별로 3건 이상 게임뉴스 발행할테니 구독/좋아요 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UFEjJ-X3D9U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UFEjJ-X3D9U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UFEjJ-X3D9U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임잡지 GTOPIA",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T08:43:42Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZSVyozGiAoPy-0LLPrtnqbF7IyM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JB0dmhNzYXw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T08:00:18Z",
+          "channelId": "UCQJuZxeDv2P05YHcC-tIEVQ",
+          "title": "VR 공포게임을 해봤습니다",
+          "description": "멤버십에 가입하시면 풀버전 및 멤버십 전용 영상 등을 만나보실 수 있습니다! ▷ 악어 멤버십 https://www.youtube.com/@acau ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JB0dmhNzYXw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JB0dmhNzYXw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JB0dmhNzYXw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "악어 유튜브",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T08:00:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "RPdT8nT-Jsij8rrxhidateoMMhg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "W5fS8cZJoHY"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T08:00:40Z",
+          "channelId": "UCTUnpbuKoOODvhLhCO_kO_A",
+          "title": "의정부 경찰체험중 생긴일...  [로블록스 게임 탐방기 240편 유튜브맘마]",
+          "description": "의정부 경찰체험중 생긴일... 재밌게 보셨다면 \"공유\" 부탁드립니다! 디스코드: https://discord.com/invite/uytrwQk 멤버쉽가입하기: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/W5fS8cZJoHY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/W5fS8cZJoHY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/W5fS8cZJoHY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유튜브맘마",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T08:00:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "HHrGQEOhesno6dzuXkGl5B0oKMA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BZ45yt2tMTI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T05:10:06Z",
+          "channelId": "UCwnxaxBOBlGdQv1J-7W07Sw",
+          "title": "이거 하나로 &quot;갓겜&quot; 10,000% 입증... 새게임+ 빨리 내줘!!!!!!! 고스트 오브 요테이 &#39;레전드 이스터에그&#39; 최초의 시노비",
+          "description": "이 세상 모든 게임을 컨트롤러(패드)로 플레이를 합니다. #라미월드 #게임리뷰 #게임스토리 4K PS5 Pro 플레이 [멤버십 가입하기] ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BZ45yt2tMTI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BZ45yt2tMTI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BZ45yt2tMTI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "라미월드",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T05:10:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Qt72y82b8ahI7y0kRNkOQ3ZI1CI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JIxxCS9ifPw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T23:59:44Z",
+          "channelId": "UCVmFthSi0wHDMQ9DUld6k_Q",
+          "title": "세계 3대 악마의 게임이었던 [히어로즈 오브 마이트 앤 매직8: 올든 에라] 후속작 리뷰",
+          "description": "히어로즈8#HOMM8#HeroesofMightandmagicoldenera 멤버쉽 가입해주시면 전용 혜택을 드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JIxxCS9ifPw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JIxxCS9ifPw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JIxxCS9ifPw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "센터로드TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T23:59:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0xWuuYWrM6vFr7pSSYY5dT9hBIE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "caPSDjiWjUc"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T22:00:44Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "극한의가성비 갓템 만원이하 !! 스팀 게임 할인 추천 35가지 !! [ Steam GAME SALE 스팀 게임 추천 ]",
+          "description": "Steam 스팀 할인 게임 추천 30가지 00:00 인트로 (연금술사의 길) 00:16 1.미니봉 (嘣境回收战) 00:55 2.갓 이터 3 (GOD EATER 3) ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/caPSDjiWjUc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/caPSDjiWjUc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/caPSDjiWjUc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T22:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ysLni1tkDxmmqL-Mui2b_YX_Sf0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QTDKgjeeMqg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T12:30:44Z",
+          "channelId": "UCmZeuRfHYowZhf6odtoaNdg",
+          "title": "플스의 가치는 독점 게임을 통해서만 드러난다... 2025년 네 번째 머스트 해브 게임 《고스트 오브 요테이》 리뷰 (스포일러 없음)",
+          "description": "플스5 #플스5프로 #playstation #오픈월드 #고스트오브요테이 #고스트오브쓰시마 #명작 #추천게임 #2025년신작 #대작게임 게임 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QTDKgjeeMqg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QTDKgjeeMqg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QTDKgjeeMqg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "집마 홀릭",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T12:30:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7YY5t3chiYyfZZVsoa7jbX808Fs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "fljTD3abkR4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T10:25:26Z",
+          "channelId": "UCnhZk0ebU5fm9oazpCtc_Sg",
+          "title": "이제 혜자패스의 시대는 끝났다, 게임패스의 미래는 어떻게 될까?",
+          "description": "MS가 2017년 6월부터 서비스를 시작한 게임패스 구독 서비스가, 현지 시간 기준으로 10월 1일 대대적인 개편을 실시했습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/fljTD3abkR4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/fljTD3abkR4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/fljTD3abkR4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "GameDO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T10:25:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KVqru5QirxOv82JQwnDQ1hqcAUs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UZCVpp96_Jg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T08:01:34Z",
+          "channelId": "UCb9l4TrkDU9n8qtq2t2frQQ",
+          "title": "던전 앤 드래곤의 향수가 느껴지는 벨트스크롤 액션게임 압솔룸 리뷰",
+          "description": "absolum, #스팀게임 게임 타이틀 : absolum 지원 플랫 폼 : PC, PS4, PS5, Nintendo Switch 가격 : 29800원 (출시 기념 할인 10월 17 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UZCVpp96_Jg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UZCVpp96_Jg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UZCVpp96_Jg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "느껴봐복분자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T08:01:34Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "sJdKaX4DqqDP-N3PpLCGPctxgZw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "M6NAESW5NdI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T08:00:21Z",
+          "channelId": "UCTUnpbuKoOODvhLhCO_kO_A",
+          "title": "의정부 경찰을 시켜주셨습니다 [로블록스 게임 탐방기 239편 유튜브맘마]",
+          "description": "의정부 경찰을 시켜주셨습니다 재밌게 보셨다면 \"공유\" 부탁드립니다! 디스코드: https://discord.com/invite/uytrwQk 멤버쉽가입하기: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/M6NAESW5NdI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/M6NAESW5NdI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/M6NAESW5NdI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유튜브맘마",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T08:00:21Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "I5mWJ3OnN76Y0Qbx4uutluSrxzA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qB6yrIy1zpw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T01:55:04Z",
+          "channelId": "UCRsLT5zPV5LBgBM8TJOOg_Q",
+          "title": "식물과 브레인롯이 싸우는 게임인데 푸딩몰카에 당해버림 ㅋㅋㅋㅋㅋ (로블록스 식물 vs 브레인롯)",
+          "description": "https://www.roblox.com/ko/games/127742093697776/Plants-Vs-Brainrots 집사의 영상은 90%리얼과 재미를위한 10%의 연출이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qB6yrIy1zpw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qB6yrIy1zpw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qB6yrIy1zpw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "집사TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T01:55:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AZ38d8glyPH2VStg0klEohVgaOo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kuMBdsWPcs4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T22:00:54Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "주말특집 갓겜출현 !! 스팀 게임 할인 추천 30가지 !! [ Steam GAME 스팀 게임 추천 ]",
+          "description": "Steam 스팀 할인 게임 추천 30가지 00:00 인트로 (레고 파티) 00:16 1.원펀맨 어 히어로 노바디 노우즈 (ONE PUNCH MAN A Hero ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kuMBdsWPcs4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kuMBdsWPcs4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kuMBdsWPcs4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T22:00:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "aFcVpronQLo_oI3tE2SPJUI4VyQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JorRwMyNp5Y"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T11:30:16Z",
+          "channelId": "UClHGjnruf4A9Us7CHVgLIEQ",
+          "title": "🔥안해보면 후회하는 엑스박스 게임패스 게임 Top19🔥",
+          "description": "게임 다운로드 링크와 각종 정보는 ▽더보기를 눌러주세요!▽ 00:00 인트로 00:29 Clair Obscur: Expedition 33 01:13 It Takes Two ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JorRwMyNp5Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JorRwMyNp5Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JorRwMyNp5Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "빅핑거 [게임추천]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T11:30:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "FJPKi5Kp96yQx2OH9y4KG7dpLFw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1YaoU48Mki4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T11:00:03Z",
+          "channelId": "UC-S8JFhLkQ5enhB70c2CYIw",
+          "title": "건전한 피드백을 각오한 임금님 게임ㅋㅋㅋ",
+          "description": "건전한 피드백을 각오한 임금님 게임ㅋㅋㅋ 편집 : 양모밀님 썸네일 : 프루님 생방송 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1YaoU48Mki4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1YaoU48Mki4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1YaoU48Mki4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "왈도쿤",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T11:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "y3qe-SvcGXpJNxgrjhBRxzRVrtA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "s96aU9177ug"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T10:01:24Z",
+          "channelId": "UCNzcxCN_Hh_lu5RCSFXKgGQ",
+          "title": "드디어..!! 배그 오징어게임🦑 구현했습니다 고인물 100명은 ‘유리다리’ 건널 수 있을까??",
+          "description": "랭킹닭컴X김블루 BBQ치킨 전용링크 https://m.site.naver.com/1RPSg 김블루 추천PICK 40% 할인 (+비밀특가 1팩당 단돈 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/s96aU9177ug/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/s96aU9177ug/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/s96aU9177ug/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김블루",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T10:01:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9MBB9AEk519FEECQoFze09_LmxI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "FBGTR2FH1No"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T08:00:14Z",
+          "channelId": "UC141BuVRzSSXJX33Am9yxEA",
+          "title": "시간 순삭 연휴를 통째로 가져간 게임 | 고스트 오브 요테이 초반 리뷰",
+          "description": "고스트오브요테이 #PS5 고스트 오브 요테이 구매하기 ☞ https://www.playstation.com/ko-kr/games/ghost-of-yotei/ ▽소니쇼 풀버전 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/FBGTR2FH1No/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/FBGTR2FH1No/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/FBGTR2FH1No/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "소니쇼게임방송",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T08:00:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7Y3De7_2XJ0GiL8EEl_WskzggYo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ySRvtdxhea0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T06:49:12Z",
+          "channelId": "UCf2Z16bFsfqE0O6s7b48DSw",
+          "title": "이 게임 어때요?! [아키텍트: 랜드 오브 엑자일] 신작 MMORPG 사전예약 이벤트 혜택 소식 [겜생]",
+          "description": "유튜브 쇼핑 태그 구매 시 수수료를 받습니다. 아키텍트 등 사전예약 정리▽ https://vgamelifev.com/ 주요 게임 사전예약 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ySRvtdxhea0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ySRvtdxhea0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ySRvtdxhea0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "겜생",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T06:49:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "4sMwfD7Gca6Dp6D1TU-lPalzpT8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wGExu5ZhK6Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T05:29:37Z",
+          "channelId": "UCb9l4TrkDU9n8qtq2t2frQQ",
+          "title": "사람들이 잘 모르지만 재밌는 스팀게임 추천 (인디게임편)",
+          "description": "스팀게임, #스팀게임추천 [타임라인] 00:00 The Drifter (포인트 앤 클릭) 00:00 The Drifter (포인트 앤 클릭) 03:35 Easy Delivery Co.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wGExu5ZhK6Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wGExu5ZhK6Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wGExu5ZhK6Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "느껴봐복분자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T05:29:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Qdwntd13HVoB1T_djstQGc4EWL4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hubHTFMYHVY"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T22:00:52Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "최신겜 겨울 업데이트 포함 !! 스팀 게임 할인 추천 30가지 !! [ Steam GAME 스팀 게임 추천 ]",
+          "description": "Steam 스팀 할인 게임 추천 30가지 00:00 인트로 (마칙 2) 00:16 1.갓 이터 3 (GOD EATER 3) 00:46 2.레드 데드 리뎀션 2 (Red Dead ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hubHTFMYHVY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hubHTFMYHVY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hubHTFMYHVY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T22:00:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "5YWoX1iDNmukshob-iYdyzUiyJc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-0uzUt2BGW4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T12:50:41Z",
+          "channelId": "UCIQEX0V3QxP-tY_jpRT-waQ",
+          "title": "닌텐도 DS의 성능한계에 도전하는 레트로 게임 2편",
+          "description": "닌텐도DS #닌텐도 #레트로게임 #고전게임 2004년 발매되어 독보적인 인기를 누리던 닌텐도 듀얼스크린 휴대용 게임기 \"닌텐도 DS\" ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-0uzUt2BGW4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-0uzUt2BGW4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-0uzUt2BGW4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "불티오락실 레트로 게임 리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T12:50:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Igs6dGRGAQ40TAu-EtvdkVdgz-o",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1LB8s1OOcz4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T09:31:25Z",
+          "channelId": "UCeAsj1O73pcqd-xQ4AZbJeQ",
+          "title": "심야귀담 여고생 탈출 게임 아니죠! 허위광고 속지 말고 실체 확인(邪門鬼道)",
+          "description": "이 영상은 더 많은분들이 실체를 아시라고 사비를 들여 프로모션을 진행하는 중입니다 안녕하세요 게임중개사입니다 다른 방향으로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1LB8s1OOcz4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1LB8s1OOcz4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1LB8s1OOcz4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임중개사",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T09:31:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Vd-PSassX4-Zcu1NO2OYmHBRtxw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zkNqfrAFnUo"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T06:00:06Z",
+          "channelId": "UCNOYTSGiu9bV6VjqnJa4ojw",
+          "title": "그동안 감사했습니다. (수치사 예정)",
+          "description": "로블록스 #멜로우tv #팀나빠 ------------------------------------------------------------------------------------------------------------------- 팀 나빠(나사 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zkNqfrAFnUo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zkNqfrAFnUo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zkNqfrAFnUo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "멜로우TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T06:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "wQdqSNqtmRVydwqMly-NUgLjGgg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gO219-XJM2k"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-22T17:46:23Z",
+          "channelId": "UCF4VXd0BNfENIul5avumj7A",
+          "title": "새벽에 케밥 파는 로블록스 공포게임",
+          "description": "구독과 좋아요 댓글은 큰 힘이 됩니다. 게임 - 로블록스 / 슈와마 키오스크 Shawarma Kiosk ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gO219-XJM2k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gO219-XJM2k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gO219-XJM2k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영식 유튜브",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-22T17:46:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "v31QV-6EUd-xjx-SkRGv5m0QnJc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "mp9ERwmooAs"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-22T13:41:32Z",
+          "channelId": "UCv-M0ZvSpSgOGyKgnfZodWA",
+          "title": "[와르르 화산] 화산 폭발을 피해 보물을 모아라 !! 신작 보드게임 소개해 드립니다 | How to play Oh No, Volcano! Board game ",
+          "description": "와르르 화산 신작보드게임 소개.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/mp9ERwmooAs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/mp9ERwmooAs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/mp9ERwmooAs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Jommytube 쪼미튜브",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-22T13:41:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "3Pi1VXxWHUD6UFGyMmxyfCjepLI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UWGgmP6tN6c"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-22T10:30:32Z",
+          "channelId": "UCxRlvng0zVoyEBhutAuXfzQ",
+          "title": "DEC 슛페인팅을 딸깍으로? 게임패드가 이래도 돼?",
+          "description": "조이트론의 지원을 받아 제작 된 영상입니다 구매처 https://smartstore.naver.com/joytronstore/products/12737774327 예약 구매시 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UWGgmP6tN6c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UWGgmP6tN6c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UWGgmP6tN6c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유봉훈",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-22T10:30:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fQ-WdAANUdsRqiLEX4xOnszD0tA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZKDrnawiPws"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T04:58:16Z",
+          "channelId": "UCPhiPHt0qWegQt26OL4vPBg",
+          "title": "29,000원 게임패스! 저는 11,900원에 즐깁니다! #게임패스얼티밋할인 #게임패스가격인상 #PC게임패스",
+          "description": "채널에 가입하여 혜택을 누려보세요. https://www.youtube.com/channel/UCPhiPHt0qWegQt26OL4vPBg/join G마켓 구입하기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZKDrnawiPws/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZKDrnawiPws/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZKDrnawiPws/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유정군의게임이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T04:58:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0-OMTJIBrc6ZbeuCo3cyQ3kre-8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "d55tM9ZZV1I"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T02:00:06Z",
+          "channelId": "UCCshApLKfQqY1wKB07jGiuA",
+          "title": "구독자 50만 기념으로 공포게임 하다가 기절했습니다..",
+          "description": "로블록스 #로블 #게임 #싸모스 진짜 눈물이 나옵니다 ㅠㅠ.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/d55tM9ZZV1I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/d55tM9ZZV1I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/d55tM9ZZV1I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "싸모스",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T02:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "rXWIUZ38qcBqWOAaStihJNoZtQk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XtnG-vNbNGs"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T22:00:38Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "10월 새로운 갓겜 할인이 시작되었습니다 !! 닌텐도 스위치 게임 할인 추천 30가지 !! [ 닌텐도 스위치 2 게임 추천 ]",
+          "description": "닌텐도스위치2 게임 할인 추천 30가지 00:00 인트로 (원피스 월드 시커) 00:16 1.블랙가드 2 (Blackguards 2) 01:00 2.루나 리마스터드 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XtnG-vNbNGs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XtnG-vNbNGs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XtnG-vNbNGs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T22:00:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8LQRj1UVuu9G5L8DsyY0H7zsomo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "quwfiRw76cI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T19:59:16Z",
+          "channelId": "UCLuA08CCjekcbVMeto8Ba1w",
+          "title": "[디지몬 타임스트레인저] 연휴 내내 이 게임만 함ㅋㅋ 비싸지만 재밌음 엔딩 후기",
+          "description": "디지몬스토리타임스트레인저 #디지몬타임스트레인저 #디지몬스토리 #디지몬후기#디지몬신작 #디지몬게임 #디지몬리뷰 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/quwfiRw76cI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/quwfiRw76cI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/quwfiRw76cI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "강한오빠",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T19:59:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "NupcPUkEU_SN84PjQuAap--tDjM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2YLfFoNusJw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T18:55:15Z",
+          "channelId": "UCznBhZnwQst_n5SQgF77eTQ",
+          "title": "주사위 풀 파티(Dice Pool Party) 보드게임 규칙 설명 | Board Game",
+          "description": "총 12라운드 동안, 매 라운드마다 주사위를 굴리고 새로운 점수 항목을 선택하고 가장 높은 점수를 획득하여 승리하세요. *본영상은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2YLfFoNusJw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2YLfFoNusJw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2YLfFoNusJw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "보드마스터박쌤",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T18:55:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "o4sL1dR-anQIrlfPA_HwLDxlQMo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HS6RKrzbg3Y"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T14:34:06Z",
+          "channelId": "UCPhiPHt0qWegQt26OL4vPBg",
+          "title": "게임패스 만족할까? PC게임패스 추천! 2025년 10월 1차 게임패스 라인업 #닌자가이덴4 #네이버플러스멤버십 #PC게임패스",
+          "description": "채널에 가입하여 혜택을 누려보세요. https://www.youtube.com/channel/UCPhiPHt0qWegQt26OL4vPBg/join 00:00 게임패스 가격 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HS6RKrzbg3Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HS6RKrzbg3Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HS6RKrzbg3Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유정군의게임이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T14:34:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "j6xRnrYE7b--ru6JuCfwCz7xNDQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DFldC7XG6HM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T10:45:04Z",
+          "channelId": "UClBijDttMds3jABCDr_qO5A",
+          "title": "커비 무료 게임을 굳이 유료로 엔딩 보는 사람",
+          "description": "돈으로 시간을 사는 건 가능했다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DFldC7XG6HM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DFldC7XG6HM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DFldC7XG6HM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "자연스럽죠",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T10:45:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "O_d2dDRiAhhASsfhsxe-LNU4B3I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "itjZhatDOCU"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T01:45:03Z",
+          "channelId": "UCfjMjhfjRRy8B0mfqbO_43w",
+          "title": "디지몬 게임은 처음인데, 육성RPG 중 상타치는 치네ㄷㄷ..후기",
+          "description": "디지몬 게임은 처음인데, 육성RPG 중 상타치는 치네ㄷㄷ..후기 00:00 - 장점: 깊이 깊은 육성 시스템 02:10 - 캐릭터 스킬트리 02:29 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/itjZhatDOCU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/itjZhatDOCU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/itjZhatDOCU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카사노박TV [CASANOPARK]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T01:45:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "R26vM4OAhoIHxRJ7MeNMHmPMB2A",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4kgb2u-FKsQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T01:21:00Z",
+          "channelId": "UChLqHuZV0PENIBYxDgXyPLQ",
+          "title": "요루 궁 잘못 쓰면 죽는 미니게임 ㅣ &#39;발로란트 요루 위치 게임&#39;",
+          "description": "밴쿠버의 발로란트 신규 미니게임! 요루 궁 위치 게임:) 광고 및 개인 문의: vancouvervalorant@gmail.com 한국 서버 현재 티어: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4kgb2u-FKsQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4kgb2u-FKsQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4kgb2u-FKsQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밴쿠버",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T01:21:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LCrya2TMnu29P5_N8W-CUUdlNHM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2ifgeZJ6DuM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-09T00:00:03Z",
+          "channelId": "UCgjaQlejpAnIu0q-xtVfTEw",
+          "title": "볼따구가 귀여운 게임 ㅋㅋㅋ :: 트릭컬 리바이브",
+          "description": "밍모 팬카페: https://cafe.naver.com/mingduckhoo 밍모 인스타그램: https://www.instagram.com/mingmoisgood/ 밍모 비즈니스 문의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2ifgeZJ6DuM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2ifgeZJ6DuM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2ifgeZJ6DuM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밍모",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-09T00:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vgqQ3L9BCQRdTqyPC3Ck3ij0ZAY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lsZ_mXmmEuw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T22:01:01Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "레고IP의 파티게임 등장 !! 스팀 게임 할인 추천 30가지 !! [ Steam GAME 스팀 게임 추천 ]",
+          "description": "Steam 스팀 할인 게임 추천 30가지 00:00 인트로 (나리타 보이) 00:16 1.다운 인 버뮤다 (Down in Bermuda) 00:55 2.페이퍼 트레일 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lsZ_mXmmEuw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lsZ_mXmmEuw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lsZ_mXmmEuw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T22:01:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "r8ARYpdvWebAMJ8Afm62PPy3nWM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CrQc15hXC_4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T08:35:04Z",
+          "channelId": "UC7loyhgCm1NRTtyF36hO-jA",
+          "title": "죽기 전에 해봐야 될 롤플레잉 게임 Top 10",
+          "description": "감동 지리는 인생 RPG 추천 순위 0:00 인트로 0:38 디스코 엘리시움 2:20 메타포: 리판타지오 4:03 사이버펑크 2077 5:25 파이널 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CrQc15hXC_4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CrQc15hXC_4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CrQc15hXC_4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임통",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T08:35:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PP2aVbBFfw8F_10jGSAnqJ1xuvc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "fBRTpIu30s0"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T06:45:01Z",
+          "channelId": "UCOssKGPKEQ9JCtpXZzFG8Xg",
+          "title": "비명을 질러야 속도가 빨라지는 게임ㅋㅋㅋㅋㅋ",
+          "description": "공포게임 #병맛게임 #해온 #루디 #생크림 #새싹감자 치지직 주소 : https://chzzk.naver.com/4fa802e51ccdbfd071d3df494e329ee1 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/fBRTpIu30s0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/fBRTpIu30s0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/fBRTpIu30s0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "새싹감자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T06:45:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Qn45fKf9iEtfkEvDxHjkJ3pvNPg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AUyqUJE780w"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T06:34:09Z",
+          "channelId": "UCS-X1uBDTNwAYyydiXjcX9A",
+          "title": "지금까지 출시한 게임들 중 2025년 고티는 무엇!? 전세계 게이머가 선정한 고티 후보 TOP 10!",
+          "description": "안녕하세요 영상으로 게임매거진을 만들고 싶은 지토입니다 월별로 3건 이상 게임뉴스 발행할테니 구독/좋아요 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AUyqUJE780w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AUyqUJE780w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AUyqUJE780w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임잡지 GTOPIA",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T06:34:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QBTHE-ioBKb6Av3xqP8B3wFa7mU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UC_s1IHwjrM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T01:50:01Z",
+          "channelId": "UC7S_iPek2DnCeaBV8iMTFUw",
+          "title": "디지몬 게임 입문해볼까? [디지몬 스토리 타임 스트레인저] 패키지 추천+ 악랄한 BM에 대한 불만",
+          "description": "디지몬 #digimon #디지몬스토리타임스트레인저 #패키지 #반다이남코 이번 영상은 출시 후 어떤 패키지를 사야하는 게 좋을 지에 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UC_s1IHwjrM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UC_s1IHwjrM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UC_s1IHwjrM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "탐도리",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T01:50:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "m3z-jCJJV0mXhVz_k9O5EQlU59Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8ksCiNE425s"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-07T15:23:53Z",
+          "channelId": "UC_gG5vopotwPaS7Dl_KhQ4A",
+          "title": "시리즈에 새로운 지평을 연 이변의 공포 게임｜사일런트 힐 f 리뷰 [#네온크리틱]",
+          "description": "네온 크리틱 리뷰는 게임을 직접 플레이하고 소감을 담은 스포일러 없는 리뷰입니다. 코나미의 대표 공포 게임 프랜차이즈 00:00 짧은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8ksCiNE425s/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8ksCiNE425s/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8ksCiNE425s/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "네온 플레이어",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-07T15:23:53Z"
+        }
+      }
+    ]
+  }
+}

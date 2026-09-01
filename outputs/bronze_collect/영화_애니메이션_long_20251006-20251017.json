@@ -1,0 +1,500 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"",
+    "videoCategoryId": "1",
+    "videoDuration": "long",
+    "publishedAfter": "2025-10-06T00:00:00Z",
+    "publishedBefore": "2025-10-17T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "XMsU91Lh-VYDLrAXR-YX1sWVB8E",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 91490,
+      "resultsPerPage": 14
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "E2AmC8gbZO6qtTEvbDbgiuLgvAs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LOoy3KHHJ1Y"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T10:32:40Z",
+          "channelId": "UCQAtlNjpgBRx2pqDyG9H-eg",
+          "title": "방사성 물질을 훔쳤다 돌이킬 수 없는 사고를 쳐버린 좀도둑들의 최후  (영화리뷰)",
+          "description": "영화리뷰 #고이아아니아방사능 유출사고 여러분들의 구독과 좋아요 그리고 댓글과 알림설정은 저에게 언제나 큰 힘이 됩니다~ ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LOoy3KHHJ1Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LOoy3KHHJ1Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LOoy3KHHJ1Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "찐뷰 영화리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T10:32:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "opXnXaOHVe2HyJHuOIIsxVjlYVM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "99CeaZu-cJY"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T10:00:26Z",
+          "channelId": "UCG88aXkSzyY5shpkG6jDPQQ",
+          "title": "🔥충격결말!  새벽 2시 17분 갑자기 17명이 실종된 이유! 🔥오컬트 영화 〈웨폰〉줄거리 결말, 해석·리뷰",
+          "description": "영화 《웨폰(Weapons, 2025)》 결말 해석｜17명의 아이들이 사라진 진짜 이유는 무엇일까? 17명이 실종된 이유, 그리고 아무도 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/99CeaZu-cJY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/99CeaZu-cJY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/99CeaZu-cJY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "스토리담 : 다양한 스토리를 담다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T10:00:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "VnL-ixJg_2sudc0FLIayEeZ0NrA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "f_IGnfEK6yE"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T09:15:04Z",
+          "channelId": "UCpg-LxPY9HrVFWSZ6NnDnZA",
+          "title": "남편이 보는 앞에서 억만장자에게 엄청난 제안을 받게 된 유부녀의 선택 [영화리뷰/결말포함]",
+          "description": "영화 은밀한유혹 (Indecent Proposal/1993) 입니다. 즐거운 감상되시고, 구독과 좋아요는 영상 제작에 큰 힘이 됩니다! 꼭 부탁 드려요 .",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/f_IGnfEK6yE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/f_IGnfEK6yE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/f_IGnfEK6yE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쿠쿠무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T09:15:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uFM4N_Ag0sDPvoksCGNi3mVinSU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-UqR9BcgpzE"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T09:09:14Z",
+          "channelId": "UCOXnyjUZjSn4Joy9CtyhXAg",
+          "title": "캄보디아에서 벌어지는 납치, 살해, 고문. 개봉하자마자 7천억원 흥행 기록",
+          "description": "영화리뷰결말포함 #충격실화 #캄보디아취업납치 #실화 한 줄로 보는 영화: '해외 취업'이라는 달콤한 유혹. 비행기가 착륙하자마자 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-UqR9BcgpzE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-UqR9BcgpzE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-UqR9BcgpzE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "달콤 리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T09:09:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c7dvvTURXyipVxxYt6aFpQeY194",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "o7VR1NeM1Zg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-15T11:11:14Z",
+          "channelId": "UCYuOOjRoyXbhJHrN01yHOnA",
+          "title": "잔혹하리만큼 현실적인 ≪SF 디스토피아≫",
+          "description": "영화리뷰 #헬무비 줄거리 - 잔혹한 정부가 한 남자를 반역자로 몰아 감옥에 가고, 그의 아들 12살 소년 자타는 냉혹한 현실과 맞서게 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/o7VR1NeM1Zg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/o7VR1NeM1Zg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/o7VR1NeM1Zg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "헬무비: Hell Movie",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-15T11:11:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JUF6uxDWmpZxyRZwx_7FK_OjotU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4tKU7XtPT8c"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T05:00:01Z",
+          "channelId": "UCHLOX7SScCTpMgiKL7su-TA",
+          "title": "CIA에서 퇴직 당한 《전직 특수요원》을 건드리면 벌어지는 20분 순삭 액션 영화! [영화리뷰/결말포삼]",
+          "description": "영화리뷰 #결말포함 #액션영화 안녕하세요. 노루무비입니다. 오늘 영화는 \"카운터 어택(The Serpent, 2020)\" 입니다. 너무너무 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4tKU7XtPT8c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4tKU7XtPT8c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4tKU7XtPT8c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T05:00:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "NgagVlecl3zCQFp2Vp55kOyA3ZQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1kLhKN418UU"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T00:00:02Z",
+          "channelId": "UCe9xx5O_rt4MxQuv4ciPX5g",
+          "title": "하급 귀족의 아들로 태어나 아버지가 남긴 검 하나로 전설을 써 내려간 12살 소년...압도적인 스케일에 탄성이 터져 나오는 몰입감 200% 묵직한 액션 서사시",
+          "description": "영화리뷰 #결말포함 ※본 영상은 아주 주관적인 감상과 분석을 담은 리뷰 영상으로 영상의 모든 스크립트는 직접 작성하였습니다 제목 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1kLhKN418UU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1kLhKN418UU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1kLhKN418UU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "시네마버튼",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T00:00:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZLzolAOnxSKCNHzO2p8SyPfQiMQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "44DtNj6aSrM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T22:00:04Z",
+          "channelId": "UCKm1w0s2HHpMODk6EbKHyYA",
+          "title": "매년 생일마다 죽은 남편의 편지를 받는 여자에게 일어난 기적 같은 변화 [영화리뷰/결말포함]",
+          "description": "P.S 아이 러브 유 (P.S. I Love You, 2008) #감동영화 #힐러리스웽크 #제라드버틀러.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/44DtNj6aSrM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/44DtNj6aSrM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/44DtNj6aSrM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비살롱",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T22:00:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "tEqlbd0ehQuvLd0VRkQCPJH_l3I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Pgl5jU58Ooc"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T07:19:25Z",
+          "channelId": "UCcfz-8gGDYJfaRHYD7kkQpw",
+          "title": "신박한 반전스릴러💥재밌다고 난리난 댓글 반응들!!💥신선한 스토리 &amp; 미친 몰입감 &quot;그냥 저 믿고 함보십쇼! 후회 안합니다&quot;",
+          "description": "카랑영화 #스릴러 #영화리뷰 #최신영화 매주 최신 드라마와 영화를 재밌게 소개해드립니다   알림해두시면 좋아요 [카랑구독하기] ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Pgl5jU58Ooc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Pgl5jU58Ooc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Pgl5jU58Ooc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카랑Karang",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T07:19:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "5SPL2izBxJkeex6uiLEMHZROjB8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vs8jN0p3lw4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T03:15:08Z",
+          "channelId": "UCA_SuiI3qGubwZzundp71jA",
+          "title": "아니, 전생했더니 내가 무림초고수였던 건에 대하여 ㅋ[영화리뷰/결말포함]",
+          "description": "이번 영상은 '포비든킹덤(2008)'리뷰 입니다. 재밌게 감상해주세요. 그럼 저는 더 나은 영상으로 찾아 뵙겠습니다. #영화리뷰 #결말 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vs8jN0p3lw4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vs8jN0p3lw4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vs8jN0p3lw4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아가리또무비데쓰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T03:15:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "rwqT174q9pP3basDK_MhGwrHBNY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "mPsbLKF-pic"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T00:17:31Z",
+          "channelId": "UCy5mgjBJb8QjM6WM-YFVQSQ",
+          "title": "80년대 일본 간호사들의 욕망을 적나라하게 보여준 개막장 영화 [영화리뷰 결말포함]",
+          "description": "영화리뷰 #결말포함 #드라마리뷰.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/mPsbLKF-pic/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/mPsbLKF-pic/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/mPsbLKF-pic/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비월드",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T00:17:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c7xooyIrBXxcBIwbJBZ1Lgu09Fc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "G_f-uveJwkA"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T08:45:02Z",
+          "channelId": "UCpg-LxPY9HrVFWSZ6NnDnZA",
+          "title": "상상 불가였던 스윗한 남친의 정체🩸 신선한 전개와 좋은 연기의 공포스릴러 [영화리뷰/결말포함]",
+          "description": "영화 프레쉬(2022) 입니다. 즐거운 감상되시고, 구독과 좋아요는 영상 제작에 큰 힘이 됩니다! 꼭 부탁 드려요 . #영화리뷰 #영화리뷰 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/G_f-uveJwkA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/G_f-uveJwkA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/G_f-uveJwkA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쿠쿠무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T08:45:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z3u_d3AUjgIBoTtYgNXkeoWfWLA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "j3NvyPW98Co"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T08:01:01Z",
+          "channelId": "UCXs_r31f7LmqBYg_-nvay4Q",
+          "title": "전 세계가 인정한 빡빡이형 레전드 액션 🔥제이슨 스타뎀 와.. 이 사람을 건드렸다고?!🔥  [결말포함/영화리뷰]",
+          "description": "해당 영상은 생략된 부분들 있으니 본 영화 시청을 추천드립니다. 본 영상은 유튜브 콘텐츠ID의 가이드에 맞춰 제작되었으며 제작비 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/j3NvyPW98Co/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/j3NvyPW98Co/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/j3NvyPW98Co/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "0부인 : 0BUIN MOVIE",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T08:01:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "N4BdYd-dJQZVZq8VpNaZq7onEEU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "35LfPvJZZfs"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-06T03:15:00Z",
+          "channelId": "UCA_SuiI3qGubwZzundp71jA",
+          "title": "참신한소재+ㅁㅊ연기력=ㄹㅇ재밌잖아?ㅋ[영화리뷰/결말포함]",
+          "description": "이번 영상은 '캐릭터(2022)'리뷰 입니다. 재밌게 감상해주세요. 그럼 저는 더 나은 영상으로 찾아 뵙겠습니다. #영화리뷰 #결말포함 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/35LfPvJZZfs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/35LfPvJZZfs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/35LfPvJZZfs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아가리또무비데쓰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-06T03:15:00Z"
+        }
+      }
+    ]
+  }
+}

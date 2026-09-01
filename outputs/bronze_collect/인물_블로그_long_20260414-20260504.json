@@ -1,0 +1,738 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "long",
+    "publishedAfter": "2026-04-14T00:00:00Z",
+    "publishedBefore": "2026-05-04T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "yY0V99TSPHEuxB2CXWcOSPf-P4c",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 6704,
+      "resultsPerPage": 21
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "d0RYYVNFxQj-nVdwV1k85Kly4zU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xfb7PRUhftE"
+        },
+        "snippet": {
+          "publishedAt": "2026-05-03T02:00:54Z",
+          "channelId": "UCWPFcdbmTAxZM7BXlX3IsZA",
+          "title": "[결말포함/영화리뷰] 싸패가 성공하려고 벌인 미친 짓... &quot;니콜라스 홀트&quot; 주연의 미친 긴장감과 몰입감을 보여주는 범죄 스릴러 영화",
+          "description": "영화리뷰 #결말포함 #영화리뷰결말포함 #결말포함영화리뷰 #니콜라스홀트 #제임스코든 #소설원작 #베스트셀러 #싸이코패스 #소시 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xfb7PRUhftE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xfb7PRUhftE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xfb7PRUhftE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비스피릿",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-05-03T02:00:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z43vKiEKeJ12axMuM6234YDn-v4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jHG9nnvrMxg"
+        },
+        "snippet": {
+          "publishedAt": "2026-05-01T01:00:47Z",
+          "channelId": "UCWPFcdbmTAxZM7BXlX3IsZA",
+          "title": "[결말포함/영화리뷰] 와... 반전 미쳤습니다... 모르는 여자 집에 함부로 들어가면 안되는 이유 ㅎㄷㄷ",
+          "description": "영화리뷰 #결말포함 #영화리뷰결말포함 #포아드미카티 #로자먼드파이크 #실로페르난데즈 #사이다 #참교육 오늘의 영화는 #리턴투 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jHG9nnvrMxg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jHG9nnvrMxg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jHG9nnvrMxg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비스피릿",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-05-01T01:00:47Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xZrvgijUkMH8A_bBT0nOYqzumtc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "L7zctS6yNEo"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-30T16:22:49Z",
+          "channelId": "UCjdjX2UtakRckenpGPwUNVg",
+          "title": "로블록스 진격의 거인 4가지 게임 리뷰",
+          "description": "첫번째 게임 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/L7zctS6yNEo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/L7zctS6yNEo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/L7zctS6yNEo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "렌몬",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-30T16:22:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qG-2THE05_MtR5s-AnqB2bsQtMs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lqG4pcRjtbE"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-30T10:01:19Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 하필 미국 최강의 해병대 출신 &quot;인간병기&quot;를 건드려버린 테러 단체의 끔찍한 최후..ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #리뎀션데이 #게리도덤 영화 제목 : 리뎀션 데이 노루네극장 구독과 좋아요 알림 설정까지!! [유플러스 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lqG4pcRjtbE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lqG4pcRjtbE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lqG4pcRjtbE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-30T10:01:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EvAH9XHJON8DKY7_8U7e4CwT6z8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "amRUYJjN9NA"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-30T02:30:01Z",
+          "channelId": "UCNT1dHlMc3pYNw1TBwHuaCg",
+          "title": "RWD 오너가 모델 Y L 타봤더니… 이건 좀 의외인데?",
+          "description": "RWD 타던 사람이 YL 타봤더니… 현실 시승기 모델 Y RWD 오너가 직접 모델 Y L을 타보고 느낀 완전 현실적인 시승기입니다. 와이프 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/amRUYJjN9NA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/amRUYJjN9NA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/amRUYJjN9NA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오드라이브 - 세상의 모든 자동차 이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-30T02:30:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "SmAGEraXTl7E_yyfvF33p7VfmGM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "s_XF_dO0KRM"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-29T22:01:08Z",
+          "channelId": "UCzMye0teWg7y2WmTl4kQ_nQ",
+          "title": "로봇 부숴먹은 직원이 가져온 미친 해결책 ㅋㅋㅋ [영화 리뷰]",
+          "description": "영화리뷰 #영화추천 #유튜브영화리뷰 #영화소개 ○감독 : 야구치 시노부 [워터보이즈, 스윙걸즈 등] ☆출연 : 미키 커트시, 하마다 카쿠, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/s_XF_dO0KRM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/s_XF_dO0KRM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/s_XF_dO0KRM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레몬씨네",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-29T22:01:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8ADPU0J4deq_PLhKdKcDxYRR0tY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vuOyqU8xRxY"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-29T13:48:29Z",
+          "channelId": "UC5M3yblXYTlH56UHBiosnlg",
+          "title": "[NO CUT 랜선 드라이브] 벤츠 E200 w214 아방가르드 시승기 Mercedes-Benz E200 avantgarde 2025 POV / 제주 신라호텔 → 제주시  Z폴드5",
+          "description": "퍼시픽렌터카 제주 , w214 2025년식 , 총 주행거리 6000km , 컨티넨탈 에코컨택트 6Q , 225 / 55 / R18.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vuOyqU8xRxY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vuOyqU8xRxY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vuOyqU8xRxY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "유승수",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-29T13:48:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QrpK7LI3ZMVUMgf-kosV5CvniG4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BAk_KrRTUpU"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-29T10:00:30Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "[결말포함] 와...이렇게 재밌는 액션 영화가 있었다고???미국의 대테러를 막기 위해 &quot;최정예 특수요원&quot;이 나서면 벌어지는일..ㄷㄷ",
+          "description": "영화리뷰 #결말포함 #밀라요보비치 #피어스브로스넌 #스파이서바이버 #액션영화 오늘 소개해 드릴 작품은 \"스파이 서바이버\"입니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BAk_KrRTUpU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BAk_KrRTUpU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BAk_KrRTUpU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-29T10:00:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AEtj_f8qUuuGSH8idcPzGTIpKC8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xgfx4H9r7LA"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-26T10:30:37Z",
+          "channelId": "UCwM1awGisywZJ49aIjt27Fw",
+          "title": "와...............생각없이 보다가 진짜 &quot;시간 삭제 됐습니다&quot; 🔥이건 그냥 보세요....【영화리뷰/결말포함】",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xgfx4H9r7LA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xgfx4H9r7LA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xgfx4H9r7LA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화세상",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-26T10:30:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7OkgKURBhGT7Em7sdGZiiX4zs8c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XBi8vgyu3sk"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-24T10:30:30Z",
+          "channelId": "UCWPFcdbmTAxZM7BXlX3IsZA",
+          "title": "[결말포함/영화리뷰] 아이를 잃고 미쳐버린 엄마의 자비 없는 참교육... 카타르시스가 역대급인 확실한 사이다 액션 ㅎㄷㄷ",
+          "description": "영화리뷰 #결말포함 #영화리뷰결말포함 #결말포함영화리뷰 #프에르모렐 #제니퍼가너 #테이큰 #복수 #페퍼민트 오늘의 영화는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XBi8vgyu3sk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XBi8vgyu3sk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XBi8vgyu3sk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비스피릿",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-24T10:30:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XTjsNhXfHh8JvOh4I8qmMQbWm48",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "tyyPeEF6vS8"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-24T10:02:42Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "‘티탄’ 리뷰 | 감독이 편견이 없으면 생기는 일",
+          "description": "여러분은 어떤시각으로 세상을 바라보고 계신가요? 이 세상에서 가장 편견없는 감독 쥘리아 뒤쿠르노 감독의 2021년작 '티탄' 입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/tyyPeEF6vS8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/tyyPeEF6vS8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/tyyPeEF6vS8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-24T10:02:42Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XKpgFk7RbyoQOTWvtKUfqlOoyb8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "oWpEMsHKr2E"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-23T13:01:33Z",
+          "channelId": "UC3CQ33hOdbE4tfxzAdHGPGg",
+          "title": "일반인 관점에서 250듀얼 시승기 l cfmoto l 450mt l 경량듀얼",
+          "description": "임도를 꿈꾸는 바린이가 말아주는 시승기 #250dual #450mt #cfmoto #cflite instagram : ttibong.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/oWpEMsHKr2E/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/oWpEMsHKr2E/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/oWpEMsHKr2E/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무요mooyo",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-23T13:01:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "UJJmia0F9vXUmYrehdYD7YO5CWw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XGVEYhyg9yQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-23T04:12:19Z",
+          "channelId": "UCJ-ayECai73Q4m05FkbEXOA",
+          "title": "260422 수밤~ 8번출구영화후기 근황토크",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XGVEYhyg9yQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XGVEYhyg9yQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XGVEYhyg9yQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "체리토마토",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-23T04:12:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "l8E9RzuOZbtvY4Vy_G7_GZ4ANVY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hjLgytbyz_0"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-21T13:16:39Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "자동변속 되는 SRV300A 크루저 오토바이 시승기 [QJ 모터에서 나온 TCS,ABS,AMT등이 달린 자동변속 오토 트랜스 미션 쿼터급 크루저바이크! 677만원?!]",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hjLgytbyz_0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hjLgytbyz_0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hjLgytbyz_0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-21T13:16:39Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qdzzkbnsO89Nr7rTZkeCip9MVh0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "YMEdPB3M0Po"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-21T10:01:01Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 하필이면 전직 비공식 요원인 &quot;리암 니슨&quot;을 건드려버린 조직의 끔찍한 최후..ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #리암니슨 #블랙라이트 영화 제목 : 블랙라이트 노루네극장 구독과 좋아요 알림 설정까지!! [유플러스 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/YMEdPB3M0Po/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/YMEdPB3M0Po/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/YMEdPB3M0Po/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-21T10:01:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jtQavGE17aScV6jZGJFSN5bGruE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XXiMa-tfH28"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-19T10:30:31Z",
+          "channelId": "UCxnXl8szP2yYkI1hupfJ7kA",
+          "title": "와............이거 진짜 재밌습니다❗공개되자마자 &quot;시즌2 확정&quot;을 지어버렸던 2026 아마존 최고기대작",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XXiMa-tfH28/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XXiMa-tfH28/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XXiMa-tfH28/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "멀더의 무비파일",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-19T10:30:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LcnuiUFzQISzOYn-JSV4D7Z9Xq0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "WJHkld12-ys"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-18T01:45:08Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "와.... 연기력 개미쳤다....🔥황정민 X 공효진 X 임수정 X 류승수 주연의 인간이 어디까지 이기적일 수 있는지 보여주는 소름 돋는 인생 영화",
+          "description": "영화리뷰 #한국영화 #황정민 #임수정 #공효진 #류승수 오늘 소개해 드릴 작품은 \"행복\"입니다. 웨이브에서 바로보기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/WJHkld12-ys/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/WJHkld12-ys/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/WJHkld12-ys/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-18T01:45:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0DuSEmlmvhte9GUtstWJmN9Yesk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "M9-nusXIEcU"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-17T10:00:44Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "와...이렇게 웃긴 영화가 있었다고??🔥성동일X이범수X김수로🔥주연의 처음부터 끝까지 재밌는 한국영화",
+          "description": "홍길동의후예 #영화리뷰 #성동일 #한국영화 #이범수 #김수로 오늘 소개해 드릴 작품은 \"홍길동의 후예\"입니다 바로 보러가기 웨이브 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/M9-nusXIEcU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/M9-nusXIEcU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/M9-nusXIEcU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-17T10:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c11fy3DOi-R8xrE_RpReXrsmxs4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "biVoo7XqZXU"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-17T06:08:41Z",
+          "channelId": "UCiVyyk88ANgtxLGCdzyeKgQ",
+          "title": "클라만한 개발자(유튜버)님이 만든 게임 리뷰 하면서 공략(보면서 따라하기)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/biVoo7XqZXU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/biVoo7XqZXU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/biVoo7XqZXU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Strike Freedom Type II",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-17T06:08:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Bhlo7GPiVrRUrfcflGx8HoA8jZ4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QtOA8Du9qII"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-15T09:00:39Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "와.... 진짜 재밌다ㅋㅋㅋ이문식 X 이희준 X 김옥빈 X 안내상 주연의 단칸방 사는 동네 노인이 알고보니 &quot;전설의 주먹&quot;이면 벌어지는 핵꿀잼 드라마 몰아보기",
+          "description": "드라마리뷰 #드라마몰아보기 #이희준 #이문식 #신소율 #JTBC #넷플릭스 오늘 소개해 드릴 드라마는 ≪유나의 거리≫ 입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QtOA8Du9qII/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QtOA8Du9qII/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QtOA8Du9qII/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-15T09:00:39Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Rt6I70ECuBhErxDC6PFGItm32vE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Vmfq7YtY7V8"
+        },
+        "snippet": {
+          "publishedAt": "2026-04-14T10:00:52Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 하필이면 &quot;현직 CIA 최고 요원&quot;을 건드려버린 범죄 조직의 끔직한 최후..ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #브릭레이어 #아론에크하트 #니나도브레브 영화 제목 : 브릭레이어 노루네극장 구독과 좋아요 알림 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Vmfq7YtY7V8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Vmfq7YtY7V8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Vmfq7YtY7V8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-04-14T10:00:52Z"
+        }
+      }
+    ]
+  }
+}

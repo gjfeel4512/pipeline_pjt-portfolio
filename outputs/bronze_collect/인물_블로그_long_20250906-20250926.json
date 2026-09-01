@@ -1,0 +1,1044 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "long",
+    "publishedAfter": "2025-09-06T00:00:00Z",
+    "publishedBefore": "2025-09-26T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "mG9Er1chkKKayJBBXC4Qu-S-wNo",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 662,
+      "resultsPerPage": 30
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "pm2ArMkKa0ZV79iZI4S16fLChT4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6eO0vtlopFg"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-24T01:00:08Z",
+          "channelId": "UCCdTUNWJkR7d4P0lSnbBZKg",
+          "title": "엘리트 스쿼드, 악명 높은 테러 집단과 맞붙다 | [영화리뷰/결말포함]",
+          "description": "영화 #넷플릭스 #드라마리뷰 #실화 엘리트 스쿼드, 악명 높은 테러 집단과 맞붙다 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6eO0vtlopFg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6eO0vtlopFg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6eO0vtlopFg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "씨네톡팝콘",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-24T01:00:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XErClXglcUrt4e9O0A3luxIdYoM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UBvKcVvGK4I"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-24T01:00:38Z",
+          "channelId": "UCZ0qbYH5UyVKQOkoM8TSFAA",
+          "title": "무장 요원, 은행 강도 계획하며 암울한 음모 밝혀 | [영화리뷰/결말포함]",
+          "description": "무장 요원, 은행 강도 계획하며 암울한 음모 밝혀 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UBvKcVvGK4I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UBvKcVvGK4I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UBvKcVvGK4I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오늘의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-24T01:00:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0XXkh-_SzoPoh5rP8_WWimWN30s",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Mn3Pu2L5-PI"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-24T01:00:32Z",
+          "channelId": "UC2H5TkHDQ_ASLlozsE7r_xA",
+          "title": "CIA 요원, 실수로 글로벌 테러 함정에 빠지다 | [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #시간순삭 CIA 요원, 실수로 글로벌 테러 함정에 빠지다 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Mn3Pu2L5-PI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Mn3Pu2L5-PI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Mn3Pu2L5-PI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 5분 요약",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-24T01:00:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BqsG70QGvkLciKuDYu-Eo-tqYyE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bdP5NkpH_B0"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-23T16:43:43Z",
+          "channelId": "UCHXG17xoY3ezaLa72wXCKzw",
+          "title": "🚗 BMW 528i, 이 가격에 이 주행감 실화냐?",
+          "description": "2년간 경험했던 2013년식 BMW 528i의 롱텀 시승기, 리뷰입니다. 왜 520D가 아닌 가솔린을 구매했는지, 연비나 주행감은 어떤지, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bdP5NkpH_B0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bdP5NkpH_B0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bdP5NkpH_B0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "가성비중독자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-23T16:43:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PHfF0oefsZLNR6bfqOVm5ASgmQw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "KbWUCeQR2HU"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-23T08:06:06Z",
+          "channelId": "UCLs40f34qAt30qc0GAgEMZw",
+          "title": "🔥🔥그녀는 제물로 바쳐졌고, 그는 전설 속에서 깨어났다 — 한 소녀의 사랑이 드래곤의 운명을 뒤흔든다❤️❤️ [영화리뷰/결말포함]",
+          "description": "드래곤과 인간의 판타지 로맨스 드래곤 : 용의 신부 (2015) #영화추천 #영화리뷰 #영화결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/KbWUCeQR2HU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/KbWUCeQR2HU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/KbWUCeQR2HU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "말많은리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-23T08:06:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KE1lrmxS4kq1ZOl6S2nwaGC2KFk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "o42NLJZ9saM"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-23T01:00:53Z",
+          "channelId": "UCZ0qbYH5UyVKQOkoM8TSFAA",
+          "title": "데어데블 스쿼드, 사막 지옥 한가운데서 폭탄 운반 | [영화리뷰/결말포함]",
+          "description": "데어데블 스쿼드, 사막 지옥 한가운데서 폭탄 운반 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/o42NLJZ9saM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/o42NLJZ9saM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/o42NLJZ9saM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오늘의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-23T01:00:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "e2HKG4KDeLoT-gHsQL3ExFZzaak",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VFYjkr3uJLQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-23T01:00:39Z",
+          "channelId": "UC2H5TkHDQ_ASLlozsE7r_xA",
+          "title": "최고의 킬러가 될 줄은 몰랐던 아빠 | [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #시간순삭 최고의 킬러가 될 줄은 몰랐던 아빠 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VFYjkr3uJLQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VFYjkr3uJLQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VFYjkr3uJLQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 5분 요약",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-23T01:00:39Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qVKszb2qFhURsijYPDCta2aiJJE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "25GXSSxbXAw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-21T18:21:31Z",
+          "channelId": "UChfDlL50kmCT_IEvSAJWM-Q",
+          "title": "2025 폭스바겐 아틀라스 2.0 터보 7인승 SUV 시승기",
+          "description": "폭스바겐 #suv #2025 #신차 #자동차 #캠핑.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/25GXSSxbXAw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/25GXSSxbXAw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/25GXSSxbXAw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "인표롱 ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-21T18:21:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lvXydK4qUbhYCs1jG0cy4upyLLo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hDwdhRSTP7M"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-21T06:13:37Z",
+          "channelId": "UCjOOJ0TWaAZ9srTM6TFiwHA",
+          "title": "한 뱀파이어가 비행기에 올라 승객들의 피를 노린다 [ 영화리뷰 ]",
+          "description": "영화 요약: 블러드 레드 스카이 #영화리뷰 #결말포함 #결말포함 #영화리뷰 #영화리뷰 #헬무비 #복수 #헬무비 #복수 #영화리뷰.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hDwdhRSTP7M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hDwdhRSTP7M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hDwdhRSTP7M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "요약러",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-21T06:13:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "YN53cG8LKBqy4ohF0gR0sDAZ0Ak",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "uQ4calwAoT0"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-21T01:00:58Z",
+          "channelId": "UC2H5TkHDQ_ASLlozsE7r_xA",
+          "title": "해변에서 이 생물을 본 사람은 모두 신비롭게 사라진다 | [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #시간순삭 해변에서 이 생물을 본 사람은 모두 신비롭게 사라진다 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/uQ4calwAoT0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/uQ4calwAoT0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/uQ4calwAoT0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 5분 요약",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-21T01:00:58Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ppBc67tzfla0DjU8_vzntcu-lTQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-z9tSIK3o2k"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-20T09:00:06Z",
+          "channelId": "UCoCBmicY3YsiKXkGk7AoMTw",
+          "title": "노바디 2 영화 리뷰｜밥 오덴커크의 미친 액션, 장단점 총정리.",
+          "description": "노바디 2 리뷰/요약 영상입니다. 밥 오덴커크의 돌아온 액션을 중심으로 줄거리 핵심 정리, 결말 해석, 전편과의 비교, 액션 연출/음악/ ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-z9tSIK3o2k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-z9tSIK3o2k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-z9tSIK3o2k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 킹",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-20T09:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "gTSHRpfBHHIBwbSuyb66j7w232I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "GvH4soIlKn4"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-20T01:00:14Z",
+          "channelId": "UCZ0qbYH5UyVKQOkoM8TSFAA",
+          "title": "엘리트 요원들이 대통령 암살을 위해 테러리스트들과 맞선다 | [영화리뷰/결말포함]",
+          "description": "엘리트 요원들이 대통령 암살을 위해 테러리스트들과 맞선다 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/GvH4soIlKn4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/GvH4soIlKn4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/GvH4soIlKn4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오늘의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-20T01:00:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PK5YomOQVbn5MKV8NHWsFwgBcRo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9vyKepoiVx8"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-20T01:00:11Z",
+          "channelId": "UC2H5TkHDQ_ASLlozsE7r_xA",
+          "title": "난폭한 깡패에서 세상을 구하는 영웅으로 | [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #시간순삭 난폭한 깡패에서 세상을 구하는 영웅으로 | [영화리뷰/결말포함]",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9vyKepoiVx8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9vyKepoiVx8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9vyKepoiVx8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 5분 요약",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-20T01:00:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CIiS-v-bmWZZyviI_li0QqOaS1s",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6vxvlTFBXFw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-19T13:53:36Z",
+          "channelId": "UCB_-HyztMPk2p4AeYf8D36A",
+          "title": "[멘붕영화 리뷰] 어느집에서 발견된 살인마의 끔찍한 스너프 필름들 - 더 포킵시 테잎스 feat. 펑키타운/미스 팩맨 / wave to earth",
+          "description": "비교적 일찍 도착한 딥그린입니다! 오늘은 정직하게 금요일에 왔죠? 히히 다들 잘 지내고 모이셨나요! 정말 보고 싶었습니다 ㅠㅠ ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6vxvlTFBXFw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6vxvlTFBXFw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6vxvlTFBXFw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "\b딥그린",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-19T13:53:36Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cuOE5DNyyjNGRWIwi7LCZcwv_y4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "C6qSVQoeMBU"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-18T11:00:22Z",
+          "channelId": "UCz_vKSTzjhYKVYXPz2h8WdQ",
+          "title": "끝까지 쫓기는 전설의 저격수! [영화리뷰/결말포함]",
+          "description": "영화리뷰 #영화리뷰결말포함 #씨무비 #씨무비 #영화리뷰 오늘의 추천작 : 건파우더 밀크셰이크 ( Shooter , 2016 ) 총기 명사수였던 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/C6qSVQoeMBU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/C6qSVQoeMBU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/C6qSVQoeMBU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화 요약하는 고양이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-18T11:00:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DB9xB7QKkj2wKGV2Vx_2wH8giDc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "i-Xyu1UvRE0"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-17T11:00:03Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "멸망 직전에 이른 인류가 살아남기 위해 화성 테라포밍을 하면 벌어지는 일 [영화리뷰/결말포함]",
+          "description": "영화 제목: 레드 플래닛, 2000 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 열심히 만들었으니 즐겁게 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/i-Xyu1UvRE0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/i-Xyu1UvRE0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/i-Xyu1UvRE0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-17T11:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "U6CFcvzBpSaiJJ-t_f-_qJtNidY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Us_R-xtSRio"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-16T14:45:49Z",
+          "channelId": "UCb8bLQACAzLmwkuX6872mcw",
+          "title": "[영화 리뷰] 100명의 청년이 참가한 걷기 대회, 생존자는 단 한 명뿐이었다.",
+          "description": "영화리뷰 #영화요약 #영화 영화 요약 | 리뷰 [영화 리뷰] 100명의 청년이 참가한 걷기 대회, 생존자는 단 한 명뿐이었다. Tag: #영화추천 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Us_R-xtSRio/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Us_R-xtSRio/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Us_R-xtSRio/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아용 리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-16T14:45:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KhNJpSKtJG-W-_KuiFEKEjZfWL0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6AzqYImFahE"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-16T09:00:08Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "’긴키 지방의 어느 장소에 대하여‘ 리뷰 | 나폴리탄 괴담 좋아하세요?",
+          "description": "'긴키 지방의 어느 장소에 대하여' 는 현재 극장에서 막바지 상영중이며 아마도 이번주 금요일쯤 모든 상영이 끝나지 않을까 싶습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6AzqYImFahE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6AzqYImFahE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6AzqYImFahE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-16T09:00:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CP0eyKyR6FEZfCXbjOTpngPRAPA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "guLhIBDJVNA"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-16T01:00:45Z",
+          "channelId": "UC802-yOiHx5OMj1ETjgBIjg",
+          "title": "게임 리뷰 레이더 #9: 팟캐스트의 저주가 다시 찾아왔다. 어쩌면 아닐지도!",
+          "description": "오늘은 과거에 다뤘던 15개 이상의 모바일 게임을 다시 살펴보며 어떤 게임들이 성장하고 있는지, 정점에 도달했는지, 아니면 쇠퇴 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/guLhIBDJVNA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/guLhIBDJVNA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/guLhIBDJVNA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "two & half gamers 한국",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-16T01:00:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cq53AkyerrC1pYTgrcariPm5k-s",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3CBxh-8GqVI"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-15T09:00:10Z",
+          "channelId": "UCV1eq9EQ37ToqoBnK1AeHoQ",
+          "title": "🔥1시간🔥《큐브 시리즈》1편-3편",
+          "description": "00:00:00 큐브 (1999) 00:20:22 큐브 2 (2002) 00:40:06 큐브 제로 (큐브 3) (2004) ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3CBxh-8GqVI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3CBxh-8GqVI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3CBxh-8GqVI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "기무",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-15T09:00:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "A5-mpUeR45VntixccGTXYKh5QyU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9rNkfVIK8TA"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-14T11:00:16Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "미 정보국 출신 엘리트 킬러를 잡범으로 오해한 전직 경찰의 최후 [영화리뷰/결말포함]",
+          "description": "영화 제목: 콘트랙트, 2006 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9rNkfVIK8TA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9rNkfVIK8TA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9rNkfVIK8TA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-14T11:00:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CUulGxbWIsVPGYXZMJxHWC-xsXc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Lkayp1wXs54"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-13T12:03:00Z",
+          "channelId": "UCb8bLQACAzLmwkuX6872mcw",
+          "title": "[영화 리뷰] 존 윅과 힘을 합쳐 복수를 위해 마을 전체를 몰살하는 여성 킬러",
+          "description": "영화리뷰 #영화요약 #영화 영화 요약 | 리뷰 [영화 리뷰] 존 윅과 힘을 합쳐 복수를 위해 마을 전체를 몰살하는 여성 킬러 Tag: #영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Lkayp1wXs54/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Lkayp1wXs54/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Lkayp1wXs54/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아용 리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-13T12:03:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "2MW9UQJsvJRHE0aZUxYQ7SBPPWw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8o7kHL8C2UA"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-13T01:00:09Z",
+          "channelId": "UCt2jWCd-eVVfTn-sCw6gmoA",
+          "title": "와...미쳤다!!2025년 역대급 신작 드라마 떴다!! 박민영 X 박희순 X 현봉식 X 송지효 X 주종혁X 이이경 등 대세 배우들 총출동 한 신작 드라마 몰아보기",
+          "description": "컨피던스맨 #드라마리뷰 #드라마몰아보기 #박민영 #박희순 #주종혁 #송지효 #현봉식 #이이경 오늘 소개해 드릴 드라마는 TV조선 토 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8o7kHL8C2UA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8o7kHL8C2UA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8o7kHL8C2UA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "U무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-13T01:00:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vcX-MNPfKDBQevApZPp62ZFYvvc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AJESAmQH1GY"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-12T16:15:33Z",
+          "channelId": "UCB_-HyztMPk2p4AeYf8D36A",
+          "title": "[멘붕영화 리뷰] 남자가 출산하는 영화? 충격에 충격의 연속 - 여성에게 가해지는 모든 폭력에 대해…[[멘]] 리뷰",
+          "description": "그리니들 잘 지냈나요? 너무 반가워요! ㅎㅎ 오늘도 많이 늦었죠? ㅠㅠ 본문내용 쓰는것도 깜빡하고 정신없네요 ㅋㅋㅋ 다름이 아니라 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AJESAmQH1GY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AJESAmQH1GY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AJESAmQH1GY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "\b딥그린",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-12T16:15:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bc9VQIA1ga_By7IN4KpIam54ltA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2kBMQj7pMuc"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-28T11:00:06Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "돈도 보석도 여자도 만들어주는 3D 프린터 [영화리뷰/결말포함]",
+          "description": "영화 제목: 더 룸(The Room)2019 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2kBMQj7pMuc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2kBMQj7pMuc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2kBMQj7pMuc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-28T11:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Q7_btajob0QKcfLrtkWmi16BL_c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8SBwBQ7FU8k"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-27T10:00:35Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 은퇴 후 조용히 살려했던 &quot;인간병기&quot;를 건드려버린 악질 &quot;범죄조직&quot;의 처참한 최후ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #외국영화 #스릴러영화 #스티븐시걸 #코드오브아너 영화 제목 : 코드 오브 아너 노루네극장 구독과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8SBwBQ7FU8k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8SBwBQ7FU8k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8SBwBQ7FU8k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-27T10:00:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fB3D_3UxXLy84zUBcbxbiYWUHc4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EiaU88pu6ec"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-27T09:53:38Z",
+          "channelId": "UCoabCaYEaHnG2dfq9mp0aFQ",
+          "title": "모두가 유죄라고 생각했던 살인사건… 재판에서 놀라운 반전이 일어납니다.. 눈물을 참을 수 없는 인생영화.. (영화리뷰/결말포함)",
+          "description": "배심원들(2019) #영화리뷰 #영화리뷰 #결말포함 #배심원들 #문소리 #박형식 #윤경호.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EiaU88pu6ec/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EiaU88pu6ec/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EiaU88pu6ec/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "추디",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-27T09:53:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "B2QAQ2DQll-DUZn1LW-cgLBjiYI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "__hkk7qP1bU"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-12T11:01:13Z",
+          "channelId": "UCZ0Vy5LX8E8-CctkRsO8z2w",
+          "title": "BMW 530i 베이스 와인딩 리뷰 – M 스포츠보다 베이스가 더 낫다?",
+          "description": "2025 BMW 530i xDrive 베이스 모델 시승기입니다. 익스테리어부터 인테리어, 편의 기능, 그리고 고속도로 & 와인딩 주행까지 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/__hkk7qP1bU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/__hkk7qP1bU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/__hkk7qP1bU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW강시현",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-12T11:01:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Jub0A2Tfs_FDmU70ycuwe6-q_0M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BEW-ICYFpxM"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-12T02:13:12Z",
+          "channelId": "UCY8YFEQq0rnawiOpuvJK9BQ",
+          "title": "Triumph Streettriple765R 시승기(화질2160p)",
+          "description": "미들급 바이크 구매 고민중 BMW #F900R vs Triumph #Streettriple765R #insta360x4.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BEW-ICYFpxM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BEW-ICYFpxM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BEW-ICYFpxM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "빡튜브",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-12T02:13:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "t2Gd7YpcWdvlktaRjdtt8rle0nI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wnuInfkJ28Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-08T06:15:05Z",
+          "channelId": "UCbK2MRaAX_n55YKyhzOiuEA",
+          "title": "AutoTokenizer를 활용하여 게임 리뷰 분류하기",
+          "description": "출처: https://huggingface.co/monologg/koelectra-base-v3-discriminator 한신대학교 SW중심대학사업단은 학생들의 SW교육 증진을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wnuInfkJ28Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wnuInfkJ28Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wnuInfkJ28Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "한신대학교SW중심대학사업단",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-08T06:15:05Z"
+        }
+      }
+    ]
+  }
+}

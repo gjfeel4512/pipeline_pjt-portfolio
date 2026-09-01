@@ -1,0 +1,1656 @@
+{
+  "request_params": {
+    "q": "\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"",
+    "videoCategoryId": "2",
+    "videoDuration": "medium",
+    "publishedAfter": "2026-02-09T00:00:00Z",
+    "publishedBefore": "2026-02-21T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "YZ1_OHfKWjbYcco-OW1EaUAQXFk",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 92189,
+      "resultsPerPage": 48
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "crgFDbLgHP6cqjPIa4hFNk4wt78",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hvPZqmqlT0w"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-20T09:01:06Z",
+          "channelId": "UCd5KJfMPXwd9XTOOhM81HVg",
+          "title": "[시승기] 긍정적 의외성, 돋보이는 상품성 - BYD 돌핀 | Driving Review - BYD Dolphin",
+          "description": "byd #byd돌핀 #전기차 돋보이는 점 – 편안한 주행 특성과 승차감 – 뛰어난 값 대비 기능 및 장비 구성 – 차급에 비하면 좋게 느껴지는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hvPZqmqlT0w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hvPZqmqlT0w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hvPZqmqlT0w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "제이슨류닷넷 | 솔직담백한 자동차 이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-20T09:01:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "10cEbi1qga6HEL3FJGeBGdtbcQU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JW8vBX8Jv3g"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-19T12:02:31Z",
+          "channelId": "UCV7YZe-h1EJ0ZJlmCL0aYRQ",
+          "title": "미니쿠퍼 딜러 최초, 한복 시승 [컨트리맨 JCW] 리얼 시승기 !!!",
+          "description": "안녕하십니까 : ) 코오롱모터스 본사, 미니 삼성전시장 공식 딜러 김지윤 주임입니다. 설날 기념으로 미니쿠퍼 딜러 최초, 한복을 입고 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JW8vBX8Jv3g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JW8vBX8Jv3g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JW8vBX8Jv3g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "미니쿠퍼 미니윤",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-19T12:02:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LAunL-HeHsGhbjYxCcDT5Vjo0KA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HcJovrWlS8k"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-19T08:43:07Z",
+          "channelId": "UCTqCKT1YChNS-8V3UrJOKMQ",
+          "title": "[시승기🚙] 2026 테슬라 모델Y, 전기차는 그냥 테슬라 사세요✨4,999만원",
+          "description": "테슬라모델Y #모델Y시승기 #2026모델Y #테슬라 #우직채널 #일론머스크 #테슬라로봇 #옵티머스 #전기차시장 안녕하세요! 우직한 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HcJovrWlS8k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HcJovrWlS8k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HcJovrWlS8k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우직 WOOZIC",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-19T08:43:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nQsnyenhZ5pFB0BBbl66KC94GBA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "R3mn9u1jWF8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T12:56:46Z",
+          "channelId": "UCW3XBHlTiMJcheq7hR6ZoEw",
+          "title": "2026 신형 자동차 리뷰! 최신 디자인과 성능 완벽 분석 🚗🔥",
+          "description": "2026년 최신 신형 자동차를 자세히 리뷰합니다! 외관 디자인부터 실내 인테리어, 첨단 기술, 연비, 성능, 가격 정보까지 한눈에 확인 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/R3mn9u1jWF8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/R3mn9u1jWF8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/R3mn9u1jWF8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "V12 Society",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T12:56:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "4619Ac94IQLjF6ZTAG0L-GsOWJk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "J4KMyH4vbHU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T10:00:35Z",
+          "channelId": "UCG2PHnetcVllQFPW5BsE_LA",
+          "title": "BYD돌핀 퇴근길 시승기! - 실구매 가격은 좋아요! 출퇴근용으로 꽤 괜찮았습니다!",
+          "description": "오늘은 BYD돌핀 퇴근길 시승기입니다. BYD돌핀은 전기차 보조금을 지원받으면 2천만 원 초반대 가격이 형성되며, 준수한 옵션과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/J4KMyH4vbHU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/J4KMyH4vbHU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/J4KMyH4vbHU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "홍시car",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T10:00:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8P4GL-SY89MWC_bkOUshvhwpTME",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6Yj7cHQZ6tU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T00:23:15Z",
+          "channelId": "UCS_AT3Q6TouESg8aRcspxig",
+          "title": "이가격에 에어서스펜션이? 동급 최고옵션 아우디 Q5 시승기!",
+          "description": "아우디 #Q5 #SUV #시승기 #태안모터스.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6Yj7cHQZ6tU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6Yj7cHQZ6tU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6Yj7cHQZ6tU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아우디 라원[아우디 공식인증딜러]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T00:23:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "l6jJtHw3kBup4E9dsHA9RYHEWh0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3eKA51yXKio"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T23:00:05Z",
+          "channelId": "UCFUpTxU3nlGed-suY-FjjxA",
+          "title": "​26년형 EV9 스탠다드 출시! 가격 인하로 5천만 원대  보조금 받으면 구매가능! ㄷㄷㄷ",
+          "description": "우파가 직접 운영하는 가장 합리적인 차 출고 원스톱 플랫폼 차맵 :https://chamap.co.kr/ 안녕하세요 자동차 유튜버 우파TV입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3eKA51yXKio/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3eKA51yXKio/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3eKA51yXKio/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우파푸른하늘Woopa TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T23:00:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CmRecJo-LGDcjsWgi3CuvRY59RE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-S5bPonz_qA"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T23:00:50Z",
+          "channelId": "UCbq32WOPI4O7dRN1gv79Klg",
+          "title": "유다연과 천세라의 레이싱 모델 토크ㅣ쏘렌토 시승기 (유다연 특집 1편)",
+          "description": "레이싱 모델 유다연님을 모셔서 그동안의 근황과 이야기를 들어보았습니다 :) 유다연이 장기렌트로 진행한 쏘렌토 최저가 견적이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-S5bPonz_qA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-S5bPonz_qA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-S5bPonz_qA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다타랩TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T23:00:50Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "s8cN7V1CucKmN0iBXpCRF1WAlXU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bBrbaf9_qfM"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T23:00:44Z",
+          "channelId": "UCa9H_LYm3uVYwMcYHHma8Xg",
+          "title": "10분동안 테슬라 모델Y RWD 알아보기ㅣ4,999만원, 제로백 5.8초, X3급 핸들링, 가장많은 편의사양, 동급 최고의 정숙성까지.",
+          "description": "테슬라 #주니퍼 #차또바기 테슬라 모델Y 주니퍼 시승기 요약본입니다. 테슬라 모델Y 시승기 https://youtu.be/k-zY6gkiFaE 테슬라 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bBrbaf9_qfM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bBrbaf9_qfM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bBrbaf9_qfM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "차,또바기 - 디테일한 자동차 리뷰.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T23:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vi3CmNhHfdt4xWUTrQL0hJDIiJQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kBCcFTjV9ok"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T03:00:53Z",
+          "channelId": "UCqTmehwmAx0LD17SbXADl0Q",
+          "title": "벤츠 GLE클래스 GLE450 4M 쿠페 시승기!",
+          "description": "안녕하세요. 사후 관리 끝판왕 벤츠 사관왕 한뜻대로 입니다. 오늘은 GLE클래스의 GLE450 4M 쿠페 시승기 영상입니다 ! 영상이 도움 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kBCcFTjV9ok/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kBCcFTjV9ok/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kBCcFTjV9ok/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "벤츠 사관왕 한뜻대로 - 사후 관리 끝판왕",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T03:00:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "RgoGxmbWqyuJAFfUjqFPiIySI9M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TMYNV7raf7o"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T02:00:07Z",
+          "channelId": "UCoLXwcJ7kwM3jQgZ76LkRZw",
+          "title": "치고 빠지고 치고 빠지고 치고 빠지고 | 로얄엔필드 게릴라 450 시승기",
+          "description": "0:00 게릴라전은 뮤탈이지 0:20 오프닝 1:32 첫인상 4:58 디자인 7:20 주행 13:38 총평 이 영상은 로얄엔필드 코리아로부터 시승 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TMYNV7raf7o/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TMYNV7raf7o/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TMYNV7raf7o/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김남구의 바이크채널",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T02:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bl5eSgpVsfpNp2V1uRo7jJ6Go-U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "KQ5SfARqA4g"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T00:00:18Z",
+          "channelId": "UCXEycM-iI2-Lk4iWQRhUUnQ",
+          "title": "제네시스 GV60 마그마 리얼 시승기. #제네시스 #GV60마그마 #gv60마그마",
+          "description": "happyyjb@naver.com 자동차안전연구원(KATRI)에서 펼쳐진 드래그 레이스부터 제네시스 수지 전시장까지 약 50km에 달하는 일상 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/KQ5SfARqA4g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/KQ5SfARqA4g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/KQ5SfARqA4g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카리포트tv",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T00:00:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "YB4ialHfh3NWfvu8yUvocD1bm8M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CNO2eUA9EF0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-16T00:00:17Z",
+          "channelId": "UCd5CdYxogKBwvv1xyuxhvZA",
+          "title": "2026 쏘렌토 하이브리드를 다시 타보니...국산차 1위의 위엄!? VLOG",
+          "description": "채널에 가입하여 혜택을 누려보세요. https://www.youtube.com/channel/UCd5CdYxogKBwvv1xyuxhvZA/join * 본 영상은 차즘의 PPL ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CNO2eUA9EF0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CNO2eUA9EF0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CNO2eUA9EF0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김한용의 MOCAR",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-16T00:00:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "exAGoD6BqcHlGWucJ-ySee-wrCQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qQHeR05gwXU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T12:34:50Z",
+          "channelId": "UCEVFZ2WmIwxXoftNc9iYHRQ",
+          "title": "벤츠 직원 두명 E450 시승기, 분위기 왜 이럼?",
+          "description": "어색한 벤츠 직원 2명이 E450 시승하면 생기는 일.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qQHeR05gwXU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qQHeR05gwXU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qQHeR05gwXU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김망고부장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T12:34:50Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bR_85omujXm5MHkVBSvONCUdWb4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "fjXt6kFzM9I"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T08:05:23Z",
+          "channelId": "UCyX0jL8FHR2NdIkDTG-qLiw",
+          "title": "BMW X3 2026년 BASE 차량리뷰 ! ",
+          "description": "2026년형 X3 BASE 차량 리뷰 입니다. 가격대비 풍부한 옵션과 이번에 훨이 바뀌면서 디자인도 한층 더 업그레이드 되었는데요 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/fjXt6kFzM9I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/fjXt6kFzM9I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/fjXt6kFzM9I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW 김과장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T08:05:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WYhGvv1RKzVQkMAezYUfv0W7QSw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "C2F4xo6rEeQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T08:00:12Z",
+          "channelId": "UCTqCKT1YChNS-8V3UrJOKMQ",
+          "title": "[시승기🚙] 아이오닉9 럭셔리한 패밀리카 EV9이랑 비교불가!",
+          "description": "아이오닉9 #IONIQ9 #아이오닉9시승기 #EV9 #카니발하이브리드 안녕하세요! 우직한 테크 리뷰 우직입니다! 00:00 오프닝 00:13 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/C2F4xo6rEeQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/C2F4xo6rEeQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/C2F4xo6rEeQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우직 WOOZIC",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T08:00:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "SDz7yxrB7e7oYluVLndy5f3uWyc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wr7s9OddEk0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T06:45:33Z",
+          "channelId": "UCqsEkFJ7-Hw9S-m3a0bvJCQ",
+          "title": "BMW 530i xDrive M Spt(G60) - POV 시승기 Test Drive (고속도로~휴게소 주행)",
+          "description": "차량문의 코오롱모터스 부천전시장 조성윤 대리 전화 & 메시지 010-8587-4240 00:00 Exterior & Interior - 원격시동 02:08 주행 시작 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wr7s9OddEk0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wr7s9OddEk0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wr7s9OddEk0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "bmw 조성윤 대리 ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T06:45:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "oTlNaSC6ftnrzdxyLqHBY1RJjMw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DaDChsJmZus"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T06:29:45Z",
+          "channelId": "UCRQg4TLF8b3_pR1yPMEhF1Q",
+          "title": "쌍용차 정신 혈통 리더 무쏘 픽업 시승기 1편, KGM이 정말 사고 쳤네요 2.0 터보 엔진으로 이 덩치를? 극강 가성비",
+          "description": "안녕하세요, 자동차 카라이프 채널 더카월드입니다. 0:23 가성비 1:08 차체크기 1:45 주행정숙성 1:57 자동차산업격동기 2:08 더카 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DaDChsJmZus/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DaDChsJmZus/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DaDChsJmZus/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "더카월드THECAR WORLD",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T06:29:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "iOWluQecvozpH4bxF-QA_FVAKTQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Y02hWVrwfW8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T05:31:47Z",
+          "channelId": "UCy-7qV_aUjRfgVVYYlDzA_w",
+          "title": "BMW 228 xDrive 시승기 / 2시리즈 그란쿠페",
+          "description": "차량제공: BMW 코오롱모터스 삼성전시장 [재생속도를 1.25배로 보시면 딱 좋습니다] 영상이 유익하셨다면 [구독]과 [좋아요]로 응원 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Y02hWVrwfW8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Y02hWVrwfW8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Y02hWVrwfW8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오토플레이 KR",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T05:31:47Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9U_O0Wu3jDOdmmhtU6Dsq9kqgR0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "nRFbwWLUWBs"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T03:00:46Z",
+          "channelId": "UCGN_v4T3Ph9Vjnt4n7tgv8g",
+          "title": "제로백 3.1초? 미쳤다. 테슬라 모델3 퍼포먼스 AWD 시승기 l 야간 주행, 고속 주행, 저속 주행 비교!",
+          "description": "테슬라 #모델3 #테슬라모델3 #모델3퍼포먼스 #Model3Performance #teslamodel3 #teslaperformance #모델3하이랜드 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/nRFbwWLUWBs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/nRFbwWLUWBs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/nRFbwWLUWBs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "퍼스트렌탈 렌트카",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T03:00:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "o1jl6yY9PD-2A5pxf5FzcHTwyUs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "pGtb1PJKt78"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T23:30:17Z",
+          "channelId": "UCQ9JRmrRfFheR-DnRDSWoQw",
+          "title": "무쏘 가솔린 일반 힐러의 지극히 개인적인 시승기‼️",
+          "description": "자동차의 수명을 결정짓는 건, 자동차에 대한 관심과 애정 입니다 브이가드 스마트스토어 https://smartstore.naver.com/topcar/ 브이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/pGtb1PJKt78/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/pGtb1PJKt78/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/pGtb1PJKt78/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "힐러 Healer TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T23:30:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "2vJEeT7Vu_t0e1snAFrQgC3GyOM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6wbM4uhOFzY"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T23:00:15Z",
+          "channelId": "UC3EoxBWACw1aMJca4OKhFUg",
+          "title": "2년 기다려서 사는 차, 캐스퍼 일렉트릭 시승기",
+          "description": "00:00 시작 00:17 가격 02:27 가속 성능 04:43 승차감 06:05 도로소음 08:12 외관 디자인 10:37 실내 디자인 13:14 운전자 보조 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6wbM4uhOFzY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6wbM4uhOFzY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6wbM4uhOFzY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "차플레이 Chaplay",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T23:00:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-ukiNUJS9dh2JRA-cWXppyQ393E",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JqUjyFi0CUY"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T09:00:33Z",
+          "channelId": "UCgFYECW1juB71vG_CWuvkXw",
+          "title": "시승 리뷰 볼때 무조건 걸러야 할 것들(자동차 리뷰 믿지 마세요)",
+          "description": "00:00 인트로 및 당부 말씀 00:54 첫 번째 - 설계, 구조 문제를 함부로 지적 하는 채널에 대해 05:43 두 번째 - 한 채널만 보지 말고 여러 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JqUjyFi0CUY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JqUjyFi0CUY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JqUjyFi0CUY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "단테의롤체인지",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T09:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EdMaxwpNPYiAXSwYi6PWT6ROlPs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AlhV0DzXP_k"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T01:45:06Z",
+          "channelId": "UCvdyEs1-q39hjhFZOt1dKJQ",
+          "title": "Nissan Nissan Note e-Power 장기 시승기 – 전기차처럼 느껴지는 1200cc 하이브리드 리뷰",
+          "description": "Nissan Nissan Note e-Power 장기 시승기 – 전기차처럼 느껴지는 1200cc 하이브리드 리뷰 Description: 이 영상에서는 Nissan Note ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AlhV0DzXP_k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AlhV0DzXP_k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AlhV0DzXP_k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "AutoRoadInsight ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T01:45:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c98F8RRr5dI4wX2pbNX1C7am8yw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-pCuw6Pt6Gg"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T01:30:00Z",
+          "channelId": "UCDDOzAFqV4QFTwPq7lIqzbQ",
+          "title": "돌아온 원조 K픽업, KGM 무쏘 M9 가솔린 / 디젤 간단 시승기",
+          "description": "KGM의 신차, 픽업트럭의 원조, 돌아온 무쏘 풀옵션 M9 5링크 서스펜션 가솔린 & 디젤 모델 간단 시승기입니다. #무쏘 #무쏘2026 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-pCuw6Pt6Gg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-pCuw6Pt6Gg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-pCuw6Pt6Gg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "요즘남자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T01:30:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AQwq4N0Kx5-FTLPWxoD1CFzBtuc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "q5qC0ppxgw0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T00:05:54Z",
+          "channelId": "UCmJ3wwA3bIAttSkAeecYEnA",
+          "title": "자동차 리뷰계의 신성 조민지 아나운서가 울어버린 이유ㅣ 모비GO ep.1",
+          "description": "자동차 리뷰 유튜버이자 스포츠 아나운서, 조민지 아나운서와 현대모비스 모비템의 만남 ♥️ 다양한 카라이프 속 자동차 용품을 알아 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/q5qC0ppxgw0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/q5qC0ppxgw0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/q5qC0ppxgw0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "모비템-MOBITEM",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T00:05:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XCevg5Ecogmdmz5QQ0qM-tCATg4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "mGn1a50Dlas"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-13T15:01:20Z",
+          "channelId": "UC6A3weMfFzV99JhSqXDmlrw",
+          "title": "[시승기] &#39;매일 타기 편하고 오래 타는 SUV&#39; 혼다 CR-V 하이브리드",
+          "description": "CR-V 하이브리드는 혼다의 4세대 2모터 하이브리드 시스템을 기반으로 한다. 2.0리터 직분사 앳킨슨 엔진과 e-CVT 조합으로, 엔진 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/mGn1a50Dlas/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/mGn1a50Dlas/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/mGn1a50Dlas/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Autoherald TV 'CARUMN'",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-13T15:01:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "2HiqGZRzT8_s-j_TN_WGHvLg_tM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "34BOKVRZSDo"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-13T13:14:11Z",
+          "channelId": "UCZQuhpJeBfNhk9x_bs9EUvg",
+          "title": "2,990만 원부터 시작? KGM 무쏘 시승기, 가솔린·디젤 싹 다 타봤습니다 #무쏘 #픽업트럭",
+          "description": "KGM 무쏘 가솔린·디젤 풀 시승! 타스만과 뭐가 다를까? 궂은 날씨 속 파주-서울 고속도로에서 KGM 무쏘 가솔린·디젤 모델을 직접 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/34BOKVRZSDo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/34BOKVRZSDo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/34BOKVRZSDo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "글로벌오토뉴스 Global Auto News",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-13T13:14:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "dmgitFb2by_r08TozZZtgcXysZ8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "WdXof9Z9dXQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-13T09:39:01Z",
+          "channelId": "UCqU_tyJmNZyCNcpcQubt24w",
+          "title": "KGM 무쏘 가솔린 최초 시승기! 2900만원대라고 좋아했는데.. 실제로 타보니 충격!",
+          "description": "여러분의 구독과 좋아요는 콘텐츠 제작에 큰 힘이 됩니다! https://www.youtube.com/channel/UCqU_tyJmNZyCNcpcQubt24w/join ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/WdXof9Z9dXQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/WdXof9Z9dXQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/WdXof9Z9dXQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김승현 안피디의 스포일러",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-13T09:39:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PcWYyRlMR9ZExNFdQjwbUO2kNoY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "K5ix2Tmiz58"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-13T09:00:34Z",
+          "channelId": "UCTqCKT1YChNS-8V3UrJOKMQ",
+          "title": "국산차 판매량 1위! 2026 쏘렌토 하이브리드 시승기 뼈 때리는 현실 주행기",
+          "description": "쏘렌토하이브리드 #쏘렌토단점 #쏘렌토시승기 #우직채널 #우직 #하이브리드연비 #싼타페하이브리드 #계약취소 #1.6터보 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/K5ix2Tmiz58/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/K5ix2Tmiz58/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/K5ix2Tmiz58/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우직 WOOZIC",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-13T09:00:34Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "4QOvbsFqPBWJ3AVE7yZbDOOYa3M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LKhVy-VeV8c"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-13T08:00:34Z",
+          "channelId": "UC_2N8tR8gFvmTZSEbzMZ4zQ",
+          "title": "그냥 비싼 아이오닉5N 아니냐고? 제네시스 GV60 마그마 시승기",
+          "description": "제네시스 #gv60 #gv60마그마 ✏️ 제네시스 마그마의 첫 모델, GV60 마그마를 탔습니다. GT 모드에서 승차감이 꽤 좋습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LKhVy-VeV8c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LKhVy-VeV8c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LKhVy-VeV8c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "광형의 환카 Fancar",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-13T08:00:34Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "M77K7e08CKQi09fgkkB3TAwwa2U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "27q8_nlRY84"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T23:30:00Z",
+          "channelId": "UC-IBt8pM8hWx8wiwjcDLdIQ",
+          "title": "제네시스 GV60 마그마 시승기, 1억 657만원(Genesis GV60 Magma Test Drive) - 2026.02.11",
+          "description": "GV60 마그마는 제네시스 브랜드의 첫 고성능 모델입니다. 현대 N과 많은 부분을 공유하지만 제네시스에 맞게 좀 더 정제된 주행 질감 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/27q8_nlRY84/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/27q8_nlRY84/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/27q8_nlRY84/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "한상기 오토프레스 Han Sang Ki",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T23:30:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nk4mNQdBivn5vf8zW1zJVR5p5c4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "guvT9YBTOEw"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T23:30:15Z",
+          "channelId": "UCT29dZNPg6exiMyMrVLL0fg",
+          "title": "GV60 마그마 시승기 // 제네시스, 고성능, 전기차, 650마력, 9657만원",
+          "description": "제네시스 #마그마 #GV60 00:00 제네시스 GV60 마그마 02:03 시승 시작 04:43 차ONE 광고 05:13 제네시스 GV60 마그마의 차별점 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/guvT9YBTOEw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/guvT9YBTOEw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/guvT9YBTOEw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "mediaAUTO 미디어오토",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T23:30:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Yb7wy3629Mk9IBnE_GUWTcBSxfI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "cv26U_Wg4v8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T23:30:20Z",
+          "channelId": "UC6A3weMfFzV99JhSqXDmlrw",
+          "title": "[시승기] 제네시스 GV60 마그마, 공로 시승 해 봤습니다. #제네시스 #GV60 #GV60마그마 #고성능 #전기차 #오토헤럴드",
+          "description": "자동차와 기술, 산업, 문화, 그리고 사람의 이야기를 담고 있는 오토헤럴드 공식 채널입니다. 오늘은 제네시스의 첫 고성능 전기차 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/cv26U_Wg4v8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/cv26U_Wg4v8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/cv26U_Wg4v8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Autoherald TV 'CARUMN'",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T23:30:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "P04em-ee2_mKee3swyomkj_aDV8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZbjSGNcDhl8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T13:40:22Z",
+          "channelId": "UCXiruUThysG7zssj-unDgog",
+          "title": "KGM 무쏘 디젤 그랜드 스타일 롱데크 4WD 시승기, 2026 KGM Musso 2.2 Diesel 4WD test drive review",
+          "description": "본 콘텐츠는 KGM으로부터 행사에 초대받아 제작되었습니다* I4 diesel turbo 2157cc 202ps 45kg.m 6speed 9.8km/l -city 9 2 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZbjSGNcDhl8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZbjSGNcDhl8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZbjSGNcDhl8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "주니tv",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T13:40:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0qux5UPYV8IVIiEgFSyTkixky6I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "n3MLCYVW4L4"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T09:37:07Z",
+          "channelId": "UCTnXCNVBmUJV2TQtYSkEO_w",
+          "title": "2,200만원 전기차 BYD 돌핀 실주행 리뷰 (BYD DOLPHIN)",
+          "description": "전기차를 처음 접하는 사람의 BYD 돌핀 시승기 입니다. 가격이 깡패? 드디어 많은 분이 기다리시던 가성비 전기차, **BYD ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/n3MLCYVW4L4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/n3MLCYVW4L4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/n3MLCYVW4L4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Chris Jung",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T09:37:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WDgDLOqa7EpfneGwj9o38pTwcws",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "v_dfsS1ZHrI"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T06:00:00Z",
+          "channelId": "UCNSpDptjW1IUTLeVeLhEauw",
+          "title": "세대교체 맞네... 완전 다른 차가 됐다?! - KG 모빌리티 무쏘 가솔린 시승기 #시승기 #KG모빌리티 #KGM #국산차 #국산픽업 #픽업트럭",
+          "description": "안녕하세요? 모토야의 박병하 기자입니다. KG모빌리티가 미디어를 대상으로 신형 무쏘의 시승행사를 개최했습니다. 이번 시간에는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/v_dfsS1ZHrI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/v_dfsS1ZHrI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/v_dfsS1ZHrI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "모토야-오토",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T06:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z7K-LNVWufyhDLaeFMrAYyIpEYw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XXohaREzZF0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T06:00:28Z",
+          "channelId": "UC6A3weMfFzV99JhSqXDmlrw",
+          "title": "[시승기] &#39;KGM 무쏘&#39; 타스만 보고 있나, 픽업트럭은 이렇게 만드는 거야.",
+          "description": "KG 모빌리티 '무쏘'는 하나의 성격으로 규정하기보다 용도에 따라 성격이 분명히 갈리는 픽업으로 이해하는 편이 적절하다. 작업과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XXohaREzZF0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XXohaREzZF0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XXohaREzZF0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Autoherald TV 'CARUMN'",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T06:00:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mzhDr1lSVct0qv-C1szbNkpR57U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qYTtLh_CDsM"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-12T05:59:00Z",
+          "channelId": "UCFUpTxU3nlGed-suY-FjjxA",
+          "title": "&quot;국내최초 무쏘 풀체인지 비교 시승기&quot; 가솔린 VS 디젤 고민하지 마세요! 정해드리겠습니다",
+          "description": "우파가 직접 운영하는 가장 합리적인 차 출고 원스톱 플랫폼 차맵 :https://chamap.co.kr/ 안녕하세요 자동차 유튜버 우파TV입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qYTtLh_CDsM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qYTtLh_CDsM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qYTtLh_CDsM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우파푸른하늘Woopa TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-12T05:59:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "wbQNyC8wOsac8qrQsWgShk8FVMQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "h3rY6cVInaI"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-11T10:42:23Z",
+          "channelId": "UC6NPYs587alJBFxleyVyISA",
+          "title": "야마하 엔맥스 155 시승기",
+          "description": "더 많은 모터사이클 이슈를 모토이슈 공식 채널에서 확인하세요 웹사이트 https://motoissue.com 인스타그램 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/h3rY6cVInaI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/h3rY6cVInaI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/h3rY6cVInaI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "모토이슈",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-11T10:42:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "IyFr8ZzxPY8RA3eREyMqGDm0xOY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VmmQidZgTrA"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-11T09:00:05Z",
+          "channelId": "UCX62PLc24ML_-tQ3fVPa2tQ",
+          "title": "포르쉐 파나메라4 시승기",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VmmQidZgTrA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VmmQidZgTrA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VmmQidZgTrA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "안오준TV AhnojunTV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-11T09:00:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PFb4lci0-_IwvlqvBJAYlF151AQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "toYPgNwJOdk"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-11T08:05:00Z",
+          "channelId": "UCN3KG_A0B_4bnt8DOPQ8Y4w",
+          "title": "2026년 bmw X3 시승기 어떤게 좋은지 보여드리겠습니다",
+          "description": "이제는 bmw 공식딜러 한성만 과장 입니다. bmw 관련해서 언제든 연락주세요. 계약, 견적 상담 010-4075-3215 감사합니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/toYPgNwJOdk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/toYPgNwJOdk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/toYPgNwJOdk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "한성만의 브랜드카",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-11T08:05:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-W36ZIVk3j5tUbkXSzhRW71IhN8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_yNmgQaNtNI"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-10T11:38:56Z",
+          "channelId": "UCA4tif-ryasxzNOx1eKdCog",
+          "title": "자동차 리뷰, 신차 공개, 세단 끝판왕",
+          "description": "자동차 리뷰, 신차 공개, 세단 끝판왕.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_yNmgQaNtNI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_yNmgQaNtNI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_yNmgQaNtNI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Horizon Rides KR",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-10T11:38:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "rIgqnPr99rbIkrxXg-CKAkA1PkY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "274mJW4Hlv8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-10T09:00:06Z",
+          "channelId": "UCXW3tE5AplxiJmhidCrdC6w",
+          "title": "[VLOG] 그랜저 GN7 현대인증중고차 출고 2개월 후기 | 주행 솔직 후기 | 연비 | 튜닝 | 단점 | 실오너의 차량 리뷰",
+          "description": "그랜저 GN7 실제 승차감과 정숙성 ✓ 디 올 뉴 그랜저 하이브리드 현실 연비 ✓ 고속 주행 안정감, 스마트 크루즈 체감 ✓ GN7 디자인 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/274mJW4Hlv8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/274mJW4Hlv8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/274mJW4Hlv8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "여가여행자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-10T09:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "abfRGpqFTFaAt6YIlVICPhFnBdg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9DiLHfG9WAE"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-10T08:00:11Z",
+          "channelId": "UCOZBWlwJFD5wXnpfX0FPt5A",
+          "title": "신형 2026 더뉴아반떼 CN7 7,000km 시승기! 서비스 센터 후기 및 장점과 단점... 지금 사도 될까? 아반떼 옵션은 뭐가 좋음?",
+          "description": "벤볼릭 방향제 품절 임박! 50% 할인 중! (완판 시 조기 종료) https://naver.me/xjUQrJH7.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9DiLHfG9WAE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9DiLHfG9WAE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9DiLHfG9WAE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "차에중독된남자 케이찬",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-10T08:00:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "SZ3S7MiiWLxFymZWte0MZwN7lrw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XDlvobvQl8w"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-10T02:00:38Z",
+          "channelId": "UCZp9xeMSXrhlxFvOEuBCoAQ",
+          "title": "가장 승차감이 좋은 스포츠카 타봤습니다, 마세라티 그란투리스모 시승기",
+          "description": "마세라티 그란투리스모 8기통에서 6기통으로 바뀐 그란투리스모의 사운드는 괜찮을까요?",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XDlvobvQl8w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XDlvobvQl8w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XDlvobvQl8w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "강병휘의 Station.B",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-10T02:00:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "FhSAUkXFmf--EqxsfAfW4iAR744",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "erdirmILgk8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-09T11:46:20Z",
+          "channelId": "UCy-7qV_aUjRfgVVYYlDzA_w",
+          "title": "2026 현대 싼타페 시승기 / 가솔린 2륜 캘리그래피 6인승",
+          "description": "차량제공: 현대자동차 [재생속도를 1.25배로 보시면 딱 좋습니다] 영상이 유익하셨다면 [구독]과 [좋아요]로 응원해주세요. 오토플레이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/erdirmILgk8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/erdirmILgk8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/erdirmILgk8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오토플레이 KR",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-09T11:46:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XZJw_vNnMVxiX1bjPlgqIhdKYYE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kuGRrh31qmw"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-09T11:30:39Z",
+          "channelId": "UCw14tdrWGwuPT-eMhmu6t3w",
+          "title": "벤츠 최고의 펀카&quot; AMG A45s 4Matic + &quot;시승기 / (여보야 다음차는 이거다ㅋㅋ)",
+          "description": "메르세데스 벤츠 구매문의☆ 안녕하세요 :-) 한성모터스 부산 북구전시장 김재훈 선임입니다. 많은 관심 부탁드립니다! 고성능 해치백 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kuGRrh31qmw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kuGRrh31qmw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kuGRrh31qmw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "대구 대표 벤츠 김재훈",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-09T11:30:39Z"
+        }
+      }
+    ]
+  }
+}

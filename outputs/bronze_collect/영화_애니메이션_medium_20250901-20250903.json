@@ -1,0 +1,228 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"",
+    "videoCategoryId": "1",
+    "videoDuration": "medium",
+    "publishedAfter": "2025-09-01T00:00:00Z",
+    "publishedBefore": "2025-09-03T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "s-gTSt2YG23zXSLrh0wcJLNd-j0",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 89360,
+      "resultsPerPage": 6
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "R8KRiZGcqLDxUpScLOgjmTCIQ4c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_krEJW9skgs"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T15:04:15Z",
+          "channelId": "UCCjrm1kuZ1Xw0-gr9CCfbLQ",
+          "title": "(가로모드) #살인자의기억법 #영화 #영화리뷰 #영화다시보기 #movie #설경구 #설현 #김남길 #넷플릭스",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_krEJW9skgs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_krEJW9skgs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_krEJW9skgs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "kokomovie",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T15:04:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "O8D0oPYxjT4p8zknAGs0RnHuLlk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4liF64vmGic"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T10:30:05Z",
+          "channelId": "UCfObDXCZ9mFHSdDdX1cvMqA",
+          "title": "와.....하필이면 &quot;현직 특수요원&quot;을 건드려버린 범죄조직의 역대급 최후..ㄷㄷ [영화리뷰/결말포함] 미쳐버린 몰입감으로 시간 순삭시키는《꿀잼 액션영화 몰아보기》",
+          "description": "영화리뷰 #결말포함 #액션영화.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4liF64vmGic/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4liF64vmGic/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4liF64vmGic/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "하울무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T10:30:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mu3i9mmIIwEJNFraEm1yyG6IaM4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QWiDvxu3qCY"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T10:00:44Z",
+          "channelId": "UCRLXO9_JZZkNWqdKKY8pzQg",
+          "title": "하필이면 S급킬러인줄 모르고 건드린 싸이코패스의 최후 (영화리뷰)",
+          "description": "본 영상은 저작권 허가를 받아 제작한 홍보 리뷰입니다 **This video is a promotional review produced with copyright permission ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QWiDvxu3qCY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QWiDvxu3qCY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QWiDvxu3qCY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비방",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T10:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CLI3dGul7-nbu7Vt0GKpeHHf7eQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LvlVHnccNKw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T05:56:20Z",
+          "channelId": "UC2qeQJbhweU08xj_sHvQH9Q",
+          "title": "[한채영 주연 영화 리뷰] 😺 교회 다니는 스타강사와 상처 받은 살인자를 💥 조폭이 건드리면 벌어지는 일",
+          "description": "[한채영❤️주연 영화 리뷰] 교회 다니는 스타강사와 상처 받은 살인자를   조폭이 건드린다면 어떤 일이 일어날까요? 선은 언제나 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LvlVHnccNKw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LvlVHnccNKw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LvlVHnccNKw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "K무비원",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T05:56:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "RRhVyL3FEoGQvdbEi95WxAn0Mdc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "epShae7hDR4"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T22:25:56Z",
+          "channelId": "UCGhNmIUsi0K3ibFGDGoSJJg",
+          "title": "연쇄 살인마를 뒤쫓는 “베테랑 형사 덴젤 워싱턴” [결말포함]",
+          "description": "영화 “더 리틀 띵스(The Little Things)” 입니다. 개봉년도 - 2021 #덴젤워싱턴 #영화 #영화리뷰 본 리뷰 영상은 영화에 대한 설명과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/epShae7hDR4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/epShae7hDR4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/epShae7hDR4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "리뷰자리",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T22:25:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AtWrhT9ep0vT54edk36487kiK1o",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "F66_jamrEPA"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T08:00:17Z",
+          "channelId": "UCaIZW9YHtWJb1Bst1bhj0ZA",
+          "title": "테이큰 존윅만 액션이냐? 나도 있다! #영화추천 #영화리뷰 #해외영화",
+          "description": "영화추천 #영화리뷰 #영화감상 #외국영화 #해외영화 테이큰 존윅 아저씨처럼 멋진 액션을 보고싶다면 이 영화추천 드립니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/F66_jamrEPA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/F66_jamrEPA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/F66_jamrEPA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쇼파시네마",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T08:00:17Z"
+        }
+      }
+    ]
+  }
+}

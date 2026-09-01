@@ -1,0 +1,942 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "medium",
+    "publishedAfter": "2025-11-25T00:00:00Z",
+    "publishedBefore": "2025-12-15T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "LtSEC2TSZjibJFljSLFZ6iUwbps",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 6222,
+      "resultsPerPage": 27
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1szL7AhSmy2-YHmupsPA7uiocLw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "r73eN5nIRgI"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-13T02:01:03Z",
+          "channelId": "UCwKX22ncymjwrjku864aYNA",
+          "title": "[장단점 분석] BMW 320i 투어링 나이트 드라이빙 시승기 BMW딜러가 말하는 &#39;이 차의 모든 것&#39;",
+          "description": "bmw #320i #드라이빙 #320i투어링 안녕하십니까! BMW의 모든 것을 안내해 드릴, 고영완 주임입니다. 이 채널은 단순히 '차를 파는' ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/r73eN5nIRgI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/r73eN5nIRgI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/r73eN5nIRgI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW의 모든것",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-13T02:01:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8Vq-0zGzj670bC4d4N7w2T63FNc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lrQJbdhiG70"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-11T09:01:14Z",
+          "channelId": "UCltdySZd3ZU80_5G9pKeSYg",
+          "title": "BMW M을 삼켜버렸다, 미니쿠퍼 JCW 시승기 + 연말 최대 할인 혜택까지!!!",
+          "description": "미니쿠퍼 #JCW #시승 미니쿠퍼 문의는 복싱 챔피언 장민 SC에게! ☎010-9284-5771 ☎http://kolonmotors.kr/users/min_jang.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lrQJbdhiG70/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lrQJbdhiG70/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lrQJbdhiG70/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW 장민 챔프",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-11T09:01:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "l2KXODnjOGkmyX-vh1Be31s0oK0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Uuo9hYNc6yo"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-11T06:02:26Z",
+          "channelId": "UCH1UuHJuKJ253mWAi9b9lMQ",
+          "title": "초소형전기차, 마사다QQ 시승기! 장,단점 확실히 비교해드립니다.",
+          "description": "안녕하세요 EVKMC 본사영업부 전차남 팀장 입니다. 오늘은 국내 최초로 마사다QQ 시승기로 돌아왔습니다! 궁금하신점 있으시면 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Uuo9hYNc6yo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Uuo9hYNc6yo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Uuo9hYNc6yo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지프서푸조",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-11T06:02:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kfwHsFaM6j_qYYC3bvcd0OjXG9g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_5me0NfM8tc"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-10T10:02:47Z",
+          "channelId": "UCP5faqNzY26jpJLNn7lx7sg",
+          "title": "2026년형 그랑콜레오스 영종도, 아라마루 시승기 짧게",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_5me0NfM8tc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_5me0NfM8tc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_5me0NfM8tc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "피씨홀릭",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-10T10:02:47Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "S5ymo9d4pEDKag_5IRVljb9NEG8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "h9xRhOYLVms"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-10T08:35:42Z",
+          "channelId": "UCy4UxqyG1ODylfSPrGuSGDg",
+          "title": "네츄럴 보디빌더가 타보는 BMW 740i 리뷰! (740i xDrive M Spt)",
+          "description": "740i M Spt 시승기! 네츄럴 보디빌더 깡규선수의 솔직 고백 리뷰! 외장 블랙사파이어 내장 아마로네 궁금하신거 있으시면 연락 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/h9xRhOYLVms/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/h9xRhOYLVms/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/h9xRhOYLVms/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW 진주 비파파",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-10T08:35:42Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "v5uTB_ZRjKRvPMJBEy0sU5mCPBg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Myje8KhFSOM"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-09T09:00:29Z",
+          "channelId": "UC7VM9cGmILJvjenjmMFYG6g",
+          "title": "| 자백 | 재벌가 사위가 내연녀와 벌인 일 [영화리뷰]",
+          "description": "영화리뷰 #바로무비 #한국영화 오늘의 영화 자백 Confession 2022 감독 윤종석 출연 소지섭 나나 김윤진.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Myje8KhFSOM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Myje8KhFSOM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Myje8KhFSOM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "바로무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-09T09:00:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "t0zLmujBkVGyGEYJ5yu2sbQFAYw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "cNNMTpRRl0o"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-07T12:49:00Z",
+          "channelId": "UCOxJaYBet6Zj5dx63PRZ2Tg",
+          "title": "F1 차량 리뷰",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/cNNMTpRRl0o/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/cNNMTpRRl0o/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/cNNMTpRRl0o/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "서진의 프레디 (Seojin's Freddiy)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-07T12:49:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "p4wXhBuudpJHlh7TYNowd5OCqjQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TYUmhiZaYAo"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-06T06:26:18Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥미국에서 여자 혼자 살면 안되는 이유........🔥(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TYUmhiZaYAo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TYUmhiZaYAo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TYUmhiZaYAo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-06T06:26:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "3OUT2jGO_0PINSdDly3K1hR3fQ0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZyFrZaVQF04"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-05T08:30:32Z",
+          "channelId": "UCN3f7GVo5wnMrek0uN_7EJQ",
+          "title": "테슬라 FSD 한국에서 사람보다 잘할까",
+          "description": "우리는 매일 선택의 연속 속에서 살아갑니다. [인생은 실전이다]는 여러분의 그 선택을 '성공'으로 바꾸는 곳입니다. 시장의 소음에 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZyFrZaVQF04/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZyFrZaVQF04/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZyFrZaVQF04/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "인생은실전이다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-05T08:30:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6rkHp5RsLxvzgEmEgM0TyIg11gs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "M_Kg58kWdPk"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-05T08:12:20Z",
+          "channelId": "UCqXfvW6a50UMi4D_VDcC2EA",
+          "title": "12월 2일 화요일 카지노 게임 후기 - 죽어라 죽어라 나만 안되는 쓰리카드, 알고보니 오랜 매니아들이 다 죽어 나가는 판",
+          "description": "이번 12월의 게임 후기는 1일 블랙잭과 슬롯머신, 2일 쓰리카드 게임, 3일 객장안에서 있었던 안타까운 사건, 4일 블랙잭과 홀덤, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/M_Kg58kWdPk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/M_Kg58kWdPk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/M_Kg58kWdPk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이겨울 카지노",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-05T08:12:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Nu54K7hKvl4EdvvsqG85-zxsDxU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lisMDUJ77XU"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-05T08:03:09Z",
+          "channelId": "UCqXfvW6a50UMi4D_VDcC2EA",
+          "title": "12월 1일 월요일 카지노 게임 후기 - 욕심버리고 나오다가 뜻하지 않는 행운.",
+          "description": "이번 12월의 게임 후기는 1일 블랙잭과 슬롯머신, 2일 쓰리카드 게임, 3일 객장 안에서 있었던 안타까운 사건, 4일 블랙잭과 홀덤, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lisMDUJ77XU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lisMDUJ77XU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lisMDUJ77XU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이겨울 카지노",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-05T08:03:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "L3zRwOWr4kU4P1fZv3WvVbz4XN0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1J58QMpFPEM"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T18:06:35Z",
+          "channelId": "UCQ3shZjRJbMzZor4CALI_XA",
+          "title": "무쏘ev타고 다니는 일상ㅣ한달 시승기ㅣ무쏘ev관련 유용한 댓글 읽기ㅣ유일한 단점공개ㅣ막간 제주 일상까지 보고가세요!",
+          "description": "이제 곧 한달이 됩니다! 무쏘ev를 탄지. 남편보다 제가 더 많이 타고 다녀요. 기름값 비싸지는데 이젠 남얘기가 됐어요. 만족하며 타고 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1J58QMpFPEM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1J58QMpFPEM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1J58QMpFPEM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "슈슬이네",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T18:06:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DvRePo6Cvn85HywncvlZ921WgNM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "R6BFRfd36_g"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T10:12:53Z",
+          "channelId": "UCOdzNA4acbzIOqckhICRaOg",
+          "title": "[영화 리뷰] 주토피아 2 | &#39;다름&#39;에 대한 디즈니식 서술 | 후기, 전작과의 연결, 완성도, 숨겨진 이야기",
+          "description": "영화 #영화리뷰 #영화추천 #주토피아2 #주토피아.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/R6BFRfd36_g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/R6BFRfd36_g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/R6BFRfd36_g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "푸름 스튜디오 Pureum Studio",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T10:12:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Sk8iNEh8cX8ogKO0IsyGPrJZa40",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EbeGUCTFDtY"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T08:10:30Z",
+          "channelId": "UClOhVwy9L8tJ1n89MmNDv8Q",
+          "title": "운전게임 리뷰",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EbeGUCTFDtY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EbeGUCTFDtY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EbeGUCTFDtY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "운하루팡한국  WOONHARUPAG KORIA",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T08:10:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "hkJvb0PjXPnp7fRWeM8ZF6eMfxg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "d9mQK28DheI"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-04T01:10:30Z",
+          "channelId": "UC2gXlROZ_LkLwB44auG92Ag",
+          "title": "르노 그랑 콜레오스 하이브리드 시승기",
+          "description": "르노 그랑 콜레오스 시승기입니다, 차량 시승, 상담문의는 아래 전화번호로 주세요 ^^ 르노코리아 하남미사 지점장 010-6555-6795 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/d9mQK28DheI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/d9mQK28DheI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/d9mQK28DheI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "르노 킴",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-04T01:10:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "U2Lod2s6nsN6F30Oc-hrj7Kjh9g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "P1imSfSmucw"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-03T19:00:33Z",
+          "channelId": "UCyVmb05fbt_gnfMn5Frg6dQ",
+          "title": "“2026 EV4 Neo 시승기: 디자인·성능·주행거리 완벽 분석!”",
+          "description": "2026 기아 EV4 네오(Kia EV4 Neo)는 기아가 새롭게 선보이는 현실적인 전기 세단으로, 디자인·주행 성능·실내 공간·전비까지 균형 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/P1imSfSmucw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/P1imSfSmucw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/P1imSfSmucw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Korea Vision",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-03T19:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZatFP-88ZD_4A94nKos6Xu8YhEQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Us7_CzAyULM"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-02T09:00:52Z",
+          "channelId": "UC7VM9cGmILJvjenjmMFYG6g",
+          "title": "| 하이재킹 | 대한민국 상공에서 벌어진 실제 하이재킹 사건 [영화리뷰]",
+          "description": "바로무비 #영화리뷰 #하이재킹 오늘의 영화 하이재킹 Hijack 1971 2024 감독 김성한 출연 하정우 여진구.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Us7_CzAyULM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Us7_CzAyULM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Us7_CzAyULM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "바로무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-02T09:00:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Omen_ZEjX452eYarqqig_9vXEQ8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Qfl1FxqQFko"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-01T16:56:08Z",
+          "channelId": "UC3P1jOjod80GXJ-QeLWTWUw",
+          "title": "어쩔수가없다 영화리뷰- 나솔만 리뷰했지만 이영화는 리뷰 안할수가 없다",
+          "description": "어쩔수가없다 #영화리뷰 #영화 #이병헌 #손예진.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Qfl1FxqQFko/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Qfl1FxqQFko/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Qfl1FxqQFko/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "시원한수박",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-01T16:56:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "hkvii_4SRgnnaiazYK3o7IHdmzQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "MybxzzhVyqQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-01T09:26:59Z",
+          "channelId": "UC3HKtaE4SPxIe9v2AvjuLnA",
+          "title": "X1 26년형! 첫 BMW로 괜찮을까? 가격부터 25년형과의 차이점까지!",
+          "description": "\"25년형 X1과 26년형 X1은 뭐가 다를까?\" X1 xDrive 20 M Sport 전시차로 답변해드립니다! 작지만 강한 가격 대비 실용성 끝판왕, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/MybxzzhVyqQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/MybxzzhVyqQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/MybxzzhVyqQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW·MINI 하슬라 (코오롱모터스)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-01T09:26:59Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uBZ3MHyFsoLrWuqvy_UPoeZUiSM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "0sdti-vvZ2U"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-30T10:00:04Z",
+          "channelId": "UC_gEfJohJlkElF7nFIEr3xw",
+          "title": "BMW 신형 1300RT 시승기 Motorcycle trip | 오토바이 | 바이크 | south korea | ninja | korea road",
+          "description": "바이크투어 #오토바이투어 #바이크 #Motorcycle trip #south korea #바이크여행 #오토바이여행 #힐링여행 #힐링 #여행 #Motorcycle ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/0sdti-vvZ2U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/0sdti-vvZ2U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/0sdti-vvZ2U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "바이크 스토리 Motorcycle story",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-30T10:00:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Ih8kweUGzvekmGGw1jzzhIosxzQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "IiPkJBVfgmo"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-29T18:30:05Z",
+          "channelId": "UCAbzMefr9A8spk2PI4mbCRg",
+          "title": "금성 GMT-M1, GMT-M1 리뷰, 란 베 히 L, 한국 자동차 리뷰, 2026",
+          "description": "최신 금성(Geumseong) 2026 GMT-M1 모델을 소개합니다! 이번 영상에서는 혁신적인 란 베 히 L(Lan Veh Hi L) 디자인 철학과 미래 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/IiPkJBVfgmo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/IiPkJBVfgmo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/IiPkJBVfgmo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Real car reviews ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-29T18:30:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "O0MIYDzya96_KkCOZO-ua5en5vY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "sdJl-ZOqx3o"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-29T15:02:43Z",
+          "channelId": "UCRncN7sdz-6qGnwCiklxrrw",
+          "title": "욕망(Blow-up) 황금종려상 받은 이유",
+          "description": "영화 #영화리뷰 #영화추천 #movie #미켈란젤로 안토니오니 #런던 #영국영화 #황금종려 #칸영화제 #고전명작 #고전영화 #모더니즘 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/sdJl-ZOqx3o/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/sdJl-ZOqx3o/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/sdJl-ZOqx3o/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이영왜좋 by 나썽",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-29T15:02:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JTOZVZsidn2N7s2DS2F-dUTry2c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "eG2qWx8sUvk"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-29T11:25:55Z",
+          "channelId": "UC-Ct1zzp0QIdvV1OcT3820Q",
+          "title": "아랫도리친일파의 일본전차시승기",
+          "description": "This stream is created with #PRISMLiveStudio.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/eG2qWx8sUvk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/eG2qWx8sUvk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/eG2qWx8sUvk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "전차왕해모수 (sakai miki)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-29T11:25:55Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "YCT3efQGChEeOjGuscSZTogoIvQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LcocUzmw1KM"
+        },
+        "snippet": {
+          "publishedAt": "2025-11-28T10:16:03Z",
+          "channelId": "UCwKX22ncymjwrjku864aYNA",
+          "title": "[장단점 분석] BMW 520i 나이트 드라이빙 시승기 BMW딜러가 말하는 &#39;이 차의 모든 것&#39;",
+          "description": "bmw #520i #드라이빙 #m스포츠 안녕하십니까! BMW의 모든 것을 안내해 드릴, 고영완 주임입니다. 이 채널은 단순히 '차를 파는' ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LcocUzmw1KM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LcocUzmw1KM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LcocUzmw1KM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW의 모든것",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-11-28T10:16:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vB18-f1E84uR53NwOSZgodq3YkE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3Isjwe5LerI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-11T09:00:27Z",
+          "channelId": "UCa5QEPQi-uHtks0DgR6k2ig",
+          "title": "세상에 나 혼자라고 느낄 때 꼭 봐야하는 영화  영화리뷰 결말포함",
+          "description": "제목; 천국보다 아름다운/1998 #영화리뷰결말포함 #영화리뷰 #영화 #로빈윌리엄스 #아나벨라시오라.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽃보다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-11T09:00:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQ0UQ1iMIfjRyXnaOR8h1xgFYBM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rGkxzxEGJ8U"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-10T13:30:07Z",
+          "channelId": "UCoabCaYEaHnG2dfq9mp0aFQ",
+          "title": "“내 몸에 손대지 마..” 사이코 백인 집안 참교육하고 탈출하는 🔥역대급 스릴러🔥 (영화리뷰/결말포함)",
+          "description": "겟아웃(2017) #영화리뷰 #결말포함 #영화 #겟아웃.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "추디",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-10T13:30:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z7LHuHKXCVIN3AAvXP66Cm4oZIY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vA7qNxEYbjQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-07T09:00:33Z",
+          "channelId": "UCDQQKYz1JLeSw6defAwI1Rg",
+          "title": "(영화리뷰) 유골함에 담긴 50년의 기억, 그 마지막 여정 [결말포함]",
+          "description": "(영화리뷰) 오랜 세월을 함께한 네 친구, 그리고 친구의 유언을 따라 떠나는 마지막 여행, 인생의 황혼기에 선 친구들이 각자의 기억을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레치고무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-07T09:00:33Z"
+        }
+      }
+    ]
+  }
+}

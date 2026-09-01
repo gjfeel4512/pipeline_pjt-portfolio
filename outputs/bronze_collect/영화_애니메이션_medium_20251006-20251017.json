@@ -1,0 +1,1010 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"",
+    "videoCategoryId": "1",
+    "videoDuration": "medium",
+    "publishedAfter": "2025-10-06T00:00:00Z",
+    "publishedBefore": "2025-10-17T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "XwW6f7rZ0N93Pa4d7CYhW0DaKVc",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 76964,
+      "resultsPerPage": 29
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-zE41lVfVlERmftkBzPpO10pe6I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qsLNRwO3V4I"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-16T09:01:15Z",
+          "channelId": "UCzLcYBuozlv1uSFE2Knp_ug",
+          "title": "[10분순삭] 하필이면 은퇴한 전직 네이비씰 요원이 사랑하는 미녀를 괴롭힌 범죄조직을 소탕하는 스릴러영화 (스릴러영화 추천) [영화리뷰/결말포함]",
+          "description": "영화추천 #스릴러영화추천 #넷플릭스영화추천 #영화리뷰결말포함 #결말포함리뷰 인간의 감정과 인공 생명의 경계, 무엇이 진짜 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qsLNRwO3V4I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qsLNRwO3V4I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qsLNRwO3V4I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "시네마랑",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-16T09:01:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1QN_Q4YYuHOekagPeNOFDjyLxNM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wJy_ABs3CNM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-15T15:14:28Z",
+          "channelId": "UCQN2fplmA3o62CZYNKw8vZg",
+          "title": "[영화평론] 웨폰:  악마에 의한 인간의 무기화",
+          "description": "[웨폰(Weapons)]: 강시, 좀비, 영혼 주술 오컬트, 마녀, 외계인에 의한 신체 탈취의 도가니 ❍ 감독: 잭 크래거(Zach Cregger) ❍ 출연: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wJy_ABs3CNM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wJy_ABs3CNM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wJy_ABs3CNM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "시네비평(CineCritique)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-15T15:14:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "yH1YmEnjmygw1EgE5VSAvgkQ77g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Uv99YPOutDs"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-15T13:36:17Z",
+          "channelId": "UCN9YKvsCV74682b4jeJcIvQ",
+          "title": "하필이면 상어가 미쳐 날뛰는 바다에 떨어진 군인들의 최후!! [영화리뷰/결말포함][국내미개봉][실화바탕][25년10월최신작]",
+          "description": "안녕하세요. 시네마헌터입니다~ 이번에 소개해드릴 작품은 \"로튼토마토 지수 90%\"의 실화 사건에서 영감을 받아 제작한 저예산 B급 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Uv99YPOutDs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Uv99YPOutDs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Uv99YPOutDs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "드라마헌터 DramaHunter",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-15T13:36:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zu-Va1ks6rOWxuxqj7U1K4sY6cc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Z5HXq-Vc6oc"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-15T03:15:05Z",
+          "channelId": "UCA_SuiI3qGubwZzundp71jA",
+          "title": "현재의 ‘나루토’를 있게 한 작품의 실사영화!?ㄷㄷ..[영화리뷰/결말포함]",
+          "description": "이번 영상은 '시노비(2010)'리뷰 입니다. 재밌게 감상해주세요. 그럼 저는 더 나은 영상으로 찾아 뵙겠습니다. #영화리뷰 #결말포함 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Z5HXq-Vc6oc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Z5HXq-Vc6oc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Z5HXq-Vc6oc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아가리또무비데쓰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-15T03:15:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WS8J90V_Afc5siXjrBY5UoQNDPs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ObYAJOS_1Nc"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-14T03:00:26Z",
+          "channelId": "UCkQUOsvhRLNu9OtqiO300QQ",
+          "title": "누가 진실을 설계했는가.../소녀의 실종사건 |한입무비 #영화리뷰 #추리스릴러 #레옹 장르노",
+          "description": "오늘의 영화 안개 낀 새벽, 소녀 안나가 사라진 뒤 수사는 '사건'에서 '이야기'로 변합니다. 보겔의 관심 끌기 전략, 흰 지프, 현장 연출, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ObYAJOS_1Nc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ObYAJOS_1Nc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ObYAJOS_1Nc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "한입무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-14T03:00:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "RMs-bFco_ZL3Wq9_rygpBOMRJag",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HFJtuQ4x5iI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T12:30:45Z",
+          "channelId": "UCVvzmeqo6tnQIXmVMYygZ8A",
+          "title": "명작이지만 심약자는 보지 마세요... 전쟁이 사람을 어떻게 망가뜨리는지 담담하게 보여주는 끔찍한 영화 {컴 앤 씨 리마스터} [영화리뷰/결말포함]",
+          "description": "고어영화 등급표에 있는 문제적 영화 컴 앤 씨를 리뷰했습니다. 혹여나 영화를 찾아 보실 분들은 시청에 주의 바랍니다. 유튜브에 4k ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HFJtuQ4x5iI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HFJtuQ4x5iI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HFJtuQ4x5iI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "강한무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T12:30:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mNGJs6JJtNW-B9IrWmPNFmoHWpo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xF9xndvK8uk"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T10:33:57Z",
+          "channelId": "UC2knfAm0d1PHI7FEfunYLWQ",
+          "title": "영화리뷰)프렌치수프- 요리로 사랑을, 예술로 인생을 담았다.#영화해설, #프렌치수프, #영화추천",
+          "description": "오늘의 영화 | 프렌치 수프 (The Taste of Things, 2023) 안녕하세요! 오늘은 2023년 칸 영화제 감독상을 수상한 감동적인 영화 '프렌치 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xF9xndvK8uk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xF9xndvK8uk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xF9xndvK8uk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이야기 학당",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T10:33:57Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "j2WphkH9Z7xmUAzgWkXRi-9l7uE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "uhGg1QPnM6g"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-13T04:01:06Z",
+          "channelId": "UCGjWieFABr9T__tB9pkNkbA",
+          "title": "🔥와.. 하필이면 &quot;전설의 해결사&quot;의 여자친구를 건드려버린 남자들의 최후.. &quot;역대급 액션&quot;으로 눈호강하네요 [영화리뷰, 결말포함]",
+          "description": "이번 영상은 와일드카드입니다 비즈니스문의 b75.jeon@gmail.com #영화추천 #영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/uhGg1QPnM6g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/uhGg1QPnM6g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/uhGg1QPnM6g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "명화극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-13T04:01:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "grGZOv7sYf24KmGWSGD-lGKyWY0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TuHm8K4YOlw"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-12T08:45:03Z",
+          "channelId": "UCNEshXWyQvGpymL0bkVrQeA",
+          "title": "예측을 벗어난 충격의 연속... 여주의 매력이 돋보이는 범죄스릴러 [영화리뷰/결말포함]",
+          "description": "영화 나이트헌터(2018/nomis) 리뷰 영상입니다. 스포일러 및 결말이 포함된 영상이니 참고 부탁 드려요. 시청 감사합니다 : ) 구독과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TuHm8K4YOlw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TuHm8K4YOlw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TuHm8K4YOlw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "디쿠무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-12T08:45:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lsPQS046YJMspwzNSbNJlNgD9SU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "S5MUHCI5jBM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T18:36:18Z",
+          "channelId": "UCW58py8n2q-qmK-ZPqYu1oQ",
+          "title": "17세 소녀의 뜨거운 여름#모니카벨루치딸#영화리뷰#이탈리아감성 #첫사랑 #정체성",
+          "description": "이탈리아감성 영화 , 모니카벨루치의 딸 데바카셀의 출연 영화명작 #영화리뷰 #무비리뷰 #영화해석 #영화소개 #이탈리아영화 #개봉 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/S5MUHCI5jBM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/S5MUHCI5jBM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/S5MUHCI5jBM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "scene up 씬업",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T18:36:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TrImAhureqdg3u4CdtpgTS7DAI4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9jHELDDbZps"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T11:18:41Z",
+          "channelId": "UCn2yI8SFCCfRTHT7EFpUnmw",
+          "title": "《트론:아레스》보기전 1,2편 세계관 총정리 요약, 영화 리뷰 (잊을만 하면 나오는 이유)",
+          "description": "채널 가입을 통해 현이버스를 후원해주세요☺️ 양질의 컨텐츠를 만드는 데 정말 큰 도움이 됩니다. 가입 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9jHELDDbZps/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9jHELDDbZps/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9jHELDDbZps/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "현이버스: Movie Planet",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T11:18:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xnGipXGStl9ZaUhBUl4r06-jfbE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-F4vDtTRUMM"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T11:10:27Z",
+          "channelId": "UCOS7Bb3m-708f-YDkFrDJ1A",
+          "title": "《라리랑》영화리뷰 (출연: 김종구, 정애화, 이주우, 윤원준, 손문영, 변중희)",
+          "description": "최신영화 #한국영화 #영화추천 #영화소개 This video uploaded for promotional purpose. 영화홍보를 위해 업로드 되었습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-F4vDtTRUMM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-F4vDtTRUMM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-F4vDtTRUMM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "y1nu7hnvykrg",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T11:10:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "B0xvbQU7VLlpCLGZ-OW9ZKJuOqY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "i5TBO9QSaLo"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T10:51:46Z",
+          "channelId": "UCOS7Bb3m-708f-YDkFrDJ1A",
+          "title": "《베이비걸》영화리뷰 (출연: 니콜 키드먼, 해리스 디킨슨, 안토니오 반데라스)",
+          "description": "최신영화 #한국영화 #영화추천 #영화소개 This video uploaded for promotional purpose. 영화홍보를 위해 업로드 되었습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/i5TBO9QSaLo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/i5TBO9QSaLo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/i5TBO9QSaLo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "y1nu7hnvykrg",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T10:51:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "dl2Oz-UvlvHZQmGJ_jJSobt9KgU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rPLOofUGVVg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T10:32:00Z",
+          "channelId": "UCDbUeK0YqR8GZrmvzMs94mA",
+          "title": "싸이코패스 전도하려다가 참교육 당하는 선교사 소녀들ㄷㄷ🔥2025년 본 영화 중 가장 몰입감 넘쳤던 심리 스릴러 [결말포함]",
+          "description": "헤레틱 (2024) Heretic (2024) #결말포함 #영화리뷰 #영화리뷰결말포함 #씨무비.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rPLOofUGVVg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rPLOofUGVVg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rPLOofUGVVg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "씨무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T10:32:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "A6UTvyqOSgdHED3_c7vnXpwbDAY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "0SNXj3ZOxzI"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T10:30:01Z",
+          "channelId": "UCIlcUdnZP_MLXnpG9RoJ8Jg",
+          "title": "죽기 전 꼭 한번 해보고 싶은 ㅅㅅ 꿈나무 (영화리뷰/결말포함)",
+          "description": "영화리뷰#결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/0SNXj3ZOxzI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/0SNXj3ZOxzI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/0SNXj3ZOxzI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "헉무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T10:30:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "k6J3pSSQbwhEA818n6mgIyWOYt4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QK0DBaTrmkQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T09:58:54Z",
+          "channelId": "UCADcjt-8Vz_bahKgGO8x_pg",
+          "title": "『굿 보이』영화리뷰 (장르: 호러 / 인디, 셰인 젠슨 출연)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QK0DBaTrmkQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QK0DBaTrmkQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QK0DBaTrmkQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화와 이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T09:58:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kPlkBWPH-KfJ2E2LganCLV4TB70",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "oCxbFaFOUTg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T09:58:03Z",
+          "channelId": "UCADcjt-8Vz_bahKgGO8x_pg",
+          "title": "『세계의 주인』영화리뷰 (서수빈, 장혜진)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/oCxbFaFOUTg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/oCxbFaFOUTg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/oCxbFaFOUTg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화와 이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T09:58:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nhjeg8VnILggclGMRztmOa7_zS0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ibH2IZRoWt4"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T09:01:09Z",
+          "channelId": "UC6J8MDOqR48rmazkrDFyzag",
+          "title": "🔥신의 심판이 시작된 지구🔥 혼자 살아남은 인간의 최후... (영화 노아 Noah 2014 영화 리뷰 결말 미포함)",
+          "description": "영화 노아 Noah (2014) 타락한 인류로 가득한 세상 대홍수가 온다는 신의 명령을 전달받은 남자가 방주를 만들고 신과 인간 사이의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ibH2IZRoWt4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ibH2IZRoWt4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ibH2IZRoWt4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "곰줄",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T09:01:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7GyOTE3Pr3TXry9bOdMP-fypp8g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dZfO5cArCnQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T05:23:37Z",
+          "channelId": "UCM5qo9osuWYv_5jycVslxeA",
+          "title": "인생이 고독한 당신이 꼭 봐야 하는 영화 [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #고독 #시간순삭 안녕하세요 시네마톡입니다. 오늘의 추천작 : 어느 고독에 대한 기록 (Solitude, 2023) 영화와 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dZfO5cArCnQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dZfO5cArCnQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dZfO5cArCnQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "시네마톡",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T05:23:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "n7f-MTsunfTWzRQTEjyT7NT3dhM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wbypR_dPe-M"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T04:30:40Z",
+          "channelId": "UC7vfphaaNUNNqT4rY58eH3w",
+          "title": "고립된 펜션에서 벌어지는 처절한 복수극 [영화리뷰/결말포함]",
+          "description": "영화 리벤지 (Revenge/2020)입니다. 영상에 문제가 있어 재업로드 합니다. 리뷰에는 스포일러와 결말이 포함되어 있습니다. 시청에 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wbypR_dPe-M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wbypR_dPe-M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wbypR_dPe-M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "씨쿠무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T04:30:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "eZHc3xy1VLVVyHn56hT4JCPlnQ0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "K2BPEosWsPQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T01:35:41Z",
+          "channelId": "UCtIvZgtAml4e0rgyJkDlyOA",
+          "title": "와....하필이면 출소 후 조용히 살아가던 ≪최강 인간병기≫를 건드려버린 범죄조직의 역대급 최후...ㄷㄷ [영화리뷰 결말포함]",
+          "description": "액션영화 #도파민폭발 #결말포함 대한민국 남자라면 한번만 보지는 않을 액션 영화계의 레전드 명작!! 더 이상 뒤가 없는 남자의 타격 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/K2BPEosWsPQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/K2BPEosWsPQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/K2BPEosWsPQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "제이슨 무비 : Jason Movie",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T01:35:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ScovcMRVHz7iTiNEZGdN3IPddc4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "iwgEfIBhHPU"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-11T00:54:41Z",
+          "channelId": "UCXvftM-43hGjGc1TA-8Y_IA",
+          "title": "외계인 침공 후 10년?!!  미쳐버린 몰입감으로 15분을 순삭시키는 《힘을 숨긴 저항군 사령관..》의 미개봉 미래SF 액션 [영화리뷰 결말포함]",
+          "description": "영화리뷰 #결말포함 #영화소개 #액션영화 #전쟁영화 #액션 #특수요원 #전쟁영화 #외계인 #지구침공 #생존 #탈출 #생존 더스트 오브 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/iwgEfIBhHPU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/iwgEfIBhHPU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/iwgEfIBhHPU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "동네비디오방",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-11T00:54:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KbWwtIPpQDe_4KwEIDUoyDvoD68",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "O9irZryN60g"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-10T05:35:56Z",
+          "channelId": "UCcVwX7BH6DW-eKtEvwcWFQg",
+          "title": "말 못할 상처를 안고 살아가는 사람들이 꼭 봐야하는 영화 (결말포함)",
+          "description": "영화 정보 입니다. 제목: 사랑과 추억 (The Prince Of Tides, 1991) 감독: 바브라 스트라이샌드 배우: 닉 놀테 (톰 윙고 역), 바브라 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/O9irZryN60g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/O9irZryN60g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/O9irZryN60g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "라라무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-10T05:35:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bK-JSe8Uc6uVR4NCkZktbh4yjHg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lOp_MSIiXV8"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T10:24:26Z",
+          "channelId": "UC7GtPtxaCHCGYcSSE7iKRVA",
+          "title": "늪지대에 고립된 사람들에게 생긴 일 [결말포함/영화리뷰]",
+          "description": "결말포함 #영화리뷰 #영화추천 *영화 제목은 영상의 상단에 있습니다. *영화 정보 및 전체보기☞ ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lOp_MSIiXV8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lOp_MSIiXV8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lOp_MSIiXV8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "토탈무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T10:24:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BJ-Kk2yMR0bpNte07tHKh5JC6ao",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Bq0vPQ5hA0c"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-20T09:35:32Z",
+          "channelId": "UCg0i09XL5nBPbk3l0ItTyLQ",
+          "title": "워페어 후기 - 모던 워페어는 아니지만 역대급이다",
+          "description": "워페어 / 2026.08.19 개봉 / 윌 폴터, 조셉 퀸, 찰스 멜튼 출연 BGM 정보 TrackTribe - Get Tough ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Bq0vPQ5hA0c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Bq0vPQ5hA0c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Bq0vPQ5hA0c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "방구석 평론가 - 영화리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-20T09:35:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Iiw2SZlwwWsqNXlvq4oQs0SB028",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Olx09ymhyG4"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-18T09:00:07Z",
+          "channelId": "UCYCfYcDu0kgJ5r0feMCCkaQ",
+          "title": "영화리뷰,결말포함:  1위 찍은 역대급 분노조절 치료제, 혼자서 경찰서를 뒤집어버린 전직 특수부대원 ㄷㄷ",
+          "description": "영화리뷰 #결말포함 #넷플릭스영화 제목은 영화 왼쪽 상단에 있습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Olx09ymhyG4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Olx09ymhyG4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Olx09ymhyG4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "탑무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-18T09:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "dmY4MczkVzEPYBuXoaWrTEqZCJY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TcmGjyiRj5U"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-17T09:43:19Z",
+          "channelId": "UCg17qv3qhlYQaR6vT3Ubmtg",
+          "title": "실화인 줄 알고 모두가 충격받은 영화 [영화리뷰 결말포함]",
+          "description": "인간의 가죽을 뒤집어쓴 '레더페이스'의 탄생. 슬래셔 장르의 진정한 시초라 불리는 이 불길한 걸작이 어떻게 70년대 미국을 충격에 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TcmGjyiRj5U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TcmGjyiRj5U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TcmGjyiRj5U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무드몰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-17T09:43:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bL1GuO5UzcQkNKFr1jXYdZlus10",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6GJ98CBQkRo"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T04:39:56Z",
+          "channelId": "UCKtInGMesoLTfoGacYZlpJA",
+          "title": "🔥와..... 이런 게 명작이지..... 안젤리나 졸리 X 덴젤 워싱턴의 진짜 잘 만든 추리 범죄 스릴러...... [영화리뷰, 결말포함]",
+          "description": "영화 제목은 영상 초반부를 참고해주시기 바랍니다!* 구독, 좋아요는 영상 제작에 큰 힘이 됩니다❤️❤️ *본 영상의 저작권은 배급사 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6GJ98CBQkRo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6GJ98CBQkRo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6GJ98CBQkRo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "킹무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T04:39:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1ECkQHBC1ozD5bKIBtVbqDsAsX4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "E6h8pQDQIeg"
+        },
+        "snippet": {
+          "publishedAt": "2025-10-08T00:00:18Z",
+          "channelId": "UC_Aly3X5CdojHdRDGmKi1ow",
+          "title": "덴젤 형님 신작 떴다..! 상위 0.1% 금수저를 납치해 몸값 200억을 요구했는데 알고 보니 아빠가 &quot;복수의 신&quot; 덴젤 워싱턴이면 벌어지는 일 ㄷㄷ_[천국부터 지옥까지]",
+          "description": "오늘은 영화 [천국부터 지옥까지]을 소개해봅니다! *[천국부터 지옥까지]는 애플tv+에서 시청가능합니다. *저작권 허가를 받은 영상 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/E6h8pQDQIeg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/E6h8pQDQIeg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/E6h8pQDQIeg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "엔스Ens",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-10-08T00:00:18Z"
+        }
+      }
+    ]
+  }
+}

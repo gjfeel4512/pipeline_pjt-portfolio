@@ -1,0 +1,1350 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "medium",
+    "publishedAfter": "2025-12-15T00:00:00Z",
+    "publishedBefore": "2026-01-04T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "OhSFcF-ubF5iN11VCA__s7HSCOY",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 6283,
+      "resultsPerPage": 39
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zffVUkC4kCv1dCV0gOpylpYqwe8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "sHPdoLiLn1o"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-02T16:51:46Z",
+          "channelId": "UCdy7LgPMO_Q2J-c8NnRo9MA",
+          "title": "글로벌 게임.. IdleOn - 더 아이들 MMO 추천 스팀 최신 게임 리뷰 후기 공략 Global Game Review IdleOn – The Idle MMO Steam",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/sHPdoLiLn1o/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/sHPdoLiLn1o/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/sHPdoLiLn1o/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지호해봄 최지호 유용한 지호랩 JihoLab",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-02T16:51:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "VIlbz4jkKHfbmEOA2nAvVbyGpSM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "tmnYW19wSgc"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-02T09:01:32Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "스플렌더 보드게임 리뷰｜규칙은 쉬운데 선택이 어려운 이유",
+          "description": "스플렌더는 규칙만 보면 매우 단순한 보드게임입니다. 하지만 한 판을 끝내고 나면, 왜 이 게임이 오랫동안 사랑받아왔는지 자연스럽게 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/tmnYW19wSgc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/tmnYW19wSgc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/tmnYW19wSgc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-02T09:01:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bSY1AoRZ7dgw2bAgNBd2z8uMCkA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CuQuVV0Dkq4"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-02T08:03:42Z",
+          "channelId": "UCtdknIgKouKntEbSQRzSOnQ",
+          "title": "(국내최초) 이제 자동차까지 변신한다고??? 레고 닌자고 71856 제이의 변신 자동차 리뷰",
+          "description": "닌자고 #레고 #취미 #ninjago #lego 영상이 유익하셨거나 재밌으셨다면 구독&좋아요 부탁드릴게요! 상세정보 레고 공식홈페이지 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CuQuVV0Dkq4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CuQuVV0Dkq4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CuQuVV0Dkq4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "닌돌이(Nindol)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-02T08:03:42Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "FgDrFNEZziY7N8JDN99xt9Or1GY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TDvlIRhXLjE"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-02T02:30:23Z",
+          "channelId": "UCEY9waOw-oLiTuOJBf3QPyg",
+          "title": "기아 PV5 카고 시승기_2000만원대 상용전기차_2026년 최대의 기대주",
+          "description": "PV5 카고 모델을 직접 시승해봤습니다. 상용차라는 이미지와 달리 승차감이 의외로 부드럽고, 도심 주행에서도 부담이 크지 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TDvlIRhXLjE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TDvlIRhXLjE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TDvlIRhXLjE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "하큐TV_HaQ TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-02T02:30:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xcL_WdBV0IASGm206AKcDUIwMxo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "WRK1l-tEXW4"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-01T12:33:06Z",
+          "channelId": "UCAvhPExLYBe7BAKmAy2mY4g",
+          "title": "[이상한/영화리뷰] 행복 ‘2007’ [집사의 취미생활]",
+          "description": "영화리뷰 #황정민 #임수정 #공효진 #영화추천 #로맨스 #멜로 #슬픈영화 #집사의삶.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/WRK1l-tEXW4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/WRK1l-tEXW4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/WRK1l-tEXW4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "자집 (shakeyzipsa)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-01T12:33:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LXQDnFRAmMe21pgB1CcsfTtDZfg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qgLtKzUfAWU"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-01T11:34:19Z",
+          "channelId": "UCy_eM8xlk1AoOTKzrfayn3A",
+          "title": "BMW 520i MSP 솔직 시승기(최악의 단점 2가지)",
+          "description": "세단의 교과서 BMW 5시리즈 520i MSP를 가져왔습니다! 최근 벤츠 E클래스를 정말 많이 타본 입장에서 520i가 가진 매력과 아쉬운 점 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qgLtKzUfAWU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qgLtKzUfAWU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qgLtKzUfAWU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "타볼래요",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-01T11:34:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "4shLPNYyg0GJA5w3jFwjOlZ51Zs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Trw9gCNnrxI"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-01T07:00:24Z",
+          "channelId": "UCU32B5BD-igl6Z2j5kjikeg",
+          "title": "2026 현대 벨로스터 신차 리뷰｜가격·사양·경쟁 모델 비교",
+          "description": "2026 현대 벨로스터는 독창적인 디자인과 스포티한 주행 감성을 다시 한번 강조하며 돌아왔습니다. 이번 영상에서는 2026 Hyundai ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Trw9gCNnrxI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Trw9gCNnrxI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Trw9gCNnrxI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Korean Auto Reviews",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-01T07:00:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "v0D9uK5_OzsGbUsGivsgn3Mm7Mk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DLj2pFnB4Fs"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-31T17:07:00Z",
+          "channelId": "UC2D3gcOCenxJx8KDMmU76lA",
+          "title": "🚘✨ 2026 신형 자동차 리뷰 | 디자인·실내·성능·가격 완벽 분석! 🔥",
+          "description": "2026년 최신 모델을 가장 빠르고 자세하게 만나보세요 ✨ 이 영상에서는 2026년형 차량을 중심으로 외관 디자인부터 실내 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DLj2pFnB4Fs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DLj2pFnB4Fs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DLj2pFnB4Fs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Goddard Mindset",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-31T17:07:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8Dgw53FyRm2hkE8PFhWPMXEYlX0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "eiI0nWv0BD4"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-31T11:41:04Z",
+          "channelId": "UCdy7LgPMO_Q2J-c8NnRo9MA",
+          "title": "힐링 생활 과정..! 레스토어 유어 아일랜드 게임 후기 리뷰 공략 스팀 Healing Life Journey... &quot;Restore Your Island&quot; Game Review",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/eiI0nWv0BD4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/eiI0nWv0BD4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/eiI0nWv0BD4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지호해봄 최지호 유용한 지호랩 JihoLab",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-31T11:41:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JlCZHQOTN4PwfD_u1ijDU-bbZBo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "RIgh9wCnklM"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-30T02:07:08Z",
+          "channelId": "UCdy7LgPMO_Q2J-c8NnRo9MA",
+          "title": "1위 리듬게임 리뷰 공략 후기 추천 스팀  융융 전파 신드롬 Yunyun Syndrome #1 Rhythm Game Review, Guide, Tips",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/RIgh9wCnklM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/RIgh9wCnklM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/RIgh9wCnklM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지호해봄 최지호 유용한 지호랩 JihoLab",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-30T02:07:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lqYwGDJP08_xvadZE3L8xYMlA7Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "C9U96Bvx9_w"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-29T13:00:32Z",
+          "channelId": "UCc5nl1WYTIsW58hhDdqDvXA",
+          "title": "[9화] 영화리뷰 - 늑대사냥 (이유도, 목적도 없이 잔혹함만 난무하는)((스포주의))",
+          "description": "본 영상 속 음성은 AI로 제작되었습니다. 뚝심의 잡념라디오 잠 안 오는 밤 라디오와 함께 수면에 드시는것은 어떨까요 편안한 밤 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/C9U96Bvx9_w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/C9U96Bvx9_w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/C9U96Bvx9_w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "뚝심의 잡념라디오",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-29T13:00:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uq9rJixjz_8VxXUs8xjh9eWOBks",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zoqLgQ5MMQk"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-28T09:01:37Z",
+          "channelId": "UC_EngQdug6VcxZ3xcqgnWug",
+          "title": "전독시 감독의 새로운 파멸적 대망작 [대홍수] 레전드 ㅋㅋㅋㅋㅋ 2025 최악의 영화 [대홍수] 모음 &amp; ㄹㅇ 솔직 리뷰 ㅋㅋㅋㅋㅋㅋ",
+          "description": "김준표 굿즈 카드 '파이널덱' https://smartstore.naver.com/rlawnsvy/products/9146510467 김준표 마술사 스마트 스토어(김준표 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zoqLgQ5MMQk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zoqLgQ5MMQk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zoqLgQ5MMQk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김준표",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-28T09:01:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "HAJGHfo86O9lQyG1LDV8X-JZP8I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jKTqUO_Ou1Q"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-28T06:44:51Z",
+          "channelId": "UCDGRnxpG--LYSFowJ0YW8kw",
+          "title": "게임리뷰영상",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jKTqUO_Ou1Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jKTqUO_Ou1Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jKTqUO_Ou1Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "피남의 게임세상",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-28T06:44:51Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Lbd9keaj0Dx11P5EgCaM90e_E8w",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "PX0YZWn-P-A"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-28T00:12:54Z",
+          "channelId": "UCjOOJ0TWaAZ9srTM6TFiwHA",
+          "title": "탐험 팀은 초대형 아나콘다와 만나고, 그 결과는..... [ 영화리뷰 ]",
+          "description": "영화 요약: 아나콘다 2025 #영화리뷰 #결말포함 #결말포함 #영화리뷰 #영화리뷰 #헬무비 #복수 #헬무비 #복수 #영화리뷰.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/PX0YZWn-P-A/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/PX0YZWn-P-A/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/PX0YZWn-P-A/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "요약러",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-28T00:12:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "E2_sDeCxHT1cMD2AC3mvUKn9R3Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vLgHmFf_2ng"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-25T09:01:29Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "Ticket to Ride Europe 보드게임 리뷰｜기본판과 다른 진짜 이유",
+          "description": "Ticket to Ride Europe는 가족 보드게임의 대표작으로 불리는 Ticket to Ride 시리즈의 확장판입니다. 이 영상에서는 기본판과 유럽판 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vLgHmFf_2ng/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vLgHmFf_2ng/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vLgHmFf_2ng/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-25T09:01:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "hpL2YHpjjFYZgmzNvUPVpoKNf1E",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HonR0mDbSak"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-25T07:20:10Z",
+          "channelId": "UCofrAalUuRPW_n_g1FQ5aaw",
+          "title": "2026 XM 출시 뭐가 업그레이드 되었을까? [XM Label 시승기]",
+          "description": "안녕하세요 BMW 도이치모터스 한남전시장 박기범 주임입니다. 오늘은 12월 20일자에 열렸던 BMW 한남전시장 시승행사에서 찍은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HonR0mDbSak/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HonR0mDbSak/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HonR0mDbSak/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "BMW 기봉이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-25T07:20:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ejFSggRxfo14_BllUuJY9TK8his",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JM1DgFzfq7M"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-25T04:00:30Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "당신에게 최고의 크리스마스를 선물해드리겠습니다 (결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JM1DgFzfq7M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JM1DgFzfq7M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JM1DgFzfq7M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-25T04:00:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EdPgojyYWsrMiCqvUbFBI4po2QY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6KilXCeQhr0"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-25T01:00:13Z",
+          "channelId": "UCvpnEQY2SbqMkdmLDcib4fg",
+          "title": "❗맨정신으론 끝까지 시청 불가❗미친.. 공포 영화만 196편 본 사람이 추천하는 진짜 역대급 잔인한 영화 1위",
+          "description": "사용된 BGM Track: Ikson - Fresh [Official] Music provided by Ikson® Listen: https://youtu.be/VMYUXR1W4Qg #영화추천#블랙 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6KilXCeQhr0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6KilXCeQhr0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6KilXCeQhr0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "리뷰어썸",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-25T01:00:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jrDAjD_P9xy0F3ypuEoTHqicRTc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "YMDuh6oUU9E"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-25T00:30:06Z",
+          "channelId": "UChHCUFdfrdwZz00whN7kntA",
+          "title": "(컨텐츠)산타버스 시승기",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/YMDuh6oUU9E/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/YMDuh6oUU9E/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/YMDuh6oUU9E/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "호남버덕",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-25T00:30:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-qPAGeYKzW5hi3k_xUrbYAmE1Oo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "C5cxT_rVcMU"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-24T13:00:23Z",
+          "channelId": "UCc5nl1WYTIsW58hhDdqDvXA",
+          "title": "[7화] 영화리뷰 - 더 테러 라이브 (하정우에 의한, 하정우를 위한)((스포주의))",
+          "description": "본 영상 속 음성은 AI로 제작되었습니다. 뚝심의 잡념라디오 잠 안 오는 밤 라디오와 함께 수면에 드시는것은 어떨까요 편안한 밤 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/C5cxT_rVcMU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/C5cxT_rVcMU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/C5cxT_rVcMU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "뚝심의 잡념라디오",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-24T13:00:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "a9Q3gxAd6gvc_hCe_PDbbZlBVKI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "5qez9y5cWjQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-23T13:20:14Z",
+          "channelId": "UC9_MMnduIlNz5c-jT3PFkQQ",
+          "title": "아이프리 3탄 게임 후기 &amp; 메루카리깡 | 아이프리깡 | 메루카리 공구 | 아이프리 누이 아크릴 스탠드 | 메모리얼 카드 | ひみつのアイプリ 🤍",
+          "description": "비밀의아이프리 #아이프리 #아이프리깡 #아이프리누이 #메루카리깡 #아이프리후기 #반택깡 #아이프리3탄 #아이프리게임 #시크릿 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/5qez9y5cWjQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/5qez9y5cWjQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/5qez9y5cWjQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "𝚁𝚎𝚖𝚒",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-23T13:20:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Hzv2E2izf93FKl6VO8ExDSBbRaE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "oR49k_vkUjg"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-23T09:01:18Z",
+          "channelId": "UC7VM9cGmILJvjenjmMFYG6g",
+          "title": "| 더러운 돈에 손대지 마라 | 돈 욕심내다 X된 비리 형사들 [영화리뷰]",
+          "description": "바로무비 #영화리뷰 #한국영화 오늘의 영화 [더러운 돈에 손대지 마라] DIRTY MONEY 2024 감독: 김민수 출연: 정우, 김대명, 박병은.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/oR49k_vkUjg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/oR49k_vkUjg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/oR49k_vkUjg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "바로무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-23T09:01:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7L0gsZurAI8fful0-w9ND3IR77M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "znWtm_p0Mmo"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-22T02:23:26Z",
+          "channelId": "UC9_MMnduIlNz5c-jT3PFkQQ",
+          "title": "국내에도 아이프리 팬북이?! | 아이프리깡 | 게임 후기 | 팬북 후기 | 스타리네온 아크릴 | 시크릿 프렌즈 올컴 | ひみつのアイプリ 🎼",
+          "description": "비밀의아이프리 #아이프리 #아이프리깡 #반택깡 #아이프리3탄 #아이프리게임 #시크릿프렌즈 #아이프리아크릴 #아이프리팬북 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/znWtm_p0Mmo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/znWtm_p0Mmo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/znWtm_p0Mmo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "𝚁𝚎𝚖𝚒",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-22T02:23:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "_3ciQlATxVlrfI7DKRDHBGz6G48",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gAnAp08hcNo"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-21T22:00:44Z",
+          "channelId": "UC1URtGI_jwCbyv2ZnXvyfZQ",
+          "title": "1000m 상공에서 벌어지는 치열한 복수극! #영화리뷰 #영화추천 #movie",
+          "description": "CEO 남편과 떠난 로맨틱한 열기구 여행, 그런데 전 직원의 딸이 복수를 위해 탑승했습니다. 하늘 위 1000m에서 벌어지는 생존 게임과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gAnAp08hcNo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gAnAp08hcNo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gAnAp08hcNo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화철공소",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-21T22:00:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vB18-f1E84uR53NwOSZgodq3YkE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3Isjwe5LerI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-11T09:00:27Z",
+          "channelId": "UCa5QEPQi-uHtks0DgR6k2ig",
+          "title": "세상에 나 혼자라고 느낄 때 꼭 봐야하는 영화  영화리뷰 결말포함",
+          "description": "제목; 천국보다 아름다운/1998 #영화리뷰결말포함 #영화리뷰 #영화 #로빈윌리엄스 #아나벨라시오라.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽃보다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-11T09:00:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQ0UQ1iMIfjRyXnaOR8h1xgFYBM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rGkxzxEGJ8U"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-10T13:30:07Z",
+          "channelId": "UCoabCaYEaHnG2dfq9mp0aFQ",
+          "title": "“내 몸에 손대지 마..” 사이코 백인 집안 참교육하고 탈출하는 🔥역대급 스릴러🔥 (영화리뷰/결말포함)",
+          "description": "겟아웃(2017) #영화리뷰 #결말포함 #영화 #겟아웃.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "추디",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-10T13:30:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z7LHuHKXCVIN3AAvXP66Cm4oZIY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vA7qNxEYbjQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-07T09:00:33Z",
+          "channelId": "UCDQQKYz1JLeSw6defAwI1Rg",
+          "title": "(영화리뷰) 유골함에 담긴 50년의 기억, 그 마지막 여정 [결말포함]",
+          "description": "(영화리뷰) 오랜 세월을 함께한 네 친구, 그리고 친구의 유언을 따라 떠나는 마지막 여행, 인생의 황혼기에 선 친구들이 각자의 기억을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레치고무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-07T09:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "snyPlkqT5Q2-cMhwO29m7j4CuYo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ouSXuHaH0qQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-21T10:25:03Z",
+          "channelId": "UCdy7LgPMO_Q2J-c8NnRo9MA",
+          "title": "맘대로 되지않아. 블레이드 보우 앤 매직 스팀 신작 게임 리뷰 공략 후기 추천",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ouSXuHaH0qQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ouSXuHaH0qQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ouSXuHaH0qQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지호해봄 최지호 유용한 지호랩 JihoLab",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-21T10:25:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lbcUeTRMLprabU0mS8dWlaLFfdU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zaJh6sdTOmQ"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-21T09:01:28Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "윙스팬 보드게임 리뷰 | 왜 이 새 게임은 명작이 되었을까",
+          "description": "Wingspan은 새를 테마로 한 보드게임이지만, 단순한 테마 게임을 넘어 현대 보드게임을 대표하는 엔진 빌딩 게임으로 자리 잡았 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zaJh6sdTOmQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zaJh6sdTOmQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zaJh6sdTOmQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-21T09:01:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Qi_CXTAbUHqZPuofwZrqV3dtx7k",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hPHL5taZONw"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-20T19:37:01Z",
+          "channelId": "UCc5nl1WYTIsW58hhDdqDvXA",
+          "title": "[5화] 영화리뷰 - 대홍수 (비빔밥 만드려다 짬밥이 되어버린 것에 대해)((스포주의))",
+          "description": "본 영상 속 음성은 AI로 제작되었습니다. 뚝심의 잡념라디오 잠 안 오는 밤 라디오와 함께 수면에 드시는것은 어떨까요 편안한 밤 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hPHL5taZONw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hPHL5taZONw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hPHL5taZONw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "뚝심의 잡념라디오",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-20T19:37:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TfrdHt3vvRC46Zs664mkrhJUoCU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "FHFQ_wN2tYI"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-20T11:18:25Z",
+          "channelId": "UCxialuQ0LTrh1bqxi3od6dA",
+          "title": "리그오브레전드 게임 리뷰",
+          "description": "리그오브레전드 많은 사랑 부탁드립니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/FHFQ_wN2tYI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/FHFQ_wN2tYI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/FHFQ_wN2tYI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "파동일족TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-20T11:18:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "R2GETVyOiujtJk2ey0juQE5_2vs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "M1z93QyEPoo"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-20T10:44:53Z",
+          "channelId": "UCxialuQ0LTrh1bqxi3od6dA",
+          "title": "드래곤 길들이기3 영화 리뷰",
+          "description": "드래곤 길들이기3 많은 사랑 부탁드립니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/M1z93QyEPoo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/M1z93QyEPoo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/M1z93QyEPoo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "파동일족TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-20T10:44:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LeimPHoAUdazm6OhkuMGFdIngmA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "f7xgLf989lg"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-20T08:54:13Z",
+          "channelId": "UCxialuQ0LTrh1bqxi3od6dA",
+          "title": "아바타3 영화 리뷰",
+          "description": "아바타3 많은 시청 부탁드립니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/f7xgLf989lg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/f7xgLf989lg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/f7xgLf989lg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "파동일족TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-20T08:54:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "b9qcopt4lpxvJ8mPwJV_VIVcOis",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CKlSJXxSd00"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-19T09:30:12Z",
+          "channelId": "UCY0FJpSIF1Atltvmf71UPzA",
+          "title": "11월 개봉 영화 리뷰ㅣ무비황의 영화한잔",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CKlSJXxSd00/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CKlSJXxSd00/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CKlSJXxSd00/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비황",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-19T09:30:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-XVAW8eG0l7WER2yjr5PTl3DGoE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "PQwGOf6MKkk"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-18T12:26:17Z",
+          "channelId": "UC2eUAU9H18ARja4jzSyf8yQ",
+          "title": "26년식 폭스바겐 골프 GTI 8.5 세대 실차주 장단점 후기 및 시승기",
+          "description": "2026년식 골프 GTI 2025년 11월17일에 인도받고 운행한지가 한달이 되어서 주행 후기를 영상으로 담아보았습니다 아직 길들이기중 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/PQwGOf6MKkk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/PQwGOf6MKkk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/PQwGOf6MKkk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "헤어의신",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-18T12:26:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "3xGWHggN8RHxduRqSzALdT-m3a0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dOSrPNELSF4"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-18T03:33:25Z",
+          "channelId": "UCdy7LgPMO_Q2J-c8NnRo9MA",
+          "title": "고퀄 추격전 게임 리뷰 공략 후기 추천 댄디스 월드 로블록스 Can You Escape? Roblox Dandy’s World Adventure!",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dOSrPNELSF4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dOSrPNELSF4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dOSrPNELSF4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "지호해봄 최지호 유용한 지호랩 JihoLab",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-18T03:33:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XcIAgNwTuI7LYXcilZ-t0EacFyc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "cWtDCAB2UEk"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-18T00:30:37Z",
+          "channelId": "UC1ocEweDNyLNUW74x7Pz3Jw",
+          "title": "공중 화장실에서 물을 안내리면 생기는 일 #영화리뷰",
+          "description": "제목: 킬 미 어게인 (Kill Me Again) 개봉 연도: 2025년 장르: 스릴러, 공포, 미스터리 감독: 키스 자딘 (Keith Jardine) 주연: 브렌든 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/cWtDCAB2UEk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/cWtDCAB2UEk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/cWtDCAB2UEk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "1분컷",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-18T00:30:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6R5kmmlZSFBwbRlFgB-CtPQWhHA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "aFIYLdKIFX4"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-17T16:38:39Z",
+          "channelId": "UC4Jw2HxB5Vi5RFzuWvRmBzA",
+          "title": "덩크슛 게임 리뷰 !",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/aFIYLdKIFX4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/aFIYLdKIFX4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/aFIYLdKIFX4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "11정규홍",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-17T16:38:39Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mnV_XckS3rk1sdCKOwlCy2dDnAE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dZh9VGPg8TI"
+        },
+        "snippet": {
+          "publishedAt": "2025-12-17T00:59:03Z",
+          "channelId": "UCii9S_UM_-e3hisiYYtoNWA",
+          "title": "영화리뷰/ 오디오형영화 &quot;니가 밥 먹는 꼴도 보기 싫어졌어&quot;... 가장잔인한 이별 통보!!",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dZh9VGPg8TI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dZh9VGPg8TI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dZh9VGPg8TI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쇼츠마녀",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-12-17T00:59:03Z"
+        }
+      }
+    ]
+  }
+}

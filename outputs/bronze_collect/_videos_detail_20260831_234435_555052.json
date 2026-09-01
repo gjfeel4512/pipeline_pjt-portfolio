@@ -1,0 +1,4954 @@
+[
+  {
+    "kind": "youtube#video",
+    "etag": "vK84_0PlOjRyzlWTdAaMeui_jYw",
+    "id": "F6Lr7wdVKao",
+    "snippet": {
+      "publishedAt": "2026-08-10T23:05:37Z",
+      "channelId": "UC4yT6CRUswZqn0f9e7Dl7zQ",
+      "title": "[Fable 5로 삼국지 액션 게임을 만들면?] 무한 회귀 농민 삼국지",
+      "description": "Claude Code에서 Claude Fable 5 모델로 개발 중인 삼국지 액션 게임 [무한 회귀 농민 삼국지] 개발 영상입니다.\n\n갓 징집된 농민 병사가 대규모 전열 충돌 속에서 살아남고, 죽어도 성장을 이어가는 회귀형 삼국지 게임을 만들어가고 있습니다.\n\n타임스탬프\n00:00 하이라이트\n00:18 미션 & 게임 기획\n02:46 프롬프팅\n03:21 3일간의 프롬프팅 소개\n03:59 1차 빌드 인게임 시현\n08:57 2차 빌드 개발을 위한 피드백 프롬프팅\n09:59 보너스챕터. 그래픽 에셋 픽셀랩 서비스 사용법\n\n※영상 속 픽셀랩 서비스 소개는 댓글 문의가 많아서 소개드린 건이고, 절대 광고 아닙니다!\n\n게임에 대한 좋은 아이디어, 개선 의견과 문의사항이 있으실 경우 댓글로 남겨주세요\n\n#무한회귀농민삼국지 #Fable5 #ClaudeCode #AI게임개발 #게임개발일지",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/F6Lr7wdVKao/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/F6Lr7wdVKao/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/F6Lr7wdVKao/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/F6Lr7wdVKao/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/F6Lr7wdVKao/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "겨울항해 | 딸깍스튜디오",
+      "tags": [
+        "Claude Fable 5",
+        "Fable 5",
+        "페이블 5",
+        "페이블5",
+        "Claude Code Fable 5",
+        "Claude Code",
+        "클로드 코드",
+        "무한 회귀 농민 삼국지",
+        "무한회귀 농민삼국지",
+        "무한회귀농민삼국지",
+        "농민 삼국지",
+        "농민삼국지",
+        "삼국지 액션 게임",
+        "AI 액션 게임",
+        "AI 게임 개발",
+        "AI 게임 만들기",
+        "삼국지 게임",
+        "삼국지",
+        "인디게임",
+        "인디게임 개발",
+        "게임 개발",
+        "게임 개발일지",
+        "게임 제작",
+        "바이브 코딩",
+        "회귀형 게임",
+        "무한 회귀",
+        "로그라이크",
+        "로그라이트",
+        "회귀물 게임",
+        "성장형 RPG",
+        "전쟁 게임",
+        "대규모 전투",
+        "전열 전투",
+        "각개전투",
+        "액션 RPG",
+        "한국 인디게임",
+        "AI game development",
+        "indie game dev",
+        "Three Kingdoms action game"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[Fable 5로 삼국지 액션 게임을 만들면?] 무한 회귀 농민 삼국지",
+        "description": "Claude Code에서 Claude Fable 5 모델로 개발 중인 삼국지 액션 게임 [무한 회귀 농민 삼국지] 개발 영상입니다.\n\n갓 징집된 농민 병사가 대규모 전열 충돌 속에서 살아남고, 죽어도 성장을 이어가는 회귀형 삼국지 게임을 만들어가고 있습니다.\n\n타임스탬프\n00:00 하이라이트\n00:18 미션 & 게임 기획\n02:46 프롬프팅\n03:21 3일간의 프롬프팅 소개\n03:59 1차 빌드 인게임 시현\n08:57 2차 빌드 개발을 위한 피드백 프롬프팅\n09:59 보너스챕터. 그래픽 에셋 픽셀랩 서비스 사용법\n\n※영상 속 픽셀랩 서비스 소개는 댓글 문의가 많아서 소개드린 건이고, 절대 광고 아닙니다!\n\n게임에 대한 좋은 아이디어, 개선 의견과 문의사항이 있으실 경우 댓글로 남겨주세요\n\n#무한회귀농민삼국지 #Fable5 #ClaudeCode #AI게임개발 #게임개발일지"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT10M57S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "4422",
+      "likeCount": "55",
+      "favoriteCount": "0",
+      "commentCount": "23"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "ViOA98GoT3pHEtC3mzsD_k2ied0",
+    "id": "b8oisArTvFs",
+    "snippet": {
+      "publishedAt": "2026-08-10T23:00:25Z",
+      "channelId": "UCxyH4YNL9pnFZwnDXiZ3DrA",
+      "title": "운영자 등장?? 스피드 키보드에 이런 공간이 있다고???",
+      "description": "*로트키 채널의 대부분의 영상은 연출이 포함되어 있습니다!*",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/b8oisArTvFs/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/b8oisArTvFs/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/b8oisArTvFs/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/b8oisArTvFs/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/b8oisArTvFs/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "로트키",
+      "tags": [
+        "로트키",
+        "로블록스",
+        "브레인롯 훔치기",
+        "99일밤"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "운영자 등장?? 스피드 키보드에 이런 공간이 있다고???",
+        "description": "*로트키 채널의 대부분의 영상은 연출이 포함되어 있습니다!*"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT9M",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "149652",
+      "likeCount": "6023",
+      "favoriteCount": "0",
+      "commentCount": "90"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "VkB60vhIX1cbqiiob6-cst0XBak",
+    "id": "USLxDrgaHdQ",
+    "snippet": {
+      "publishedAt": "2026-08-10T22:41:44Z",
+      "channelId": "UCNkqRTuAMnzk8CGNqkZQvhA",
+      "title": "세계 197곳 지도 타이핑 | 지도 타이핑 게임 ASMR 2편",
+      "description": "영상 속 게임\n: 지도 타이핑 게임 | Map Typing (웹사이트)",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/USLxDrgaHdQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/USLxDrgaHdQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/USLxDrgaHdQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/USLxDrgaHdQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/USLxDrgaHdQ/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "포근픽셀",
+      "tags": [
+        "세계 197개국",
+        "세계 지도",
+        "세계지도",
+        "세계 나라",
+        "세계 국가",
+        "나라 이름 타이핑",
+        "국가 이름 타이핑",
+        "세계 지도 타이핑",
+        "지도 타이핑",
+        "지도 타이핑 게임",
+        "지도 타자 게임",
+        "국가 타이핑",
+        "나라 타이핑",
+        "세계 나라 타이핑",
+        "타이핑 게임",
+        "타자 게임",
+        "타자연습",
+        "한글 타이핑",
+        "한글 타자",
+        "지리 게임",
+        "세계 지리",
+        "지리 퀴즈",
+        "타이핑 ASMR",
+        "타자 소리",
+        "타자 효과음",
+        "게임 ASMR",
+        "게임소리",
+        "게임 효과음",
+        "ASMR",
+        "No Talking",
+        "no talking ASMR",
+        "Map Typing",
+        "Map Typing Game",
+        "World Map",
+        "World Map Typing",
+        "country typing",
+        "country names",
+        "geography game",
+        "geography quiz",
+        "typing game",
+        "typing ASMR",
+        "Korean typing",
+        "포근픽셀"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "세계 197곳 지도 타이핑 | 지도 타이핑 게임 ASMR 2편",
+        "description": "영상 속 게임\n: 지도 타이핑 게임 | Map Typing (웹사이트)"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT7M53S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "6",
+      "likeCount": "0",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "mFKrMctsOqO81n4x88rxkfBsX9U",
+    "id": "wb-sHXCVKQ8",
+    "snippet": {
+      "publishedAt": "2026-08-10T22:00:02Z",
+      "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+      "title": "이번주의 만원이하 갓겜들 !! 스팀 게임 할인 추천 30가지 !! [ Steam 스팀 게임 추천/RPG/오픈월드/로그라이크 ]",
+      "description": "PC Steam 스팀 할인 게임 추천 30가지 !![ RPG/오픈월드/로그라이크/시뮬레이션 ]\n\n오늘의 썸네일:3\n00:00 인트로 (가이더스 제로)\n00:11 1.앤세스터 인류의 여정 (Ancestors: The Humankind Odyssey)\n00:48 2.파이널 벤데타 (FINAL VENDETTA)\n01:10 3.아일랜더스 새로운 해안 (Islanders New Shores)\n01:52 4.월드리스 (Worldless)\n02:18 5.주차도 못하네 (You Suck at Parking)\n02:48 6.트라이 투 드라이브 (Try To Drive)\n03:38 7.엠버 (Embr)\n04:04 8.스피릿 오브 더 노스 (Spirit of the North)\n04:40 9.문글로우 베이 (Moonglow Bay)\n05:11 10.마이닝 메크 (Mining Mechs)\n05:56 11.슈퍼 마이닝 메크 (Super Mining Mechs)\n06:41 12.트리키 타워 (Tricky Towers)\n07:22 13.커피 토크 에피소드 2 히비스커스 앤 버터 플라이 (Coffee Talk Episode 2: Hibiscus & Butterfly)\n08:02 14.커피 토크 (Coffee Talk)\n08:32 15.위스퍼 마운틴 아웃브레이크 (Whisper Mountain Outbreak)\n09:14 16.네세스 (Necesse)\n09:41 17.이스케이프 더 백룸 (Escape the Backrooms)\n10:04 18.방 탈출 시뮬레이터 (ESCAPE SIMULATOR)\n10:34 19.휴먼 폴 플랫 (Human: Fall Flat)\n11:06 20.포션 퍼밋 (Potion Permit)\n11:47 21.캐슬 오브 하트 리톨드 (Castle of Heart: Retold)\n12:25 22.스트레이 패스 (StrayPath)\n13:02 23.테일즈 앤 택틱스 (Tales & Tactics)\n13:41 24.로들너트 (Loddlenaut)\n14:28 25.힌터베르그의 던전 (Dungeons of Hinterberg)\n14:55 26.디센더스 (Descenders)\n15:27 27.사이버코프 (CyberCorp)\n16:01 28.에어본 킹덤 (Airborne Kingdom)\n16:25 29.배틀필드 4 (Battlefield 4)\n17:04 30.더 코마 2 비셔스 시스터즈 (The Coma 2: Vicious Sisters)\n17:36 아웃트로 (건즈 고어 앤 카놀리 2)\n\n#스팀게임 #스팀할인 #pc게임",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/wb-sHXCVKQ8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/wb-sHXCVKQ8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/wb-sHXCVKQ8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/wb-sHXCVKQ8/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/wb-sHXCVKQ8/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "이구역의 듀공",
+      "tags": [
+        "스팀 게임 추천",
+        "스팀 할인 추천",
+        "PC 게임 추천",
+        "RPG",
+        "오픈월드",
+        "Steam",
+        "로그라이크",
+        "MMORPG",
+        "액션게임 추천",
+        "시뮬레이션 게임 추천",
+        "RTS",
+        "리듬게임",
+        "오픈월드 게임추천",
+        "스팀할인",
+        "FPS",
+        "스팀 할인 게임 추천",
+        "오픈월드 게임",
+        "스팀 멀티게임",
+        "갓겜",
+        "스팀 세일",
+        "신작 게임",
+        "스팀게임 추천",
+        "스팀게임",
+        "로그라이크 게임 추천",
+        "steam 게임 추천",
+        "신작 게임 추천",
+        "best steam games",
+        "pc게임 추천",
+        "게임할인",
+        "스팀 신작",
+        "스팀 오픈월드 게임",
+        "게임추천",
+        "스팀 신작 게임",
+        "스팀 rpg",
+        "오픈월드 게임 추천",
+        "스팀 오픈월드 게임 추천",
+        "스팀 갓겜 추천",
+        "rpg 게임 추천"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "이번주의 만원이하 갓겜들 !! 스팀 게임 할인 추천 30가지 !! [ Steam 스팀 게임 추천/RPG/오픈월드/로그라이크 ]",
+        "description": "PC Steam 스팀 할인 게임 추천 30가지 !![ RPG/오픈월드/로그라이크/시뮬레이션 ]\n\n오늘의 썸네일:3\n00:00 인트로 (가이더스 제로)\n00:11 1.앤세스터 인류의 여정 (Ancestors: The Humankind Odyssey)\n00:48 2.파이널 벤데타 (FINAL VENDETTA)\n01:10 3.아일랜더스 새로운 해안 (Islanders New Shores)\n01:52 4.월드리스 (Worldless)\n02:18 5.주차도 못하네 (You Suck at Parking)\n02:48 6.트라이 투 드라이브 (Try To Drive)\n03:38 7.엠버 (Embr)\n04:04 8.스피릿 오브 더 노스 (Spirit of the North)\n04:40 9.문글로우 베이 (Moonglow Bay)\n05:11 10.마이닝 메크 (Mining Mechs)\n05:56 11.슈퍼 마이닝 메크 (Super Mining Mechs)\n06:41 12.트리키 타워 (Tricky Towers)\n07:22 13.커피 토크 에피소드 2 히비스커스 앤 버터 플라이 (Coffee Talk Episode 2: Hibiscus & Butterfly)\n08:02 14.커피 토크 (Coffee Talk)\n08:32 15.위스퍼 마운틴 아웃브레이크 (Whisper Mountain Outbreak)\n09:14 16.네세스 (Necesse)\n09:41 17.이스케이프 더 백룸 (Escape the Backrooms)\n10:04 18.방 탈출 시뮬레이터 (ESCAPE SIMULATOR)\n10:34 19.휴먼 폴 플랫 (Human: Fall Flat)\n11:06 20.포션 퍼밋 (Potion Permit)\n11:47 21.캐슬 오브 하트 리톨드 (Castle of Heart: Retold)\n12:25 22.스트레이 패스 (StrayPath)\n13:02 23.테일즈 앤 택틱스 (Tales & Tactics)\n13:41 24.로들너트 (Loddlenaut)\n14:28 25.힌터베르그의 던전 (Dungeons of Hinterberg)\n14:55 26.디센더스 (Descenders)\n15:27 27.사이버코프 (CyberCorp)\n16:01 28.에어본 킹덤 (Airborne Kingdom)\n16:25 29.배틀필드 4 (Battlefield 4)\n17:04 30.더 코마 2 비셔스 시스터즈 (The Coma 2: Vicious Sisters)\n17:36 아웃트로 (건즈 고어 앤 카놀리 2)\n\n#스팀게임 #스팀할인 #pc게임"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT17M48S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "4274",
+      "likeCount": "82",
+      "favoriteCount": "0",
+      "commentCount": "2"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "3elxWT0KTjdCLOGWFNTsEnqZxkY",
+    "id": "w92T_b3XuhA",
+    "snippet": {
+      "publishedAt": "2026-08-10T22:00:28Z",
+      "channelId": "UCqMTJbasrMf2wyz9xxy1aGw",
+      "title": "못 참고 욕 했습니다 죄송합니다..#서든어택 #라이브 #게임 ",
+      "description": "서든어택 같이 할 사람~~~\n\n나는 너희랑 함께 즐기고싶어\n그래서 시참을 좋아해 !!!\n\n카카오 오픈톡에 “김현재짱” 검색해서\n들어와서 방송 스케줄이랑 시참 신청해~~\n\n#서든어택 #게임 #라이브",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/w92T_b3XuhA/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/w92T_b3XuhA/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/w92T_b3XuhA/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/w92T_b3XuhA/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/w92T_b3XuhA/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "김현재짱",
+      "tags": [
+        "서든어택",
+        "라이브",
+        "게임"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "못 참고 욕 했습니다 죄송합니다..#서든어택 #라이브 #게임 ",
+        "description": "서든어택 같이 할 사람~~~\n\n나는 너희랑 함께 즐기고싶어\n그래서 시참을 좋아해 !!!\n\n카카오 오픈톡에 “김현재짱” 검색해서\n들어와서 방송 스케줄이랑 시참 신청해~~\n\n#서든어택 #게임 #라이브"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT9M21S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "43",
+      "likeCount": "1",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "3cvNDIO5Up5S7zHfE_fVzU6Lh2s",
+    "id": "vFyC48z5PY8",
+    "snippet": {
+      "publishedAt": "2026-08-10T15:14:40Z",
+      "channelId": "UCH3ug0WpeIb-4n5IzRZaObg",
+      "title": "[포켓몬 카드 게임 Pocket] 몽환퍼레이드 스트린더 ex 샘플",
+      "description": "남들 다 일레도리자드 메썬볼 쓸 때 혼자 스트린더 쓰는 사람\n그냥 스트린더 너무 좋아 맨\n그리고 마스는 태홍 두 장 넣으니까 각이 안나와서 걍 일렉트릭 코드로 바꾸는 게 나을 듯.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/vFyC48z5PY8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/vFyC48z5PY8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/vFyC48z5PY8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/vFyC48z5PY8/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/vFyC48z5PY8/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "만월쥐 ᘛ⁐̤ᕐᐷ  🌕",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[포켓몬 카드 게임 Pocket] 몽환퍼레이드 스트린더 ex 샘플",
+        "description": "남들 다 일레도리자드 메썬볼 쓸 때 혼자 스트린더 쓰는 사람\n그냥 스트린더 너무 좋아 맨\n그리고 마스는 태홍 두 장 넣으니까 각이 안나와서 걍 일렉트릭 코드로 바꾸는 게 나을 듯."
+      }
+    },
+    "contentDetails": {
+      "duration": "PT7M6S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "5",
+      "likeCount": "0",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "aBQ9Kk_cCymCLCnKU8uARdDBBNE",
+    "id": "pfZ5ihjmyBM",
+    "snippet": {
+      "publishedAt": "2026-08-10T14:00:05Z",
+      "channelId": "UCdFokJnw7U8cPGUSlHxzobQ",
+      "title": "토네이도에서 생존해야 하는 게임",
+      "description": "#똥겜 #웃긴영상 #병맛#공포 #공포",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/pfZ5ihjmyBM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/pfZ5ihjmyBM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/pfZ5ihjmyBM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/pfZ5ihjmyBM/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/pfZ5ihjmyBM/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "윤서진",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "토네이도에서 생존해야 하는 게임",
+        "description": "#똥겜 #웃긴영상 #병맛#공포 #공포"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT14M47S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "135",
+      "likeCount": "1",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "yjuloik3zMFuq35CrQSw27pU8ME",
+    "id": "gDZb9LZjd6o",
+    "snippet": {
+      "publishedAt": "2026-08-10T13:53:34Z",
+      "channelId": "UCUU9Hjfu8nLPmet5m1lGHjw",
+      "title": "여러분이 공포 게임을 만든다면? EP.05 | 등대 맵 전격 공개! (어떤 이상현상을 넣을까요?)",
+      "description": "안녕하세요!\n열심히 살고 보는 게임 개발자 주유입니다.\n시청해 주셔서 감사드립니다!\n\n지난 4탄에서 여러분의 뜨거운 투표 결과로 결정된 '등대지기' 컨셉!\n그 약속을 지키기 위해 이틀 동안 밤낮으로 에셋을 찾고 맵을 다듬어, 드디어 여러분께 첫 번째 등대 맵을 공개합니다!\n\n[EP.05 진행 상황]\n\n등대 맵 구축: 고립된 섬의 등대, 주변 나무와 물 질감 등 환경 디테일 추가\n조작감 개선: 1인칭 조작 시 시점과 이동을 분리하여 더욱 자연스러운 조작 구현\n기능 테스트: 헬리콥터 탈출 이벤트, 집 내부 복층 구조 등 다양한 상호작용 요소 기획 중\n\n[주유의 다음 질문: 등대에서 어떤 '이상현상'이 일어날까요?]\n\n이제 이 멋진 등대 맵을 공포스럽게 채울 차례입니다.\n창문 밖 바다에서 무언가 올라온다?\n등대 계단을 오르는데 끝이 안 난다?\n복층 집에 누군가 서 있다?\n\n여러분이 상상하는 가장 기괴하고 소름 돋는 '이상현상' 아이디어를 댓글로 마구마구 남겨주세요!\n채택된 아이디어는 게임에 직접 구현되고, 크레딧에 닉네임이 올라갑니다.\n\n=====================================\n\n[주유 링크 모음] https://litt.ly/developerjooyoo\n[각종 문의 이메일] no1acej@gmail.com\n\n=====================================\n\n모든 댓글은 영상에 쓰일 수 있습니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/gDZb9LZjd6o/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "게임 개발자 주유",
+      "tags": [
+        "게임개발자주유",
+        "공포게임",
+        "인디게임",
+        "게임개발",
+        "1인개발",
+        "모바일게임",
+        "8번출구",
+        "이상현상",
+        "등대지기",
+        "게임만들기",
+        "맵디자인"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "여러분이 공포 게임을 만든다면? EP.05 | 등대 맵 전격 공개! (어떤 이상현상을 넣을까요?)",
+        "description": "안녕하세요!\n열심히 살고 보는 게임 개발자 주유입니다.\n시청해 주셔서 감사드립니다!\n\n지난 4탄에서 여러분의 뜨거운 투표 결과로 결정된 '등대지기' 컨셉!\n그 약속을 지키기 위해 이틀 동안 밤낮으로 에셋을 찾고 맵을 다듬어, 드디어 여러분께 첫 번째 등대 맵을 공개합니다!\n\n[EP.05 진행 상황]\n\n등대 맵 구축: 고립된 섬의 등대, 주변 나무와 물 질감 등 환경 디테일 추가\n조작감 개선: 1인칭 조작 시 시점과 이동을 분리하여 더욱 자연스러운 조작 구현\n기능 테스트: 헬리콥터 탈출 이벤트, 집 내부 복층 구조 등 다양한 상호작용 요소 기획 중\n\n[주유의 다음 질문: 등대에서 어떤 '이상현상'이 일어날까요?]\n\n이제 이 멋진 등대 맵을 공포스럽게 채울 차례입니다.\n창문 밖 바다에서 무언가 올라온다?\n등대 계단을 오르는데 끝이 안 난다?\n복층 집에 누군가 서 있다?\n\n여러분이 상상하는 가장 기괴하고 소름 돋는 '이상현상' 아이디어를 댓글로 마구마구 남겨주세요!\n채택된 아이디어는 게임에 직접 구현되고, 크레딧에 닉네임이 올라갑니다.\n\n=====================================\n\n[주유 링크 모음] https://litt.ly/developerjooyoo\n[각종 문의 이메일] no1acej@gmail.com\n\n=====================================\n\n모든 댓글은 영상에 쓰일 수 있습니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT4M6S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "23",
+      "likeCount": "2",
+      "favoriteCount": "0",
+      "commentCount": "2"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "P4suoX5pGNgrrw3bI6UewyzfLEQ",
+    "id": "cBTc9aiWDNQ",
+    "snippet": {
+      "publishedAt": "2026-08-10T13:04:20Z",
+      "channelId": "UC4ckS118qdOEsZl8cYGK83g",
+      "title": "나의 인생 게임 TOP 10",
+      "description": "오랜만입니다. 예전부터 이런 영상을 만들어보고 싶어서 제작해보았고요.\n주기가 좀 있겠지만 간간히 영상 올려보겠습니다.\n늘 시청해주셔서 감사합니다!\n\n00:00 인트로\n00:21 10\n01:24 9\n02:23 8\n03:30 7\n04:40 6\n06:09 5\n08:30 4\n10:44 3\n12:24 2\n14:12 1\n16:14 아웃트로",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/cBTc9aiWDNQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/cBTc9aiWDNQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/cBTc9aiWDNQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/cBTc9aiWDNQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/cBTc9aiWDNQ/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "게임하는 누누집사",
+      "tags": [
+        "인생 게임",
+        "게임 추천",
+        "클레르 옵스퀴르 33원정대",
+        "오픈월드 게임 추천",
+        "오픈월드 게임",
+        "턴제게임 추천",
+        "턴제게임",
+        "로그라이크 게임 추천",
+        "리듬히어로",
+        "도와줘 리듬히어로",
+        "하데스",
+        "하데스 2",
+        "하데스 2 리뷰",
+        "응원단",
+        "바이오쇼크 인피니트",
+        "바이오 쇼크 인피니트 리뷰",
+        "33원정대 리뷰",
+        "클레르 옵스퀴르 33원정대 리뷰",
+        "스컬 리뷰",
+        "스컬 더 히어로 슬레이어 리뷰",
+        "다크소울 3 리뷰",
+        "소울라이크 게임 추천",
+        "액션 게임 추천",
+        "레드 데드 리뎀션 2 리뷰",
+        "레데리 2 리뷰",
+        "젤다의 전설 리뷰",
+        "젤다의 전설 야생의 숨결 리뷰",
+        "젤다의 전설 왕국의 눈물 리뷰",
+        "할로우 나이트 리뷰",
+        "할로우 나이트 실크송 리뷰",
+        "실크송 리뷰",
+        "인생 게임 추천",
+        "최고의 게임",
+        "명작 게임",
+        "명작 게임 추천"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "나의 인생 게임 TOP 10",
+        "description": "오랜만입니다. 예전부터 이런 영상을 만들어보고 싶어서 제작해보았고요.\n주기가 좀 있겠지만 간간히 영상 올려보겠습니다.\n늘 시청해주셔서 감사합니다!\n\n00:00 인트로\n00:21 10\n01:24 9\n02:23 8\n03:30 7\n04:40 6\n06:09 5\n08:30 4\n10:44 3\n12:24 2\n14:12 1\n16:14 아웃트로"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT16M41S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "15307",
+      "likeCount": "200",
+      "favoriteCount": "0",
+      "commentCount": "52"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "eyg_hn1zznULfvwqLC5knUwG4vE",
+    "id": "qY4hxrYYOic",
+    "snippet": {
+      "publishedAt": "2026-08-10T12:18:19Z",
+      "channelId": "UCPuD5ZRQWa_JCaY5NokNhtg",
+      "title": "[신작 모바일게임 추천] 영혼 수확 잠입 액션 어드벤처 게임 '데스 앤티크' (Death Antique) 플레이. 귀여운 2D 스텔스 호러 세로화면 스토리 게임 기대작 추천?",
+      "description": "#신작모바일게임 #모바일게임 #게임추천 #추천게임 #데스앤티크 #모바일게임기대작 #기대작모바일게임\n\n한글명칭: 데스 앤티크\n영문명칭: Death Antique\n일본어명칭: デスアンティーク - ステルスアクションホラーもふもふ -\n\n2026년 7월 23일 한국 및 글로벌 모바일 출시가 완료된 시간 조작 잠입 액션 어드벤처 게임, '데스 앤티크' (Death Antique, デスアンティーク - ステルスアクションホラーもふもふ -) 의 플레이 영상입니다. 현재 한국어를 지원하는 게임이며, 일본 소재 게임회사 'SLEEPINGMUSEUM' (슬리핑 뮤지엄) 에서 퍼블리싱하는 게임입니다.\n\n낫을 잃은 사신 소녀가 밤의 묘지에서 영혼을 수확해야한다는 컨셉의 잠입 액션 어드벤처 게임입니다. 슬리핑 뮤지엄 특유의 귀여운 그림체가 인상 깊은 게임으로, 귀여운 잠입 액션 게임을 좋아한다면 어느정도 할만한 괜찮은 게임이라고 생각합니다.\n\n주 BM은 강제 광고 및 인앱구매입니다. 자주 나오는 컨셉의 게임은 아니고, 광고가 게임 플레이에 지장을 줄 정도의 게임은 아니라서, 취향이라면 꽤 추천할만한 추천 게임이라고 생각합니다.\n\n[시간표]\n0:00 프롤로그 (PROLOGUE)\n2:19 전투 (BATTLE)\n\n다운로드(구글): https://play.google.com/store/apps/details?id=com.SleepingMuseum.DeathAntique",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/qY4hxrYYOic/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/qY4hxrYYOic/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/qY4hxrYYOic/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/qY4hxrYYOic/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/qY4hxrYYOic/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "게임달고나",
+      "tags": [
+        "신작 게임",
+        "신작게임",
+        "신작 모바일게임",
+        "신작모바일게임",
+        "모바일게임",
+        "수집형 게임",
+        "모바일 게임",
+        "출시예정 게임",
+        "모바일게임 기대작",
+        "기대작 모바일게임",
+        "기대작모바일게임",
+        "모바일게임기대작",
+        "모바일게임 추천",
+        "모바일게임추천",
+        "추천 모바일게임",
+        "추천모바일게임",
+        "게임 추천",
+        "게임추천",
+        "추천 게임",
+        "추천게임",
+        "잠입 액션 게임",
+        "잠입액션 게임",
+        "잠입액션게임",
+        "유료 게임",
+        "전략 게임",
+        "전략게임",
+        "액션 게임",
+        "액션게임",
+        "전략 게임 추천",
+        "전략게임 추천",
+        "전략게임추천",
+        "액션 게임 추천",
+        "액션게임 추천",
+        "액션게임추천",
+        "어드벤처 게임",
+        "어드벤처게임",
+        "어드벤처 게임 추천",
+        "어드벤처게임 추천",
+        "데스 앤티크",
+        "데스앤티크",
+        "Death Antique",
+        "デスアンティーク - ステルスアクションホラーもふもふ -",
+        "세로화면 게임",
+        "세로화면게임",
+        "세로화면 모바일게임",
+        "세로화면모바일게임",
+        "스토리 게임",
+        "스토리게임",
+        "스토리 모바일게임",
+        "스토리모바일게임",
+        "잠입 게임",
+        "잠입게임",
+        "액션 어드벤처 게임"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[신작 모바일게임 추천] 영혼 수확 잠입 액션 어드벤처 게임 '데스 앤티크' (Death Antique) 플레이. 귀여운 2D 스텔스 호러 세로화면 스토리 게임 기대작 추천?",
+        "description": "#신작모바일게임 #모바일게임 #게임추천 #추천게임 #데스앤티크 #모바일게임기대작 #기대작모바일게임\n\n한글명칭: 데스 앤티크\n영문명칭: Death Antique\n일본어명칭: デスアンティーク - ステルスアクションホラーもふもふ -\n\n2026년 7월 23일 한국 및 글로벌 모바일 출시가 완료된 시간 조작 잠입 액션 어드벤처 게임, '데스 앤티크' (Death Antique, デスアンティーク - ステルスアクションホラーもふもふ -) 의 플레이 영상입니다. 현재 한국어를 지원하는 게임이며, 일본 소재 게임회사 'SLEEPINGMUSEUM' (슬리핑 뮤지엄) 에서 퍼블리싱하는 게임입니다.\n\n낫을 잃은 사신 소녀가 밤의 묘지에서 영혼을 수확해야한다는 컨셉의 잠입 액션 어드벤처 게임입니다. 슬리핑 뮤지엄 특유의 귀여운 그림체가 인상 깊은 게임으로, 귀여운 잠입 액션 게임을 좋아한다면 어느정도 할만한 괜찮은 게임이라고 생각합니다.\n\n주 BM은 강제 광고 및 인앱구매입니다. 자주 나오는 컨셉의 게임은 아니고, 광고가 게임 플레이에 지장을 줄 정도의 게임은 아니라서, 취향이라면 꽤 추천할만한 추천 게임이라고 생각합니다.\n\n[시간표]\n0:00 프롤로그 (PROLOGUE)\n2:19 전투 (BATTLE)\n\n다운로드(구글): https://play.google.com/store/apps/details?id=com.SleepingMuseum.DeathAntique"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M4S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "482",
+      "likeCount": "12",
+      "favoriteCount": "0",
+      "commentCount": "4"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "xKnZRX48dxvLpEF-sjERsYwjpbw",
+    "id": "ogKByZ2m7-0",
+    "snippet": {
+      "publishedAt": "2026-08-10T12:15:53Z",
+      "channelId": "UC7MbQzcQc73UU489d8cR1VA",
+      "title": "이번 주 신작 총정리! 예약판매·펀딩·출시 예정작｜보드게임 뉴스 8월 2주차",
+      "description": "이번 주 국내 보드게임 소식을 보라가 한 번에 정리해 드립니다.\n예약판매와 9월 출시 예정작, 제작 진행 현황, 펀딩과 장기 선주문까지 지금 확인할 주요 소식을 빠르게 살펴보세요.\n\n00:00 오프닝\n00:20 클랜 오브 칼레도니아 예약판매\n00:47 P.I. 긴급 예약판매\n01:02 도망자 BGA 토너먼트\n01:16 17 다이스 벳\n01:42 스마트10 트래블\n02:10 배틀쉽 출시\n02:37 테트리스 보드게임 출시\n02:58 코리아보드게임즈 준비 중인 게임\n03:20 윙스팬 포켓·출시 임박 라인업\n03:39 로잘리 펀딩\n03:57 안드로메다 엣지\n04:19 남티그리스의 발명가·달의 서사시\n04:47 팝콘에듀 8·9월 신작\n05:05 블루올리노·나이트 플라워즈 라스트콜\n05:33 클로징\n05:54 엔딩\n\n[이번 주 주요 소식]\n- 클랜 오브 칼레도니아: 개별 예약판매와 메탈 코인 옵션\n- P.I.: 추가 긴급 예약판매\n- 도망자: 보드게임 아레나 토너먼트\n- 17 다이스 벳·스마트10 트래블: 만두게임즈 9월 출시 예정\n- 코리아보드게임즈: 배틀쉽·테트리스 출시 및 어콰이어 60주년 기념판·아컴호러 카드게임·윙스팬 포켓 등 제작 진행\n- 로잘리 펀딩, 안드로메다 엣지 생산 소식\n- 남티그리스의 발명가·달의 서사시 한국어판 선주문\n- 팝콘에듀 8·9월 신작과 커넥트게임즈 라스트콜\n\n[공식/참고 링크]\n- 코리아보드게임즈 8월 10일 출시작: https://www.koreaboardgames.com/magazine/menuDetail?boardCd=news&postNo=893\n- 코리아보드게임즈 준비 중인 게임: https://www.koreaboardgames.com/magazine/menuDetail?boardCd=news&postNo=886\n- 보드엠 8월 소식지: https://boardm.co.kr/article/공지사항소식지/1/71971/\n- 히트게임즈 선주문: https://www.hitgames.kr/shop/item.php?it_id=1785118837\n- 국내 보드게임 소식 모음: https://boardlife.co.kr/board/share/board_news/1\n\n※ 영상 속 일정·재고·마감 정보는 2026년 8월 8일 확인 내용을 바탕으로 하며, 변동될 수 있으니 각 판매처와 펀딩 페이지의 최신 공지를 확인해 주세요.\n\n* 보드라이브 *\n멤버십 가입: https://www.youtube.com/c/boardlive/join\n\n문의 이메일: hans@hangom.com\n보라돌이 오픈 카톡방: https://open.kakao.com/o/grbkX3L\n\n치지직: https://tinyurl.com/2987zaqa\n페이스북 페이지: https://www.facebook.com/BoardLive/\n인스타그램: https://www.instagram.com/boardlivegame/\n유튜브 채널: https://www.youtube.com/c/boardlive/\n\n#보드게임 #보드게임뉴스 #보드라이브",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/ogKByZ2m7-0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/ogKByZ2m7-0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/ogKByZ2m7-0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/ogKByZ2m7-0/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/ogKByZ2m7-0/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "보드라이브 BoardLiveGame",
+      "tags": [
+        "17 다이스 벳",
+        "P.I.",
+        "국내 보드게임",
+        "나이트 플라워즈",
+        "남티그리스의 발명가",
+        "달의 서사시",
+        "도망자",
+        "로잘리",
+        "배틀쉽",
+        "보드게임",
+        "보드게임 아레나",
+        "보드게임 예약판매",
+        "보드게임 펀딩",
+        "보드게임뉴스",
+        "보드라이브",
+        "블루올리노",
+        "스마트10",
+        "신작 보드게임",
+        "아컴호러 카드게임",
+        "안드로메다 엣지",
+        "어콰이어 60주년 기념판",
+        "윙스팬 포켓",
+        "클랜 오브 칼레도니아",
+        "테트리스 보드게임",
+        "팝콘에듀"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "이번 주 신작 총정리! 예약판매·펀딩·출시 예정작｜보드게임 뉴스 8월 2주차",
+        "description": "이번 주 국내 보드게임 소식을 보라가 한 번에 정리해 드립니다.\n예약판매와 9월 출시 예정작, 제작 진행 현황, 펀딩과 장기 선주문까지 지금 확인할 주요 소식을 빠르게 살펴보세요.\n\n00:00 오프닝\n00:20 클랜 오브 칼레도니아 예약판매\n00:47 P.I. 긴급 예약판매\n01:02 도망자 BGA 토너먼트\n01:16 17 다이스 벳\n01:42 스마트10 트래블\n02:10 배틀쉽 출시\n02:37 테트리스 보드게임 출시\n02:58 코리아보드게임즈 준비 중인 게임\n03:20 윙스팬 포켓·출시 임박 라인업\n03:39 로잘리 펀딩\n03:57 안드로메다 엣지\n04:19 남티그리스의 발명가·달의 서사시\n04:47 팝콘에듀 8·9월 신작\n05:05 블루올리노·나이트 플라워즈 라스트콜\n05:33 클로징\n05:54 엔딩\n\n[이번 주 주요 소식]\n- 클랜 오브 칼레도니아: 개별 예약판매와 메탈 코인 옵션\n- P.I.: 추가 긴급 예약판매\n- 도망자: 보드게임 아레나 토너먼트\n- 17 다이스 벳·스마트10 트래블: 만두게임즈 9월 출시 예정\n- 코리아보드게임즈: 배틀쉽·테트리스 출시 및 어콰이어 60주년 기념판·아컴호러 카드게임·윙스팬 포켓 등 제작 진행\n- 로잘리 펀딩, 안드로메다 엣지 생산 소식\n- 남티그리스의 발명가·달의 서사시 한국어판 선주문\n- 팝콘에듀 8·9월 신작과 커넥트게임즈 라스트콜\n\n[공식/참고 링크]\n- 코리아보드게임즈 8월 10일 출시작: https://www.koreaboardgames.com/magazine/menuDetail?boardCd=news&postNo=893\n- 코리아보드게임즈 준비 중인 게임: https://www.koreaboardgames.com/magazine/menuDetail?boardCd=news&postNo=886\n- 보드엠 8월 소식지: https://boardm.co.kr/article/공지사항소식지/1/71971/\n- 히트게임즈 선주문: https://www.hitgames.kr/shop/item.php?it_id=1785118837\n- 국내 보드게임 소식 모음: https://boardlife.co.kr/board/share/board_news/1\n\n※ 영상 속 일정·재고·마감 정보는 2026년 8월 8일 확인 내용을 바탕으로 하며, 변동될 수 있으니 각 판매처와 펀딩 페이지의 최신 공지를 확인해 주세요.\n\n* 보드라이브 *\n멤버십 가입: https://www.youtube.com/c/boardlive/join\n\n문의 이메일: hans@hangom.com\n보라돌이 오픈 카톡방: https://open.kakao.com/o/grbkX3L\n\n치지직: https://tinyurl.com/2987zaqa\n페이스북 페이지: https://www.facebook.com/BoardLive/\n인스타그램: https://www.instagram.com/boardlivegame/\n유튜브 채널: https://www.youtube.com/c/boardlive/\n\n#보드게임 #보드게임뉴스 #보드라이브"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT6M7S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "true",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "1445",
+      "likeCount": "24",
+      "favoriteCount": "0",
+      "commentCount": "14"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "jizD1hl8_QSDg3d-s7kGE7HtxSM",
+    "id": "PrIahObgW-M",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:51:06Z",
+      "channelId": "UCKHWY0HkvrgOzNJqshxJrVQ",
+      "title": "방구석 게임 유튜버의 첫 체스 불렛 입문기 #chess #chessgame #chessbullet",
+      "description": "오늘은 체스 불렛을 요즘 거의 안 하다가\n다시 한번 도전해보고 싶어서 해봤는데\n역시 시간제한떄문에 너무 어렵습니다.\n\n저번에도 이렇게 시간제한 패 당하다가 빡종했던 기억이..\n\n뭐든 좀만 더 하려는 언더독에서 탑독 되겠습니다.\n체스 영상 재밌게 보셨다면 무조건 구독 좀 부탁드립니다.\n좋아요도, 알림설정까지!",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/PrIahObgW-M/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/PrIahObgW-M/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/PrIahObgW-M/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/PrIahObgW-M/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/PrIahObgW-M/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "언더독에서 탑독 [종합게임]",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "방구석 게임 유튜버의 첫 체스 불렛 입문기 #chess #chessgame #chessbullet",
+        "description": "오늘은 체스 불렛을 요즘 거의 안 하다가\n다시 한번 도전해보고 싶어서 해봤는데\n역시 시간제한떄문에 너무 어렵습니다.\n\n저번에도 이렇게 시간제한 패 당하다가 빡종했던 기억이..\n\n뭐든 좀만 더 하려는 언더독에서 탑독 되겠습니다.\n체스 영상 재밌게 보셨다면 무조건 구독 좀 부탁드립니다.\n좋아요도, 알림설정까지!"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT16M20S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "80",
+      "likeCount": "0",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "-vw4aWb-u7rl5CViwbm1rGUQRPQ",
+    "id": "k8-2kMX0g90",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:19:15Z",
+      "channelId": "UCXmK0uG99W2I1ipwOfk8RlA",
+      "title": "[몬타비]신작게임 팰월드와 슬레이더슬레이어를 합친 게임 !!! #덱빌딩 #카드 #스팀게임",
+      "description": "📢 광고/프로모션 문의 \n카톡 : yjmoon78\n이메일 : yjmoon350326@gmail.com\n\n계좌후원 :  토스 1000-2305-2203 ㅁㅇㅈ\n투네후원 : https://toon.at/donate/0wn78\n\n음악 저작권 출처:유투버 뮤직\n영상 저작권 출처 :난닝구TV",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/k8-2kMX0g90/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/k8-2kMX0g90/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/k8-2kMX0g90/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/k8-2kMX0g90/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        }
+      },
+      "channelTitle": "뚜준(RPG의GOD)",
+      "tags": [
+        "#난닝구",
+        "#우레",
+        "#만만",
+        "#불도그",
+        "#모바일게임",
+        "MMORPG",
+        "#리뷰",
+        "#공략"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[몬타비]신작게임 팰월드와 슬레이더슬레이어를 합친 게임 !!! #덱빌딩 #카드 #스팀게임",
+        "description": "📢 광고/프로모션 문의 \n카톡 : yjmoon78\n이메일 : yjmoon350326@gmail.com\n\n계좌후원 :  토스 1000-2305-2203 ㅁㅇㅈ\n투네후원 : https://toon.at/donate/0wn78\n\n음악 저작권 출처:유투버 뮤직\n영상 저작권 출처 :난닝구TV"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT7M30S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "1789",
+      "likeCount": "2",
+      "favoriteCount": "0",
+      "commentCount": "1"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "6Fbgkegqbl75JFlQCz5Ci05Ro_o",
+    "id": "cszohg7XAlM",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:13:35Z",
+      "channelId": "UC3jBnE0fdNZTM_A-4-o3ARw",
+      "title": "[부탁해 아이프리 게임] 역시 라이브는 큰 무대에서 해야 제맛이야. (비밀의 프리파라 미래 코디, 부탁해 아이프리!)",
+      "description": "#아이프리 #アイプリ #aipri \n오랜 기간 아이프리 버스에서 라이브 한 슈퍼 미레이, 앞에 혼자서 라이브에 이어 이번엔 아오이와 듀오 라이브를 합니다.\n\n1. 플레이일자 : 2026년 5월 17일\n2. 플레이 장소 : 일본 타이토 스테이션 오사카 난바점\n3. 캐릭터 : 슈퍼 미레이 (마이캐릭터)\n4. 코디 : 비밀의 프리파라 미래 코디\n5. 노래 : 아오이, 이노리, 구미, 올리비아, 나나, 엠마 - 부탁해 아이프리!\n\n\n\n長い間アイプリバースでライブを行ってきたスーパーみれぃ、前回は一人でライブをした後、今回はあおいとデュオライブをします。\n\n1. プレイ日：2026年5月17日\n2. プレイ場所：タイトーステーション 難波店\n3. キャラクター : スーパーみれぃ（マイキャラ）\n4. コーディネート：ひみつのプリパラみれぃ\n5. 歌：あおい、いのり、ぐみ、おりびあ、ナナ、エマ - おねがいアイプリ！",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/cszohg7XAlM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/cszohg7XAlM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/cszohg7XAlM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/cszohg7XAlM/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/cszohg7XAlM/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "맥스리사 채널 MAX LISA CHANNEL",
+      "tags": [
+        "부탁해아이프리",
+        "아이프리버스",
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[부탁해 아이프리 게임] 역시 라이브는 큰 무대에서 해야 제맛이야. (비밀의 프리파라 미래 코디, 부탁해 아이프리!)",
+        "description": "#아이프리 #アイプリ #aipri \n오랜 기간 아이프리 버스에서 라이브 한 슈퍼 미레이, 앞에 혼자서 라이브에 이어 이번엔 아오이와 듀오 라이브를 합니다.\n\n1. 플레이일자 : 2026년 5월 17일\n2. 플레이 장소 : 일본 타이토 스테이션 오사카 난바점\n3. 캐릭터 : 슈퍼 미레이 (마이캐릭터)\n4. 코디 : 비밀의 프리파라 미래 코디\n5. 노래 : 아오이, 이노리, 구미, 올리비아, 나나, 엠마 - 부탁해 아이프리!\n\n\n\n長い間アイプリバースでライブを行ってきたスーパーみれぃ、前回は一人でライブをした後、今回はあおいとデュオライブをします。\n\n1. プレイ日：2026年5月17日\n2. プレイ場所：タイトーステーション 難波店\n3. キャラクター : スーパーみれぃ（マイキャラ）\n4. コーディネート：ひみつのプリパラみれぃ\n5. 歌：あおい、いのり、ぐみ、おりびあ、ナナ、エマ - おねがいアイプリ！"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT5M37S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "regionRestriction": {
+        "blocked": [
+          "AE",
+          "AF",
+          "AM",
+          "AZ",
+          "BD",
+          "BH",
+          "BN",
+          "BT",
+          "CN",
+          "FJ",
+          "FM",
+          "GE",
+          "HK",
+          "ID",
+          "IL",
+          "IN",
+          "IQ",
+          "IR",
+          "JO",
+          "KG",
+          "KH",
+          "KI",
+          "KP",
+          "KW",
+          "KZ",
+          "LA",
+          "LB",
+          "LK",
+          "MH",
+          "MM",
+          "MN",
+          "MO",
+          "MV",
+          "MY",
+          "NP",
+          "NR",
+          "OM",
+          "PG",
+          "PH",
+          "PK",
+          "PS",
+          "PW",
+          "QA",
+          "SA",
+          "SB",
+          "SG",
+          "SY",
+          "TH",
+          "TJ",
+          "TL",
+          "TM",
+          "TO",
+          "TR",
+          "TV",
+          "TW",
+          "UZ",
+          "VN",
+          "VU",
+          "WS",
+          "YE"
+        ]
+      },
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "1110",
+      "likeCount": "11",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "svid-qc3XGgl6QlWmYEOQ6OEN0M",
+    "id": "AoT-MVLCuB4",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:10:50Z",
+      "channelId": "UCJUtQceottFnMmH_8hpqX8Q",
+      "title": "[게임 리뷰] 어쌔신 크리드: 블랙 플래그 리싱크드 - 이게 고점이라고? [잿빛선언]",
+      "description": "#유비소프트후원 #광고\n리뷰 카피 제공: 유비소프트\n제목: 어쌔신 크리드: 블랙 플래그 리싱크드\n개발: 유비소프트 싱가폴\n장르: 액션 어드벤처\n출시: 2026년 7월 9일\n리뷰 기종: PC\n리뷰 점수 기준: https://youtu.be/xfgvedhobg8?t=72\n\n﻿00:00 ﻿Special Thanks to Ubisoft\n00:11 오프닝\n02:04 소극적인 리메이크, 실망스러운 퀄리티\n08:36 과감하지 않았기에 튀어나온 장점들\n13:42 평결 6/10",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/AoT-MVLCuB4/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/AoT-MVLCuB4/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/AoT-MVLCuB4/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/AoT-MVLCuB4/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/AoT-MVLCuB4/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "잿빛선언 게임리뷰",
+      "tags": [
+        "Ubisoft Creator Program",
+        "유비소프트",
+        "게임 리뷰",
+        "어쌔신 크리드",
+        "어쌔신 크리드 블랙 플래그",
+        "어쌔신 크리드 블랙 플래그 리싱크드"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[게임 리뷰] 어쌔신 크리드: 블랙 플래그 리싱크드 - 이게 고점이라고? [잿빛선언]",
+        "description": "#유비소프트후원 #광고\n리뷰 카피 제공: 유비소프트\n제목: 어쌔신 크리드: 블랙 플래그 리싱크드\n개발: 유비소프트 싱가폴\n장르: 액션 어드벤처\n출시: 2026년 7월 9일\n리뷰 기종: PC\n리뷰 점수 기준: https://youtu.be/xfgvedhobg8?t=72\n\n﻿00:00 ﻿Special Thanks to Ubisoft\n00:11 오프닝\n02:04 소극적인 리메이크, 실망스러운 퀄리티\n08:36 과감하지 않았기에 튀어나온 장점들\n13:42 평결 6/10"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT16M27S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "243",
+      "likeCount": "10",
+      "favoriteCount": "0",
+      "commentCount": "5"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "WPo7BUtYtcdbJdQ99lB-F2Y5EXA",
+    "id": "2Gj19YVfvWc",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:00:38Z",
+      "channelId": "UCxM_h0LDzNU0XVD8YWCb17A",
+      "title": "내가 그린 캐릭터를 직접 키울 수 있는 게임이라고??",
+      "description": "#취한무드등 #취무등\n배경화면으로도 가능한 게 킥이네\n\n\n\n\n편집 - 엽록소님\n썸네일 - 취한무드등",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/2Gj19YVfvWc/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/2Gj19YVfvWc/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/2Gj19YVfvWc/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/2Gj19YVfvWc/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/2Gj19YVfvWc/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "취한무드등",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "내가 그린 캐릭터를 직접 키울 수 있는 게임이라고??",
+        "description": "#취한무드등 #취무등\n배경화면으로도 가능한 게 킥이네\n\n\n\n\n편집 - 엽록소님\n썸네일 - 취한무드등"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M4S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "98729",
+      "likeCount": "3037",
+      "favoriteCount": "0",
+      "commentCount": "103"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "4aeXNcRe_p1GQHImE8FBeteWfEo",
+    "id": "DZgEYywXjBo",
+    "snippet": {
+      "publishedAt": "2026-08-10T11:00:16Z",
+      "channelId": "UC-S8JFhLkQ5enhB70c2CYIw",
+      "title": "12시 원정대 : 8비트 보스 잡기",
+      "description": "#12시원정대 #8bit #8비트레이드\n\n\n편집 : 같별님\n썸네일 :  프루님\n생방송 : https://chzzk.naver.com/912b559dcdd9c9ea1fe97864925738bf\n다시보기 : https://www.youtube.com/왈도쿤다시보기\n비즈니스 : Dokun@sandbox.co.kr\n\n◈썸네일과 영상 내 이미지 소스는 허가 없이 재가공 및 배포를 금지합니다",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/DZgEYywXjBo/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "왈도쿤",
+      "tags": [
+        "왈도쿤",
+        "게임",
+        "치지직",
+        "스트리머",
+        "워크3",
+        "워크3 유즈맵",
+        "워크래프트",
+        "8비트 레이드",
+        "8비트",
+        "록맨",
+        "샌즈",
+        "12시 원정대",
+        "여까",
+        "하우카우",
+        "아무탈",
+        "델로략국",
+        "통깡이",
+        "보스전",
+        "레이드"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "12시 원정대 : 8비트 보스 잡기",
+        "description": "#12시원정대 #8bit #8비트레이드\n\n\n편집 : 같별님\n썸네일 :  프루님\n생방송 : https://chzzk.naver.com/912b559dcdd9c9ea1fe97864925738bf\n다시보기 : https://www.youtube.com/왈도쿤다시보기\n비즈니스 : Dokun@sandbox.co.kr\n\n◈썸네일과 영상 내 이미지 소스는 허가 없이 재가공 및 배포를 금지합니다"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT19M47S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "247615",
+      "likeCount": "4103",
+      "favoriteCount": "0",
+      "commentCount": "250"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "0m-tiQ0KniE3_iEpbggA6nWFyLY",
+    "id": "ueLdRU4MH7Y",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:15:29Z",
+      "channelId": "UCLbu7EWJ2DEQVH5UpwN4-fQ",
+      "title": "Inscryption 인스크립션 모드게임",
+      "description": "안녕하세요\n\n생방은 매주 월금~21시 이후부터 시작합니다 자주 놀러오세요\n\nBlack jacket,Balatro,Inscryption.Slay the Spire,cheat death,Marvel snap 덱 빌딩게임 아바타도 진행합니다",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/ueLdRU4MH7Y/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/ueLdRU4MH7Y/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/ueLdRU4MH7Y/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/ueLdRU4MH7Y/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/ueLdRU4MH7Y/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "킴우드",
+      "tags": [
+        "#공황장애",
+        "#공황장애증상",
+        "#공황장애치료",
+        "#공황장애약",
+        "#공황장애원인",
+        "#공황발작",
+        "#공황발작증상",
+        "#공황발작치료",
+        "#공황발작약",
+        "#공황발작종류",
+        "#예기불안",
+        "#정신과치료",
+        "#정신의학과",
+        "#예기불안치료",
+        "#공황장애극복",
+        "#공황장애모임",
+        "#공황장애사연",
+        "#공황장애진단",
+        "#게임",
+        "#종합게임",
+        "#유투버",
+        "#라이브",
+        "#라이브스트리밍",
+        "#게임방송",
+        "#대화",
+        "#소통",
+        "#사연공유",
+        "#극복방법",
+        "#치료방법"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "Inscryption 인스크립션 모드게임",
+        "description": "안녕하세요\n\n생방은 매주 월금~21시 이후부터 시작합니다 자주 놀러오세요\n\nBlack jacket,Balatro,Inscryption.Slay the Spire,cheat death,Marvel snap 덱 빌딩게임 아바타도 진행합니다"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT15M36S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "21",
+      "likeCount": "5",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "QJy74AZHuUwpODkSDnKEJJ2NcV0",
+    "id": "LNz_aUc3-4M",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:00:37Z",
+      "channelId": "UC02q5KQXQib48yWkJqFTeMg",
+      "title": "[뱅드림! 아워 노트] 출시 전부터 도파민 터져버린 리듬게임 ㅋㅋㅋㅋㅋ",
+      "description": "벌써 사전예약 100만 넘었던데 갓겜 떤냐...?\nhttps://bdon.onelink.me/dBdu/dabi_2608\n\n\n- 뱅드림! 아워 노트 사전예약: https://bdon.onelink.me/dBdu/v8uzt4mf\n- 뱅드림! 아워 노트 공식홈페이지: https://bdon.biligames.com/?lang=ko-kr\n- 뱅드림! 아워 노트 X: https://x.com/bangdreamon_KR\n- 뱅드림! 아워 노트 디스코드:  https://discord.com/invite/ournotes\n\n시청 감사함미다!☺️\n\n\n#뱅드림 #아워노트",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/LNz_aUc3-4M/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/LNz_aUc3-4M/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/LNz_aUc3-4M/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/LNz_aUc3-4M/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/LNz_aUc3-4M/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "다븨 Dabi",
+      "tags": [
+        "프로세카",
+        "손캠"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[뱅드림! 아워 노트] 출시 전부터 도파민 터져버린 리듬게임 ㅋㅋㅋㅋㅋ",
+        "description": "벌써 사전예약 100만 넘었던데 갓겜 떤냐...?\nhttps://bdon.onelink.me/dBdu/dabi_2608\n\n\n- 뱅드림! 아워 노트 사전예약: https://bdon.onelink.me/dBdu/v8uzt4mf\n- 뱅드림! 아워 노트 공식홈페이지: https://bdon.biligames.com/?lang=ko-kr\n- 뱅드림! 아워 노트 X: https://x.com/bangdreamon_KR\n- 뱅드림! 아워 노트 디스코드:  https://discord.com/invite/ournotes\n\n시청 감사함미다!☺️\n\n\n#뱅드림 #아워노트"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT13M4S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "10768",
+      "likeCount": "270",
+      "favoriteCount": "0",
+      "commentCount": "53"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "j7WmJm6ILK43mZfZtaElGSS91Ds",
+    "id": "sL-5nAKv_Ig",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:01:23Z",
+      "channelId": "UCw1DsweY9b2AKGjV4kGJP1A",
+      "title": "켈황은 항상 자넬 지켜보고 있다네 | BFX vs KRX 게임 2 하이라이트 | 2026 LCK",
+      "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/sL-5nAKv_Ig/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "LCK",
+      "tags": [
+        "LCK",
+        "LCK Korea",
+        "롤챔스",
+        "리그오브레전드",
+        "LoL",
+        "티원",
+        "에욱",
+        "SNL",
+        "LCK썸네일",
+        "편집자",
+        "스크",
+        "T1",
+        "SKT",
+        "skt",
+        "t1",
+        "썸네일",
+        "DK",
+        "GEN",
+        "DRX",
+        "KT",
+        "HLE",
+        "POG",
+        "MVP",
+        "WORLDS",
+        "롤드컵",
+        "MSI",
+        "ALLSTAR",
+        "NS",
+        "한화생명",
+        "농심",
+        "케이티",
+        "젠지",
+        "아프리카",
+        "담원",
+        "브리온",
+        "Brion",
+        "BRO",
+        "므시",
+        "올스타",
+        "매드무비",
+        "MIC Check",
+        "MIC 첵",
+        "롤분토론",
+        "동준좌",
+        "클템",
+        "성캐",
+        "위클리 매드무비",
+        "전프시",
+        "오프더레코드",
+        "월드챔피언십",
+        "단톡",
+        "롤더넥",
+        "마이크체크",
+        "베스트모먼트",
+        "롤리나잇",
+        "성캐쇼",
+        "혓바닥터스",
+        "헬리오스",
+        "캡틴잭",
+        "빠른별",
+        "샤이",
+        "디플러스 기아",
+        "디플",
+        "플레임",
+        "시크릿보드룸",
+        "단군",
+        "꼬꼬갓",
+        "고수진",
+        "배혜지",
+        "윤수빈",
+        "노페",
+        "박진영",
+        "마이크",
+        "롤즈",
+        "위클리",
+        "롤하이라이트",
+        "디엔프릭스",
+        "든프",
+        "프린스",
+        "BFX",
+        "BNK FearX",
+        "분석데스크",
+        "이은빈",
+        "DNS",
+        "DN Soopers"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "켈황은 항상 자넬 지켜보고 있다네 | BFX vs KRX 게임 2 하이라이트 | 2026 LCK",
+        "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT13M37S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "9435",
+      "likeCount": "41",
+      "favoriteCount": "0",
+      "commentCount": "8"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "Pd9XVYf616e1R3GM2VU3Ke0n3xk",
+    "id": "3z2rDFICsEA",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:00:35Z",
+      "channelId": "UCNzcxCN_Hh_lu5RCSFXKgGQ",
+      "title": "전설 무기를 파밍해서 강해지는 FPS 신작!!  (시간삭제 게임)",
+      "description": "에이버튼의 건즈 앤 드래곤즈 PV : https://youtu.be/bV66JA71LLY?si=EEv1Zk7xNrVtrxJL\n위시리스트 등록!\n- 스팀 : https://store.steampowered.com/app/4687860/_/?l=koreana\n- 에픽게임즈 : https://store.epicgames.com/p/guns-and-dragons-8b2abb\n공식 디스코드 참여 : https://discord.gg/Kv6Ky2QAWS\n\n》김블루 멤버십 가입하기 : https://www.youtube.com/channel/UCNzcxCN_Hh_lu5RCSFXKgGQ/join\n》시청자 디스코드 공지방 : https://discord.gg/z9pY7PJ\n》인스타그램 : https://www.instagram.com/kimblue_37\n》치지직 바로가기 : https://chzzk.naver.com/0de8f1807076169b7eb9218137e99c51\n》팬카페 : https://cafe.naver.com/bloodang\n★ 지금 구독하기 & 좋아요 버튼 꼭 눌러주세요! 큰 힘이 됩니다 ★\n\n문의 안내\n비즈니스 문의 : contact@sandbox.co.kr\n콘텐츠 메일 : kimblue@googlegroups.com\n( 보내주신 메일은 본 영상 업로드 날짜 기준 소속사 (주)샌드박스네트워크 파트너팀 · 법무팀이 관리합니다. )\n( ⚠ 배틀그라운드 이용·정지 관련 문의는 보내지 말아주세요. 제가 도와드릴 수 없습니다 ㅜㅜ )\n\n#건즈앤드래곤즈 #김블루 #금휘 #콩천\n\n00:00 건즈앤드래곤\n01:09 바로 일단 렛츠 고\n02:45 팀원이 살려줄 수 있음\n04:34 아이모 설명\n06:34 전투 후에는 제작 및 건축 가능\n08:53 아티팩트 판매  가능\n09:34 들어와 버렸다 이거!\n11:43 보스다!\n13:54 데모버전은 여기까지~",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/3z2rDFICsEA/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/3z2rDFICsEA/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/3z2rDFICsEA/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/3z2rDFICsEA/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/3z2rDFICsEA/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "김블루",
+      "tags": [
+        "김블루"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "전설 무기를 파밍해서 강해지는 FPS 신작!!  (시간삭제 게임)",
+        "description": "에이버튼의 건즈 앤 드래곤즈 PV : https://youtu.be/bV66JA71LLY?si=EEv1Zk7xNrVtrxJL\n위시리스트 등록!\n- 스팀 : https://store.steampowered.com/app/4687860/_/?l=koreana\n- 에픽게임즈 : https://store.epicgames.com/p/guns-and-dragons-8b2abb\n공식 디스코드 참여 : https://discord.gg/Kv6Ky2QAWS\n\n》김블루 멤버십 가입하기 : https://www.youtube.com/channel/UCNzcxCN_Hh_lu5RCSFXKgGQ/join\n》시청자 디스코드 공지방 : https://discord.gg/z9pY7PJ\n》인스타그램 : https://www.instagram.com/kimblue_37\n》치지직 바로가기 : https://chzzk.naver.com/0de8f1807076169b7eb9218137e99c51\n》팬카페 : https://cafe.naver.com/bloodang\n★ 지금 구독하기 & 좋아요 버튼 꼭 눌러주세요! 큰 힘이 됩니다 ★\n\n문의 안내\n비즈니스 문의 : contact@sandbox.co.kr\n콘텐츠 메일 : kimblue@googlegroups.com\n( 보내주신 메일은 본 영상 업로드 날짜 기준 소속사 (주)샌드박스네트워크 파트너팀 · 법무팀이 관리합니다. )\n( ⚠ 배틀그라운드 이용·정지 관련 문의는 보내지 말아주세요. 제가 도와드릴 수 없습니다 ㅜㅜ )\n\n#건즈앤드래곤즈 #김블루 #금휘 #콩천\n\n00:00 건즈앤드래곤\n01:09 바로 일단 렛츠 고\n02:45 팀원이 살려줄 수 있음\n04:34 아이모 설명\n06:34 전투 후에는 제작 및 건축 가능\n08:53 아티팩트 판매  가능\n09:34 들어와 버렸다 이거!\n11:43 보스다!\n13:54 데모버전은 여기까지~"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT15M49S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "284976",
+      "likeCount": "1712",
+      "favoriteCount": "0",
+      "commentCount": "84"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "HBSyqeEXJuElgGqYtQdWRFXHcYI",
+    "id": "yPuwSJI5NRA",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:00:17Z",
+      "channelId": "UC_GjUK-PLit40PLMOux6png",
+      "title": "역대급 공포게임이 출시됩니다.. | 데모맨 두꼼",
+      "description": "출시예정 게임의 데모판을 먼저 플레이하는 데모맨💣 콘텐츠\n\n게임: Clawed\n링크: https://store.steampowered.com/app/3394840/Clawed/\n\n\nArtist : ErikMMusic\nTitle : High Atop the Tower\nYouTube : https://youtu.be/kHQr4V1eeBs?si=HAP2tsIHW3tw72li\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/gt_V76mrzVE?si=LqwA2y0CIDg4T-yw\n\nArtist : ErikMMusic\nTitle : Reborn (Main Menu)\nYouTube : https://youtu.be/WKgg0bHKyvQ?si=tJqva80derFUrusk\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/uX3Yyj5WDfg?si=8D5s1UQmHGgsHgQQ\n\nArtist : ErikMMusic\nTitle : The Dusty Attic\nYouTube : https://youtu.be/7iVudI95Ebc?si=DA68kDAiKloHQPU8\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/Ga-03rqlKjQ?si=NY8SGIV0RF8YxOWg\n\nMusic provided by 브금대통령\nTrack : Theory of Relativity - https://youtu.be/sZM0bCdNR_s?si=DIKn7NVOD8NSpS8i\n\n\nMusic provided by 브금대통령 \nTrack : Mission Complete - https://www.youtube.com/watch?v=0ZC173wLtYY",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/yPuwSJI5NRA/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/yPuwSJI5NRA/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/yPuwSJI5NRA/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/yPuwSJI5NRA/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/yPuwSJI5NRA/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "두꼼",
+      "tags": [
+        "종합게임",
+        "종합게임유튜버",
+        "종합게임크리에이터",
+        "종겜",
+        "종겜유튜버",
+        "게임유튜버",
+        "게임크리에이터",
+        "게임채널",
+        "게임공략",
+        "게임실황",
+        "게임플레이",
+        "신작게임",
+        "갓겜",
+        "게임리뷰",
+        "병맛",
+        "개그",
+        "병맛게임",
+        "개그게임",
+        "꿀잼",
+        "웃긴영상",
+        "게임하이라이트",
+        "유쾌발랄",
+        "텐션",
+        "병맛더빙",
+        "게임예능",
+        "인디게임",
+        "스팀게임",
+        "PC게임",
+        "모바일게임",
+        "콘솔게임",
+        "멀티게임",
+        "공포게임",
+        "똥겜",
+        "똥겜탐방",
+        "스팀신작",
+        "게임모음",
+        "인기게임",
+        "게임추천",
+        "신작게임추천",
+        "병맛게임추천",
+        "병맛하이라이트",
+        "개그유튜버",
+        "꿀잼게임",
+        "게임레전드",
+        "초보공략",
+        "고수플레이",
+        "개그플레이",
+        "병맛리뷰",
+        "게임",
+        "Variety Gaming",
+        "Gaming Channel",
+        "Gameplay",
+        "Playthrough",
+        "Funny Gaming",
+        "Korean Gamer",
+        "Gaming Highlights",
+        "Indie Games",
+        "Steam Games",
+        "PC Gaming",
+        "Funny Moments",
+        "티키타카",
+        "리액션",
+        "병맛실황",
+        "더빙",
+        "더빙게임",
+        "재미있는영상",
+        "킬링타임",
+        "게임유머",
+        "꿀잼영상",
+        "추천게임",
+        "유머영상",
+        "하이라이트",
+        "데모맨",
+        "두꼼"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "역대급 공포게임이 출시됩니다.. | 데모맨 두꼼",
+        "description": "출시예정 게임의 데모판을 먼저 플레이하는 데모맨💣 콘텐츠\n\n게임: Clawed\n링크: https://store.steampowered.com/app/3394840/Clawed/\n\n\nArtist : ErikMMusic\nTitle : High Atop the Tower\nYouTube : https://youtu.be/kHQr4V1eeBs?si=HAP2tsIHW3tw72li\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/gt_V76mrzVE?si=LqwA2y0CIDg4T-yw\n\nArtist : ErikMMusic\nTitle : Reborn (Main Menu)\nYouTube : https://youtu.be/WKgg0bHKyvQ?si=tJqva80derFUrusk\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/uX3Yyj5WDfg?si=8D5s1UQmHGgsHgQQ\n\nArtist : ErikMMusic\nTitle : The Dusty Attic\nYouTube : https://youtu.be/7iVudI95Ebc?si=DA68kDAiKloHQPU8\n\nMusic provided & Video production by [June AB] Free BGM\nWatch : https://youtu.be/Ga-03rqlKjQ?si=NY8SGIV0RF8YxOWg\n\nMusic provided by 브금대통령\nTrack : Theory of Relativity - https://youtu.be/sZM0bCdNR_s?si=DIKn7NVOD8NSpS8i\n\n\nMusic provided by 브금대통령 \nTrack : Mission Complete - https://www.youtube.com/watch?v=0ZC173wLtYY"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT9M55S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": false,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "318",
+      "likeCount": "3",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "BcehotWxaKh3BIMJ7CCEJRXGKGo",
+    "id": "HjzuR8qNP_U",
+    "snippet": {
+      "publishedAt": "2026-08-10T10:00:25Z",
+      "channelId": "UCw1DsweY9b2AKGjV4kGJP1A",
+      "title": "태 윤 발 | BFX vs KRX 게임 1 하이라이트 | 2026 LCK",
+      "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/HjzuR8qNP_U/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "LCK",
+      "tags": [
+        "LCK",
+        "LCK Korea",
+        "롤챔스",
+        "리그오브레전드",
+        "LoL",
+        "티원",
+        "에욱",
+        "SNL",
+        "LCK썸네일",
+        "편집자",
+        "스크",
+        "T1",
+        "SKT",
+        "skt",
+        "t1",
+        "썸네일",
+        "DK",
+        "GEN",
+        "DRX",
+        "KT",
+        "HLE",
+        "POG",
+        "MVP",
+        "WORLDS",
+        "롤드컵",
+        "MSI",
+        "ALLSTAR",
+        "NS",
+        "한화생명",
+        "농심",
+        "케이티",
+        "젠지",
+        "아프리카",
+        "담원",
+        "브리온",
+        "Brion",
+        "BRO",
+        "므시",
+        "올스타",
+        "매드무비",
+        "MIC Check",
+        "MIC 첵",
+        "롤분토론",
+        "동준좌",
+        "클템",
+        "성캐",
+        "위클리 매드무비",
+        "전프시",
+        "오프더레코드",
+        "월드챔피언십",
+        "단톡",
+        "롤더넥",
+        "마이크체크",
+        "베스트모먼트",
+        "롤리나잇",
+        "성캐쇼",
+        "혓바닥터스",
+        "헬리오스",
+        "캡틴잭",
+        "빠른별",
+        "샤이",
+        "디플러스 기아",
+        "디플",
+        "플레임",
+        "시크릿보드룸",
+        "단군",
+        "꼬꼬갓",
+        "고수진",
+        "배혜지",
+        "윤수빈",
+        "노페",
+        "박진영",
+        "마이크",
+        "롤즈",
+        "위클리",
+        "롤하이라이트",
+        "디엔프릭스",
+        "든프",
+        "프린스",
+        "BFX",
+        "BNK FearX",
+        "분석데스크",
+        "이은빈",
+        "DNS",
+        "DN Soopers"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "태 윤 발 | BFX vs KRX 게임 1 하이라이트 | 2026 LCK",
+        "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M46S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "9951",
+      "likeCount": "55",
+      "favoriteCount": "0",
+      "commentCount": "8"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "rkL7Y4sW_JBcgeRfPlNlRU8U7Cc",
+    "id": "9fult9hykFI",
+    "snippet": {
+      "publishedAt": "2026-08-10T09:47:04Z",
+      "channelId": "UCKDFvx8b8zWcuQqGluZcASw",
+      "title": "오버워치 제트팩 캣 게임플레이 Overwatch Jetpack Cat Gameplay",
+      "description": "#오버워치 #overwatch #overwatchgameplay #ow\n2026년 8월 4일 | 3시즌",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/9fult9hykFI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/9fult9hykFI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/9fult9hykFI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/9fult9hykFI/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/9fult9hykFI/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "별빛고스트",
+      "tags": [
+        "#오버워치",
+        "#오버워치 제트팩 캣",
+        "#오버워치 할리우드",
+        "#Overwatch",
+        "#Overwatch Jetpack Cat",
+        "#Overwatch Hollywood",
+        "#Overwatch No Commentary",
+        "#OW"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "오버워치 제트팩 캣 게임플레이 Overwatch Jetpack Cat Gameplay",
+        "description": "#오버워치 #overwatch #overwatchgameplay #ow\n2026년 8월 4일 | 3시즌"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT6M47S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": false,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "31",
+      "likeCount": "0",
+      "favoriteCount": "0",
+      "commentCount": "1"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "8KlppCJGG8yQ7Sy4yDk4xeNUwWE",
+    "id": "7yCsXddU_Wk",
+    "snippet": {
+      "publishedAt": "2026-08-10T09:30:32Z",
+      "channelId": "UCb2aoNyj8y8xztDmtGMPsXQ",
+      "title": "[비인리] 스킬, 무기 추천, 게임 진행 방법까지 모두 모았습니다! | Beast of Reincarnation ::밈찬::",
+      "description": "🤙구독과 👍좋아요 그리고 댓글은! \n영상 제작에 큰 동기부여와 힘이 됩니다! 💪😠\n잊지 마시고 꼭! 한 번씩만 부탁드리겠습니다 🥰\n\n00:00 오프닝\n00:25 패리&회피\n01:11 PPL\n02:35 진행 방법\n03:00 스탯\n03:25 엠마 추천 스킬\n04:03 쿠 추천 스킬\n04:21 무기\n04:47 마무리\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🎁 LagoFast 30% 할인 혜택\n\n다운로드 링크 : https://www.lagofast.com/ko/?cid=891106\n할인 코드 : 【MIMCHAN】\n\n\n✔CHZZK : https://chzzk.naver.com/b14a896586fcb19675689deea2b8790f\n\n✔ CONTACT: mayday1214@naver.com",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/7yCsXddU_Wk/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/7yCsXddU_Wk/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/7yCsXddU_Wk/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/7yCsXddU_Wk/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/7yCsXddU_Wk/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "밈찬",
+      "tags": [
+        "비스트 오브 리인카네이션",
+        "비스트오브리인카네이션",
+        "비오리",
+        "Beast of Reincarnation",
+        "비스트 오브 리인카네이션 공략",
+        "비스트 오브 리인카네이션 팁",
+        "비스트 오브 리인카네이션 초반",
+        "비스트 오브 리인카네이션 리뷰",
+        "비스트 오브 리인카네이션 패리",
+        "비스트 오브 리인카네이션 스킬",
+        "비스트 오브 리인카네이션 스탯",
+        "비스트 오브 리인카네이션 무기",
+        "비스트 오브 리인카네이션 요리",
+        "포켓몬 AAA",
+        "소울라이크",
+        "싱글 RPG",
+        "MIMCHAN",
+        "밈찬",
+        "공략",
+        "팁",
+        "초반",
+        "리뷰",
+        "패리",
+        "스킬",
+        "스탯",
+        "무기",
+        "요리",
+        "진행방법",
+        "신작 게임",
+        "포켓몬",
+        "게임프리크",
+        "AAA",
+        "액션 RPG",
+        "싱글",
+        "신작",
+        "엠마",
+        "쿠",
+        "머리카락",
+        "결속게이지",
+        "공명",
+        "흡혈검",
+        "강화",
+        "정화선",
+        "기초",
+        "튜토리얼",
+        "효율",
+        "종결",
+        "추천",
+        "필수",
+        "후기",
+        "평가",
+        "그래픽",
+        "아트",
+        "사양",
+        "우회",
+        "부스터",
+        "인터넷",
+        "핑",
+        "렉",
+        "최적화",
+        "프레임",
+        "할인코드",
+        "Tips",
+        "ActionRPG",
+        "라고패스트",
+        "LagoFast"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[비인리] 스킬, 무기 추천, 게임 진행 방법까지 모두 모았습니다! | Beast of Reincarnation ::밈찬::",
+        "description": "🤙구독과 👍좋아요 그리고 댓글은! \n영상 제작에 큰 동기부여와 힘이 됩니다! 💪😠\n잊지 마시고 꼭! 한 번씩만 부탁드리겠습니다 🥰\n\n00:00 오프닝\n00:25 패리&회피\n01:11 PPL\n02:35 진행 방법\n03:00 스탯\n03:25 엠마 추천 스킬\n04:03 쿠 추천 스킬\n04:21 무기\n04:47 마무리\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🎁 LagoFast 30% 할인 혜택\n\n다운로드 링크 : https://www.lagofast.com/ko/?cid=891106\n할인 코드 : 【MIMCHAN】\n\n\n✔CHZZK : https://chzzk.naver.com/b14a896586fcb19675689deea2b8790f\n\n✔ CONTACT: mayday1214@naver.com"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT5M31S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "40",
+      "likeCount": "1",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "bs8vuzs9d63FOYhsQ-Ai3RrrabY",
+    "id": "HMuKvLTaiGI",
+    "snippet": {
+      "publishedAt": "2026-08-10T09:15:02Z",
+      "channelId": "UCusrj-TKbxU-6eHOYlnar_g",
+      "title": "최대한 치졸하게 싸워야 하는 게임",
+      "description": "#스팀게임 #마인크래프트 #rpg #kick \n많은 관심 감사합니다.\n\n게임이름 : The Adventures of Sir Kicksalot\n\n깅슈 메일 : syusyuell@gmail.com\n브금 출처 : 뮤팟",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/HMuKvLTaiGI/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "깅슈",
+      "tags": [
+        "스팀게임",
+        "종합게임",
+        "The Adventures of Sir Kicksalot",
+        "rpg",
+        "발로차는 게임",
+        "마인크래프트",
+        "mincraft",
+        "다크메시아",
+        "스팀 게임",
+        "압도적 긍정적",
+        "함정 게임",
+        "마법 게임",
+        "잠입",
+        "공주",
+        "princess",
+        "고블린"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "최대한 치졸하게 싸워야 하는 게임",
+        "description": "#스팀게임 #마인크래프트 #rpg #kick \n많은 관심 감사합니다.\n\n게임이름 : The Adventures of Sir Kicksalot\n\n깅슈 메일 : syusyuell@gmail.com\n브금 출처 : 뮤팟"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT10M34S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "2415",
+      "likeCount": "51",
+      "favoriteCount": "0",
+      "commentCount": "8"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "DBgPdqIgCp_9mi9OCJ0tseFHsqY",
+    "id": "43imKdqaDVU",
+    "snippet": {
+      "publishedAt": "2026-08-10T09:08:37Z",
+      "channelId": "UCdXRfpnQnW3dtC2poqXfnlg",
+      "title": "의외로 로블록스 전세계 동접자수 1위인 게임",
+      "description": "#로블록스 #한국머더 #빅진",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/43imKdqaDVU/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/43imKdqaDVU/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/43imKdqaDVU/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/43imKdqaDVU/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/43imKdqaDVU/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "빅진",
+      "tags": [
+        "로블록스",
+        "로블",
+        "머더",
+        "로블록스 머더",
+        "빅진",
+        "로블록스 머더 빅진",
+        "머더 빅진",
+        "빅진 로블록스",
+        "빅진 머더",
+        "머더 로블록스 빅진",
+        "qlrwls",
+        "fhqmffhrtm",
+        "한국머더",
+        "빅진 한국머더",
+        "한머 빅진",
+        "빅진 잼민이",
+        "한국머더 잼민이"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "의외로 로블록스 전세계 동접자수 1위인 게임",
+        "description": "#로블록스 #한국머더 #빅진"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M22S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "51662",
+      "likeCount": "975",
+      "favoriteCount": "0",
+      "commentCount": "253"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "KchoBzFCCJlajfqLHQqclb2irwc",
+    "id": "8zTwy0FU4CQ",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:55:24Z",
+      "channelId": "UCo4SsbYrJQBuEW5iJ6LqbUw",
+      "title": "[스팀 신작 뱀서류] 레고처럼 차량을 조립해서 싸우는 게임!!｜TerraTech Legion",
+      "description": "🎮 게임 : TerraTech Legion\n💰 가격 : 10.500\n🔗 스팀 : https://store.steampowered.com/app/3596700/TerraTech_Legion/\n\n 레고처럼 블록을 조립하듯 직접 전투 차량을 만들 수 있는 게임!\n소문으로만 듣던 'TerraTech Legion'이 궁금해서 직접 '첫 플레이' 해봤습니다.\n\n 내가 원하는 부품과 무기를 하나씩 조립해 나만의 차량을 만들고,\n완성한 차량으로 몰려오는 적들을 상대하는 재미가 상당한 게임입니다.\n 차량을 어떻게 조립하느냐에 따라 전투 방식도 달라지는 만큼,\n처음 접해본 입장에서 과연 어떤 재미가 있는지 직접 플레이해봤습니다.\n\n 레고처럼 차량을 조립하고, 내가 만든 차량으로 싸우는 독특한 뱀서류 게임!\n과연 첫인상은 어땠을지 영상으로 확인해 보세요.\n\n타임라인\n[00:00] 게임 소개 및 첫인상\n\n스팀 신작 뱀서류 게임 TerraTech Legion 데모 버전 실행 및 기본 개요 설명\n\n[00:30] 초기 스타트 및 이동 조작 확인\n\n기본 차량 선택 후 출발, 자동차 특유의 가속/회전 및 부스터 조작법 파악\n\n[01:08] 첫 번째 레벨업 및 무기 조립 시작\n\n레벨업 보상으로 무기 획득 후 차량 부품 조립 진행\n\n[02:14] 아이템 및 능력치 선택\n\n경험치 획득 사거리, 밀치기, 폭발 피해량 등 패시브 능력치 업그레이드\n\n[03:41] 무기 상자 획득 및 조립 어려움\n\n높은 DPS의 무기 부품 조립 및 부품 배치 고민\n\n[05:50] 첫 번째 보스전 진입\n\n보스 등장 및 차량 전방 공격 위주의 조작으로 보스 처치\n\n[06:40] 보상 상자 수거 및 무기 업그레이드\n\n와일드카드 상자 및 신규 부품 획득, 시점 조절 기능 확인\n\n[07:57] 미사일 배터리 장착 및 두 번째 보스전\n\n강력한 미사일 배터리 조립 및 뒤쪽 공격 패턴을 활용한 보스전\n\n[10:34] 차량 부품 재정비 (3단 탑 조립)\n\n깔끔한 전방/측면 무기 배치를 위한 부품 대대적 재배치 및 업그레이드\n\n[13:33] 대형 바퀴 장착 및 미니맵 탐색\n\n대형 바퀴 교체를 통한 이동 속도 증가 및 물음표 지역 이동\n\n[13:50] 최종 보스전 및 첫 번째 임무 클리어\n\n보스의 사거리 플레이에 대응하여 사격 및 회피 운전으로 최종 보스 처치\n\n[14:51] 로비 화면 살펴보기\n\n해금 요소, 캐릭터 변경, 차량 커스텀 스킨 및 업그레이드 요소 확인\n\n[15:26] 총평 및 플레이 소감\n\n게임의 장단점(조작감, 타격감 등) 총평 및 가격 정보 안내 후 마무리\n\n#TerraTechLegion #테라테크리전 #뱀서류 #로그라이트 #차량조립게임 #스팀게임",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/8zTwy0FU4CQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/8zTwy0FU4CQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/8zTwy0FU4CQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/8zTwy0FU4CQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/8zTwy0FU4CQ/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "스팀맨",
+      "tags": [
+        "Terratechlegion",
+        "테라테크리전",
+        "terratech",
+        "뱀서류",
+        "서바이벌",
+        "로그라이트",
+        "차량조립게임",
+        "스팀신작",
+        "스팀게임",
+        "신작게임",
+        "스팀게임추천",
+        "게임추천",
+        "게임",
+        "pc게임"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[스팀 신작 뱀서류] 레고처럼 차량을 조립해서 싸우는 게임!!｜TerraTech Legion",
+        "description": "🎮 게임 : TerraTech Legion\n💰 가격 : 10.500\n🔗 스팀 : https://store.steampowered.com/app/3596700/TerraTech_Legion/\n\n 레고처럼 블록을 조립하듯 직접 전투 차량을 만들 수 있는 게임!\n소문으로만 듣던 'TerraTech Legion'이 궁금해서 직접 '첫 플레이' 해봤습니다.\n\n 내가 원하는 부품과 무기를 하나씩 조립해 나만의 차량을 만들고,\n완성한 차량으로 몰려오는 적들을 상대하는 재미가 상당한 게임입니다.\n 차량을 어떻게 조립하느냐에 따라 전투 방식도 달라지는 만큼,\n처음 접해본 입장에서 과연 어떤 재미가 있는지 직접 플레이해봤습니다.\n\n 레고처럼 차량을 조립하고, 내가 만든 차량으로 싸우는 독특한 뱀서류 게임!\n과연 첫인상은 어땠을지 영상으로 확인해 보세요.\n\n타임라인\n[00:00] 게임 소개 및 첫인상\n\n스팀 신작 뱀서류 게임 TerraTech Legion 데모 버전 실행 및 기본 개요 설명\n\n[00:30] 초기 스타트 및 이동 조작 확인\n\n기본 차량 선택 후 출발, 자동차 특유의 가속/회전 및 부스터 조작법 파악\n\n[01:08] 첫 번째 레벨업 및 무기 조립 시작\n\n레벨업 보상으로 무기 획득 후 차량 부품 조립 진행\n\n[02:14] 아이템 및 능력치 선택\n\n경험치 획득 사거리, 밀치기, 폭발 피해량 등 패시브 능력치 업그레이드\n\n[03:41] 무기 상자 획득 및 조립 어려움\n\n높은 DPS의 무기 부품 조립 및 부품 배치 고민\n\n[05:50] 첫 번째 보스전 진입\n\n보스 등장 및 차량 전방 공격 위주의 조작으로 보스 처치\n\n[06:40] 보상 상자 수거 및 무기 업그레이드\n\n와일드카드 상자 및 신규 부품 획득, 시점 조절 기능 확인\n\n[07:57] 미사일 배터리 장착 및 두 번째 보스전\n\n강력한 미사일 배터리 조립 및 뒤쪽 공격 패턴을 활용한 보스전\n\n[10:34] 차량 부품 재정비 (3단 탑 조립)\n\n깔끔한 전방/측면 무기 배치를 위한 부품 대대적 재배치 및 업그레이드\n\n[13:33] 대형 바퀴 장착 및 미니맵 탐색\n\n대형 바퀴 교체를 통한 이동 속도 증가 및 물음표 지역 이동\n\n[13:50] 최종 보스전 및 첫 번째 임무 클리어\n\n보스의 사거리 플레이에 대응하여 사격 및 회피 운전으로 최종 보스 처치\n\n[14:51] 로비 화면 살펴보기\n\n해금 요소, 캐릭터 변경, 차량 커스텀 스킨 및 업그레이드 요소 확인\n\n[15:26] 총평 및 플레이 소감\n\n게임의 장단점(조작감, 타격감 등) 총평 및 가격 정보 안내 후 마무리\n\n#TerraTechLegion #테라테크리전 #뱀서류 #로그라이트 #차량조립게임 #스팀게임"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT16M2S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "1168",
+      "likeCount": "12",
+      "favoriteCount": "0",
+      "commentCount": "5"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "us9MdCp1Gj8bgujzcc-cINpfjME",
+    "id": "LZ4-Sk03jjo",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:30:29Z",
+      "channelId": "UCtH9KNnGRpsm7IPD4dTsrtQ",
+      "title": "\"아직도 창세기전 해?\" | 일상 수다 아우철의 창세기전 추억 고전게임 잡담 철가면 아네모네",
+      "description": "",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/LZ4-Sk03jjo/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/LZ4-Sk03jjo/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/LZ4-Sk03jjo/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/LZ4-Sk03jjo/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/LZ4-Sk03jjo/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "아우철의 창세기전",
+      "tags": [
+        "아우철",
+        "창세기전",
+        "고전게임",
+        "모바일rpg",
+        "추억",
+        "철가면",
+        "창세기전3"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "\"아직도 창세기전 해?\" | 일상 수다 아우철의 창세기전 추억 고전게임 잡담 철가면 아네모네",
+        "description": ""
+      }
+    },
+    "contentDetails": {
+      "duration": "PT5M48S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "284",
+      "likeCount": "9",
+      "favoriteCount": "0",
+      "commentCount": "12"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "wFjycu6MVUkPyfFk9TGh2PcBqvM",
+    "id": "S02z5TCXKRQ",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:14:00Z",
+      "channelId": "UCPuD5ZRQWa_JCaY5NokNhtg",
+      "title": "[신작 모바일게임] 국산 3D 판타지 어드벤처 수집형 RPG '킹스레이드' (King's Raid) 3챕터 중반부 플레이. 출시예정 추억의 킹레 IP 스팀 PC 게임 기대작 추천?",
+      "description": "#킹스레이드 #신작모바일게임 #수집형게임 #수집형RPG #출시예정모바일게임 #출시예정게임 #애니메이션RPG #RPG게임 #액션RPG게임 #추억의게임 #스팀게임 #PC게임 #추억의모바일게임\n\n주의: 1차 CBT 당시의 플레이 영상으로, 정식 오픈 빌드와는 다소 차이가 있을 수 있습니다.\n\n2026년 중 한국 및 글로벌 출시가 예정되어있는 3D 판타지 애니메이션 수집형 RPG '킹스레이드' (King's Raid) 의 3챕터 중반부 플레이 영상입니다. 한국 소재 게임 회사 '마상소프트' (MASANGSOFT) 에서 퍼블리싱하는 국산 수집형 RPG 게임입니다. 현재 한국어를 지원하는 게임이며, 모바일 외에도 PC 플랫폼을 지원하는 크로스플랫폼 게임입니다. 정식 출시 일정은 미정입니다.\n \n이전에 베스파에서 개발하고, 퍼블리싱했던 '킹스레이드' (King's Raid, 킹레) 를 리마스터한 게임으로, 2026년 신작 게임 치고는 UI와 그래픽이 다소 아쉽게 느껴질 수 있지만, 킹스레이드 특유의 스토리와 시스템은 여전하여, 킹스레이드 특유의 감성을 좋아하셨던 분이라면 어느정도 기대작으로 기억할만한 기대작 게임일 수 있습니다.\n\n주 BM은 패키지 판매, 캐릭터 정가 구매 등입니다. 추천 게임 여부는 정식 오픈 이후 BM을 보고 알려드릴 수 있을 것 같습니다.\n\n[시간표]\n0:00 스토리 (STORY)\n7:30 보스전 (BOSS BATTLE)\n\n스팀페이지: https://store.steampowered.com/app/3689540/KINGs_RAID/",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/S02z5TCXKRQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/S02z5TCXKRQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/S02z5TCXKRQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/S02z5TCXKRQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        }
+      },
+      "channelTitle": "게임달고나",
+      "tags": [
+        "신작 모바일게임",
+        "신작모바일게임",
+        "액션 RPG",
+        "액션RPG",
+        "신작 게임",
+        "신작게임",
+        "모바일 게임",
+        "모바일게임",
+        "신작 RPG",
+        "신작RPG",
+        "수집형 RPG",
+        "수집형RPG",
+        "모바일 수집형게임",
+        "모바일수집형게임",
+        "수집형 모바일 게임",
+        "수집형 모바일게임",
+        "수집형모바일게임",
+        "신작 수집형게임",
+        "신작 수집형RPG",
+        "모바일 RPG",
+        "모바일RPG",
+        "수집형 게임",
+        "수집형게임",
+        "모바일 RPG 게임",
+        "애니메이션 RPG",
+        "애니메이션RPG",
+        "수집형 RPG 게임",
+        "수집형RPG 게임",
+        "수집형RPG게임",
+        "모바일RPG게임",
+        "판타지 RPG",
+        "판타지RPG",
+        "모바일게임 추천",
+        "모바일게임추천",
+        "추천 모바일게임",
+        "추천모바일게임",
+        "게임 추천",
+        "게임추천",
+        "추천 게임",
+        "추천게임",
+        "출시예정 모바일게임",
+        "출시예정모바일게임",
+        "출시예정 게임",
+        "출시예정게임",
+        "어드벤처 RPG",
+        "어드벤처RPG",
+        "킹스레이드",
+        "King's Raid",
+        "국산 게임",
+        "국산게임",
+        "RPG 게임",
+        "RPG게임",
+        "스팀게임",
+        "추억의 게임",
+        "추억의게임",
+        "추억의모바일게임"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[신작 모바일게임] 국산 3D 판타지 어드벤처 수집형 RPG '킹스레이드' (King's Raid) 3챕터 중반부 플레이. 출시예정 추억의 킹레 IP 스팀 PC 게임 기대작 추천?",
+        "description": "#킹스레이드 #신작모바일게임 #수집형게임 #수집형RPG #출시예정모바일게임 #출시예정게임 #애니메이션RPG #RPG게임 #액션RPG게임 #추억의게임 #스팀게임 #PC게임 #추억의모바일게임\n\n주의: 1차 CBT 당시의 플레이 영상으로, 정식 오픈 빌드와는 다소 차이가 있을 수 있습니다.\n\n2026년 중 한국 및 글로벌 출시가 예정되어있는 3D 판타지 애니메이션 수집형 RPG '킹스레이드' (King's Raid) 의 3챕터 중반부 플레이 영상입니다. 한국 소재 게임 회사 '마상소프트' (MASANGSOFT) 에서 퍼블리싱하는 국산 수집형 RPG 게임입니다. 현재 한국어를 지원하는 게임이며, 모바일 외에도 PC 플랫폼을 지원하는 크로스플랫폼 게임입니다. 정식 출시 일정은 미정입니다.\n \n이전에 베스파에서 개발하고, 퍼블리싱했던 '킹스레이드' (King's Raid, 킹레) 를 리마스터한 게임으로, 2026년 신작 게임 치고는 UI와 그래픽이 다소 아쉽게 느껴질 수 있지만, 킹스레이드 특유의 스토리와 시스템은 여전하여, 킹스레이드 특유의 감성을 좋아하셨던 분이라면 어느정도 기대작으로 기억할만한 기대작 게임일 수 있습니다.\n\n주 BM은 패키지 판매, 캐릭터 정가 구매 등입니다. 추천 게임 여부는 정식 오픈 이후 BM을 보고 알려드릴 수 있을 것 같습니다.\n\n[시간표]\n0:00 스토리 (STORY)\n7:30 보스전 (BOSS BATTLE)\n\n스팀페이지: https://store.steampowered.com/app/3689540/KINGs_RAID/"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M12S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "660",
+      "likeCount": "7",
+      "favoriteCount": "0",
+      "commentCount": "10"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "byY1mMkBC1lPA4dCIh-CTq3JEE0",
+    "id": "Lnk3oyNUJjI",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:04:50Z",
+      "channelId": "UCksGX0hODm1Ev6mysrToMqg",
+      "title": "[명조] 게임 속 치사의 편지를 실물로 열어봤습니다 - 치사 굿즈 언박싱",
+      "description": "치지직 생방송 : https://chzzk.naver.com/737d29770109faf29bebdf69da6dc372\n\n다시보기 채널 : https://www.youtube.com/channel/UCCw2Ox5q4SOp_MtPouP22AA\n\n광고 및 모든 문의 : starfish@starfishentertainment.co.kr\n\n#상덕 #명조 #명조워더링웨이브",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Lnk3oyNUJjI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Lnk3oyNUJjI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Lnk3oyNUJjI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/Lnk3oyNUJjI/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/Lnk3oyNUJjI/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "상덕",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[명조] 게임 속 치사의 편지를 실물로 열어봤습니다 - 치사 굿즈 언박싱",
+        "description": "치지직 생방송 : https://chzzk.naver.com/737d29770109faf29bebdf69da6dc372\n\n다시보기 채널 : https://www.youtube.com/channel/UCCw2Ox5q4SOp_MtPouP22AA\n\n광고 및 모든 문의 : starfish@starfishentertainment.co.kr\n\n#상덕 #명조 #명조워더링웨이브"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M2S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "true",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "5710",
+      "likeCount": "239",
+      "favoriteCount": "0",
+      "commentCount": "24"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "ZrT5oM7OEWkuSREOFxHZfKprnvk",
+    "id": "oiyGWS_TWTU",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:01:22Z",
+      "channelId": "UCw1DsweY9b2AKGjV4kGJP1A",
+      "title": "빅버지 나를 낳으시고.. | DK vs KT 게임 2 하이라이트 | 2026 LCK",
+      "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/oiyGWS_TWTU/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "LCK",
+      "tags": [
+        "LCK",
+        "LCK Korea",
+        "롤챔스",
+        "리그오브레전드",
+        "LoL",
+        "티원",
+        "에욱",
+        "SNL",
+        "LCK썸네일",
+        "편집자",
+        "스크",
+        "T1",
+        "SKT",
+        "skt",
+        "t1",
+        "썸네일",
+        "DK",
+        "GEN",
+        "DRX",
+        "KT",
+        "HLE",
+        "POG",
+        "MVP",
+        "WORLDS",
+        "롤드컵",
+        "MSI",
+        "ALLSTAR",
+        "NS",
+        "한화생명",
+        "농심",
+        "케이티",
+        "젠지",
+        "아프리카",
+        "담원",
+        "브리온",
+        "Brion",
+        "BRO",
+        "므시",
+        "올스타",
+        "매드무비",
+        "MIC Check",
+        "MIC 첵",
+        "롤분토론",
+        "동준좌",
+        "클템",
+        "성캐",
+        "위클리 매드무비",
+        "전프시",
+        "오프더레코드",
+        "월드챔피언십",
+        "단톡",
+        "롤더넥",
+        "마이크체크",
+        "베스트모먼트",
+        "롤리나잇",
+        "성캐쇼",
+        "혓바닥터스",
+        "헬리오스",
+        "캡틴잭",
+        "빠른별",
+        "샤이",
+        "디플러스 기아",
+        "디플",
+        "플레임",
+        "시크릿보드룸",
+        "단군",
+        "꼬꼬갓",
+        "고수진",
+        "배혜지",
+        "윤수빈",
+        "노페",
+        "박진영",
+        "마이크",
+        "롤즈",
+        "위클리",
+        "롤하이라이트",
+        "디엔프릭스",
+        "든프",
+        "프린스",
+        "BFX",
+        "BNK FearX",
+        "분석데스크",
+        "이은빈",
+        "DNS",
+        "DN Soopers"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "빅버지 나를 낳으시고.. | DK vs KT 게임 2 하이라이트 | 2026 LCK",
+        "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT9M8S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "38304",
+      "likeCount": "221",
+      "favoriteCount": "0",
+      "commentCount": "34"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "Vvo79sEAdfIl0mfxUx2EsJ2Eepg",
+    "id": "uIt7620NJak",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:02:32Z",
+      "channelId": "UCw1DsweY9b2AKGjV4kGJP1A",
+      "title": "MIDKING 너네 나 못 이겨 | DK vs KT 게임 3 하이라이트 | 2026 LCK",
+      "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/uIt7620NJak/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "LCK",
+      "tags": [
+        "LCK",
+        "LCK Korea",
+        "롤챔스",
+        "리그오브레전드",
+        "LoL",
+        "티원",
+        "에욱",
+        "SNL",
+        "LCK썸네일",
+        "편집자",
+        "스크",
+        "T1",
+        "SKT",
+        "skt",
+        "t1",
+        "썸네일",
+        "DK",
+        "GEN",
+        "DRX",
+        "KT",
+        "HLE",
+        "POG",
+        "MVP",
+        "WORLDS",
+        "롤드컵",
+        "MSI",
+        "ALLSTAR",
+        "NS",
+        "한화생명",
+        "농심",
+        "케이티",
+        "젠지",
+        "아프리카",
+        "담원",
+        "브리온",
+        "Brion",
+        "BRO",
+        "므시",
+        "올스타",
+        "매드무비",
+        "MIC Check",
+        "MIC 첵",
+        "롤분토론",
+        "동준좌",
+        "클템",
+        "성캐",
+        "위클리 매드무비",
+        "전프시",
+        "오프더레코드",
+        "월드챔피언십",
+        "단톡",
+        "롤더넥",
+        "마이크체크",
+        "베스트모먼트",
+        "롤리나잇",
+        "성캐쇼",
+        "혓바닥터스",
+        "헬리오스",
+        "캡틴잭",
+        "빠른별",
+        "샤이",
+        "디플러스 기아",
+        "디플",
+        "플레임",
+        "시크릿보드룸",
+        "단군",
+        "꼬꼬갓",
+        "고수진",
+        "배혜지",
+        "윤수빈",
+        "노페",
+        "박진영",
+        "마이크",
+        "롤즈",
+        "위클리",
+        "롤하이라이트",
+        "디엔프릭스",
+        "든프",
+        "프린스",
+        "BFX",
+        "BNK FearX",
+        "분석데스크",
+        "이은빈",
+        "DNS",
+        "DN Soopers"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "MIDKING 너네 나 못 이겨 | DK vs KT 게임 3 하이라이트 | 2026 LCK",
+        "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M55S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "52276",
+      "likeCount": "247",
+      "favoriteCount": "0",
+      "commentCount": "52"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "HilVtaW-m8J5oyUCUtNYJQjhCzM",
+    "id": "oVDUns4pXac",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:00:13Z",
+      "channelId": "UCQJuZxeDv2P05YHcC-tIEVQ",
+      "title": "한 놈만 패는 예언자 게임ㅋㅋㅋ",
+      "description": "* 멤버십에 가입하시면 풀버전 및 멤버십 전용 영상 등을 만나보실 수 있습니다! \n📂 재생목록 보기 : https://www.youtube.com/playlist?list=PLZ0reQtOJanuNiZ78972dlCHigEWZInN6\n🔖 멤버십 가입 : https://www.youtube.com/channel/UCQJuZxeDv2P05YHcC-tIEVQ/join\n[2026.07.30] 풀영상 : https://youtu.be/WpZk1e96zYE?si=y4DHbLS0DRJQHWg0\n🎬 생방송 시청하기 : https://www.sooplive.com/station/jdm1197\n🏷️ 광고 문의메일 swamptv@naver.com\n\n편집:  2K 님\n썸네일: 도림 님\n\n[🍀 늪지대 SWAMP 🍀]\n\n악어 💚🐊 https://www.youtube.com/@acau \n🍃 늪지대에서 생긴일 : https://www.youtube.com/@swampacau\n🍓 크로아 :  https://www.youtube.com/@croa_acau\n🎬 악어 생방송 채널 : https://www.sooplive.co.kr/station/jdm1197\n🍧 악어 공식 팬카페 : http://cafe.naver.com/bjcrocodile\n✨ 악어 공식 인스타 : https://www.instagram.com/acau1197\n✖️ 악어 공식 X : https://x.com/bjacau\n\n핑맨 🖤🐺 https://www.youtube.com/@PPingMan\n🎬 https://chzzk.naver.com/0dcec72cd1033032a77dfced6c0c91f8\n\n너불 💜🦝  https://www.youtube.com/@%EB%84%88%EB%B6%88-u8b\n🎬 https://chzzk.naver.com/af3323d30e11ae42c39d7203c7e07fa2\n\n중력 💙🐋 https://www.youtube.com/@JungryeokTV\n🎬 https://www.sooplive.co.kr/station/vkzm14\n\n수닝 🤎🌸 https://www.youtube.com/@su_ning424\n🎬 https://www.sooplive.co.kr/station/hko901\n\n리타 💚🌿 https://www.youtube.com/@%EB%A6%AC%ED%83%80%EA%B2%8C%EC%9E%84\n🎬 https://www.sooplive.co.kr/station/030jjj\n\n만득 💛🥔  https://www.youtube.com/@ManDeuk\n🎬 https://chzzk.naver.com/431d19e0eeeb5ecc1cd9628dc0840c9e\n\n개리 🧡🔥 https://www.youtube.com/@gary5658\n🎬 https://www.sooplive.co.kr/station/qpqopq\n\n[🍓 크로아 CROA🍓]\n\n치요 🩵🐰 https://www.youtube.com/@Chiyo75\n🎬 https://www.sooplive.co.kr/station/chiyo75\n\n김마늘 💛🐤 https://www.youtube.com/@manlmanl321\n🎬 https://www.sooplive.co.kr/station/kputmanl98\n\n만타 🩶🐟 https://www.youtube.com/@Manta_clip\n🎬 https://chzzk.naver.com/e0ccb72f0412d306b20847c94a2824d3\n\n요요 🩷🐹 https://www.youtube.com/@YoYo_48\n🎬 https://www.sooplive.co.kr/station/wooldi\n\n류키 🖤🐦‍⬛ https://www.youtube.com/@Rue_Ki\n🎬 https://www.sooplive.co.kr/station/ruki02\n\n#악어 #갓필드 #늪지대 #너불",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/oVDUns4pXac/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/oVDUns4pXac/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/oVDUns4pXac/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/oVDUns4pXac/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/oVDUns4pXac/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "악어 유튜브",
+      "tags": [
+        "악어",
+        "게임",
+        "악어유튜브",
+        "늪지대",
+        "카드게임",
+        "왈도쿤",
+        "김블루",
+        "픽셀",
+        "탬탬버린",
+        "예언자게임",
+        "레전드게임",
+        "지누",
+        "김뚜띠",
+        "나나양",
+        "다시보기",
+        "램램",
+        "꽃핀"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "한 놈만 패는 예언자 게임ㅋㅋㅋ",
+        "description": "* 멤버십에 가입하시면 풀버전 및 멤버십 전용 영상 등을 만나보실 수 있습니다! \n📂 재생목록 보기 : https://www.youtube.com/playlist?list=PLZ0reQtOJanuNiZ78972dlCHigEWZInN6\n🔖 멤버십 가입 : https://www.youtube.com/channel/UCQJuZxeDv2P05YHcC-tIEVQ/join\n[2026.07.30] 풀영상 : https://youtu.be/WpZk1e96zYE?si=y4DHbLS0DRJQHWg0\n🎬 생방송 시청하기 : https://www.sooplive.com/station/jdm1197\n🏷️ 광고 문의메일 swamptv@naver.com\n\n편집:  2K 님\n썸네일: 도림 님\n\n[🍀 늪지대 SWAMP 🍀]\n\n악어 💚🐊 https://www.youtube.com/@acau \n🍃 늪지대에서 생긴일 : https://www.youtube.com/@swampacau\n🍓 크로아 :  https://www.youtube.com/@croa_acau\n🎬 악어 생방송 채널 : https://www.sooplive.co.kr/station/jdm1197\n🍧 악어 공식 팬카페 : http://cafe.naver.com/bjcrocodile\n✨ 악어 공식 인스타 : https://www.instagram.com/acau1197\n✖️ 악어 공식 X : https://x.com/bjacau\n\n핑맨 🖤🐺 https://www.youtube.com/@PPingMan\n🎬 https://chzzk.naver.com/0dcec72cd1033032a77dfced6c0c91f8\n\n너불 💜🦝  https://www.youtube.com/@%EB%84%88%EB%B6%88-u8b\n🎬 https://chzzk.naver.com/af3323d30e11ae42c39d7203c7e07fa2\n\n중력 💙🐋 https://www.youtube.com/@JungryeokTV\n🎬 https://www.sooplive.co.kr/station/vkzm14\n\n수닝 🤎🌸 https://www.youtube.com/@su_ning424\n🎬 https://www.sooplive.co.kr/station/hko901\n\n리타 💚🌿 https://www.youtube.com/@%EB%A6%AC%ED%83%80%EA%B2%8C%EC%9E%84\n🎬 https://www.sooplive.co.kr/station/030jjj\n\n만득 💛🥔  https://www.youtube.com/@ManDeuk\n🎬 https://chzzk.naver.com/431d19e0eeeb5ecc1cd9628dc0840c9e\n\n개리 🧡🔥 https://www.youtube.com/@gary5658\n🎬 https://www.sooplive.co.kr/station/qpqopq\n\n[🍓 크로아 CROA🍓]\n\n치요 🩵🐰 https://www.youtube.com/@Chiyo75\n🎬 https://www.sooplive.co.kr/station/chiyo75\n\n김마늘 💛🐤 https://www.youtube.com/@manlmanl321\n🎬 https://www.sooplive.co.kr/station/kputmanl98\n\n만타 🩶🐟 https://www.youtube.com/@Manta_clip\n🎬 https://chzzk.naver.com/e0ccb72f0412d306b20847c94a2824d3\n\n요요 🩷🐹 https://www.youtube.com/@YoYo_48\n🎬 https://www.sooplive.co.kr/station/wooldi\n\n류키 🖤🐦‍⬛ https://www.youtube.com/@Rue_Ki\n🎬 https://www.sooplive.co.kr/station/ruki02\n\n#악어 #갓필드 #늪지대 #너불"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT9M51S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "18844",
+      "likeCount": "369",
+      "favoriteCount": "0",
+      "commentCount": "21"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "FQemwG90ZcysC9FCcAB0IccCgSc",
+    "id": "7MSFr3J9j7U",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:00:15Z",
+      "channelId": "UCw1DsweY9b2AKGjV4kGJP1A",
+      "title": "완전체 진화 \"테라 승민몬\" | DK vs KT 게임 1 하이라이트 | 2026 LCK",
+      "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/7MSFr3J9j7U/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "LCK",
+      "tags": [
+        "LCK",
+        "LCK Korea",
+        "롤챔스",
+        "리그오브레전드",
+        "LoL",
+        "티원",
+        "에욱",
+        "SNL",
+        "LCK썸네일",
+        "편집자",
+        "스크",
+        "T1",
+        "SKT",
+        "skt",
+        "t1",
+        "썸네일",
+        "DK",
+        "GEN",
+        "DRX",
+        "KT",
+        "HLE",
+        "POG",
+        "MVP",
+        "WORLDS",
+        "롤드컵",
+        "MSI",
+        "ALLSTAR",
+        "NS",
+        "한화생명",
+        "농심",
+        "케이티",
+        "젠지",
+        "아프리카",
+        "담원",
+        "브리온",
+        "Brion",
+        "BRO",
+        "므시",
+        "올스타",
+        "매드무비",
+        "MIC Check",
+        "MIC 첵",
+        "롤분토론",
+        "동준좌",
+        "클템",
+        "성캐",
+        "위클리 매드무비",
+        "전프시",
+        "오프더레코드",
+        "월드챔피언십",
+        "단톡",
+        "롤더넥",
+        "마이크체크",
+        "베스트모먼트",
+        "롤리나잇",
+        "성캐쇼",
+        "혓바닥터스",
+        "헬리오스",
+        "캡틴잭",
+        "빠른별",
+        "샤이",
+        "디플러스 기아",
+        "디플",
+        "플레임",
+        "시크릿보드룸",
+        "단군",
+        "꼬꼬갓",
+        "고수진",
+        "배혜지",
+        "윤수빈",
+        "노페",
+        "박진영",
+        "마이크",
+        "롤즈",
+        "위클리",
+        "롤하이라이트",
+        "디엔프릭스",
+        "든프",
+        "프린스",
+        "BFX",
+        "BNK FearX",
+        "분석데스크",
+        "이은빈",
+        "DNS",
+        "DN Soopers"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "완전체 진화 \"테라 승민몬\" | DK vs KT 게임 1 하이라이트 | 2026 LCK",
+        "description": "#LCK #LeaveYourMark\n\n✅ LIVE & LIVE VOD\n- LoL e스포츠 홈페이지:  https://lolesports.com/\n- 치지직: https://m.site.naver.com/1Z0Bn\n- SOOP: https://www.sooplive.com/station/aflol\n\n✅ LCK 채널 구독 및 좋아요!\n- LCK 공식 페이스북:  https://www.facebook.com/officiallck\n- LCK 공식 인스타그램:  https://www.instagram.com/lckofficial/\n- LCK 공식 틱톡 : https://tiktok.com/@lck_official\n- LCK 공식 트위터 (영문):  https://twitter.com/LCK\n\n* LCK 채널의 모든 영상은 라이엇 게임즈 코리아의 자산으로, 본 콘텐츠를 무단 복제, 도용하거나 상업적으로 이용하는 행위는 금지되며 이를 위반할 경우 관련법에 의거 법적 처벌을 받을 수 있음을 알려드립니다."
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT7M10S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": false,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "14193",
+      "likeCount": "69",
+      "favoriteCount": "0",
+      "commentCount": "5"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "ziW6faPV3xOeYECzN2vPZ2VEm2k",
+    "id": "BnLj5gQr2yI",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:00:11Z",
+      "channelId": "UCV6BWrxAp06o9OK4SmTRQxg",
+      "title": "허울뿐인 공포게임",
+      "description": "구독과 좋아요 댓글까지 남겨주시면 큰 힘이 됩니다!\n\n치지직 https://chzzk.naver.com/7e428ad7b8e1efd0af3401ea912a8017\n\n비지니스 이메일: DiBaram03.07@gmail.com\n\n브금 출처: 뮤팟\n\n#공포게임 #스팀게임 #스트리머",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/BnLj5gQr2yI/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "디바람_디밤",
+      "tags": [
+        "공포게임",
+        "재밌는 영상"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "허울뿐인 공포게임",
+        "description": "구독과 좋아요 댓글까지 남겨주시면 큰 힘이 됩니다!\n\n치지직 https://chzzk.naver.com/7e428ad7b8e1efd0af3401ea912a8017\n\n비지니스 이메일: DiBaram03.07@gmail.com\n\n브금 출처: 뮤팟\n\n#공포게임 #스팀게임 #스트리머"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT7M46S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "37",
+      "likeCount": "0",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "oLYLJCGNgx5mSOm1BtKeiL3yc6M",
+    "id": "2HYPEdoUxmo",
+    "snippet": {
+      "publishedAt": "2026-08-10T08:00:03Z",
+      "channelId": "UCi3dJ6yW2TJxvarDygeH2lA",
+      "title": "구글맵 단서만으로 어디인지 정확히 맞추는 게임🌏 | GeoGuessr",
+      "description": "SOOP (LIVE)：https://www.sooplive.com/station/butteruslll\nX (Twitter)：https://twitter.com/butteruslll\nYouTube：https://www.youtube.com/@butterusiii\n\nEmail：butterusiii@gmail.com\n═══☩══♛══☩═══\n#버터우스 #geoguessr #구글맵",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "uhd": {
+          "url": "https://i.ytimg.com/vi/2HYPEdoUxmo/uhddefault.jpg",
+          "width": 3840,
+          "height": 2160
+        }
+      },
+      "channelTitle": "버터우스 3세",
+      "tags": [
+        "버터우스",
+        "플로네스",
+        "로판",
+        "판타지",
+        "여성향",
+        "ASMR",
+        "목소리",
+        "게임",
+        "예능",
+        "콘텐츠",
+        "컨텐츠",
+        "남튜버",
+        "vtuber",
+        "버튜버",
+        "웹소설",
+        "왕국",
+        "왕자",
+        "북부대공"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "구글맵 단서만으로 어디인지 정확히 맞추는 게임🌏 | GeoGuessr",
+        "description": "SOOP (LIVE)：https://www.sooplive.com/station/butteruslll\nX (Twitter)：https://twitter.com/butteruslll\nYouTube：https://www.youtube.com/@butterusiii\n\nEmail：butterusiii@gmail.com\n═══☩══♛══☩═══\n#버터우스 #geoguessr #구글맵"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M23S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "989",
+      "likeCount": "98",
+      "favoriteCount": "0",
+      "commentCount": "11"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "m53ngGjSiOecvnCggk32ZnF-L18",
+    "id": "58ZYNI5Jpw0",
+    "snippet": {
+      "publishedAt": "2026-08-10T07:34:28Z",
+      "channelId": "UClHGjnruf4A9Us7CHVgLIEQ",
+      "title": "스팀 할인🔥AAA게임부터 인디게임까지!! + 무료배포게임 2개🔥",
+      "description": "▼게임 다운로드 링크와 각종 정보는 ▼더보기를 눌러주세요!▼\n\n00:00 인트로\n00:19 [-34%] BALL x PIT\n01:11 [-50%] PEAK\n01:47 [-90%] The Quarry\n02:27 [-95%] Tom Clancy's Ghost Recon: Wildlands\n03:16 [-35%] Split Fiction\n04:10 [-67%] DOOM: The Dark Ages\n04:55 [-15%] Machine Party\n05:34 [-40%] CloverPit\n06:12 [-50%] Rust\n07:06 [-50%] Skul: The Hero Slayer\n07:47 [-60%] FINAL FANTASY XVI\n08:26 [유비소프트] 무료 배포 게임 1\n08:58 [에픽게임즈] 무료 배포 게임 2\n\n✔️생방송 치지직 : https://chzzk.naver.com/3d6acabd378329b25a01800ae2fcd163\n✔️개인 문의 : ddeulegi@gmail.com\n✔️비지니스 문의 : ad@lolq.co.kr",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/58ZYNI5Jpw0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/58ZYNI5Jpw0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/58ZYNI5Jpw0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/58ZYNI5Jpw0/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/58ZYNI5Jpw0/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "빅핑거 [게임추천]",
+      "tags": [
+        "게임추천",
+        "플스 게임 추천",
+        "신작 게임 추천",
+        "닌텐도 게임 추천",
+        "신작 게임",
+        "플스 게임",
+        "닌텐도 게임",
+        "pc게임 추천",
+        "pc게임",
+        "스팀 게임 추천",
+        "스팀게임 추천",
+        "플스 할인",
+        "플스 할인 정보",
+        "스팀 신작",
+        "스팀 신작 게임",
+        "출시 예정 게임",
+        "출시 예정작",
+        "플스 카탈로그",
+        "게임 신작",
+        "플스 신작",
+        "닌텐도 신작",
+        "스팀 게임 신작",
+        "플스5 신작",
+        "빅핑거",
+        "스팀 할인",
+        "스팀 게임 할인",
+        "게임 리뷰",
+        "스팀",
+        "steam",
+        "PS4",
+        "PS5",
+        "게임할인",
+        "할인게임",
+        "할인게임추천",
+        "스팀할인",
+        "스팀세일",
+        "스팀 할인 추천",
+        "pc 게임 추천",
+        "rpg 게임 추천"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "스팀 할인🔥AAA게임부터 인디게임까지!! + 무료배포게임 2개🔥",
+        "description": "▼게임 다운로드 링크와 각종 정보는 ▼더보기를 눌러주세요!▼\n\n00:00 인트로\n00:19 [-34%] BALL x PIT\n01:11 [-50%] PEAK\n01:47 [-90%] The Quarry\n02:27 [-95%] Tom Clancy's Ghost Recon: Wildlands\n03:16 [-35%] Split Fiction\n04:10 [-67%] DOOM: The Dark Ages\n04:55 [-15%] Machine Party\n05:34 [-40%] CloverPit\n06:12 [-50%] Rust\n07:06 [-50%] Skul: The Hero Slayer\n07:47 [-60%] FINAL FANTASY XVI\n08:26 [유비소프트] 무료 배포 게임 1\n08:58 [에픽게임즈] 무료 배포 게임 2\n\n✔️생방송 치지직 : https://chzzk.naver.com/3d6acabd378329b25a01800ae2fcd163\n✔️개인 문의 : ddeulegi@gmail.com\n✔️비지니스 문의 : ad@lolq.co.kr"
+      },
+      "defaultAudioLanguage": "zxx"
+    },
+    "contentDetails": {
+      "duration": "PT9M55S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "38872",
+      "likeCount": "285",
+      "favoriteCount": "0",
+      "commentCount": "7"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "E6tzOieFiDf93DKqiZpLFPjVugM",
+    "id": "dN2v80Psm38",
+    "snippet": {
+      "publishedAt": "2026-08-10T07:30:07Z",
+      "channelId": "UCfqZc09dWIQ540KriBV4q7g",
+      "title": "게임이란 어느 한 방향에 치우칠 수밖에 없다",
+      "description": "#brawlstars\n시청해주셔서 감사합니다.\n\n==============================\n\n멤버십 가입 링크\nhttps://www.youtube.com/channel/UCfqZc09dWIQ540KriBV4q7g/join\n\n모든 음악은 유료 음악 사이트 'Mewpot'의 음악을 사용합니다. \n\n==============================\n\n0:00 현재 메타\n0:38 글로벌 밴\n2:58 일반 밴\n5:44 픽률",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/dN2v80Psm38/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "SOMEONE",
+      "tags": [
+        "브롤스타즈",
+        "브롤",
+        "브롤 강의",
+        "섬원",
+        "썸원"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "게임이란 어느 한 방향에 치우칠 수밖에 없다",
+        "description": "#brawlstars\n시청해주셔서 감사합니다.\n\n==============================\n\n멤버십 가입 링크\nhttps://www.youtube.com/channel/UCfqZc09dWIQ540KriBV4q7g/join\n\n모든 음악은 유료 음악 사이트 'Mewpot'의 음악을 사용합니다. \n\n==============================\n\n0:00 현재 메타\n0:38 글로벌 밴\n2:58 일반 밴\n5:44 픽률"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT8M6S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "31789",
+      "likeCount": "423",
+      "favoriteCount": "0",
+      "commentCount": "74"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "rVaRpG0A3l1rK4vsScaC6ZHS11U",
+    "id": "TRZqEfqelJg",
+    "snippet": {
+      "publishedAt": "2026-08-10T07:30:18Z",
+      "channelId": "UCT0ofHfS0aoHV7L7ytyfF4w",
+      "title": "망했다고 조롱받던 블리자드… 와우·디아·옵치 전원 부활 외 | 게임 헤드라인",
+      "description": "* 2차 인용 시 제 채널이나 영상도 출처 표기 부탁합니다.\n* 제 부족으로 오역, 착오, 잘못된 정보가 꽤 있습니다. 뭔가 이상하면 원문을 확인해주세요. 죄송합니다.\n\n0:00 유튜브 자막 지원.\n0:03 \"블리자드, Xbox 스튜디오 중 '최고 실적' 달성... MS 예상치 훌쩍 넘기며 2026 회계연도 마감\"\nhttps://www.reddit.com/r/Games/comments/1vjpagy/blizzard_is_now_the_top_performing_xbox_studio/\nhttps://www.windowscentral.com/gaming/blizzard/blizzard-is-now-xboxs-top-performing-studio-as-the-division-ends-fy26-over-delivering-on-microsofts-projections-per-internal-emails\n\n모험러는 1인 전업 유튜버입니다. 여러분의 시청과 후원으로 영상을 만들고 있습니다. \n정기 후원(채널 멤버십): https://www.youtube.com/channel/UCT0ofHfS0aoHV7L7ytyfF4w/join\n모험러의 세컨드 채널(모험기): https://www.youtube.com/channel/UCwhGV1cal7VTbg2GQHt1MCw/\n트위치: https://www.twitch.tv/conatumer\n\n#모험러 #게임뉴스 #게임헤드라인",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/TRZqEfqelJg/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/TRZqEfqelJg/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/TRZqEfqelJg/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/TRZqEfqelJg/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/TRZqEfqelJg/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "모험러의 어드벤처",
+      "tags": [
+        "목록_헤드라인",
+        "게임 뉴스",
+        "게임 기사",
+        "게임 소식",
+        "게임 정보",
+        "게임 번역",
+        "게임 트레일러",
+        "게임 리뷰",
+        "게임 헤드라인",
+        "yt:cc=on",
+        "블리자드",
+        "블리자드 부활",
+        "블리자드 실적",
+        "블리자드 성장",
+        "월드 오브 워크래프트",
+        "와우",
+        "와우 부활",
+        "와우 클래식",
+        "와우 하드코어",
+        "디아블로4",
+        "디아블로4 증오의 그릇",
+        "디아블로",
+        "디아블로 부활",
+        "오버워치",
+        "오버워치2",
+        "오버워치 부활",
+        "히어로즈 오브 더 스톰",
+        "하스스톤",
+        "MS",
+        "마이크로소프트",
+        "Xbox",
+        "액티비전 블리자드",
+        "게임뉴스",
+        "게임업계",
+        "블리자드 신작",
+        "블리즈컨",
+        "라이브서비스 게임",
+        "게임산업",
+        "게임 트렌드"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "망했다고 조롱받던 블리자드… 와우·디아·옵치 전원 부활 외 | 게임 헤드라인",
+        "description": "* 2차 인용 시 제 채널이나 영상도 출처 표기 부탁합니다.\n* 제 부족으로 오역, 착오, 잘못된 정보가 꽤 있습니다. 뭔가 이상하면 원문을 확인해주세요. 죄송합니다.\n\n0:00 유튜브 자막 지원.\n0:03 \"블리자드, Xbox 스튜디오 중 '최고 실적' 달성... MS 예상치 훌쩍 넘기며 2026 회계연도 마감\"\nhttps://www.reddit.com/r/Games/comments/1vjpagy/blizzard_is_now_the_top_performing_xbox_studio/\nhttps://www.windowscentral.com/gaming/blizzard/blizzard-is-now-xboxs-top-performing-studio-as-the-division-ends-fy26-over-delivering-on-microsofts-projections-per-internal-emails\n\n모험러는 1인 전업 유튜버입니다. 여러분의 시청과 후원으로 영상을 만들고 있습니다. \n정기 후원(채널 멤버십): https://www.youtube.com/channel/UCT0ofHfS0aoHV7L7ytyfF4w/join\n모험러의 세컨드 채널(모험기): https://www.youtube.com/channel/UCwhGV1cal7VTbg2GQHt1MCw/\n트위치: https://www.twitch.tv/conatumer\n\n#모험러 #게임뉴스 #게임헤드라인"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT14M43S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "true",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "21877",
+      "likeCount": "572",
+      "favoriteCount": "0",
+      "commentCount": "217"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "732kK3k9rZEjbU5F6i6xgUNcWak",
+    "id": "_nGa1e2nj_k",
+    "snippet": {
+      "publishedAt": "2026-08-10T07:20:00Z",
+      "channelId": "UCOkb4Api5Daj31SQN5yy-8g",
+      "title": "안 그래도 호평인데 세계에서 한국인만 싸게 사고 있다는 게임패드, 리드조이 제노 플러스를 소개합니다.(+ 잘 어울리는 게임)",
+      "description": "가격 오르기 전에 사세요\n\n타임라인\n00:00 시작\n00:08 충격적인 한국 가격\n00:40 언박싱&구성품\n01:27 외관 및 디자인\n02:09 각 요소 소개(액션버튼, 디패드, 트리거, 스틱 등)\n05:31 실제 게임 플레후기(+진동)\n07:13 이 게임패드가 정가에서도 평가가 좋은 이유(전용 소프트웨어) \n\nhttps://link.coupang.com/a/f55HBy0BUW\n\n#LEADJOY #flemwhdl #XENOPLUS #게임컨트롤러 #TMRtmxlr #FPS컨트롤러 #가성비컨트롤러 #PC게임 #Switch게임 #명조 #이환 #게임패드",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "qhd": {
+          "url": "https://i.ytimg.com/vi/_nGa1e2nj_k/qhddefault.jpg",
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "channelTitle": "역탑 문지기",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "안 그래도 호평인데 세계에서 한국인만 싸게 사고 있다는 게임패드, 리드조이 제노 플러스를 소개합니다.(+ 잘 어울리는 게임)",
+        "description": "가격 오르기 전에 사세요\n\n타임라인\n00:00 시작\n00:08 충격적인 한국 가격\n00:40 언박싱&구성품\n01:27 외관 및 디자인\n02:09 각 요소 소개(액션버튼, 디패드, 트리거, 스틱 등)\n05:31 실제 게임 플레후기(+진동)\n07:13 이 게임패드가 정가에서도 평가가 좋은 이유(전용 소프트웨어) \n\nhttps://link.coupang.com/a/f55HBy0BUW\n\n#LEADJOY #flemwhdl #XENOPLUS #게임컨트롤러 #TMRtmxlr #FPS컨트롤러 #가성비컨트롤러 #PC게임 #Switch게임 #명조 #이환 #게임패드"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT8M56S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "83405",
+      "likeCount": "884",
+      "favoriteCount": "0",
+      "commentCount": "243"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "TyI0TFD_hbf5XmKx6YrTadEghSs",
+    "id": "Mbvr5l4nPt8",
+    "snippet": {
+      "publishedAt": "2026-08-10T06:13:01Z",
+      "channelId": "UCPuD5ZRQWa_JCaY5NokNhtg",
+      "title": "[8월 신작 게임] 3D 핵앤슬래시 액션 어드벤처 게임 '황혼의 종말' (Duskfade, 더스크페이드) 플레이. 만화 같은 출시예정 싱글플레이어 플랫포머 스팀 PC 겜 추천?",
+      "description": "#더스크페이드 #황혼의종말 #Duskfade #액션게임 #어드벤처게임 #출시예정게임 #신작게임 #PC게임기대작 #PC게임추천 #8월신작게임\n\n2026년 8월 13일 한국 및 글로벌 출시가 예정되어있는 3D 핵앤슬래시 액션 어드벤처 게임, '황혼의 종말' (Duskfade, 더스크페이드) 의 플레이 영상입니다. 영국 소재 게임회사 'Fireshine Games' (파이어샤인 게임즈) 에서 퍼블리싱하는 게임입니다. 모바일 출시 계획은 따로 없는 것으로 보입니다.\n\n점프의 개념이 있는 플랫포머 게임으로, 속도감 넘치는 전투가 나름 재밌는 게임이라고 생각합니다. 한국어 미지원 게임이라는 점이 아쉽지만, 해당 장르의 게임을 좋아한다면 어느정도 기대작으로 기억할만한 기대작 게임일 수 있습니다.\n\n주 BM은 정가구매 등으로 예상됩니다. 추천 게임 여부는 정식 오픈 이후 가격과 볼륨을 보고 알려드릴 수 있을 것 같습니다.\n\n[시간표]\n0:00 프롤로그 (PROLOGUE)\n6:46 전투 (BATTLE)\n\n스팀페이지: https://store.steampowered.com/app/2542020/Duskfade/",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Mbvr5l4nPt8/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Mbvr5l4nPt8/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Mbvr5l4nPt8/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "게임달고나",
+      "tags": [
+        "출시예정 게임",
+        "출시예정게임",
+        "국산 게임",
+        "국산게임",
+        "스팀 게임 추천",
+        "스팀게임 추천",
+        "스팀게임추천",
+        "추천 게임",
+        "추천게임",
+        "슈팅게임 추천",
+        "슈팅게임추천",
+        "액션게임 추천",
+        "액션게임추천",
+        "3D RPG",
+        "3DRPG",
+        "PC 게임 추천",
+        "PC게임 추천",
+        "PC게임추천",
+        "추천 PC 게임",
+        "추천 PC게임",
+        "추천PC게임",
+        "그래픽 좋은 게임",
+        "그래픽좋은게임",
+        "PC 게임 기대작",
+        "PC게임 기대작",
+        "PC게임기대작",
+        "스팀 게임",
+        "스팀게임",
+        "PC 게임",
+        "PC게임",
+        "로그라이크 게임",
+        "로그라이크게임",
+        "액션 게임",
+        "액션게임",
+        "액션 게임 추천",
+        "로그라이크 추천",
+        "로그라이크 게임 추천",
+        "어드벤처 게임",
+        "어드벤처게임",
+        "어드벤처 게임 추천",
+        "로그라이트 게임",
+        "로그라이트게임",
+        "로그라이크RPG",
+        "8월 신작 게임",
+        "8월 신작게임",
+        "8월신작게임",
+        "식민지 게임",
+        "식민지게임",
+        "개척시뮬레이션게임",
+        "더스크페이드",
+        "Duskfade",
+        "황혼의 종말",
+        "황혼의종말",
+        "핵앤슬래시 게임",
+        "핵앤슬래시게임",
+        "플랫포머 게임",
+        "플랫포머게임"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[8월 신작 게임] 3D 핵앤슬래시 액션 어드벤처 게임 '황혼의 종말' (Duskfade, 더스크페이드) 플레이. 만화 같은 출시예정 싱글플레이어 플랫포머 스팀 PC 겜 추천?",
+        "description": "#더스크페이드 #황혼의종말 #Duskfade #액션게임 #어드벤처게임 #출시예정게임 #신작게임 #PC게임기대작 #PC게임추천 #8월신작게임\n\n2026년 8월 13일 한국 및 글로벌 출시가 예정되어있는 3D 핵앤슬래시 액션 어드벤처 게임, '황혼의 종말' (Duskfade, 더스크페이드) 의 플레이 영상입니다. 영국 소재 게임회사 'Fireshine Games' (파이어샤인 게임즈) 에서 퍼블리싱하는 게임입니다. 모바일 출시 계획은 따로 없는 것으로 보입니다.\n\n점프의 개념이 있는 플랫포머 게임으로, 속도감 넘치는 전투가 나름 재밌는 게임이라고 생각합니다. 한국어 미지원 게임이라는 점이 아쉽지만, 해당 장르의 게임을 좋아한다면 어느정도 기대작으로 기억할만한 기대작 게임일 수 있습니다.\n\n주 BM은 정가구매 등으로 예상됩니다. 추천 게임 여부는 정식 오픈 이후 가격과 볼륨을 보고 알려드릴 수 있을 것 같습니다.\n\n[시간표]\n0:00 프롤로그 (PROLOGUE)\n6:46 전투 (BATTLE)\n\n스팀페이지: https://store.steampowered.com/app/2542020/Duskfade/"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT15M14S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "578",
+      "likeCount": "8",
+      "favoriteCount": "0",
+      "commentCount": "2"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "CYCz_H1L6nSAVJgm6CycuKRGeJ8",
+    "id": "MAeaRBDeYsM",
+    "snippet": {
+      "publishedAt": "2026-08-10T04:06:18Z",
+      "channelId": "UCPuD5ZRQWa_JCaY5NokNhtg",
+      "title": "[8월 신작 모바일게임] 판타지 애니메이션 수집형 RPG '여신 키우기: 방치형 RPG' 플레이. 출시예정 2D 세로화면 AFK 전략 미소녀 방치형 RPG 게임 기대작 추천?",
+      "description": "#여신키우기 #8월신작게임 #8월모바일게임 #8월신작모바일게임 #신작모바일게임 #모바일게임 #출시예정모바일게임 #출시예정게임 #수집형RPG #수집형게임 #수집형모바일게임 #방치형게임 #방치형RPG #방치형모바일게임\n\n2026년 8월 20일 한국 출시가 예정되어있는 2D 애니메이션 수집형 RPG 게임 '여신 키우기: 방치형 RPG' 의 해외서버 플레이 영상입니다. 한국 소재 게임회사 '더플레이플러스' 에서 퍼블리싱하는 게임이며, 공식 커뮤니티는 네이버 라운지입니다.\n\n전투는 이런류 게임이 그렇듯 배치 및 팀편성을 제외하곤 신경쓸 부분이 거의 존재하지 않습니다. 타 수집 방치형게임들과 마찬가지로 오프라인 방치보상이 존재하는 AFK 방치형 게임이고, 스토리를 밀수록 방치 보상이 올라가고, 서버 증식하는 게임입니다. 기본적으로 AFK 수집형 RPG 게임을 좋아하지 않는 게이머가 기대작으로 기억할만한 기대작 게임은 아니라고 생각합니다.\n\n주 BM은 가챠입니다. 캐릭터를 가챠로 뽑아야하는 가챠게임이며, 추천 게임 여부는 따로 밝히지 않겠습니다.\n\n[시간표]\n0:00 게임 시작 (GAME START)\n7:53 보스전 (BOSS BATTLE)\n10:30 가챠 (GACHA)",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/MAeaRBDeYsM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/MAeaRBDeYsM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/MAeaRBDeYsM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "게임달고나",
+      "tags": [
+        "수집형 RPG",
+        "수집형RPG",
+        "수집형 게임",
+        "수집형게임",
+        "모바일 RPG",
+        "모바일RPG",
+        "수집형 모바일 게임",
+        "수집형 모바일게임",
+        "수집형모바일게임",
+        "방치형 RPG",
+        "방치형RPG",
+        "방치형 게임",
+        "방치형게임",
+        "방치형 모바일 게임",
+        "방치형 모바일게임",
+        "방치형모바일게임",
+        "신작 수집형 게임",
+        "신작 수집형게임",
+        "신작수집형게임",
+        "신작 방치형 게임",
+        "신작 방치형게임",
+        "신작방치형게임",
+        "신작 RPG",
+        "신작RPG",
+        "신작 수집형 RPG",
+        "신작 모바일 게임",
+        "신작 모바일게임",
+        "신작모바일게임",
+        "모바일 게임",
+        "모바일게임",
+        "신작 게임",
+        "신작게임",
+        "모바일 RPG 게임",
+        "모바일RPG게임",
+        "출시예정게임",
+        "출시예정 게임",
+        "수집형RPG게임",
+        "출시예정 모바일게임",
+        "모바일게임 추천",
+        "게임 추천",
+        "게임추천",
+        "추천 게임",
+        "추천게임",
+        "RPG 게임",
+        "RPG게임",
+        "RPG",
+        "8월 모바일게임",
+        "8월모바일게임",
+        "8월 신작 게임",
+        "8월 신작게임",
+        "8월신작게임",
+        "여신 키우기",
+        "여신키우기",
+        "여신 키우기: 방치형 RPG"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[8월 신작 모바일게임] 판타지 애니메이션 수집형 RPG '여신 키우기: 방치형 RPG' 플레이. 출시예정 2D 세로화면 AFK 전략 미소녀 방치형 RPG 게임 기대작 추천?",
+        "description": "#여신키우기 #8월신작게임 #8월모바일게임 #8월신작모바일게임 #신작모바일게임 #모바일게임 #출시예정모바일게임 #출시예정게임 #수집형RPG #수집형게임 #수집형모바일게임 #방치형게임 #방치형RPG #방치형모바일게임\n\n2026년 8월 20일 한국 출시가 예정되어있는 2D 애니메이션 수집형 RPG 게임 '여신 키우기: 방치형 RPG' 의 해외서버 플레이 영상입니다. 한국 소재 게임회사 '더플레이플러스' 에서 퍼블리싱하는 게임이며, 공식 커뮤니티는 네이버 라운지입니다.\n\n전투는 이런류 게임이 그렇듯 배치 및 팀편성을 제외하곤 신경쓸 부분이 거의 존재하지 않습니다. 타 수집 방치형게임들과 마찬가지로 오프라인 방치보상이 존재하는 AFK 방치형 게임이고, 스토리를 밀수록 방치 보상이 올라가고, 서버 증식하는 게임입니다. 기본적으로 AFK 수집형 RPG 게임을 좋아하지 않는 게이머가 기대작으로 기억할만한 기대작 게임은 아니라고 생각합니다.\n\n주 BM은 가챠입니다. 캐릭터를 가챠로 뽑아야하는 가챠게임이며, 추천 게임 여부는 따로 밝히지 않겠습니다.\n\n[시간표]\n0:00 게임 시작 (GAME START)\n7:53 보스전 (BOSS BATTLE)\n10:30 가챠 (GACHA)"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT11M22S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "444",
+      "likeCount": "8",
+      "favoriteCount": "0",
+      "commentCount": "2"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "Hpl6E_vOHXb2dDvidf6QA14DzfI",
+    "id": "3HDqVAsMN38",
+    "snippet": {
+      "publishedAt": "2026-08-10T03:15:26Z",
+      "channelId": "UCW3fNThKJ52l6ANyqllnLHw",
+      "title": "이환 성우가 연기한 다른 게임 캐릭터 더빙 비교 2편",
+      "description": "이환 성우가 연기한 원신, 붕괴: 스타레일, 젠레스 존 제로, 명조의 캐릭터들을 모아봤습니다! 🎙️\n\n※ 카오스 성우(CV. 원종준)님은 원신, 붕괴: 스타레일, 젠레스 존 제로, 명조에서 맡은 배역이 없어 이번 영상에서는 제외되었습니다. 추후 해당 게임에서 배역을 맡으실 경우 다음 편에 추가하겠습니다. 양해 부탁드립니다.\n\n00:00 CV.성예원 (민트, 스파클, 스파키, 이네파, 설지)\n01:29 CV.차영희 (신쿠, 아리아, 마거리트)\n02:19 CV.이주은 (일로이, 치사, 꼬마 두린, 세르세스, 운리, 주연)\n03:55 CV.이동훈 (스키아, Dr.레이시오, 고기마루)\n04:37 CV.조현정 (파디아, 백로, 에일로이)\n05:32 CV.김보나 (라크리모사, 파수인, 로자리아, 엔비, 히메코)\n07:02 CV.방시우 (구원, 토파즈, 콜레이, 아브)\n08:13 CV.이다은 (하토르, 치오리, 페라)\n09:06 CV.김가령 (하니엘, 페이몬, 루시)\n\n☆영상과 상관없는 불필요한 댓글은 삭제될 수 있습니다.\n\n#nte #ntecreator #이환 #genshinimpact #honkaistarrail #zenlesszonezero #wutheringwaves #더빙",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/3HDqVAsMN38/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/3HDqVAsMN38/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/3HDqVAsMN38/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/3HDqVAsMN38/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/3HDqVAsMN38/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "나나리집사",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "이환 성우가 연기한 다른 게임 캐릭터 더빙 비교 2편",
+        "description": "이환 성우가 연기한 원신, 붕괴: 스타레일, 젠레스 존 제로, 명조의 캐릭터들을 모아봤습니다! 🎙️\n\n※ 카오스 성우(CV. 원종준)님은 원신, 붕괴: 스타레일, 젠레스 존 제로, 명조에서 맡은 배역이 없어 이번 영상에서는 제외되었습니다. 추후 해당 게임에서 배역을 맡으실 경우 다음 편에 추가하겠습니다. 양해 부탁드립니다.\n\n00:00 CV.성예원 (민트, 스파클, 스파키, 이네파, 설지)\n01:29 CV.차영희 (신쿠, 아리아, 마거리트)\n02:19 CV.이주은 (일로이, 치사, 꼬마 두린, 세르세스, 운리, 주연)\n03:55 CV.이동훈 (스키아, Dr.레이시오, 고기마루)\n04:37 CV.조현정 (파디아, 백로, 에일로이)\n05:32 CV.김보나 (라크리모사, 파수인, 로자리아, 엔비, 히메코)\n07:02 CV.방시우 (구원, 토파즈, 콜레이, 아브)\n08:13 CV.이다은 (하토르, 치오리, 페라)\n09:06 CV.김가령 (하니엘, 페이몬, 루시)\n\n☆영상과 상관없는 불필요한 댓글은 삭제될 수 있습니다.\n\n#nte #ntecreator #이환 #genshinimpact #honkaistarrail #zenlesszonezero #wutheringwaves #더빙"
+      }
+    },
+    "contentDetails": {
+      "duration": "PT10M11S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "13444",
+      "likeCount": "242",
+      "favoriteCount": "0",
+      "commentCount": "74"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "0Wcu9BsYOgJ6wtQJ_dP9_i4o2Yw",
+    "id": "7M4cLFpfLI4",
+    "snippet": {
+      "publishedAt": "2026-08-10T03:00:19Z",
+      "channelId": "UCODRwVtAUcZylxC769HNOLw",
+      "title": "주사위를 활용한 레이싱 카트 게임!",
+      "description": "🎮 게임 설명\n롤 레이서에서는 주사위를 사용하여 적을 공격하고 \n모노폴리와 같은 고전 보드게임에서 영감을 받은 게임이며 \n부동산을 구매할 수도 있습니다. \n자신에게 도움이 되거나 적에게 방해가 될 수 있습니다.\n\n🕹 게임 정보\n게임 : Roll Racer\n플랫폼 : itch.io\n게임 링크 : https://maytch.itch.io/roll-racer\n#게임 #인디게임 #레이싱 #카트",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/7M4cLFpfLI4/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/7M4cLFpfLI4/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/7M4cLFpfLI4/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/7M4cLFpfLI4/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/7M4cLFpfLI4/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "아오슈 AOSHU",
+      "tags": [
+        "게임",
+        "인디게임",
+        "무료게임",
+        "짧은 게임",
+        "신기한 게임",
+        "재미있는 게임",
+        "게임 실황",
+        "웃긴 게임",
+        "혼자하는 게임",
+        "싱글플레이어",
+        "게임 플레이",
+        "종합게임",
+        "레이싱",
+        "레이싱 게임",
+        "카트",
+        "귀여운 게임",
+        "Racing",
+        "Roll Racer",
+        "3D",
+        "캐주얼",
+        "귀여운",
+        "픽셀 게임",
+        "Casual",
+        "Cute"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "주사위를 활용한 레이싱 카트 게임!",
+        "description": "🎮 게임 설명\n롤 레이서에서는 주사위를 사용하여 적을 공격하고 \n모노폴리와 같은 고전 보드게임에서 영감을 받은 게임이며 \n부동산을 구매할 수도 있습니다. \n자신에게 도움이 되거나 적에게 방해가 될 수 있습니다.\n\n🕹 게임 정보\n게임 : Roll Racer\n플랫폼 : itch.io\n게임 링크 : https://maytch.itch.io/roll-racer\n#게임 #인디게임 #레이싱 #카트"
+      },
+      "defaultAudioLanguage": "lg"
+    },
+    "contentDetails": {
+      "duration": "PT5M30S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": false,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": false,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "64",
+      "favoriteCount": "0",
+      "commentCount": "0"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "dFexsWqWrm0GZLV45NkFnb3QboE",
+    "id": "Ql2SQMvwMe0",
+    "snippet": {
+      "publishedAt": "2026-08-10T03:00:37Z",
+      "channelId": "UCFsJVl9V9fSIZA1uS3gMu-w",
+      "title": "드디어 키보드탈출 \"세계 3위\"를 달성했습니다..!",
+      "description": "#로블록스 #roblox #키보드탈출 #키보드타워 \n\n재미있게 보셨다면 구독과 좋아요 부탁드립니다!\n\n소멸 디스코드 링크\nhttps://discord.gg/nmkmQj25JX\n\n게임 링크\nhttps://www.roblox.com/ko/games/95082159892680/1-Speed-Keyboard-Escape-Candy-Chocolate",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        },
+        "fhd": {
+          "url": "https://i.ytimg.com/vi/Ql2SQMvwMe0/fhddefault.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "channelTitle": "소멸",
+      "tags": [
+        "로블록스",
+        "소멸"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "드디어 키보드탈출 \"세계 3위\"를 달성했습니다..!",
+        "description": "#로블록스 #roblox #키보드탈출 #키보드타워 \n\n재미있게 보셨다면 구독과 좋아요 부탁드립니다!\n\n소멸 디스코드 링크\nhttps://discord.gg/nmkmQj25JX\n\n게임 링크\nhttps://www.roblox.com/ko/games/95082159892680/1-Speed-Keyboard-Escape-Candy-Chocolate"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT13M55S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "206164",
+      "likeCount": "1602",
+      "favoriteCount": "0",
+      "commentCount": "503"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "82fUiWFLC3_z2sLVjhFz12ZrOnE",
+    "id": "9KVBPgJCozM",
+    "snippet": {
+      "publishedAt": "2026-08-10T02:45:39Z",
+      "channelId": "UC1Cw61tpaalNgzaT_TSgzQg",
+      "title": "스타일리쉬 액션 게임 황제 데빌 메이 크라이5 + 버질 DLC 엔딩 리뷰",
+      "description": "데빌 메이 크라이5 스팀 : https://store.steampowered.com/app/601150/Devil_May_Cry_5/\n\n도움이 되셨다면 구독과 좋아요를 클릭 부탁 드려요!!\n\n치지직 채널 : https://chzzk.naver.com/30b47f6119cf6643aa46fb0be4307dc4\n\n#데빌메이크라이 #데빌메이크라이5 \n\n00:00 영상시작\n00:48 장단점\n05:00 최대단점\n06:14 마치며",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/9KVBPgJCozM/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/9KVBPgJCozM/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/9KVBPgJCozM/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/9KVBPgJCozM/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/9KVBPgJCozM/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "헬노아",
+      "tags": [
+        "데메크5리뷰",
+        "데메크5DLC리뷰"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "스타일리쉬 액션 게임 황제 데빌 메이 크라이5 + 버질 DLC 엔딩 리뷰",
+        "description": "데빌 메이 크라이5 스팀 : https://store.steampowered.com/app/601150/Devil_May_Cry_5/\n\n도움이 되셨다면 구독과 좋아요를 클릭 부탁 드려요!!\n\n치지직 채널 : https://chzzk.naver.com/30b47f6119cf6643aa46fb0be4307dc4\n\n#데빌메이크라이 #데빌메이크라이5 \n\n00:00 영상시작\n00:48 장단점\n05:00 최대단점\n06:14 마치며"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT7M36S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "2226",
+      "likeCount": "30",
+      "favoriteCount": "0",
+      "commentCount": "23"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "8o1oz7cU8qL2X1ZyVWp2jQHvKaQ",
+    "id": "cveyFx_KB7c",
+    "snippet": {
+      "publishedAt": "2026-08-10T02:11:39Z",
+      "channelId": "UCV3w2Ojm0m-qd3IxIrNwgOg",
+      "title": "[지수] 이정도면 접어야 하나요? 물론 더 심한분도 있겟지만.. 게임이 어렵! #리니지m #리니지m지수 ",
+      "description": "ep1.\n이건 해도 너무하긴한데.\n물론 본주님보다 더 심한분들도 많이 계시겟지만\n쌩합성 40번에 1번 뜬건 선을 씨게 넘은듯 ㅠ\n\n그래도 여기서 한번 얻어 걸려준다면 \n더 재미나게 하실수 잇을텐데..\n\nep2.\n주말제작으로 나온\n12만코인으로 개돼지팩1장!\n300만 코인을 녹여보면 영웅은 몇장나올까?\n\nep3.\n우리본주님도 신화중복이 3장!!\n그리고 개돼지팩 66장!\n비러머글확률 어찌 영웅도 이렇게 안주냐!!\n이게 맞냐?!!!\n\n\n\n\n*확률형 아이탬 포함\n구독 & 좋아요 & 후원은 제게 큰 힘이 됩니다.\n투네이션 :https://toon.at/donate/jisukim\n맴버쉽 :  https://www.youtube.com/channel/UCV3w2Ojm0m-qd3IxIrNwgOg/join\n\n\n유료 / 무료 배너 자막광고\n문의 톡아뒤   jisu.kim\n\n#리니지m #리니지엠  #jisukim  #jisu #天堂m #90리세 #리니지m지수 #유일 #리니지m총사 #유일총사 #린엠지수 #린엠 #린앰 #린엠 지수 #모바일게임 #게임 #games #lineagem",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/cveyFx_KB7c/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/cveyFx_KB7c/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/cveyFx_KB7c/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/cveyFx_KB7c/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/cveyFx_KB7c/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Jisu Kim",
+      "tags": [
+        "리니지m",
+        "lineagem",
+        "리니지m지수",
+        "린엠",
+        "린엠지수"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[지수] 이정도면 접어야 하나요? 물론 더 심한분도 있겟지만.. 게임이 어렵! #리니지m #리니지m지수 ",
+        "description": "ep1.\n이건 해도 너무하긴한데.\n물론 본주님보다 더 심한분들도 많이 계시겟지만\n쌩합성 40번에 1번 뜬건 선을 씨게 넘은듯 ㅠ\n\n그래도 여기서 한번 얻어 걸려준다면 \n더 재미나게 하실수 잇을텐데..\n\nep2.\n주말제작으로 나온\n12만코인으로 개돼지팩1장!\n300만 코인을 녹여보면 영웅은 몇장나올까?\n\nep3.\n우리본주님도 신화중복이 3장!!\n그리고 개돼지팩 66장!\n비러머글확률 어찌 영웅도 이렇게 안주냐!!\n이게 맞냐?!!!\n\n\n\n\n*확률형 아이탬 포함\n구독 & 좋아요 & 후원은 제게 큰 힘이 됩니다.\n투네이션 :https://toon.at/donate/jisukim\n맴버쉽 :  https://www.youtube.com/channel/UCV3w2Ojm0m-qd3IxIrNwgOg/join\n\n\n유료 / 무료 배너 자막광고\n문의 톡아뒤   jisu.kim\n\n#리니지m #리니지엠  #jisukim  #jisu #天堂m #90리세 #리니지m지수 #유일 #리니지m총사 #유일총사 #린엠지수 #린엠 #린앰 #린엠 지수 #모바일게임 #게임 #games #lineagem"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT10M21S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "5456",
+      "likeCount": "31",
+      "favoriteCount": "0",
+      "commentCount": "11"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "r1haqoKI8pCh-49kvJdrF1vUXxM",
+    "id": "dHi50ldhWhQ",
+    "snippet": {
+      "publishedAt": "2026-08-10T02:00:41Z",
+      "channelId": "UCdVEHxKpd4De2ie4BhUqsmQ",
+      "title": "[모바일게임] 3D운전게임 4.0 대한민국 경찰차 사이버트럭 도색 배포! + 경찰관용 노트북까지!",
+      "description": "#루시 #경찰차 #노트북 #도색 #배포 #모드 \n\n도색의 사용과 2차 수정은 100% 자유입니다만\n재가공 배포 및 수익 창출의 목적으로 사용 시 발생하는 문제에 대해서는 본인의 책임입니다\n\n3D운전게임 4.0\nhttps://play.google.com/store/apps/details?id=com.drivegame.seoul\n\n도색 - 구글 바이러스 검사 작동중\nhttps://drive.google.com/drive/folders/1MD0pBePbAjaBeWYd3yvQIqO3dbp4psWd?usp=sharing\n\n사이버트럭 경찰차\ncyberpolice5.png\n\n경찰마크 모니터\nmonitor.png\n\n키보드\nkeyboard.png",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/dHi50ldhWhQ/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/dHi50ldhWhQ/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/dHi50ldhWhQ/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/dHi50ldhWhQ/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/dHi50ldhWhQ/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "럭키루시",
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[모바일게임] 3D운전게임 4.0 대한민국 경찰차 사이버트럭 도색 배포! + 경찰관용 노트북까지!",
+        "description": "#루시 #경찰차 #노트북 #도색 #배포 #모드 \n\n도색의 사용과 2차 수정은 100% 자유입니다만\n재가공 배포 및 수익 창출의 목적으로 사용 시 발생하는 문제에 대해서는 본인의 책임입니다\n\n3D운전게임 4.0\nhttps://play.google.com/store/apps/details?id=com.drivegame.seoul\n\n도색 - 구글 바이러스 검사 작동중\nhttps://drive.google.com/drive/folders/1MD0pBePbAjaBeWYd3yvQIqO3dbp4psWd?usp=sharing\n\n사이버트럭 경찰차\ncyberpolice5.png\n\n경찰마크 모니터\nmonitor.png\n\n키보드\nkeyboard.png"
+      },
+      "defaultAudioLanguage": "zxx"
+    },
+    "contentDetails": {
+      "duration": "PT16M19S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "28511",
+      "likeCount": "224",
+      "favoriteCount": "0",
+      "commentCount": "58"
+    }
+  },
+  {
+    "kind": "youtube#video",
+    "etag": "etw24cXA4m1xRvXfDZm4SeAS2kE",
+    "id": "63AwFTtERWw",
+    "snippet": {
+      "publishedAt": "2026-08-10T02:00:32Z",
+      "channelId": "UCXd3lEQIyDmtvdCpqmVgqkw",
+      "title": "😱 공포게임 극혐 마시멜로… 결국 더 미믹을 해버렸습니다ㅋㅋㅋ | 로블록스",
+      "description": "로블록스 더 미믹에 공포게임 극혐하는 마시멜로가 결국 도전했습니다😱ㅋㅋ 과연 끝까지 버틸 수 있을까요?\n\n#로블록스 #더미믹 #TheMimic #공포게임 #마시멜로",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/63AwFTtERWw/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/63AwFTtERWw/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/63AwFTtERWw/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/63AwFTtERWw/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/63AwFTtERWw/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "마시멜로",
+      "tags": [
+        "로블록스",
+        "Roblox",
+        "마시멜로",
+        "로블록스업데이트",
+        "로블록스소식",
+        "로블록스라이벌",
+        "RobloxRivals",
+        "라이벌",
+        "Rivals",
+        "로블록스정보",
+        "MarshimelloON",
+        "세일러피스",
+        "선원조각",
+        "포세이큰"
+      ],
+      "categoryId": "20",
+      "liveBroadcastContent": "none",
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "😱 공포게임 극혐 마시멜로… 결국 더 미믹을 해버렸습니다ㅋㅋㅋ | 로블록스",
+        "description": "로블록스 더 미믹에 공포게임 극혐하는 마시멜로가 결국 도전했습니다😱ㅋㅋ 과연 끝까지 버틸 수 있을까요?\n\n#로블록스 #더미믹 #TheMimic #공포게임 #마시멜로"
+      },
+      "defaultAudioLanguage": "ko"
+    },
+    "contentDetails": {
+      "duration": "PT4M21S",
+      "dimension": "2d",
+      "definition": "hd",
+      "caption": "false",
+      "licensedContent": true,
+      "contentRating": {},
+      "projection": "rectangular"
+    },
+    "status": {
+      "uploadStatus": "processed",
+      "privacyStatus": "public",
+      "license": "youtube",
+      "embeddable": true,
+      "publicStatsViewable": true,
+      "madeForKids": false
+    },
+    "statistics": {
+      "viewCount": "324",
+      "likeCount": "18",
+      "favoriteCount": "0",
+      "commentCount": "53"
+    }
+  }
+]

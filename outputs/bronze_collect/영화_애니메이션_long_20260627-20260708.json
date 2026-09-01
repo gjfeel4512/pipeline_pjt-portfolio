@@ -1,0 +1,1725 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"",
+    "videoCategoryId": "1",
+    "videoDuration": "long",
+    "publishedAfter": "2026-06-27T00:00:00Z",
+    "publishedBefore": "2026-07-08T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "EFeUMicTMcFRe5peLZtI1WWpVVU",
+    "nextPageToken": "CDIQAA",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 102302,
+      "resultsPerPage": 50
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JYGiTEcvM3eaTSN7X_YOYeoWZlU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "uY0Pqu2zvwA"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-07T10:33:25Z",
+          "channelId": "UC3P0QN3fUNBd7v3VLzHeh0A",
+          "title": "와.. 너무 충격적이어서 할 말을 잃었습니다..🔥 영화의 처음부터 끝까지, 충격적인 내용들이 계속 등장해서, 2시간 동안 머리가 띵했던 존잼 영화",
+          "description": "이번 영화는 《언더 유어 베드》입니다 *이지훈, 이윤우, 신수항 주연의 영화죠 ✨영화는 왓챠, 티빙, 웨이브에서 시청하실 수 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/uY0Pqu2zvwA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/uY0Pqu2zvwA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/uY0Pqu2zvwA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "진리의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-07T10:33:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "w49GXg9QOBsAcXcXKjX0v6vjpcM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9IjbVHdGUFY"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-06T07:34:25Z",
+          "channelId": "UCpCiIDf9UrfRqte55FHWlYQ",
+          "title": "누명을 쓰고 교도소에 들어간 &quot;실전 무술 1위&quot; 제이슨 스타뎀이 복수를 결심하면 벌어지는 일..",
+          "description": "리볼버 #드림텔러 #movie #영화리뷰 #결말포함 #제이슨스타뎀 #film #B 오늘 전해드린 작품은 영화 [리볼버] 입니다. 오늘도 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9IjbVHdGUFY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9IjbVHdGUFY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9IjbVHdGUFY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "드림텔러 DREAM TELLER",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-06T07:34:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "glkF5cw31qzydHG_-yApfHpFDjE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "aGo1AP9xSmg"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-05T11:00:29Z",
+          "channelId": "UCnWR9GjfjW_fiD9iaIQgdrw",
+          "title": "⛪💖💥 [화제작] &quot;신부님이 되기 직전, 그녀를 만났다&quot; 종교적 소명마저 뒤흔든 시칠리아의 시간 순삭 역대급 금지된 사랑 💥💖⛪[영화리뷰/결말포함]",
+          "description": "하티스트 썸머 본 영상은 결말이 포함된 리뷰입니다 :) 구독과 좋아요는 채널 성장에 큰 힘이 됩니다   시청해주셔서 감사합니다   ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/aGo1AP9xSmg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/aGo1AP9xSmg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/aGo1AP9xSmg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "망고 무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-05T11:00:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "tGM8XoZhMeFYx7KZLidp0XsqUPA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "MRn-xlwl_Ls"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-05T01:00:24Z",
+          "channelId": "UC79hJz6y1EEiIkwfHOuWC4w",
+          "title": "소지섭의 MZ건달들 참교육 ≪김부장≫ 3~4화 몰아보기🔥 도합 50단, 합쳐서 100살 넘는 아빠들이 뭉쳤다. 이제 이 세계에 존재하는 나쁜놈들은 다 D졌다! 5~6화는 더 미쳤다",
+          "description": "소지섭 #김부장 #김시선 #액션 #최대훈 #윤경호 #주상욱 #손나은 #김성규 드라마 ≪김부장≫ 3화~4화의 내용입니다. 채널 SBS ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/MRn-xlwl_Ls/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/MRn-xlwl_Ls/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/MRn-xlwl_Ls/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김시선",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-05T01:00:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "o2tKgZheLOif4lsHUUmpfKxNlW0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VZzl3d1V3Qo"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T12:00:19Z",
+          "channelId": "UCCiLsaC6uPxvpewPjIXxZXA",
+          "title": "🔥미래를 바꾸려다 모두 잃는다🔥‼️상상 이상의 반전 로맨스‼️(영화리뷰/결말포함)",
+          "description": "영화 제목 \" 위드 유 인 더 퓨처 \" 협업문의:naehaenam00@gmail.com #영화리뷰결말포함 #영화추천결말 #영화결말리뷰 #명작 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VZzl3d1V3Qo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VZzl3d1V3Qo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VZzl3d1V3Qo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "띵영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T12:00:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XdzLsDcSpoY5UVMpD7aILVj1Is4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_fxJpPUcThI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T11:00:22Z",
+          "channelId": "UCaQgjkAJDuahKTB31isbH6A",
+          "title": "🩸정말로 있었던 무서운 이야기🩸덥다는 핑계로 나가지말고 이거나 봐라🩸《혼코와 151~162》몰아보기 (영화리뷰/드라마리뷰/결말포함)",
+          "description": "영화리뷰결말포함 #명작#추천#일드 #영화리뷰 #영화결말포함 #영화결말포함리뷰#공포#일본#명작#웃긴#장편#넷플릭스#아마존# ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_fxJpPUcThI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_fxJpPUcThI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_fxJpPUcThI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "내해남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T11:00:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cx53RncHz5pi14zteSLlqKxZ1Nw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Hc3u_JVA47U"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T10:59:43Z",
+          "channelId": "UCnabt_BunUVVk1PcSd8CO9Q",
+          "title": "빛바랜 사진첩 같은 80년대 판타지 로맨스 영화 [영화리뷰/결말포함]",
+          "description": "메이드 인 헤븐(Made In Heaven), 1987] #티모시허튼 #켈리맥길리스 #데브라윙거 #판타지로맨스 - 본 영상은 직접 작성한 대본과 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Hc3u_JVA47U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Hc3u_JVA47U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Hc3u_JVA47U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "디토이야기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T10:59:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mSvuiIGFdiqOi_NbhgAnO5TIaIM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bEAc5xmcPPI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T07:52:28Z",
+          "channelId": "UCpCiIDf9UrfRqte55FHWlYQ",
+          "title": "≪김부장≫ 이전에 이 작품이 있었다..진짜 깡패들을 데리고 와 찍었다고 논란이 된 남자들의 레전드 인생 영화....",
+          "description": "크로우즈제로2 #드림텔러 #movie #영화리뷰 #결말포함 #오구리슌 #film #B 오늘 전해드린 작품은 영화 [크로우즈 제로 2] 입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bEAc5xmcPPI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bEAc5xmcPPI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bEAc5xmcPPI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "드림텔러 DREAM TELLER",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T07:52:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cAgvG1pwmp4QUz6H2LRnKSR4KJc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EKz44WpLF88"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T03:55:32Z",
+          "channelId": "UCpr2S3SBmyjvrx9Q4pLUZHw",
+          "title": "제발 안경 쓴 아저씨는 건드리지 말자🔥인간 쓰레기들 참교육해주는 전투력 &quot;1위&quot; 최강의 요원 ",
+          "description": "무비트립 #드라마 #언익스펙티드 #애플티비 #드라마리뷰 #appletv #B 구독자 여러분, 안녕하십니까? (❁´◡`❁) 오늘도 저희 무비 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EKz44WpLF88/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EKz44WpLF88/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EKz44WpLF88/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "movie trip 무비트립",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T03:55:32Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "HrPlSvxrHacA4_Ask6jrBRvdRHM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hquODx_rg6Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T02:15:31Z",
+          "channelId": "UC6tcn_t0F5uktmR350hgKoA",
+          "title": "[결말포함/영화리뷰]🔥 개들의 전쟁, 참교육이 뭔지 보여주려는 건달이 되고싶은 양아치들, 김무열, 진선규 주연, 몰입도 최강, 한국영화🔥",
+          "description": "결말포함 #영화리뷰 #한국영화 #개들의전쟁 영화 '개들의 전쟁'입니다 구독과 좋아요는 채널 영상 제작에 큰 힘이 됩니다 :) 시청 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hquODx_rg6Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hquODx_rg6Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hquODx_rg6Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "한국무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T02:15:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WyBCnbMnErXNVkhNQnmEIzB7Tfk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EmOHpLj2Myw"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T01:00:17Z",
+          "channelId": "UCxn_EHVOJnrEJBZY2p3E6Sg",
+          "title": "도박판 잠입 수사하다가 도박에 빠져버린 IQ230 연수원 수석 천재 검사 정려원 ㅋㅋㅋㅋ《검사내전》정려원 시점 몰아보기",
+          "description": "영화 #드라마 #영화리뷰 #검사내전 #정려원 #이성재 #김광규 #법정 #정치 #범죄 #코미디 드라마: 검사내전 1-12회 정려원 시점 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EmOHpLj2Myw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EmOHpLj2Myw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EmOHpLj2Myw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "어바웃타임 (About time)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T01:00:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JSS7wLloTzHSPoDCSApshvSi1v0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "W8tx8g8k32g"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T01:00:24Z",
+          "channelId": "UC-ZF42znvkbm83ovdmJY28Q",
+          "title": "가슴에 따뜻함을 남기는.. 기분 좋은 성장 드라마 (결말포함)",
+          "description": "리버티 하이츠 Liberty Heights, 1999 미국 감독 : 베리 레빈슨 주연 : 벤 포스터, 애드리안 브로디, 조 맨테그나 조연 : 올란도 존스, 베베 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/W8tx8g8k32g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/W8tx8g8k32g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/W8tx8g8k32g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "고체극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T01:00:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "bimasNBNky3nFxY_7-K7j_B4YMM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hskIar8i0-g"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-04T00:31:45Z",
+          "channelId": "UCn2yI8SFCCfRTHT7EFpUnmw",
+          "title": "《마티 슈프림》 완전 분석+결말 해석 영화 리뷰",
+          "description": "채널 가입을 통해 현이버스를 후원해주세요☺️ 양질의 컨텐츠를 만드는 데 정말 큰 도움이 됩니다. 가입 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hskIar8i0-g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hskIar8i0-g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hskIar8i0-g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "현이버스: Movie Planet",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-04T00:31:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "GrD1tIS6rPO6ihy3gBBW7cLfuJU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AV9NHpIjrTI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T11:58:30Z",
+          "channelId": "UCCiLsaC6uPxvpewPjIXxZXA",
+          "title": "🌡️💥 [화제작] &quot;체온이 39도까지 끓어오른다&quot; 보는 순간 온몸이 짜릿해지는 시간 순삭 역대급 설정 💥🌡️(영화리뷰/결말포함)",
+          "description": "영화 제목 \"온도 39\" 협업문의:naehaenam00@gmail.com #영화리뷰결말포함 #영화추천결말 #영화결말리뷰 #명작 #추천 #영화리뷰 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AV9NHpIjrTI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AV9NHpIjrTI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AV9NHpIjrTI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "띵영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T11:58:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0_eDLsMA_wJz3VrLB0XFChU5cZ8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rRDYjVwYubA"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T11:00:08Z",
+          "channelId": "UCYuOOjRoyXbhJHrN01yHOnA",
+          "title": "『금발 미녀』 혼자 사막을 여행하면 안 되는 이유...",
+          "description": "영화리뷰 #헬무비 줄거리 - 엠마는 황야에서 끔찍한 살인 사건을 목격한다. 여섯 명의 폭력적인 남자들이 경찰관을 냉혹하게 살해하는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rRDYjVwYubA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rRDYjVwYubA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rRDYjVwYubA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "헬무비: Hell Movie",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T11:00:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "B2de13CSsNv_SQx4vWUW5nLus0A",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Vhz8uCccvtw"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T10:47:18Z",
+          "channelId": "UCnWR9GjfjW_fiD9iaIQgdrw",
+          "title": "👣💖 &quot;비혼주의자들의 눈물겨운 부부 연기&quot; 사소한 거짓말이 진짜 사랑이 되는 독보적 감성의 웰메이드 명작 💖👣[영화리뷰/결말포함]",
+          "description": "결혼한다는데 정말입니까 본 영상은 결말이 포함된 리뷰입니다 :) 구독과 좋아요는 채널 성장에 큰 힘이 됩니다   시청해주셔서 감사 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Vhz8uCccvtw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Vhz8uCccvtw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Vhz8uCccvtw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "망고 무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T10:47:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9kIV8LsZ6trl7CJoCrPNuxszlCc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7C2rwqNfZZA"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T09:09:12Z",
+          "channelId": "UCOXnyjUZjSn4Joy9CtyhXAg",
+          "title": "하필이면 복수심을 숨기고 살아가던 특수부대 요원을 잘못 건드렸다 개박살난 양아치들의 최후",
+          "description": "영화리뷰결말포함 #CitizenVigilante #명작영화 *저작권 허락 및 화이트 리스팅이 완료된 영상입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7C2rwqNfZZA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7C2rwqNfZZA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7C2rwqNfZZA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "달콤 리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T09:09:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TiuIPwOsxeclsKgePYhLSJAVb3g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "TbMKhzvOzyM"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T09:00:40Z",
+          "channelId": "UCDQQKYz1JLeSw6defAwI1Rg",
+          "title": "(영화리뷰)침묵을 뚫고 흐르는 선율, 잊을 수 없는 인생 음악 영화[결말포함]",
+          "description": "(영화리뷰)소리 없는 부모와 세상 밖으로 나가려는 딸, 가슴 벅찬 성장과 독립의 서사를 담은, 그리고 음악으로 완성된 영화 '비욘드 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/TbMKhzvOzyM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/TbMKhzvOzyM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/TbMKhzvOzyM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레치고무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T09:00:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "45QB_vc0vv69tmZFQFqqHFFpeYU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "UzEdcGSwkCM"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T09:00:15Z",
+          "channelId": "UCfObDXCZ9mFHSdDdX1cvMqA",
+          "title": "와...하필이면 킬러생활을 청산 후 조용히 살아가던 ≪레전드 보스≫ 를 건드리게 되면 벌어지는 일..ㄷㄷ [결말포함/영화리뷰] 미쳐버린 몰입감의 26년 7월 최신 영화 몰아보기!!",
+          "description": "영화리뷰 #결말포함 #액션영화.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/UzEdcGSwkCM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/UzEdcGSwkCM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/UzEdcGSwkCM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "하울무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T09:00:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "46C80sogrDq-Iup8ZIh7iLe884c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qio0I5SYRog"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-03T03:35:35Z",
+          "channelId": "UCLtwNfpVdcrLxuNbkQIDEuw",
+          "title": "진짜... 숨도 못 쉬고 봤습니다.... 넷플릭스 역사상 단 하루 만에 전세계 시청순위 싹쓸이한 그 작가의 작품. 괜히 베스트셀러 원작 영화가 아닙니다... [결말포함]",
+          "description": "전 리뷰 때문에 처음 봤지만, 진짜 숨도 못 쉬고 볼 정도로 몰입해버린 작품입니다. 시간순삭은 물론이고, 결말을 향해갈수록 신선한 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qio0I5SYRog/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qio0I5SYRog/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qio0I5SYRog/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "나홀로팝콘",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-03T03:35:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kWWdYauG4Am6UhTAwZcPMNlfxLY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gu7Vz0EnPJs"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-02T11:00:22Z",
+          "channelId": "UCQoxM_ZqZYhx8uwQ-ZRhEnQ",
+          "title": "개봉한지 20년이 지났지만... 여전히 최고의 한국 영화라고 평가받으며 삶의 가치와 소중함을 일깨워 주는 보석 같은 영화",
+          "description": "드라마 #드라마리뷰 #드라마몰아보기 #결말포함 #우리들의행복한시간 #강동원 #이나영 #시간순삭 ※ 본 영상의 저작권 허가를 받은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gu7Vz0EnPJs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gu7Vz0EnPJs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gu7Vz0EnPJs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "씨네마유",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-02T11:00:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xmdftIBsrX5M5W3Te6PHyyzCksk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "H7rl6D5AvAs"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-02T10:57:23Z",
+          "channelId": "UC3P0QN3fUNBd7v3VLzHeh0A",
+          "title": "이런 충격적인 소재의 한국 영화는 처음입니다🔥 한 번도 본 적 없던 독특한 주제로, 영화를 보는 내내 몰입감이 개쩔었던 스릴러 영화",
+          "description": "이번 영화는 《인드림》입니다 *김승수, 서효림, 오지 주연의 영화죠 ✨영화는 왓챠, 티빙, 웨이브에서 시청하실 수 있습니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/H7rl6D5AvAs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/H7rl6D5AvAs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/H7rl6D5AvAs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "진리의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-02T10:57:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8GjI1n4O5I0dR3QgqObpXi4rbtY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "uF_TNop3E1M"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-02T09:30:25Z",
+          "channelId": "UCSWfQx_FmacNLgVcDVSK1rQ",
+          "title": "[매운맛] 5분 만에 멘탈 갈려 포기한다는 미친 문제작 스토리만 안전하게 떠먹여 드립니다 (결말포함)",
+          "description": "오늘 리뷰한 영화는 마리아노 페랄타 감독의 2007년작 '스너프102'입니다 고어영화 빙산차트 지하 4층에 위치한 정말 위험한 작품 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/uF_TNop3E1M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/uF_TNop3E1M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/uF_TNop3E1M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "떨보(떨면서 보다)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-02T09:30:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "af-QCowy3BQiOKfXwCQSxYb0_bs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "azfe43w_eBc"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-01T11:02:52Z",
+          "channelId": "UC-6ZFB4jLiUAvFFy2i53J7g",
+          "title": "이 작품 하나로, 그 해 『여자 연기상』을 휩쓸어버린..아무도 모르는 비공식 ≪똥파리 스핀오프≫",
+          "description": "영화리뷰 #한국영화 영화 제목은 ≪울산의 별≫입니다. 영화 보러가기 ▷왓챠 https://vo.la/Ml50E53 ▷쿠팡플레이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/azfe43w_eBc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/azfe43w_eBc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/azfe43w_eBc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "최스릴",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-01T11:02:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZMRdf5Nfa36AComigTcYpoyOdXA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3wthMVqwYHk"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-09T12:15:28Z",
+          "channelId": "UCNR3K4HA6LyO9tz0oZoSJIA",
+          "title": "압도적으로 올해 최고의 영화 &#39;오디세이&#39; 리뷰",
+          "description": "00:00 세 줄 요약 05:23 놀란의 놀라운 재해석 16:13 바다에서 오는 자들, 청동기 문명의 종말 17:26 헬레네 캐스팅의 이유.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3wthMVqwYHk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3wthMVqwYHk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3wthMVqwYHk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "백수골방",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-09T12:15:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CW4su80ZbtQEalki2iL310d26tk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CPaYbElsdlg"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-09T07:54:38Z",
+          "channelId": "UCpr2S3SBmyjvrx9Q4pLUZHw",
+          "title": "촉법소년 범죄율 0% 만드는 대존잼 명작🔥악질 범죄자들을 찾아가 법 대신 &quot;피의 심판&quot;을 내리는 깡패 형사ㄷㄷ",
+          "description": "무비트립 #영화 #블리츠 #제이슨스타뎀 #영화리뷰 #영화리뷰결말포함 #결말포함 #B 구독자 여러분, 안녕하십니까?",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CPaYbElsdlg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CPaYbElsdlg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CPaYbElsdlg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "movie trip 무비트립",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-09T07:54:38Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nb-fxZ-8dKH3x-oqQJmm5nbnuqA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "yZIpm1t02WM"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-09T06:00:28Z",
+          "channelId": "UCKtInGMesoLTfoGacYZlpJA",
+          "title": "🔥[[오디세이]] 이전에 &quot;이 이야기&quot;가 있었다......🔥[영화리뷰, 결말포함]",
+          "description": "영화 제목은 영상 초반부를 참고해주시기 바랍니다!* 구독, 좋아요는 영상 제작에 큰 힘이 됩니다❤️❤️ *본 영상의 저작권은 배급사 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/yZIpm1t02WM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/yZIpm1t02WM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/yZIpm1t02WM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "킹무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-09T06:00:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "K_N9TKxj832f2TbAK0gAgOZHkZM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Wyjkmdoe7DY"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-01T09:00:03Z",
+          "channelId": "UCpCiIDf9UrfRqte55FHWlYQ",
+          "title": "떴다..&quot;수위 조절 포기&quot;하고 매회 최고 시청률 갈아치운 &quot;미친 캐스팅&quot;의 시간 순삭 사이다 복수극..ㅎㄷㄷ",
+          "description": "공작도시 #드림텔러 #jtbc #드라마리뷰 #드라마몰아보기 #수애 #김강우 오늘 전해드린 작품은 JTBC 드라마 [공작도시] 1~6화 내용 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Wyjkmdoe7DY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Wyjkmdoe7DY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Wyjkmdoe7DY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "드림텔러 DREAM TELLER",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-01T09:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qPCervpvkHm7d869Dl3b0-DBRHc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "yI_UA37A7Hw"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T11:00:33Z",
+          "channelId": "UCYZ4k7X4QH55oWC9Ljh98nA",
+          "title": "🔥 최후의 생명체를 잡으러 간 남자…하지만 진짜 괴물은 따로 있었다😱(영화리뷰/결말포함)",
+          "description": "영화 제목 \"헌터\" 협업문의:naehaenam00@gmail.com #영화리뷰결말포함 #영화추천결말 #영화결말리뷰 #명작 #추천 #영화리뷰 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/yI_UA37A7Hw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/yI_UA37A7Hw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/yI_UA37A7Hw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "명영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T11:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PljIuua0kzh_fzoUK5rFCc8OgnA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7yP4o5nnnIs"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T10:35:04Z",
+          "channelId": "UCnWR9GjfjW_fiD9iaIQgdrw",
+          "title": "🔥‼️공개 직후 터져버린 문제작‼️🔥한 여자를 사랑한 형제의 파국💥🔥[영화리뷰/결말포함]",
+          "description": "상냥하게 말해줘 본 영상은 결말이 포함된 리뷰입니다 :) 구독과 좋아요는 채널 성장에 큰 힘이 됩니다   시청해주셔서 감사합니다   ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7yP4o5nnnIs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7yP4o5nnnIs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7yP4o5nnnIs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "망고 무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T10:35:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zxlyDg8WQzxfGIj-7OknjujQa1A",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8BA8m_AiE68"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T10:22:55Z",
+          "channelId": "UCwslqBj-EweibKBDWSI-VLQ",
+          "title": "솔직히 넷플릭스 SF 영화들은 명함도 못 내밉니다 ㄷㄷ 한 번 보면 멈출 수 없는 역대급 타임슬립 스릴러【더 페리퍼럴】 말까지 한번에 몰아보기",
+          "description": "더 페리퍼럴 시즌1 * 해당 영상은 아마존 프라임 비디오의 \"더 페리퍼럴 시즌1\" 모든 에피소드의 내용입니다. 00:00 《더 페리퍼럴》 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8BA8m_AiE68/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8BA8m_AiE68/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8BA8m_AiE68/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "공작왕TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T10:22:55Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xV2xgTOdCxhgAeNDpp5T0ueUwpk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hnf7h5Wxme4"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T10:18:50Z",
+          "channelId": "UC3P0QN3fUNBd7v3VLzHeh0A",
+          "title": "와.. 이런 영화를 왜 지금에서야 봤을까요?🔥 배우들의 신들린 연기력으로, 단 1초도 눈을 뗄 수 없었던, 그 시절의 애환을 담은 명작 영화",
+          "description": "이번 영화는 《광대:소리꾼》입니다 *이봉근, 이유리, 박철민, 김동완, 김민준 주연의 영화죠 ✨영화는 왓챠, 티빙, 웨이브에서 시청 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hnf7h5Wxme4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hnf7h5Wxme4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hnf7h5Wxme4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "진리의 영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T10:18:50Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Z79pSN1aom6GFoaWXRfoCJpllEY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-BQYkWxGqcA"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T02:00:07Z",
+          "channelId": "UCvQXeuqcb6HtK_OBvK-7zdw",
+          "title": "와... 넷플릭스 &#39;최고의 액션&#39;은 이 영화입니다 [결말포함]",
+          "description": "섀도우의13 #넷플릭스.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-BQYkWxGqcA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-BQYkWxGqcA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-BQYkWxGqcA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "서울극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T02:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "MerXeb0OpL-KnaiGNTFhkL27l0E",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "elKaEnHQaaM"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-30T00:55:02Z",
+          "channelId": "UCXvftM-43hGjGc1TA-8Y_IA",
+          "title": "(재업)해외 평점 8.9...!! 미쳐버린 몰입감으로 34분을 순삭시키는 레전드 특수부대 액션 Top.2 [영화리뷰 결말포함]",
+          "description": "영화리뷰 #결말포함 #영화소개 #액션영화 #전쟁영화 #액션 #특수요원 #전쟁영화 #공수부대 #경찰특공대 #전쟁 #드라마 #생존영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/elKaEnHQaaM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/elKaEnHQaaM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/elKaEnHQaaM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "동네비디오방",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-30T00:55:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fG3ppz77eInggyPBA9i2c3PuzD8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xe1D_y7mHHM"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-29T04:00:19Z",
+          "channelId": "UC0RBaMJf4qeMl7ZkVUlNSbA",
+          "title": "숨이 멎는 전개, 몰입을 더하는 연기 그리고 다섯 손가락안에 드는 결말",
+          "description": "라떼한편 #스릴러 채널에 가입하여 혜택을 누려보세요. https://www.youtube.com/channel/UC0RBaMJf4qeMl7ZkVUlNSbA/join ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xe1D_y7mHHM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xe1D_y7mHHM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xe1D_y7mHHM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "라떼한편 - latte's movie",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-29T04:00:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0ndQsXRXM5-f2bFM39aPG1xhfC4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lAoOpb2nQd4"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T11:34:44Z",
+          "channelId": "UCEcTDvUpYwL36dV5cEKBRmg",
+          "title": "🩸 평범한 이웃의 소름 돋는 두 얼굴🩸🩸(영화/드라마리뷰/결말포함)(공포영화)(다큐멘터리)",
+          "description": "영화리뷰결말포함 #영화추천결말#명작#추천#영화리뷰#디즈니#넷플릭스#아마존#재미있는 협업문의 naehaenam0@gmail.com.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lAoOpb2nQd4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lAoOpb2nQd4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lAoOpb2nQd4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "쩔무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T11:34:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "3LofP-S-2Uz1KwA_6l-fg7LhFNc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "YJeAD0lmDvQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T11:00:22Z",
+          "channelId": "UCYZ4k7X4QH55oWC9Ljh98nA",
+          "title": "🔥🔥넷플릭스도 탐낸 아마존 1위🔥🔥모든 도둑들의 로망이였다는 역대급 액수의 다이아몬드 도난사건✨️‼️실화‼️(영화리뷰/결말포함)(영화리뷰/결말포함)",
+          "description": "영화 제목 \"누구나 다이아몬드를 사랑한다\" 협업문의:naehaenam00@gmail.com #영화리뷰결말포함 #영화추천결말 #영화결말리뷰 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/YJeAD0lmDvQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/YJeAD0lmDvQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/YJeAD0lmDvQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "명영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T11:00:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mAuVCW7MKRbLcYbw4YnFeBZer0E",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jVAoIyU2Z8Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T11:00:33Z",
+          "channelId": "UCCiLsaC6uPxvpewPjIXxZXA",
+          "title": "🔥보면 답답해서 정신 나가는 영화🔥(영화리뷰/결말포함)",
+          "description": "영화 제목 스톨른 #영화리뷰결말포함 #영화추천결말 #영화결말리뷰 #명작 #추천 #영화리뷰 #영화추천결말포함 #영화결말포함 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jVAoIyU2Z8Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jVAoIyU2Z8Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jVAoIyU2Z8Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "띵영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T11:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "dvh8pXCSJGJvnQ0Z4VXBrAvZrZs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "tNDxO7ehafQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T11:00:26Z",
+          "channelId": "UCnWR9GjfjW_fiD9iaIQgdrw",
+          "title": "💗 사랑이 어려운 어른들을 위한 인생 로맨스❤️｜모던 러브 전 시즌 몰아보기💕[영화리뷰/결말포함]",
+          "description": "모던러브 전시리즈 몰아보기 00:00:00 모던러브 02:31:41 모던러브 도쿄 03:55:26 모던 러브 암스테르담 본 영상은 결말이 포함된 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/tNDxO7ehafQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/tNDxO7ehafQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/tNDxO7ehafQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "망고 무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T11:00:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "URYA3C9gdpn5cSR9kd2GdvXEuM0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "24mHv8mHAQ8"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T11:00:02Z",
+          "channelId": "UCd_e5KletSnbACk6LqA5ykQ",
+          "title": "🔥아마존 1위 🔥그 유명한 미스터 &amp; 미세스  드라마판🔥 주말 시간 삭제 미쳤다 🔥  (영화리뷰/결말포함/드라마리뷰)",
+          "description": "영화 제목 \" 미스터 앤 미세스 스미스 \" 협업문의 ❤️1212hot1313@gmail.com❤️ #영화리뷰결말포함 #영화추천결말 #영화결말 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/24mHv8mHAQ8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/24mHv8mHAQ8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/24mHv8mHAQ8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "소영화녀",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T11:00:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AyLcW6S6QsuPc63vApKCekieP20",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "yws9ZeNkCPw"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T08:45:23Z",
+          "channelId": "UCGofF7qvQ_NOEmAI467vGkw",
+          "title": "[영화리뷰/결말포함] 🎬와....미친 몰입감... 🔥 하필이면🔥은퇴한🔥 전직특수요원🔥을 건드린 조직의 최후!!!!!!!!",
+          "description": "영화 《아이 엠 래스 (I Am Wrath, 2016)》 리뷰 및 결말 포함 분노로 가득 찬 한 남자가 사랑하는 아내를 잃은 뒤, 무너진 정의를 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/yws9ZeNkCPw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/yws9ZeNkCPw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/yws9ZeNkCPw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오렌젤리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T08:45:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8-ap8vt2IuvchxK_9QugNrHV66M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-F9T2bbE1JQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T06:34:15Z",
+          "channelId": "UCKtInGMesoLTfoGacYZlpJA",
+          "title": "🔥와... 역대급 황금 밸런스 떴다 ㅋㅋㅋ🔥국가대표 선출 수영선수와 길이만 3m가 넘는 식인악어가 싸우면 누가 이길까...? 이 정도면 나름 해볼만한데?! [영화리뷰, 결말포함]",
+          "description": "영화 제목은 영상 초반부를 참고해주시기 바랍니다!* 구독, 좋아요는 영상 제작에 큰 힘이 됩니다❤️❤️ *본 영상의 저작권은 배급사 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-F9T2bbE1JQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-F9T2bbE1JQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-F9T2bbE1JQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "킹무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T06:34:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "aFUV1SnjKFcI-TwfAOMTkl13Yo0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6OyJHp3m4HM"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T06:00:05Z",
+          "channelId": "UCHLOX7SScCTpMgiKL7su-TA",
+          "title": "한적한 시골에서 마구간을 운영하는 대저택 여주인을 건드리면 벌어지는 일… [영화리뷰/결말포함]",
+          "description": "스릴러영화 #영화리뷰 #결말포함 안녕하세요! 노루무비입니다. 오늘 소개해 드리는 영화는 국내에서는 아직 공개되지 않은 영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6OyJHp3m4HM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6OyJHp3m4HM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6OyJHp3m4HM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T06:00:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mDPKozNprpDIjzxd8zVS3bq0dOk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vaId-LOknus"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T03:17:55Z",
+          "channelId": "UCytJY4EGAdwCjsaw-Rmoklw",
+          "title": "은퇴 후 마을에서 조용히 살고 있는 《할머니》를 절대로 건드려선 안됩니다..ㄷㄷ [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #전직특수요원 #시간순삭 영보남의 추천작 : 더 라스트 스탠드 오브 엘런 콜 (The Last Stand of Ellen Cole Movie ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vaId-LOknus/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vaId-LOknus/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vaId-LOknus/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화를 보여주는 남자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T03:17:55Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "1FlJSnEpU9mQ000PT95LyilKhDQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "stKkOE9p6YE"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T02:33:06Z",
+          "channelId": "UCckiKBfP-egNxKB3g5_cvoQ",
+          "title": "[결말포함] 옵세션 (Obsession) 미국에서 난리난 공포 영화 리뷰",
+          "description": "2026년 현재 미국 현지에서 엄청난 화제를 모으고 있는 역대급 공포영화 옵세션 (Obsession) 의 전체 줄거리와 결말까지 리뷰합니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/stKkOE9p6YE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/stKkOE9p6YE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/stKkOE9p6YE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오자미스테리오",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T02:33:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AxdxQ8Fpnb6AEl4t-iWOZGIQ6F0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gevLgk54V9I"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T01:00:03Z",
+          "channelId": "UC79hJz6y1EEiIkwfHOuWC4w",
+          "title": "소지섭의 인간쓰레기 참교육 ≪김부장≫ 1~2화 몰아보기 🔥 남북한 전체 싸움 1등 찍어버린 코드명 66이 아빠로 평범하게 살고 있었는데, 웬 깡패들이 딸을 건드네?! 다 D졌어..",
+          "description": "소지섭 #김부장 #김시선 #액션 #최대훈 #윤경호 #주상욱 #손나은 #김성규 드라마 ≪김부장≫ 1화~2화의 내용입니다. 채널 SBS ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gevLgk54V9I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gevLgk54V9I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gevLgk54V9I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김시선",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T01:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9l096HiXOcDAiUBfL2SpIO9encg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Wc6st527OiQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-28T00:09:20Z",
+          "channelId": "UCpCiIDf9UrfRqte55FHWlYQ",
+          "title": "캐스팅 찢었다..🔥레전드 각본+캐스팅🔥으로 시간 순삭시키는 SSS급 반전 스릴러 ㄷㄷ",
+          "description": "포커페이스 #드림텔러 #movie #영화리뷰 #결말포함 #러셀크로우 #film #B 오늘 전해드린 작품은 영화 [포커페이스] 입니다. 오늘도 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Wc6st527OiQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Wc6st527OiQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Wc6st527OiQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "드림텔러 DREAM TELLER",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-28T00:09:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "_0pdK5U1ouNeJ7TozKIDpPN1QbE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jMoryWktsZ4"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-27T22:00:29Z",
+          "channelId": "UCX9BXlPhNY8mjXY5n-aiCjg",
+          "title": "하루 아침에 끔찍한 짓을 당하고 모든 것을 잃게 된 한 학생이 공권력의 보호를 받지 못하면 벌어지는 대참사 [영화리뷰 영화추천]",
+          "description": "문의하기 moviegaga40@gmail.com 제목 : 이공삼칠 (2037, 2022) 출연 : 홍예지, 김지영, 황석정, 김미화, 신은정, 전소민, 윤미경 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jMoryWktsZ4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jMoryWktsZ4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jMoryWktsZ4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비가가",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-27T22:00:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "50fIwAtph-9owYDgaU5vinDB514",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wGK3CYhQrOk"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-27T13:11:46Z",
+          "channelId": "UCQAtlNjpgBRx2pqDyG9H-eg",
+          "title": "선관위가 반드시 봐야될 영화!! 1명의 유권자의 권리라도 지키기 위해 싸우는 한 공무원의 사투 (영화리뷰)",
+          "description": "영화리뷰 #인도선거 #인도영화 여러분들의 구독과 좋아요 그리고 댓글과 알림설정은 저에게 언제나 큰 힘이 됩니다~ 오늘도 시청해 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wGK3CYhQrOk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wGK3CYhQrOk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wGK3CYhQrOk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "찐뷰 영화리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-27T13:11:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nki0-pVt86JNU2O-yN5YfNx0afk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4U1prik08w4"
+        },
+        "snippet": {
+          "publishedAt": "2026-06-27T11:00:34Z",
+          "channelId": "UCnWR9GjfjW_fiD9iaIQgdrw",
+          "title": "💋💗잘생긴 남자들이 나오는 순간 눈을 못 떼는 아마존 청춘 드라마💗💗[영화리뷰/결말포함]",
+          "description": "모터 헤드 본 영상은 결말이 포함된 리뷰입니다 :) 구독과 좋아요는 채널 성장에 큰 힘이 됩니다   시청해주셔서 감사합니다   #영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4U1prik08w4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4U1prik08w4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4U1prik08w4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "망고 무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-06-27T11:00:34Z"
+        }
+      }
+    ]
+  }
+}

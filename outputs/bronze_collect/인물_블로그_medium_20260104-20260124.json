@@ -1,0 +1,1350 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "medium",
+    "publishedAfter": "2026-01-04T00:00:00Z",
+    "publishedBefore": "2026-01-24T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "mMbyr05NfpO1EZmOyIl2GJKgGMs",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 29545,
+      "resultsPerPage": 39
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "i7XvMWrz67NvwrCDq8rqqCtKeoM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LZuAgglu51A"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-23T02:47:12Z",
+          "channelId": "UC71zrCA-MSmGDr96_R673Vw",
+          "title": "로블록스 3개의 게임 리뷰",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LZuAgglu51A/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LZuAgglu51A/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LZuAgglu51A/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "포훽스◇",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-23T02:47:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "J3B2OFCBWQIOq-fgk_R8QpTWQRE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "aFxIrutugZ4"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-22T12:34:06Z",
+          "channelId": "UClHnG-t5uwnJqXOGpZGokkw",
+          "title": "[영화리뷰]파인애플 통조림에 얽힌 사랑 이야기_중경삼림 해석",
+          "description": "영화 #영화리뷰 #중경삼림 #왕가위 00:00 intro 01:02 줄거리 03:47 심층리뷰.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/aFxIrutugZ4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/aFxIrutugZ4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/aFxIrutugZ4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "팝콘 말아먹기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-22T12:34:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jkq6yu-c02bxoIy8ZZwH8PjmW1Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Yb3-gSxa8RQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-22T04:21:14Z",
+          "channelId": "UClzpqTYM3MVZAFgao8lwtZA",
+          "title": "코난 추리게임 팝업 브이로그🔍 근데 랜깡도 곁들인 / 명탐정코난•추리게임후기•홍대라신반•원피규어",
+          "description": "명탐정코난 #코난추리게임 #랜덤깡 #오타쿠브이로그 코난 추리게임 팝업 (~2월8일) 아침부터 머리 쓰느라 힘들었는데요^^ 60분 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Yb3-gSxa8RQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Yb3-gSxa8RQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Yb3-gSxa8RQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "준's 기록장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-22T04:21:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "M6DO2ZP2A3PQ8C7rUuzbt7g2e9I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "oqG-yRTofow"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-21T10:09:18Z",
+          "channelId": "UCq2MfGPS-aJ8xkaE9Hf5jhQ",
+          "title": "520i M Sport 설명 및 시승기 | BMW DRIVING ",
+          "description": "안녕하세요, 코오롱모터스 BMW 광주전시장입니다. 오늘은 520i M Sport 모델을 자세히 설명드리고 이후에 시승기까지 영상에 담아 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/oqG-yRTofow/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/oqG-yRTofow/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/oqG-yRTofow/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": " BMW 코오롱모터스 광주전시장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-21T10:09:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "k0PO2RRBgEuDBEJXGvdHn9fRl1U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CF9s7t4YBGM"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-20T18:00:21Z",
+          "channelId": "UCEHDlMa37SzQxHODAtR-1nA",
+          "title": "플래그십 세단의 진수! 2026 기아 K900 시승기",
+          "description": "플래그십 세단의 진수! 2026 기아 K900 시승기 2026년형 기아 K900 리뷰 영상에 오신 것을 환영합니다! 이번 영상에서는 플래그십 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CF9s7t4YBGM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CF9s7t4YBGM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CF9s7t4YBGM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Auto Nexis",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-20T18:00:21Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fryhl0uLWVQIk2tWaPw7V56QiJc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xoVAPwnurJk"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-20T12:41:35Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "스트리트 트윈 900 간단 시승기 [스피드 트윈900의 전 모델] 3800RPM에서 최대토크를 뿜어내는 스트윈의 맛은 어떨까??",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xoVAPwnurJk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xoVAPwnurJk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xoVAPwnurJk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-20T12:41:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EuSxMGFsXvW4996L8lvivwYnNt0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zmm4vrdEhNE"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-20T11:02:44Z",
+          "channelId": "UCWFlWcRi6_VLer9L-6FY6OA",
+          "title": "토미카대장의 긴급자동차 리뷰(1)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zmm4vrdEhNE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zmm4vrdEhNE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zmm4vrdEhNE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "재훈이의 토미카나라",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-20T11:02:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "HeQeuG5riL_SeImyk57E2AgWaOc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ONB3XgDhXdc"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-20T09:00:43Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "Flip 7 카드게임 리뷰｜단순한 규칙, 예상 못한 긴장감",
+          "description": "이 영상에서는 카드 게임 Flip 7을 단순한 규칙 설명이 아닌, 선택과 심리의 관점에서 풀어봅니다. 한 장을 더 뽑을지 멈출지 고민하는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ONB3XgDhXdc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ONB3XgDhXdc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ONB3XgDhXdc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-20T09:00:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8tAcT4pyMlQGtrbPPcq-bvzXH1c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "azAuSlxSeuI"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-20T04:04:19Z",
+          "channelId": "UC24y9QnPa_SnVE36VfLsJWA",
+          "title": "방탕한 일요일 누워서 집 안나가기 feat.만석 닭강정#영화리뷰 #개발자 #브이로그#만석닭강정 #얼굴 #캐치미이프우캔",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/azAuSlxSeuI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/azAuSlxSeuI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/azAuSlxSeuI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오늘도 우당탕",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-20T04:04:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Yk4OT096SIsGRD-PCWNLcBA6gms",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "n_Tf3f-B09k"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-18T12:10:58Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "부캐너 125 간단 시승기! [무게 126kg의 125cc 공냉바이크는 어떤 느낌일까?!]",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/n_Tf3f-B09k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/n_Tf3f-B09k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/n_Tf3f-B09k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-18T12:10:58Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mY1__boAoE_n1YgDcnzL4POzoXw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "r-EviEaSaeg"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-18T08:59:00Z",
+          "channelId": "UCanq1p7nlH39NbckPNXi50Q",
+          "title": "2026 현무-3A 탄도미사일 발사차량 리뷰 | 한국 최강 이동 플랫폼",
+          "description": "현무3A#군용차량리뷰#2026최신기술 2026 현무-3A 탄도미사일 발사차량 리뷰 | 한국 최강 이동 플랫폼 description 2026년형 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/r-EviEaSaeg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/r-EviEaSaeg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/r-EviEaSaeg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "AUTO CAR DREAM ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-18T08:59:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Yf9Z01ZO9G7FmVN4SWKnmP4Uae4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kCN8pH-_zug"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-18T05:01:01Z",
+          "channelId": "UC-e-RmT2aBiYQd6JctC2JAQ",
+          "title": "103. 예수의 어머니 마리아 (1999) | 영화 리뷰",
+          "description": "IMPORTANT LEGAL DISCLAIMER & AI CONTENT DISCLOSURE 1. TRANSPARENCY & AI DISCLOSURE This video contains ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kCN8pH-_zug/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kCN8pH-_zug/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kCN8pH-_zug/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽃길만걷자",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-18T05:01:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Srchl14GnkeaPIPQXe8UiYKZplA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "C0m1HPx5iuY"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-17T03:00:24Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "Hanabi 보드게임 리뷰｜재미없는데 명작이라 불리는 이유",
+          "description": "Hanabi는 전 세계적으로 극찬을 받은 보드게임입니다. 하지만 실제로 플레이해보면 재미있다고 말하기 어려운 순간이 많습니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/C0m1HPx5iuY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/C0m1HPx5iuY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/C0m1HPx5iuY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-17T03:00:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EdylH-nz5qnBa5-4JVt03SVm4_g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4s4MWi8k6RY"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-16T09:02:52Z",
+          "channelId": "UCanq1p7nlH39NbckPNXi50Q",
+          "title": "2026 현대 쏘나타 픽업 트럭 완전 공개! 최고의 신차 리뷰 ",
+          "description": "현대쏘나타픽업#2026현대쏘나타#현대자동차 2026 현대 쏘나타 픽업 트럭 완전 공개! 최고의 신차 리뷰 description 안녕하세요, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4s4MWi8k6RY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4s4MWi8k6RY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4s4MWi8k6RY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "AUTO CAR DREAM ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-16T09:02:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "u5eSEnw5cCDgeawoHJcB8Ukoqe0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "onsimJAxfds"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-16T04:40:56Z",
+          "channelId": "UCOfAF1HfcwWZanER9ltml4g",
+          "title": "2026 메르세데스-벤츠 전면 공개 | 프리미엄의 기준#신차리뷰#미래자동차#벤츠리뷰#LuxuryCar#NewMercedes#CarReview#AutoShow",
+          "description": "2026 메르세데스-벤츠 신형 모델을 통해 럭셔리 자동차의 미래를 만나보세요. 이번 모델은 더욱 세련된 디자인과 첨단 MBUX ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/onsimJAxfds/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/onsimJAxfds/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/onsimJAxfds/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "ElectroDrive Reviews\n",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-16T04:40:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "C1tsesu_EV2qYTKE8--UuYxOteU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2JN-EuSf7Nc"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-16T02:00:01Z",
+          "channelId": "UC1CejZYUJL9xqETdBVjn2FA",
+          "title": "로블록스 돈링잇 게임 리뷰 이기면 생기는 일? What happens if you win don&#39;t ring it... cheek slap even dancing. Roblox ",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2JN-EuSf7Nc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2JN-EuSf7Nc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2JN-EuSf7Nc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "JosephTV 조셉티비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-16T02:00:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0wryjdR797z1z8kLoUggWJH52wQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VYs5LlxIxjs"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-15T11:15:31Z",
+          "channelId": "UCJWNXoZB5RTmDMEKRtmL72Q",
+          "title": "로블록스 더 많은 똥이 필요해!(게임 리뷰)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VYs5LlxIxjs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VYs5LlxIxjs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VYs5LlxIxjs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "개못핵",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-15T11:15:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qf1naVYsGuAjZ_cQ9lvhYgKF9Po",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "x4OG9Mm9W-Q"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-14T09:01:27Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "듄 임페리움 보드게임 리뷰 │ 전략이 아니라 결단의 게임",
+          "description": "듄 임페리움은 덱빌딩과 워커 플레이스먼트를 결합한 전략 보드게임입니다. 하지만 이 게임이 높은 평가를 받는 이유는 단순한 시스템 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/x4OG9Mm9W-Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/x4OG9Mm9W-Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/x4OG9Mm9W-Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-14T09:01:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Jzbesc3UAn37E_NJF8WIm06se6o",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Obb_cPFEb3g"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-13T08:05:49Z",
+          "channelId": "UCpoOUFmRg9mY97ebF0LNcoA",
+          "title": "29살의 1월은 이런걸까 ㅣ 신의악단 영화 리뷰 ㅣ 용산아이파크몰 ㅣ 겨울 목도리 1만원대 구매",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Obb_cPFEb3g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Obb_cPFEb3g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Obb_cPFEb3g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아동댕동",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-13T08:05:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kB0P2l7G8NNnkxCYnrZYRNVLB3Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "63xeYURVlWc"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-13T03:00:07Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "Can’t Stop 보드게임 리뷰 | 왜 우리는 멈춰야 할 때 주사위를 더 굴릴까",
+          "description": "Can't Stop은 단순한 주사위 보드게임처럼 보이지만, 실제로는 선택과 욕심, 그리고 멈춤의 타이밍을 집요하게 시험하는 게임입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/63xeYURVlWc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/63xeYURVlWc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/63xeYURVlWc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-13T03:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6XC3c32B4DXpAkqYgcRHReG3RqQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HIw3arBPr_U"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-13T01:49:51Z",
+          "channelId": "UCpGmdb40PSCoqehRxKnAqcg",
+          "title": "RX 450h 눈길 시승기! - RX가 이정도 주행안정성을??",
+          "description": "영상에서 RX 350h와 450h의 차이점 설명에서도 언급드리지만 PHEV가 탑재된 450h는 350h에서 2%부족했던 출력 부분도 만족하는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HIw3arBPr_U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HIw3arBPr_U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HIw3arBPr_U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "으랏차차 원동기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-13T01:49:51Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PXUcXJz6wtOJWqAWh0eLZYUhBhw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vNgnnQoHOZk"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-12T15:13:09Z",
+          "channelId": "UCCr3AT9HAwZg1tmcRo4lqnQ",
+          "title": "간단히 설문조사만 하는데 괜히 무서운 설문조사 게임 리뷰 [로블록스 버전]",
+          "description": "게임 이름: start survey? (설문조사를 시작하시겠습니까?) 구독, 좋아요는 저에게 도움이 됩니다 ;)",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vNgnnQoHOZk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vNgnnQoHOZk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vNgnnQoHOZk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "뭐하지",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-12T15:13:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "eBVnf69drcYnz1_m81qcKszQXAg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4pbFdJ9XSFs"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-12T14:23:14Z",
+          "channelId": "UCcM2GBbj2PLvc5n_eexmbxQ",
+          "title": "[Review] 로블록스 그린빌 차량 리뷰! | 제네시스 G80 일렉트리파이드 | #그린빌",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4pbFdJ9XSFs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4pbFdJ9XSFs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4pbFdJ9XSFs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "강덕필 기사 54세",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-12T14:23:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "rIm8yIHHZatWJ0XzFTuGwmNWabY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "9Bh6GddaVAY"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-11T07:04:39Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "할리 데이비슨 펫밥 간단 시승기! [할리의 바버 머슬 크루저는 어떤 느낌일까?]",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/9Bh6GddaVAY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/9Bh6GddaVAY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/9Bh6GddaVAY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-11T07:04:39Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vB18-f1E84uR53NwOSZgodq3YkE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3Isjwe5LerI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-11T09:00:27Z",
+          "channelId": "UCa5QEPQi-uHtks0DgR6k2ig",
+          "title": "세상에 나 혼자라고 느낄 때 꼭 봐야하는 영화  영화리뷰 결말포함",
+          "description": "제목; 천국보다 아름다운/1998 #영화리뷰결말포함 #영화리뷰 #영화 #로빈윌리엄스 #아나벨라시오라.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽃보다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-11T09:00:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQ0UQ1iMIfjRyXnaOR8h1xgFYBM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rGkxzxEGJ8U"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-10T13:30:07Z",
+          "channelId": "UCoabCaYEaHnG2dfq9mp0aFQ",
+          "title": "“내 몸에 손대지 마..” 사이코 백인 집안 참교육하고 탈출하는 🔥역대급 스릴러🔥 (영화리뷰/결말포함)",
+          "description": "겟아웃(2017) #영화리뷰 #결말포함 #영화 #겟아웃.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "추디",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-10T13:30:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z7LHuHKXCVIN3AAvXP66Cm4oZIY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vA7qNxEYbjQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-07T09:00:33Z",
+          "channelId": "UCDQQKYz1JLeSw6defAwI1Rg",
+          "title": "(영화리뷰) 유골함에 담긴 50년의 기억, 그 마지막 여정 [결말포함]",
+          "description": "(영화리뷰) 오랜 세월을 함께한 네 친구, 그리고 친구의 유언을 따라 떠나는 마지막 여행, 인생의 황혼기에 선 친구들이 각자의 기억을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레치고무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-07T09:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "OWn7Ppnn6bWsHAKLGlMLCnnugaU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6v2i7iK8EUw"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-11T07:00:37Z",
+          "channelId": "UCgUwQ8Ol1zPlAVfKfF6IizQ",
+          "title": "카니발 하이브리드 1만km 실연비 공개! 다둥이 아빠의 롱텀 시승기",
+          "description": "카니발 하이브리드 7인승 풀옵션 모델을 2년간 1만 km 주행한 다둥이 아빠의 솔직 담백한 롱텀 시승기! 과연 공식 연비보다 높은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6v2i7iK8EUw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6v2i7iK8EUw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6v2i7iK8EUw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카니발타는 조이네가족 [Joey's Carnival Life]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-11T07:00:37Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "534mAIZ5uhowMD8Jv1QU8P0nlgw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ukVkBItz3lE"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-11T03:00:57Z",
+          "channelId": "UCAvhPExLYBe7BAKmAy2mY4g",
+          "title": "[이상한/영화리뷰] ‘너는 내 운명’ 리뷰 | 퐁퐁남이면 보지마세요..!!",
+          "description": "재미를 위한 어설픈 더빙 영화 리뷰입니다 가볍게 즐겨주세요~   #한국영화 #너는내운명 #황정민 #전도연 #로맨스 #드라마 #영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ukVkBItz3lE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ukVkBItz3lE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ukVkBItz3lE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "자집 (shakeyzipsa)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-11T03:00:57Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "d6yufXq1xjMzW-QY-k1CjeVsOMk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_hfAG_f1qo4"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-10T13:10:46Z",
+          "channelId": "UCEi13zbyVjBp9h5dT-ugr5g",
+          "title": "[오타쿠 브이로그] 개늦은 진격거 4기 영화 리뷰 • 오타쿠 VLOG •진격의 거인 4기",
+          "description": "많이 늦어습니다!   저 굉장히 열심히 살다가 왔어요 이제 2025년이 지나가고 2026년이 왔습니다!! 새해 기념 영상을 낋여왔습니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_hfAG_f1qo4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_hfAG_f1qo4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_hfAG_f1qo4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카레맛똥",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-10T13:10:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0X6fELM0IXl7UcgPJeYS5B6lwrI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "U67TwKIOMRc"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-10T12:41:05Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "혼다 CL500 스크램블러 간단 시승기 [클오백,치로백,씨엘오백]",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/U67TwKIOMRc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/U67TwKIOMRc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/U67TwKIOMRc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-10T12:41:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8NBBiI9MaKnYDPaXWyMexQ-gBXk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XU-GOTT1J8A"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-10T09:01:00Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "Space Base 보드게임 리뷰 | 모든 턴에 참여하게 만드는 엔진 빌딩 게임",
+          "description": "Space Base는 주사위 기반 보드게임이지만, 단순한 운 게임과는 전혀 다른 경험을 제공합니다. 이 게임의 가장 큰 특징은 자신의 턴뿐 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XU-GOTT1J8A/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XU-GOTT1J8A/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XU-GOTT1J8A/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-10T09:01:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mzTBtLF-QrhXf0ZzElSAi-gZ6cg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3KSz6Jf9SN4"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-08T11:23:20Z",
+          "channelId": "UCt4j537KzT6ZLb-PdnO3kpQ",
+          "title": "벤츠 E클래스 E200 AMG LINE 시승기 ㅣ AMG라인이 더 잘팔리는 이유",
+          "description": "벤츠 E클래스 E200 괜히 세단 판매율 1위 모델이 아닙니다. 그 중에서도 아방가르드와 AMG LINE 사이에서 고민 중이신가요?",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3KSz6Jf9SN4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3KSz6Jf9SN4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3KSz6Jf9SN4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "벤츠 권장섭 | 7년 연속 전국 판매왕",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-08T11:23:20Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lXBjSQeEBtQd0UqOq-dL5mAeeUM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "I9nqnAfQft8"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-08T09:30:21Z",
+          "channelId": "UCY0FJpSIF1Atltvmf71UPzA",
+          "title": "12월 개봉 영화 리뷰ㅣ무비황의 영화한잔",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/I9nqnAfQft8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/I9nqnAfQft8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/I9nqnAfQft8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비황",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-08T09:30:21Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6e-Afic1X4f-sprb09Chi21CkUk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "arAAqFORYpg"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-08T09:05:15Z",
+          "channelId": "UCanq1p7nlH39NbckPNXi50Q",
+          "title": "2026 Taipers 실물 공개! 디자인·성능 완전 분석 | 최신 신형 자동차 리뷰",
+          "description": "2026타이퍼스#신형자동차리뷰#미래형자동차 2026 Taipers 실물 공개! 디자인·성능 완전 분석 | 최신 신형 자동차 리뷰 description ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/arAAqFORYpg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/arAAqFORYpg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/arAAqFORYpg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "AUTO CAR DREAM ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-08T09:05:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "iVccOtozjzWzomjUCGDJo65f7MU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lR1dVZXlcZQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-08T05:25:56Z",
+          "channelId": "UClHnG-t5uwnJqXOGpZGokkw",
+          "title": "[영화리뷰]대한민국 학구열 이대로 괜찮은가?_막걸리가 알려줄거야 해석",
+          "description": "영화 #영화리뷰 #막걸리가알려줄거야 00:00 인트로 00:59 줄거리 08:16 심층리뷰 Kevin MacLeod의 Local Elevator에는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lR1dVZXlcZQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lR1dVZXlcZQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lR1dVZXlcZQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "팝콘 말아먹기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-08T05:25:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jYWtV-kBZLCV9O33eH2UuNszPPo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "MzAOLGMVv5I"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-07T07:00:30Z",
+          "channelId": "UCoRqYJogkXYwN4uAsfyg2Ow",
+          "title": "미쓰비시 L200 트라이톤 첫 공개! 솔직 리뷰 &amp; 시승기, 왜 KGM 무쏘와 하이럭스 구매자들이 L200 트라이톤을 고민할까?",
+          "description": "미쓰비시 L200 트라이톤은 단순히 강해 보이는 픽업트럭이 아닙니다. 이 트럭은 전 세계 험로와 혹독한 환경에서 이미 검증된 진짜 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/MzAOLGMVv5I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/MzAOLGMVv5I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/MzAOLGMVv5I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "K-AUTOMOBILES",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-07T07:00:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "140F1Iz-x6FCrZUsoLnwh_5ppsU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AxZCEfcAd6U"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-06T13:22:35Z",
+          "channelId": "UCqpzBxRDrGibM21cYJMu32w",
+          "title": "테슬라 모델 3 시승기 맞음 암튼 맞음 ",
+          "description": "안녕하세요 칠라입니다. 이번 영상은 테슬라 모델3 동승 영상입니다. 근데 왜 썸넬이 SLS냐구요? 그냥 이뻐서 썸엘로 만들었습니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AxZCEfcAd6U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AxZCEfcAd6U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AxZCEfcAd6U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김칠라",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-06T13:22:35Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KKuZhZp7VULNIgLZ9mheIa_1Pdg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Kk-FPlZYbK0"
+        },
+        "snippet": {
+          "publishedAt": "2026-01-05T13:00:45Z",
+          "channelId": "UCU32B5BD-igl6Z2j5kjikeg",
+          "title": "2026 Kia Ray 시승기 | 도심형 컴팩트카 모든 정보 공개",
+          "description": "2026년형 기아 레이(Kia Ray)는 도심 운전에 최적화된 컴팩트 시티카로 새롭게 돌아왔습니다 이번 영상에서는 2026 기아 레이의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Kk-FPlZYbK0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Kk-FPlZYbK0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Kk-FPlZYbK0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Korean Auto Reviews",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-01-05T13:00:45Z"
+        }
+      }
+    ]
+  }
+}

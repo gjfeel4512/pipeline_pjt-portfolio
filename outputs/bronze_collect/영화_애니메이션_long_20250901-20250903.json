@@ -1,0 +1,160 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"",
+    "videoCategoryId": "1",
+    "videoDuration": "long",
+    "publishedAfter": "2025-09-01T00:00:00Z",
+    "publishedBefore": "2025-09-03T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "yhq0x-mYlrIFKLHzQFzNp1csq6c",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 75450,
+      "resultsPerPage": 4
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "toMsr-gF7hi5e2R4zdUfsMmPcQM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7jf_-W55evA"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T10:20:17Z",
+          "channelId": "UC-cIG4Cxp3dtfMjm_XNbUUg",
+          "title": "💥액션의 정석 종합본💥&quot;제작비 2000억&quot;와...  뇌지컬과 피지컬 모두 완벽한 킬러가 복수를 결심하면 벌어지는 일[FULL MOVIE 결말 포함]",
+          "description": "스타뎀 #액션영화 #밀덕 무비드의 FULL MOVIE 시리즈는 \"모든 전투 장면\"과 \"중요 장면\"을 편집 없이 선사합니다 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7jf_-W55evA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7jf_-W55evA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7jf_-W55evA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비드 : Movie & Drama",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T10:20:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LSRR-j7uXpk0DVAd9TdeeC6Y8cM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CakM0o7rNDw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-02T00:54:25Z",
+          "channelId": "UCXvftM-43hGjGc1TA-8Y_IA",
+          "title": "(재업)총 제작비 1800억... 미쳐버린 화끈함으로 2시간을 순삭시키는 레전드 전쟁 액션 [스나이퍼 시리즈, 브랜든 모음집] [영화리뷰 결말포함]",
+          "description": "영화리뷰 #결말포함 #영화소개 #액션영화 #전쟁영화 #해병대 #스나이퍼 #톰베렌저 #시리즈모음 #여성킬러 #CIA #톰배린저 1.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CakM0o7rNDw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CakM0o7rNDw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CakM0o7rNDw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "동네비디오방",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-02T00:54:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "G4Q-p3f6QAOb1ubu2COqct0AnbQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "NLWOMiMr6tE"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T09:00:04Z",
+          "channelId": "UCzAwNywSkY0ycIqZL29zClg",
+          "title": "머리 비우고 즐기기 딱 좋은 재밌는 서부 영화 [영화리뷰 결말포함]",
+          "description": "파이브건스 파이브 건스 (American Outlaws, 2001) 감독: 레스 메이필드 출연: 콜린 파렐, 스콧 칸, 가브리엘 막트, 앨리 라터, 캐시 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/NLWOMiMr6tE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/NLWOMiMr6tE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/NLWOMiMr6tE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무드킹",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T09:00:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "g_QPHvmCRtH9YG-d_2ci-9ZqZAA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DtMNBW0z_dw"
+        },
+        "snippet": {
+          "publishedAt": "2025-09-01T09:00:18Z",
+          "channelId": "UCC5ZTAR_3aCG15ceTSmvZtA",
+          "title": "하필이면.. 💥최첨단 과학 기술💥을 장착한 남자를 건들면 벌어지는 일들... ㄷㄷ",
+          "description": "영화리뷰 #중국영화 #액션영화 #로맨스 #무협 *해당 영상은 저작권 협의 후 제작된 영상입니다.* 영화 천룡팔괴 보러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DtMNBW0z_dw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DtMNBW0z_dw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DtMNBW0z_dw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영반",
+          "liveBroadcastContent": "none",
+          "publishTime": "2025-09-01T09:00:18Z"
+        }
+      }
+    ]
+  }
+}

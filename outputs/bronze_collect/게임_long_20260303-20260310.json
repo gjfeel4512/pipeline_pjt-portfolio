@@ -1,0 +1,1725 @@
+{
+  "request_params": {
+    "q": "\"게임\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "20",
+    "videoDuration": "long",
+    "publishedAfter": "2026-03-03T00:00:00Z",
+    "publishedBefore": "2026-03-10T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "kGjPzXindRUeOY0HD568uJOuAx8",
+    "nextPageToken": "CDIQAA",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 108907,
+      "resultsPerPage": 50
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xzqsgLtuOk3zMaMktuAp56GEfQY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zXCkdItrwCw"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T14:30:51Z",
+          "channelId": "UC342J5FhMv7TbJz0_205ZIQ",
+          "title": "파피와 프레디의 뒤를 잇는 신작 애니매트로닉스 공포게임 (Rainbow Gate)",
+          "description": "공포게임 #소름 #스팀게임 게임 : Rainbow Gate ⚠️업로드 파일이 손상돼서 재업로드 했습니다!⚠️ 구독과 좋아요를 누르면 더 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zXCkdItrwCw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zXCkdItrwCw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zXCkdItrwCw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "진유성 YOUTUBE",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T14:30:51Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "V0g764CK7_tDHgKU41xudTSvFfs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-yTjE4uJuWw"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T13:10:52Z",
+          "channelId": "UCfC4q9fgvkeCd28mjUDxtVw",
+          "title": "광고/ [탑 히어로즈] 지나가다가 무조건 한번은 깔아본 게임_전략시뮬",
+          "description": "종합게임 #전략시뮬레이션 #판타지게임 #몰입형 PC 다운로드 받으러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-yTjE4uJuWw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-yTjE4uJuWw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-yTjE4uJuWw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "하이유",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T13:10:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QF94pE4mXpQdVJmgMm3c3m-3CuY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "L7UjFShGQQw"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T12:49:47Z",
+          "channelId": "UCUCnZBCJhbllGTfqomgFKMg",
+          "title": "[크랩게임] 레드윙즈 11인 합방 (유현규, 민결희, 따린, 햇비, 최또, 아르바, 강희또, 호발, 미르, 양도끼)",
+          "description": "욘나 재밋네ㅋㅋㅋㅋ.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/L7UjFShGQQw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/L7UjFShGQQw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/L7UjFShGQQw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "머독 다시보기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T12:49:47Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "J2zhAVGx3XGvZbMppqd1hdQ2F0I",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gPL2OOeB9bQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T12:01:18Z",
+          "channelId": "UC5LSW-_tCsrzZz73Pq0-yDA",
+          "title": "※시청주의※ 꿈에 나올까 무서운 공포게임 (ISO/2004)",
+          "description": "게임 : ISO/2004 치지직(생방송) - https://chzzk.naver.com/bd8ea6e410898451b78bf9445a7642c8 네이버카페 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gPL2OOeB9bQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gPL2OOeB9bQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gPL2OOeB9bQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "공포면역 케이사구",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T12:01:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "YDuRziO3U_G2lNquCUta-qjY1k8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "pIQ6fCldtdA"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T11:01:31Z",
+          "channelId": "UCC1LvVTX2ySKYjeIXkAtvsQ",
+          "title": "동의도 과학이죠",
+          "description": "이용약관에 동의하고 싶어 (Agreeee) - 링크: https://store.steampowered.com/app/3757210/Agreeee/ ▷같이 보면 좋은 추천 영상 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/pIQ6fCldtdA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/pIQ6fCldtdA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/pIQ6fCldtdA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "침착맨 플러스",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T11:01:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LZO3kGLLKJpQXvvnsqdrscHRxWw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Y4pkhqAfHmg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T03:09:18Z",
+          "channelId": "UCOTJtP0Z9DjpPU43B5m1V6A",
+          "title": "게임 내내 알파고를 실력으로 찍어 누르는 32승 5패 승률 86% 초고수 상대 등장ㄷㄷ",
+          "description": "스타크래프트 테란 STX전프로 ☆알파고☆김성현의 공식채널입니다:D 알튜브 공식 굿즈 샵 : https://altube.shop ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Y4pkhqAfHmg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Y4pkhqAfHmg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Y4pkhqAfHmg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "[ALTUBE] 김성현TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T03:09:18Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uG0LPfnBE9ooKTesZB2FD5yr-Rg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kG_HRfX09gs"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T23:01:52Z",
+          "channelId": "UCXOTJ8L1oJvVET76ELZhhPw",
+          "title": "[보드게임] 세티 : 우주 기관 확장 - 1인플 (라이브 편집판)",
+          "description": "보드게임 세티 확장 - 우주기관 넣어서 솔플 합니다. 라이브 방송 편집해서 올려봅니다. 소리없는 부분 잘라내는 자동 편집써서 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kG_HRfX09gs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kG_HRfX09gs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kG_HRfX09gs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "혼자 노는 보드게임 CH",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T23:01:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qId9LSxU1L0BClACGeG1BHnHMvo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "O_INSwbBrVk"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T14:46:27Z",
+          "channelId": "UCVYbF0ZapsWEj45EWl5DKCQ",
+          "title": "Playte 추천 게임 / 서울보드게임페어 관심작 (feat. 해요) 260308",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/O_INSwbBrVk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/O_INSwbBrVk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/O_INSwbBrVk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레이지니",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T14:46:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZeP8FDmCmdqY-9vcBGGQCUWQ9iY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Jjfq4iJJZlo"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T12:00:06Z",
+          "channelId": "UCdLyq9bdchhI5Dqvlx-Esgw",
+          "title": "(붉은사막 출시 기념) 역대 국산 게임들 메타크리틱 순위를 알아보자",
+          "description": "한 주의 마무리는 주간발굴단 출연 : 출장맨, 루모, 노피디 00:00 붉은 사막 출시 임박 07:40 역대 국산 게임들 메타크리틱 Top 10 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Jjfq4iJJZlo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Jjfq4iJJZlo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Jjfq4iJJZlo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임발굴단",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T12:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "43WVj-LBtocvxQZxTDQtabve1pg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AA_RpyFjX_M"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T10:14:00Z",
+          "channelId": "UC8CIM3d3zDYMk-3T5aAz0yw",
+          "title": "엌ㅋㅋㅋㅋㅋㅋㅋ쥰내 웃깁니다 ≪김밥천국 알바 시뮬레이터≫",
+          "description": "김천밥국 [업로드] 금,토,일,월 [문의메일] zxcv34276@gmail.com [인스타그램] @hxxax_ #혜안 #알바 #병맛게임 Music by 달콤사운즈 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AA_RpyFjX_M/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AA_RpyFjX_M/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AA_RpyFjX_M/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "혜안",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T10:14:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EtxYdUeYjqcUvpdabluKspHsWiY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "STFHUfFrFWg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T09:08:06Z",
+          "channelId": "UCqyzJW0VRYRP_sFELZYdxGg",
+          "title": "[공식] 포켓몬 카드 게임 2026 코리안리그 Season.3 광주 결승전 🔴생중계 l Pokémon Card Game",
+          "description": "광주 김대중컨벤션센터에서 열리는 포켓몬 카드 게임 2026 코리안리그 Season.3 광주 결승전 생중계✨ ▽포켓몬 카드 게임 코리안리 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/STFHUfFrFWg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/STFHUfFrFWg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/STFHUfFrFWg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "포켓몬 카드 게임 공식 채널 Pokémon Card Game",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T09:08:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "YTktsczH0kazyMFlUc2Cb4NkjeQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xhN9v-PeWPU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T09:00:13Z",
+          "channelId": "UCs0LzOveQMLImmmTrMmP2sg",
+          "title": "지옥 마트 운영하는 공포게임 하다가 콜라 쏟은 청년 [HELLMART]",
+          "description": "헬마트 #공포게임 #명훈 #명예훈장 방송 일자 : 2026.02.02 다시보기 : https://www.youtube.com/watch?v=AwBBPJyEEho&t=3433s ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xhN9v-PeWPU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xhN9v-PeWPU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xhN9v-PeWPU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "채널 명예훈장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T09:00:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Uhdg0kvVv51bBv_Iw8zQWF36P10",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4cVeeqKn7WQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T08:30:02Z",
+          "channelId": "UC7_EnznPF7OyFOu3kHcn_ag",
+          "title": "커플 보드게임 1티어 테트리스 좋아하면 무조건 빠져드는 패치워크 플레이",
+          "description": "테트리스 좋아하고 퍼즐 좋아하는 커플 연인들에게 강력 추천! 오키도키 보드게임카페는 보드게임 카페에서 남녀 2인이 직접 플레이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4cVeeqKn7WQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4cVeeqKn7WQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4cVeeqKn7WQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오키도키 보드게임카페",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T08:30:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c5k5bMcQWUES2rTg7dM27grfb7U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "pqUM8G1LkoU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T08:00:54Z",
+          "channelId": "UCIrHWD1qhtyiBC_BE4SLWIg",
+          "title": "내가 바다에서 성장하는 과정",
+          "description": "음악: Artlist.io 마인크래프트 버전: 1.20.1 셰이더: Complementary Shaders 모드: Physics Mod Pro Amendments Ben's Sharks ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/pqUM8G1LkoU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/pqUM8G1LkoU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/pqUM8G1LkoU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영훈",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T08:00:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mw5Sv1RQEWeeLSrPBHoIX369bDg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "btxSxC9flaM"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T07:00:25Z",
+          "channelId": "UCg7rkxrTnIhiHEpXY1ec9NA",
+          "title": "잠공각이 즐기는 역대급 퀄리티의 집꾸미기 게임🏠",
+          "description": "본 영상의 일부 콘텐츠는 테스트 서버에서 촬영되었으며, 정식 서비스 내용과 상이할 수 있습니다. 두근두근타운 다운로드 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/btxSxC9flaM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/btxSxC9flaM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/btxSxC9flaM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "잠뜰 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T07:00:25Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nvFJf-687RzMcw-95BXNVL3HZgY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bm3EwJZJ0GA"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T03:55:47Z",
+          "channelId": "UCk7mTbF9QFKGSQKThtEZcZQ",
+          "title": "비명 지르다 코피 터진 고전 명작 공포 게임",
+          "description": "오버워치 #오버워치2 #에땁 유튜브: https://www.youtube.com/@AWM_ 치지직: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bm3EwJZJ0GA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bm3EwJZJ0GA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bm3EwJZJ0GA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "박남수",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T03:55:47Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "etMCTl2CDC7KFcImV9UhwcQi--8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "0WsNnRs1l1U"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T03:00:03Z",
+          "channelId": "UCBhwEU65wGAxRPFp9qle-QQ",
+          "title": "[카스온라인] 미친 퀄리티의 쏘우 미니게임 맵",
+          "description": "카스온라인 화끈하게 하는 사람 ♨️ ▷구독과 좋아요 알람 설정 한 번씩 부탁드립니다 ▷심짐해 멤버쉽 가입 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/0WsNnRs1l1U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/0WsNnRs1l1U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/0WsNnRs1l1U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "심짐해",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T03:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ixuAf_an_7veWi1UBgNf5HiWivM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "LR2b0lpbK98"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-08T02:30:15Z",
+          "channelId": "UC2NFRq9s2neD_Ml0tPhNC2Q",
+          "title": "하바드 상위 1%의 지능 테스트",
+          "description": "Brain Out 브레인 아웃 우주하마 UZUHAMA.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/LR2b0lpbK98/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/LR2b0lpbK98/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/LR2b0lpbK98/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우주하마",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-08T02:30:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xHUZnNtPw9vINHv2872Vu7eehac",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "NadEmu0xq7Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T17:24:22Z",
+          "channelId": "UCGuISTrqeAz_RkXlCuTOwfQ",
+          "title": "※ 왕왕왕초보 주의 ※ 이거 하늘에서 떨어지는 게임 맞죠? [ 에이?펙?스? 레전드 ]",
+          "description": "투네이션 후원 https://toon.at/donate/gocheboo 비즈니스 메일       gocheboo.azit@gmail.com 생방송 진행 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/NadEmu0xq7Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/NadEmu0xq7Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/NadEmu0xq7Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "고체부 아지트",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T17:24:22Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XRExSvaQFpd26sPlb7WRXsZAuwU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Q7Sf9D2w6W4"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T15:05:30Z",
+          "channelId": "UCk2vPN7LATiMz_r8VUiA0KQ",
+          "title": "보이스피싱 하는 게임 - 스캠라인 (w. 주르르, 카푸, 유키라, 윤이제, 재수피기, 독고혜지, 히어로 레드)",
+          "description": "비챤 #이세돌 #이세계아이돌 SOOP https://ch.sooplive.co.kr/viichan6 Instagram https://www.instagram.com/viichan6 Twitter ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Q7Sf9D2w6W4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Q7Sf9D2w6W4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Q7Sf9D2w6W4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "비챤의 무릉도원",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T15:05:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "hYwKJGvUtllDxx8Zo7wgor0B6n4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "RHXpgXqeB68"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T12:21:56Z",
+          "channelId": "UChKwH5bw8WPxCeiXWa0Ny8A",
+          "title": "[ 2026/03/01┆인생게임 ]",
+          "description": "여러분의 하루에 찾아 온 하루 ⊹₊ X : https://x.com/otw_haru ⊹₊ Chzzk : https://chzzk.me/Onharu ⊹₊ Music ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/RHXpgXqeB68/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/RHXpgXqeB68/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/RHXpgXqeB68/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "오프 하루",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T12:21:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "La_SmDcTxOSG8PIxzPQ-Q0dbM08",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BohdMpnYqDg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T10:15:01Z",
+          "channelId": "UC8CIM3d3zDYMk-3T5aAz0yw",
+          "title": "&quot;동시 접속자 25만명???&quot; 난리난 그 게임, 저도 다운 받아봤습니다...[연운]",
+          "description": "무협은 역시? 연운! 다운로드 ▽ 스팀   https://bit.ly/4u84c31 앱   https://wwmglobal.onelink.me/UZ5P/kol74 #연운 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BohdMpnYqDg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BohdMpnYqDg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BohdMpnYqDg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "혜안",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T10:15:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zQsLA-kC_sei2Z77QIXjZdZaDq8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "y1jWvUs3Amc"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T09:00:00Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "신규 게임 포함 !!사용자수 순위로 알아보는 3월 1주차 모바일게임 추천 20가지 !! [ RPG/오픈월드/턴제/방치형 ]",
+          "description": "RPG 모바일게임 추천 TOP 20 순위 자료: 모바일 인덱스 주간 사용자 순위 00:00 인트로 00:19 20위 어비스디아 01:24 19위 로스트 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/y1jWvUs3Amc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/y1jWvUs3Amc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/y1jWvUs3Amc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T09:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "kHl2vkm-A7H6YfFVWxL5OvsYPJg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Afkq3FDmoT8"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T09:00:13Z",
+          "channelId": "UCPI40-XQA9-GBGj2k8PPqfg",
+          "title": "멤버들끼리 서로 보이스 피싱 하는 스팀 게임 ㅋㅋㅋ",
+          "description": "멤버들끼리 서로 보이스 피싱 하는 스팀 게임 ㅋㅋㅋ 공포게임 제목:Scam_Line 다운로드 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Afkq3FDmoT8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Afkq3FDmoT8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Afkq3FDmoT8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김왼팔",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T09:00:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "r4FFm2x4c3S5hUnTTparXR-CUyc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Hy4p8SBRCt0"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-31T10:27:23Z",
+          "channelId": "UC8CIM3d3zDYMk-3T5aAz0yw",
+          "title": "환장하겠네 진짜 ㅎㅎㅎㅎㅎ ≪포장마차 공포게임≫",
+          "description": "루가우 한그릇 하실라우 [업로드] 금,토,일,월 [문의메일] zxcv34276@gmail.com [인스타그램] @hxxax_ #혜안 #공포게임.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Hy4p8SBRCt0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Hy4p8SBRCt0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Hy4p8SBRCt0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "혜안",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-31T10:27:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "_8Mmlz3jJaACSzkxIeQ5u6xc1oE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4ONH3jXCkNU"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-31T09:00:09Z",
+          "channelId": "UCWaWB2ywraw_Sgb8t0Mxu4A",
+          "title": "사이비종교의 비밀을 파헤치는 게임 [No Results Found 풀영상]",
+          "description": "2026년 8월 26일 SOOP 우정잉 방송 #게임 #스팀게임 #Noresultsfound.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4ONH3jXCkNU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4ONH3jXCkNU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4ONH3jXCkNU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "우정잉 잡동사니",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-31T09:00:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "q8MkXnTaqVZL6LAyW6R5-jfDgO4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6XnTQ38-u6g"
+        },
+        "snippet": {
+          "publishedAt": "2026-08-31T00:31:08Z",
+          "channelId": "UCpsZOPXJA8aiIKWb0HrKizQ",
+          "title": "해외에서 난리 난 병맛 낚시 게임🎣 How to Fish + Hide and Moo! 합방 (w.종겜동)",
+          "description": "2026/08/30 낚시 방법 + 하이드 앤 무! ( How to Fish + Hide and Moo! ) ▷ 끠끼 생방송 : https://www.sooplive.com/station/rmlrl771 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6XnTQ38-u6g/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6XnTQ38-u6g/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6XnTQ38-u6g/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "긴끠끼",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-08-31T00:31:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "UlC-jKjWqqS9_zsvmbONSAA0N-4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Eg8fbmRxKHM"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T08:24:49Z",
+          "channelId": "UCyHvSKT_bLDYpkv1JjjsLAg",
+          "title": "간만에 실력 제대로 보여준 &#39;근본&#39; 로그라이크 덱 빌딩 게임 [슬레이 더 스파이어 2/Slay the spire 2]",
+          "description": "간만에 실력 한 번 보여드렸습니다. ▷ 슬레이 더 스파이어 2/Slay the spire 2 ▷ 2026년 3월 06일 방송 ▷ 다시보기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Eg8fbmRxKHM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Eg8fbmRxKHM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Eg8fbmRxKHM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "풍월량",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T08:24:49Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "h2FGfpiUjB-zMMMsvqLfMdAxI3c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dHKARZt1ZhY"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T05:19:28Z",
+          "channelId": "UCBM-FNl62XFkz_3zhJ5LERg",
+          "title": "[마라톤 1화] 신작 탈콥류 게임 ! 헤일로+데스티니 제작진이 만든 게임이라네요 !",
+          "description": "마라톤 #타르코프 #탈콥 #익스트렉션슈터 #fps 과연 맛은 어떨지 ?",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dHKARZt1ZhY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dHKARZt1ZhY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dHKARZt1ZhY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꾸준이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T05:19:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BC5vpVArYr5uUiYUsoZ3JY33Gpc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "u6hkPgbWa3Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T04:05:10Z",
+          "channelId": "UCYJDUekoQz0-bo8al1diLWQ",
+          "title": "폐급이 죄는 아니잖아요.. [마크 하드코어 EP.14]",
+          "description": "마이프로틴, 보충제 최저가로 구매가능한 말왕TV 링크 https://tidd.ly/3pciApC *결제 창 할인코드에 'horseking' 기재시, 추가 할인혜택!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/u6hkPgbWa3Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/u6hkPgbWa3Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/u6hkPgbWa3Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "말왕TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T04:05:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jsL62ziubY7vXTH0WyFHWK5XsZw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xCOErHwFm48"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T03:00:00Z",
+          "channelId": "UCyAA-Vj4ORjXl5Ui2m6_Llw",
+          "title": "3월 가장 접속자가 많았던 모바일게임 추천 - 과연 이번주 가장 인기있던 작품은?",
+          "description": "모바일게임 #모바일게임추천 #게임추천 #모바일rpg #모바일게임순위 삐하! 오늘 준비한 영상은 3월에 가장 사랑받은 모바일게임 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xCOErHwFm48/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xCOErHwFm48/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xCOErHwFm48/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "삐로",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T03:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "RHJ3jgWutLQtcwLR_92w4L9zlmA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VRxLHv7ksBk"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T22:48:31Z",
+          "channelId": "UCTJR69L4Ds--nbD1gOmSNPQ",
+          "title": "로보트 좋아하는 친구들 다 모여라! 추억의 문방구 게임 [키카이오]",
+          "description": "우리들이 좋아하던 로봇들이 총 출동했던 문방구 초대박 게임!! 동물철권과 함께 문방구 1짱 2짱을 달리던 추억의 그~ 게임! 테크로맨 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VRxLHv7ksBk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VRxLHv7ksBk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VRxLHv7ksBk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "소비자게임론",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T22:48:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "0n6XtFi5k8iwjhipRJv7wJwP8AQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "j6dR9IJDgNA"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T13:01:30Z",
+          "channelId": "UCrN7Gb8xIZF_0ZYA1cmVNxQ",
+          "title": "마법 음성 인식 게임 YAPYAP 합방 (w. 아이네, 주르르, 나나문, 띵귤)",
+          "description": "징버거 #이세돌 #이세계아이돌 썸네일 : 찡찡 방송날짜 : 260223 ☕왁물원 https://cafe.naver.com/steamindiegame 생방송보러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/j6dR9IJDgNA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/j6dR9IJDgNA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/j6dR9IJDgNA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "징버거의 다시부기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T13:01:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ZmkiTuOtiNIpBRsXm4woWl8ah90",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "SgWp4dQ9c2U"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T11:00:53Z",
+          "channelId": "UCE5vNjmDoVVvcWYRnCUc1Eg",
+          "title": "연구실에서 미생물 키우는 게임! 시간순삭 아이들러 [Simultree]",
+          "description": "종합게임 #스팀게임 #인디게임 Simultree Demo -다운로드 링크 (Steam) https://store.steampowered.com/app/3811840/Simultree/ ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/SgWp4dQ9c2U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/SgWp4dQ9c2U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/SgWp4dQ9c2U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "리키리킹",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T11:00:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ft0WPeKktU5ODhmZ-VaflWD4swg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "7URjwAqkaaU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T10:35:58Z",
+          "channelId": "UCi5yzN6jpdz2akGTm-mJSKQ",
+          "title": "러닝중에 갑자기 나타난 살인마들을 피해 도망치는 게임 [더 런]",
+          "description": "루다 #종합게임 ○치지직 생방송 - https://chzzk.naver.com/3e9272616070e9f66cc4afd9e69753c2 ○팬카페 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/7URjwAqkaaU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/7URjwAqkaaU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/7URjwAqkaaU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "루다게임방송",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T10:35:58Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "ggPjvIhezlFtJClZmCepvLtaNGE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4uf7BYlEnTc"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T09:00:08Z",
+          "channelId": "UCVwkFKZl7v3V02JR8gLlUyw",
+          "title": "세상에서 제일 이상하게 99밤 깨기ㅋㅋㅋ 성공할 수 있을까?",
+          "description": "멥버십 가입! 비엔나대원이 되는 방법!   https://www.youtube.com/channel/UCVwkFKZl7v3V02JR8gLlUyw/join 업로드 날짜: 화,목, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4uf7BYlEnTc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4uf7BYlEnTc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4uf7BYlEnTc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "백앤아",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T09:00:08Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "knfQs3vN0D5LpWP0evGguFEQSyA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "_lGZvOI0YUQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T08:30:17Z",
+          "channelId": "UCihlMjfm-Knmca4rV7aaqSw",
+          "title": "데모인데 압긍 리뷰 썰매 게임 ㄷㄷ (외국 꼬맹이 참교육 ㄷㄷ)",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/_lGZvOI0YUQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/_lGZvOI0YUQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/_lGZvOI0YUQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "금쿤",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T08:30:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "MYugnXdT5P6l23vT5HsVpfwcPvU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "OrKo9rCpblo"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T08:00:23Z",
+          "channelId": "UCVZ0SJNurJAv-6hV5VEGB2A",
+          "title": "지금 고백하고 싶은 멤버는? 99일 동안 진실게임❤️",
+          "description": "재미를 위한 일부 연출적인 장면들이 포함되어 있습니다* ⭐꽥에 로블록스 아이템을 구매하려면?!⭐ ▷ 꽥 그룹 상점 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/OrKo9rCpblo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/OrKo9rCpblo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/OrKo9rCpblo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽥",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T08:00:23Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "594Yf5OFE52xbHW1C5K1qBOp-XE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "497Ok4RxfgQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T07:40:01Z",
+          "channelId": "UCdVEHxKpd4De2ie4BhUqsmQ",
+          "title": "[모바일게임] 고오오급 SUV타고 확장된 맵 모두 둘러보기!! 여긴 어디에요? 진짜 어디에요? 3D운전게임 4.0 프로젝트 서울",
+          "description": "루시 #SUV #지하철 #신맵 #확장 #업데이트 #운게 게임이름 : 3D운전게임 4.0 프로젝트 서울 게임하러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/497Ok4RxfgQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/497Ok4RxfgQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/497Ok4RxfgQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "럭키루시",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T07:40:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6fcsMYOVRNiAOl5QTDdn6g2Y7G4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "eE-RuEeS94A"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T04:37:01Z",
+          "channelId": "UCyHvSKT_bLDYpkv1JjjsLAg",
+          "title": "동숲+포켓몬? 포켓몬들과 함께 마을을 만드는 힐링 게임 [포코피아/Pokopia]",
+          "description": "포코피아/Pokopia ▷ 2026년 3월 05일 방송 ▷ 다시보기 : https://chzzk.naver.com/video/12086963 #포코피아 #pokopia #포켓몬 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/eE-RuEeS94A/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/eE-RuEeS94A/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/eE-RuEeS94A/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "풍월량",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T04:37:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "c0gRVDJksw1iuUvaoxL70Abotkw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EjmVhHmBquk"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-05T14:15:48Z",
+          "channelId": "UCEWqfxUKLIpqyMzebADGUlg",
+          "title": "동물의숲을 섞어놓은 포켓몬 신작 게임【포코피아】",
+          "description": "윤가놈 #포코피아 #포켓몬 방송일 : 2026-3-05 치지직 생방송 : https://chzzk.naver.com/1ad5aa0f6c6741b072528fad5e5e76b1 풀 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EjmVhHmBquk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EjmVhHmBquk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EjmVhHmBquk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "근가놈",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-05T14:15:48Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-CR4bmwOo4PMzJQ5fTcLWTRqwYs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZSDIgKlSRiU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-05T11:01:00Z",
+          "channelId": "UC8MgGtsJazbztr5eGWiqUXw",
+          "title": "[게임IN] 히스토리 오브 아틀라스 - 4편 : 벼랑 끝에 서다",
+          "description": "1986년에 설립되어 진 여신전생, 페르소나 등으로 유명한 게임 제작사, 아틀라스의 역사에 대한 기획물입니다. 영상의 내용은 사실을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZSDIgKlSRiU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZSDIgKlSRiU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZSDIgKlSRiU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "라텔",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-05T11:01:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "X3sOLxrwDa0ZR1EWqh5XAnKsWMw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ZS-l6_q2aa0"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-05T06:00:33Z",
+          "channelId": "UC1odR1i_FiUtMtmbEYaOz-w",
+          "title": "💢(게임리뷰) 스톤에이지 키우기 해봤다가… 수확의 멘탈은 완전히 나가버렸습니다 / 넷마블(netmable) 💣",
+          "description": "협업 및 비즈니스 문의 Email: [cjstkdmlaaa@gmail.com](mailto:cjstkdmlaaa@gmail.com) KakaoTalk: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ZS-l6_q2aa0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ZS-l6_q2aa0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ZS-l6_q2aa0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "수확",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-05T06:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "UtkVmHHr1o1htmLUk4NKzvWvh9c",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "tHL23aRN900"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T22:00:00Z",
+          "channelId": "UCKVt3arMXfa6XZezR1UnjqQ",
+          "title": "3월초 만원이하들만 모았습니다 !! 스팀 게임 할인 추천 45가지 !! [ Steam 스팀 게임 추천/RPG/오픈월드/로그라이크 ]",
+          "description": "PC Steam 스팀 할인 게임 추천 45가지 !! 오늘의 썸네일:21번 00:00 인트로.헤이븐독 (Havendock) 00:12 1.워해머 40000 볼트건 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/tHL23aRN900/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/tHL23aRN900/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/tHL23aRN900/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "이구역의 듀공",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T22:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "tUMhXWKPjetgNCG6QTS30Obis6Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QIoJIn7T6TI"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T13:00:55Z",
+          "channelId": "UCk-QtahVyHaxCsteeKB2Xzg",
+          "title": "[월드 오브 워쉽] 전세계 유저들이 최고의 해전게임으로 평가하는 월드오브워쉽.. 지금 설날 이벤트와 함께 역대급 스킨들로 돌아왔습니다 이 게임 진짜 해보셔야해요 ㄷㄷㄷㄷ",
+          "description": "역대급 그래픽의, 세계 최고의 해전 게임은 당연히 월드 오브 워쉽입니다!! 신규 초대링크로 게임을 플레이해보세요 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QIoJIn7T6TI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QIoJIn7T6TI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QIoJIn7T6TI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "씨랙",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T13:00:55Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "2kJO3TBd8Rc92arPgbVj0SSlEW4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "AJvhVWZRV7I"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T09:30:05Z",
+          "channelId": "UCOTJtP0Z9DjpPU43B5m1V6A",
+          "title": "게임 시작부터 X밥 취급하며 무시하길래 드론 60마리 러쉬로 굴욕을 선사해 줬습니다ㅋㅋ",
+          "description": "스타크래프트 테란 STX전프로 ☆알파고☆김성현의 공식채널입니다:D 알튜브 공식 굿즈 샵 : https://altube.shop ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/AJvhVWZRV7I/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/AJvhVWZRV7I/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/AJvhVWZRV7I/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "[ALTUBE] 김성현TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T09:30:05Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9B_VsPZ5Cq108kp_bTI6DvpryTA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1we1K3TaNxg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T08:35:33Z",
+          "channelId": "UCfpW9NT8labw-16JYailtOw",
+          "title": "좀비 세상에서 살아남는 3D 좀보이드 같은 신작 게임 &quot;휴머니츠&quot; (HumanitZ) #1",
+          "description": "좀비 세상에서 살아남는 3D 좀보이드 같은 신작 게임 \"휴머니츠\" (HumanitZ) ※ 김더미 생방송 : https://url.kr/6fh21o ※ 김더미 팬카페 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1we1K3TaNxg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1we1K3TaNxg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1we1K3TaNxg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "김더미",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T08:35:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "hn72WF-rxhsiAzzsuacTBE5zg10",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xqK3QBdzYlU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T08:00:59Z",
+          "channelId": "UC7qgspdh692yBR5eoLeYRWw",
+          "title": "선택지마다 스토리가 달라지는 선협게임┃[윤회수선전]",
+          "description": "무협게임 #선협게임 #로그라이트 치지직 라이브 https://chzzk.naver.com/d387fdc141f91a85550e5fe650563911 윤회수선전 轮回 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xqK3QBdzYlU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xqK3QBdzYlU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xqK3QBdzYlU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임빌런카니형",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T08:00:59Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QUr7HX9wF3flNNeBbyHbzJWaAyQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1zyi3guqzv4"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T07:58:02Z",
+          "channelId": "UCPuD5ZRQWa_JCaY5NokNhtg",
+          "title": "[신작 모바일게임] 서브컬처 어반 판타지 수집형 RPG &#39;이환&#39; (异环, NTE) 1장 초반부 플레이. 그래픽 좋은 출시예정 고퀄리티 3D 액션 어드벤처 RPG 게임 기대작 추천?",
+          "description": "이환 #NTE #모바일게임 #异环 #신작모바일게임 #출시예정모바일게임 #출시예정게임 #PC게임 #모바일게임기대작 #기대작모바일 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1zyi3guqzv4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1zyi3guqzv4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1zyi3guqzv4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임달고나",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T07:58:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "6K2UIbhgGqaMU0e8nkPNy5Y-YAY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "N3A6atJ16Qg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T07:00:26Z",
+          "channelId": "UC7uyuLAA9z8GKxnSkb9KRtw",
+          "title": "[챌린저 도전기] 진짜 미친듯이 강력한 악사 탑 베인! 근데 게임 상태가....? 혼자 진짜 5인분 하면서 개똥꼬쇼하는 미치도록 처절한 게임.... 하 인생...",
+          "description": "종탁은 탑 원딜 챔피언을 전문으로 플레이하는 롤 유튜브 채널입니다. 시즌2부터 이어진 실력과 감성, 꿀잼까지! 매일매일 새로운 영상 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/N3A6atJ16Qg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/N3A6atJ16Qg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/N3A6atJ16Qg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "종탁이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T07:00:26Z"
+        }
+      }
+    ]
+  }
+}

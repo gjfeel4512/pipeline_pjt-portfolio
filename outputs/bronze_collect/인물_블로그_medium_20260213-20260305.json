@@ -1,0 +1,1452 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "medium",
+    "publishedAfter": "2026-02-13T00:00:00Z",
+    "publishedBefore": "2026-03-05T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "PBfzdk2Wd3YwYbisGulkbhYl5tw",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 15721,
+      "resultsPerPage": 42
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQzx3vKhC4u1BYhM_IEOGEKS5mU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "l3sdLWovN6c"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T11:11:30Z",
+          "channelId": "UCia9Zzk9o8id4u6BPaceitQ",
+          "title": "[영화리뷰] 역사의 여백을 상상하다, 조선과 청령포 단군으로 쪼개어 다시 보는 “왕과 사는 남자” (+ 장항준 감독의 재발견)",
+          "description": "영화리뷰 #왕과사는남자 #장항준 #단종 #조선시대 #청령포 0:00 인트로 0:30 조선, 허구보다 허구같은 4:26 청령포, 이상하고 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/l3sdLWovN6c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/l3sdLWovN6c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/l3sdLWovN6c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Hongsiri시리홍",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T11:11:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Jvmg21sjdycaeyJP4jsJGAAeE0U",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "YBGoV-7fHSI"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T09:41:00Z",
+          "channelId": "UCDQn653rSpmBekf-P1gm8EA",
+          "title": "제가 이거 타려고 아직 차를 안 샀나봅니다 l 테슬라 FSD 시승기",
+          "description": "장윤정 #테슬라 #FSD.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/YBGoV-7fHSI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/YBGoV-7fHSI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/YBGoV-7fHSI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "장공장장윤정",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T09:41:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "8jQIufvoniZzqf6N_PUnL3FJUek",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "IUkfOHjinEc"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-04T09:36:27Z",
+          "channelId": "UCgUwQ8Ol1zPlAVfKfF6IizQ",
+          "title": "코나 하이브리드 시승기, 아내 차 고민 중, 2년 주행 실연비 실화?",
+          "description": "아내의 다음 차를 고민하며, 2년간 5만 km를 주행한 지인의 코나 하이브리드 인스퍼레이션 모델을 직접 타봤습니다. 카니발 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/IUkfOHjinEc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/IUkfOHjinEc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/IUkfOHjinEc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카니발타는 조이네가족 [Joey's Carnival Life]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-04T09:36:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fIwQkeJ3tBawf93lZq5sTDdoQZ0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "O40cXXdTpKo"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-03T14:35:46Z",
+          "channelId": "UCxF1GeZ1Dc8mz7q7aeW9zBg",
+          "title": "[영화리뷰]박정희 바이러스",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/O40cXXdTpKo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/O40cXXdTpKo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/O40cXXdTpKo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "장간",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-03T14:35:46Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cI3bKz4kby-fG7mtjx_06XkwEOU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "DCw7SmIXbp4"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-03T09:04:16Z",
+          "channelId": "UCmAGdg56aFq8tvdferVuEIw",
+          "title": "벤츠 SUV 끝판왕!! 마이바흐 GLS600 시승기ㅣ제가 한번 타봤습니다",
+          "description": "마이바흐 #gls600 #벤츠 저는 죽기전에 이 모델을 꼭 소유해보고 싶습니다 벤츠 강남/청담전시장 박세웅과장 010-7123-4644.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/DCw7SmIXbp4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/DCw7SmIXbp4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/DCw7SmIXbp4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "벤츠 박세웅",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-03T09:04:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "AWhQSdtbUmeO20i9VfeXNueDVec",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "PtGjBIkDXzY"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-03T09:00:00Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "[보드게임 리뷰] 코지 스티커빌: 승패 없이 즐기는 힐링 레거시 게임",
+          "description": "안녕하세요! 오늘 리뷰할 보드게임은 승패의 압박 없이 온전히 힐링할 수 있는 독특한 레거시 게임, **'코지 스티커빌(Cozy ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/PtGjBIkDXzY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/PtGjBIkDXzY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/PtGjBIkDXzY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-03T09:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7BHteFc4L72DYJ-8Q2USLMedGJE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "0THfV46wsRE"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-02T00:18:48Z",
+          "channelId": "UC71zrCA-MSmGDr96_R673Vw",
+          "title": "로블록스 25분[서바이벌]최후의 방어선 게임 리뷰.",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/0THfV46wsRE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/0THfV46wsRE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/0THfV46wsRE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "포훽스🗂",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-02T00:18:48Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "jJPHQQHrsl7GakNW0i5a6UlbnGA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ezYnUa6MUTc"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-28T19:05:28Z",
+          "channelId": "UCuvJhvFpXACAoa27o5L2NXg",
+          "title": "2026 현대 투싼 완전 공개 🔥 역대급 디자인과 미래 기술의 진화! 신형 투싼 풀체인지 총정리",
+          "description": "2026 현대 투싼 완전 공개 역대급 디자인과 미래 기술의 진화! 신형 투싼 풀체인지 총정리 2026년형 현대 투싼이 드디어 완전히 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ezYnUa6MUTc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ezYnUa6MUTc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ezYnUa6MUTc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "M.D Autoes",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-28T19:05:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zduJiSJem2Fp_F-URJoashIDQrY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "u6XH2DIfIHU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-28T17:18:01Z",
+          "channelId": "UCMLsTpCuHmI7iXJyWOvZdpg",
+          "title": "게임 리뷰:난장판",
+          "description": "원조는 스팀!!!! 게임링크:https://www.roblox.com/ko/games/83962596228244/Card-Chaos.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/u6XH2DIfIHU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/u6XH2DIfIHU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/u6XH2DIfIHU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "00튜브",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-28T17:18:01Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "atl4QqZerOaIXpW5yqMGj8LLRBc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "XPzGk5FSrl0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-28T16:16:17Z",
+          "channelId": "UC2AEJw5pXpe1UQwGGPmEL9w",
+          "title": "25로벅스짜리 게임이 무료라고?? - [게임 리뷰]",
+          "description": "25로벅스 짜리 게임이 무료입니다! 게임평: 재밌었습니다. 약간 포세이큰 같은 1대 다수? 그런 느낌의 게임이였고, 퀄리티도 매우 좋았 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/XPzGk5FSrl0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/XPzGk5FSrl0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/XPzGk5FSrl0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "조엘 - 잡겜유튜버",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-28T16:16:17Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9IQUTK-nQq39V9vPVBqk7omr9hA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "kVKTtdEP6C0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-28T09:00:00Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "밤 버스터즈(Bomb Busters) 보드게임 리뷰: 4인 추천 협력 추리 게임의 정석",
+          "description": "\"이 선을 자르면... 터질까?\" 손에 땀을 쥐게 하는 리얼한 폭탄 해체 현장! 오늘은 협력 추리 보드게임의 신성, '밤 버스터즈(Bomb ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/kVKTtdEP6C0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/kVKTtdEP6C0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/kVKTtdEP6C0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-28T09:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "SCdIHufLTPTrC4-yCpi0bU16SYk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lIh2lo96LN0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-28T05:20:29Z",
+          "channelId": "UCVpm_H1h_CCeoQzsRybQ65w",
+          "title": "2026년 스포티지 NQ5 6개월 7,000km 주행 후기",
+          "description": "스포티지 #스포티지nq5 #sportage #신차 #신차구매 #신차리뷰 #기아차 #주행 #자동차 #자동차리뷰 #방향제.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lIh2lo96LN0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lIh2lo96LN0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lIh2lo96LN0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "후기의모든것",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-28T05:20:29Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "WmO183uqfsn0VgG80DGw70Mbuu0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "wwyEmaAFd7c"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-27T11:01:45Z",
+          "channelId": "UC3M04crb0hhhil6k0xjeWnQ",
+          "title": "망해버린 공포게임 리뷰 | 프란체스카 : 더 할로윈 #3",
+          "description": "공포게임 #프란체스카 #더할로윈 플레이어🕹️ 구무 한린 모담피 냥냥펀치 한린 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/wwyEmaAFd7c/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/wwyEmaAFd7c/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/wwyEmaAFd7c/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "구무",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-27T11:01:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "VBXR2j3aqR2b_LR1NUTEsfhduRA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-B7Ab7GmzMY"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-27T09:21:31Z",
+          "channelId": "UC93tPFqGocAjumILDVTGSAA",
+          "title": "BMW X7, 차량 리뷰 및 구입 혜택 총 정리 !! | 즉시출고 재고 보유 중 #x7",
+          "description": "안녕하십니까!! BMW 파는아저씨 비엠아재 오재영입니다. 오늘은 BMW의 플래그쉽 SUV인 X7 차량을 설명드리고자 합니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-B7Ab7GmzMY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-B7Ab7GmzMY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-B7Ab7GmzMY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "비엠아재 (BMW 오재영)",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-27T09:21:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Wbjzbp705JpE63z3pU-lpZ2YrSY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "gvHy_R9tF-E"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-27T08:30:33Z",
+          "channelId": "UCWrsrMLpoIpo3RkGlXgyMKg",
+          "title": "[TOYOTA] 캠리 솔직 시승기ㅣ캠리",
+          "description": "이 차가 아직도 팔리는 이유 (타보면 납득) PD도 납득했습니다 #토요타 #캠리 #하이브리드 #xle #세단 #프리미엄 #가성비 #연비 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/gvHy_R9tF-E/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/gvHy_R9tF-E/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/gvHy_R9tF-E/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "TOYOTA 공식딜러 임호수 대리",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-27T08:30:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Vuv3ujdisVV220-1x-j70wk5PWQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Pk2pNkDp2u0"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-27T08:00:28Z",
+          "channelId": "UC94I-mEz7P8Tmgvw4eyjs0A",
+          "title": "혼다 레블500 간단 시승기! [시트고 690mm, 키가 160이 안되도 편하게 탑승 가능?!]",
+          "description": "모토로그 #오토바이 #이륜차 #motorcycle #히말라얀450 #royal enfield #interceptor 650 #인터셉터 #스쿠터바린이 #gopro #고프로 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Pk2pNkDp2u0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Pk2pNkDp2u0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Pk2pNkDp2u0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "부군coco",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-27T08:00:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "7FtebTHnfgMHGzqLbosDAokJ_g0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "JUrLdYP7y6o"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-25T09:08:26Z",
+          "channelId": "UC9_MMnduIlNz5c-jT3PFkQQ",
+          "title": "아이프리 4탄 자판기 &amp; 게임 후기 | 일본 대행 후기 | 아이카츠 가샤폰 | 산리오 콜라보 | 카츠파라 | 스타파라 | ひみつのアイプリ✨",
+          "description": "비밀의아이프리 #아이프리 #아이프리깡 #메루카리 #메루카리깡 #아이프리후기 #일본아이프리 #아이프리구미 #아이카츠 #아이카츠 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/JUrLdYP7y6o/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/JUrLdYP7y6o/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/JUrLdYP7y6o/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "𝚁𝚎𝚖𝚒",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-25T09:08:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "gS_L65tx6f9mnCyExDZgVbUoAJQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dZggaPeFe4E"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-25T09:00:53Z",
+          "channelId": "UCHq1ohErU1JGi04ZGOrZE2A",
+          "title": "림버스 4장 맛을 봐버린 뉴비 [림버스 4장 리뷰]",
+          "description": "림버스컴퍼니 #게임 #게임리뷰 #프로젝트문 #뉴비.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dZggaPeFe4E/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dZggaPeFe4E/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dZggaPeFe4E/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "얼소의 게임리뷰",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-25T09:00:53Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "xzsEFKhvbwHwHxeB9gnuBv7QMXg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "NQvFOcf4xwU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-24T10:39:07Z",
+          "channelId": "UClHnG-t5uwnJqXOGpZGokkw",
+          "title": "[영화리뷰]술과 사랑이 흘러넘치는 거리_밤은 짧아 걸어 아가씨야 해석",
+          "description": "영화 #해석 #밤은짧아걸어아가씨야 #영화리뷰 00:00 인트로 00:56 줄거리 07:26 심층리뷰.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/NQvFOcf4xwU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/NQvFOcf4xwU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/NQvFOcf4xwU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "팝콘 말아먹기",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-24T10:39:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "T8MphXY3IYbw5f95WA2jACDoMNw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4Z5jaXoTNpI"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-24T09:00:00Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "패치워크(Patchwork) 보드게임 리뷰 | 예쁜데 살벌한 2인용 커플 게임 추천 (규칙, 전략)",
+          "description": "따뜻한 차 한 잔과 함께하는 우아한 퀼트 만들기...라고 생각하셨나요? ✨ 오늘 소개할 보드게임은 보드게임의 거장 우베 로젠버그의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4Z5jaXoTNpI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4Z5jaXoTNpI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4Z5jaXoTNpI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-24T09:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "PwwdD32Klo69h8NWdQGp04yQ52A",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "CHQibPQepDk"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-24T07:10:41Z",
+          "channelId": "UC8GO7aY3zWWPbxJ9j4zFa3Q",
+          "title": "BYD씨라이언 시승기 (유서준비깜박하고 시승했는데 천국 다녀왔어요)",
+          "description": "워렌버핏 #장기투자 #피터린치 #2차전지 #동기부여 #주식투자 #주식투자동기부여 #워렌버핏삶 #가치투자 #성장주투자 #성장기업 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/CHQibPQepDk/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/CHQibPQepDk/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/CHQibPQepDk/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "WX3",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-24T07:10:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "DGzTLabN27q0r4Ttn3i8WSQBlYc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "-VjmATyRL0Q"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-23T11:00:00Z",
+          "channelId": "UCFZwI_gWGB-dR9P02ZlIbow",
+          "title": "2026 현대 베뉴 풀체인지 리뷰 🚗 소형 SUV의 새로운 기준! 디자인, 실내, 가격 총정리",
+          "description": "제목 2026 현대 베뉴 풀체인지 리뷰 소형 SUV의 새로운 기준! 디자인, 실내, 가격 총정리 설명 2026 현대 베뉴가 더욱 세련된 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/-VjmATyRL0Q/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/-VjmATyRL0Q/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/-VjmATyRL0Q/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "auto maina ",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-23T11:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "GVC1o845Hxbh0XbLzxH0QNl7tYg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "daHCwzjchFY"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-22T15:38:55Z",
+          "channelId": "UC8GDkYm2XYp5jO8Bw_YPYow",
+          "title": "드래곤길들이기 실사화 / 영화리뷰  / 스토리",
+          "description": "드래곤 길들이기 실사 #투슬리스 실사 #투슬리스 비주얼 #투슬리스 고양이 #드길 실사 #메이슨 테임즈 #Mason Thames #니코 파커 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/daHCwzjchFY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/daHCwzjchFY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/daHCwzjchFY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "안녕영화",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-22T15:38:55Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "COcMyl806_-UJ_AeCd9XzNe5nG8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xLmoDS9SK2Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-22T09:00:00Z",
+          "channelId": "UCusQEh7k8ERHe-RS2gG7r-w",
+          "title": "파러웨이(Faraway) 보드게임 리뷰: 20분 컷! 뇌가 타오르는 전략 카드게임",
+          "description": "귀여운 일러스트 뒤에 숨겨진 '악마의 퍼즐', 보드게임 파러웨이(Faraway) 리뷰입니다. 단 20분, 8라운드라는 짧은 시간 동안 여러분의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xLmoDS9SK2Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xLmoDS9SK2Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xLmoDS9SK2Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "게임리뷰하느라 바쁜남자 | 바쁘남",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-22T09:00:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vB18-f1E84uR53NwOSZgodq3YkE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "3Isjwe5LerI"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-11T09:00:27Z",
+          "channelId": "UCa5QEPQi-uHtks0DgR6k2ig",
+          "title": "세상에 나 혼자라고 느낄 때 꼭 봐야하는 영화  영화리뷰 결말포함",
+          "description": "제목; 천국보다 아름다운/1998 #영화리뷰결말포함 #영화리뷰 #영화 #로빈윌리엄스 #아나벨라시오라.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/3Isjwe5LerI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "꽃보다",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-11T09:00:27Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQ0UQ1iMIfjRyXnaOR8h1xgFYBM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "rGkxzxEGJ8U"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-10T13:30:07Z",
+          "channelId": "UCoabCaYEaHnG2dfq9mp0aFQ",
+          "title": "“내 몸에 손대지 마..” 사이코 백인 집안 참교육하고 탈출하는 🔥역대급 스릴러🔥 (영화리뷰/결말포함)",
+          "description": "겟아웃(2017) #영화리뷰 #결말포함 #영화 #겟아웃.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/rGkxzxEGJ8U/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "추디",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-10T13:30:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z7LHuHKXCVIN3AAvXP66Cm4oZIY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vA7qNxEYbjQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-07-07T09:00:33Z",
+          "channelId": "UCDQQKYz1JLeSw6defAwI1Rg",
+          "title": "(영화리뷰) 유골함에 담긴 50년의 기억, 그 마지막 여정 [결말포함]",
+          "description": "(영화리뷰) 오랜 세월을 함께한 네 친구, 그리고 친구의 유언을 따라 떠나는 마지막 여행, 인생의 황혼기에 선 친구들이 각자의 기억을 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vA7qNxEYbjQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "레치고무비",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-07-07T09:00:33Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "KqmvvOksLV73iPAVXK3kZcz4eF0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lsRKkCFHRTg"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-22T08:51:28Z",
+          "channelId": "UCgUwQ8Ol1zPlAVfKfF6IizQ",
+          "title": "시에나 하이브리드 시승기, 카니발 아빠가 직접 타보니 이건 정말 부럽네요",
+          "description": "카니발을 운행하는 아빠의 시선으로 토요타 시에나 하이브리드를 꼼꼼하게 시승해 봤습니다. 카니발 오너로서 부러워할 수밖에 없는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lsRKkCFHRTg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lsRKkCFHRTg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lsRKkCFHRTg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카니발타는 조이네가족 [Joey's Carnival Life]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-22T08:51:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "GgzZgEn87C8Zh6jSdv5lL9Ei2d0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6KqvMjahpVw"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-21T15:00:45Z",
+          "channelId": "UCvachTFujSe6o8l5sRI6bOQ",
+          "title": "곧 휴차되는 411편성 짧은 시승기. #휴차 #추천 #주행영상 #지하철 #411편성 #4호선465편성 #지축차량기지 #알스톰vvvfgto #알스톰 #관리자님추천뜨게해주세요 ",
+          "description": "촬영날짜:2025년9월29일.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6KqvMjahpVw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6KqvMjahpVw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6KqvMjahpVw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "대중교통기록실",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-21T15:00:45Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "mLNqsZgOtZh0eNdkyx72LxlzfAs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ENYvjTrCeCs"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-21T04:00:10Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥모든 스파이 영화의 [[전설적인 장면]]을 만들어낸 &quot;레전드 영화&quot;🔥크으... 이게 영화지...(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ENYvjTrCeCs/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ENYvjTrCeCs/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ENYvjTrCeCs/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-21T04:00:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Cbr8MCPNRG4YqWSZr7IXfbOcstI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "nIfSIPJIfhU"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-20T12:19:00Z",
+          "channelId": "UCpismJS-c9fiTIOwmqQLRZg",
+          "title": "무쏘EV 시승기 - 국내 유일 3000만원대 전기 픽업트럭 살펴보기 (외관,실내,주행)",
+          "description": "국내 유일 4000만원대 전기픽업트럭 KG 모빌리티 무쏘 EV 무쏘 전기차 픽업 외관, 실내, 주행 같이 살펴봐요 00:00 인트로 00:17 외관 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/nIfSIPJIfhU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/nIfSIPJIfhU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/nIfSIPJIfhU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "동카",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-20T12:19:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "pD9rNaAjOzS2pByKnt_iOObyxm0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "m8WPGjJfaik"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-19T14:48:11Z",
+          "channelId": "UCy9nJ9IvOgLQhz97zLSc_PA",
+          "title": "《실화》숲속에 쓰러진 소녀... 그녀를 구해낸 건 늑대와 사자였다. [영화리뷰 결말포함]",
+          "description": "이 영화는 실화입니다. 아기 사자와 늑대 새끼를 구조한 소녀, 그녀는 이 둘을 형제처럼 키우게 될 줄은 꿈에도 몰랐습니다. 하지만 자연 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/m8WPGjJfaik/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/m8WPGjJfaik/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/m8WPGjJfaik/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비타임",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-19T14:48:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9t9zXdh8fCUaGyxZbQUyhMrYcxI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "t2HixhRpBYo"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-19T12:34:15Z",
+          "channelId": "UCOdzNA4acbzIOqckhICRaOg",
+          "title": "[영화 리뷰] 왕과 사는 남자 | 판단은 언제나 역사의 몫이었다 | 후기, 완성도, 숨겨진 이야기",
+          "description": "영화리뷰 #영화 #왕과사는남자 #유해진 #박지훈 #유지태 #전미도 #영화추천.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/t2HixhRpBYo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/t2HixhRpBYo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/t2HixhRpBYo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "푸름 스튜디오 Pureum Studio",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-19T12:34:15Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "d7CUfw-pSqTLoL9zcms2ErgOsPg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ezvFthWV8c8"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-19T04:00:28Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥단언컨대 여러분들이 여지껏 보셨던 반전 영화는 이 영화에 비하면 아무것도 아닙니다.....🔥(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ezvFthWV8c8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ezvFthWV8c8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ezvFthWV8c8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-19T04:00:28Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "4_fSKx6N1_AyouT167Rhx4xC-kQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BQ_2pv9pWm4"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-18T08:01:48Z",
+          "channelId": "UCiiT-BDLYPeAKAlKvk51HWg",
+          "title": "(25) (특이점-25번째 엘리베이터 시승기) 부산광역시 기장군 일광읍 해빛4로 20(삼성리 771) 일광동원로얄듀크아파트 402동 현대엘리베이터(주) 탑사기.",
+          "description": "형식 : 권상식-VVVF 종류 : 소방구조/장애인용 승강기 고유번호 : 8119-404 모델명 : WBLX-GT-3(M) 정격 속도 : 105m/min 엘리베이터 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BQ_2pv9pWm4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BQ_2pv9pWm4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BQ_2pv9pWm4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "대중교통(버스, 항공기, 철도) 매니아 태우TV.",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-18T08:01:48Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "HV-xJdYKUVZcPOoMt8Hccoq3fHM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Imbpngxm52w"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T16:12:57Z",
+          "channelId": "UChq7qqZJk8Q-TLp1Ma1lHaQ",
+          "title": "팬텀xc 8단 emtb 시승기",
+          "description": "후륜 허브모터 emtb 테스트 라이딩.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Imbpngxm52w/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Imbpngxm52w/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Imbpngxm52w/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "여누연우파파",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T16:12:57Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "9s2e5obfrzRgnfNiXVZ4-ffWmB8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hW0-Uuarn_E"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T07:22:54Z",
+          "channelId": "UCCIKcwLOqLLK8OdulS1B5UA",
+          "title": "와... 이 수위 실화냐? 순진했던 소녀가 타락한 이유 [영화 리뷰, 결말포함]",
+          "description": "중국의 마지막 황조 청나라를 48년간 실질적으로 지배했던 여인, 서태후. 순진했던 소녀 '옥란'은 어떻게 희대의 악녀가 되었을까요?",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hW0-Uuarn_E/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hW0-Uuarn_E/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hW0-Uuarn_E/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비인싸",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T07:22:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "tueYp8WBAqgFy-ZVdSjvROCaXmo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "vKCBuq4mBKM"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-17T04:58:41Z",
+          "channelId": "UC99VjZVjQ0ZdLnI83EzZFNA",
+          "title": "몬테크리스토 백작 영화 후기!!! / 꼭 보세요!",
+          "description": "안녕하세요! 삶의 낙지입니다. 오늘은 몬테크리스토 영화를 보고 왔습니다. 아주 재밌고 감동스러웠습니다. 꼭 보세요! 네이버 블로그 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/vKCBuq4mBKM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/vKCBuq4mBKM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/vKCBuq4mBKM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "삶의 낙지",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-17T04:58:41Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "v47JqKe1Pum7Pp8uvP7nYA6UIhg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2E-NywYipVQ"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T09:01:13Z",
+          "channelId": "UCgUwQ8Ol1zPlAVfKfF6IizQ",
+          "title": "기아 PV5 시승기! 카니발 오너가 느낀 솔직한 장단점 비교",
+          "description": "카니발을 대체할 수 있을까? 기아의 새로운 전기차 PV5를 직접 시승해봤습니다! 카니발 오너의 시선으로 본 PV5의 주행감, 승차감, ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2E-NywYipVQ/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2E-NywYipVQ/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2E-NywYipVQ/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "카니발타는 조이네가족 [Joey's Carnival Life]",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T09:01:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "XewcDwtezFfYXPngFcdtzXJ1Vt4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "5y3WkDB9928"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T09:02:11Z",
+          "channelId": "UCyY11QGDhjrqo2llYi0JLkg",
+          "title": "(3D운전게임) 신차 리뷰!!!",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/5y3WkDB9928/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/5y3WkDB9928/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/5y3WkDB9928/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "곰돌이 모범택시",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T09:02:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LLmUJcqevhlclsTjSU54gThM3Ng",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jYRuWW9NMUg"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-15T07:57:12Z",
+          "channelId": "UCFujMxk8EeCnKUp5lEOa4cw",
+          "title": "아이오닉6 페이스리프트 시승기",
+          "description": "",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jYRuWW9NMUg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jYRuWW9NMUg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jYRuWW9NMUg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "아이오닉TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-15T07:57:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "b5ANBfLlTHiCbFxgcKlEa8qyS84",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "OuVO3nGGXgc"
+        },
+        "snippet": {
+          "publishedAt": "2026-02-14T15:13:47Z",
+          "channelId": "UCCIKcwLOqLLK8OdulS1B5UA",
+          "title": "억울하게 감옥 간 여자의 미친 반전, 시간 순삭 보장 (영화 리뷰, 결말포함)",
+          "description": "\"한 번 재판이 확정된 사건은 다시 재판하지 않는다.\" 완벽한 행복을 꿈꾸던 리비는 요트 여행 중 남편을 살해했다는 누명을 쓰고 6년의 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/OuVO3nGGXgc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/OuVO3nGGXgc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/OuVO3nGGXgc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비인싸",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-02-14T15:13:47Z"
+        }
+      }
+    ]
+  }
+}

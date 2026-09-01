@@ -1,0 +1,1767 @@
+[
+  {
+    "kind": "youtube#channel",
+    "etag": "vsYWnwScvOrfg_0VsRTd0JaucPM",
+    "id": "UCPuD5ZRQWa_JCaY5NokNhtg",
+    "snippet": {
+      "title": "게임달고나",
+      "description": "달고나 같이 달달한 혜자BM겜 + 고퀄리티 신작 추천 게임을 항상 찾아다니는 '게임달고나'입니다.\n\n[문의처]\n광고 문의: mkt@metaplug.co.kr\n디스코드(discord): @GameDalgona\n스팀 큐레이터 커넥트: https://store.steampowered.com/curator/43213805-GAMEDALGONA/\n\n언제나 재밌는, 그리고 할만한 괜찮은 신박한 기대작 추천 게임을 찾아다니며, 한국 최고의 게임 큐레이터가 되기 위해서 쉬지 않고 영상을 만들고 있습니다. 무편집 (노코멘트) 게임 플레이 영상을 주로 업로드하나, 편집 게임 리뷰 및 소개 영상과 게임 뉴스 영상이 간간히 올라옵니다. 아래 장르 또는 컨셉을 가진 게임들을 선호합니다.\n\n[선호도 순 나열]\nRPG (특히 SRPG)\n수집형 RPG (방치형 RPG)\n서브컬처 (서브컬쳐) 게임\nPVP 게임\n가챠 게임\n액션 게임\n어드벤처 게임 (원신라이크)\n턴제 게임\n애니메이션 게임\nMOBA 게임\n로그라이크 게임 (로그라이트 게임)\n전략 (4X, RTS)\n퍼즐 게임\n캐주얼 게임\n멀티플레이 게임\n온라인 게임\n경영 게임 (경영 시뮬레이션 게임)\n시뮬레이션 게임\n귀여운 게임\n추억의 게임\n오픈월드 게임\n알만툴 게임\n쯔꾸르 게임\n\n소울라이크 게임, FPS, TPS 슈팅 게임은 선호하는 편은 아닙니다.\n\n매주 나오는 신작 PC 게임과 모바일게임 달력을 작성합니다. 콘솔게임은 제가 콘솔이 없다보니 잘 다루지 않습니다.\nhttps://newgamecalender.notion.site/pc-b672193ee56a48539e5bd54d57017a70\n\n구조선 게임 목록은 현재 작성중이지 않습니다만, 수요가 있으면 다시 작성할 예정입니다.\nhttps://newgamecalender.notion.site/newgamecalender/PC-2f89c269e76140f18179016def846c8c\n",
+      "customUrl": "@모바일게임",
+      "publishedAt": "2017-08-07T09:29:49Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/xlUWHDZBszszCsc7Mw-z685cPzvKYMcIWWeO0FHTtYPvnqc6sa7qM3vlm7BoqmKhdwUBsjMVNQ=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/xlUWHDZBszszCsc7Mw-z685cPzvKYMcIWWeO0FHTtYPvnqc6sa7qM3vlm7BoqmKhdwUBsjMVNQ=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/xlUWHDZBszszCsc7Mw-z685cPzvKYMcIWWeO0FHTtYPvnqc6sa7qM3vlm7BoqmKhdwUBsjMVNQ=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "게임달고나",
+        "description": "달고나 같이 달달한 혜자BM겜 + 고퀄리티 신작 추천 게임을 항상 찾아다니는 '게임달고나'입니다.\n\n[문의처]\n광고 문의: mkt@metaplug.co.kr\n디스코드(discord): @GameDalgona\n스팀 큐레이터 커넥트: https://store.steampowered.com/curator/43213805-GAMEDALGONA/\n\n언제나 재밌는, 그리고 할만한 괜찮은 신박한 기대작 추천 게임을 찾아다니며, 한국 최고의 게임 큐레이터가 되기 위해서 쉬지 않고 영상을 만들고 있습니다. 무편집 (노코멘트) 게임 플레이 영상을 주로 업로드하나, 편집 게임 리뷰 및 소개 영상과 게임 뉴스 영상이 간간히 올라옵니다. 아래 장르 또는 컨셉을 가진 게임들을 선호합니다.\n\n[선호도 순 나열]\nRPG (특히 SRPG)\n수집형 RPG (방치형 RPG)\n서브컬처 (서브컬쳐) 게임\nPVP 게임\n가챠 게임\n액션 게임\n어드벤처 게임 (원신라이크)\n턴제 게임\n애니메이션 게임\nMOBA 게임\n로그라이크 게임 (로그라이트 게임)\n전략 (4X, RTS)\n퍼즐 게임\n캐주얼 게임\n멀티플레이 게임\n온라인 게임\n경영 게임 (경영 시뮬레이션 게임)\n시뮬레이션 게임\n귀여운 게임\n추억의 게임\n오픈월드 게임\n알만툴 게임\n쯔꾸르 게임\n\n소울라이크 게임, FPS, TPS 슈팅 게임은 선호하는 편은 아닙니다.\n\n매주 나오는 신작 PC 게임과 모바일게임 달력을 작성합니다. 콘솔게임은 제가 콘솔이 없다보니 잘 다루지 않습니다.\nhttps://newgamecalender.notion.site/pc-b672193ee56a48539e5bd54d57017a70\n\n구조선 게임 목록은 현재 작성중이지 않습니다만, 수요가 있으면 다시 작성할 예정입니다.\nhttps://newgamecalender.notion.site/newgamecalender/PC-2f89c269e76140f18179016def846c8c\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "10808048",
+      "subscriberCount": "14100",
+      "hiddenSubscriberCount": false,
+      "videoCount": "9766"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "NRtjV2Ab_jabXEr__ZamZWodX04",
+    "id": "UCyAA-Vj4ORjXl5Ui2m6_Llw",
+    "snippet": {
+      "title": "삐로",
+      "description": "안녕하세요! 다양한 게임을 소개하는 삐로입니다.\n\n문의 메일: happy9165@naver.com\n\n",
+      "customUrl": "@삐로",
+      "publishedAt": "2014-12-15T17:16:34Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/cHAzrl5CoAJ8vT4xLHkt1CfxC93uJJ29gCohX165miuQxfzFiyQ2DhJBscmbJyzrT27lGxrA9g=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/cHAzrl5CoAJ8vT4xLHkt1CfxC93uJJ29gCohX165miuQxfzFiyQ2DhJBscmbJyzrT27lGxrA9g=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/cHAzrl5CoAJ8vT4xLHkt1CfxC93uJJ29gCohX165miuQxfzFiyQ2DhJBscmbJyzrT27lGxrA9g=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "삐로",
+        "description": "안녕하세요! 다양한 게임을 소개하는 삐로입니다.\n\n문의 메일: happy9165@naver.com\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "27388896",
+      "subscriberCount": "34400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "682"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "WfMPKKKFtZGUsS0CkWdX6N4pH80",
+    "id": "UCTJR69L4Ds--nbD1gOmSNPQ",
+    "snippet": {
+      "title": "소비자게임론",
+      "description": "고전게임, 레트로게임, 오락실 게임 등등 그 시절 모두의 추억이 가득한 게임을 플레이하고 업로드하는 채널입니다!\n\n다 같이 추억의 게임 속으로 빠져봅시다! 녹아듭니다! 아, 휘리릭 뽕@\n\n#옛날게임 #고전게임 #오락실게임 #추억의게임 #게임공략 #게임방송 #레트로게임\n#게임방송 #게임영상 #게임추천 \n",
+      "customUrl": "@sobija666",
+      "publishedAt": "2023-01-08T14:03:44.806012Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/JUOY-wab8pwDPkXfr8gkT6MLCNA7evqnOmd0UQx2kpNupAP_L4Nsc2TS2ScNyU1bcuIWCykx9g=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/JUOY-wab8pwDPkXfr8gkT6MLCNA7evqnOmd0UQx2kpNupAP_L4Nsc2TS2ScNyU1bcuIWCykx9g=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/JUOY-wab8pwDPkXfr8gkT6MLCNA7evqnOmd0UQx2kpNupAP_L4Nsc2TS2ScNyU1bcuIWCykx9g=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "소비자게임론",
+        "description": "고전게임, 레트로게임, 오락실 게임 등등 그 시절 모두의 추억이 가득한 게임을 플레이하고 업로드하는 채널입니다!\n\n다 같이 추억의 게임 속으로 빠져봅시다! 녹아듭니다! 아, 휘리릭 뽕@\n\n#옛날게임 #고전게임 #오락실게임 #추억의게임 #게임공략 #게임방송 #레트로게임\n#게임방송 #게임영상 #게임추천 \n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "950980",
+      "subscriberCount": "4140",
+      "hiddenSubscriberCount": false,
+      "videoCount": "318"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "g2YkJ5X2YuKVOXDREl4t_UBY2CI",
+    "id": "UCWaWB2ywraw_Sgb8t0Mxu4A",
+    "snippet": {
+      "title": "우정잉 잡동사니",
+      "description": "우정잉의 온갖 잡동사니 영상이 모이는 채널\n",
+      "customUrl": "@우정잉잡동사니",
+      "publishedAt": "2022-02-02T15:41:44.450491Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/8_jvCO6-HsbAr5I6JAp-aK_XlJeTWdbKBljxLeOEM5ZSNQCbi6UgZl7hb-yb3xxop6QW-EauTw=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/8_jvCO6-HsbAr5I6JAp-aK_XlJeTWdbKBljxLeOEM5ZSNQCbi6UgZl7hb-yb3xxop6QW-EauTw=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/8_jvCO6-HsbAr5I6JAp-aK_XlJeTWdbKBljxLeOEM5ZSNQCbi6UgZl7hb-yb3xxop6QW-EauTw=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "우정잉 잡동사니",
+        "description": "우정잉의 온갖 잡동사니 영상이 모이는 채널\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "139379467",
+      "subscriberCount": "77700",
+      "hiddenSubscriberCount": false,
+      "videoCount": "375"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "d2zgdRvxbZCP_nj-snObEG9qu_s",
+    "id": "UCOTJtP0Z9DjpPU43B5m1V6A",
+    "snippet": {
+      "title": "[ALTUBE] 김성현TV",
+      "description": "스타크래프트 알파고테란 김성현의 유튜브채널입니다 많이사랑해주세요:D\n\n생방송 진행시간 : 수, 목, 토, 일 오후 7시\n\n매일 오전 11시30분 , 오후6시30분 업로드\n\n문의 : rlatjdgus228@nate.com\n",
+      "customUrl": "@altubetv",
+      "publishedAt": "2016-10-25T17:42:28Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/rPX128JQx5kdqJ0pEFDoF5dnIoiS_HZqF2jfPaUXZJH3SKrJOUVNeWeZxttyKkdu4BATdAshzg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/rPX128JQx5kdqJ0pEFDoF5dnIoiS_HZqF2jfPaUXZJH3SKrJOUVNeWeZxttyKkdu4BATdAshzg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/rPX128JQx5kdqJ0pEFDoF5dnIoiS_HZqF2jfPaUXZJH3SKrJOUVNeWeZxttyKkdu4BATdAshzg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "[ALTUBE] 김성현TV",
+        "description": "스타크래프트 알파고테란 김성현의 유튜브채널입니다 많이사랑해주세요:D\n\n생방송 진행시간 : 수, 목, 토, 일 오후 7시\n\n매일 오전 11시30분 , 오후6시30분 업로드\n\n문의 : rlatjdgus228@nate.com\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "2483876194",
+      "subscriberCount": "1040000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "7215"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "MqxTFh335eqShZIrtA0L-2OOJlc",
+    "id": "UCihlMjfm-Knmca4rV7aaqSw",
+    "snippet": {
+      "title": "금쿤",
+      "description": "* 진짜 진심으로 온갖 게임을 다 합니다. 심연의 게임채널에 오신걸 환영합니다\n\n* 영상 업로드는 주기적으로 올라오지 못합니다.\n재정상황에 따라 달라집니다. (편집자분들에게 페이지급을 못하는 순간 영상이 끊깁니다)\n\n* 생방 채널 : https://chzzk.naver.com/6aef261524faf48ca3f5b463ba29f061\n\n",
+      "customUrl": "@geumkun",
+      "publishedAt": "2021-07-26T01:07:27.309154Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/hadIp10aGb01Y2qeBczZ9wRWJ4RftCJVI_ttZUlHgydM_Yxx1QhrScYWDwvypml_R7ZILFT_=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/hadIp10aGb01Y2qeBczZ9wRWJ4RftCJVI_ttZUlHgydM_Yxx1QhrScYWDwvypml_R7ZILFT_=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/hadIp10aGb01Y2qeBczZ9wRWJ4RftCJVI_ttZUlHgydM_Yxx1QhrScYWDwvypml_R7ZILFT_=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "금쿤",
+        "description": "* 진짜 진심으로 온갖 게임을 다 합니다. 심연의 게임채널에 오신걸 환영합니다\n\n* 영상 업로드는 주기적으로 올라오지 못합니다.\n재정상황에 따라 달라집니다. (편집자분들에게 페이지급을 못하는 순간 영상이 끊깁니다)\n\n* 생방 채널 : https://chzzk.naver.com/6aef261524faf48ca3f5b463ba29f061\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1122784",
+      "subscriberCount": "3750",
+      "hiddenSubscriberCount": false,
+      "videoCount": "424"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "0FMVCaDBoQ-xQ9RUAH45YWIfY3U",
+    "id": "UCk-QtahVyHaxCsteeKB2Xzg",
+    "snippet": {
+      "title": "씨랙",
+      "description": "치지직에서 생방송하는 씨랙입니다\n\n좋아요 구독 알람설정은 항상 감사합니다\n\n비지니스 메일:\ncrack@sandboxnetwork.net\n혹은 2244sd@gmail.com\n\n감사합니다\n",
+      "customUrl": "@crackbabe",
+      "publishedAt": "2012-10-11T00:57:02Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_nM5446dgN3HjCm_XYHqZ_PFTe75X_XrKIouvEpkE6Xtso=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_nM5446dgN3HjCm_XYHqZ_PFTe75X_XrKIouvEpkE6Xtso=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_nM5446dgN3HjCm_XYHqZ_PFTe75X_XrKIouvEpkE6Xtso=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "씨랙",
+        "description": "치지직에서 생방송하는 씨랙입니다\n\n좋아요 구독 알람설정은 항상 감사합니다\n\n비지니스 메일:\ncrack@sandboxnetwork.net\n혹은 2244sd@gmail.com\n\n감사합니다\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "141132903",
+      "subscriberCount": "164000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "2569"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "R9mS9IF_vCZGjL53JwaM7sUieMA",
+    "id": "UCyHvSKT_bLDYpkv1JjjsLAg",
+    "snippet": {
+      "title": "풍월량",
+      "description": "즐거운 게임방송 풍월량입니다!\n\n📌 치지직 생방송 매일 저녁 8시\n\n유튜브 영상은 공유하기로 퍼가셔도 됩니다!\n많이 퍼가주시고 좋아요! 부탁드려엽!\n\n[ 건의 메일 ]\n생방송 건의 👉 windmoon1125@naver.com\n유튜브 건의 👉 poongtube1125@sandbox.co.kr\n\n🚨 PLEASE BEWARE OF PHISHING ATTEMPTS! 🚨\nUnder any circumstances I do not request game codes or sponsored goods without proper business contact through my associated agency.\n- MORE INFO ▶ https://www.youtube.com/post/UgyZrdTss4mcNGic7Md4AaABCQ\n",
+      "customUrl": "@hanryang1125",
+      "publishedAt": "2010-07-21T05:22:04Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/Lrc9ewcocZ7d_4DLTa6oCsdPeQah7-4pkOt_Jez7env8F1DCZyGspwHfiADgKwe7uUEr-MCpww=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/Lrc9ewcocZ7d_4DLTa6oCsdPeQah7-4pkOt_Jez7env8F1DCZyGspwHfiADgKwe7uUEr-MCpww=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/Lrc9ewcocZ7d_4DLTa6oCsdPeQah7-4pkOt_Jez7env8F1DCZyGspwHfiADgKwe7uUEr-MCpww=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "풍월량",
+        "description": "즐거운 게임방송 풍월량입니다!\n\n📌 치지직 생방송 매일 저녁 8시\n\n유튜브 영상은 공유하기로 퍼가셔도 됩니다!\n많이 퍼가주시고 좋아요! 부탁드려엽!\n\n[ 건의 메일 ]\n생방송 건의 👉 windmoon1125@naver.com\n유튜브 건의 👉 poongtube1125@sandbox.co.kr\n\n🚨 PLEASE BEWARE OF PHISHING ATTEMPTS! 🚨\nUnder any circumstances I do not request game codes or sponsored goods without proper business contact through my associated agency.\n- MORE INFO ▶ https://www.youtube.com/post/UgyZrdTss4mcNGic7Md4AaABCQ\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "786166990",
+      "subscriberCount": "527000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "14024"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "zOfcmCPgcRKTV4lo4Z6ysPbXshU",
+    "id": "UCKVt3arMXfa6XZezR1UnjqQ",
+    "snippet": {
+      "title": "이구역의 듀공",
+      "description": "신작 할인 게임 채널\n문의 : grownbb@naver.com\n",
+      "customUrl": "@grownbb",
+      "publishedAt": "2022-07-07T08:40:36.188193Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/fX1K5WdVfmjpaNaT2cDIVNDxL-Tal7Pe5mtUPRKBrP3ODe5O3UqTKqWyeNrzao-MqjJKVxBNbg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/fX1K5WdVfmjpaNaT2cDIVNDxL-Tal7Pe5mtUPRKBrP3ODe5O3UqTKqWyeNrzao-MqjJKVxBNbg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/fX1K5WdVfmjpaNaT2cDIVNDxL-Tal7Pe5mtUPRKBrP3ODe5O3UqTKqWyeNrzao-MqjJKVxBNbg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "이구역의 듀공",
+        "description": "신작 할인 게임 채널\n문의 : grownbb@naver.com\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "14663725",
+      "subscriberCount": "22700",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1291"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "XrFPmbyz8IUeJrMPeaKoUTaP_z0",
+    "id": "UCE5vNjmDoVVvcWYRnCUc1Eg",
+    "snippet": {
+      "title": "리키리킹",
+      "description": "김리킹의 종합 게임 방송 채널입니다! 재밌어 보이는 게임을 합니다!",
+      "customUrl": "@ksyliki",
+      "publishedAt": "2013-11-04T15:45:41Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/HQFSB4abL94t08Nwk_ro1EtXhYb44lpgtJui6U5mYkE-i5aFjrHjkKQChnLSnpwJ1dM1_vljNA=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/HQFSB4abL94t08Nwk_ro1EtXhYb44lpgtJui6U5mYkE-i5aFjrHjkKQChnLSnpwJ1dM1_vljNA=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/HQFSB4abL94t08Nwk_ro1EtXhYb44lpgtJui6U5mYkE-i5aFjrHjkKQChnLSnpwJ1dM1_vljNA=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "리키리킹",
+        "description": "김리킹의 종합 게임 방송 채널입니다! 재밌어 보이는 게임을 합니다!"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "4310586",
+      "subscriberCount": "10400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1241"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "Am92gLRbzvY1sl8oB1YvBYNfIrk",
+    "id": "UCk2vPN7LATiMz_r8VUiA0KQ",
+    "snippet": {
+      "title": "비챤의 무릉도원",
+      "description": "비챤의 무릉도원은 생방송 다시보기가 올라옵니다!! 푹 쉬다가세요~\n",
+      "customUrl": "@viichan_archive",
+      "publishedAt": "2022-11-24T07:09:43.264161Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/GO-8Ks8OQPNNTLig0FfVBz4p4wCt8LzJAjdot4F26YjlTCBow36xboCMu2SR-LKVxq27x69O=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/GO-8Ks8OQPNNTLig0FfVBz4p4wCt8LzJAjdot4F26YjlTCBow36xboCMu2SR-LKVxq27x69O=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/GO-8Ks8OQPNNTLig0FfVBz4p4wCt8LzJAjdot4F26YjlTCBow36xboCMu2SR-LKVxq27x69O=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "비챤의 무릉도원",
+        "description": "비챤의 무릉도원은 생방송 다시보기가 올라옵니다!! 푹 쉬다가세요~\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "7734345",
+      "subscriberCount": "49600",
+      "hiddenSubscriberCount": false,
+      "videoCount": "497"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "ghbsthJ-FJFnpMBQP7LdDL3Japw",
+    "id": "UChKwH5bw8WPxCeiXWa0Ny8A",
+    "snippet": {
+      "title": "오프 하루",
+      "description": "하이블루밍 온하루 생방송 다시보기 채널  ໒꒱⋆ﾟ",
+      "customUrl": "@off_haru",
+      "publishedAt": "2025-02-06T09:19:59.490161Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/n6915HtmXuyYn0WlRX1CjNmjsz6wi6KyPCF5vTh5vqLdV4FGG6MFhtFZwaRVVMp20G2gE8vW4TI=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/n6915HtmXuyYn0WlRX1CjNmjsz6wi6KyPCF5vTh5vqLdV4FGG6MFhtFZwaRVVMp20G2gE8vW4TI=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/n6915HtmXuyYn0WlRX1CjNmjsz6wi6KyPCF5vTh5vqLdV4FGG6MFhtFZwaRVVMp20G2gE8vW4TI=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "오프 하루",
+        "description": "하이블루밍 온하루 생방송 다시보기 채널  ໒꒱⋆ﾟ"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "65386",
+      "subscriberCount": "1010",
+      "hiddenSubscriberCount": false,
+      "videoCount": "270"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "0acszCW6hGT7dvwtp8m98bHNUUs",
+    "id": "UCIrHWD1qhtyiBC_BE4SLWIg",
+    "snippet": {
+      "title": "영훈",
+      "description": "",
+      "customUrl": "@더보이즈영훈아님",
+      "publishedAt": "2023-12-04T13:26:22.371028Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/pbkPcsD2iCPIiiqXm21Hw3mIEfSljHvntG4wwCBRHNlheBUrji9qI5GPFsZW8MI553jp3WRWbg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/pbkPcsD2iCPIiiqXm21Hw3mIEfSljHvntG4wwCBRHNlheBUrji9qI5GPFsZW8MI553jp3WRWbg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/pbkPcsD2iCPIiiqXm21Hw3mIEfSljHvntG4wwCBRHNlheBUrji9qI5GPFsZW8MI553jp3WRWbg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "영훈",
+        "description": ""
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "9114667",
+      "subscriberCount": "35500",
+      "hiddenSubscriberCount": false,
+      "videoCount": "56"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "PA1C99K3r7lHZQi0VkSG8bI5ZLU",
+    "id": "UC7uyuLAA9z8GKxnSkb9KRtw",
+    "snippet": {
+      "title": "종탁이",
+      "description": "광고문의:jhsun0620@naver.com\n아프리카 BJ 종탁이의 탁튜브입니다~!👏👏👏👏\n구독&좋아요 알지?\n\nSAUYS0@AICOMPANY\n",
+      "customUrl": "@jongtak",
+      "publishedAt": "2016-07-10T23:41:12Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lWN_GT6rCQ68W3J3iUkKm62POqz5Txt09_yG1JVLWVZls=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lWN_GT6rCQ68W3J3iUkKm62POqz5Txt09_yG1JVLWVZls=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lWN_GT6rCQ68W3J3iUkKm62POqz5Txt09_yG1JVLWVZls=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "종탁이",
+        "description": "광고문의:jhsun0620@naver.com\n아프리카 BJ 종탁이의 탁튜브입니다~!👏👏👏👏\n구독&좋아요 알지?\n\nSAUYS0@AICOMPANY\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "245953501",
+      "subscriberCount": "94300",
+      "hiddenSubscriberCount": false,
+      "videoCount": "4754"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "cxK85Nrj47YDFWAwcpQWPD0m8_c",
+    "id": "UCBhwEU65wGAxRPFp9qle-QQ",
+    "snippet": {
+      "title": "심짐해",
+      "description": "♨️ 카스온라인 화끈하게 하는 사람 ♨️\n\n▶구독과 좋아요 알림 설정 한 번씩 부탁드립니다 \n▶심짐해 멤버쉽 가입 https://www.youtube.com/channel/UCBhwEU65wGAxRPFp9qle-QQ/join\n▶심짐해 후원하기 : https://toon.at/donate/simzimhe\n▶치치직 심짐해 채널 : https://chzzk.naver.com/c9265def485197ea63c5e01580a4fd94\n▶메일 문의 : simzimhe@gmail.com\n\nCounter Strike-Online | Zombie Classic Mode\n카스온라인 | 좀비클래식\n\n▶KR server\nhttps://csonline.nexon.com/Main/Index\n▶EN server\nhttps://www.nexon.com/main/en/Counter-Strike%20Nexon:%20Studio/details\n\n#카스온라인 #cso #좀비클래식 #카스 #좀클 #cs16\n---------------------------------------------------------------------------------\n",
+      "customUrl": "@심짐해",
+      "publishedAt": "2013-03-06T13:53:03Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ssQ-saVI1xm_VH85-k9it9xyCbPP4rOw0jYrIF6ZCYCJmy-IodBbEa167p4gsZPLFtI-cTKKTcY=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ssQ-saVI1xm_VH85-k9it9xyCbPP4rOw0jYrIF6ZCYCJmy-IodBbEa167p4gsZPLFtI-cTKKTcY=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ssQ-saVI1xm_VH85-k9it9xyCbPP4rOw0jYrIF6ZCYCJmy-IodBbEa167p4gsZPLFtI-cTKKTcY=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "심짐해",
+        "description": "♨️ 카스온라인 화끈하게 하는 사람 ♨️\n\n▶구독과 좋아요 알림 설정 한 번씩 부탁드립니다 \n▶심짐해 멤버쉽 가입 https://www.youtube.com/channel/UCBhwEU65wGAxRPFp9qle-QQ/join\n▶심짐해 후원하기 : https://toon.at/donate/simzimhe\n▶치치직 심짐해 채널 : https://chzzk.naver.com/c9265def485197ea63c5e01580a4fd94\n▶메일 문의 : simzimhe@gmail.com\n\nCounter Strike-Online | Zombie Classic Mode\n카스온라인 | 좀비클래식\n\n▶KR server\nhttps://csonline.nexon.com/Main/Index\n▶EN server\nhttps://www.nexon.com/main/en/Counter-Strike%20Nexon:%20Studio/details\n\n#카스온라인 #cso #좀비클래식 #카스 #좀클 #cs16\n---------------------------------------------------------------------------------\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "83539202",
+      "subscriberCount": "37400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1477"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "gfYUflpxgEpuTTWknNmfFoFqI7M",
+    "id": "UCpsZOPXJA8aiIKWb0HrKizQ",
+    "snippet": {
+      "title": "긴끠끼",
+      "description": "와!!!!",
+      "customUrl": "@longkuiki",
+      "publishedAt": "2021-09-14T00:31:22.426656Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/HlUvq1tg7oOjmgAj97j3HxNCh9aCfaEjxMlijdpzJ1PIZbF5K1sjpgxxRVt38RzniGAdl0CA2g=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/HlUvq1tg7oOjmgAj97j3HxNCh9aCfaEjxMlijdpzJ1PIZbF5K1sjpgxxRVt38RzniGAdl0CA2g=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/HlUvq1tg7oOjmgAj97j3HxNCh9aCfaEjxMlijdpzJ1PIZbF5K1sjpgxxRVt38RzniGAdl0CA2g=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "긴끠끼",
+        "description": "와!!!!"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "4396929",
+      "subscriberCount": "18400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1003"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "qayv71ax58USDShl8AsDv8URMDw",
+    "id": "UCVZ0SJNurJAv-6hV5VEGB2A",
+    "snippet": {
+      "title": "꽥",
+      "description": "구독자 100만명 감사합니다!!\n\n💛긴 동영상 업로드 시간💛\n매주 2회 이상 업로드! \n오후 5:00 (수 or 금요일)\n오전 11:00 (토 or 일요일)\n\n광고 및  협찬 문의 : duck@sandboxnetwork.net \n",
+      "customUrl": "@꽥",
+      "publishedAt": "2023-05-28T01:51:24.518558Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ZzieqF1sxTcNgVJomSG1u-DRloWf8pOTfKLBQaJDKxv5300ExHEeDbvgIv8w2lxVoAkURfmd6j4=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ZzieqF1sxTcNgVJomSG1u-DRloWf8pOTfKLBQaJDKxv5300ExHEeDbvgIv8w2lxVoAkURfmd6j4=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ZzieqF1sxTcNgVJomSG1u-DRloWf8pOTfKLBQaJDKxv5300ExHEeDbvgIv8w2lxVoAkURfmd6j4=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "꽥",
+        "description": "구독자 100만명 감사합니다!!\n\n💛긴 동영상 업로드 시간💛\n매주 2회 이상 업로드! \n오후 5:00 (수 or 금요일)\n오전 11:00 (토 or 일요일)\n\n광고 및  협찬 문의 : duck@sandboxnetwork.net \n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "566855565",
+      "subscriberCount": "1020000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "898"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "wMYCvJchaRrZAY_Mv3bLy-_rlK8",
+    "id": "UCGuISTrqeAz_RkXlCuTOwfQ",
+    "snippet": {
+      "title": "고체부 아지트",
+      "description": "🏃‍♀️퇴근 후에 뭐하세요? 고체부 아지트요!\n\n정규 방송 : 매주 토요일 오후 6시부터 새벽 1시까지\n\n🧡고다치 💚채다부 💙부랏다\n셋이 모여 사부작대는 곳!\n\n마크 콘텐츠도 만들고 게임 방송도 합니다\n\n앞으로 재미있는 영상 많이 만들어 보겠습니다~!\n\n비즈니스 메일 : gocheboo.azit@gmail.com\n",
+      "customUrl": "@gocheboo",
+      "publishedAt": "2024-07-31T07:00:37.538771Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/mKIXKxDckdqLzMKgFm-4N6kGDx2d7xhVhbe7wJsY-s4KQFIXd_QxtnRaCOEGTiJ2REE8C13nJzI=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/mKIXKxDckdqLzMKgFm-4N6kGDx2d7xhVhbe7wJsY-s4KQFIXd_QxtnRaCOEGTiJ2REE8C13nJzI=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/mKIXKxDckdqLzMKgFm-4N6kGDx2d7xhVhbe7wJsY-s4KQFIXd_QxtnRaCOEGTiJ2REE8C13nJzI=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "고체부 아지트",
+        "description": "🏃‍♀️퇴근 후에 뭐하세요? 고체부 아지트요!\n\n정규 방송 : 매주 토요일 오후 6시부터 새벽 1시까지\n\n🧡고다치 💚채다부 💙부랏다\n셋이 모여 사부작대는 곳!\n\n마크 콘텐츠도 만들고 게임 방송도 합니다\n\n앞으로 재미있는 영상 많이 만들어 보겠습니다~!\n\n비즈니스 메일 : gocheboo.azit@gmail.com\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "463506",
+      "subscriberCount": "2970",
+      "hiddenSubscriberCount": false,
+      "videoCount": "278"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "3fHHNnHFYrLEqR6Ue_xe8vNdsg8",
+    "id": "UCBM-FNl62XFkz_3zhJ5LERg",
+    "snippet": {
+      "title": "꾸준이",
+      "description": "다양한 게임의 리뷰와 공략을 올리는 게이머 꾸준이 입니다 !\n\n항상 뉴비, 입문자나 게임을 사지 않은 사람들\n혹은 게임을 해보지 않은 사람들 입장에서 생각하여\n이해하기 쉽고 재밌는 영상을 만드는게 목표입니다 !\n\n감사합니다 !\n",
+      "customUrl": "@꾸준이",
+      "publishedAt": "2014-02-06T03:16:41Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/63fZuedSKBKd6zJtq0vtluAm9fUcon_YMOK1z-Y2F8uJr0CqChN5DYMJ_etixM3Gl7oTcQVmVg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/63fZuedSKBKd6zJtq0vtluAm9fUcon_YMOK1z-Y2F8uJr0CqChN5DYMJ_etixM3Gl7oTcQVmVg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/63fZuedSKBKd6zJtq0vtluAm9fUcon_YMOK1z-Y2F8uJr0CqChN5DYMJ_etixM3Gl7oTcQVmVg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "꾸준이",
+        "description": "다양한 게임의 리뷰와 공략을 올리는 게이머 꾸준이 입니다 !\n\n항상 뉴비, 입문자나 게임을 사지 않은 사람들\n혹은 게임을 해보지 않은 사람들 입장에서 생각하여\n이해하기 쉽고 재밌는 영상을 만드는게 목표입니다 !\n\n감사합니다 !\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "3004832",
+      "subscriberCount": "7470",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1102"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "65mSiJPUGAY7DrBLOZLnJevF4BE",
+    "id": "UCEWqfxUKLIpqyMzebADGUlg",
+    "snippet": {
+      "title": "근가놈",
+      "description": "생방송 시간 오후 7시 윤가놈은 근가놈임\n",
+      "customUrl": "@chzzk_ggn",
+      "publishedAt": "2024-03-27T10:51:26.901661Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/eddyKe--7LpIlnSQtsocVmL8YcNdsnGBFK13NBghojGS1C3wF9ZhKD3XeGHXW6vJXWfVEtqx=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/eddyKe--7LpIlnSQtsocVmL8YcNdsnGBFK13NBghojGS1C3wF9ZhKD3XeGHXW6vJXWfVEtqx=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/eddyKe--7LpIlnSQtsocVmL8YcNdsnGBFK13NBghojGS1C3wF9ZhKD3XeGHXW6vJXWfVEtqx=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "근가놈",
+        "description": "생방송 시간 오후 7시 윤가놈은 근가놈임\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "196522603",
+      "subscriberCount": "292000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "351"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "3WR15xew9EL5YfZepB74YQbYzgY",
+    "id": "UCqyzJW0VRYRP_sFELZYdxGg",
+    "snippet": {
+      "title": "포켓몬 카드 게임 공식 채널 Pokémon Card Game",
+      "description": "이곳은 (주)포켓몬코리아가 운영하는 '포켓몬 카드 게임' 공식 YouTube 채널입니다.\n포켓몬 카드 게임에 관한 영상을 '포켓몬 카드 게임 공식 채널 Pokémon Card Game' 에서 만나보세요!\n \n©Pokémon/Nintendo/Creatures/GAME FREAK\n포켓몬, Pokémon은 Nintendo의 상표입니다.\n",
+      "customUrl": "@pokemoncard_kr",
+      "publishedAt": "2021-02-02T01:34:20.374036Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lQ8jsc_8GE0RASjcNRgsa4S3ou27aPJrPlA-U2bNan_A=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lQ8jsc_8GE0RASjcNRgsa4S3ou27aPJrPlA-U2bNan_A=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_lQ8jsc_8GE0RASjcNRgsa4S3ou27aPJrPlA-U2bNan_A=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "포켓몬 카드 게임 공식 채널 Pokémon Card Game",
+        "description": "이곳은 (주)포켓몬코리아가 운영하는 '포켓몬 카드 게임' 공식 YouTube 채널입니다.\n포켓몬 카드 게임에 관한 영상을 '포켓몬 카드 게임 공식 채널 Pokémon Card Game' 에서 만나보세요!\n \n©Pokémon/Nintendo/Creatures/GAME FREAK\n포켓몬, Pokémon은 Nintendo의 상표입니다.\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "66575006",
+      "subscriberCount": "64200",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1031"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "Hzi-n1PMh5E80p2BrZEiLhBAMA8",
+    "id": "UCi5yzN6jpdz2akGTm-mJSKQ",
+    "snippet": {
+      "title": "루다게임방송",
+      "description": "루다채널\n\n- 광고/출연 등 비즈니스 문의: biz@pixelnetwork.co.kr\n\n",
+      "customUrl": "@luda_love",
+      "publishedAt": "2014-08-06T05:04:58Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/-0-9M0-FNjSjRvNYc0jEupf92Uw7VaaOvHBQjv1HGS7s37WSXUD2lRee1zK8A185SiYiS8VN=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/-0-9M0-FNjSjRvNYc0jEupf92Uw7VaaOvHBQjv1HGS7s37WSXUD2lRee1zK8A185SiYiS8VN=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/-0-9M0-FNjSjRvNYc0jEupf92Uw7VaaOvHBQjv1HGS7s37WSXUD2lRee1zK8A185SiYiS8VN=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "루다게임방송",
+        "description": "루다채널\n\n- 광고/출연 등 비즈니스 문의: biz@pixelnetwork.co.kr\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "2099830",
+      "subscriberCount": "27700",
+      "hiddenSubscriberCount": false,
+      "videoCount": "267"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "nxAHeB2d8C3Wyp1oJJMaj-yk5l0",
+    "id": "UCs0LzOveQMLImmmTrMmP2sg",
+    "snippet": {
+      "title": "채널 명예훈장",
+      "description": "안녕하세요. 명예훈장입니다!\n다양한 게임을 다루고 있으며 모든 게임을 다 잘하는 만능게이머 크리에이터입니다.\n항상 재미있는 영상으로 찾아뵙도록 하겠습니다!\n광고 문의,각종 문의는 mlchoins1@naver.com  \n[MCN 카론] 비즈니스 문의 charon@gysent.com\n\n",
+      "customUrl": "@ddinghoon",
+      "publishedAt": "2014-01-06T06:31:13Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kJLN8HM044uke9HxMu28KtBeLo8MypPzto785rjTdoAqo=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kJLN8HM044uke9HxMu28KtBeLo8MypPzto785rjTdoAqo=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_kJLN8HM044uke9HxMu28KtBeLo8MypPzto785rjTdoAqo=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "채널 명예훈장",
+        "description": "안녕하세요. 명예훈장입니다!\n다양한 게임을 다루고 있으며 모든 게임을 다 잘하는 만능게이머 크리에이터입니다.\n항상 재미있는 영상으로 찾아뵙도록 하겠습니다!\n광고 문의,각종 문의는 mlchoins1@naver.com  \n[MCN 카론] 비즈니스 문의 charon@gysent.com\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "514823073",
+      "subscriberCount": "441000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "3296"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "6GYZ0n4qPKKqb00RpqVhYib0Za4",
+    "id": "UC7qgspdh692yBR5eoLeYRWw",
+    "snippet": {
+      "title": "게임빌런카니형",
+      "description": "치지직▶ https://chzzk.naver.com/d387fdc141f91a85550e5fe650563911\n\n삼국지주류, 종겜 유튜버 게임빌런카니형입니다.\n\n문의▶ pumpingghy@gmail.com\n",
+      "customUrl": "@kanibrother",
+      "publishedAt": "2013-04-09T01:25:28Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_ljK1Hm1uu3jMooittxdpcFNggON6VlMa3HIYv34kNqaL5R=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_ljK1Hm1uu3jMooittxdpcFNggON6VlMa3HIYv34kNqaL5R=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_ljK1Hm1uu3jMooittxdpcFNggON6VlMa3HIYv34kNqaL5R=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "게임빌런카니형",
+        "description": "치지직▶ https://chzzk.naver.com/d387fdc141f91a85550e5fe650563911\n\n삼국지주류, 종겜 유튜버 게임빌런카니형입니다.\n\n문의▶ pumpingghy@gmail.com\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1639362",
+      "subscriberCount": "4150",
+      "hiddenSubscriberCount": false,
+      "videoCount": "662"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "Two5vKMmY-NEAH2JlB_Ai3eV1yw",
+    "id": "UCVYbF0ZapsWEj45EWl5DKCQ",
+    "snippet": {
+      "title": "레이지니",
+      "description": "보드게임을 좋아하고, 이것 저것 호기심도 많은 취미 유튜버. :)\n영상을 시작(2019.04.24)으로 보드게임 유튜브 운영중.\n",
+      "customUrl": "@lazini",
+      "publishedAt": "2014-04-29T19:25:39Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/2A7OZzrvA5A2WTRQEnqSLPSn5SXMGvA1t1eEDH3sh9Ar2k4rpgfkZa8troNpBJuBxb2nCejzg2E=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/2A7OZzrvA5A2WTRQEnqSLPSn5SXMGvA1t1eEDH3sh9Ar2k4rpgfkZa8troNpBJuBxb2nCejzg2E=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/2A7OZzrvA5A2WTRQEnqSLPSn5SXMGvA1t1eEDH3sh9Ar2k4rpgfkZa8troNpBJuBxb2nCejzg2E=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "레이지니",
+        "description": "보드게임을 좋아하고, 이것 저것 호기심도 많은 취미 유튜버. :)\n영상을 시작(2019.04.24)으로 보드게임 유튜브 운영중.\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1909811",
+      "subscriberCount": "6110",
+      "hiddenSubscriberCount": false,
+      "videoCount": "815"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "vlINf3-Van3kaD9121BbvXMt3dc",
+    "id": "UCfC4q9fgvkeCd28mjUDxtVw",
+    "snippet": {
+      "title": "하이유",
+      "description": "그저…현질이 하고싶은 유부녀",
+      "customUrl": "@hiuuuuuu",
+      "publishedAt": "2019-09-28T09:24:42Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/yKi7Bn1GvZgFfctx3uxpSRC4j6LrAlq34DCSzdD4LChjbl-h1JBjTHhsiQIs_CKSdoI_X8_a3g=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/yKi7Bn1GvZgFfctx3uxpSRC4j6LrAlq34DCSzdD4LChjbl-h1JBjTHhsiQIs_CKSdoI_X8_a3g=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/yKi7Bn1GvZgFfctx3uxpSRC4j6LrAlq34DCSzdD4LChjbl-h1JBjTHhsiQIs_CKSdoI_X8_a3g=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "하이유",
+        "description": "그저…현질이 하고싶은 유부녀"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "5861022",
+      "subscriberCount": "12900",
+      "hiddenSubscriberCount": false,
+      "videoCount": "410"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "E7wxH_j_zMJP9UYzKoG20DLSRhY",
+    "id": "UC2NFRq9s2neD_Ml0tPhNC2Q",
+    "snippet": {
+      "title": "우주하마",
+      "description": "우주하마 게임방송 :ㅕ\n\n",
+      "customUrl": "@uzuhama",
+      "publishedAt": "2016-10-04T14:38:43Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_m-J9C5Jd0qnjDTXqQ1137-FwYV-ckNNhkbblFuBp65t5Y=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_m-J9C5Jd0qnjDTXqQ1137-FwYV-ckNNhkbblFuBp65t5Y=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_m-J9C5Jd0qnjDTXqQ1137-FwYV-ckNNhkbblFuBp65t5Y=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "우주하마",
+        "description": "우주하마 게임방송 :ㅕ\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "2237050461",
+      "subscriberCount": "2200000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "3412"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "eV740Cx_ZBhhOdED6lPnADm4XXs",
+    "id": "UC7_EnznPF7OyFOu3kHcn_ag",
+    "snippet": {
+      "title": "오키도키 보드게임카페",
+      "description": "🎲 오키도키보드게임카페\n썸 타다 연애하고, 데이트하다 싸우기 딱 좋은(?) 게임들을 남녀가 직접 검증합니다. \n뇌정지, 우정 파괴, 커플 브레이킹 보드게임 실전 플레이!\nKorean Couple's Real Board Game Play & Fights!\n",
+      "customUrl": "@오키도키_보드게임",
+      "publishedAt": "2026-01-19T13:26:46.265093Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/lZEhuYlzBFXp1tMs2bekIb-dKxDgnsyUnESR7icmJnd_FbVu9G85Qblokooeq_epdpvmnamZlA=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/lZEhuYlzBFXp1tMs2bekIb-dKxDgnsyUnESR7icmJnd_FbVu9G85Qblokooeq_epdpvmnamZlA=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/lZEhuYlzBFXp1tMs2bekIb-dKxDgnsyUnESR7icmJnd_FbVu9G85Qblokooeq_epdpvmnamZlA=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "오키도키 보드게임카페",
+        "description": "🎲 오키도키보드게임카페\n썸 타다 연애하고, 데이트하다 싸우기 딱 좋은(?) 게임들을 남녀가 직접 검증합니다. \n뇌정지, 우정 파괴, 커플 브레이킹 보드게임 실전 플레이!\nKorean Couple's Real Board Game Play & Fights!\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "213608",
+      "subscriberCount": "794",
+      "hiddenSubscriberCount": false,
+      "videoCount": "108"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "tfmTPn6LOAZH8v5zWX_hQZM2Td4",
+    "id": "UC342J5FhMv7TbJz0_205ZIQ",
+    "snippet": {
+      "title": "진유성 YOUTUBE",
+      "description": "모든 종류의 게임을 즐기지만, 공포게임을 좀 더 많이 하는 진유성입니다. 신작부터 고전 명작까지! 다양하게 즐겨요!",
+      "customUrl": "@meteorjin_youtube",
+      "publishedAt": "2024-03-01T09:38:16.684897Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/FwB7dEhyhrF-UYvsmSU1I8QY_hWrtH_puuWLNWAZ0fcrg9ITWIY_W6n1Is471hf0VQaLggsH=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/FwB7dEhyhrF-UYvsmSU1I8QY_hWrtH_puuWLNWAZ0fcrg9ITWIY_W6n1Is471hf0VQaLggsH=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/FwB7dEhyhrF-UYvsmSU1I8QY_hWrtH_puuWLNWAZ0fcrg9ITWIY_W6n1Is471hf0VQaLggsH=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "진유성 YOUTUBE",
+        "description": "모든 종류의 게임을 즐기지만, 공포게임을 좀 더 많이 하는 진유성입니다. 신작부터 고전 명작까지! 다양하게 즐겨요!"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1281408",
+      "subscriberCount": "2070",
+      "hiddenSubscriberCount": false,
+      "videoCount": "356"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "U9hLw_vC9s2u1JE_igLJyscV5YU",
+    "id": "UCdVEHxKpd4De2ie4BhUqsmQ",
+    "snippet": {
+      "title": "럭키루시",
+      "description": "판다!판다! 럭키루시의 유튜브 채널입니다!\n매일매일 영상 업로드를 노력합니다!\n\n",
+      "customUrl": "@luckylucy2121",
+      "publishedAt": "2019-07-04T11:36:14Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_n9ttb3hbAj7VZBvq2u4vIyYKJnHhrkWpghJq4V4U6idA=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_n9ttb3hbAj7VZBvq2u4vIyYKJnHhrkWpghJq4V4U6idA=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/ytc/AIdro_n9ttb3hbAj7VZBvq2u4vIyYKJnHhrkWpghJq4V4U6idA=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "럭키루시",
+        "description": "판다!판다! 럭키루시의 유튜브 채널입니다!\n매일매일 영상 업로드를 노력합니다!\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "161156065",
+      "subscriberCount": "150000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "4449"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "zyNPXMJWilxmZPBcnFh2s077ZJU",
+    "id": "UCk7mTbF9QFKGSQKThtEZcZQ",
+    "snippet": {
+      "title": "박남수",
+      "description": "치지직 에땁01",
+      "customUrl": "@awm_replay",
+      "publishedAt": "2022-12-16T08:15:23.87328Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/iKtf4ReZyl-jba_5Wjkgv85nDPlvT-E7F-9h6T_fzhntah5YUARnMfX-XXmRxuD5WnmehADKWJc=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/iKtf4ReZyl-jba_5Wjkgv85nDPlvT-E7F-9h6T_fzhntah5YUARnMfX-XXmRxuD5WnmehADKWJc=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/iKtf4ReZyl-jba_5Wjkgv85nDPlvT-E7F-9h6T_fzhntah5YUARnMfX-XXmRxuD5WnmehADKWJc=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "박남수",
+        "description": "치지직 에땁01"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "877528",
+      "subscriberCount": "14100",
+      "hiddenSubscriberCount": false,
+      "videoCount": "57"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "lZLLn4pY46UhiMVCyTYWQ1DAS7s",
+    "id": "UCg7rkxrTnIhiHEpXY1ec9NA",
+    "snippet": {
+      "title": "잠뜰 TV",
+      "description": "마인크래프트를 비롯한 다양한 게임들을\n재밌는 콘텐츠로 만들고 있습니다😄\n\n[비즈니스 문의] : contact@asmbl.kr\n[기타 문의] : skhh1221@gmail.com\n\n구독하기 버튼과 알림 버튼을 누르시면 매일 재밌는 영상을\n*제일 먼저* 만나보실 수 있습니다!\n우리 꿈뜰이분들, 시청자분들 항상 감사드려요\n\n#마인크래프트 #게임 \n",
+      "customUrl": "@sleepground",
+      "publishedAt": "2014-05-22T22:01:47Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/2gnkDZ6ZnTI6qVdHE044C3LXqRoGw9xDbvCbydn8iYGO43SLemxNPiLvj0LAsVJ3fDHFwc46=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/2gnkDZ6ZnTI6qVdHE044C3LXqRoGw9xDbvCbydn8iYGO43SLemxNPiLvj0LAsVJ3fDHFwc46=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/2gnkDZ6ZnTI6qVdHE044C3LXqRoGw9xDbvCbydn8iYGO43SLemxNPiLvj0LAsVJ3fDHFwc46=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "잠뜰 TV",
+        "description": "마인크래프트를 비롯한 다양한 게임들을\n재밌는 콘텐츠로 만들고 있습니다😄\n\n[비즈니스 문의] : contact@asmbl.kr\n[기타 문의] : skhh1221@gmail.com\n\n구독하기 버튼과 알림 버튼을 누르시면 매일 재밌는 영상을\n*제일 먼저* 만나보실 수 있습니다!\n우리 꿈뜰이분들, 시청자분들 항상 감사드려요\n\n#마인크래프트 #게임 \n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "4488907825",
+      "subscriberCount": "2400000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "4618"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "F7G5aViiyNcVlGi8HMGf4oo5TZ0",
+    "id": "UCfpW9NT8labw-16JYailtOw",
+    "snippet": {
+      "title": "김더미",
+      "description": "Game Dummy",
+      "customUrl": "@dummykim",
+      "publishedAt": "2021-10-11T17:59:08.622763Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/RNwyiMdPJyHxewGxUxybpisBu0ahZC92YTdVoK6nDTVzOh4I_PSIAujYwFYJA0GpVHWkPN2WcpE=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/RNwyiMdPJyHxewGxUxybpisBu0ahZC92YTdVoK6nDTVzOh4I_PSIAujYwFYJA0GpVHWkPN2WcpE=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/RNwyiMdPJyHxewGxUxybpisBu0ahZC92YTdVoK6nDTVzOh4I_PSIAujYwFYJA0GpVHWkPN2WcpE=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "김더미",
+        "description": "Game Dummy"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "22364720",
+      "subscriberCount": "43400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "2057"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "nGR9DjRjLoST89oWY2eSt8i2w7E",
+    "id": "UC1odR1i_FiUtMtmbEYaOz-w",
+    "snippet": {
+      "title": "수확",
+      "description": "🤝 협업 및 비즈니스 문의  \n📧 Email: cjstkdmlaaa@gmail.com  \n💬 KakaoTalk: https://open.kakao.com/o/sN5pZi5b  \n\n─────────────────────────────\n📢 [광고 포함]  \n본 영상은 일부 제휴 및 광고를 포함하고 있습니다.  \n\n─────────────────────────────\n🔒 [NordVPN 공식 제휴]  \n👉 http://nordvpn.com/suhwak (할인코드 자동 적용: suhwak)\n\n💎 혜택 요약  \n• 2년권 구독 시 50% 할인  \n• +4개월 무료 제공  \n• 30일 내 취소 시 전액 환불 가능  \n\n💡 NordVPN은 온라인 보안, 개인정보 보호,  \n게임 핑 안정화, 해외 콘텐츠 접속에 탁월한 VPN 서비스입니다.  \n\n─────────────────────────────\n🌐 [ExitLag 공식 제휴]  \n🎮 해외 서버에서도 끊김 없는 안정적인 플레이!  \n👉 전용 링크: https://www.exitlag.com/refer/SUHWAKJANG  \n🎟️ 할인 코드: SUHWAKJANG  \n\n🔥 혜택  \n• 연간 플랜 50% 할인 (듀오·스쿼드 전용)  \n• 신규 구독자 전용 / 자동 갱신 미적용  \n\n─────────────────────────────\n🎮 수확의 게임방송 LIVE  \nMMORPG / 리니지라이크 / 모바일 & PC 게임 실시간 방송 채널입니다.  \n신작 체험, 업데이트 리뷰, 프로모션 협업 콘텐츠 등을 진행하고 있습니다.  \n\n📺 공식 채널  \nhttps://youtube.com/@suhwakjang  \n\n#NordVPN #VPN할인 #게임핑안정화 #ExitLag #SuhwakLive #MMORPG #게임방송 #리니지라이크 #VPN추천\n\nU-9168868\n",
+      "customUrl": "@수확쟝",
+      "publishedAt": "2012-09-16T04:35:13Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/t_kpcCh4-mRxa3U8e_3UwQhMLsBaArl6wNRwxqrQvOoT02_4yNnnFWZ3SUe5-VQXoO6rjDaZQlc=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/t_kpcCh4-mRxa3U8e_3UwQhMLsBaArl6wNRwxqrQvOoT02_4yNnnFWZ3SUe5-VQXoO6rjDaZQlc=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/t_kpcCh4-mRxa3U8e_3UwQhMLsBaArl6wNRwxqrQvOoT02_4yNnnFWZ3SUe5-VQXoO6rjDaZQlc=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "수확",
+        "description": "🤝 협업 및 비즈니스 문의  \n📧 Email: cjstkdmlaaa@gmail.com  \n💬 KakaoTalk: https://open.kakao.com/o/sN5pZi5b  \n\n─────────────────────────────\n📢 [광고 포함]  \n본 영상은 일부 제휴 및 광고를 포함하고 있습니다.  \n\n─────────────────────────────\n🔒 [NordVPN 공식 제휴]  \n👉 http://nordvpn.com/suhwak (할인코드 자동 적용: suhwak)\n\n💎 혜택 요약  \n• 2년권 구독 시 50% 할인  \n• +4개월 무료 제공  \n• 30일 내 취소 시 전액 환불 가능  \n\n💡 NordVPN은 온라인 보안, 개인정보 보호,  \n게임 핑 안정화, 해외 콘텐츠 접속에 탁월한 VPN 서비스입니다.  \n\n─────────────────────────────\n🌐 [ExitLag 공식 제휴]  \n🎮 해외 서버에서도 끊김 없는 안정적인 플레이!  \n👉 전용 링크: https://www.exitlag.com/refer/SUHWAKJANG  \n🎟️ 할인 코드: SUHWAKJANG  \n\n🔥 혜택  \n• 연간 플랜 50% 할인 (듀오·스쿼드 전용)  \n• 신규 구독자 전용 / 자동 갱신 미적용  \n\n─────────────────────────────\n🎮 수확의 게임방송 LIVE  \nMMORPG / 리니지라이크 / 모바일 & PC 게임 실시간 방송 채널입니다.  \n신작 체험, 업데이트 리뷰, 프로모션 협업 콘텐츠 등을 진행하고 있습니다.  \n\n📺 공식 채널  \nhttps://youtube.com/@suhwakjang  \n\n#NordVPN #VPN할인 #게임핑안정화 #ExitLag #SuhwakLive #MMORPG #게임방송 #리니지라이크 #VPN추천\n\nU-9168868\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "4821022",
+      "subscriberCount": "42200",
+      "hiddenSubscriberCount": false,
+      "videoCount": "2339"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "tDCgv6lnamaC5BfMfQGEcBA4AW8",
+    "id": "UC8CIM3d3zDYMk-3T5aAz0yw",
+    "snippet": {
+      "title": "혜안",
+      "description": "여러분의 유튜버 혜안입니다",
+      "customUrl": "@hxxax",
+      "publishedAt": "2017-03-23T21:58:04Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/f7NJo7bEkaGaTeGFkEveKC9aC52HCvaDa6li7v3x_sDdAguKnt880AiF30qB0s_PqSwlTJc4Mg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/f7NJo7bEkaGaTeGFkEveKC9aC52HCvaDa6li7v3x_sDdAguKnt880AiF30qB0s_PqSwlTJc4Mg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/f7NJo7bEkaGaTeGFkEveKC9aC52HCvaDa6li7v3x_sDdAguKnt880AiF30qB0s_PqSwlTJc4Mg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "혜안",
+        "description": "여러분의 유튜버 혜안입니다"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "2592105245",
+      "subscriberCount": "3090000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "2053"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "SUKVjg1WCQoP_YodNNV0dgRIjkU",
+    "id": "UCPI40-XQA9-GBGj2k8PPqfg",
+    "snippet": {
+      "title": "김왼팔",
+      "description": "쫄보인생 23년 공포게임을 전혀못하지만 저 보다 더 겁이많은분들을위한 공포게임 대리만족 해주는 방송 김왼팔 채널입니다!!\n------------------------------------------------------------------------\n문의 - kimleftarm@sandboxnetwork.net\n0MKQXM@AICOMPANY\n",
+      "customUrl": "@dmltjdzoq123",
+      "publishedAt": "2013-02-18T05:47:17Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/7TPHF9lZcnB0yGwVRMI-o2g4YSysdiGe0N-o3MvQoGXKI3UjIHPH8XmCMYQ3RYcKtqkM-F_H=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/7TPHF9lZcnB0yGwVRMI-o2g4YSysdiGe0N-o3MvQoGXKI3UjIHPH8XmCMYQ3RYcKtqkM-F_H=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/7TPHF9lZcnB0yGwVRMI-o2g4YSysdiGe0N-o3MvQoGXKI3UjIHPH8XmCMYQ3RYcKtqkM-F_H=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "김왼팔",
+        "description": "쫄보인생 23년 공포게임을 전혀못하지만 저 보다 더 겁이많은분들을위한 공포게임 대리만족 해주는 방송 김왼팔 채널입니다!!\n------------------------------------------------------------------------\n문의 - kimleftarm@sandboxnetwork.net\n0MKQXM@AICOMPANY\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "986124985",
+      "subscriberCount": "1080000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "4040"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "6gD0zqkhmhApIybeOnFi4-GT_lY",
+    "id": "UCXOTJ8L1oJvVET76ELZhhPw",
+    "snippet": {
+      "title": "혼자 노는 보드게임 CH",
+      "description": "1인플 보드게임 플레이 / 리뷰 채널 입니다.\n리뷰는 다인플 포함이고요 ^^\n\n\n예전 채널 이름 : guple guple\n다른 이름/아이디 : 건프리\n\n\n",
+      "customUrl": "@boardalone",
+      "publishedAt": "2012-08-02T00:31:55Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/1v7qcV3uu8rwSOEmf_i4WcPRDtoGd9U6ZpSCntKGE2Ln5V8grrL86yjRvdcFnPRxm8abvOkb=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/1v7qcV3uu8rwSOEmf_i4WcPRDtoGd9U6ZpSCntKGE2Ln5V8grrL86yjRvdcFnPRxm8abvOkb=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/1v7qcV3uu8rwSOEmf_i4WcPRDtoGd9U6ZpSCntKGE2Ln5V8grrL86yjRvdcFnPRxm8abvOkb=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "혼자 노는 보드게임 CH",
+        "description": "1인플 보드게임 플레이 / 리뷰 채널 입니다.\n리뷰는 다인플 포함이고요 ^^\n\n\n예전 채널 이름 : guple guple\n다른 이름/아이디 : 건프리\n\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "731540",
+      "subscriberCount": "2640",
+      "hiddenSubscriberCount": false,
+      "videoCount": "515"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "DcHKMdpaOj8ilYauTVkvdv6u59A",
+    "id": "UC8MgGtsJazbztr5eGWiqUXw",
+    "snippet": {
+      "title": "라텔",
+      "description": "여러가지 게임들의 리뷰, 게임업계의 역사 전반에 대한 영상을 만들고있습니다.\n",
+      "customUrl": "@rattel",
+      "publishedAt": "2021-11-05T22:41:02.845497Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/s6CF0eZ2VEITcWPU6nNFnRTt-HEPzPeHu5oP9CRjKVY-QeB2ZlZ8yxMDJdS97mjfLf_5b0XUPOs=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/s6CF0eZ2VEITcWPU6nNFnRTt-HEPzPeHu5oP9CRjKVY-QeB2ZlZ8yxMDJdS97mjfLf_5b0XUPOs=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/s6CF0eZ2VEITcWPU6nNFnRTt-HEPzPeHu5oP9CRjKVY-QeB2ZlZ8yxMDJdS97mjfLf_5b0XUPOs=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "라텔",
+        "description": "여러가지 게임들의 리뷰, 게임업계의 역사 전반에 대한 영상을 만들고있습니다.\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "9834416",
+      "subscriberCount": "31800",
+      "hiddenSubscriberCount": false,
+      "videoCount": "775"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "NKWP4bST07IxDyTxlsGXruzOEKU",
+    "id": "UCVwkFKZl7v3V02JR8gLlUyw",
+    "snippet": {
+      "title": "백앤아",
+      "description": "멥버십 가입! 비엔나대원이 되는 방법!👇\nhttps://www.youtube.com/channel/UCVwkFKZl7v3V02JR8gLlUyw/join\n🧡게임과 상황극을 하는 백앤아 채널🧡\n\n🌭구독자 애칭: 비엔나🌭\n🧡팬선물 보내는 주소🧡\n서울시 용산구 서빙고로 17 센트럴파크타워, 29층 샌드박스 “백앤아-남매튜브” 앞 (음식은 보내시면 안됩니다!)\n\n\n",
+      "customUrl": "@백앤아",
+      "publishedAt": "2020-01-01T06:16:20.374395Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/enUvMDj_W_Vxgt64bmu0hV9rMYW6yxpPz2bkfY6XKk7-g6Lv9mOVzI0k8irLg1U7oM_4vRuuT6c=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/enUvMDj_W_Vxgt64bmu0hV9rMYW6yxpPz2bkfY6XKk7-g6Lv9mOVzI0k8irLg1U7oM_4vRuuT6c=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/enUvMDj_W_Vxgt64bmu0hV9rMYW6yxpPz2bkfY6XKk7-g6Lv9mOVzI0k8irLg1U7oM_4vRuuT6c=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "백앤아",
+        "description": "멥버십 가입! 비엔나대원이 되는 방법!👇\nhttps://www.youtube.com/channel/UCVwkFKZl7v3V02JR8gLlUyw/join\n🧡게임과 상황극을 하는 백앤아 채널🧡\n\n🌭구독자 애칭: 비엔나🌭\n🧡팬선물 보내는 주소🧡\n서울시 용산구 서빙고로 17 센트럴파크타워, 29층 샌드박스 “백앤아-남매튜브” 앞 (음식은 보내시면 안됩니다!)\n\n\n"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1101557103",
+      "subscriberCount": "1190000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1972"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "UsvpZeu0g4SDTIZP1iyKmxtHDOM",
+    "id": "UCUCnZBCJhbllGTfqomgFKMg",
+    "snippet": {
+      "title": "머독 다시보기",
+      "description": "",
+      "customUrl": "@murdocre",
+      "publishedAt": "2023-01-12T16:57:48.150361Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/szjnJ7KHEBuZvCiHvNIVagooueA6oX4YxKpKjLPSGhpQKss-tRxvxfoeNvMshyl-_07YZp9PCg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/szjnJ7KHEBuZvCiHvNIVagooueA6oX4YxKpKjLPSGhpQKss-tRxvxfoeNvMshyl-_07YZp9PCg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/szjnJ7KHEBuZvCiHvNIVagooueA6oX4YxKpKjLPSGhpQKss-tRxvxfoeNvMshyl-_07YZp9PCg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "머독 다시보기",
+        "description": ""
+      }
+    },
+    "statistics": {
+      "viewCount": "44624182",
+      "subscriberCount": "50100",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1831"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "HCEyV7J5WxIjbC1HB6glukgywlA",
+    "id": "UCrN7Gb8xIZF_0ZYA1cmVNxQ",
+    "snippet": {
+      "title": "징버거의 다시부기",
+      "description": "징버거의 생방송 다시보기 채널입니다.",
+      "customUrl": "@jingburger_dasibogi",
+      "publishedAt": "2022-12-13T11:11:57.264888Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/sCCS6QYuBjHZN33f7Zw4Jl6Q74PXPNT5zknDW3mvmocrDnfRSggk1eKj4jJaRr__Nd5f9-_Xgw=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/sCCS6QYuBjHZN33f7Zw4Jl6Q74PXPNT5zknDW3mvmocrDnfRSggk1eKj4jJaRr__Nd5f9-_Xgw=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/sCCS6QYuBjHZN33f7Zw4Jl6Q74PXPNT5zknDW3mvmocrDnfRSggk1eKj4jJaRr__Nd5f9-_Xgw=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "징버거의 다시부기",
+        "description": "징버거의 생방송 다시보기 채널입니다."
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "5554811",
+      "subscriberCount": "44400",
+      "hiddenSubscriberCount": false,
+      "videoCount": "417"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "O7jOSzMRFhNZFGclcmda4dXNWcc",
+    "id": "UCC1LvVTX2ySKYjeIXkAtvsQ",
+    "snippet": {
+      "title": "침착맨 플러스",
+      "description": "침착맨의 게임 편집본과 추가적인 일상 영상이 올라갑니다",
+      "customUrl": "@chimchakman_plus",
+      "publishedAt": "2020-06-05T09:51:27.926126Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/PU43QCdHgZRqjQmwH3sWctfYpKgjYSSTNUKOSUafBFp3LDAVVw8v2TPmg1E30cz7KdGRxz3P=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/PU43QCdHgZRqjQmwH3sWctfYpKgjYSSTNUKOSUafBFp3LDAVVw8v2TPmg1E30cz7KdGRxz3P=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/PU43QCdHgZRqjQmwH3sWctfYpKgjYSSTNUKOSUafBFp3LDAVVw8v2TPmg1E30cz7KdGRxz3P=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "침착맨 플러스",
+        "description": "침착맨의 게임 편집본과 추가적인 일상 영상이 올라갑니다"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1897483138",
+      "subscriberCount": "879000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "2363"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "nbx8vn8ik8jfupS5Vn0T9wTfaco",
+    "id": "UCYJDUekoQz0-bo8al1diLWQ",
+    "snippet": {
+      "title": "말왕TV",
+      "description": "즐겁게 운동하는 고품격 운동방송\nragoona88@gmail.com",
+      "customUrl": "@mrragoona88",
+      "publishedAt": "2012-09-07T13:50:02Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/MBaX1UphXzTTD313n-_v7Ju39vEuDKNpdIRoYBPMDNzwM-lRNCFXG1i8GtE3EadFJxsCwpLKlA=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/MBaX1UphXzTTD313n-_v7Ju39vEuDKNpdIRoYBPMDNzwM-lRNCFXG1i8GtE3EadFJxsCwpLKlA=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/MBaX1UphXzTTD313n-_v7Ju39vEuDKNpdIRoYBPMDNzwM-lRNCFXG1i8GtE3EadFJxsCwpLKlA=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "말왕TV",
+        "description": "즐겁게 운동하는 고품격 운동방송\nragoona88@gmail.com"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "1385865011",
+      "subscriberCount": "1890000",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1767"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "kvT9g_AaDSt0xe6Ntrlc18K4_yc",
+    "id": "UCdLyq9bdchhI5Dqvlx-Esgw",
+    "snippet": {
+      "title": "게임발굴단",
+      "description": "🎙게임보다 재미있는 게임 이야기\n🕹'Play, Talk, Together'\n\n📝 각종 문의 : nohpd7@gmail.com",
+      "customUrl": "@게임발굴단_official",
+      "publishedAt": "2021-01-03T11:08:10.909932Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/SqSRc9ZuuhFj8KjVESO77d1PpEcF35YPlG9bZHINVhPVsPkD3UctCLMhFmv_P0gK2QbTNbjnzA=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/SqSRc9ZuuhFj8KjVESO77d1PpEcF35YPlG9bZHINVhPVsPkD3UctCLMhFmv_P0gK2QbTNbjnzA=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/SqSRc9ZuuhFj8KjVESO77d1PpEcF35YPlG9bZHINVhPVsPkD3UctCLMhFmv_P0gK2QbTNbjnzA=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "defaultLanguage": "ko",
+      "localized": {
+        "title": "게임발굴단",
+        "description": "🎙게임보다 재미있는 게임 이야기\n🕹'Play, Talk, Together'\n\n📝 각종 문의 : nohpd7@gmail.com"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "13674593",
+      "subscriberCount": "25600",
+      "hiddenSubscriberCount": false,
+      "videoCount": "1048"
+    }
+  },
+  {
+    "kind": "youtube#channel",
+    "etag": "4-boFmrGpGvDQZcUo51rVriZGYw",
+    "id": "UC5LSW-_tCsrzZz73Pq0-yDA",
+    "snippet": {
+      "title": "공포면역 케이사구",
+      "description": "🔥케이사구의 공포게임 대모험🔥",
+      "customUrl": "@케이사구",
+      "publishedAt": "2025-06-10T23:46:42.053093Z",
+      "thumbnails": {
+        "default": {
+          "url": "https://yt3.ggpht.com/KdcgwetcQrCS3btTC2CtCTxJOp0NUVXnw5zk0DaDtlbecB8gBDqASRCfzsNUcmCDt75UJJ20wg=s88-c-k-c0x00ffffff-no-rj",
+          "width": 88,
+          "height": 88
+        },
+        "medium": {
+          "url": "https://yt3.ggpht.com/KdcgwetcQrCS3btTC2CtCTxJOp0NUVXnw5zk0DaDtlbecB8gBDqASRCfzsNUcmCDt75UJJ20wg=s240-c-k-c0x00ffffff-no-rj",
+          "width": 240,
+          "height": 240
+        },
+        "high": {
+          "url": "https://yt3.ggpht.com/KdcgwetcQrCS3btTC2CtCTxJOp0NUVXnw5zk0DaDtlbecB8gBDqASRCfzsNUcmCDt75UJJ20wg=s800-c-k-c0x00ffffff-no-rj",
+          "width": 800,
+          "height": 800
+        }
+      },
+      "localized": {
+        "title": "공포면역 케이사구",
+        "description": "🔥케이사구의 공포게임 대모험🔥"
+      },
+      "country": "KR"
+    },
+    "statistics": {
+      "viewCount": "8137384",
+      "subscriberCount": "20700",
+      "hiddenSubscriberCount": false,
+      "videoCount": "357"
+    }
+  }
+]

@@ -1,0 +1,704 @@
+{
+  "request_params": {
+    "q": "\"영화리뷰\"|\"영화 리뷰\"|\"영화 후기\"|\"영화 평론\"|\"노스포 리뷰\"|\"자동차리뷰\"|\"자동차 리뷰\"|\"차량리뷰\"|\"시승기\"|\"신차 리뷰\"|\"게임리뷰\"|\"게임 리뷰\"|\"게임 후기\"",
+    "videoCategoryId": "22",
+    "videoDuration": "long",
+    "publishedAfter": "2026-03-05T00:00:00Z",
+    "publishedBefore": "2026-03-25T00:00:00Z",
+    "regionCode": "KR",
+    "relevanceLanguage": "ko",
+    "maxResults": 50,
+    "order": "date"
+  },
+  "response": {
+    "kind": "youtube#searchListResponse",
+    "etag": "dfPhC-kTLYe00OTO95bCfCCptBc",
+    "regionCode": "KR",
+    "pageInfo": {
+      "totalResults": 462,
+      "resultsPerPage": 20
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Ozzh-KbafB9RXwHjK5BX988uM90",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "y09UxKHHHus"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-24T11:01:43Z",
+          "channelId": "UCWPFcdbmTAxZM7BXlX3IsZA",
+          "title": "[결말포함/영화리뷰] FBI의 추악한 비밀을 알아버린 전설의 해결사 &quot;리암 니슨&quot;이 보여주는 미친 액션 끝판왕 영화 ㅎㄷㄷ",
+          "description": "블랙라이트 #결말포함 #영화리뷰 #결말포함영화리뷰 #리암니슨 #액션 #액션영화 오늘의 영화는 \"블랙라이트\" 입니다. [유튜브]에서 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/y09UxKHHHus/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/y09UxKHHHus/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/y09UxKHHHus/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비스피릿",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-24T11:01:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uxRiZhnkx88eIyJf_H6Wz5rdDGU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6euvgPevRNM"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-24T10:32:43Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 와...최근 본 영화 중 &quot;압도적 1위&quot;입니다...전세계가 극찬한 명작",
+          "description": "결말포함 #영화리뷰 #감동영화 #스트롱거 #제이크 질렌할 영화 제목 : 스트롱거 노루네극장 구독과 좋아요 알림 설정까지!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6euvgPevRNM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6euvgPevRNM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6euvgPevRNM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-24T10:32:43Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "uQZEQgmlOBQV4FNKbub8z-i_2Vw",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "VmmxKvbzicU"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-19T11:00:03Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "서부에서 가장 위험한 무법자를 적으로 돌린 현상금 사냥꾼들의 최후 [영화리뷰/결말포함",
+          "description": "영화 제목: 슬로우 웨스트 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/VmmxKvbzicU/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/VmmxKvbzicU/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/VmmxKvbzicU/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-19T11:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "z3c2IjbTGbi3oSyZiadti1HVoR0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "B0sROvU4F6k"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-19T11:00:16Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 실화입니다...미국 정부가 9.11테러범을 잡기 위해 벌인 끔찍한 짓..ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #모리타니안 #베네딕트컴버배치 영화 제목 : 모리타니안 노루네극장 구독과 좋아요 알림 설정까지!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/B0sROvU4F6k/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/B0sROvU4F6k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/B0sROvU4F6k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-19T11:00:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "yHUQY1q_fIxYEV2rDnCXwVzq264",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zo1dDVXurGc"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-17T04:15:04Z",
+          "channelId": "UCNxBpZFwWG0JLxOOPP3y-eg",
+          "title": "🔥믿고 보는 액션 맛집 [[제이슨 스타뎀]] 영화 몰아보기!!🔥진짜 이 형 좀 그만 건드려라 ㅠㅠ(결말포함, 영화리뷰)",
+          "description": "똠냥이 #영화리뷰 #결말포함 *영상의 모든 저작권은 배급사 측에 있습니다* 영화 제목은 영상 초반부를 참고 부탁드립니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zo1dDVXurGc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zo1dDVXurGc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zo1dDVXurGc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "똠냥이",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-17T04:15:04Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fNT2iWvBiDS3Sa7KL4FmzykRQlk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "goRMPaFve6A"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-15T10:30:21Z",
+          "channelId": "UCwM1awGisywZJ49aIjt27Fw",
+          "title": "와...............진짜 보다가 1시간 순.삭 됐습니다🔥오프닝부터 긴장감 미쳤네요....【영화리뷰/결말포함】",
+          "description": "영화리뷰 #결말포함.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/goRMPaFve6A/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/goRMPaFve6A/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/goRMPaFve6A/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "영화세상",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-15T10:30:21Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "nBwYXGzY7l7rVeXIGmBbdvpBJwc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "QT8mSNB3EWw"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-15T09:21:54Z",
+          "channelId": "UC1mGqwxeXFRiSiqJBLRJQJQ",
+          "title": "[역사영화 평론] 왕과 사는 남자 -역사는 사라지지 않는다-",
+          "description": "왕과 사는 남자가 천3백만을 돌파했습니다. !!!!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/QT8mSNB3EWw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/QT8mSNB3EWw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/QT8mSNB3EWw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "배기성 역사독립군 Brandteller4.0",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-15T09:21:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "x2uYyJ7fKAXEb1HOZ4piEBM2YjY",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "6oj4fsF9aQg"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-14T11:01:40Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "🔥국내 미개봉🔥 너무 기괴해서 개봉조차 못 한 어른들을 위한 핏빛 잔혹 동화 [영화리뷰/결말포함]",
+          "description": "영화 제목: 언웰컴 (Unwelcome, 2023) 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/6oj4fsF9aQg/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/6oj4fsF9aQg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/6oj4fsF9aQg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-14T11:01:40Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Ri0j8emdXHfZf0L8JwUodMwjYnk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "dP8OK-YSUs0"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-14T03:30:26Z",
+          "channelId": "UCKR3cXHN4kCRbD9Eaa-ROpQ",
+          "title": "🔥레이스카의 영혼을 담은 3억원대 하이브리드 슈퍼카ㅣ맥라렌 아투라 시승기",
+          "description": "오늘은 구독자분께서 감사하게도 맥라렌 아투라 차량을 협찬해주셨습니다. 스릴 있는 시승기였습니다. 재밌게 봐주세요 ^^ 영상이 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/dP8OK-YSUs0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/dP8OK-YSUs0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/dP8OK-YSUs0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Turbo832 TV",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-14T03:30:26Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fHi6vLoH17UdxQhB6K9CNKDeKVA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "5hFUrKjQ7zM"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-13T11:18:00Z",
+          "channelId": "UCDz-32gFw0_QPhpHN7Vg6OQ",
+          "title": "[결말포함] 하필이면 은퇴 후 조용히 살아가던 &quot;전직 최정예 요원&quot;을 건드린 범죄 조직의 최후..ㄷㄷ",
+          "description": "결말포함 #영화리뷰 #액션영화 #피어스브로스넌 #올가쿠릴렌코 영화 제목 : 노벰버 맨 노루네극장 구독과 좋아요 알림 설정까지!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/5hFUrKjQ7zM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/5hFUrKjQ7zM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/5hFUrKjQ7zM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "노루네극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-13T11:18:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "llKD1K3RwrCK3FqAbfL7HMn2HcQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "BOskZk2RNGE"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-13T10:00:19Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "‘콜렉터’ 리뷰 | 출구없음 야단났음",
+          "description": "쏘우의 각본가 마커스 던스텐 감독의 2009년 데뷔작 '콜렉터' 입니다. 잔혹한 공포영화들이 한창 쏟아지던2000년대 후반에 나온 작품 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/BOskZk2RNGE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/BOskZk2RNGE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/BOskZk2RNGE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-13T10:00:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "CHnloFva0EtRJKXHN0QZT8VqF1M",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "ELs14biwaU4"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-12T12:41:09Z",
+          "channelId": "UCWPFcdbmTAxZM7BXlX3IsZA",
+          "title": "[결말포함/영화리뷰] 와......개봉하자마자 북미 &quot;1위&quot; 찍어버린 제이슨 스타뎀 주연의 제작비만 1300억 들어간 액션 영화",
+          "description": "익스펜더블4 #결말포함 #영화리뷰 #제이슨스타뎀 #실베스터스탤론 #메간폭스 #액션영화 오늘의 영화는 \"익스펜더블4\"입니다.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/ELs14biwaU4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/ELs14biwaU4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/ELs14biwaU4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비스피릿",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-12T12:41:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "BGSkyzWt2Z5sI1yP9aGq0Sy0QC4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "uFcCj2UCMSA"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-11T10:00:06Z",
+          "channelId": "UCL62zwpumn_GNPwrq6WbvBw",
+          "title": "참 재밌는 영화 ㅎㅎㅎ[영화리뷰/결말포함]",
+          "description": "이번에 리뷰한 영화는 아버지 유언에 따라 갖은 노력 끝에 주인공 필기는 드디어 집을 사는데 하필 그 집에 귀신이 살고 있었고 특히 그 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/uFcCj2UCMSA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/uFcCj2UCMSA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/uFcCj2UCMSA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "리뷰극장",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-11T10:00:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "isAnS2TqqCNWCyfugGTMR-ybQPI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "FRoxf4-acmI"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-10T11:45:30Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "와...이렇게 재밌는 영화가 있다고??? 배우들의 코미디 연기에 너무 웃겨서 29분 순삭 해버린 핵꿀잼 코미디 영화",
+          "description": "영화리뷰 #코미디영화 #김원희 #정준호 #고은아 #임형준 오늘 소개해 드릴 작품은 \"사랑방 선수와 어머니\"입니다 바로 보러가기 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/FRoxf4-acmI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/FRoxf4-acmI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/FRoxf4-acmI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-10T11:45:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "-8XnLiwZJXa-dvkEZeK_942b-Ow",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "qWfNrJy1MmI"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-10T11:00:10Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "홀로그램으로 만들어진 가짜 세상 속에 살고 있는 미래의 인류 [영화리뷰/결말포함]",
+          "description": "영화 제목: 아일랜드 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!!!! #영화 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/qWfNrJy1MmI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/qWfNrJy1MmI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/qWfNrJy1MmI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-10T11:00:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QhhGFeliexfq_dWvpYaCwrlpC4Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "A7A-3PQn5aw"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-10T10:00:16Z",
+          "channelId": "UCshypzLZ-MZ0AHERUhk-_OA",
+          "title": "[결말포함/영화리뷰] 하... 지옥 끝까지 쫓아가서 쏴버린다... &quot;리암 니슨&quot;이 버려진 황무지에서 X약 카르텔을 한 놈씩 사냥하는 소름 돋는 방법 ㅎㄷㄷ",
+          "description": "마크맨 #결말포함 #액션영화 #결말포함영화리뷰 #리암니슨 #제이콥페레즈 #후안파블로라바 #캐서린윈닉 오늘 소개해드릴 영화는 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/A7A-3PQn5aw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/A7A-3PQn5aw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/A7A-3PQn5aw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비101",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-10T10:00:16Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "QK_K5FDztfmHsTC4RLSg2d6EfG8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "NT5Aqx9bw0Y"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-09T13:55:06Z",
+          "channelId": "UCDRdyIobm4yYwAOGAuCznbQ",
+          "title": "FSD에 진심인커플 TexRoad택시 시승기~ 모델X구매각!",
+          "description": "오늘은 FSD 체험 원하시는 러블리 커플 모시고 TexRoad 택시 출발! ✨ 근처 중학교까지 무개입 주행 + 자동 주차 성공 ㅎㅎ 계약 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/NT5Aqx9bw0Y/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/NT5Aqx9bw0Y/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/NT5Aqx9bw0Y/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "TexRoad",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-09T13:55:06Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qL3N9MNW_hsn9Uu4fTGokFj7KQk",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "5sMkOFbV7u8"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-07T01:45:00Z",
+          "channelId": "UCprylW0H2OQ4I7Sw7I7XbIg",
+          "title": "와......하필이면 은퇴 후 조용히 살던&quot;전직 최강 특수부대원&quot;을 건드려버린 범죄조직의 역대급 최후..ㄷㄷ 미쳐버린 액션신에 시간순삭 [영화리뷰/결말포함]",
+          "description": "영화리뷰 #결말포함 #스티븐시걸 #액션영화 오늘 소개해 드릴 작품은 \"코드 오브 아너\"입니다. 구독과 좋아요 그리고 알림 설정은 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/5sMkOFbV7u8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/5sMkOFbV7u8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/5sMkOFbV7u8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "무비아저씨",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-07T01:45:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "vT_rme_x8oJ1OtHH4zNya7Y6CZg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bP1WLOF6t94"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-06T10:00:54Z",
+          "channelId": "UCyKCYGtOc2xRcQNoLnuNLpQ",
+          "title": "‘퍼니게임’ 리뷰 | 아..진짜 ㅈㄴ 빡친다….^^",
+          "description": "미카엘 하네케 감독의 1997년작 '퍼니게임' 입니다. 감독 피셜 끝까지 보지 말라고 만든 영화라고 하네요 감독의 의도대로 상당히 약 ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bP1WLOF6t94/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bP1WLOF6t94/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bP1WLOF6t94/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "밤수록",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-06T10:00:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TUYoc5IPDqUJ2NeGJcDsEXQCTsU",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HSrE_6jmLD0"
+        },
+        "snippet": {
+          "publishedAt": "2026-03-05T11:28:55Z",
+          "channelId": "UCfNpXQxq5VCGrt4Sv8zaKxA",
+          "title": "이름만 들어도 가슴이  두근거리는 전설의 교도소 최강 싸움꾼!! [영화리뷰/결말포함]",
+          "description": "영화 제목: 언디스퓨티드2 이 영상은 제가 직접 작성한 스크립트를 바탕으로 제작한 리뷰 영상입니다. 즐겁게 봐주세요. 감사합니다!",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HSrE_6jmLD0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HSrE_6jmLD0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HSrE_6jmLD0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "다씨네_ Da Cine",
+          "liveBroadcastContent": "none",
+          "publishTime": "2026-03-05T11:28:55Z"
+        }
+      }
+    ]
+  }
+}
