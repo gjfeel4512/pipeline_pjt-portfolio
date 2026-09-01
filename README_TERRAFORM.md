@@ -115,9 +115,9 @@ Outputs:
 
 airflow_env_vars = 
 export AWS_DEFAULT_REGION=us-west-2
-export AWS_S3_BRONZE_BUCKET=pipeline-pjt-dev-bronze-123456789
-export AWS_S3_SILVER_BUCKET=pipeline-pjt-dev-silver-123456789
-export AWS_S3_GOLD_BUCKET=pipeline-pjt-dev-gold-123456789
+export AWS_S3_BRONZE_BUCKET=goldline-dev-bronze-123456789
+export AWS_S3_SILVER_BUCKET=goldline-dev-silver-123456789
+export AWS_S3_GOLD_BUCKET=goldline-dev-gold-123456789
 ...
 ```
 
@@ -152,10 +152,10 @@ aws s3 sync outputs/bronze_merged/ \
 ```bash
 # airflow_config/.env에 추가
 export AWS_DEFAULT_REGION=us-west-2
-export AWS_S3_BRONZE_BUCKET=pipeline-pjt-dev-bronze-...
-export AWS_S3_SILVER_BUCKET=pipeline-pjt-dev-silver-...
-export AWS_S3_GOLD_BUCKET=pipeline-pjt-dev-gold-...
-export AWS_IAM_ROLE_ARN=arn:aws:iam::123456789:role/pipeline-pjt-dev-airflow-role
+export AWS_S3_BRONZE_BUCKET=goldline-dev-bronze-...
+export AWS_S3_SILVER_BUCKET=goldline-dev-silver-...
+export AWS_S3_GOLD_BUCKET=goldline-dev-gold-...
+export AWS_IAM_ROLE_ARN=arn:aws:iam::123456789:role/goldline-dev-airflow-role
 ```
 
 ### DAG에서 S3 사용
@@ -209,14 +209,14 @@ terraform state show aws_s3_bucket.bronze
 
 ```bash
 aws s3 ls
-aws s3 ls s3://pipeline-pjt-dev-bronze-123456789/
+aws s3 ls s3://goldline-dev-bronze-123456789/
 ```
 
 ### CloudWatch 로그 확인
 
 ```bash
-aws logs describe-log-groups --query 'logGroups[?contains(logGroupName, `pipeline-pjt`)]'
-aws logs tail /aws/airflow/pipeline-pjt-dev --follow
+aws logs describe-log-groups --query 'logGroups[?contains(logGroupName, `goldline`)]'
+aws logs tail /aws/airflow/goldline-dev --follow
 ```
 
 ## 🔐 보안 설정
@@ -267,7 +267,7 @@ aws s3 mb s3://terraform-state-pipeline-123456789
 # 2. provider.tf의 backend 섹션 활성화
 # backend "s3" {
 #   bucket = "terraform-state-pipeline-123456789"
-#   key = "pipeline-pjt/terraform.tfstate"
+#   key = "goldline/terraform.tfstate"
 #   region = "us-west-2"
 #   encrypt = true
 # }

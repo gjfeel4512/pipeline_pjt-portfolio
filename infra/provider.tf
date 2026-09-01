@@ -16,7 +16,7 @@ terraform {
   # S3 백엔드 설정 (선택사항 - 나중에 활성화)
   # backend "s3" {
   #   bucket         = "your-terraform-state-bucket"
-  #   key            = "pipeline-pjt/terraform.tfstate"
+  #   key            = "goldline/terraform.tfstate"
   #   region         = "us-west-2"
   #   encrypt        = true
   #   dynamodb_table = "terraform-lock"

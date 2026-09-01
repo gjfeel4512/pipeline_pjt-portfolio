@@ -9,7 +9,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "프로젝트명"
   type        = string
-  default     = "pipeline-pjt"
+  default     = "goldline"
 }
 
 variable "environment" {
@@ -42,7 +42,7 @@ variable "tags" {
   description = "공통 태그"
   type        = map(string)
   default = {
-    Project     = "Pipeline-PJT"
+    Project     = "Goldline"
     ManagedBy   = "Terraform"
     CreatedDate = "2026-09-01"
   }

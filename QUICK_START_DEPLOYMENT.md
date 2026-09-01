@@ -164,11 +164,11 @@ cd C:\Pipeline_pjt
 ```env
 # AWS Configuration
 AWS_REGION=us-west-2
-AWS_S3_BRONZE_BUCKET=pipeline-pjt-dev-bronze-827913617635
-AWS_S3_SILVER_BUCKET=pipeline-pjt-dev-silver-827913617635
-AWS_S3_GOLD_BUCKET=pipeline-pjt-dev-gold-827913617635
-AWS_IAM_ROLE_ARN=arn:aws:iam::827913617635:role/pipeline-pjt-dev-airflow
-AWS_CLOUDWATCH_LOG_GROUP=/aws/airflow/pipeline-pjt-dev
+AWS_S3_BRONZE_BUCKET=goldline-dev-bronze-827913617635
+AWS_S3_SILVER_BUCKET=goldline-dev-silver-827913617635
+AWS_S3_GOLD_BUCKET=goldline-dev-gold-827913617635
+AWS_IAM_ROLE_ARN=arn:aws:iam::827913617635:role/goldline-dev-airflow
+AWS_CLOUDWATCH_LOG_GROUP=/aws/airflow/goldline-dev
 AWS_DEFAULT_REGION=us-west-2
 ```
 
@@ -226,12 +226,12 @@ ls outputs/bronze_merged/
 
 # Upload to S3 (replace BUCKET_NAME with your actual bucket)
 aws s3 sync outputs/bronze_merged/ `
-  s3://pipeline-pjt-dev-bronze-827913617635/ `
+  s3://goldline-dev-bronze-827913617635/ `
   --region us-west-2 `
   --storage-class STANDARD
 
 # Verify upload
-aws s3 ls s3://pipeline-pjt-dev-bronze-827913617635/
+aws s3 ls s3://goldline-dev-bronze-827913617635/
 ```
 
 ---
@@ -252,16 +252,16 @@ aws s3 ls s3://pipeline-pjt-dev-bronze-827913617635/
 
 **Watch CloudWatch logs:**
 ```bash
-aws logs tail /aws/airflow/pipeline-pjt-dev --follow
+aws logs tail /aws/airflow/goldline-dev --follow
 ```
 
 **Check S3 buckets:**
 ```bash
 # Bronze (input)
-aws s3 ls s3://pipeline-pjt-dev-bronze-827913617635/
+aws s3 ls s3://goldline-dev-bronze-827913617635/
 
 # Silver (transformed output)
-aws s3 ls s3://pipeline-pjt-dev-silver-827913617635/
+aws s3 ls s3://goldline-dev-silver-827913617635/
 ```
 
 **View Airflow logs:**
@@ -331,7 +331,7 @@ cat ~/.aws/credentials
 ### Issue: CloudWatch logs not appearing
 ```bash
 # Check IAM permissions:
-aws iam get-role-policy --role-name pipeline-pjt-dev-airflow --policy-name pipeline-pjt-dev-airflow-logs
+aws iam get-role-policy --role-name goldline-dev-airflow --policy-name goldline-dev-airflow-logs
 
 # Check CloudWatch log groups:
 aws logs describe-log-groups --log-group-name-prefix /aws/airflow/
@@ -376,7 +376,7 @@ If you encounter issues:
 
 2. Check AWS CloudWatch:
    ```bash
-   aws logs tail /aws/airflow/pipeline-pjt-dev --follow
+   aws logs tail /aws/airflow/goldline-dev --follow
    ```
 
 3. Review Terraform state:

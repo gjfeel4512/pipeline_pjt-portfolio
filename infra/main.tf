@@ -1,5 +1,5 @@
 /*
-  Pipeline-PJT AWS Infrastructure
+  Goldline AWS Infrastructure
   
   이 Terraform 코드는 다음을 생성합니다:
   - S3 버킷 (Bronze, Silver, Gold)
