@@ -6,6 +6,9 @@ Silver -> PostgreSQL -> Gold 집계 DAG
 2) sql/compute_gold.sql: fact_video_snapshot -> gold_category_benchmark /
    gold_upload_strategy / gold_new_creator_guide (median/p75 집계, 결정적 계산 -
    LLM/Bedrock은 이 결과를 문장으로 바꾸는 역할만 하고 숫자 계산은 절대 하지 않음)
+3) transforms/export_gold_to_s3.py: PostgreSQL의 gold_* 테이블 -> S3 Gold 버킷에
+   JSON으로 내보냄. PostgreSQL이 실제 조회 대상이고 S3는 원본 보관/재현용 사본
+   (다이어그램의 "s3://bucket/gold/ <-> PostgreSQL" 양방향 관계 그대로)
 
 Silver 수집 DAG(daily_lambda_to_silver_dag.py, bronze_to_silver_dag_aws.py)들이
 S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 시각으로 스케줄한다.
@@ -56,4 +59,14 @@ with dag:
         ),
     )
 
-    load_silver >> compute_gold
+    export_gold = BashOperator(
+        task_id="export_gold_to_s3",
+        bash_command=(
+            "PGHOST={{ var.value.get('pg_host', 'postgres') }} "
+            "PGPORT=5432 PGDATABASE=airflow PGUSER=airflow PGPASSWORD=airflow "
+            "python {{ var.value.get('pipeline_project_root', '/pipeline') }}/transforms/export_gold_to_s3.py "
+            "--bucket {{ var.value.get('aws_s3_gold_bucket', '') }}"
+        ),
+    )
+
+    load_silver >> compute_gold >> export_gold
