@@ -37,3 +37,42 @@ resource "aws_lambda_function" "daily_search_collector" {
     }
   )
 }
+
+# 트렌딩 순위 추적 Lambda: videos.list(chart=mostPopular) + channels.list
+# - 신규 영상 발견용이 아님(그건 daily_search_collector 담당) - 이미 차트 상위권인
+#   영상들의 순위/조회수 변화 추적 전용 (gold_video_rank_trend의 유일한 데이터 소스,
+#   lambda/trending_rank_tracker.py 상단 docstring 참고)
+# - search.list(100유닛)를 안 써서 저비용(mostPopular=1유닛, channels.list=1유닛)
+data "archive_file" "trending_rank_tracker" {
+  type        = "zip"
+  source_file = "${path.module}/../lambda/trending_rank_tracker.py"
+  output_path = "${path.module}/.trending_rank_tracker.zip"
+}
+
+resource "aws_lambda_function" "trending_rank_tracker" {
+  function_name    = "${local.resource_prefix}-trending-rank-tracker"
+  role             = aws_iam_role.lambda.arn
+  runtime          = "python3.12"
+  handler          = "trending_rank_tracker.lambda_handler"
+  filename         = data.archive_file.trending_rank_tracker.output_path
+  source_code_hash = data.archive_file.trending_rank_tracker.output_base64sha256
+  timeout          = 120
+  memory_size      = 256
+
+  environment {
+    variables = {
+      BUCKET_NAME      = aws_s3_bucket.bronze.id
+      CATEGORY_IDS     = join(",", var.target_category_ids)
+      REGION_CODE      = "KR"
+      MAX_RESULTS      = "50"
+      YOUTUBE_API_KEYS = join(",", var.youtube_api_keys)
+    }
+  }
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${local.resource_prefix}-trending-rank-tracker"
+    }
+  )
+}
