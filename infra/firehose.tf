@@ -76,7 +76,11 @@ resource "aws_kinesis_firehose_delivery_stream" "bronze" {
     buffering_interval  = 60   # 초
     compression_format  = "GZIP"
 
-    prefix              = "youtube/bronze/category=!{partitionKeyFromQuery:category}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/"
+    # year/month/day는 !{timestamp:...}가 아니라 !{partitionKeyFromQuery:...}를 쓴다 -
+    # !{timestamp:...}는 Firehose 도착 시각 기준이라 항상 UTC로 고정되어 KST와
+    # 어긋나므로, 프로듀서(transforms/push_to_firehose.py,
+    # dags/bronze_to_silver_dag_aws.py)가 레코드에 실어 보내는 KST 날짜를 그대로 쓴다.
+    prefix              = "youtube/bronze/category=!{partitionKeyFromQuery:category}/year=!{partitionKeyFromQuery:year}/month=!{partitionKeyFromQuery:month}/day=!{partitionKeyFromQuery:day}/"
     error_output_prefix = "youtube/bronze-errors/!{firehose:error-output-type}/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/"
 
     dynamic_partitioning_configuration {
@@ -90,7 +94,7 @@ resource "aws_kinesis_firehose_delivery_stream" "bronze" {
         type = "MetadataExtraction"
         parameters {
           parameter_name  = "MetadataExtractionQuery"
-          parameter_value = "{category:.category}"
+          parameter_value = "{category:.category, year:.year_kst, month:.month_kst, day:.day_kst}"
         }
         parameters {
           parameter_name  = "JsonParsingEngine"

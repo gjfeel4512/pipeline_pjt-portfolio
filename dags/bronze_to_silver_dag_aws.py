@@ -164,6 +164,18 @@ def push_file_to_firehose(firehose_client, file_path):
             row = json.loads(line)
             cat_id = str(row.get('category_id', ''))
             row['category'] = CATEGORY_ID_MAP.get(cat_id, 'unknown')  # Firehose 동적 파티셔닝 키
+            # Firehose S3 prefix의 year=/month=/day=는 !{timestamp:...}를 쓰면 항상
+            # UTC 기준이라 KST와 어긋난다 - 레코드에 KST 날짜를 직접 실어서
+            # !{partitionKeyFromQuery:...}로 대체한다 (infra/firehose.tf 참고)
+            try:
+                collected_kst = datetime.fromisoformat(
+                    row.get('collected_at_utc', '').replace('Z', '+00:00')
+                ).astimezone(KST)
+            except (ValueError, AttributeError):
+                collected_kst = datetime.now(KST)
+            row['year_kst'] = collected_kst.strftime('%Y')
+            row['month_kst'] = collected_kst.strftime('%m')
+            row['day_kst'] = collected_kst.strftime('%d')
             records.append({'Data': (json.dumps(row, ensure_ascii=False) + '\n').encode('utf-8')})
 
             if len(records) == 500:
