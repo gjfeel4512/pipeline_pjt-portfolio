@@ -16,6 +16,7 @@ S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 
 """
 from datetime import timedelta
 
+import pendulum
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
@@ -37,6 +38,7 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
+    timezone=pendulum.timezone('Asia/Seoul'),
     description="Silver(S3) -> PostgreSQL 적재 -> Gold 집계(median/p75)",
     tags=["etl", "gold", "postgres"],
     catchup=False,

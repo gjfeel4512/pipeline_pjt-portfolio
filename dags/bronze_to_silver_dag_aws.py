@@ -8,11 +8,13 @@ Architecture:
 - Storage: Local (for development) + AWS S3 (for production)
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
 import logging
 import os
+
+import pendulum
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -59,6 +61,9 @@ CATEGORY_ID_MAP = {
 # 기본값이라 실제 콘텐츠 성격을 신뢰할 수 없음 -> Silver에서는 정상 3개 카테고리
 # (1=영화·애니, 2=자동차·차량, 20=게임)와 분리하여 오염 데이터로 처리
 CONTAMINATED_CATEGORY_IDS = {'22'}
+
+# 이 DAG 자체의 Silver 업로드 파티션(year/month/day) 계산 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
 
 # DAG Configuration
 DAG_ID = 'bronze_to_silver_with_s3'
@@ -526,9 +531,10 @@ def upload_to_s3_task(**context):
 
     try:
         s3_client = get_s3_client()
-        year = datetime.utcnow().year
-        month = datetime.utcnow().month
-        day = datetime.utcnow().day
+        now_kst = datetime.now(KST)
+        year = now_kst.year
+        month = now_kst.month
+        day = now_kst.day
 
         uploaded_files = []
 
@@ -643,6 +649,7 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
+    timezone=pendulum.timezone('Asia/Seoul'),
     description='Bronze to Silver ETL with AWS S3 Integration',
     tags=['etl', 'silver', 'aws', 's3'],
     catchup=False,

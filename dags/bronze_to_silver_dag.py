@@ -10,6 +10,8 @@ import json
 import logging
 import sys
 
+import pendulum
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
@@ -41,6 +43,7 @@ dag = DAG(
     default_args=default_args,
     description='Bronze to Silver ETL Pipeline',
     schedule_interval='0 2 * * *',
+    timezone=pendulum.timezone('Asia/Seoul'),
     catchup=False,
     tags=['youtube', 'etl'],
 )

@@ -15,7 +15,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
 
@@ -24,6 +24,8 @@ BUCKET_NAME = os.environ["BUCKET_NAME"]
 CATEGORY_IDS = [c.strip() for c in os.environ.get("CATEGORY_IDS", "1,2,20,22").split(",") if c.strip()]
 REGION_CODE = os.environ.get("REGION_CODE", "KR")
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
+
+KST = timezone(timedelta(hours=9))
 
 s3_client = None
 
@@ -95,9 +97,12 @@ def fetch_channels(channel_ids):
 
 
 def upload_to_s3(payload, collected_at):
+    # S3 파티션 키(dt=/hh=)는 KST(한국시간) 날짜/시간 기준으로 나눈다.
+    # payload에 담기는 collected_at_utc 필드 자체는 그대로 UTC 값을 쓴다 (감사용 타임스탬프는 UTC 유지).
+    collected_at_kst = collected_at.astimezone(KST)
     key = (
-        f"daily/dt={collected_at.strftime('%Y-%m-%d')}/"
-        f"hh={collected_at.strftime('%H')}/data.json"
+        f"daily/dt={collected_at_kst.strftime('%Y-%m-%d')}/"
+        f"hh={collected_at_kst.strftime('%H')}/data.json"
     )
     get_s3_client().put_object(
         Bucket=BUCKET_NAME,

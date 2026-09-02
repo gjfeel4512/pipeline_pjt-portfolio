@@ -12,6 +12,8 @@ import logging
 import os
 import re
 
+import pendulum
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
@@ -55,6 +57,9 @@ CATEGORY_NAME_MAP = {
 }
 # 22(인물·블로그)는 카테고리 미선택 시 YouTube 기본값 -> 오염 데이터로 분리 (배치 파이프라인과 동일 기준)
 CONTAMINATED_CATEGORY_IDS = {'22'}
+
+# 데이터 파티션(daily/dt=/hh=) 및 '오늘' 계산 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
 
 
 def get_s3_client():
@@ -249,7 +254,7 @@ def list_daily_objects(**context):
         raise AirflowException("AWS_S3_BRONZE_BUCKET not configured")
 
     s3 = get_s3_client()
-    today = datetime.utcnow().strftime('%Y-%m-%d')
+    today = datetime.now(KST).strftime('%Y-%m-%d')
     prefix = f'daily/dt={today}/'
     response = s3.list_objects_v2(Bucket=AWS_S3_BRONZE_BUCKET, Prefix=prefix)
     keys = [obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('data.json')]
@@ -284,7 +289,7 @@ def transform_daily_to_silver(**context):
         flat_records = flatten_daily_payload(payload)
 
         m = re.search(r'dt=([\d-]+)/hh=(\d+)', key)
-        dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.utcnow().strftime('%Y-%m-%d'), '00')
+        dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.now(KST).strftime('%Y-%m-%d'), '00')
         year, month, day = dt_str.split('-')
 
         grouped = {}
@@ -321,6 +326,7 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
+    timezone=pendulum.timezone('Asia/Seoul'),
     description='Lambda 일일 수집(daily_mostpopular_collector) 데이터를 Silver로 변환 (S3 -> S3)',
     tags=['etl', 'silver', 'lambda', 'daily'],
     catchup=False,
