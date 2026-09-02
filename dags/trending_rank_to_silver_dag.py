@@ -1,10 +1,16 @@
 """
-Daily Lambda Bronze -> Silver ETL DAG
+트렌딩 순위 추적(trending_rank_tracker) Bronze -> Silver ETL DAG
 
-Lambda(daily_mostpopular_collector)가 S3 Bronze 버킷에 직접 저장한 원본 YouTube API 응답
-(s3://bronze/daily/dt=YYYY-MM-DD/hh=HH/data.json, videos_by_category+channels 중첩 구조)을
-읽어서 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 평면 스키마/오염 판정 기준으로
-변환한 뒤 Silver S3에 저장한다. 로컬 디스크를 거치지 않고 S3 -> S3 로 바로 처리한다.
+Lambda(trending_rank_tracker)가 S3 Bronze 버킷에 직접 저장한 원본 YouTube API 응답
+(s3://bronze/trending/dt=YYYY-MM-DD/hh=HH/data.json, videos_by_category+channels 중첩
+구조, chart=mostPopular 응답 순서 = trending_rank)을 읽어서 배치 파이프라인
+(bronze_to_silver_dag_aws.py)과 동일한 평면 스키마/오염 판정 기준으로 변환한 뒤 Silver
+S3에 저장한다. 로컬 디스크를 거치지 않고 S3 -> S3로 바로 처리한다.
+
+이 DAG가 채우는 fact_video_snapshot.trending_rank는 sql/compute_gold.sql의
+gold_video_rank_trend(순위 상승/하락, 조회수 증가율)의 유일한 데이터 소스다 -
+search_bronze_to_silver_dag.py(youtube_api_daily.py 기반)가 만드는 레코드는
+trending_rank가 항상 NULL이라 그 집계에서 자동으로 제외된다.
 """
 from datetime import datetime, timedelta, timezone
 import json
@@ -28,7 +34,7 @@ AWS_REGION = os.getenv('AWS_DEFAULT_REGION', 'us-west-2')
 AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 
-DAG_ID = 'daily_lambda_bronze_to_silver'
+DAG_ID = 'trending_rank_bronze_to_silver'
 LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     'owner': 'airflow',
@@ -37,11 +43,9 @@ DEFAULT_ARGS = {
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
-# Lambda EventBridge 스케줄(UTC 00,08,16시)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
-# SCHEDULE_INTERVAL = '10 0,8,16 * * *'
-# Lambda EventBridge 스케줄(매시간 30분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
+# Lambda EventBridge 스케줄(매시간 15분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
 # 주의: Airflow schedule_interval은 표준 5필드 cron(croniter)이라 AWS cron의 '?'/6필드 문법은 못 씀
-SCHEDULE_INTERVAL = '40 * * * *'
+SCHEDULE_INTERVAL = '25 * * * *'
 
 # ---- 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 카테고리/오염 판정 기준 ----
 CATEGORY_ID_MAP = {
@@ -129,7 +133,7 @@ def validate_flat_record(record):
 
 
 def transform_flat_to_silver(record):
-    """배치 파이프라인의 transform_to_silver()와 동일한 출력 스키마 (source 필드만 추가)"""
+    """배치 파이프라인의 transform_to_silver()와 동일한 출력 스키마 (trending_rank/source 필드만 추가)"""
     try:
         duration_seconds = parse_iso8601_duration(record.get('duration'))
         view_count = safe_int(record.get('view_count'))
@@ -187,16 +191,16 @@ def transform_flat_to_silver(record):
 
             'is_valid': validate_flat_record(record),
             'silver_transformed_at_utc': datetime.utcnow().isoformat(),
-            'source': 'daily_lambda',
+            'source': 'trending_rank_tracker',
         }
     except Exception as e:
         logger.error(f"Error transforming record: {e}")
         return None
 
 
-def flatten_daily_payload(payload):
+def flatten_trending_payload(payload):
     """Lambda가 저장한 중첩 구조(videos_by_category + channels)를
-    배치 파이프라인과 동일한 평면 레코드 리스트로 변환"""
+    배치 파이프라인과 동일한 평면 레코드 리스트로 변환. 응답 순서(enumerate)가 곧 trending_rank."""
     channels_by_id = {c.get('id'): c for c in payload.get('channels', [])}
     collected_at_utc = payload.get('collected_at_utc')
     flat_records = []
@@ -246,9 +250,9 @@ def flatten_daily_payload(payload):
 # DAG Tasks
 # ============================================================================
 
-def list_daily_objects(**context):
+def list_trending_objects(**context):
     logger.info("=" * 80)
-    logger.info("TASK 1: List daily/ objects in Bronze S3")
+    logger.info("TASK 1: List trending/ objects in Bronze S3")
     logger.info("=" * 80)
 
     if not AWS_S3_BRONZE_BUCKET:
@@ -256,26 +260,26 @@ def list_daily_objects(**context):
 
     s3 = get_s3_client()
     today = datetime.now(KST).strftime('%Y-%m-%d')
-    prefix = f'daily/dt={today}/'
+    prefix = f'trending/dt={today}/'
     response = s3.list_objects_v2(Bucket=AWS_S3_BRONZE_BUCKET, Prefix=prefix)
     keys = [obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('data.json')]
 
-    logger.info(f"Found {len(keys)} daily objects under {prefix}")
-    context['task_instance'].xcom_push(key='daily_keys', value=keys)
+    logger.info(f"Found {len(keys)} trending objects under {prefix}")
+    context['task_instance'].xcom_push(key='trending_keys', value=keys)
 
 
-def transform_daily_to_silver(**context):
+def transform_trending_to_silver(**context):
     logger.info("=" * 80)
-    logger.info("TASK 2: Transform daily Lambda data -> Silver")
+    logger.info("TASK 2: Transform trending Lambda data -> Silver")
     logger.info("=" * 80)
 
     task_instance = context['task_instance']
-    keys = task_instance.xcom_pull(task_ids='list_daily_objects', key='daily_keys')
+    keys = task_instance.xcom_pull(task_ids='list_trending_objects', key='trending_keys')
 
     stats = {'files_processed': 0, 'valid_records': 0, 'rejected_records': 0, 'uploaded': []}
 
     if not keys:
-        logger.warning("No new daily objects to process")
+        logger.warning("No new trending objects to process")
         task_instance.xcom_push(key='stats', value=stats)
         return
 
@@ -287,7 +291,7 @@ def transform_daily_to_silver(**context):
     for key in keys:
         obj = s3.get_object(Bucket=AWS_S3_BRONZE_BUCKET, Key=key)
         payload = json.loads(obj['Body'].read().decode('utf-8'))
-        flat_records = flatten_daily_payload(payload)
+        flat_records = flatten_trending_payload(payload)
 
         m = re.search(r'dt=([\d-]+)/hh=(\d+)', key)
         dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.now(KST).strftime('%Y-%m-%d'), '00')
@@ -309,7 +313,7 @@ def transform_daily_to_silver(**context):
         for (slug, bucket_key), records in grouped.items():
             prefix_root = 'youtube/silver' if bucket_key == 'valid' else 'youtube/silver-rejected'
             fname_prefix = 'silver' if bucket_key == 'valid' else 'rejected'
-            fname = f"{fname_prefix}_daily_{slug}_{dt_str}_{hh_str}.jsonl"
+            fname = f"{fname_prefix}_trending_{slug}_{dt_str}_{hh_str}.jsonl"
             s3_key = f'{prefix_root}/category={slug}/year={year}/month={month}/day={day}/{fname}'
             body = "\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n"
             s3.put_object(Bucket=AWS_S3_SILVER_BUCKET, Key=s3_key, Body=body.encode('utf-8'))
@@ -327,21 +331,21 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description='Lambda 일일 수집(daily_mostpopular_collector) 데이터를 Silver로 변환 (S3 -> S3)',
-    tags=['etl', 'silver', 'lambda', 'daily'],
+    description='Lambda 트렌딩 순위 추적(trending_rank_tracker) 데이터를 Silver로 변환 (S3 -> S3)',
+    tags=['etl', 'silver', 'lambda', 'trending', 'rank'],
     catchup=False,
     doc_md=__doc__,
 )
 
 with dag:
     list_task = PythonOperator(
-        task_id='list_daily_objects',
-        python_callable=list_daily_objects,
+        task_id='list_trending_objects',
+        python_callable=list_trending_objects,
         provide_context=True,
     )
     transform_task = PythonOperator(
-        task_id='transform_daily_to_silver',
-        python_callable=transform_daily_to_silver,
+        task_id='transform_trending_to_silver',
+        python_callable=transform_trending_to_silver,
         provide_context=True,
     )
     list_task >> transform_task

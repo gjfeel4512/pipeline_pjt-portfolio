@@ -71,11 +71,34 @@ resource "aws_cloudwatch_metric_alarm" "daily_collector_errors" {
   period              = "3600" # 1시간
   statistic           = "Sum"
   threshold           = 0
-  alarm_description   = "일일 수집 Lambda(daily_mostpopular_collector)에서 에러 발생"
+  alarm_description   = "일일 수집 Lambda(daily_search_collector)에서 에러 발생"
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-    FunctionName = aws_lambda_function.daily_mostpopular_collector.function_name
+    FunctionName = aws_lambda_function.daily_search_collector.function_name
+  }
+
+  alarm_actions = [aws_sns_topic.pipeline_alerts.arn]
+  ok_actions    = [aws_sns_topic.pipeline_alerts.arn]
+
+  tags = local.common_tags
+}
+
+# CloudWatch Alarm: 트렌딩 순위 추적 Lambda 실패 감지 (Lambda 내장 Errors 지표)
+resource "aws_cloudwatch_metric_alarm" "trending_rank_tracker_errors" {
+  alarm_name          = "${local.resource_prefix}-trending-rank-tracker-errors"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "Errors"
+  namespace           = "AWS/Lambda"
+  period              = "3600" # 1시간
+  statistic           = "Sum"
+  threshold           = 0
+  alarm_description   = "트렌딩 순위 추적 Lambda(trending_rank_tracker)에서 에러 발생"
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    FunctionName = aws_lambda_function.trending_rank_tracker.function_name
   }
 
   alarm_actions = [aws_sns_topic.pipeline_alerts.arn]

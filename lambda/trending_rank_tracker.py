@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-YouTube 일일 수집 Lambda: videos.list(chart=mostPopular) + channels.list
-- search.list를 쓰지 않는 저비용 수집 경로 (mostPopular=1 unit, channels.list=1 unit)
-- EventBridge 스케줄(하루 2~3회)에 의해 트리거됨
+트렌딩 순위 추적 Lambda: videos.list(chart=mostPopular) + channels.list
+
+신규 영상 발견(discovery)용이 아니다 - 그 역할은 youtube_api_daily.py(search.list
+기반)가 맡는다. chart=mostPopular는 "이미 뜬 영상만 보여준다"는 survivorship bias가
+있어서 발견 용도로는 부적합하기 때문(daily_mostpopular_collector.py가 이 이유로 폐기됨).
+
+이 Lambda의 목적은 딱 하나: **이미 차트 상위권에 있는 영상들의 순위/조회수 변화를
+시간에 따라 추적**하는 것. chart 응답은 순위(응답 순서 = 인기 순)가 있는 유일한
+데이터라, search.list로는 절대 못 만드는 gold_video_rank_trend(순위 상승/하락,
+조회수 증가율) 테이블의 유일한 데이터 소스다 (sql/compute_gold.sql 4번 섹션 참고,
+fact_video_snapshot.trending_rank가 NULL이 아닌 레코드만 그 집계에 들어감).
+
+- search.list(호출당 100유닛)를 안 쓰는 저비용 경로 (mostPopular=1유닛, channels.list=1유닛)
+- EventBridge 스케줄로 트리거됨 (자주 돌려도 쿼터 부담이 거의 없음)
 - 대상 카테고리(영화·애니메이션/자동차·차량/게임/인물·블로그)별 인기 영상 상위 50개씩 수집 후,
   등장한 채널 전체를 channels.list로 보강해서 하나의 Bronze JSON으로 S3에 적재
 - 표준 라이브러리(urllib)만 사용 -> googleapiclient 없이 Lambda Layer 불필요
@@ -70,7 +81,7 @@ def call_with_key_rotation(path, params):
 
 
 def fetch_most_popular(category_id):
-    """카테고리별 인기 영상 상위 MAX_RESULTS개 (다음 페이지는 안 따라감 - 일일 스냅샷 목적)."""
+    """카테고리별 인기 영상 상위 MAX_RESULTS개, 응답 순서가 곧 순위 (다음 페이지는 안 따라감 - 스냅샷 목적)."""
     return call_with_key_rotation(
         "videos",
         {
@@ -101,7 +112,7 @@ def upload_to_s3(payload, collected_at):
     # payload에 담기는 collected_at_utc 필드 자체는 그대로 UTC 값을 쓴다 (감사용 타임스탬프는 UTC 유지).
     collected_at_kst = collected_at.astimezone(KST)
     key = (
-        f"daily/dt={collected_at_kst.strftime('%Y-%m-%d')}/"
+        f"trending/dt={collected_at_kst.strftime('%Y-%m-%d')}/"
         f"hh={collected_at_kst.strftime('%H')}/data.json"
     )
     get_s3_client().put_object(
