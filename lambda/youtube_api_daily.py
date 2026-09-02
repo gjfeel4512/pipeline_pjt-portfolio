@@ -305,7 +305,8 @@ def enrich_videos(video_ids):
     for i in range(0, len(video_ids), 50):
         batch = video_ids[i:i + 50]
         data = call_with_rotation(
-            "videos", {"id": ",".join(batch), "part": "snippet,contentDetails,statistics,status"}
+            "videos",
+            {"id": ",".join(batch), "part": "snippet,contentDetails,statistics,status,topicDetails"},
         )
         details.extend(data.get("items", []))
     return details
@@ -315,7 +316,9 @@ def enrich_channels(channel_ids):
     details = []
     for i in range(0, len(channel_ids), 50):
         batch = channel_ids[i:i + 50]
-        data = call_with_rotation("channels", {"id": ",".join(batch), "part": "snippet,statistics"})
+        data = call_with_rotation(
+            "channels", {"id": ",".join(batch), "part": "snippet,statistics,contentDetails"}
+        )
         details.extend(data.get("items", []))
     return details
 
@@ -329,6 +332,14 @@ def extract_video_fact(v):
     cd = v.get("contentDetails", {})
     st = v.get("statistics", {})
     status = v.get("status", {})
+    topic = v.get("topicDetails", {})
+    thumbnails = sn.get("thumbnails", {})
+    thumbnail_url = (
+        thumbnails.get("high", {}).get("url")
+        or thumbnails.get("medium", {}).get("url")
+        or thumbnails.get("default", {}).get("url")
+        or ""
+    )
     return {
         "video_id": v.get("id", ""),
         "category_id": sn.get("categoryId", ""),
@@ -337,13 +348,18 @@ def extract_video_fact(v):
         "published_at": sn.get("publishedAt", ""),
         "tags": sn.get("tags", []),
         "live_broadcast_content": sn.get("liveBroadcastContent", ""),
+        "default_audio_language": sn.get("defaultAudioLanguage", ""),
+        "thumbnail_url": thumbnail_url,
         "view_count": st.get("viewCount"),
         "like_count": st.get("likeCount"),
         "comment_count": st.get("commentCount"),
         "duration": cd.get("duration", ""),
         "definition": cd.get("definition", ""),
         "caption": cd.get("caption", ""),
+        "has_paid_product_placement": cd.get("hasPaidProductPlacement", False),
         "privacy_status": status.get("privacyStatus", ""),
+        "made_for_kids": status.get("madeForKids"),
+        "topic_categories": topic.get("topicCategories", []),
         "channel_id": sn.get("channelId", ""),
     }
 
@@ -364,13 +380,18 @@ def build_flat_records(video_facts, channel_info):
             "tags": vf.get("tags", []),
             "matched_tags": vf.get("matched_tags", []),
             "live_broadcast_content": vf.get("live_broadcast_content", ""),
+            "default_audio_language": vf.get("default_audio_language", ""),
+            "thumbnail_url": vf.get("thumbnail_url", ""),
             "view_count": vf.get("view_count"),
             "like_count": vf.get("like_count"),
             "comment_count": vf.get("comment_count"),
             "duration": vf.get("duration", ""),
             "definition": vf.get("definition", ""),
             "caption": vf.get("caption", ""),
+            "has_paid_product_placement": vf.get("has_paid_product_placement", False),
             "privacy_status": vf.get("privacy_status", ""),
+            "made_for_kids": vf.get("made_for_kids"),
+            "topic_categories": vf.get("topic_categories", []),
             "channel_id": cid,
             "channel_name": ch.get("title", ""),
             "channel_published_at": ch.get("channel_published_at", ""),
@@ -378,6 +399,7 @@ def build_flat_records(video_facts, channel_info):
             "hidden_subscriber_count": ch.get("hidden_subscriber_count"),
             "channel_total_view_count": ch.get("channel_view_count"),
             "channel_total_video_count": ch.get("channel_video_count"),
+            "uploads_playlist_id": ch.get("uploads_playlist_id", ""),
             "collected_at_utc": collected_at,
         })
     return records
@@ -472,6 +494,7 @@ def lambda_handler(event, context):
         for c in channel_details:
             stats = c.get("statistics", {})
             sn = c.get("snippet", {})
+            cd = c.get("contentDetails", {})
             channel_info_local[c["id"]] = {
                 "title": sn.get("title", ""),
                 "channel_published_at": sn.get("publishedAt", ""),
@@ -479,6 +502,7 @@ def lambda_handler(event, context):
                 "hidden_subscriber_count": stats.get("hiddenSubscriberCount", ""),
                 "channel_view_count": stats.get("viewCount", ""),
                 "channel_video_count": stats.get("videoCount", ""),
+                "uploads_playlist_id": cd.get("relatedPlaylists", {}).get("uploads", ""),
             }
 
         records = build_flat_records(task_video_facts, channel_info_local)

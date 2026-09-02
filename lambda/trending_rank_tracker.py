@@ -85,7 +85,7 @@ def fetch_most_popular(category_id):
     return call_with_key_rotation(
         "videos",
         {
-            "part": "snippet,contentDetails,statistics,status",
+            "part": "snippet,contentDetails,statistics,status,topicDetails",
             "chart": "mostPopular",
             "videoCategoryId": category_id,
             "regionCode": REGION_CODE,
@@ -100,7 +100,7 @@ def fetch_channels(channel_ids):
     for i in range(0, len(channel_ids), 50):
         batch = channel_ids[i:i + 50]
         data = call_with_key_rotation(
-            "channels", {"part": "snippet,statistics", "id": ",".join(batch)}
+            "channels", {"part": "snippet,statistics,contentDetails", "id": ",".join(batch)}
         )
         items.extend(data.get("items", []))
         time.sleep(0.2)

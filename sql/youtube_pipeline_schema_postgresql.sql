@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS dim_channel (
     hidden_subscriber_count   BOOLEAN NOT NULL DEFAULT FALSE,
     channel_view_count        BIGINT,
     channel_video_count       INTEGER,
+    uploads_playlist_id       VARCHAR(64),  -- channels.list contentDetails.relatedPlaylists.uploads - playlistItems.list로 신규 업로드를 저비용(1유닛)으로 체크하는 데 씀
     last_collected_at_utc     TIMESTAMPTZ NOT NULL,
     created_at_utc            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at_utc            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -109,6 +110,11 @@ CREATE TABLE IF NOT EXISTS fact_video_snapshot (
     definition                      VARCHAR(10),
     caption_available               BOOLEAN,
     live_broadcast_content          VARCHAR(20) NOT NULL DEFAULT 'none',
+    default_audio_language          VARCHAR(10),
+    thumbnail_url                   TEXT,
+    made_for_kids                   BOOLEAN,
+    has_paid_product_placement      BOOLEAN NOT NULL DEFAULT FALSE,
+    topic_categories                TEXT[],
 
     view_count                      BIGINT NOT NULL,
     like_count                      BIGINT,

@@ -160,6 +160,7 @@ def transform_flat_to_silver(record):
             'trending_rank': record.get('trending_rank'),
 
             'tags': record.get('tags', []),
+            'topic_categories': record.get('topic_categories', []),
 
             'view_count': view_count,
             'like_count': like_count,
@@ -173,9 +174,13 @@ def transform_flat_to_silver(record):
             'definition': record.get('definition'),
             'is_hd': record.get('definition') == 'hd',
             'caption_available': str(record.get('caption')).lower() == 'true',
+            'has_paid_product_placement': bool(record.get('has_paid_product_placement', False)),
             'privacy_status': record.get('privacy_status'),
+            'made_for_kids': record.get('made_for_kids'),
             'live_broadcast_content': record.get('live_broadcast_content'),
             'is_live_content': record.get('live_broadcast_content') not in (None, 'none'),
+            'default_audio_language': record.get('default_audio_language') or None,
+            'thumbnail_url': record.get('thumbnail_url') or None,
 
             'published_at_utc': published_at,
             'published_at_kst': convert_to_kst(published_at),
@@ -186,6 +191,7 @@ def transform_flat_to_silver(record):
             'hidden_subscriber_count': bool(record.get('hidden_subscriber_count', False)),
             'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
             'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
+            'uploads_playlist_id': record.get('uploads_playlist_id') or None,
 
             'collected_at_utc': record.get('collected_at_utc'),
 
@@ -212,10 +218,18 @@ def flatten_trending_payload(payload):
             content_details = v.get('contentDetails', {})
             statistics = v.get('statistics', {})
             status = v.get('status', {})
+            topic_details = v.get('topicDetails', {})
+            thumbnails = snippet.get('thumbnails', {})
+            thumbnail_url = (
+                thumbnails.get('high', {}).get('url')
+                or thumbnails.get('medium', {}).get('url')
+                or thumbnails.get('default', {}).get('url')
+            )
             channel_id = snippet.get('channelId')
             channel = channels_by_id.get(channel_id, {})
             ch_snippet = channel.get('snippet', {})
             ch_statistics = channel.get('statistics', {})
+            ch_content_details = channel.get('contentDetails', {})
 
             flat_records.append({
                 'category_name': category_name,
@@ -226,14 +240,19 @@ def flatten_trending_payload(payload):
                 'description': snippet.get('description'),
                 'published_at': snippet.get('publishedAt'),
                 'tags': snippet.get('tags', []),
+                'topic_categories': topic_details.get('topicCategories', []),
                 'live_broadcast_content': snippet.get('liveBroadcastContent'),
+                'default_audio_language': snippet.get('defaultAudioLanguage'),
+                'thumbnail_url': thumbnail_url,
                 'view_count': statistics.get('viewCount'),
                 'like_count': statistics.get('likeCount'),
                 'comment_count': statistics.get('commentCount'),
                 'duration': content_details.get('duration'),
                 'definition': content_details.get('definition'),
                 'caption': content_details.get('caption'),
+                'has_paid_product_placement': content_details.get('hasPaidProductPlacement', False),
                 'privacy_status': status.get('privacyStatus'),
+                'made_for_kids': status.get('madeForKids'),
                 'channel_id': channel_id,
                 'channel_name': ch_snippet.get('title'),
                 'channel_published_at': ch_snippet.get('publishedAt'),
@@ -241,6 +260,7 @@ def flatten_trending_payload(payload):
                 'hidden_subscriber_count': ch_statistics.get('hiddenSubscriberCount', False),
                 'channel_total_view_count': ch_statistics.get('viewCount'),
                 'channel_total_video_count': ch_statistics.get('videoCount'),
+                'uploads_playlist_id': ch_content_details.get('relatedPlaylists', {}).get('uploads'),
                 'collected_at_utc': collected_at_utc,
             })
     return flat_records
