@@ -67,10 +67,11 @@ KST = timezone(timedelta(hours=9))
 
 # DAG Configuration
 DAG_ID = 'bronze_to_silver_with_s3'
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'email': ['airflow@pipeline.local'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -649,7 +650,6 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    timezone=pendulum.timezone('Asia/Seoul'),
     description='Bronze to Silver ETL with AWS S3 Integration',
     tags=['etl', 'silver', 'aws', 's3'],
     catchup=False,

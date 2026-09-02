@@ -30,10 +30,11 @@ BRONZE_DIR = Path(PIPELINE_ROOT) / Variable.get("bronze_data_dir", "outputs/bron
 SILVER_DIR = Path(PIPELINE_ROOT) / Variable.get("silver_data_dir", "outputs/silver")
 REPORT_DIR = Path(PIPELINE_ROOT) / "reports"
 
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 default_args = {
     'owner': 'data-engineering',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
@@ -43,7 +44,6 @@ dag = DAG(
     default_args=default_args,
     description='Bronze to Silver ETL Pipeline',
     schedule_interval='0 2 * * *',
-    timezone=pendulum.timezone('Asia/Seoul'),
     catchup=False,
     tags=['youtube', 'etl'],
 )

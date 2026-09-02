@@ -29,10 +29,11 @@ AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 
 DAG_ID = 'daily_lambda_bronze_to_silver'
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
@@ -326,7 +327,6 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    timezone=pendulum.timezone('Asia/Seoul'),
     description='Lambda 일일 수집(daily_mostpopular_collector) 데이터를 Silver로 변환 (S3 -> S3)',
     tags=['etl', 'silver', 'lambda', 'daily'],
     catchup=False,

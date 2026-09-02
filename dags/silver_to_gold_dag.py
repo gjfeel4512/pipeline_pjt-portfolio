@@ -22,10 +22,11 @@ from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
 DAG_ID = "silver_to_gold"
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": days_ago(1),
+    "start_date": pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
@@ -38,7 +39,6 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    timezone=pendulum.timezone('Asia/Seoul'),
     description="Silver(S3) -> PostgreSQL 적재 -> Gold 집계(median/p75)",
     tags=["etl", "gold", "postgres"],
     catchup=False,
