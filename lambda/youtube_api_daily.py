@@ -320,7 +320,13 @@ def enrich_channels(channel_ids):
     for i in range(0, len(channel_ids), 50):
         batch = channel_ids[i:i + 50]
         data = call_with_rotation(
-            "channels", {"id": ",".join(batch), "part": "snippet,statistics,contentDetails"}
+            "channels",
+            {
+                "id": ",".join(batch),
+                # topicDetails/brandingSettings는 channels.list 쿼터(1유닛)에 영향 없음 -
+                # 채널 주제·키워드는 오분류 채널 판별(특히 category_id=22) 신호로 씀
+                "part": "snippet,statistics,contentDetails,topicDetails,brandingSettings",
+            },
         )
         details.extend(data.get("items", []))
     return details
@@ -352,6 +358,7 @@ def extract_video_fact(v):
         "tags": sn.get("tags", []),
         "live_broadcast_content": sn.get("liveBroadcastContent", ""),
         "default_audio_language": sn.get("defaultAudioLanguage", ""),
+        "default_language": sn.get("defaultLanguage", ""),
         "thumbnail_url": thumbnail_url,
         "view_count": st.get("viewCount"),
         "like_count": st.get("likeCount"),
@@ -359,8 +366,12 @@ def extract_video_fact(v):
         "duration": cd.get("duration", ""),
         "definition": cd.get("definition", ""),
         "caption": cd.get("caption", ""),
+        "licensed_content": cd.get("licensedContent"),
+        "content_rating_yt": cd.get("contentRating", {}).get("ytRating", ""),
+        "region_restriction": cd.get("regionRestriction", {}),
         "has_paid_product_placement": cd.get("hasPaidProductPlacement", False),
         "privacy_status": status.get("privacyStatus", ""),
+        "license": status.get("license", ""),
         "made_for_kids": status.get("madeForKids"),
         "topic_categories": topic.get("topicCategories", []),
         "channel_id": sn.get("channelId", ""),
@@ -384,6 +395,7 @@ def build_flat_records(video_facts, channel_info):
             "matched_tags": vf.get("matched_tags", []),
             "live_broadcast_content": vf.get("live_broadcast_content", ""),
             "default_audio_language": vf.get("default_audio_language", ""),
+            "default_language": vf.get("default_language", ""),
             "thumbnail_url": vf.get("thumbnail_url", ""),
             "view_count": vf.get("view_count"),
             "like_count": vf.get("like_count"),
@@ -391,12 +403,22 @@ def build_flat_records(video_facts, channel_info):
             "duration": vf.get("duration", ""),
             "definition": vf.get("definition", ""),
             "caption": vf.get("caption", ""),
+            "licensed_content": vf.get("licensed_content"),
+            "content_rating_yt": vf.get("content_rating_yt", ""),
+            "region_restriction": vf.get("region_restriction", {}),
             "has_paid_product_placement": vf.get("has_paid_product_placement", False),
             "privacy_status": vf.get("privacy_status", ""),
+            "license": vf.get("license", ""),
             "made_for_kids": vf.get("made_for_kids"),
             "topic_categories": vf.get("topic_categories", []),
             "channel_id": cid,
             "channel_name": ch.get("title", ""),
+            "channel_description": ch.get("channel_description", ""),
+            "channel_custom_url": ch.get("channel_custom_url", ""),
+            "channel_country": ch.get("channel_country", ""),
+            "channel_thumbnail_url": ch.get("channel_thumbnail_url", ""),
+            "channel_topic_categories": ch.get("channel_topic_categories", []),
+            "channel_keywords": ch.get("channel_keywords", ""),
             "channel_published_at": ch.get("channel_published_at", ""),
             "subscriber_count": ch.get("subscriber_count"),
             "hidden_subscriber_count": ch.get("hidden_subscriber_count"),
@@ -498,9 +520,24 @@ def lambda_handler(event, context):
             stats = c.get("statistics", {})
             sn = c.get("snippet", {})
             cd = c.get("contentDetails", {})
+            topic = c.get("topicDetails", {})
+            branding_channel = c.get("brandingSettings", {}).get("channel", {})
+            ch_thumbs = sn.get("thumbnails", {})
+            ch_thumbnail_url = (
+                ch_thumbs.get("high", {}).get("url")
+                or ch_thumbs.get("medium", {}).get("url")
+                or ch_thumbs.get("default", {}).get("url")
+                or ""
+            )
             channel_info_local[c["id"]] = {
                 "title": sn.get("title", ""),
+                "channel_description": sn.get("description", ""),
+                "channel_custom_url": sn.get("customUrl", ""),
+                "channel_country": sn.get("country", ""),
                 "channel_published_at": sn.get("publishedAt", ""),
+                "channel_thumbnail_url": ch_thumbnail_url,
+                "channel_topic_categories": topic.get("topicCategories", []),
+                "channel_keywords": branding_channel.get("keywords", ""),
                 "subscriber_count": stats.get("subscriberCount", ""),
                 "hidden_subscriber_count": stats.get("hiddenSubscriberCount", ""),
                 "channel_view_count": stats.get("viewCount", ""),
