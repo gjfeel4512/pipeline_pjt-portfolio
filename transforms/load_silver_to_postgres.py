@@ -30,6 +30,16 @@ VIDEO_TYPE_MAP = {"short": "shorts", "medium": "short_form", "long": "long_form"
 DOW_KO = {1: "월", 2: "화", 3: "수", 4: "목", 5: "금", 6: "토", 7: "일"}
 
 
+def none_if_empty(value):
+    """빈 문자열("")이 timestamptz 등 타입 컬럼에 그대로 들어가 InvalidDatetimeFormat을
+    내는 것을 막기 위한 정리 함수. 값이 없거나 빈 문자열이면 None(NULL)으로 변환한다."""
+    if value is None:
+        return None
+    if isinstance(value, str) and value.strip() == "":
+        return None
+    return value
+
+
 def get_conn():
     return psycopg2.connect(
         host=os.getenv("PGHOST", "localhost"),
@@ -101,7 +111,7 @@ def prepare_row(rec):
         "video_id": rec["video_id"],
         "channel_id": rec["channel_id"],
         "category_id": str(category_id),
-        "published_at_utc": rec.get("published_at_utc"),
+        "published_at_utc": none_if_empty(rec.get("published_at_utc")),
         "published_at_kst": published_at_kst_dt,
         "published_date_kst": published_at_kst_dt.date(),
         "published_hour_kst": published_at_kst_dt.hour,
@@ -192,7 +202,7 @@ def load(records, conn):
             cur.execute(UPSERT_DIM_CHANNEL, {
                 "channel_id": row["channel_id"],
                 "channel_title": rec.get("channel_name") or row["channel_id"],
-                "channel_published_at": rec.get("channel_published_at_utc"),
+                "channel_published_at": none_if_empty(rec.get("channel_published_at_utc")),
                 "subscriber_count": rec.get("subscriber_count"),
                 "hidden_subscriber_count": bool(rec.get("hidden_subscriber_count", False)),
                 "channel_view_count": rec.get("channel_total_view_count"),
