@@ -6,8 +6,11 @@ Bronze JSONL 파일을 Kinesis Firehose로 전송 -> S3에 자동 파티셔닝 �
 """
 import json
 import os
+from datetime import datetime, timedelta, timezone
 import boto3
 from pathlib import Path
+
+KST = timezone(timedelta(hours=9))
 
 AWS_REGION = os.getenv("AWS_DEFAULT_REGION", "us-west-2")
 FIREHOSE_STREAM = os.getenv("FIREHOSE_STREAM_NAME", "goldline-dev-bronze-stream")
@@ -35,6 +38,18 @@ def push_jsonl_to_firehose(file_path: Path):
             row = json.loads(line)
             cat_id = str(row.get("category_id", ""))
             row["category"] = CATEGORY_ID_MAP.get(cat_id, "unknown")
+            # Firehose S3 prefix의 year=/month=/day=는 !{timestamp:...}를 쓰면 항상
+            # UTC 기준이라 KST와 어긋난다 - 레코드에 KST 날짜를 직접 실어서
+            # !{partitionKeyFromQuery:...}로 대체한다 (infra/firehose.tf 참고)
+            try:
+                collected_kst = datetime.fromisoformat(
+                    row.get("collected_at_utc", "").replace("Z", "+00:00")
+                ).astimezone(KST)
+            except (ValueError, AttributeError):
+                collected_kst = datetime.now(KST)
+            row["year_kst"] = collected_kst.strftime("%Y")
+            row["month_kst"] = collected_kst.strftime("%m")
+            row["day_kst"] = collected_kst.strftime("%d")
             records.append({"Data": (json.dumps(row, ensure_ascii=False) + "\n").encode("utf-8")})
 
             if len(records) == 500:  # Firehose batch 최대 500개

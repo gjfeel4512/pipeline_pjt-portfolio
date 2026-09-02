@@ -192,6 +192,7 @@ def transform_flat_to_silver(record):
             'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
             'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
             'uploads_playlist_id': record.get('uploads_playlist_id') or None,
+            'channel_thumbnail_url': record.get('channel_thumbnail_url') or None,
 
             'collected_at_utc': record.get('collected_at_utc'),
 
@@ -230,6 +231,12 @@ def flatten_trending_payload(payload):
             ch_snippet = channel.get('snippet', {})
             ch_statistics = channel.get('statistics', {})
             ch_content_details = channel.get('contentDetails', {})
+            ch_thumbnails = ch_snippet.get('thumbnails', {})
+            channel_thumbnail_url = (
+                ch_thumbnails.get('high', {}).get('url')
+                or ch_thumbnails.get('medium', {}).get('url')
+                or ch_thumbnails.get('default', {}).get('url')
+            )
 
             flat_records.append({
                 'category_name': category_name,
@@ -261,6 +268,7 @@ def flatten_trending_payload(payload):
                 'channel_total_view_count': ch_statistics.get('viewCount'),
                 'channel_total_video_count': ch_statistics.get('videoCount'),
                 'uploads_playlist_id': ch_content_details.get('relatedPlaylists', {}).get('uploads'),
+                'channel_thumbnail_url': channel_thumbnail_url,
                 'collected_at_utc': collected_at_utc,
             })
     return flat_records

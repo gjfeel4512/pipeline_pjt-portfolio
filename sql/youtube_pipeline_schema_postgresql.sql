@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS dim_channel (
     channel_view_count        BIGINT,
     channel_video_count       INTEGER,
     uploads_playlist_id       VARCHAR(64),  -- channels.list contentDetails.relatedPlaylists.uploads - playlistItems.list로 신규 업로드를 저비용(1유닛)으로 체크하는 데 씀
+    channel_thumbnail_url     TEXT,  -- channels.list snippet.thumbnails(high>medium>default 순으로 선택) - 채널 프로필 이미지
     last_collected_at_utc     TIMESTAMPTZ NOT NULL,
     created_at_utc            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at_utc            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -310,5 +311,26 @@ CREATE TABLE IF NOT EXISTS gold_new_creator_guide (
     CONSTRAINT fk_gold_creator_category FOREIGN KEY (category_id) REFERENCES dim_category(category_id),
     CONSTRAINT ck_gold_creator_sample_count CHECK (evidence_video_count >= 0)
 );
+
+-- ============================================================
+-- 6. 마이그레이션 보정: 기존 DB에 나중에 추가된 컬럼 반영
+--    CREATE TABLE IF NOT EXISTS는 이미 만들어진 테이블에는 컬럼을 추가해
+--    주지 않으므로, 이 스크립트를 재실행해도 항상 최신 스키마로 수렴하도록
+--    변경분마다 ALTER TABLE ... ADD COLUMN IF NOT EXISTS를 여기에 남긴다.
+--    (2026-09-02 17ead62: dim_channel.uploads_playlist_id,
+--     fact_video_snapshot의 default_audio_language/thumbnail_url/
+--     made_for_kids/has_paid_product_placement/topic_categories 5개 추가)
+--    (2026-09-02: dim_channel.channel_thumbnail_url 추가 - 채널 프로필 이미지)
+-- ============================================================
+ALTER TABLE dim_channel
+    ADD COLUMN IF NOT EXISTS uploads_playlist_id VARCHAR(64),
+    ADD COLUMN IF NOT EXISTS channel_thumbnail_url TEXT;
+
+ALTER TABLE fact_video_snapshot
+    ADD COLUMN IF NOT EXISTS default_audio_language     VARCHAR(10),
+    ADD COLUMN IF NOT EXISTS thumbnail_url               TEXT,
+    ADD COLUMN IF NOT EXISTS made_for_kids                BOOLEAN,
+    ADD COLUMN IF NOT EXISTS has_paid_product_placement   BOOLEAN NOT NULL DEFAULT FALSE,
+    ADD COLUMN IF NOT EXISTS topic_categories             TEXT[];
 
 COMMIT;

@@ -152,10 +152,10 @@ UPSERT_DIM_CHANNEL = """
 INSERT INTO youtube_analytics.dim_channel
     (channel_id, channel_title, channel_published_at, subscriber_count,
      hidden_subscriber_count, channel_view_count, channel_video_count, uploads_playlist_id,
-     last_collected_at_utc)
+     channel_thumbnail_url, last_collected_at_utc)
 VALUES (%(channel_id)s, %(channel_title)s, %(channel_published_at)s, %(subscriber_count)s,
         %(hidden_subscriber_count)s, %(channel_view_count)s, %(channel_video_count)s, %(uploads_playlist_id)s,
-        %(last_collected_at_utc)s)
+        %(channel_thumbnail_url)s, %(last_collected_at_utc)s)
 ON CONFLICT (channel_id) DO UPDATE SET
     channel_title = EXCLUDED.channel_title,
     subscriber_count = EXCLUDED.subscriber_count,
@@ -163,6 +163,7 @@ ON CONFLICT (channel_id) DO UPDATE SET
     channel_view_count = EXCLUDED.channel_view_count,
     channel_video_count = EXCLUDED.channel_video_count,
     uploads_playlist_id = EXCLUDED.uploads_playlist_id,
+    channel_thumbnail_url = EXCLUDED.channel_thumbnail_url,
     last_collected_at_utc = EXCLUDED.last_collected_at_utc,
     updated_at_utc = NOW()
 """
@@ -223,6 +224,7 @@ def load(records, conn):
                 "channel_view_count": rec.get("channel_total_view_count"),
                 "channel_video_count": rec.get("channel_total_video_count"),
                 "uploads_playlist_id": rec.get("uploads_playlist_id"),
+                "channel_thumbnail_url": rec.get("channel_thumbnail_url"),
                 "last_collected_at_utc": row["collected_at_utc"],
             })
 

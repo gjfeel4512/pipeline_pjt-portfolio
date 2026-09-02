@@ -190,6 +190,7 @@ def transform_to_silver(record):
             'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
             'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
             'uploads_playlist_id': record.get('uploads_playlist_id') or None,
+            'channel_thumbnail_url': record.get('channel_thumbnail_url') or None,
 
             'collected_at_utc': record.get('collected_at_utc'),
 
