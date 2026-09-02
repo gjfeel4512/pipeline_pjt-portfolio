@@ -18,6 +18,8 @@ import logging
 import os
 import re
 
+import pendulum
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
@@ -33,10 +35,11 @@ AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 
 DAG_ID = 'trending_rank_bronze_to_silver'
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
@@ -59,6 +62,9 @@ CATEGORY_NAME_MAP = {
 }
 # 22(인물·블로그)는 카테고리 미선택 시 YouTube 기본값 -> 오염 데이터로 분리 (배치 파이프라인과 동일 기준)
 CONTAMINATED_CATEGORY_IDS = {'22'}
+
+# 데이터 파티션(daily/dt=/hh=) 및 '오늘' 계산 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
 
 
 def get_s3_client():
@@ -253,7 +259,7 @@ def list_trending_objects(**context):
         raise AirflowException("AWS_S3_BRONZE_BUCKET not configured")
 
     s3 = get_s3_client()
-    today = datetime.utcnow().strftime('%Y-%m-%d')
+    today = datetime.now(KST).strftime('%Y-%m-%d')
     prefix = f'trending/dt={today}/'
     response = s3.list_objects_v2(Bucket=AWS_S3_BRONZE_BUCKET, Prefix=prefix)
     keys = [obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('data.json')]
@@ -288,7 +294,7 @@ def transform_trending_to_silver(**context):
         flat_records = flatten_trending_payload(payload)
 
         m = re.search(r'dt=([\d-]+)/hh=(\d+)', key)
-        dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.utcnow().strftime('%Y-%m-%d'), '00')
+        dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.now(KST).strftime('%Y-%m-%d'), '00')
         year, month, day = dt_str.split('-')
 
         grouped = {}

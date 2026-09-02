@@ -16,15 +16,17 @@ S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 
 """
 from datetime import timedelta
 
+import pendulum
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
 DAG_ID = "silver_to_gold"
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": days_ago(1),
+    "start_date": pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }

@@ -8,11 +8,13 @@ Architecture:
 - Storage: Local (for development) + AWS S3 (for production)
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
 import logging
 import os
+
+import pendulum
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -60,12 +62,16 @@ CATEGORY_ID_MAP = {
 # (1=영화·애니, 2=자동차·차량, 20=게임)와 분리하여 오염 데이터로 처리
 CONTAMINATED_CATEGORY_IDS = {'22'}
 
+# 이 DAG 자체의 Silver 업로드 파티션(year/month/day) 계산 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
+
 # DAG Configuration
 DAG_ID = 'bronze_to_silver_with_s3'
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'email': ['airflow@pipeline.local'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -526,9 +532,10 @@ def upload_to_s3_task(**context):
 
     try:
         s3_client = get_s3_client()
-        year = datetime.utcnow().year
-        month = datetime.utcnow().month
-        day = datetime.utcnow().day
+        now_kst = datetime.now(KST)
+        year = now_kst.year
+        month = now_kst.month
+        day = now_kst.day
 
         uploaded_files = []
 
