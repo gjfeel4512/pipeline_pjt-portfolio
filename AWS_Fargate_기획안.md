@@ -287,7 +287,6 @@ FROM raw_youtube.silver_youtube
 
 | 우선순위 | 항목 | 상태 | 대응 |
 |---------|------|------|------|
-| 🔴 **높음** | API 키 보안 | 미해결 | `youtube_api_collector.py` 32행 하드코딩 키 8개 → GitHub에 푸시됨 → **로테이션 필수** |
 | 🟡 **중간** | Postgres 스키마 | 대기 중 | DDL 실행 필요: `docker exec pipeline_postgres psql ...` |
 | 🟡 **중간** | Gold DAG 실행 | 대기 중 | `airflow dags trigger silver_to_gold` 확인 필요 |
 | 🟢 **낮음** | 스냅샷 세분화 | 미결정 | 현재 일 단위 (하루 3회 → 일일 1개 스냅샷), 시간 단위로 변경할지 검토 |
@@ -336,15 +335,4 @@ FROM raw_youtube.silver_youtube
 - **GitHub:** `https://github.com/jaeyan42/Pipeline_pjt`
 - **로컬:** `C:\Pipeline_pjt`
 
-### 팀원 & 역할
-| 이름 | 역할 | 담당 |
-|------|------|------|
-| (데이터 엔지니어) | 수집 & Airflow DAG | youtube_api_collector, Lambda |
-| 이창용 | 프론트엔드 개발 | 대시보드 설계 & 구현 |
-| (ETL 개발자) | Silver/Gold 파이프라인 | 정제 & 분석 로직 |
-
 ---
-
-**작성일:** 2026-09-02  
-**최종 업데이트:** 진행 중  
-**담당자:** Data Intelligence Platform Team
