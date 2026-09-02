@@ -1,0 +1,24 @@
+{
+  "_comment": "카테고리별 채널 후보군(pool). 추천 채널 3곳은 js/recommend.js가 구독자 대비 조회수 비율을 중앙값과 비교해서 선정합니다.",
+  "gaming": [
+    { "channel_id": "UCgl0clearplay0000001", "name": "클리어실황", "subscriber_count": 210000, "avg_views_per_video": 380000, "avg_engagement_rate": 0.048, "upload_freq_per_week": 3.5, "representative_video": { "video_id": "gV6bestscene", "title": "역대 최고 명장면 총정리", "view_count": 3120000 } },
+    { "channel_id": "UCgl0gamemate000000002", "name": "게임메이트", "subscriber_count": 340000, "avg_views_per_video": 205000, "avg_engagement_rate": 0.031, "upload_freq_per_week": 5.0, "representative_video": { "video_id": "gV2patchnot", "title": "업데이트 패치노트 완전 분석", "view_count": 205000 } },
+    { "channel_id": "UCgl0ranklab0000000003", "name": "랭크업연구소", "subscriber_count": 95000, "avg_views_per_video": 340000, "avg_engagement_rate": 0.082, "upload_freq_per_week": 2.0, "representative_video": { "video_id": "gV8rankhi", "title": "역대급 랭크 하이라이트 모음", "view_count": 2240000 } },
+    { "channel_id": "UCgl0pixelplay000000005", "name": "픽셀플레이", "subscriber_count": 120000, "avg_views_per_video": 260000, "avg_engagement_rate": 0.039, "upload_freq_per_week": 1.5, "representative_video": { "video_id": "gV7beginguide", "title": "초보자를 위한 완벽 가이드", "view_count": 1860000 } },
+    { "channel_id": "UCgl0indielover00000006", "name": "인디게임러버", "subscriber_count": 28000, "avg_views_per_video": 95000, "avg_engagement_rate": 0.071, "upload_freq_per_week": 1.0, "representative_video": { "video_id": "gV10indiecl", "title": "인디게임 숨은 명작 발굴", "view_count": 190000 } }
+  ],
+  "autos_vehicles": [
+    { "channel_id": "UCgl0carguide000000010", "name": "카가이드", "subscriber_count": 180000, "avg_views_per_video": 290000, "avg_engagement_rate": 0.034, "upload_freq_per_week": 2.5, "representative_video": { "video_id": "aV1newcar26", "title": "2026년형 신차 시승기 최초 공개", "view_count": 420000 } },
+    { "channel_id": "UCgl0autodig0000000011", "name": "오토디깅", "subscriber_count": 95000, "avg_views_per_video": 260000, "avg_engagement_rate": 0.045, "upload_freq_per_week": 2.0, "representative_video": { "video_id": "aV7fueleff", "title": "역대급 연비왕 찾기 대해부", "view_count": 1200000 } },
+    { "channel_id": "UCgl0carcheck00000012", "name": "카체크", "subscriber_count": 62000, "avg_views_per_video": 310000, "avg_engagement_rate": 0.052, "upload_freq_per_week": 1.5, "representative_video": { "video_id": "aV6usedcarchk", "title": "중고차 구매 전 필수 체크리스트", "view_count": 1850000 } },
+    { "channel_id": "UCgl0parkmaster00000013", "name": "파킹마스터", "subscriber_count": 41000, "avg_views_per_video": 220000, "avg_engagement_rate": 0.063, "upload_freq_per_week": 1.0, "representative_video": { "video_id": "aV8parktip", "title": "초보운전 필수 주차 꿀팁", "view_count": 980000 } },
+    { "channel_id": "UCgl0evlife0000000014", "name": "전기차라이프", "subscriber_count": 35000, "avg_views_per_video": 110000, "avg_engagement_rate": 0.041, "upload_freq_per_week": 1.5, "representative_video": { "video_id": "aV2evcompare", "title": "전기차 vs 내연기관 연비 끝장비교", "view_count": 310000 } }
+  ],
+  "film_animation": [
+    { "channel_id": "UCgl0moviedeep0000020", "name": "무비딥다이브", "subscriber_count": 250000, "avg_views_per_video": 460000, "avg_engagement_rate": 0.041, "upload_freq_per_week": 3.0, "representative_video": { "video_id": "fV7endingsum", "title": "결말 포함 총정리 리뷰 시리즈", "view_count": 1700000 } },
+    { "channel_id": "UCgl0scenesteal0000021", "name": "씬스틸러", "subscriber_count": 130000, "avg_views_per_video": 490000, "avg_engagement_rate": 0.058, "upload_freq_per_week": 2.5, "representative_video": { "video_id": "fV6bestline", "title": "역대 최고 명대사 모음집", "view_count": 2100000 } },
+    { "channel_id": "UCgl0animoment0000022", "name": "애니모먼트", "subscriber_count": 88000, "avg_views_per_video": 330000, "avg_engagement_rate": 0.066, "upload_freq_per_week": 1.5, "representative_video": { "video_id": "fV8animebest", "title": "레전드 애니 명장면 모음", "view_count": 1400000 } },
+    { "channel_id": "UCgl0ottexplore00000023", "name": "OTT탐험대", "subscriber_count": 54000, "avg_views_per_video": 150000, "avg_engagement_rate": 0.037, "upload_freq_per_week": 2.0, "representative_video": { "video_id": "fV1weekopen", "title": "이번 주 개봉작 몰아보기 리뷰", "view_count": 540000 } },
+    { "channel_id": "UCgl0classicmovie00024", "name": "클래식무비관", "subscriber_count": 19000, "avg_views_per_video": 88000, "avg_engagement_rate": 0.074, "upload_freq_per_week": 1.0, "representative_video": { "video_id": "fV5hiddengem", "title": "숨은 명작 재조명", "view_count": 210000 } }
+  ]
+}

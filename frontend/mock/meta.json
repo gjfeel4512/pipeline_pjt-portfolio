@@ -1,0 +1,5 @@
+{
+  "_comment": "일 단위 파이프라인이 실행될 때마다 이 파일의 last_updated / collection_window만 갱신하면 화면 상단 배지가 자동으로 최신 날짜를 보여줍니다.",
+  "last_updated": "2026-09-01T09:00:00+09:00",
+  "collection_window": "2026-09-01 ~ 2026-09-08 (수집 진행 중)"
+}
