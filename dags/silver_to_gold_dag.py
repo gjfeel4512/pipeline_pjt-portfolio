@@ -12,6 +12,7 @@ Silver -> PostgreSQL -> Gold 집계 DAG
 
 Silver 수집 DAG(daily_lambda_to_silver_dag.py, bronze_to_silver_dag_aws.py)들이
 S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 시각으로 스케줄한다.
+(daily_lambda_to_silver_dag가 매시간 40분으로 바뀜에 따라 이 DAG도 매시간 50분으로 동기화함)
 """
 from datetime import timedelta
 
@@ -27,8 +28,11 @@ DEFAULT_ARGS = {
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
+}
 # 일일 Lambda Silver DAG(UTC 00,08,16시 +10분)보다 넉넉히 늦게 실행
-SCHEDULE_INTERVAL = "30 0,8,16 * * *"
+# SCHEDULE_INTERVAL = "30 0,8,16 * * *"
+# daily_lambda_to_silver_dag(매시간 40분)보다 10분 늦게 실행
+SCHEDULE_INTERVAL = "50 * * * *"
 
 dag = DAG(
     dag_id=DAG_ID,

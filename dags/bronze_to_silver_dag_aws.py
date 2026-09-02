@@ -73,7 +73,8 @@ DEFAULT_ARGS = {
     'retry_delay': timedelta(minutes=5),
 }
 
-SCHEDULE_INTERVAL = '0 2 * * *'  # Daily at 02:00 KST
+# SCHEDULE_INTERVAL = '0 2 * * *'  # Daily at 02:00 KST
+SCHEDULE_INTERVAL = '40 * * * *'  # 임시
 
 # ============================================================================
 # AWS Helper Functions

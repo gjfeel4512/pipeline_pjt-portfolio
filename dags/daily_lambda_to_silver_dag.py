@@ -35,7 +35,10 @@ DEFAULT_ARGS = {
     'retry_delay': timedelta(minutes=5),
 }
 # Lambda EventBridge 스케줄(UTC 00,08,16시)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
-SCHEDULE_INTERVAL = '10 0,8,16 * * *'
+# SCHEDULE_INTERVAL = '10 0,8,16 * * *'
+# Lambda EventBridge 스케줄(매시간 30분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
+# 주의: Airflow schedule_interval은 표준 5필드 cron(croniter)이라 AWS cron의 '?'/6필드 문법은 못 씀
+SCHEDULE_INTERVAL = '40 * * * *'
 
 # ---- 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 카테고리/오염 판정 기준 ----
 CATEGORY_ID_MAP = {
