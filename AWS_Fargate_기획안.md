@@ -325,12 +325,6 @@ FROM raw_youtube.silver_youtube
 
 ---
 
-## 🔗 연결된 리소스
-
-### 문서
-- [진행 상태 리포트](./pipeline_project_status_2026-09-02.md)
-- [데이터 분석 보고서](./pipeline_project_analysis.md)
-
 ### 저장소
 - **GitHub:** `https://github.com/jaeyan42/Pipeline_pjt`
 - **로컬:** `C:\Pipeline_pjt`
