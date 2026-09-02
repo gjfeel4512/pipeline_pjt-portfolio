@@ -71,11 +71,11 @@ resource "aws_cloudwatch_metric_alarm" "daily_collector_errors" {
   period              = "3600" # 1시간
   statistic           = "Sum"
   threshold           = 0
-  alarm_description   = "일일 수집 Lambda(daily_mostpopular_collector)에서 에러 발생"
+  alarm_description   = "일일 수집 Lambda(daily_search_collector)에서 에러 발생"
   treat_missing_data  = "notBreaching"
 
   dimensions = {
-    FunctionName = aws_lambda_function.daily_mostpopular_collector.function_name
+    FunctionName = aws_lambda_function.daily_search_collector.function_name
   }
 
   alarm_actions = [aws_sns_topic.pipeline_alerts.arn]

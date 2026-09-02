@@ -1,10 +1,16 @@
 """
-Daily Lambda Bronze -> Silver ETL DAG
+Search 기반 일일 수집 Lambda(daily_search_collector, lambda/youtube_api_daily.py) Bronze -> Silver DAG
 
-Lambda(daily_mostpopular_collector)가 S3 Bronze 버킷에 직접 저장한 원본 YouTube API 응답
-(s3://bronze/daily/dt=YYYY-MM-DD/hh=HH/data.json, videos_by_category+channels 중첩 구조)을
-읽어서 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 평면 스키마/오염 판정 기준으로
-변환한 뒤 Silver S3에 저장한다. 로컬 디스크를 거치지 않고 S3 -> S3 로 바로 처리한다.
+Lambda가 S3 Bronze 버킷에 직접 저장한 평면(join된) JSON Lines
+(s3://bronze/bronze/search/category=<slug>/year=Y/month=M/day=D/<slug>_<run_date>_<HHMMSS>.jsonl)
+을 읽어서, 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 변환/오염 판정 기준으로
+Silver S3에 저장한다. 로컬 디스크를 거치지 않고 S3 -> S3로 바로 처리한다.
+
+Bronze 레코드가 이미 search()+videos.list+channels.list를 join한 평면 구조라
+(daily_mostpopular_collector.py의 중첩 videos_by_category/channels 구조와 다름),
+변환 함수는 bronze_to_silver_dag_aws.py의 transform_to_silver()/validate_record()와
+필드 매핑이 동일 - 그 로직을 그대로 재사용한다(trending_rank 개념 없음: search.list는
+mostPopular 같은 순위 데이터가 아니라 order=date 결과라 순위가 의미 없음).
 """
 from datetime import datetime, timedelta, timezone
 import json
@@ -26,7 +32,7 @@ AWS_REGION = os.getenv('AWS_DEFAULT_REGION', 'us-west-2')
 AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 
-DAG_ID = 'daily_lambda_bronze_to_silver'
+DAG_ID = 'search_bronze_to_silver'
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -34,11 +40,12 @@ DEFAULT_ARGS = {
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
-# Lambda EventBridge 스케줄(UTC 00,08,16시)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
-# SCHEDULE_INTERVAL = '10 0,8,16 * * *'
 # Lambda EventBridge 스케줄(매시간 30분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
 # 주의: Airflow schedule_interval은 표준 5필드 cron(croniter)이라 AWS cron의 '?'/6필드 문법은 못 씀
 SCHEDULE_INTERVAL = '40 * * * *'
+
+# lambda/youtube_api_daily.py의 CATEGORY_SLUGS와 동일
+CATEGORY_SLUGS = ['film_animation', 'autos_vehicles', 'gaming', 'people_blogs']
 
 # ---- 배치 파이프라인(bronze_to_silver_dag_aws.py)과 동일한 카테고리/오염 판정 기준 ----
 CATEGORY_ID_MAP = {
@@ -47,13 +54,9 @@ CATEGORY_ID_MAP = {
     '20': 'gaming',
     '22': 'people_blogs',
 }
-CATEGORY_NAME_MAP = {
-    '1':  '영화_애니메이션',
-    '2':  '자동차_차량',
-    '20': '게임',
-    '22': '인물_블로그',
-}
-# 22(인물·블로그)는 카테고리 미선택 시 YouTube 기본값 -> 오염 데이터로 분리 (배치 파이프라인과 동일 기준)
+# 22(인물·블로그)는 lambda/youtube_api_daily.py에서도 "실제 브이로그 추적이 아니라 다른
+# 카테고리로 오분류된 리뷰어를 잡아내는 용도"로만 최소 수집함 - 정상 분석 대상이 아니므로
+# 배치 파이프라인과 동일하게 오염 데이터로 분리
 CONTAMINATED_CATEGORY_IDS = {'22'}
 
 
@@ -105,7 +108,7 @@ def convert_to_kst(utc_datetime_str):
         return utc_datetime_str
 
 
-def validate_flat_record(record):
+def validate_record(record):
     """배치 파이프라인의 validate_record()와 동일한 기준"""
     required_fields = ['video_id', 'channel_id', 'published_at', 'title']
     if not all(record.get(f) not in (None, '') for f in required_fields):
@@ -122,7 +125,7 @@ def validate_flat_record(record):
     return True
 
 
-def transform_flat_to_silver(record):
+def transform_to_silver(record):
     """배치 파이프라인의 transform_to_silver()와 동일한 출력 스키마 (source 필드만 추가)"""
     try:
         duration_seconds = parse_iso8601_duration(record.get('duration'))
@@ -147,9 +150,9 @@ def transform_flat_to_silver(record):
             'category_id': safe_int(category_id) if category_id else None,
             'category_name': record.get('category_name'),
             'category_slug': CATEGORY_ID_MAP.get(category_id, 'unknown'),
-            'trending_rank': record.get('trending_rank'),
 
             'tags': record.get('tags', []),
+            'matched_tags': record.get('matched_tags', []),
 
             'view_count': view_count,
             'like_count': like_count,
@@ -179,97 +182,53 @@ def transform_flat_to_silver(record):
 
             'collected_at_utc': record.get('collected_at_utc'),
 
-            'is_valid': validate_flat_record(record),
+            'is_valid': validate_record(record),
             'silver_transformed_at_utc': datetime.utcnow().isoformat(),
-            'source': 'daily_lambda',
+            'source': 'daily_search_collector',
         }
     except Exception as e:
         logger.error(f"Error transforming record: {e}")
         return None
 
 
-def flatten_daily_payload(payload):
-    """Lambda가 저장한 중첩 구조(videos_by_category + channels)를
-    배치 파이프라인과 동일한 평면 레코드 리스트로 변환"""
-    channels_by_id = {c.get('id'): c for c in payload.get('channels', [])}
-    collected_at_utc = payload.get('collected_at_utc')
-    flat_records = []
-
-    for category_id, videos in payload.get('videos_by_category', {}).items():
-        category_name = CATEGORY_NAME_MAP.get(str(category_id), 'unknown')
-        for rank, v in enumerate(videos, start=1):
-            snippet = v.get('snippet', {})
-            content_details = v.get('contentDetails', {})
-            statistics = v.get('statistics', {})
-            status = v.get('status', {})
-            channel_id = snippet.get('channelId')
-            channel = channels_by_id.get(channel_id, {})
-            ch_snippet = channel.get('snippet', {})
-            ch_statistics = channel.get('statistics', {})
-
-            flat_records.append({
-                'category_name': category_name,
-                'category_id': category_id,
-                'trending_rank': rank,
-                'video_id': v.get('id'),
-                'title': snippet.get('title'),
-                'description': snippet.get('description'),
-                'published_at': snippet.get('publishedAt'),
-                'tags': snippet.get('tags', []),
-                'live_broadcast_content': snippet.get('liveBroadcastContent'),
-                'view_count': statistics.get('viewCount'),
-                'like_count': statistics.get('likeCount'),
-                'comment_count': statistics.get('commentCount'),
-                'duration': content_details.get('duration'),
-                'definition': content_details.get('definition'),
-                'caption': content_details.get('caption'),
-                'privacy_status': status.get('privacyStatus'),
-                'channel_id': channel_id,
-                'channel_name': ch_snippet.get('title'),
-                'channel_published_at': ch_snippet.get('publishedAt'),
-                'subscriber_count': ch_statistics.get('subscriberCount'),
-                'hidden_subscriber_count': ch_statistics.get('hiddenSubscriberCount', False),
-                'channel_total_view_count': ch_statistics.get('viewCount'),
-                'channel_total_video_count': ch_statistics.get('videoCount'),
-                'collected_at_utc': collected_at_utc,
-            })
-    return flat_records
-
-
 # ============================================================================
 # DAG Tasks
 # ============================================================================
 
-def list_daily_objects(**context):
+def list_bronze_search_objects(**context):
     logger.info("=" * 80)
-    logger.info("TASK 1: List daily/ objects in Bronze S3")
+    logger.info("TASK 1: List bronze/search/ objects in Bronze S3 (오늘 날짜 파티션)")
     logger.info("=" * 80)
 
     if not AWS_S3_BRONZE_BUCKET:
         raise AirflowException("AWS_S3_BRONZE_BUCKET not configured")
 
     s3 = get_s3_client()
-    today = datetime.utcnow().strftime('%Y-%m-%d')
-    prefix = f'daily/dt={today}/'
-    response = s3.list_objects_v2(Bucket=AWS_S3_BRONZE_BUCKET, Prefix=prefix)
-    keys = [obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('data.json')]
+    today = datetime.utcnow()
+    year, month, day = today.strftime('%Y'), today.strftime('%m'), today.strftime('%d')
 
-    logger.info(f"Found {len(keys)} daily objects under {prefix}")
-    context['task_instance'].xcom_push(key='daily_keys', value=keys)
+    keys = []
+    for slug in CATEGORY_SLUGS:
+        prefix = f'bronze/search/category={slug}/year={year}/month={month}/day={day}/'
+        response = s3.list_objects_v2(Bucket=AWS_S3_BRONZE_BUCKET, Prefix=prefix)
+        keys.extend(obj['Key'] for obj in response.get('Contents', []) if obj['Key'].endswith('.jsonl'))
+
+    logger.info(f"Found {len(keys)} bronze/search objects for {year}-{month}-{day}")
+    context['task_instance'].xcom_push(key='bronze_keys', value=keys)
 
 
-def transform_daily_to_silver(**context):
+def transform_search_to_silver(**context):
     logger.info("=" * 80)
-    logger.info("TASK 2: Transform daily Lambda data -> Silver")
+    logger.info("TASK 2: Transform search Bronze data -> Silver")
     logger.info("=" * 80)
 
     task_instance = context['task_instance']
-    keys = task_instance.xcom_pull(task_ids='list_daily_objects', key='daily_keys')
+    keys = task_instance.xcom_pull(task_ids='list_bronze_search_objects', key='bronze_keys')
 
     stats = {'files_processed': 0, 'valid_records': 0, 'rejected_records': 0, 'uploaded': []}
 
     if not keys:
-        logger.warning("No new daily objects to process")
+        logger.warning("No new bronze/search objects to process")
         task_instance.xcom_push(key='stats', value=stats)
         return
 
@@ -280,30 +239,39 @@ def transform_daily_to_silver(**context):
 
     for key in keys:
         obj = s3.get_object(Bucket=AWS_S3_BRONZE_BUCKET, Key=key)
-        payload = json.loads(obj['Body'].read().decode('utf-8'))
-        flat_records = flatten_daily_payload(payload)
+        lines = obj['Body'].read().decode('utf-8').splitlines()
 
-        m = re.search(r'dt=([\d-]+)/hh=(\d+)', key)
-        dt_str, hh_str = (m.group(1), m.group(2)) if m else (datetime.utcnow().strftime('%Y-%m-%d'), '00')
-        year, month, day = dt_str.split('-')
+        m = re.search(r'category=([^/]+)/year=(\d+)/month=(\d+)/day=(\d+)/', key)
+        slug, year, month, day = m.groups() if m else ('unknown', '0000', '00', '00')
+        fname_suffix = os.path.basename(key)[:-len('.jsonl')]
 
-        grouped = {}
-        for rec in flat_records:
-            silver = transform_flat_to_silver(rec)
+        valid_records, rejected_records = [], []
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError as e:
+                logger.warning(f"Invalid JSON in {key}: {e}")
+                continue
+            silver = transform_to_silver(record)
             if not silver:
                 continue
-            slug = silver['category_slug']
-            bucket_key = 'valid' if silver['is_valid'] else 'rejected'
-            grouped.setdefault((slug, bucket_key), []).append(silver)
             if silver['is_valid']:
+                valid_records.append(silver)
                 stats['valid_records'] += 1
             else:
+                rejected_records.append(silver)
                 stats['rejected_records'] += 1
 
-        for (slug, bucket_key), records in grouped.items():
-            prefix_root = 'youtube/silver' if bucket_key == 'valid' else 'youtube/silver-rejected'
-            fname_prefix = 'silver' if bucket_key == 'valid' else 'rejected'
-            fname = f"{fname_prefix}_daily_{slug}_{dt_str}_{hh_str}.jsonl"
+        for records, prefix_root, fname_prefix in (
+            (valid_records, 'youtube/silver', 'silver'),
+            (rejected_records, 'youtube/silver-rejected', 'rejected'),
+        ):
+            if not records:
+                continue
+            fname = f"{fname_prefix}_{fname_suffix}.jsonl"
             s3_key = f'{prefix_root}/category={slug}/year={year}/month={month}/day={day}/{fname}'
             body = "\n".join(json.dumps(r, ensure_ascii=False) for r in records) + "\n"
             s3.put_object(Bucket=AWS_S3_SILVER_BUCKET, Key=s3_key, Body=body.encode('utf-8'))
@@ -321,21 +289,21 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description='Lambda 일일 수집(daily_mostpopular_collector) 데이터를 Silver로 변환 (S3 -> S3)',
-    tags=['etl', 'silver', 'lambda', 'daily'],
+    description='Lambda 일일 수집(daily_search_collector, search.list 기반) 데이터를 Silver로 변환 (S3 -> S3)',
+    tags=['etl', 'silver', 'lambda', 'daily', 'search'],
     catchup=False,
     doc_md=__doc__,
 )
 
 with dag:
     list_task = PythonOperator(
-        task_id='list_daily_objects',
-        python_callable=list_daily_objects,
+        task_id='list_bronze_search_objects',
+        python_callable=list_bronze_search_objects,
         provide_context=True,
     )
     transform_task = PythonOperator(
-        task_id='transform_daily_to_silver',
-        python_callable=transform_daily_to_silver,
+        task_id='transform_search_to_silver',
+        python_callable=transform_search_to_silver,
         provide_context=True,
     )
     list_task >> transform_task
