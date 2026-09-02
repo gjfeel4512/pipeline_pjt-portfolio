@@ -28,7 +28,6 @@ DEFAULT_ARGS = {
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
 }
-}
 # 일일 Lambda Silver DAG(UTC 00,08,16시 +10분)보다 넉넉히 늦게 실행
 # SCHEDULE_INTERVAL = "30 0,8,16 * * *"
 # daily_lambda_to_silver_dag(매시간 40분)보다 10분 늦게 실행
