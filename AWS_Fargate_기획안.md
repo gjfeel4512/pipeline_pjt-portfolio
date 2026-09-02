@@ -1,113 +1,350 @@
-# YouTube 데이터 파이프라인 로그 생성기 — AWS Fargate 도입 기획안
+# Pipeline Project: YouTube 데이터 수집 및 ETL 파이프라인
 
-**프로젝트명**: Pipeline_pjt (YouTube 데이터 수집·ETL 파이프라인)
-**작성일**: 2026-09-01
-**작성 목적**: 로그 생성기 실행 환경으로 AWS Fargate를 선택한 근거를 예산·비용 비교 관점에서 정리 (수업 과제 제출용)
+## 📋 프로젝트 개요
 
----
+**프로젝트명:** Pipeline_pjt (YouTube Data Collection & ETL)  
+**경로:** `C:\Pipeline_pjt`  
+**상태:** 진행 중 (Bronze 완료, Silver/Gold 진행 중)
 
-## 1. 개요
+### 🎯 목표
 
-본 프로젝트는 이커머스·금융·스마트팩토리·게임 4개 도메인의 합성(synthetic) 서비스 로그를 생성해 S3/CloudWatch에 적재하고, 이후 ETL 과정을 거쳐 Bronze → Silver → Gold 레이어로 정제하는 데이터 파이프라인이다. 로그 생성기(Python, Faker 기반)는 EC2 서버를 직접 운영하지 않고 **AWS Fargate(ECS)** 위에서 컨테이너로 실행하는 것을 기본 설계로 채택했다. 본 문서는 이 선택의 근거를 같은 서버리스 계열의 대안인 **AWS Lambda**와 비용·구조 양 측면에서 비교하여 정리한다.
+YouTube의 트렌드 영상 데이터를 **정기적으로 수집**하고, **품질 검증**을 거쳐 **분석 가능한 형태**로 제공하는 자동화된 데이터 파이프라인 구축.
 
-> **가격 산정 기준**: 아래 단가는 2026-09-01 기준 AWS 공식 가격 페이지(us-east-1 기준, us-west-2·us-east-2와 표준 요금이 동일한 "프라이머리 리전" 그룹에 속함)를 조회한 값이다. 실제 청구액은 리전·시점에 따라 달라질 수 있으므로, 배포 전 [AWS Pricing Calculator](https://calculator.aws)로 최종 확인을 권장한다.
-
----
-
-## 2. 왜 EC2가 아닌가
-
-| 항목 | EC2 상시 운영 | 서버리스(Fargate/Lambda) |
-|---|---|---|
-| 인스턴스 관리 | 직접 패치·모니터링 필요 | AWS가 관리 |
-| 유휴 비용 | 로그 생성기가 안 돌아도 과금 | 실행한 만큼만 과금 |
-| 최소 월 비용(t3.small 상시 운영 기준) | 약 **$14.98/월** ($0.0208/hr × 720hr) | 사용 패턴에 따라 $0 ~ 수 달러 |
-
-본 프로젝트의 로그 생성기는 "1회성 실행, 상시 운영 아님"이 설계 전제이므로, EC2 상시 운영은 유휴 시간 대부분을 낭비하는 구조다. 따라서 비교 대상은 EC2가 아니라 **Fargate vs Lambda**로 좁혀서 검토한다.
+- **데이터 수집 자동화**: Lambda + Airflow 기반 정기 수집 (일 3회)
+- **데이터 품질 관리**: 정제, 검증, 이상치 탐지 (Silver Layer)
+- **분석 준비 완료**: 비즈니스 로직 적용, 통계 계산 (Gold Layer)
+- **의사결정 지원**: BI 대시보드 및 인사이트 제공
 
 ---
 
-## 3. Fargate vs Lambda 비교
+## 📊 핵심 지표
 
-### 3-1. 구조적 차이 (비용에 선행하는 제약 조건)
-
-| 항목 | AWS Fargate | AWS Lambda |
-|---|---|---|
-| 최대 실행 시간 | **제한 없음** (Task가 끝날 때까지) | **15분(900초) 하드 리밋** |
-| 실행 환경 | Docker 이미지 그대로 실행 (로컬 `run-local.bat` ↔ 클라우드 `run-generator.bat` 동일 이미지) | Lambda 핸들러 패턴으로 재작성 필요, 패키징 용량 제한(50MB 압축/250MB 압축해제) |
-| 리소스 제어 | vCPU/메모리를 독립적으로 지정 가능 (예: 0.25vCPU + 0.5GB) | 메모리 설정에 vCPU가 비례 연동(약 1,769MB = 1vCPU), 세밀한 조정 어려움 |
-| 콜드 스타트 | 상대적으로 김(수 초~수십 초, 로그 생성 배치엔 무관) | 짧음(수백 ms), 빈번한 짧은 호출에 유리 |
-| 적합한 워크로드 | **장시간 지속 실행, 상태 유지가 필요한 배치** — 본 프로젝트의 로그 생성기 | **짧고 이벤트 기반인 작업** — 본 프로젝트의 일일 인기 동영상 수집기(Lambda로 이미 구현) |
-
-로그 생성기는 `DURATION`(초)을 사용자가 지정해 수십 분~수 시간 단위로 실행할 수 있어야 하는데(`run-generator.bat` 옵션), Lambda의 15분 제한에 걸리면 아예 실행이 불가능해지는 경우가 생긴다. 이는 비용 이전에 **구조적으로 Fargate가 필수인 이유**다.
-
-### 3-2. 컴퓨팅 단가 비교 (동일 규모 기준)
-
-로그 생성기를 **0.25 vCPU / 0.5GB 메모리**(Fargate 최소 규격, Faker 기반 경량 워크로드에 충분)로 가정하고, Lambda도 동일 메모리(0.5GB)로 맞춰 비교한다.
-
-| 항목 | Fargate (x86) | Lambda (0.5GB 메모리) |
-|---|---|---|
-| 단가 | vCPU $0.04048/hr + 메모리 $0.004445/GB·hr | $0.0000166667/GB-초 |
-| 0.25vCPU+0.5GB, 1시간 실행 비용 | 0.25×$0.04048 + 0.5×$0.004445 = **$0.01234** | 0.5GB × 3,600초 × $0.0000166667 = **$0.03000** |
-| 무료 티어 | **없음** | 월 400,000 GB-초 + 100만 건 요청 무료 |
-
-동일 조건이면 **Fargate가 시간당 약 2.4배 저렴**하다(Lambda는 실행 시간에 정비례해 과금되고, 대기·초기화 오버헤드가 상대적으로 크기 때문). 다만 Lambda는 무료 티어가 있어, **월 사용량이 400,000 GB-초(0.5GB 기준 약 222시간) 이내면 Lambda가 오히려 무료**다.
-
-### 3-3. 손익분기 판단
-
-- 월 누적 실행 시간이 약 **222시간 미만**이고 1회 실행이 15분을 넘지 않는다 → Lambda 무료 티어 안에서 해결 가능, Lambda가 유리
-- 1회 실행이 **15분을 넘거나**, 월 누적 실행이 그 이상으로 늘어난다 → Fargate가 구조적으로 필요하며 비용도 더 저렴
-
-본 프로젝트는 로그 생성기가 최대 수 시간 단위로 실행될 수 있어 두 조건 모두에서 **Fargate가 합리적 선택**이다. 반대로 하루 3회, 수십 초 내외로 끝나는 일일 인기 동영상 수집기는 무료 티어 안에 충분히 들어오므로 **Lambda로 구현**했다(실제로 Lambda 무료 티어 내에서 $0으로 운영 중).
-
-> 정리: 이 프로젝트는 Fargate와 Lambda를 "택일"하지 않고, **작업 특성에 맞춰 혼용**하는 것이 최적 설계다. 장시간·배치성 로그 생성 → Fargate, 짧고 반복적인 API 수집 → Lambda.
+| 항목 | 내용 |
+|------|------|
+| **대상 카테고리** | 영화·애니메이션, 자동차·차량, 게임, 인물·블로그 (4개) |
+| **수집 기간** | 2025년 9월 ~ 2026년 8월 (1년) |
+| **데이터 규모** | Bronze 77 MB, 822개 원본 파일 |
+| **수집 방식** | YouTube Data API v3 (Search, Videos, Channels) |
+| **업데이트 주기** | 일 3회 (EventBridge 트리거) |
+| **팀 구성** | 데이터 엔지니어(수집), ETL 개발자(파이프라인), 프론트엔드(대시보드) |
 
 ---
 
-## 4. 전체 파이프라인 월간 예상 비용
+## 🏗️ 데이터 흐름 (ELT 아키텍처)
 
-아래는 수업 프로젝트 규모(하루 1회, 30분 로그 생성 실행, 평균 5 RPS 가정 → 월 약 27만 건, ~0.4GB 원본 데이터)를 전제로 한 추정치다.
-
-| 항목 | 산정 근거 | 월 예상 비용 |
-|---|---|---|
-| Fargate (로그 생성기) | 0.25vCPU+0.5GB × 하루 30분 × 30일 | 약 **$0.19** |
-| Lambda (일일 수집기) | 하루 3회 × 수십 초, 256~512MB | 무료 티어 내 **$0** |
-| Kinesis Data Firehose | $0.029/GB, 레코드 5KB 단위 반올림 과금 → 실제 0.4GB가 청구상 약 1.3GB로 반올림 | 약 **$0.04** |
-| S3 (Bronze/Silver/Gold 저장) | Standard 스토리지 약 $0.023/GB-월, 월 누적 1GB 미만 | 약 **$0.02** |
-| Glue Data Catalog | 테이블·파티션 수가 월 100만 오브젝트 무료 한도 내 | **$0** (무료 티어) |
-| CloudWatch Logs | 무료 티어 5GB/월 이내로 예상 | **$0** (무료 티어) |
-| ECR (이미지 저장) | 이미지 1개 약 300MB × $0.10/GB-월 | 약 **$0.03** |
-| **합계 (개발/수업 규모)** | | **약 $0.3~1/월** |
-
-수업 프로젝트 규모에서는 서버리스 조합의 총비용이 **월 1달러 미만**으로, EC2 상시 운영(약 $15/월~) 대비 압도적으로 저렴하다는 설계 목표("비용 가장 저렴")가 실제 단가로도 뒷받침된다.
-
-> 데이터량이 커지는 실제 서비스 단계(4챕터: Kafka/Spark 확장)로 가면 Firehose·S3·Glue 비용이 데이터량에 비례해 커지므로, 이 표는 어디까지나 현재 수업 프로젝트 규모의 추정치이며 별도 재산정이 필요하다.
+```
+┌─────────────────┐
+│ YouTube API     │
+│ (Search, Video, │
+│  Channels)      │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│ EXTRACT (추출)                          │
+├─────────────────────────────────────────┤
+│ • Lambda (일 3회) - mostPopular         │
+│ • Collector (1회성) - 1년치 백필        │
+│ API 키 8개 자동 순환, 할당량 관리       │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│ LOAD (적재) - Bronze Layer              │
+├─────────────────────────────────────────┤
+│ S3 경로:                                 │
+│ ├─ bronze_collect/ (API 원본 JSON)     │
+│ └─ bronze_merged/ (카테고리별 JSONL)    │
+│                                         │
+│ 특징: 검증/가공 전 원본 그대로 저장     │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│ TRANSFORM (변환) - Silver Layer         │
+├─────────────────────────────────────────┤
+│ • 데이터 정제 (null, 타입 변환)         │
+│ • 파생 필드 계산 (duration_seconds,    │
+│   video_type, published_kst 등)        │
+│ • 이상치 감지 및 필터링                 │
+│ • 검증 플래그 추가 (is_valid)           │
+│                                         │
+│ 저장소: Postgres (raw_youtube 스키마)   │
+│ 파일: S3 Parquet (파티션: 수집일자)    │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│ ANALYZE (분석) - Gold Layer             │
+├─────────────────────────────────────────┤
+│ 비즈니스 로직 적용:                      │
+│ • gold_category_benchmark (카테고리별)  │
+│ • gold_upload_strategy (업로드 전략)    │
+│ • gold_video_rank_trend (순위 변동)     │
+│ • gold_channel_insights (채널 인사이트) │
+│                                         │
+│ 도구: Postgres + Glue + Athena          │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│ 시각화 & 분석                            │
+├─────────────────────────────────────────┤
+│ • 대시보드 (프론트엔드)                  │
+│ • SQL 조회 (Athena)                     │
+│ • BI 도구 연동 (선택)                    │
+└─────────────────────────────────────────┘
+```
 
 ---
 
-## 5. 리스크 및 확장 시 고려사항
+## 🛠️ 기술 스택
 
-- **Firehose 최소 과금 단위(5KB/레코드)**: 로그 1건이 5KB보다 작으면 과금상 반올림되어 손해이므로, 배치 크기를 키우거나(Aggregation) 레코드를 묶어 전송하는 최적화가 향후 비용 절감 포인트가 될 수 있다.
-- **Fargate 무료 티어 부재**: 사용량이 아주 적어도 최소한의 과금이 발생한다. 개발 단계에서는 로컬(`run-local.bat`)로 먼저 검증 후 클라우드에서 최소 횟수만 실행하는 것이 비용 관리에 유리하다.
-- **CloudWatch Logs 무료 티어 초과 리스크**: 로그 레벨을 DEBUG로 켜두면 5GB 무료 한도를 빠르게 소진할 수 있어, 운영 환경에서는 로그 레벨과 보존 기간(`log_retention_days`)을 조정해야 한다.
-- **리전별 단가 차이**: 본 문서의 단가는 us-east-1/us-west-2 표준 리전 기준이며, 실제 배포 리전이 달라지면(예: 서울 ap-northeast-2) 단가가 10~20% 높아질 수 있어 최종 배포 전 재확인이 필요하다.
+### 데이터 수집 계층 (Extract)
+
+| 구성요소 | 역할 | 특징 |
+|---------|------|------|
+| **Lambda** | 정기 수집 (일 3회) | EventBridge 트리거, 상시 운영 |
+| **Python Collector** | 초기 1년치 백필 | 1회성, 할당량 최적화 |
+| **YouTube Data API v3** | 데이터 소스 | 일 10,000 할당량 제한 |
+| **API 키 순환** | 할당량 관리 | 8개 키 자동 전환 |
+
+### 데이터 저장소 (Load / Transform)
+
+| 저장소 | 계층 | 용도 | 파일 크기 |
+|--------|------|------|----------|
+| **S3** | Bronze | API 원본 JSON 보존 | 77 MB |
+| **S3 + Parquet** | Silver | 정제 데이터 저장 | ~15 MB (예상) |
+| **Postgres** | Raw/Gold | 변환 및 분석 데이터 | 인메모리 |
+| **Glue + Athena** | Gold | SQL 조회 및 분석 | 메타데이터 기반 |
+
+### 오케스트레이션 (Workflow)
+
+| 도구 | 역할 | 구성 |
+|------|------|------|
+| **Airflow** | DAG 스케줄링 | LocalExecutor, 로컬 Docker |
+| **EventBridge** | Lambda 트리거 | 일 3회 정기 실행 |
+| **Bash Operator** | 작업 실행 | 수집 → 정제 → 적재 → 분석 |
+
+### 프론트엔드 (Visualization)
+
+| 파일 | 역할 |
+|------|------|
+| **index.html** | 4탭 대시보드 (홈/추천채널/업로드가이드/카테고리트렌드) |
+| **app.js** | 탭 전환, 필터 로직 |
+| **styles.css** | 카드, 배지, 히트맵, 차트 스타일 |
+| **mock-data.js** | 하드코딩 데이터 (API 연동 준비) |
 
 ---
 
-## 6. 결론 및 권고
+## 📁 프로젝트 구조
 
-1. 로그 생성기는 **15분 실행 제한이 없고, 동일 규모 기준 시간당 컴퓨팅 단가가 더 저렴한 Fargate**를 유지한다.
-2. 짧고 이벤트성인 작업(일일 데이터 수집)은 **Lambda 무료 티어**를 계속 활용해 비용을 0에 가깝게 유지한다.
-3. 현재 수업 프로젝트 규모의 전체 AWS 예상 비용은 **월 1달러 미만**으로, EC2 상시 운영 대비 90% 이상 절감되는 구조다.
-4. 데이터 규모가 커지는 다음 단계(Kafka/Spark 확장)에서는 본 문서의 가정치를 실측 데이터로 재산정할 것을 권고한다.
+```
+Pipeline_pjt/
+├── youtube_api_collector.py      # 1년치 백필 수집기
+├── outputs/
+│   ├── bronze_collect/           # API 원본 JSON (822개 파일)
+│   ├── bronze_merged/            # 카테고리별 병합 (JSONL)
+│   └── api_checkpoint.json       # 진행 상황 체크포인트
+│
+├── dags/
+│   ├── daily_lambda_to_silver_dag.py    # Lambda → Silver 변환
+│   └── silver_to_gold_dag.py            # Postgres 적재 → Gold 계산
+│
+├── transforms/
+│   ├── validate_silver.py        # 데이터 검증 & Reject
+│   ├── load_silver_to_postgres.py# Silver → Postgres
+│   └── export_gold_to_s3.py      # Gold → S3 export
+│
+├── sql/
+│   ├── youtube_pipeline_schema_postgresql.sql
+│   └── compute_gold.sql          # Gold 테이블 계산
+│
+├── infra/
+│   ├── terraform/                # AWS 리소스 IaC
+│   └── docker-compose.yml        # 로컬 Postgres, Airflow
+│
+└── frontend/
+    ├── index.html, styles.css, app.js
+    ├── mock-data.js              # 하드코딩 데이터
+    └── README.md                 # 대시보드 가이드
+```
 
 ---
 
-### 부록: 참고한 AWS 공식 가격 페이지
+## 🔄 데이터 처리 파이프라인
 
-- Fargate: https://aws.amazon.com/fargate/pricing/
-- Lambda: https://aws.amazon.com/lambda/pricing/
-- ECR: https://aws.amazon.com/ecr/pricing/
-- Kinesis Data Firehose: https://aws.amazon.com/firehose/pricing/
-- Glue: https://aws.amazon.com/glue/pricing/
-- CloudWatch: https://aws.amazon.com/cloudwatch/pricing/
-- EC2 (t3.small, us-west-2 참고): https://www.doit.com/compute/compute/aws/us-west-2/t3.small
+### 1️⃣ Extract (YouTube API 수집)
+
+**수집 전략:**
+- **Lambda 수집** (`daily_mostpopular_collector`): 일 3회, 트렌드 영상 50개 (카테고리별)
+- **로컬 수집** (`youtube_api_collector.py`): 1회성, 1년치 백필 (search API)
+
+**특징:**
+- API 할당량: 일 10,000 단위 (1회 요청 = 1~100 단위)
+- 키 순환: 8개 API 키 자동 전환
+- 체크포인트: `api_checkpoint.json`으로 진행 상황 추적
+
+**출력:**
+- Raw JSON (API 응답 그대로): `bronze_collect/` (822개 파일, 77 MB)
+- JSONL (라인 단위): `bronze_merged/` (카테고리별)
+
+### 2️⃣ Load & Transform (Silver Layer - 정제)
+
+**Airflow DAG:** `daily_lambda_to_silver_dag`
+
+| 단계 | 작업 | 입력 | 출력 |
+|------|------|------|------|
+| 1 | Lambda 실행 | YouTube API | S3 JSON |
+| 2 | 검증 | S3 JSON | Valid/Reject 분리 |
+| 3 | 변환 | Valid 레코드 | Parquet (파티션) |
+| 4 | 메타데이터 | Parquet | Glue 카탈로그 등록 |
+
+**변환 로직:**
+```python
+# 파생 필드 계산
+- duration_seconds: ISO 8601 → 초 단위
+- video_type: duration 기반 분류 (short/medium/long)
+- published_kst: UTC → KST 변환
+- published_year_month: 년월 그룹화
+- trending_rank: Lambda 순위 캡처
+
+# 검증
+- is_valid: 필수 필드 존재 여부
+- 이상치: 음수 조회수, null 필드 등
+```
+
+**저장소:**
+- Postgres: `raw_youtube.silver_youtube` (행 단위)
+- S3 Parquet: `s3://bucket/silver/youtube/year=YYYY/month=MM/day=DD/`
+
+### 3️⃣ Analyze (Gold Layer - 분석)
+
+**Airflow DAG:** `silver_to_gold_dag`
+
+| 금고 테이블 | 내용 | 사용 사례 |
+|------------|------|----------|
+| **gold_category_benchmark** | 카테고리별 주차 통계 (조회수, 좋아요, 댓글) | 카테고리 트렌드 분석 |
+| **gold_upload_strategy** | 요일×시간대별 최적 업로드 시간 | 콘텐츠 업로드 가이드 |
+| **gold_video_rank_trend** | 영상 순위 변동, 조회수 증감 추이 | 순위 변동 리스트 |
+| **gold_channel_insights** | 채널별 성장률, 영상 수, 구독자 추이 | 채널 추천 (향후) |
+
+**계산 방식:**
+```sql
+-- 예: gold_video_rank_trend
+SELECT 
+  video_id,
+  MIN(trending_rank) OVER (...) as first_rank,
+  MAX(trending_rank) OVER (...) as highest_rank,
+  ROW_NUMBER() OVER (...) as latest_rank,
+  ...
+FROM raw_youtube.silver_youtube
+```
+
+---
+
+## 📅 구현 일정 및 현황
+
+### Phase 1: 기반 구축 ✅ 완료
+
+| 작업 | 상태 | 내용 |
+|------|------|------|
+| API 키 및 수집기 구현 | ✅ 완료 | `youtube_api_collector.py`, Lambda function |
+| Bronze Layer 적재 | ✅ 완료 | 77 MB 원본 데이터 수집 |
+| 로컬 인프라 (Docker) | ✅ 완료 | Postgres, Airflow LocalExecutor |
+| Airflow DAG 기본 구조 | ✅ 완료 | `daily_lambda_to_silver_dag` 작성 |
+
+### Phase 2: Silver Layer (데이터 정제) 🔄 진행 중
+
+| 작업 | 상태 | 예상 완료 |
+|------|------|----------|
+| 검증 로직 구현 | ✅ 완료 | Reject JSON 분리 |
+| 파생 필드 계산 | ✅ 완료 | `duration_seconds`, `video_type` 등 |
+| Postgres 스키마 적용 | ⏳ 대기 | 스키마 DDL 실행 필요 |
+| Glue 메타데이터 등록 | ⏳ 진행 중 | 카탈로그 동기화 |
+
+### Phase 3: Gold Layer (분석 준비) 🔄 진행 중
+
+| 작업 | 상태 | 내용 |
+|------|------|------|
+| 계산 쿼리 작성 | ✅ 완료 | `compute_gold.sql` 4개 테이블 정의 |
+| DAG 트리거 | ⏳ 대기 | `silver_to_gold_dag` 수행 확인 필요 |
+| Athena View 생성 | ⏳ 대기 | SQL 조회 최적화 |
+
+### Phase 4: 프론트엔드 (대시보드) 🔄 진행 중
+
+| 컴포넌트 | 상태 | 내용 |
+|----------|------|------|
+| 홈 탭 | ✅ v2 완료 | KPI + 순위 변동 리스트 |
+| 추천 채널 탭 | ⏳ 진행 | 채널 선별 로직 (백엔드 미구현) |
+| 업로드 가이드 탭 | ✅ v2 완료 | 요일×시간대 히트맵 |
+| 카테고리 트렌드 탭 | ✅ v2 완료 | 막대 차트 + 표 |
+| API 연동 | ⏳ 예정 | 하드코딩 데이터 → 실 API 호출 |
+
+---
+
+## ⚠️ 미해결 사항 (우선순위 순)
+
+| 우선순위 | 항목 | 상태 | 대응 |
+|---------|------|------|------|
+| 🔴 **높음** | API 키 보안 | 미해결 | `youtube_api_collector.py` 32행 하드코딩 키 8개 → GitHub에 푸시됨 → **로테이션 필수** |
+| 🟡 **중간** | Postgres 스키마 | 대기 중 | DDL 실행 필요: `docker exec pipeline_postgres psql ...` |
+| 🟡 **중간** | Gold DAG 실행 | 대기 중 | `airflow dags trigger silver_to_gold` 확인 필요 |
+| 🟢 **낮음** | 스냅샷 세분화 | 미결정 | 현재 일 단위 (하루 3회 → 일일 1개 스냅샷), 시간 단위로 변경할지 검토 |
+| 🟢 **낮음** | Lambda 에러 처리 | 미개선 | 카테고리별 try/except 추가하면 좋음 (백로그) |
+
+---
+
+## 💾 데이터 크기 및 비용 추정
+
+### 저장소 비용 (월 기준)
+
+| 서비스 | 사용량 | 예상 월비용 | 비고 |
+|--------|--------|-----------|------|
+| S3 Standard | 100 MB (Bronze + Silver) | ~$0.02 | 스토리지 기본 요금 |
+| Glue Data Catalog | 메타데이터 무료 구간 | $0.00 | 테이블/파티션 미포함 |
+| Athena | 1 TB 스캔 (예상) | ~$5.00 | $5/TB 기준 |
+| Postgres (로컬) | 10 GB (EBS) | $0.00 | Docker, 클라우드 비용 없음 |
+| **합계** | | **~$5.02/월** | |
+
+### 운영 비용 (추가 필요 시)
+
+- **EC2 상시운영:** t3.small (2 GiB) = 약 $15/월
+- **Airflow MWAA:** Managed Workflow = 약 $50/월 (선택)
+
+---
+
+## 🎯 성공 기준
+
+| 검증 항목 | 완료 증거 | 상태 |
+|----------|----------|------|
+| Airflow 정기 실행 | DAG 성공 화면 & Task 로그 | ⏳ 대기 |
+| Bronze / Silver / Reject | S3 경로별 파일 생성 확인 | ⏳ 진행 중 |
+| Gold 테이블 계산 | Postgres 테이블 row count | ⏳ 대기 |
+| 대시보드 데이터 연동 | 프론트엔드 실시간 데이터 표시 | ⏳ 예정 |
+| Athena 조회 | SQL 결과 화면 캡처 | ⏳ 예정 |
+
+---
+
+## 🔗 연결된 리소스
+
+### 문서
+- [진행 상태 리포트](./pipeline_project_status_2026-09-02.md)
+- [데이터 분석 보고서](./pipeline_project_analysis.md)
+
+### 저장소
+- **GitHub:** `https://github.com/jaeyan42/Pipeline_pjt`
+- **로컬:** `C:\Pipeline_pjt`
+
+### 팀원 & 역할
+| 이름 | 역할 | 담당 |
+|------|------|------|
+| (데이터 엔지니어) | 수집 & Airflow DAG | youtube_api_collector, Lambda |
+| 이창용 | 프론트엔드 개발 | 대시보드 설계 & 구현 |
+| (ETL 개발자) | Silver/Gold 파이프라인 | 정제 & 분석 로직 |
+
+---
+
+**작성일:** 2026-09-02  
+**최종 업데이트:** 진행 중  
+**담당자:** Data Intelligence Platform Team
