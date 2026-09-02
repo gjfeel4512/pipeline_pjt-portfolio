@@ -69,9 +69,10 @@ variable "target_category_ids" {
 }
 
 variable "daily_collector_schedule_expression" {
-  description = "일일 수집 Lambda EventBridge 스케줄 (UTC 기준 cron). 기본값: KST 09시/17시/01시 = UTC 00,08,16시"
+  description = "일일 수집 Lambda EventBridge 스케줄 (UTC 기준 cron). 매시 30분마다 실행 (KST 09:30, 10:30, 11:30 ... 매시간 30분). KST는 UTC+9로 '시' 단위 오프셋이라 분(30) 값은 그대로 유지됨"
   type        = string
-  default     = "cron(0 0,8,16 * * ? *)"
+  # default     = "cron(0 0,8,16 * * ? *)"
+  default     = "cron(30 * * * ? *)"
 }
 
 # SNS 알람 설정
