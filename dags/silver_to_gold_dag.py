@@ -47,6 +47,8 @@ with dag:
     load_silver = BashOperator(
         task_id="load_silver_to_postgres",
         bash_command=(
+            "PGHOST={{ var.value.get('pg_host', 'postgres') }} "
+            "PGPORT=5432 PGDATABASE=airflow PGUSER=airflow PGPASSWORD=airflow "
             "python {{ var.value.get('pipeline_project_root', '/pipeline') }}/transforms/load_silver_to_postgres.py "
             "--s3-prefix youtube/silver/ "
             "--bucket {{ var.value.get('aws_s3_silver_bucket', '') }}"
