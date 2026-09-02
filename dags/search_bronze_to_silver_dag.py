@@ -18,6 +18,8 @@ import logging
 import os
 import re
 
+import pendulum
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
@@ -33,10 +35,13 @@ AWS_S3_BRONZE_BUCKET = os.getenv('AWS_S3_BRONZE_BUCKET')
 AWS_S3_SILVER_BUCKET = os.getenv('AWS_S3_SILVER_BUCKET')
 
 DAG_ID = 'search_bronze_to_silver'
+LOCAL_TZ = pendulum.timezone('Asia/Seoul')
+# 데이터 파티션(bronze/search/.../year=/month=/day=) 및 '오늘' 계산 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
 DEFAULT_ARGS = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': pendulum.datetime(2024, 1, 1, tz=LOCAL_TZ),
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
@@ -204,7 +209,7 @@ def list_bronze_search_objects(**context):
         raise AirflowException("AWS_S3_BRONZE_BUCKET not configured")
 
     s3 = get_s3_client()
-    today = datetime.utcnow()
+    today = datetime.now(KST)
     year, month, day = today.strftime('%Y'), today.strftime('%m'), today.strftime('%d')
 
     keys = []

@@ -12,7 +12,7 @@ YouTube search.list 기반 일일 수집 Lambda
   체크포인트(S3)를 저장한 뒤 종료한다. EventBridge가 다음 스케줄에 다시 호출하면
   체크포인트를 읽어 이어서 처리한다 (task 단위로 완료 여부를 기록하므로 재시도해도
   중복 처리되지 않음 - 이미 완료한 task는 건너뜀).
-- 체크포인트는 실행일(run_date, UTC 날짜) 기준 파일이라 날짜가 바뀌면 그날의
+- 체크포인트는 실행일(run_date, KST 날짜) 기준 파일이라 날짜가 바뀌면 그날의
   최근 TOTAL_DAYS_BACK일 구간으로 새로 시작한다. 같은 영상이 다음날 다시 수집되는
   것은 의도된 동작이다 (조회수 시계열 추적이 이 프로젝트의 핵심 - spec.md 참고).
 - 표준 라이브러리(urllib)만 사용 -> googleapiclient 없이 Lambda Layer 불필요.
@@ -27,6 +27,9 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
+
+# 파티션 키(bronze/search/.../year=/month=/day=)와 run_date/체크포인트 기준: KST(한국시간)
+KST = timezone(timedelta(hours=9))
 
 YOUTUBE_API_KEYS = [k.strip() for k in os.environ.get("YOUTUBE_API_KEYS", "").split(",") if k.strip()]
 BUCKET_NAME = os.environ["BUCKET_NAME"]
@@ -239,10 +242,10 @@ def task_id(category_label, duration, period_index):
 # 구간(기간) 생성 - 오늘부터 거슬러 올라가며 TOTAL_DAYS_BACK일을 카테고리별 구간으로 순회
 # ============================================================
 def generate_periods(window_days, total_days_back):
-    """기준 시점을 '내일 자정(00:00 UTC)'으로 고정 - 같은 날 여러 번 실행해도
+    """기준 시점을 '내일 자정(00:00 KST)'으로 고정 - 같은 날 여러 번 실행해도
     구간 경계가 항상 동일해서, 체크포인트가 다른 작업으로 착각하는 일이 없다."""
-    today = datetime.now(timezone.utc).date()
-    anchor = datetime.combine(today, datetime.min.time(), tzinfo=timezone.utc) + timedelta(days=1)
+    today = datetime.now(KST).date()
+    anchor = datetime.combine(today, datetime.min.time(), tzinfo=KST) + timedelta(days=1)
     oldest = anchor - timedelta(days=total_days_back)
     periods = []
     cursor_end = anchor
@@ -408,8 +411,8 @@ def upload_records(s3, category_label, run_date, invocation_suffix, records):
 # ============================================================
 def lambda_handler(event, context):
     s3 = get_s3_client()
-    run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    invocation_suffix = datetime.now(timezone.utc).strftime("%H%M%S")
+    run_date = datetime.now(KST).strftime("%Y-%m-%d")
+    invocation_suffix = datetime.now(KST).strftime("%H%M%S")
 
     all_tasks = build_all_tasks()
     state = load_checkpoint(s3, run_date)
