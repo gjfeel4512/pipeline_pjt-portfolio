@@ -158,6 +158,7 @@ def transform_to_silver(record):
 
             'tags': record.get('tags', []),
             'matched_tags': record.get('matched_tags', []),
+            'topic_categories': record.get('topic_categories', []),
 
             'view_count': view_count,
             'like_count': like_count,
@@ -171,9 +172,13 @@ def transform_to_silver(record):
             'definition': record.get('definition'),
             'is_hd': record.get('definition') == 'hd',
             'caption_available': str(record.get('caption')).lower() == 'true',
+            'has_paid_product_placement': bool(record.get('has_paid_product_placement', False)),
             'privacy_status': record.get('privacy_status'),
+            'made_for_kids': record.get('made_for_kids'),
             'live_broadcast_content': record.get('live_broadcast_content'),
             'is_live_content': record.get('live_broadcast_content') not in (None, 'none'),
+            'default_audio_language': record.get('default_audio_language') or None,
+            'thumbnail_url': record.get('thumbnail_url') or None,
 
             'published_at_utc': published_at,
             'published_at_kst': convert_to_kst(published_at),
@@ -184,6 +189,7 @@ def transform_to_silver(record):
             'hidden_subscriber_count': bool(record.get('hidden_subscriber_count', False)),
             'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
             'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
+            'uploads_playlist_id': record.get('uploads_playlist_id') or None,
 
             'collected_at_utc': record.get('collected_at_utc'),
 

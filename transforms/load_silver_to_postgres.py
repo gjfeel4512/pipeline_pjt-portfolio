@@ -123,6 +123,11 @@ def prepare_row(rec):
         "definition": rec.get("definition"),
         "caption_available": rec.get("caption_available"),
         "live_broadcast_content": rec.get("live_broadcast_content") or "none",
+        "default_audio_language": rec.get("default_audio_language"),
+        "thumbnail_url": rec.get("thumbnail_url"),
+        "made_for_kids": rec.get("made_for_kids"),
+        "has_paid_product_placement": bool(rec.get("has_paid_product_placement", False)),
+        "topic_categories": rec.get("topic_categories") or [],
         "view_count": rec.get("view_count") or 0,
         "like_count": rec.get("like_count"),
         "comment_count": rec.get("comment_count"),
@@ -146,15 +151,18 @@ ON CONFLICT (date_key) DO NOTHING
 UPSERT_DIM_CHANNEL = """
 INSERT INTO youtube_analytics.dim_channel
     (channel_id, channel_title, channel_published_at, subscriber_count,
-     hidden_subscriber_count, channel_view_count, channel_video_count, last_collected_at_utc)
+     hidden_subscriber_count, channel_view_count, channel_video_count, uploads_playlist_id,
+     last_collected_at_utc)
 VALUES (%(channel_id)s, %(channel_title)s, %(channel_published_at)s, %(subscriber_count)s,
-        %(hidden_subscriber_count)s, %(channel_view_count)s, %(channel_video_count)s, %(last_collected_at_utc)s)
+        %(hidden_subscriber_count)s, %(channel_view_count)s, %(channel_video_count)s, %(uploads_playlist_id)s,
+        %(last_collected_at_utc)s)
 ON CONFLICT (channel_id) DO UPDATE SET
     channel_title = EXCLUDED.channel_title,
     subscriber_count = EXCLUDED.subscriber_count,
     hidden_subscriber_count = EXCLUDED.hidden_subscriber_count,
     channel_view_count = EXCLUDED.channel_view_count,
     channel_video_count = EXCLUDED.channel_video_count,
+    uploads_playlist_id = EXCLUDED.uploads_playlist_id,
     last_collected_at_utc = EXCLUDED.last_collected_at_utc,
     updated_at_utc = NOW()
 """
@@ -164,13 +172,17 @@ INSERT INTO youtube_analytics.fact_video_snapshot
     (snapshot_id, video_id, channel_id, category_id,
      published_at_utc, published_at_kst, published_date_kst, published_hour_kst, published_day_of_week,
      title, duration_iso8601, duration_seconds, video_type, definition, caption_available,
-     live_broadcast_content, view_count, like_count, comment_count, subscriber_count_at_collection,
+     live_broadcast_content, default_audio_language, thumbnail_url, made_for_kids,
+     has_paid_product_placement, topic_categories,
+     view_count, like_count, comment_count, subscriber_count_at_collection,
      trending_rank, collected_at_utc, collected_date, is_public, is_valid, invalid_reason)
 VALUES
     (%(snapshot_id)s, %(video_id)s, %(channel_id)s, %(category_id)s,
      %(published_at_utc)s, %(published_at_kst)s, %(published_date_kst)s, %(published_hour_kst)s, %(published_day_of_week)s,
      %(title)s, %(duration_iso8601)s, %(duration_seconds)s, %(video_type)s, %(definition)s, %(caption_available)s,
-     %(live_broadcast_content)s, %(view_count)s, %(like_count)s, %(comment_count)s, %(subscriber_count_at_collection)s,
+     %(live_broadcast_content)s, %(default_audio_language)s, %(thumbnail_url)s, %(made_for_kids)s,
+     %(has_paid_product_placement)s, %(topic_categories)s,
+     %(view_count)s, %(like_count)s, %(comment_count)s, %(subscriber_count_at_collection)s,
      %(trending_rank)s, %(collected_at_utc)s, %(collected_date)s, %(is_public)s, %(is_valid)s, %(invalid_reason)s)
 ON CONFLICT (video_id, collected_date) DO UPDATE SET
     view_count = EXCLUDED.view_count,
@@ -178,6 +190,9 @@ ON CONFLICT (video_id, collected_date) DO UPDATE SET
     comment_count = EXCLUDED.comment_count,
     subscriber_count_at_collection = EXCLUDED.subscriber_count_at_collection,
     trending_rank = EXCLUDED.trending_rank,
+    made_for_kids = EXCLUDED.made_for_kids,
+    has_paid_product_placement = EXCLUDED.has_paid_product_placement,
+    topic_categories = EXCLUDED.topic_categories,
     collected_at_utc = EXCLUDED.collected_at_utc
 """
 
@@ -207,6 +222,7 @@ def load(records, conn):
                 "hidden_subscriber_count": bool(rec.get("hidden_subscriber_count", False)),
                 "channel_view_count": rec.get("channel_total_view_count"),
                 "channel_video_count": rec.get("channel_total_video_count"),
+                "uploads_playlist_id": rec.get("uploads_playlist_id"),
                 "last_collected_at_utc": row["collected_at_utc"],
             })
 
