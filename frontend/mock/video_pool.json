@@ -1,0 +1,339 @@
+{
+  "_comment": "카테고리별 영상 후보군(pool). trending/steady 추천은 이 pool을 js/recommend.js가 중앙값·구독자 대비 성과로 스코어링해서 선정합니다 (하드코딩된 추천 목록이 아닙니다).",
+  "gaming": [
+    {
+      "video_id": "gV1clr0hits",
+      "title": "신작 첫 플레이 실황 총정리",
+      "channel_id": "UCgl0clearplay0000001",
+      "channel_name": "클리어실황",
+      "subscriber_count": 210000,
+      "days_since_published": 22,
+      "view_count": 612000,
+      "like_count": 41000,
+      "duration_sec": 954
+    },
+    {
+      "video_id": "gV2patchnot",
+      "title": "업데이트 패치노트 완전 분석",
+      "channel_id": "UCgl0gamemate000000002",
+      "channel_name": "게임메이트",
+      "subscriber_count": 340000,
+      "days_since_published": 11,
+      "view_count": 205000,
+      "like_count": 16000,
+      "duration_sec": 414
+    },
+    {
+      "video_id": "gV3clutch12",
+      "title": "역대급 클러치 모음 Vol.12",
+      "channel_id": "UCgl0ranklab0000000003",
+      "channel_name": "랭크업연구소",
+      "subscriber_count": 95000,
+      "days_since_published": 6,
+      "view_count": 481000,
+      "like_count": 39000,
+      "duration_sec": 325
+    },
+    {
+      "video_id": "gV4newpatch2",
+      "title": "신규 시즌 공략 완전 정복",
+      "channel_id": "UCgl0gamemate000000002",
+      "channel_name": "게임메이트",
+      "subscriber_count": 340000,
+      "days_since_published": 40,
+      "view_count": 133000,
+      "like_count": 7200,
+      "duration_sec": 1059
+    },
+    {
+      "video_id": "gV5risingtag",
+      "title": "요즘 유행하는 밈 모아봄",
+      "channel_id": "UCgl0clearplay0000001",
+      "channel_name": "클리어실황",
+      "subscriber_count": 210000,
+      "days_since_published": 75,
+      "view_count": 96000,
+      "like_count": 5100,
+      "duration_sec": 581
+    },
+    {
+      "video_id": "gV6bestscene",
+      "title": "역대 최고 명장면 총정리",
+      "channel_id": "UCgl0clearplay0000001",
+      "channel_name": "클리어실황",
+      "subscriber_count": 210000,
+      "days_since_published": 314,
+      "view_count": 3120000,
+      "like_count": 187000,
+      "duration_sec": 550
+    },
+    {
+      "video_id": "gV7beginguide",
+      "title": "초보자를 위한 완벽 가이드",
+      "channel_id": "UCgl0pixelplay000000005",
+      "channel_name": "픽셀플레이",
+      "subscriber_count": 120000,
+      "days_since_published": 260,
+      "view_count": 1860000,
+      "like_count": 94000,
+      "duration_sec": 528
+    },
+    {
+      "video_id": "gV8rankhi",
+      "title": "역대급 랭크 하이라이트 모음",
+      "channel_id": "UCgl0ranklab0000000003",
+      "channel_name": "랭크업연구소",
+      "subscriber_count": 95000,
+      "days_since_published": 201,
+      "view_count": 2240000,
+      "like_count": 156000,
+      "duration_sec": 442
+    },
+    {
+      "video_id": "gV9oldevent",
+      "title": "지난 시즌 이벤트 다시보기",
+      "channel_id": "UCgl0gamemate000000002",
+      "channel_name": "게임메이트",
+      "subscriber_count": 340000,
+      "days_since_published": 240,
+      "view_count": 410000,
+      "like_count": 18000,
+      "duration_sec": 1054
+    },
+    {
+      "video_id": "gV10indiecl",
+      "title": "인디게임 숨은 명작 발굴",
+      "channel_id": "UCgl0indielover00000006",
+      "channel_name": "인디게임러버",
+      "subscriber_count": 28000,
+      "days_since_published": 220,
+      "view_count": 190000,
+      "like_count": 15000,
+      "duration_sec": 404
+    }
+  ],
+  "autos_vehicles": [
+    {
+      "video_id": "aV1newcar26",
+      "title": "2026년형 신차 시승기 최초 공개",
+      "channel_id": "UCgl0carguide000000010",
+      "channel_name": "카가이드",
+      "subscriber_count": 180000,
+      "days_since_published": 15,
+      "view_count": 420000,
+      "like_count": 28000,
+      "duration_sec": 1052
+    },
+    {
+      "video_id": "aV2evcompare",
+      "title": "전기차 vs 내연기관 연비 끝장비교",
+      "channel_id": "UCgl0autodig0000000011",
+      "channel_name": "오토디깅",
+      "subscriber_count": 95000,
+      "days_since_published": 8,
+      "view_count": 310000,
+      "like_count": 19500,
+      "duration_sec": 918
+    },
+    {
+      "video_id": "aV3recall",
+      "title": "리콜 이슈 총정리, 내 차는 괜찮을까",
+      "channel_id": "UCgl0carcheck00000012",
+      "channel_name": "카체크",
+      "subscriber_count": 62000,
+      "days_since_published": 30,
+      "view_count": 275000,
+      "like_count": 15200,
+      "duration_sec": 449
+    },
+    {
+      "video_id": "aV4wintertire",
+      "title": "겨울철 타이어 꼭 갈아야 하는 이유",
+      "channel_id": "UCgl0autodig0000000011",
+      "channel_name": "오토디깅",
+      "subscriber_count": 95000,
+      "days_since_published": 60,
+      "view_count": 140000,
+      "like_count": 8000,
+      "duration_sec": 964
+    },
+    {
+      "video_id": "aV5suvcompare",
+      "title": "국산 SUV 3사 끝장 비교",
+      "channel_id": "UCgl0carguide000000010",
+      "channel_name": "카가이드",
+      "subscriber_count": 180000,
+      "days_since_published": 75,
+      "view_count": 190000,
+      "like_count": 11000,
+      "duration_sec": 792
+    },
+    {
+      "video_id": "aV6usedcarchk",
+      "title": "중고차 구매 전 필수 체크리스트",
+      "channel_id": "UCgl0carcheck00000012",
+      "channel_name": "카체크",
+      "subscriber_count": 62000,
+      "days_since_published": 260,
+      "view_count": 1850000,
+      "like_count": 92000,
+      "duration_sec": 392
+    },
+    {
+      "video_id": "aV7fueleff",
+      "title": "역대급 연비왕 찾기 대해부",
+      "channel_id": "UCgl0autodig0000000011",
+      "channel_name": "오토디깅",
+      "subscriber_count": 95000,
+      "days_since_published": 320,
+      "view_count": 1200000,
+      "like_count": 61000,
+      "duration_sec": 390
+    },
+    {
+      "video_id": "aV8parktip",
+      "title": "초보운전 필수 주차 꿀팁",
+      "channel_id": "UCgl0parkmaster00000013",
+      "channel_name": "파킹마스터",
+      "subscriber_count": 41000,
+      "days_since_published": 400,
+      "view_count": 980000,
+      "like_count": 54000,
+      "duration_sec": 455
+    },
+    {
+      "video_id": "aV9anniv200",
+      "title": "구독자 200만 감사 명장면 모음",
+      "channel_id": "UCgl0carguide000000010",
+      "channel_name": "카가이드",
+      "subscriber_count": 180000,
+      "days_since_published": 210,
+      "view_count": 760000,
+      "like_count": 38000,
+      "duration_sec": 583
+    },
+    {
+      "video_id": "aV10flood",
+      "title": "장마철 침수차 감별법",
+      "channel_id": "UCgl0carcheck00000012",
+      "channel_name": "카체크",
+      "subscriber_count": 62000,
+      "days_since_published": 190,
+      "view_count": 430000,
+      "like_count": 21000,
+      "duration_sec": 598
+    }
+  ],
+  "film_animation": [
+    {
+      "video_id": "fV1weekopen",
+      "title": "이번 주 개봉작 몰아보기 리뷰",
+      "channel_id": "UCgl0moviedeep0000020",
+      "channel_name": "무비딥다이브",
+      "subscriber_count": 250000,
+      "days_since_published": 5,
+      "view_count": 540000,
+      "like_count": 39000,
+      "duration_sec": 1454
+    },
+    {
+      "video_id": "fV2twist5",
+      "title": "역대급 반전 결말 TOP5",
+      "channel_id": "UCgl0scenesteal0000021",
+      "channel_name": "씬스틸러",
+      "subscriber_count": 130000,
+      "days_since_published": 18,
+      "view_count": 610000,
+      "like_count": 47000,
+      "duration_sec": 474
+    },
+    {
+      "video_id": "fV3animeep1",
+      "title": "신작 애니 1화 정주행 리뷰",
+      "channel_id": "UCgl0animoment0000022",
+      "channel_name": "애니모먼트",
+      "subscriber_count": 88000,
+      "days_since_published": 12,
+      "view_count": 250000,
+      "like_count": 18000,
+      "duration_sec": 827
+    },
+    {
+      "video_id": "fV4flopanaly",
+      "title": "흥행 참패한 이유 분석",
+      "channel_id": "UCgl0moviedeep0000020",
+      "channel_name": "무비딥다이브",
+      "subscriber_count": 250000,
+      "days_since_published": 45,
+      "view_count": 180000,
+      "like_count": 9000,
+      "duration_sec": 1279
+    },
+    {
+      "video_id": "fV5hiddengem",
+      "title": "숨은 명작 재조명",
+      "channel_id": "UCgl0scenesteal0000021",
+      "channel_name": "씬스틸러",
+      "subscriber_count": 130000,
+      "days_since_published": 70,
+      "view_count": 210000,
+      "like_count": 12000,
+      "duration_sec": 871
+    },
+    {
+      "video_id": "fV6bestline",
+      "title": "역대 최고 명대사 모음집",
+      "channel_id": "UCgl0scenesteal0000021",
+      "channel_name": "씬스틸러",
+      "subscriber_count": 130000,
+      "days_since_published": 300,
+      "view_count": 2100000,
+      "like_count": 130000,
+      "duration_sec": 1339
+    },
+    {
+      "video_id": "fV7endingsum",
+      "title": "결말 포함 총정리 리뷰 시리즈",
+      "channel_id": "UCgl0moviedeep0000020",
+      "channel_name": "무비딥다이브",
+      "subscriber_count": 250000,
+      "days_since_published": 250,
+      "view_count": 1700000,
+      "like_count": 95000,
+      "duration_sec": 989
+    },
+    {
+      "video_id": "fV8animebest",
+      "title": "레전드 애니 명장면 모음",
+      "channel_id": "UCgl0animoment0000022",
+      "channel_name": "애니모먼트",
+      "subscriber_count": 88000,
+      "days_since_published": 380,
+      "view_count": 1400000,
+      "like_count": 88000,
+      "duration_sec": 433
+    },
+    {
+      "video_id": "fV9errorfind",
+      "title": "숨겨진 옥에티 찾기",
+      "channel_id": "UCgl0scenesteal0000021",
+      "channel_name": "씬스틸러",
+      "subscriber_count": 130000,
+      "days_since_published": 220,
+      "view_count": 520000,
+      "like_count": 24000,
+      "duration_sec": 746
+    },
+    {
+      "video_id": "fV10behind",
+      "title": "제작 비하인드 스토리",
+      "channel_id": "UCgl0animoment0000022",
+      "channel_name": "애니모먼트",
+      "subscriber_count": 88000,
+      "days_since_published": 200,
+      "view_count": 340000,
+      "like_count": 15000,
+      "duration_sec": 1285
+    }
+  ]
+}

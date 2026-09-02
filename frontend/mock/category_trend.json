@@ -1,0 +1,59 @@
+{
+  "gaming": {
+    "avg_views_per_day": 4650,
+    "avg_views_per_day_prev": 4315,
+    "avg_engagement_rate": 0.044,
+    "avg_engagement_rate_prev": 0.0413,
+    "avg_duration_sec": 380,
+    "duration_distribution": [
+      { "label": "1~5분", "pct": 22 },
+      { "label": "5~10분", "pct": 38 },
+      { "label": "10~20분", "pct": 27 },
+      { "label": "20분 이상", "pct": 13 }
+    ],
+    "subscriber_tiers": [
+      { "label": "소형 (1만~10만)", "ratio": 8.2 },
+      { "label": "중형 (10만~50만)", "ratio": 4.1 },
+      { "label": "대형 (50만 이상)", "ratio": 1.8 }
+    ],
+    "sample_size": 10163
+  },
+  "autos_vehicles": {
+    "avg_views_per_day": 3200,
+    "avg_views_per_day_prev": 3020,
+    "avg_engagement_rate": 0.038,
+    "avg_engagement_rate_prev": 0.0362,
+    "avg_duration_sec": 540,
+    "duration_distribution": [
+      { "label": "1~5분", "pct": 12 },
+      { "label": "5~10분", "pct": 30 },
+      { "label": "10~20분", "pct": 38 },
+      { "label": "20분 이상", "pct": 20 }
+    ],
+    "subscriber_tiers": [
+      { "label": "소형 (1만~10만)", "ratio": 6.5 },
+      { "label": "중형 (10만~50만)", "ratio": 3.4 },
+      { "label": "대형 (50만 이상)", "ratio": 1.6 }
+    ],
+    "sample_size": 7940
+  },
+  "film_animation": {
+    "avg_views_per_day": 5400,
+    "avg_views_per_day_prev": 4890,
+    "avg_engagement_rate": 0.051,
+    "avg_engagement_rate_prev": 0.047,
+    "avg_duration_sec": 660,
+    "duration_distribution": [
+      { "label": "1~5분", "pct": 8 },
+      { "label": "5~10분", "pct": 24 },
+      { "label": "10~20분", "pct": 41 },
+      { "label": "20분 이상", "pct": 27 }
+    ],
+    "subscriber_tiers": [
+      { "label": "소형 (1만~10만)", "ratio": 9.4 },
+      { "label": "중형 (10만~50만)", "ratio": 4.8 },
+      { "label": "대형 (50만 이상)", "ratio": 2.1 }
+    ],
+    "sample_size": 9280
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "_comment": "day: 0=평일 1=토요일 2=일요일 / slot: 0=새벽 1=오전 2=오후 3=저녁 4=심야. avg_views는 해당 요일군·시간대에 올라온 영상의 평균 조회수(예시), avg_duration_sec은 같은 구간 영상들의 평균 길이(초)입니다.",
+  "gaming": {
+    "cells": [
+      { "day": 0, "slot": 0, "avg_views": 490,  "avg_duration_sec": 360 },
+      { "day": 0, "slot": 1, "avg_views": 740,  "avg_duration_sec": 372 },
+      { "day": 0, "slot": 2, "avg_views": 920,  "avg_duration_sec": 365 },
+      { "day": 0, "slot": 3, "avg_views": 1420, "avg_duration_sec": 388 },
+      { "day": 0, "slot": 4, "avg_views": 1660, "avg_duration_sec": 402 },
+      { "day": 1, "slot": 0, "avg_views": 780,  "avg_duration_sec": 355 },
+      { "day": 1, "slot": 1, "avg_views": 1170, "avg_duration_sec": 368 },
+      { "day": 1, "slot": 2, "avg_views": 1470, "avg_duration_sec": 375 },
+      { "day": 1, "slot": 3, "avg_views": 2250, "avg_duration_sec": 395 },
+      { "day": 1, "slot": 4, "avg_views": 2640, "avg_duration_sec": 410 },
+      { "day": 2, "slot": 0, "avg_views": 750,  "avg_duration_sec": 358 },
+      { "day": 2, "slot": 1, "avg_views": 1130, "avg_duration_sec": 366 },
+      { "day": 2, "slot": 2, "avg_views": 1410, "avg_duration_sec": 374 },
+      { "day": 2, "slot": 3, "avg_views": 2170, "avg_duration_sec": 390 },
+      { "day": 2, "slot": 4, "avg_views": 2540, "avg_duration_sec": 405 }
+    ]
+  },
+  "autos_vehicles": {
+    "cells": [
+      { "day": 0, "slot": 0, "avg_views": 210, "avg_duration_sec": 480 },
+      { "day": 0, "slot": 1, "avg_views": 480, "avg_duration_sec": 505 },
+      { "day": 0, "slot": 2, "avg_views": 610, "avg_duration_sec": 512 },
+      { "day": 0, "slot": 3, "avg_views": 980, "avg_duration_sec": 540 },
+      { "day": 0, "slot": 4, "avg_views": 540, "avg_duration_sec": 520 },
+      { "day": 1, "slot": 0, "avg_views": 260,  "avg_duration_sec": 470 },
+      { "day": 1, "slot": 1, "avg_views": 620,  "avg_duration_sec": 515 },
+      { "day": 1, "slot": 2, "avg_views": 1350, "avg_duration_sec": 560 },
+      { "day": 1, "slot": 3, "avg_views": 890,  "avg_duration_sec": 530 },
+      { "day": 1, "slot": 4, "avg_views": 430,  "avg_duration_sec": 500 },
+      { "day": 2, "slot": 0, "avg_views": 240,  "avg_duration_sec": 465 },
+      { "day": 2, "slot": 1, "avg_views": 560,  "avg_duration_sec": 508 },
+      { "day": 2, "slot": 2, "avg_views": 1120, "avg_duration_sec": 545 },
+      { "day": 2, "slot": 3, "avg_views": 760,  "avg_duration_sec": 522 },
+      { "day": 2, "slot": 4, "avg_views": 380,  "avg_duration_sec": 495 }
+    ]
+  },
+  "film_animation": {
+    "cells": [
+      { "day": 0, "slot": 0, "avg_views": 320,  "avg_duration_sec": 610 },
+      { "day": 0, "slot": 1, "avg_views": 410,  "avg_duration_sec": 630 },
+      { "day": 0, "slot": 2, "avg_views": 560,  "avg_duration_sec": 645 },
+      { "day": 0, "slot": 3, "avg_views": 1240, "avg_duration_sec": 690 },
+      { "day": 0, "slot": 4, "avg_views": 1480, "avg_duration_sec": 705 },
+      { "day": 1, "slot": 0, "avg_views": 380,  "avg_duration_sec": 615 },
+      { "day": 1, "slot": 1, "avg_views": 690,  "avg_duration_sec": 640 },
+      { "day": 1, "slot": 2, "avg_views": 1560, "avg_duration_sec": 675 },
+      { "day": 1, "slot": 3, "avg_views": 1980, "avg_duration_sec": 720 },
+      { "day": 1, "slot": 4, "avg_views": 1720, "avg_duration_sec": 715 },
+      { "day": 2, "slot": 0, "avg_views": 350,  "avg_duration_sec": 612 },
+      { "day": 2, "slot": 1, "avg_views": 640,  "avg_duration_sec": 638 },
+      { "day": 2, "slot": 2, "avg_views": 1430, "avg_duration_sec": 668 },
+      { "day": 2, "slot": 3, "avg_views": 1650, "avg_duration_sec": 700 },
+      { "day": 2, "slot": 4, "avg_views": 1390, "avg_duration_sec": 692 }
+    ]
+  }
+}
