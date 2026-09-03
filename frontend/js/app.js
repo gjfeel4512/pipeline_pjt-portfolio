@@ -314,6 +314,7 @@
     });
 
     renderMetadataImpact();
+    renderTopicTrends();
 
     const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
     document.getElementById("trend-insight-body").textContent =
@@ -363,6 +364,48 @@
       `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건을 분석한 추정치예요(설명력 R²=${result.r_squared}). ` +
       `"근거 부족"이라고 표시된 항목은 통계적으로 확실하지 않다는 뜻이니 참고만 해주세요. ` +
       `이건 상관관계이지 "이렇게 하면 반드시 이렇게 된다"는 인과관계가 아니에요.`;
+  }
+
+  // 태그 기반 주제 군집 + 트렌드(사용자 요청): frontend/scripts/build_topic_trends.py가
+  // outputs/silver/*.jsonl의 태그를 TF-IDF+KMeans로 군집화해 "주제"를 자동 추출하고,
+  // 게시일 중앙값으로 나눈 예전/최근 절반의 나이보정 상대성과 변화율(trend_pct)을 계산.
+  // 실측 데이터 100% 사용(합성 아님) - 원래 나이보정 없이 계산했다가 모든 군집이
+  // +200~1400%로 나와서 비현실적이라 검증해보니 최근 영상일수록 아직 초기 조회
+  // 몰림 구간이라 값이 부풀어 보이는 편향이었음(스크립트 _comment 참고) - 나이대
+  // 또래 대비 상대값으로 정규화해서 고침.
+  function renderTopicTrends() {
+    const result = DATA.topicTrends ? DATA.topicTrends[currentCategory] : null;
+    const chartRoot = document.getElementById("topic-trends-chart");
+    const footnote = document.getElementById("topic-trends-footnote");
+
+    if (!result) {
+      chartRoot.innerHTML = '<p class="card-footnote">아직 이 카테고리는 표본이 부족해서 분석할 수 없어요 (nodata).</p>';
+      footnote.textContent = "";
+      return;
+    }
+
+    const items = result.clusters.map((c) => {
+      const hasTrend = c.trend_pct !== null && c.trend_pct !== undefined;
+      const trendText = hasTrend
+        ? ` · ${c.trend_pct >= 0 ? "+" : ""}${c.trend_pct.toFixed(1)}%${c.trend_pct >= 0 ? " ▲" : " ▼"}`
+        : " · 표본부족(nodata)";
+      return {
+        label: c.top_terms.slice(0, 3).join(" · ") || `주제 ${c.cluster_id}`,
+        value: c.median_views_per_day,
+        colorVar: !hasTrend ? "--text-muted" : c.trend_pct >= 0 ? "--series-3" : "--series-2",
+        suffix: trendText
+      };
+    });
+
+    Charts.renderHBarChart(chartRoot, {
+      items,
+      labelWidth: 170
+    });
+
+    footnote.textContent =
+      `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건의 태그를 자동으로 묶은 결과예요(주제 이름은 사람이 붙인 게 ` +
+      `아니라 태그 군집에서 뽑은 키워드예요). 막대 길이는 일평균 조회수, %는 ${result.median_split_date} 기준 예전/최근 절반을 ` +
+      `같은 나이대 또래 대비 상대값으로 비교한 변화율이에요. 표본이 작은 주제는 우연한 변동일 수 있으니 참고만 해주세요.`;
   }
 
   /* ---------------- 심화분석(데모) ---------------- */
@@ -437,14 +480,15 @@
     renderCategoryChips();
     setupTabs();
     try {
-      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo] = await Promise.all([
+      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends] = await Promise.all([
         DataSource.fetchMeta(),
         DataSource.fetchVideoPool(),
         DataSource.fetchChannelPool(),
         DataSource.fetchUploadHeatmap(),
         DataSource.fetchCategoryTrend(),
         DataSource.fetchMetadataImpact(),
-        DataSource.fetchSyntheticDemo()
+        DataSource.fetchSyntheticDemo(),
+        DataSource.fetchTopicTrends()
       ]);
       DATA.videoPool = videoPool;
       DATA.channelPool = channelPool;
@@ -452,6 +496,7 @@
       DATA.categoryTrend = categoryTrend;
       DATA.metadataImpact = metadataImpact;
       DATA.syntheticDemo = syntheticDemo;
+      DATA.topicTrends = topicTrends;
       setMetaBadge(meta);
       renderActiveTab();
     } catch (err) {

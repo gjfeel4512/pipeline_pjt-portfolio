@@ -39,6 +39,8 @@ const DataSource = (() => {
     // 카테고리 트렌드 보조: 제목 길이·태그 수·자막 유무·영상 길이가 조회수에 미치는 영향(회귀분석)
     fetchMetadataImpact: () => load("metadataImpact"),
     // 심화분석(데모) 탭: 성장곡선 클러스터링 + 판단 시점 회귀 (합성 데이터, 기법 시연용)
-    fetchSyntheticDemo: () => load("syntheticDemo")
+    fetchSyntheticDemo: () => load("syntheticDemo"),
+    // 카테고리 트렌드 보조: 태그 기반 주제 군집 + 트렌드 (실측 데이터, TF-IDF+KMeans)
+    fetchTopicTrends: () => load("topicTrends")
   };
 })();
