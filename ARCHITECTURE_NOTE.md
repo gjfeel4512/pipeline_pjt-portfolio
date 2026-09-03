@@ -35,9 +35,8 @@
     (삭제하지 않기로 결정)
   - `lambda/gold_compute_athena.py` + `infra/gold_athena.tf`가 새 주체: Postgres/RDS 없이 Athena로
     `gold_category_benchmark` / `gold_upload_strategy` / `gold_new_creator_guide` 3종을 직접 산출해 S3 Gold 버킷에 쓴다
-  - `gold_video_rank_trend`는 이식 대상에서 제외 — 유일한 소스였던 `trending_rank_tracker.py`가 삭제되어(2026-09-03)
-    `trending_rank`가 더 이상 채워지지 않음. Postgres 쪽 테이블/컬럼은 그대로 남아 있고(과거 데이터만 유지),
-    Athena/Glue 쪽에는 이 테이블 자체가 없음
+  - `gold_video_rank_trend`/`trending_rank`는 팀 결정으로 **랭크 추적 자체를 폐지**하여 완전히 제거함
+    (2026-09-03) — 아래 "랭크 추적(trending_rank) 스키마 전체 제거" 섹션 참고
 
 ## 이제는 존재하지 않는 것들 (참고용)
 
@@ -50,7 +49,8 @@
   `infra/eventbridge.tf`의 스케줄/타겟/권한, `infra/cloudwatch.tf`의 에러 알람, `infra/variables.tf`의
   `trending_rank_schedule_expression` 변수. `terraform apply`로 실제 AWS 리소스(Lambda, EventBridge 규칙,
   CloudWatch 알람)까지 제거해야 완전히 정리됨(아직 미적용). Gold의 `gold_video_rank_trend` 테이블은
-  이 데이터에만 의존했으므로 함께 영향받음 — 위 Gold 섹션 참고.
+  이 데이터에만 의존했으므로 함께 영향받았고, 이후 랭크 추적 자체가 폐지되며 스키마도 완전히
+  제거됨 — 아래 "랭크 추적(trending_rank) 스키마 전체 제거" 섹션 참고.
 
 ## Step Functions 병렬 경로 (2026-09-03 추가, Airflow는 삭제하지 않음)
 
@@ -133,3 +133,44 @@ plan/apply로는 잡히지 않는 종류 — Athena에 실제 쿼리를 던져�
 3. EventBridge 스케줄(`cron(50 */4 * * ? *)`)로 **자동 실행되는 것까지는 아직 확인 안 됨** — 지금까지는
    `aws lambda invoke`로 수동 호출만 성공했다. 다음 4시간 주기 시점(예: 매시 50분, KST 기준 다음 배수)에
    CloudWatch 로그나 S3 신규 객체로 자동 실행 여부를 한 번 확인해볼 것.
+
+## 랭크 추적(trending_rank) 스키마 전체 제거 (2026-09-03 추가)
+
+팀에서 "랭크 추적 안 하기로" 결정하여, `trending_rank` 컬럼과 `gold_video_rank_trend` 테이블을
+코드/스키마 전체에서 제거했다(범위: 전체 제거 — Postgres DDL부터 Glue 컬럼까지 전부).
+기존 `lambda/trending_rank_tracker.py` 삭제(위 섹션)로 이미 데이터 소스가 끊긴 상태였고,
+이번에는 그 흔적으로 남아 있던 스키마/코드까지 마저 정리한 것이다.
+
+### 수정된 파일 (전부 로컬 반영 완료, 아직 커밋 전)
+
+- `sql/youtube_pipeline_schema_postgresql.sql` — `fact_video_snapshot`에서 `trending_rank` 컬럼 +
+  `ck_snapshot_trending_rank` CHECK 제약 제거, `gold_video_rank_trend` CREATE TABLE 블록 통째로 제거.
+  기존 "Section 6: 마이그레이션 보정" 관례를 따라 `ALTER TABLE ... DROP COLUMN IF EXISTS` /
+  `DROP TABLE IF EXISTS`를 멱등적으로 추가해뒀기 때문에, 이미 스키마가 적용된 로컬/RDS
+  Postgres에도 이 파일을 그대로 재실행하면 안전하게 반영된다.
+- `sql/compute_gold.sql` — `gold_video_rank_trend`를 계산하던 Section 4(랭크 스냅샷 집계 +
+  upsert) 전체 삭제.
+- `transforms/load_silver_to_postgres.py` — `prepare_row()`의 `trending_rank` 매핑, UPSERT SQL의
+  컬럼 목록/VALUES/`ON CONFLICT ... DO UPDATE` 절에서 `trending_rank` 제거.
+- `transforms/export_gold_to_s3.py` — `UNVERSIONED_TABLES`(=`gold_video_rank_trend` 전용 목록)와
+  이를 사용하던 `export_unversioned_table()` 함수, `main()`의 관련 루프 제거.
+- `frontend/scripts/export_pg_for_dashboard.py` — `gold_video_rank_trend.json` export 코드/docstring 제거.
+- `frontend/scripts/export_s3_for_dashboard.py` — `GOLD_UNVERSIONED_TABLES`와 이를 순회하며
+  `exported_at` 파티션에서 최신 것만 골라 쓰던 블록 제거(공용 함수 `iter_s3_gold_json()`은
+  `GOLD_VERSIONED_TABLES` 루프가 계속 쓰므로 그대로 둠).
+- `frontend/scripts/export_athena_for_dashboard.py` — 하위호환용으로 남겨뒀던 빈 배열
+  `gold_video_rank_trend.json` 출력 제거(frontend 쪽에 이 파일을 읽는 곳이 애초에 없는 것을
+  `frontend/js/`, `build_dashboard_data.py` 재확인해서 안전하게 제거 가능함을 확인함).
+- `infra/glue.tf` — `silver_youtube`, `silver_youtube_rejected` 두 Glue 테이블 정의에서
+  `trending_rank`(int) 컬럼 제거.
+
+### 아직 사용자가 직접 반영해야 하는 부분
+
+- **Postgres**: 이미 스키마를 적용해둔 로컬/RDS DB가 있다면, 위에서 설명한 대로
+  `sql/youtube_pipeline_schema_postgresql.sql`을 그대로 재실행(`psql -f ...`)하면 Section 6의
+  `DROP COLUMN IF EXISTS`/`DROP TABLE IF EXISTS`가 안전하게 컬럼/테이블을 제거한다(재실행 가능,
+  이미 없으면 조용히 스킵).
+- **Glue/Athena**: `infra/glue.tf` 변경은 로컬 파일 수정일 뿐이라, 실제 배포된 Glue Catalog에
+  반영하려면 `cd infra && terraform apply`를 한 번 더 실행해야 한다(컬럼 제거이므로 in-place
+  update로 처리될 것으로 예상되지만, `terraform plan`으로 먼저 확인 권장).
+- 이번 변경도 다른 로컬 변경과 마찬가지로 아직 git 커밋/푸시되지 않았다.

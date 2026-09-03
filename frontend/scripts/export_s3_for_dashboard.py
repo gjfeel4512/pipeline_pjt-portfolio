@@ -94,7 +94,6 @@ VIDEO_TYPE_MAP = {"short": "shorts", "medium": "short_form", "long": "long_form"
 DOW_KO = {1: "월", 2: "화", 3: "수", 4: "목", 5: "금", 6: "토", 7: "일"}
 
 GOLD_VERSIONED_TABLES = ["gold_category_benchmark", "gold_upload_strategy", "gold_new_creator_guide"]
-GOLD_UNVERSIONED_TABLES = ["gold_video_rank_trend"]
 
 
 def none_if_empty(value):
@@ -505,20 +504,6 @@ def main():
             rows = []
             for _key, part_rows in partitions:
                 rows.extend(part_rows)
-        else:
-            rows = load_local_gold_json(args.local_gold_path, table) if args.local_gold_path else []
-        save(f"{table}.json", rows)
-
-    print("Gold (video_rank_trend, 현재 상태 테이블 - 가장 최근 exported_at 파티션만 사용):")
-    for table in GOLD_UNVERSIONED_TABLES:
-        if use_s3:
-            partitions = iter_s3_gold_json(s3, args.gold_bucket, table, "exported_at")
-            rows = []
-            if partitions:
-                # 키가 'gold_video_rank_trend/exported_at=<ts>/...' 형태라, 키 문자열
-                # 정렬만으로 가장 최근 파티션을 고를 수 있다(타임스탬프가 정렬 가능한 형식).
-                partitions.sort(key=lambda kv: kv[0])
-                rows = partitions[-1][1]
         else:
             rows = load_local_gold_json(args.local_gold_path, table) if args.local_gold_path else []
         save(f"{table}.json", rows)

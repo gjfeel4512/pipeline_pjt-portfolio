@@ -29,11 +29,9 @@ AWS_DEFAULT_REGION (기본 us-west-2)
   video_analysis_{gaming,autos_vehicles,film_animation}.json
   dim_channel.json
   gold_category_benchmark.json / gold_upload_strategy.json / gold_new_creator_guide.json
-  gold_video_rank_trend.json  (2026-09-03부터 빈 배열 - 아래 설명 참고)
 
-gold_video_rank_trend에 대해: 이 지표의 유일한 데이터 소스였던 trending_rank_tracker.py
-Lambda가 삭제되어(2026-09-03) Athena 쪽에는 이 테이블 자체가 없다. build_dashboard_data.py가
-파일이 없어도 죽지 않는 것과 동일하게, 빈 배열을 써서 하위호환만 유지한다.
+2026-09-03: 랭크 추적(gold_video_rank_trend) 기능 자체를 폐지하여 이 스크립트는 더 이상
+gold_video_rank_trend.json을 만들지 않는다(frontend 쪽에서도 이 파일을 읽는 곳이 없음).
 """
 import argparse
 import json
@@ -201,9 +199,6 @@ WHERE rn = 1
             bool_fields=gold_bool_fields.get(table, ()),
         )
         save(f"{table}.json", rows)
-
-    print("Gold (video_rank_trend): trending_rank_tracker Lambda가 삭제되어 Athena에 이 테이블이 없음 - 빈 배열로 하위호환만 유지")
-    save("gold_video_rank_trend.json", [])
 
     print("DONE")
 

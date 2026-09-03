@@ -28,7 +28,7 @@ port=5432, db/user/password=airflow). AWS RDS를 쓰는 팀원은 그에 맞게
   video_analysis_{gaming,autos_vehicles,film_animation}.json  (Silver 뷰, 영상 단위)
   dim_channel.json                                            (Silver, 채널 단위)
   gold_category_benchmark.json / gold_upload_strategy.json /
-  gold_new_creator_guide.json / gold_video_rank_trend.json    (Gold 4종)
+  gold_new_creator_guide.json                                  (Gold 3종)
 """
 import json
 import os
@@ -97,9 +97,6 @@ def main():
             for table in ("gold_category_benchmark", "gold_upload_strategy", "gold_new_creator_guide"):
                 rows = dump(cur, f"SELECT * FROM {table} ORDER BY analysis_week DESC")
                 save(f"{table}.json", rows)
-
-            print("Gold (video_rank_trend, 현재 상태 테이블):")
-            save("gold_video_rank_trend.json", dump(cur, "SELECT * FROM gold_video_rank_trend"))
     finally:
         conn.close()
 
