@@ -29,9 +29,10 @@
 
 ## Gold
 
-- 상태(2026-09-03 기준, 마이그레이션 진행 중 — 아래 "Gold: Athena/Glue 전환" 섹션 참고):
+- 상태(2026-09-03 기준, 마이그레이션 + 라이브 검증 완료 — 아래 "Gold: Athena/Glue 전환" 섹션 참고):
   - `dags/silver_to_gold_dag.py`(PostgreSQL 경로)는 **일시 정지**됨 (`schedule_interval=None`, `is_paused_upon_creation=True`).
-    새 Athena 경로를 검증할 때까지의 롤백 용도로만 남겨둠 — 검증 완료 후에는 (병행 운영 안 하기로 해서) **완전히 삭제** 예정
+    자동 스케줄은 영구히 끄고, 코드/Postgres 데이터는 그대로 보존해서 **수동 트리거 전용 롤백 경로로 계속 유지**한다
+    (삭제하지 않기로 결정)
   - `lambda/gold_compute_athena.py` + `infra/gold_athena.tf`가 새 주체: Postgres/RDS 없이 Athena로
     `gold_category_benchmark` / `gold_upload_strategy` / `gold_new_creator_guide` 3종을 직접 산출해 S3 Gold 버킷에 쓴다
   - `gold_video_rank_trend`는 이식 대상에서 제외 — 유일한 소스였던 `trending_rank_tracker.py`가 삭제되어(2026-09-03)
@@ -64,7 +65,7 @@
 - `infra/stepfunctions.tf` — 상태머신 정의 + EventBridge 스케줄(`cron(40 */4 * * ? *)`, Lambda 수집 스케줄 10분 뒤)
 - 인프라 배포: `terraform apply`로 반영 필요 (아직 미배포)
 
-## Gold: Athena/Glue 전환 (2026-09-03 추가, 아직 미배포/미검증)
+## Gold: Athena/Glue 전환 (2026-09-03 추가, 배포 + 라이브 검증 완료)
 
 "로컬 의존성 아예 없애자, 작업완료되면 병행작업 안 할거야"라는 결정에 따라, Gold 계층의
 PostgreSQL/RDS 의존성을 Athena/Glue로 완전히 대체한다(RDS는 검토 후 기각 — 별도 VPC가 없는
@@ -80,15 +81,22 @@ Glue 카탈로그 테이블(analysis_week 파티션 프로젝션, 이미 Postgre
   `ON CONFLICT ... DO UPDATE`와 동일한 멱등성을 낸다. `gold_new_creator_guide`만 Presto `format()` 미지원
   문제를 피하기 위해 SQL로 후보만 뽑고 문구 조립은 Python에서 직접 한다(원래 Postgres template과 동일한 문구).
 - `infra/gold_athena.tf` — 위 Lambda + IAM 정책(Athena 쿼리/Glue 조회/Gold 버킷 DeleteObject 추가) +
-  EventBridge 스케줄(`cron(50 * * * ? *)`, 기존 `silver_to_gold_dag.py`와 동일 주기) + CloudWatch 에러 알람.
+  EventBridge 스케줄(`cron(50 */4 * * ? *)`, 4시간마다 매시 50분) + CloudWatch 에러 알람.
+  최초엔 기존 `silver_to_gold_dag.py`의 옛 "매시 50분"(Silver가 매시간 갱신되던 시절 기준, 지금은 죽은
+  `daily_lambda_to_silver_dag` 기준값)을 그대로 가져다 썼는데, 이후 실제 현재 파이프라인 주기를
+  다시 확인해서 4시간 주기로 고쳤다 — `infra/variables.tf`의 `daily_collector_schedule_expression`(브론즈 수집)이
+  팀원에 의해 `"30 */4 * * ? *"`로, `infra/stepfunctions.tf`의 Silver 변환 스케줄이 `"40 */4 * * ? *"`로
+  이미 4시간 주기였다. Gold를 매시간 돌렸다면 Silver가 갱신 안 되는 4번 중 3번은 헛돌 뻔했음.
 - `frontend/scripts/export_athena_for_dashboard.py` — `export_pg_for_dashboard.py`(PostgreSQL 버전)의 Athena 대응 스크립트.
   출력 파일명/구조를 기존과 동일하게 맞춰 `frontend/scripts/build_dashboard_data.py`는 수정 없이 그대로 쓰일 수 있다.
   (참고: 대시보드는 상시 서빙 서버가 아니라 개발자가 이 스크립트를 수동으로 돌려
   `outputs/silver_gold_export/*.json`을 갱신하는 로컬/오프라인 워크플로다 — 요청 시 매번 Athena를 쿼리하는 구조가
   아니므로 지연시간은 문제되지 않음).
 - `dags/silver_to_gold_dag.py` — 삭제하지 않고 일시 정지만 함(`schedule_interval=None`,
-  `is_paused_upon_creation=True`, docstring에 대체 사유 명시). 새 Athena 경로를 end-to-end로 검증한 뒤에는
-  (병행운영 안 하기로 한 결정에 따라) 이 DAG와 로컬 Postgres/Docker 구성을 완전히 제거할 예정.
+  `is_paused_upon_creation=True`, docstring에 대체 사유 명시). 처음엔 "새 경로 검증되면 완전 삭제" 계획이었는데,
+  라이브 검증이 끝난 뒤 **삭제 대신 수동 트리거 전용 롤백 경로로 영구 유지**하기로 결정 변경함
+  (`airflow dags trigger silver_to_gold`로 언제든 수동 실행 가능 — Airflow는 paused 상태에서도 수동/API
+  트리거는 동작함). 로컬 Postgres/Docker 구성도 함께 유지.
 
 ### 배포 + 라이브 검증 완료 (2026-09-03)
 
@@ -122,3 +130,6 @@ plan/apply로는 잡히지 않는 종류 — Athena에 실제 쿼리를 던져�
    `os.environ["ATHENA_DATABASE"]`처럼 기본값 없는 환경변수 읽기가 있어서, 로컬 PC에서 `--database` 등
    커맨드라인 인자만 주고 이 스크립트를 돌리면 import 시점에 `KeyError`로 죽는다. 대시보드 스크립트를
    실제로 쓰기 전에 손봐야 함(아직 미수정).
+3. EventBridge 스케줄(`cron(50 */4 * * ? *)`)로 **자동 실행되는 것까지는 아직 확인 안 됨** — 지금까지는
+   `aws lambda invoke`로 수동 호출만 성공했다. 다음 4시간 주기 시점(예: 매시 50분, KST 기준 다음 배수)에
+   CloudWatch 로그나 S3 신규 객체로 자동 실행 여부를 한 번 확인해볼 것.

@@ -15,11 +15,16 @@ S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 
 (daily_lambda_to_silver_dag가 매시간 40분으로 바뀜에 따라 이 DAG도 매시간 50분으로 동기화함)
 
 2026-09-03: Postgres/RDS 없이 완전 서버리스로 가기로 하여, 이 DAG(PostgreSQL 경로)를
-Athena 기반 lambda/gold_compute_athena.py(+ infra/gold_athena.tf, EventBridge 매시간
-50분 스케줄)로 대체했다. 이 DAG는 코드/Postgres 데이터를 보존한 채 스케줄만 꺼둔
-상태 - 새 경로가 검증되기 전까지의 롤백용. 검증 끝나면 이 DAG와 Postgres/Docker
-자체를 완전히 걷어낼 예정("병행 운영 안 함" - trending_rank_tracker나
-bronze_to_silver_dag_aws.py 때와 달리 이번엔 최종적으로 하나만 남긴다).
+Athena 기반 lambda/gold_compute_athena.py(+ infra/gold_athena.tf, EventBridge 4시간마다
+매시 50분 스케줄)로 대체했다. 새 경로는 실제 배포 + 수동 invoke로 라이브 검증까지
+끝났다(S3에 gold_category_benchmark/gold_upload_strategy 데이터 확인).
+
+이 DAG는 삭제하지 않는다 - 자동 스케줄은 계속 꺼둔 채(schedule_interval=None,
+is_paused_upon_creation=True) 코드/Postgres 데이터를 그대로 보존해서, 필요할 때
+`airflow dags trigger silver_to_gold`처럼 수동으로만 돌릴 수 있게 남겨둔다(Airflow는
+paused 상태에서도 수동/API 트리거는 그대로 동작함). trending_rank_tracker나
+bronze_to_silver_dag_aws.py와 마찬가지로 "완전 삭제"가 아니라 "수동 백업 경로 유지"로
+결정함.
 """
 from datetime import timedelta
 
@@ -40,16 +45,17 @@ DEFAULT_ARGS = {
 # 일일 Lambda Silver DAG(UTC 00,08,16시 +10분)보다 넉넉히 늦게 실행
 # SCHEDULE_INTERVAL = "30 0,8,16 * * *"
 # daily_lambda_to_silver_dag(매시간 40분)보다 10분 늦게 실행
-# 2026-09-03: Athena 기반 gold_compute_athena Lambda로 대체되어 스케줄 끔
-# (None = 수동 트리거만 가능). 새 경로 검증 끝나면 이 DAG 자체를 삭제할 예정.
+# 2026-09-03: Athena 기반 gold_compute_athena Lambda로 대체(+ 라이브 검증 완료)되어
+# 자동 스케줄은 영구히 끔(None = 수동 트리거만 가능). 이 DAG는 삭제하지 않고
+# 수동 롤백 경로로 유지한다 - 위 docstring 참고.
 SCHEDULE_INTERVAL = None
 
 dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description="[대체됨 - gold_compute_athena Lambda 참고] Silver(S3) -> PostgreSQL 적재 -> Gold 집계",
-    tags=["etl", "gold", "postgres", "superseded-by-athena"],
+    description="[대체됨 - gold_compute_athena Lambda 참고, 수동 롤백용으로 유지] Silver(S3) -> PostgreSQL 적재 -> Gold 집계",
+    tags=["etl", "gold", "postgres", "superseded-by-athena", "manual-rollback-only"],
     catchup=False,
     is_paused_upon_creation=True,
     doc_md=__doc__,

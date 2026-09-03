@@ -99,12 +99,18 @@ resource "aws_iam_role_policy" "gold_compute_athena" {
   })
 }
 
-# EventBridge 스케줄: 매시 50분 (기존 silver_to_gold_dag.py의 스케줄 "50 * * * *"와
-# 동일한 주기 - Silver 수집 DAG/Step Functions(매시 40분)보다 늦게 돌게)
+# EventBridge 스케줄: 4시간마다 매시 50분.
+# 2026-09-03 기준 실제 파이프라인 주기에 맞춘 것 - infra/variables.tf의
+# daily_collector_schedule_expression(브론즈 수집, "30 */4 * * ? *")이 팀원에 의해
+# 4시간 주기로 조정되었고, infra/stepfunctions.tf의 search_to_silver_sfn_schedule
+# (Silver 변환, "40 */4 * * ? *")도 같은 주기다. Gold는 그 10분 뒤(브론즈 30분 ->
+# 실버 40분 -> 골드 50분, 매 4시간)로 맞춘다 - 예전 silver_to_gold_dag.py의
+# "매시 50분"은 Silver가 매시간 갱신되던 시절(지금은 죽은 daily_lambda_to_silver_dag
+# 기준) 값이라 그대로 쓰면 Silver가 갱신되지 않는 3번 중 2번은 헛돌게 된다.
 resource "aws_cloudwatch_event_rule" "gold_compute_athena_schedule" {
   name                = "${local.resource_prefix}-gold-compute-athena-schedule"
-  description         = "Athena 기반 Gold 집계(gold_compute_athena) Lambda 스케줄"
-  schedule_expression = "cron(50 * * * ? *)"
+  description         = "Athena 기반 Gold 집계(gold_compute_athena) Lambda 스케줄 - 4시간마다 매시 50분(Silver 변환 10분 뒤)"
+  schedule_expression = "cron(50 */4 * * ? *)"
 
   tags = local.common_tags
 }
