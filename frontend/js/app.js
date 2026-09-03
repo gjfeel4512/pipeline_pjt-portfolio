@@ -178,12 +178,14 @@
   function channelCard(c, idx) {
     const initial = c.name.slice(0, 1);
     // 채널 프로필 사진(avatar_url)은 channels.list 원본 응답(outputs/bronze_collect/
-    // channels_detail.jsonl.gz)에서 가져온 실제 채널 사진입니다. 커버리지가 100%가 아니라서
-    // (일부 채널은 raw 응답에 없음) 없으면 대표 영상 썸네일로, 그것도 실패하면 이니셜로
-    // 단계적으로 대체합니다.
-    const hasRepThumb = !!(c.representative_video && c.representative_video.video_id);
+    // channels_detail.jsonl.gz 또는 Silver dim_channel.channel_thumbnail_url)에서 가져온
+    // 실제 채널 사진입니다. 커버리지가 100%가 아니라서(일부 채널은 값이 없음) 없으면
+    // 이니셜로 대체합니다. 예전엔 대표 영상 썸네일로 한 단계 더 폴백했었는데, 그러면
+    // "채널 프로필 사진"이라는 자리에 그 채널의 어떤 한 영상 썸네일이 대신 나와서 다른
+    // 채널 사진으로 착각하기 쉬웠습니다(vcard-channel-avatar에서 고쳤던 것과 같은 문제) -
+    // 그래서 여기서도 영상 썸네일 폴백은 빼고 이니셜로 바로 넘어가게 통일했습니다.
     const avatarGrad = AVATAR_GRADIENTS[idx % AVATAR_GRADIENTS.length];
-    const avatarSources = [c.avatar_url, hasRepThumb ? Recommend.thumbnailUrl(c.representative_video.video_id) : null];
+    const avatarSources = [c.avatar_url];
     const avatarInner = `${imgFallbackHtml(avatarSources)}${initial}`;
     const el = document.createElement("div");
     el.className = "chcard";
