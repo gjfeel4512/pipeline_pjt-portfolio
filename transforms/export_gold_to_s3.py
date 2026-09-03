@@ -52,6 +52,11 @@ def export_table(cur, table, analysis_week):
     )
     cols = [d.name for d in cur.description]
     rows = [dict(zip(cols, row)) for row in cur.fetchall()]
+    # analysis_week은 S3 파티션 키(analysis_week=.../)로 이미 인코딩돼 있음 - 데이터 파일
+    # 안에도 같은 이름의 컬럼이 있으면 Athena/Glue가 파티션 컬럼 중복으로 보고 그 파일을
+    # 조용히 무시함(쿼리 결과가 항상 0행). 그래서 여기서 제거.
+    for row in rows:
+        row.pop("analysis_week", None)
     return rows
 
 
@@ -63,8 +68,12 @@ def export_unversioned_table(cur, table):
 
 
 def upload_json(s3, bucket, key, rows):
-    body = json.dumps(rows, ensure_ascii=False, default=json_default, indent=2)
-    s3.put_object(Bucket=bucket, Key=key, Body=body.encode("utf-8"), ContentType="application/json")
+    """JSON Lines(한 줄 = 레코드 하나)로 저장 - Athena JSON SerDe가 배열이 아니라
+    이 형식만 읽을 수 있음(Silver 파일들과 동일 관례)."""
+    body = "\n".join(json.dumps(r, ensure_ascii=False, default=json_default) for r in rows)
+    if rows:
+        body += "\n"
+    s3.put_object(Bucket=bucket, Key=key, Body=body.encode("utf-8"), ContentType="application/x-ndjson")
     return len(body)
 
 
@@ -88,14 +97,14 @@ def main():
 
             for table in TABLES:
                 rows = export_table(cur, table, analysis_week)
-                key = f"{table}/analysis_week={analysis_week}/{table}.json"
+                key = f"{table}/analysis_week={analysis_week}/{table}.jsonl"
                 size = upload_json(s3, args.bucket, key, rows)
                 print(f"{table}: {len(rows)}건 -> s3://{args.bucket}/{key} ({size} bytes)")
 
             exported_at = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
             for table in UNVERSIONED_TABLES:
                 rows = export_unversioned_table(cur, table)
-                key = f"{table}/exported_at={exported_at}/{table}.json"
+                key = f"{table}/exported_at={exported_at}/{table}.jsonl"
                 size = upload_json(s3, args.bucket, key, rows)
                 print(f"{table}: {len(rows)}건 -> s3://{args.bucket}/{key} ({size} bytes)")
     finally:

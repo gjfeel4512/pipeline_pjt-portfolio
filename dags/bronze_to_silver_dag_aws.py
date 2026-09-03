@@ -110,7 +110,13 @@ DEFAULT_ARGS = {
 }
 
 # SCHEDULE_INTERVAL = '0 2 * * *'  # Daily at 02:00 KST
-SCHEDULE_INTERVAL = '40 * * * *'  # 임시
+# 2026-09-03: youtube_api_collector.py의 1년치 로컬 백필(outputs/bronze_merged/*.jsonl,
+# 총 54개)은 일회성 작업으로 이미 완료됨 - Firehose 전송/Silver 변환 체크포인트
+#(.firehose_pushed_manifest.json / .silver_transformed_manifest.json) 둘 다 54/54 완료,
+# S3(youtube/bronze/, youtube/silver/, youtube/silver-rejected/)에도 존재 확인됨.
+# 더 이상 자동으로 반복 실행할 필요가 없어 스케줄을 껐다(None = 수동 트리거만 가능).
+# 나중에 새 백필 파일을 추가하게 되면 Airflow UI에서 수동 실행(Trigger DAG)하면 됨.
+SCHEDULE_INTERVAL = None
 
 # ============================================================================
 # AWS Helper Functions
@@ -738,9 +744,10 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description='Bronze to Silver ETL with AWS S3 Integration',
-    tags=['etl', 'silver', 'aws', 's3'],
+    description='Bronze to Silver ETL with AWS S3 Integration (1년치 로컬 백필 완료 - 수동 트리거 전용)',
+    tags=['etl', 'silver', 'aws', 's3', 'backfill-complete'],
     catchup=False,
+    is_paused_upon_creation=True,
     doc_md=__doc__,
 )
 
