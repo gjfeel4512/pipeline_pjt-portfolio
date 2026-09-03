@@ -29,11 +29,9 @@ AWS_DEFAULT_REGION (기본 us-west-2)
   video_analysis_{gaming,autos_vehicles,film_animation}.json
   dim_channel.json
   gold_category_benchmark.json / gold_upload_strategy.json / gold_new_creator_guide.json
-  gold_video_rank_trend.json  (2026-09-03부터 빈 배열 - 아래 설명 참고)
 
-gold_video_rank_trend에 대해: 이 지표의 유일한 데이터 소스였던 trending_rank_tracker.py
-Lambda가 삭제되어(2026-09-03) Athena 쪽에는 이 테이블 자체가 없다. build_dashboard_data.py가
-파일이 없어도 죽지 않는 것과 동일하게, 빈 배열을 써서 하위호환만 유지한다.
+2026-09-03: 랭크 추적(gold_video_rank_trend) 기능 자체를 폐지하여 이 스크립트는 더 이상
+gold_video_rank_trend.json을 만들지 않는다(frontend 쪽에서도 이 파일을 읽는 곳이 없음).
 """
 import argparse
 import json
@@ -138,9 +136,9 @@ def main():
     for cat_key, cat_id in CATEGORIES.items():
         sql = VIDEO_ANALYSIS_CTE.format(db=args.database) + f"""
 SELECT video_id, channel_id, category_id, title, duration_seconds, video_type,
-       view_count, like_count, comment_count,
+       view_count, like_count, comment_count, subscriber_count_at_collection,
        published_day_of_week, published_hour_kst,
-       views_per_day, like_rate, comment_rate,
+       video_age_days, views_per_day, like_rate, comment_rate,
        subscriber_segment, duration_bucket, upload_time_bucket
 FROM video_analysis
 WHERE category_id = '{cat_id}'
@@ -150,15 +148,24 @@ WHERE category_id = '{cat_id}'
         rows = coerce_types(
             rows,
             int_fields=("duration_seconds", "view_count", "like_count", "comment_count",
-                        "published_day_of_week", "published_hour_kst"),
+                        "subscriber_count_at_collection",
+                        "published_day_of_week", "published_hour_kst", "video_age_days"),
             float_fields=("views_per_day", "like_rate", "comment_rate"),
         )
         save(f"video_analysis_{cat_key}.json", rows)
 
     print("Silver (dim_channel, 채널별 최신값):")
+    # 컬럼명을 Postgres dim_channel(sql/youtube_pipeline_schema_postgresql.sql)과
+    # 똑같이 맞춘다 - build_dashboard_data.py의 normalize_silver_row()/build_channel_pool()이
+    # ch.get("channel_title")/ch.get("channel_view_count")/ch.get("channel_video_count")로
+    # 읽는데, Glue silver_youtube 컬럼명은 channel_name/channel_total_view_count/
+    # channel_total_video_count라서 그대로 두면 매번 기본값(0)으로 빠져 channel_pool이
+    # 통째로 비게 된다(channel_video_count<=0 필터에 전부 걸림).
     sql = f"""
-SELECT channel_id, channel_name, subscriber_count, channel_thumbnail_url,
-       channel_total_view_count, channel_total_video_count, channel_published_at_utc
+SELECT channel_id, channel_name AS channel_title, subscriber_count, channel_thumbnail_url,
+       channel_total_view_count AS channel_view_count,
+       channel_total_video_count AS channel_video_count,
+       channel_published_at_utc
 FROM (
     SELECT channel_id, channel_name, subscriber_count, channel_thumbnail_url,
            channel_total_view_count, channel_total_video_count, channel_published_at_utc,
@@ -172,7 +179,7 @@ WHERE rn = 1
     rows = fetch_all_rows(athena, qid)
     rows = coerce_types(
         rows,
-        int_fields=("subscriber_count", "channel_total_view_count", "channel_total_video_count"),
+        int_fields=("subscriber_count", "channel_view_count", "channel_video_count"),
     )
     save("dim_channel.json", rows)
 
@@ -201,9 +208,6 @@ WHERE rn = 1
             bool_fields=gold_bool_fields.get(table, ()),
         )
         save(f"{table}.json", rows)
-
-    print("Gold (video_rank_trend): trending_rank_tracker Lambda가 삭제되어 Athena에 이 테이블이 없음 - 빈 배열로 하위호환만 유지")
-    save("gold_video_rank_trend.json", [])
 
     print("DONE")
 

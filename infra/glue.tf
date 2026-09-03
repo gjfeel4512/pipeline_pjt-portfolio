@@ -223,11 +223,15 @@ resource "aws_glue_catalog_table" "silver_youtube" {
       type = "string"
     }
     columns {
-      name = "trending_rank"
-      type = "int"
+      name = "tags"
+      type = "array<string>"
     }
     columns {
-      name = "tags"
+      name = "matched_tags"
+      type = "array<string>"
+    }
+    columns {
+      name = "topic_categories"
       type = "array<string>"
     }
     columns {
@@ -271,8 +275,16 @@ resource "aws_glue_catalog_table" "silver_youtube" {
       type = "boolean"
     }
     columns {
+      name = "has_paid_product_placement"
+      type = "boolean"
+    }
+    columns {
       name = "privacy_status"
       type = "string"
+    }
+    columns {
+      name = "made_for_kids"
+      type = "boolean"
     }
     columns {
       name = "live_broadcast_content"
@@ -281,6 +293,14 @@ resource "aws_glue_catalog_table" "silver_youtube" {
     columns {
       name = "is_live_content"
       type = "boolean"
+    }
+    columns {
+      name = "default_audio_language"
+      type = "string"
+    }
+    columns {
+      name = "thumbnail_url"
+      type = "string"
     }
     columns {
       name = "published_at_utc"
@@ -315,6 +335,14 @@ resource "aws_glue_catalog_table" "silver_youtube" {
       type = "bigint"
     }
     columns {
+      name = "uploads_playlist_id"
+      type = "string"
+    }
+    columns {
+      name = "channel_thumbnail_url"
+      type = "string"
+    }
+    columns {
       name = "collected_at_utc"
       type = "string"
     }
@@ -324,6 +352,10 @@ resource "aws_glue_catalog_table" "silver_youtube" {
     }
     columns {
       name = "silver_transformed_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "source"
       type = "string"
     }
   }
@@ -415,11 +447,15 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
       type = "string"
     }
     columns {
-      name = "trending_rank"
-      type = "int"
+      name = "tags"
+      type = "array<string>"
     }
     columns {
-      name = "tags"
+      name = "matched_tags"
+      type = "array<string>"
+    }
+    columns {
+      name = "topic_categories"
       type = "array<string>"
     }
     columns {
@@ -463,8 +499,16 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
       type = "boolean"
     }
     columns {
+      name = "has_paid_product_placement"
+      type = "boolean"
+    }
+    columns {
       name = "privacy_status"
       type = "string"
+    }
+    columns {
+      name = "made_for_kids"
+      type = "boolean"
     }
     columns {
       name = "live_broadcast_content"
@@ -473,6 +517,14 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
     columns {
       name = "is_live_content"
       type = "boolean"
+    }
+    columns {
+      name = "default_audio_language"
+      type = "string"
+    }
+    columns {
+      name = "thumbnail_url"
+      type = "string"
     }
     columns {
       name = "published_at_utc"
@@ -507,6 +559,14 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
       type = "bigint"
     }
     columns {
+      name = "uploads_playlist_id"
+      type = "string"
+    }
+    columns {
+      name = "channel_thumbnail_url"
+      type = "string"
+    }
+    columns {
       name = "collected_at_utc"
       type = "string"
     }
@@ -516,6 +576,10 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
     }
     columns {
       name = "silver_transformed_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "source"
       type = "string"
     }
   }

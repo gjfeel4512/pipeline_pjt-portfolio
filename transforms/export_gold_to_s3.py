@@ -40,10 +40,6 @@ def json_default(o):
 
 TABLES = ["gold_category_benchmark", "gold_upload_strategy", "gold_new_creator_guide"]
 
-# analysis_week로 스냅샷을 남기지 않고 video_id로 계속 upsert되는 "현재 상태" 테이블.
-# 위 TABLES와 달리 WHERE analysis_week 필터가 없고, S3 키도 exported_at 시각으로 남긴다.
-UNVERSIONED_TABLES = ["gold_video_rank_trend"]
-
 
 def export_table(cur, table, analysis_week):
     cur.execute(
@@ -57,13 +53,6 @@ def export_table(cur, table, analysis_week):
     # 조용히 무시함(쿼리 결과가 항상 0행). 그래서 여기서 제거.
     for row in rows:
         row.pop("analysis_week", None)
-    return rows
-
-
-def export_unversioned_table(cur, table):
-    cur.execute(f"SELECT * FROM youtube_analytics.{table}")
-    cols = [d.name for d in cur.description]
-    rows = [dict(zip(cols, row)) for row in cur.fetchall()]
     return rows
 
 
@@ -98,13 +87,6 @@ def main():
             for table in TABLES:
                 rows = export_table(cur, table, analysis_week)
                 key = f"{table}/analysis_week={analysis_week}/{table}.jsonl"
-                size = upload_json(s3, args.bucket, key, rows)
-                print(f"{table}: {len(rows)}건 -> s3://{args.bucket}/{key} ({size} bytes)")
-
-            exported_at = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-            for table in UNVERSIONED_TABLES:
-                rows = export_unversioned_table(cur, table)
-                key = f"{table}/exported_at={exported_at}/{table}.jsonl"
                 size = upload_json(s3, args.bucket, key, rows)
                 print(f"{table}: {len(rows)}건 -> s3://{args.bucket}/{key} ({size} bytes)")
     finally:

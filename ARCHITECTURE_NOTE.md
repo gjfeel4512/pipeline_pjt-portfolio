@@ -35,9 +35,8 @@
     (삭제하지 않기로 결정)
   - `lambda/gold_compute_athena.py` + `infra/gold_athena.tf`가 새 주체: Postgres/RDS 없이 Athena로
     `gold_category_benchmark` / `gold_upload_strategy` / `gold_new_creator_guide` 3종을 직접 산출해 S3 Gold 버킷에 쓴다
-  - `gold_video_rank_trend`는 이식 대상에서 제외 — 유일한 소스였던 `trending_rank_tracker.py`가 삭제되어(2026-09-03)
-    `trending_rank`가 더 이상 채워지지 않음. Postgres 쪽 테이블/컬럼은 그대로 남아 있고(과거 데이터만 유지),
-    Athena/Glue 쪽에는 이 테이블 자체가 없음
+  - `gold_video_rank_trend`/`trending_rank`는 팀 결정으로 **랭크 추적 자체를 폐지**하여 완전히 제거함
+    (2026-09-03) — 아래 "랭크 추적(trending_rank) 스키마 전체 제거" 섹션 참고
 
 ## 이제는 존재하지 않는 것들 (참고용)
 
@@ -50,7 +49,8 @@
   `infra/eventbridge.tf`의 스케줄/타겟/권한, `infra/cloudwatch.tf`의 에러 알람, `infra/variables.tf`의
   `trending_rank_schedule_expression` 변수. `terraform apply`로 실제 AWS 리소스(Lambda, EventBridge 규칙,
   CloudWatch 알람)까지 제거해야 완전히 정리됨(아직 미적용). Gold의 `gold_video_rank_trend` 테이블은
-  이 데이터에만 의존했으므로 함께 영향받음 — 위 Gold 섹션 참고.
+  이 데이터에만 의존했으므로 함께 영향받았고, 이후 랭크 추적 자체가 폐지되며 스키마도 완전히
+  제거됨 — 아래 "랭크 추적(trending_rank) 스키마 전체 제거" 섹션 참고.
 
 ## Step Functions 병렬 경로 (2026-09-03 추가, Airflow는 삭제하지 않음)
 
@@ -126,10 +126,136 @@ plan/apply로는 잡히지 않는 종류 — Athena에 실제 쿼리를 던져�
 
 1. 이번 라운드에서 만든 변경 사항은 사용자 요청에 따라 **아직 커밋/푸시되지 않았음** — 배포/검증은
    끝났지만 코드는 로컬에만 반영된 상태.
-2. `frontend/scripts/export_athena_for_dashboard.py`가 import하는 `gold_compute_athena.py` 최상단에
-   `os.environ["ATHENA_DATABASE"]`처럼 기본값 없는 환경변수 읽기가 있어서, 로컬 PC에서 `--database` 등
-   커맨드라인 인자만 주고 이 스크립트를 돌리면 import 시점에 `KeyError`로 죽는다. 대시보드 스크립트를
-   실제로 쓰기 전에 손봐야 함(아직 미수정).
+2. ~~`frontend/scripts/export_athena_for_dashboard.py`가 import하는 `gold_compute_athena.py`~~ —
+   **수정 완료(2026-09-03)**: 모듈 최상단의 `os.environ["ATHENA_DATABASE"]` 등 필수 검증을
+   `os.environ.get(...)`으로 바꾸고, 실제로 이 값을 쓰는 `lambda_handler()` 안에서만 검증하도록
+   옮겼다. Lambda 실제 실행(env var는 `infra/gold_athena.tf`가 항상 채워줌)은 동작 그대로이고,
+   다른 스크립트가 이 모듈을 import만 할 때 더는 `KeyError`가 나지 않는다.
 3. EventBridge 스케줄(`cron(50 */4 * * ? *)`)로 **자동 실행되는 것까지는 아직 확인 안 됨** — 지금까지는
    `aws lambda invoke`로 수동 호출만 성공했다. 다음 4시간 주기 시점(예: 매시 50분, KST 기준 다음 배수)에
    CloudWatch 로그나 S3 신규 객체로 자동 실행 여부를 한 번 확인해볼 것.
+
+## 랭크 추적(trending_rank) 스키마 전체 제거 (2026-09-03 추가)
+
+팀에서 "랭크 추적 안 하기로" 결정하여, `trending_rank` 컬럼과 `gold_video_rank_trend` 테이블을
+코드/스키마 전체에서 제거했다(범위: 전체 제거 — Postgres DDL부터 Glue 컬럼까지 전부).
+기존 `lambda/trending_rank_tracker.py` 삭제(위 섹션)로 이미 데이터 소스가 끊긴 상태였고,
+이번에는 그 흔적으로 남아 있던 스키마/코드까지 마저 정리한 것이다.
+
+### 수정된 파일 (전부 로컬 반영 완료, 아직 커밋 전)
+
+- `sql/youtube_pipeline_schema_postgresql.sql` — `fact_video_snapshot`에서 `trending_rank` 컬럼 +
+  `ck_snapshot_trending_rank` CHECK 제약 제거, `gold_video_rank_trend` CREATE TABLE 블록 통째로 제거.
+  기존 "Section 6: 마이그레이션 보정" 관례를 따라 `ALTER TABLE ... DROP COLUMN IF EXISTS` /
+  `DROP TABLE IF EXISTS`를 멱등적으로 추가해뒀기 때문에, 이미 스키마가 적용된 로컬/RDS
+  Postgres에도 이 파일을 그대로 재실행하면 안전하게 반영된다.
+- `sql/compute_gold.sql` — `gold_video_rank_trend`를 계산하던 Section 4(랭크 스냅샷 집계 +
+  upsert) 전체 삭제.
+- `transforms/load_silver_to_postgres.py` — `prepare_row()`의 `trending_rank` 매핑, UPSERT SQL의
+  컬럼 목록/VALUES/`ON CONFLICT ... DO UPDATE` 절에서 `trending_rank` 제거.
+- `transforms/export_gold_to_s3.py` — `UNVERSIONED_TABLES`(=`gold_video_rank_trend` 전용 목록)와
+  이를 사용하던 `export_unversioned_table()` 함수, `main()`의 관련 루프 제거.
+- `frontend/scripts/export_pg_for_dashboard.py` — `gold_video_rank_trend.json` export 코드/docstring 제거.
+- `frontend/scripts/export_s3_for_dashboard.py` — `GOLD_UNVERSIONED_TABLES`와 이를 순회하며
+  `exported_at` 파티션에서 최신 것만 골라 쓰던 블록 제거(공용 함수 `iter_s3_gold_json()`은
+  `GOLD_VERSIONED_TABLES` 루프가 계속 쓰므로 그대로 둠).
+- `frontend/scripts/export_athena_for_dashboard.py` — 하위호환용으로 남겨뒀던 빈 배열
+  `gold_video_rank_trend.json` 출력 제거(frontend 쪽에 이 파일을 읽는 곳이 애초에 없는 것을
+  `frontend/js/`, `build_dashboard_data.py` 재확인해서 안전하게 제거 가능함을 확인함).
+- `infra/glue.tf` — `silver_youtube`, `silver_youtube_rejected` 두 Glue 테이블 정의에서
+  `trending_rank`(int) 컬럼 제거.
+
+### 아직 사용자가 직접 반영해야 하는 부분
+
+- **Postgres**: 이미 스키마를 적용해둔 로컬/RDS DB가 있다면, 위에서 설명한 대로
+  `sql/youtube_pipeline_schema_postgresql.sql`을 그대로 재실행(`psql -f ...`)하면 Section 6의
+  `DROP COLUMN IF EXISTS`/`DROP TABLE IF EXISTS`가 안전하게 컬럼/테이블을 제거한다(재실행 가능,
+  이미 없으면 조용히 스킵).
+- **Glue/Athena**: `infra/glue.tf` 변경은 로컬 파일 수정일 뿐이라, 실제 배포된 Glue Catalog에
+  반영하려면 `cd infra && terraform apply`를 한 번 더 실행해야 한다(컬럼 제거이므로 in-place
+  update로 처리될 것으로 예상되지만, `terraform plan`으로 먼저 확인 권장).
+- 이번 변경도 다른 로컬 변경과 마찬가지로 아직 git 커밋/푸시되지 않았다.
+
+## `silver_youtube` Glue 스키마 누락 컬럼 추가 (2026-09-03 추가)
+
+`export_athena_for_dashboard.py`를 실제로 돌려보다가(대시보드 데이터 갱신 첫 실행) 발견함:
+`dim_channel` 쿼리가 `channel_thumbnail_url` 컬럼을 찾다가
+`COLUMN_NOT_FOUND: ... Column 'channel_thumbnail_url' cannot be resolved`로 실패했다.
+
+원인: `lambda/stepfn_transform_search_silver.py`(현재 Silver 변환 경로)가 실제로 Silver
+JSONL에 쓰는 필드 목록과, `infra/glue.tf`의 `silver_youtube`/`silver_youtube_rejected` Glue
+테이블 컬럼 정의가 애초부터 어긋나 있었다 — Glue 테이블을 만들 때 기준으로 삼은 스키마가
+그 이후 Silver 변환 코드에 추가된 필드들을 따라가지 못한 것으로 보인다(PostgreSQL
+`fact_video_snapshot`/`dim_channel` 쪽은 이 필드들을 이미 다 갖고 있어서 지금까지 드러나지
+않았다 — Athena 경로를 실제로 써보고 나서야 발견됨).
+
+Silver JSONL에는 있지만 Glue DDL에는 없던 컬럼 9개를 `infra/glue.tf`의 두 테이블 모두에
+추가했다(순수 추가라 기존 데이터/쿼리에 영향 없음, JSON SerDe는 DDL에 없는 필드를 그냥
+무시할 뿐이었음):
+
+- `matched_tags` (`array<string>`), `topic_categories` (`array<string>`)
+- `has_paid_product_placement` (`boolean`), `made_for_kids` (`boolean`)
+- `default_audio_language` (`string`), `thumbnail_url` (`string`, 영상 썸네일)
+- `uploads_playlist_id` (`string`), `channel_thumbnail_url` (`string`, 채널 프로필 사진 —
+  `export_athena_for_dashboard.py`의 `dim_channel` 쿼리가 필요로 하던 바로 그 컬럼)
+- `source` (`string`)
+
+**적용 완료(2026-09-03)**: `terraform apply` 후 재실행에서 `dim_channel.json`(2893건)부터
+Gold 3종까지 전부 정상 생성됨 확인됨.
+
+## `export_athena_for_dashboard.py`가 만든 video_analysis_*.json이 전부 필터링되던 문제 (2026-09-03 추가)
+
+위 Glue 스키마 수정 후 export는 성공했지만(video_analysis_*.json에 실제 건수 다 채워짐,
+gaming 11189/autos_vehicles 6090/film_animation 5651건), 그다음 `build_dashboard_data.py`를
+돌리니 세 카테고리 전부 `silver_videos=0`으로 나왔다 — 즉 export한 영상이 대시보드 쪽에서
+전부 걸러진 것.
+
+원인: `build_dashboard_data.py`의 `normalize_silver_row()`가 `video_age_days`가 없으면
+그 행을 통째로 버리는데(`age_days is None -> return None`), `export_athena_for_dashboard.py`의
+`video_analysis_*.json` SELECT 목록에는 애초에 `video_age_days` 컬럼이 없었다. PostgreSQL의
+`vw_video_analysis` 뷰는 `video_age_days`를 자체 컬럼으로 노출하는데, Athena 쪽 `VIDEO_ANALYSIS_CTE`
+(`lambda/gold_compute_athena.py`)는 `views_per_day` 계산 중간값으로만 이 값을 쓰고 별도
+컬럼으로 내보내지 않고 있었다 — 그래서 Athena 경로로 만든 `video_analysis_*.json`에는
+`video_age_days` 필드 자체가 없어서 100% 필터링됐다.
+
+수정: `VIDEO_ANALYSIS_CTE`에 `video_age_days`를 `vw_video_analysis`와 동일한 정의
+(`GREATEST(1, FLOOR((수집시각 - 게시시각)/86400))`)로 별도 컬럼 추가하고,
+`export_athena_for_dashboard.py`의 SELECT/타입 변환 목록에도 추가했다. 겸사겸사
+`subscriber_count_at_collection`(dim_channel 조인 실패 시 폴백으로 쓰이는 필드)도 같은
+이유로 함께 추가함 — 둘 다 CTE에 컬럼을 추가하는 것뿐이라 기존 `gold_category_benchmark`/
+`gold_upload_strategy`/`gold_new_creator_guide` 계산 로직(명시적으로 컬럼을 나열해서
+SELECT하므로 새 컬럼이 껴도 영향 없음)에는 영향 없다.
+
+**아직 사용자가 직접 반영해야 함**: `lambda/gold_compute_athena.py`가 다시 바뀌었으므로
+Lambda 코드 자체를 다시 배포하려면(선택 사항 - Gold 3종 계산 결과는 그대로라 급하지 않음)
+`terraform apply`가 한 번 더 필요하다. 대시보드 갱신만 목적이라면 Lambda 재배포 없이도
+바로 아래를 다시 실행하면 된다(로컬 스크립트만 바뀐 부분이 반영됨):
+
+```
+python frontend/scripts/export_athena_for_dashboard.py --database goldline_dev_db --gold-bucket goldline-dev-gold-827913617635 --athena-output s3://goldline-dev-gold-827913617635/athena-query-results/ --region us-west-2
+python frontend/scripts/build_dashboard_data.py
+.\scripts\deploy_frontend.ps1 all
+```
+
+## 채널 추천 탭(channel_pool)이 계속 비어있던 문제 (2026-09-03 추가)
+
+위 `video_age_days` 수정 후 재실행하니 `video_pool`(영상 추천)은 정상 채워졌는데
+(`silver_videos`가 카테고리별로 실제 건수로 나옴), `channel_pool`(채널 추천)은 세
+카테고리 다 여전히 0건이었다.
+
+원인: 컬럼명 불일치. `build_dashboard_data.py`(`normalize_silver_row`/`build_channel_pool`)는
+Postgres `dim_channel` 테이블(`sql/youtube_pipeline_schema_postgresql.sql`)의 실제 컬럼명인
+`channel_title`/`channel_view_count`/`channel_video_count`로 값을 읽는데,
+`export_athena_for_dashboard.py`의 `dim_channel` 쿼리는 Glue `silver_youtube` 테이블의
+컬럼명을 그대로(`channel_name`/`channel_total_view_count`/`channel_total_video_count`)
+썼다. 그래서 `ch.get("channel_video_count")`가 매번 `None`(→ 기본값 0)이 되고,
+`build_channel_pool()`의 `if latest["channel_video_count"] <= 0: continue` 필터에
+채널이 전부 걸러졌다 — `video_pool`은 이 필터가 없어서 영향받지 않았다.
+
+수정: `export_athena_for_dashboard.py`의 `dim_channel` SQL에 `AS channel_title`/
+`AS channel_view_count`/`AS channel_video_count` 별칭을 붙여 Postgres 쪽과 정확히
+같은 필드명으로 내보내도록 했다. `channel_id`/`subscriber_count`/`channel_thumbnail_url`은
+원래도 이름이 같아서 문제없었음.
+
+**적용 완료**: PC에 반영해뒀다. 위 3줄(export → build_dashboard_data → deploy_frontend)을
+한 번 더 실행하면 `channels=` 카운트가 0이 아닌 값으로 나오는지 확인할 수 있다.

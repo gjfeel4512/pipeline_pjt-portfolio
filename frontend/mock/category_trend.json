@@ -1,26 +1,26 @@
 {
   "gaming": {
-    "avg_views_per_day": 67.2,
+    "avg_views_per_day": 80.9,
     "avg_views_per_day_prev": null,
-    "avg_engagement_rate": 0.0123,
+    "avg_engagement_rate": 0.0122,
     "avg_engagement_rate_prev": null,
-    "avg_duration_sec": 1196,
+    "avg_duration_sec": 1191,
     "duration_distribution": [
       {
         "label": "1~5분",
-        "pct": 2.8
+        "pct": 2.6
       },
       {
         "label": "5~10분",
-        "pct": 18.1
+        "pct": 17.8
       },
       {
         "label": "10~20분",
-        "pct": 29.3
+        "pct": 29.7
       },
       {
         "label": "20분 이상",
-        "pct": 49.8
+        "pct": 49.9
       }
     ],
     "subscriber_tiers": [
@@ -30,33 +30,33 @@
       },
       {
         "label": "중형 (10만~50만)",
-        "ratio": 0.9
+        "ratio": 1.0
       },
       {
         "label": "대형 (50만 이상)",
-        "ratio": 0.7
+        "ratio": 0.6
       }
     ],
-    "sample_size": 5189
+    "sample_size": 11189
   },
   "autos_vehicles": {
-    "avg_views_per_day": 139.0,
+    "avg_views_per_day": 154.6,
     "avg_views_per_day_prev": null,
-    "avg_engagement_rate": 0.0096,
+    "avg_engagement_rate": 0.0099,
     "avg_engagement_rate_prev": null,
-    "avg_duration_sec": 1128,
+    "avg_duration_sec": 1127,
     "duration_distribution": [
       {
         "label": "1~5분",
-        "pct": 5.6
+        "pct": 5.4
       },
       {
         "label": "5~10분",
-        "pct": 15.9
+        "pct": 15.4
       },
       {
         "label": "10~20분",
-        "pct": 32.5
+        "pct": 33.3
       },
       {
         "label": "20분 이상",
@@ -77,14 +77,14 @@
         "ratio": 0.4
       }
     ],
-    "sample_size": 2860
+    "sample_size": 6090
   },
   "film_animation": {
-    "avg_views_per_day": 454.9,
+    "avg_views_per_day": 453.2,
     "avg_views_per_day_prev": null,
     "avg_engagement_rate": 0.0083,
     "avg_engagement_rate_prev": null,
-    "avg_duration_sec": 1217,
+    "avg_duration_sec": 1214,
     "duration_distribution": [
       {
         "label": "1~5분",
@@ -92,15 +92,15 @@
       },
       {
         "label": "5~10분",
-        "pct": 9.5
+        "pct": 10.5
       },
       {
         "label": "10~20분",
-        "pct": 38.5
+        "pct": 37.5
       },
       {
         "label": "20분 이상",
-        "pct": 51.2
+        "pct": 51.1
       }
     ],
     "subscriber_tiers": [
@@ -110,13 +110,13 @@
       },
       {
         "label": "중형 (10만~50만)",
-        "ratio": 0.6
+        "ratio": 0.5
       },
       {
         "label": "대형 (50만 이상)",
-        "ratio": 0.3
+        "ratio": 0.4
       }
     ],
-    "sample_size": 2598
+    "sample_size": 5651
   }
 }

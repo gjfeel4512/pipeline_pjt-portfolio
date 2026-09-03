@@ -21,6 +21,14 @@ trending_rank_tracker.py Lambda가 삭제되어(2026-09-03) 더 이상 trending_
   ATHENA_DATABASE        Glue 데이터베이스명 (예: goldline_dev_db)
   ATHENA_OUTPUT_LOCATION Athena 쿼리 결과/메타데이터 저장용 S3 경로
   GOLD_BUCKET_NAME       Gold S3 버킷 이름
+
+2026-09-03: 이 세 값은 예전엔 모듈 로드 시점에 os.environ[...]로 필수 검증했는데,
+frontend/scripts/export_athena_for_dashboard.py가 이 모듈에서 VIDEO_ANALYSIS_CTE/
+CATEGORY_NAME_KO만 재사용하려고 import만 해도(자기 로직은 --database 등 CLI 인자로
+따로 받음) 환경변수가 없으면 import 시점에 KeyError로 죽는 문제가 있었다. 그래서
+모듈 로드 시점엔 os.environ.get(...)으로만 읽고, 실제로 Lambda가 이 값들을 쓰는
+lambda_handler() 안에서 검증하도록 바꿨다 - 실제 Lambda 실행 환경(infra/gold_athena.tf가
+항상 세 값을 설정함)에서는 동작이 동일하다.
 """
 import datetime
 import json
@@ -34,9 +42,9 @@ import boto3
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-ATHENA_DATABASE = os.environ["ATHENA_DATABASE"]
-ATHENA_OUTPUT_LOCATION = os.environ["ATHENA_OUTPUT_LOCATION"]
-GOLD_BUCKET_NAME = os.environ["GOLD_BUCKET_NAME"]
+ATHENA_DATABASE = os.environ.get("ATHENA_DATABASE")
+ATHENA_OUTPUT_LOCATION = os.environ.get("ATHENA_OUTPUT_LOCATION")
+GOLD_BUCKET_NAME = os.environ.get("GOLD_BUCKET_NAME")
 ATHENA_WORKGROUP = os.environ.get("ATHENA_WORKGROUP", "primary")
 AWS_REGION = os.environ.get("AWS_DEFAULT_REGION", "us-west-2")
 
@@ -73,6 +81,14 @@ WITH video_analysis AS (
         view_count, like_count, comment_count,
         CAST(day_of_week(from_iso8601_timestamp(published_at_kst)) AS INTEGER) AS published_day_of_week,
         hour(from_iso8601_timestamp(published_at_kst)) AS published_hour_kst,
+        -- sql/youtube_pipeline_schema_postgresql.sql의 vw_video_analysis.video_age_days와
+        -- 동일 정의(수집 시각 - 게시 시각, 최소 1일). frontend/scripts/build_dashboard_data.py의
+        -- normalize_silver_row()가 이 값이 없으면 그 행을 통째로 버리므로(video_age_days is
+        -- None -> return None) 반드시 SELECT 목록에 있어야 한다.
+        CAST(GREATEST(1, FLOOR(
+            (to_unixtime(from_iso8601_timestamp(collected_at_utc))
+             - to_unixtime(from_iso8601_timestamp(published_at_utc))) / 86400.0
+        )) AS INTEGER) AS video_age_days,
         ROUND(
             CAST(view_count AS DOUBLE) / GREATEST(1, FLOOR(
                 (to_unixtime(from_iso8601_timestamp(collected_at_utc))
@@ -81,6 +97,9 @@ WITH video_analysis AS (
         ) AS views_per_day,
         ROUND(CAST(like_count AS DOUBLE) / NULLIF(view_count, 0), 6) AS like_rate,
         ROUND(CAST(comment_count AS DOUBLE) / NULLIF(view_count, 0), 6) AS comment_rate,
+        -- vw_video_analysis.subscriber_count_at_collection과 동일 - dim_channel 조인이
+        -- 실패한 채널에 대한 폴백으로 build_dashboard_data.py의 normalize_silver_row()가 씀.
+        subscriber_count AS subscriber_count_at_collection,
         CASE
             WHEN subscriber_count IS NULL THEN 'hidden_or_unknown'
             WHEN subscriber_count < 1000 THEN 'new'
@@ -322,6 +341,18 @@ def write_guide_to_s3(records, week):
 
 
 def lambda_handler(event, context):
+    missing = [
+        name
+        for name, value in (
+            ("ATHENA_DATABASE", ATHENA_DATABASE),
+            ("ATHENA_OUTPUT_LOCATION", ATHENA_OUTPUT_LOCATION),
+            ("GOLD_BUCKET_NAME", GOLD_BUCKET_NAME),
+        )
+        if not value
+    ]
+    if missing:
+        raise RuntimeError(f"다음 환경변수가 필요합니다: {', '.join(missing)}")
+
     week = monday_of_week_kst().isoformat()
     created_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
     logger.info("=" * 70)

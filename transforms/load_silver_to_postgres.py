@@ -132,7 +132,6 @@ def prepare_row(rec):
         "like_count": rec.get("like_count"),
         "comment_count": rec.get("comment_count"),
         "subscriber_count_at_collection": rec.get("subscriber_count"),
-        "trending_rank": rec.get("trending_rank"),
         "collected_at_utc": collected_dt,
         "collected_date": collected_dt.date(),
         "is_public": (rec.get("privacy_status") == "public"),
@@ -176,7 +175,7 @@ INSERT INTO youtube_analytics.fact_video_snapshot
      live_broadcast_content, default_audio_language, thumbnail_url, made_for_kids,
      has_paid_product_placement, topic_categories,
      view_count, like_count, comment_count, subscriber_count_at_collection,
-     trending_rank, collected_at_utc, collected_date, is_public, is_valid, invalid_reason)
+     collected_at_utc, collected_date, is_public, is_valid, invalid_reason)
 VALUES
     (%(snapshot_id)s, %(video_id)s, %(channel_id)s, %(category_id)s,
      %(published_at_utc)s, %(published_at_kst)s, %(published_date_kst)s, %(published_hour_kst)s, %(published_day_of_week)s,
@@ -184,13 +183,12 @@ VALUES
      %(live_broadcast_content)s, %(default_audio_language)s, %(thumbnail_url)s, %(made_for_kids)s,
      %(has_paid_product_placement)s, %(topic_categories)s,
      %(view_count)s, %(like_count)s, %(comment_count)s, %(subscriber_count_at_collection)s,
-     %(trending_rank)s, %(collected_at_utc)s, %(collected_date)s, %(is_public)s, %(is_valid)s, %(invalid_reason)s)
+     %(collected_at_utc)s, %(collected_date)s, %(is_public)s, %(is_valid)s, %(invalid_reason)s)
 ON CONFLICT (video_id, collected_date) DO UPDATE SET
     view_count = EXCLUDED.view_count,
     like_count = EXCLUDED.like_count,
     comment_count = EXCLUDED.comment_count,
     subscriber_count_at_collection = EXCLUDED.subscriber_count_at_collection,
-    trending_rank = EXCLUDED.trending_rank,
     made_for_kids = EXCLUDED.made_for_kids,
     has_paid_product_placement = EXCLUDED.has_paid_product_placement,
     topic_categories = EXCLUDED.topic_categories,
