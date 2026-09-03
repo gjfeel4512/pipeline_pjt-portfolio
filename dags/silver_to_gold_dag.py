@@ -13,6 +13,13 @@ Silver -> PostgreSQL -> Gold 집계 DAG
 Silver 수집 DAG(daily_lambda_to_silver_dag.py, bronze_to_silver_dag_aws.py)들이
 S3 Silver에 데이터를 쓴 뒤에 실행되어야 하므로 그보다 늦은 시각으로 스케줄한다.
 (daily_lambda_to_silver_dag가 매시간 40분으로 바뀜에 따라 이 DAG도 매시간 50분으로 동기화함)
+
+2026-09-03: Postgres/RDS 없이 완전 서버리스로 가기로 하여, 이 DAG(PostgreSQL 경로)를
+Athena 기반 lambda/gold_compute_athena.py(+ infra/gold_athena.tf, EventBridge 매시간
+50분 스케줄)로 대체했다. 이 DAG는 코드/Postgres 데이터를 보존한 채 스케줄만 꺼둔
+상태 - 새 경로가 검증되기 전까지의 롤백용. 검증 끝나면 이 DAG와 Postgres/Docker
+자체를 완전히 걷어낼 예정("병행 운영 안 함" - trending_rank_tracker나
+bronze_to_silver_dag_aws.py 때와 달리 이번엔 최종적으로 하나만 남긴다).
 """
 from datetime import timedelta
 
@@ -33,15 +40,18 @@ DEFAULT_ARGS = {
 # 일일 Lambda Silver DAG(UTC 00,08,16시 +10분)보다 넉넉히 늦게 실행
 # SCHEDULE_INTERVAL = "30 0,8,16 * * *"
 # daily_lambda_to_silver_dag(매시간 40분)보다 10분 늦게 실행
-SCHEDULE_INTERVAL = "50 * * * *"
+# 2026-09-03: Athena 기반 gold_compute_athena Lambda로 대체되어 스케줄 끔
+# (None = 수동 트리거만 가능). 새 경로 검증 끝나면 이 DAG 자체를 삭제할 예정.
+SCHEDULE_INTERVAL = None
 
 dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description="Silver(S3) -> PostgreSQL 적재 -> Gold 집계(median/p75)",
-    tags=["etl", "gold", "postgres"],
+    description="[대체됨 - gold_compute_athena Lambda 참고] Silver(S3) -> PostgreSQL 적재 -> Gold 집계",
+    tags=["etl", "gold", "postgres", "superseded-by-athena"],
     catchup=False,
+    is_paused_upon_creation=True,
     doc_md=__doc__,
 )
 

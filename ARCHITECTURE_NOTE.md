@@ -29,12 +29,14 @@
 
 ## Gold
 
-- `dags/silver_to_gold_dag.py` → PostgreSQL(`sql/youtube_pipeline_schema_postgresql.sql`, `sql/compute_gold.sql`) 기준으로만 집계 진행 중
-- Glue Catalog / Athena 쪽 Gold 테이블은 아직 없음 (Bronze/Silver는 카탈로그에 있으나 파티션 자동 등록 미구성 상태)
-- `gold_video_rank_trend`는 `fact_video_snapshot.trending_rank IS NOT NULL`인 레코드만 집계하는데,
-  이 필드를 채우던 유일한 소스가 `trending_rank_tracker.py`였다. 해당 Lambda를 삭제(2026-09-03)했으므로
-  이후로는 `trending_rank`가 항상 NULL만 들어오고, `gold_video_rank_trend`는 삭제 시점까지 쌓인
-  과거 데이터에서 더 이상 갱신되지 않는다(테이블/컬럼 자체는 그대로 남아 있음. 필요하면 별도로 정리 필요).
+- 상태(2026-09-03 기준, 마이그레이션 진행 중 — 아래 "Gold: Athena/Glue 전환" 섹션 참고):
+  - `dags/silver_to_gold_dag.py`(PostgreSQL 경로)는 **일시 정지**됨 (`schedule_interval=None`, `is_paused_upon_creation=True`).
+    새 Athena 경로를 검증할 때까지의 롤백 용도로만 남겨둠 — 검증 완료 후에는 (병행 운영 안 하기로 해서) **완전히 삭제** 예정
+  - `lambda/gold_compute_athena.py` + `infra/gold_athena.tf`가 새 주체: Postgres/RDS 없이 Athena로
+    `gold_category_benchmark` / `gold_upload_strategy` / `gold_new_creator_guide` 3종을 직접 산출해 S3 Gold 버킷에 쓴다
+  - `gold_video_rank_trend`는 이식 대상에서 제외 — 유일한 소스였던 `trending_rank_tracker.py`가 삭제되어(2026-09-03)
+    `trending_rank`가 더 이상 채워지지 않음. Postgres 쪽 테이블/컬럼은 그대로 남아 있고(과거 데이터만 유지),
+    Athena/Glue 쪽에는 이 테이블 자체가 없음
 
 ## 이제는 존재하지 않는 것들 (참고용)
 
@@ -61,3 +63,62 @@
 - `lambda/stepfn_transform_search_silver.py` — 키 하나를 Silver로 변환(Map 상태가 병렬 호출)
 - `infra/stepfunctions.tf` — 상태머신 정의 + EventBridge 스케줄(`cron(40 */4 * * ? *)`, Lambda 수집 스케줄 10분 뒤)
 - 인프라 배포: `terraform apply`로 반영 필요 (아직 미배포)
+
+## Gold: Athena/Glue 전환 (2026-09-03 추가, 아직 미배포/미검증)
+
+"로컬 의존성 아예 없애자, 작업완료되면 병행작업 안 할거야"라는 결정에 따라, Gold 계층의
+PostgreSQL/RDS 의존성을 Athena/Glue로 완전히 대체한다(RDS는 검토 후 기각 — 별도 VPC가 없는
+이 프로젝트 구조상 추가 복잡도가 커서 제외). 이미 팀원이 `infra/glue.tf`에 만들어둔 Gold 3종
+Glue 카탈로그 테이블(analysis_week 파티션 프로젝션, 이미 Postgres 내보내기용 read-replica로 존재)을
+그대로 재사용하고, 쓰는 주체만 Postgres export 스크립트에서 Athena Lambda로 바뀌는 구조다.
+
+### 새로 추가된 파일
+
+- `lambda/gold_compute_athena.py` — `sql/compute_gold.sql`을 Presto/Trino SQL로 이식한 오케스트레이션 Lambda.
+  매주 월요일(KST) 기준으로 `analysis_week` 파티션을 purge(S3 DeleteObject)한 다음 `INSERT INTO ... SELECT`로
+  다시 채운다 — Athena는 UPSERT가 없으므로 이 "파티션 통째 교체" 방식이 Postgres의
+  `ON CONFLICT ... DO UPDATE`와 동일한 멱등성을 낸다. `gold_new_creator_guide`만 Presto `format()` 미지원
+  문제를 피하기 위해 SQL로 후보만 뽑고 문구 조립은 Python에서 직접 한다(원래 Postgres template과 동일한 문구).
+- `infra/gold_athena.tf` — 위 Lambda + IAM 정책(Athena 쿼리/Glue 조회/Gold 버킷 DeleteObject 추가) +
+  EventBridge 스케줄(`cron(50 * * * ? *)`, 기존 `silver_to_gold_dag.py`와 동일 주기) + CloudWatch 에러 알람.
+- `frontend/scripts/export_athena_for_dashboard.py` — `export_pg_for_dashboard.py`(PostgreSQL 버전)의 Athena 대응 스크립트.
+  출력 파일명/구조를 기존과 동일하게 맞춰 `frontend/scripts/build_dashboard_data.py`는 수정 없이 그대로 쓰일 수 있다.
+  (참고: 대시보드는 상시 서빙 서버가 아니라 개발자가 이 스크립트를 수동으로 돌려
+  `outputs/silver_gold_export/*.json`을 갱신하는 로컬/오프라인 워크플로다 — 요청 시 매번 Athena를 쿼리하는 구조가
+  아니므로 지연시간은 문제되지 않음).
+- `dags/silver_to_gold_dag.py` — 삭제하지 않고 일시 정지만 함(`schedule_interval=None`,
+  `is_paused_upon_creation=True`, docstring에 대체 사유 명시). 새 Athena 경로를 end-to-end로 검증한 뒤에는
+  (병행운영 안 하기로 한 결정에 따라) 이 DAG와 로컬 Postgres/Docker 구성을 완전히 제거할 예정.
+
+### 배포 + 라이브 검증 완료 (2026-09-03)
+
+`terraform apply`로 `infra/gold_athena.tf`를 배포하고, `aws lambda invoke`로 `gold_compute_athena`를
+수동 호출해서 실제 Athena까지 끝까지 돌려봤다. 처음 두 번은 실패했고, 둘 다 코드 자체의 버그였다(Terraform
+plan/apply로는 잡히지 않는 종류 — Athena에 실제 쿼리를 던져봐야만 드러남):
+
+1. **타입 불일치(BIGINT vs INT)** — Trino/Presto에서 `COUNT(*)`, `COUNT(DISTINCT ...)`, `day_of_week()`,
+   `RANK() OVER (...)`는 전부 BIGINT를 반환하는데, Glue 테이블의 `sample_video_count` /
+   `sample_channel_count` / `published_day_of_week` / `strategy_rank` 컬럼은 `int`로 선언되어 있어
+   `INSERT INTO`가 컬럼 타입 불일치로 실패. 해당 4곳에 `CAST(... AS INTEGER)` 추가해서 해결.
+2. **`INSERT INTO` / `WITH` 절 순서** — `WITH video_analysis AS (...) ... INSERT INTO table SELECT ...`
+   순서로 짜여 있었는데, Trino 문법은 `INSERT INTO table WITH ... SELECT ...` 순서를 요구한다
+   (`line 94:1: mismatched input 'INSERT'` 에러). `CATEGORY_BENCHMARK_SQL`/`UPLOAD_STRATEGY_SQL` 둘 다
+   `INSERT INTO {db}.table`을 WITH절 앞으로 옮겨서 해결.
+
+두 버그를 고친 뒤 세 번째 호출에서 `StatusCode 200`, 에러 없이 성공. S3에도 실제 객체가 써진 것까지 확인함
+(`gold_category_benchmark/analysis_week=2026-08-31/`에 376B, `gold_upload_strategy/...`에 35KB).
+`gold_new_creator_guide_count`는 0으로 나왔는데, 이건 버그가 아니라 그룹핑 기준(카테고리×구독자군×영상타입×
+길이×요일×시간대)이 세밀해서 `new`/`early_growth` 세그먼트가 표본 30건(`MIN_SAMPLE_COUNT`) 기준을 못 채운
+것으로 보임 — 백필 데이터가 더 쌓이면 채워질 가능성이 높음. Glue 테이블 3개(`gold_category_benchmark`,
+`gold_upload_strategy`, `gold_new_creator_guide`)는 팀원이 이미 실제 AWS에 만들어둔 상태였어서
+`terraform import`로 로컬 state에 편입한 뒤 apply함(AlreadyExistsException 발생 → import로 해결,
+팀 간 state 미공유가 원인).
+
+### 아직 남은 일
+
+1. 이번 라운드에서 만든 변경 사항은 사용자 요청에 따라 **아직 커밋/푸시되지 않았음** — 배포/검증은
+   끝났지만 코드는 로컬에만 반영된 상태.
+2. `frontend/scripts/export_athena_for_dashboard.py`가 import하는 `gold_compute_athena.py` 최상단에
+   `os.environ["ATHENA_DATABASE"]`처럼 기본값 없는 환경변수 읽기가 있어서, 로컬 PC에서 `--database` 등
+   커맨드라인 인자만 주고 이 스크립트를 돌리면 import 시점에 `KeyError`로 죽는다. 대시보드 스크립트를
+   실제로 쓰기 전에 손봐야 함(아직 미수정).
