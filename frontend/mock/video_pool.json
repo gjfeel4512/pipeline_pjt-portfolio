@@ -929,5 +929,5 @@
       "channel_avatar_url": "https://yt3.ggpht.com/7Tnxb_PQu3oLQj1IYv3IJ3rv_S4YyyqY3fazd4yCg_kePd9DKalomOPIz6DBR-l_ItHyPHF6Pko=s240-c-k-c0x00ffffff-no-rj"
     }
   ],
-  "_comment": "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. 채널 프로필 사진(channel_avatar_url)만 Bronze 원본에서 가져옴(Silver/Gold에 사진 필드 없음). 트렌드/스테디 선정은 js/recommend.js가 이 pool을 스코어링해서 결정합니다."
+  "_comment": "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. 채널 프로필 사진(channel_avatar_url)도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 Bronze 원본으로 보완합니다. 트렌드/스테디 선정은 js/recommend.js가 이 pool을 스코어링해서 결정합니다."
 }

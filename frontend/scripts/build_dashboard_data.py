@@ -4,11 +4,15 @@
 outputs/silver_gold_export/*.json (PostgreSQL Silver/Gold를 export_pg_for_dashboard.py로
 내려받은 결과)를 읽어서 frontend/mock/*.json 을 만든다.
 
-Bronze(outputs/bronze_merged)는 더 이상 읽지 않는다 — 딱 하나, 채널 프로필 사진만
-예외다. Silver(dim_channel)/Gold 스키마에는 프로필 사진 URL 필드 자체가 없어서
-(팀 SQL이 그 값을 저장하지 않음), 그 정보가 존재하는 유일한 곳인 Bronze 원본
-(outputs/bronze_collect/channels_detail.jsonl.gz, channels.list API 원본 응답)에서만
-가져온다.
+Bronze(outputs/bronze_merged)는 더 이상 읽지 않는다. 채널 프로필 사진도 이제
+Silver(dim_channel.channel_thumbnail_url)에서 우선 가져온다 — 2026-09-03
+youtube_api_collector.py 커밋(ab8ae04)부터 channels.list의 snippet.thumbnails를
+더 이상 버리지 않고 Bronze에 저장하고, 그게 Silver 적재 시 dim_channel까지 그대로
+들어가기 때문이다. 다만 그 커밋 이전에 수집된 채널은 아직 dim_channel에 값이
+비어있을 수 있어서, 그런 채널만 예외적으로 Bronze 원본
+(outputs/bronze_collect/channels_detail.jsonl.gz, channels.list API 원본 응답)으로
+보완한다 — transforms/backfill_channel_thumbnails.py를 먼저 돌려서 이미 적재된
+dim_channel 행들에 값을 채워 넣었다면 이 보완 경로를 탈 일은 거의 없어진다.
 
 사전 준비 (한 번):
   1) docker-compose up -d postgres 등으로 PostgreSQL 기동
@@ -73,8 +77,9 @@ def load_json(name, default):
 
 def load_channel_avatars():
     """outputs/bronze_collect/channels_detail.jsonl.gz (channels.list 원본 응답)에서
-    channel_id -> 프로필 사진 URL 맵을 만든다. Silver/Gold에는 없는, 유일하게 여기에만
-    있는 정보라 이 파일만 예외적으로 계속 Bronze에서 읽는다."""
+    channel_id -> 프로필 사진 URL 맵을 만든다. Silver(dim_channel.channel_thumbnail_url)에
+    아직 값이 없는 채널(2026-09-03 수집기 수정 이전에 적재된 채널)에 대한 보완용
+    폴백으로만 쓴다 — normalize_silver_row/build_video_pool/build_channel_pool 참고."""
     path = f"{ROOT}/outputs/bronze_collect/channels_detail.jsonl.gz"
     avatars = {}
     if not os.path.exists(path):
@@ -129,6 +134,11 @@ def normalize_silver_row(d, channels):
         "subscriber_count": subscriber_count,
         "channel_view_count": ch.get("channel_view_count") or 0,
         "channel_video_count": ch.get("channel_video_count") or 0,
+        # 2026-09-03부터 Silver(dim_channel.channel_thumbnail_url)에 실제로 값이 들어옴
+        # (youtube_api_collector.py 커밋 ab8ae04, channels.list snippet.thumbnails를
+        # 더 이상 버리지 않음). 그 이전에 수집된 채널은 아직 비어있을 수 있어서,
+        # 그런 경우에만 build_video_pool/build_channel_pool에서 Bronze 폴백을 쓴다.
+        "channel_thumbnail_url": ch.get("channel_thumbnail_url") or None,
         "view_count": d.get("view_count") or 0,
         "like_count": d.get("like_count") or 0,
         "comment_count": d.get("comment_count") or 0,
@@ -256,7 +266,8 @@ def build_video_pool(videos, avatars):
             "channel_name": v["channel_name"], "subscriber_count": v["subscriber_count"],
             "days_since_published": v["days_since_published"], "view_count": v["view_count"],
             "like_count": v["like_count"], "duration_sec": v["duration_sec"],
-            "channel_avatar_url": avatars.get(v["channel_id"]),
+            # Silver(dim_channel) 우선, 아직 안 채워진 채널만 Bronze 원본으로 보완.
+            "channel_avatar_url": v.get("channel_thumbnail_url") or avatars.get(v["channel_id"]),
         })
     return out
 
@@ -281,7 +292,8 @@ def build_channel_pool(videos, avatars):
             "avg_views_per_video": round(avg_vpv),
             "avg_engagement_rate": round(avg_eng, 4),
             "upload_freq_per_week": None,
-            "avatar_url": avatars.get(cid),
+            # Silver(dim_channel) 우선, 아직 안 채워진 채널만 Bronze 원본으로 보완.
+            "avatar_url": latest.get("channel_thumbnail_url") or avatars.get(cid),
             "representative_video": {
                 "video_id": rep["video_id"], "title": rep["title"], "view_count": rep["view_count"]
             },
@@ -298,8 +310,12 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     avatars = load_channel_avatars()
     channels = load_dim_channel()
+    n_silver_thumb = sum(1 for c in channels.values() if c.get("channel_thumbnail_url"))
     trend_out, heat_out, vpool_out, cpool_out = {}, {}, {}, {}
-    report = [f"dim_channel(Silver) loaded: {len(channels)}", f"channel avatars(Bronze, 사진 전용) loaded: {len(avatars)}"]
+    report = [
+        f"dim_channel(Silver) loaded: {len(channels)} (channel_thumbnail_url 있는 채널: {n_silver_thumb})",
+        f"channel avatars(Bronze 폴백용) loaded: {len(avatars)}",
+    ]
     if not channels:
         report.append(
             "WARNING: outputs/silver_gold_export/dim_channel.json 이 없거나 비어있습니다. "
@@ -327,16 +343,17 @@ def main():
         heat_out["_comment"] = "day: 0=월요일..6=일요일(KST 기준 실제 게시 요일) / slot: 0=새벽 1=오전 2=오후 3=저녁 4=심야. Silver(vw_video_analysis)에서 중앙값으로 집계. sample_count가 0이면 그 구간에 표본이 없어 avg_views가 null(nodata)입니다."
         json.dump(heat_out, f, ensure_ascii=False, indent=2)
     with open(f"{OUT_DIR}/video_pool.json", "w", encoding="utf-8") as f:
-        vpool_out["_comment"] = "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. 채널 프로필 사진(channel_avatar_url)만 Bronze 원본에서 가져옴(Silver/Gold에 사진 필드 없음). 트렌드/스테디 선정은 js/recommend.js가 이 pool을 스코어링해서 결정합니다."
+        vpool_out["_comment"] = "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. 채널 프로필 사진(channel_avatar_url)도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 Bronze 원본으로 보완합니다. 트렌드/스테디 선정은 js/recommend.js가 이 pool을 스코어링해서 결정합니다."
         json.dump(vpool_out, f, ensure_ascii=False, indent=2)
     with open(f"{OUT_DIR}/channel_pool.json", "w", encoding="utf-8") as f:
-        cpool_out["_comment"] = "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. avatar_url만 Bronze 원본에서 가져옴(Silver/Gold에 사진 필드 없음). upload_freq_per_week는 아직 계산 불가해 null(nodata)입니다."
+        cpool_out["_comment"] = "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. avatar_url도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 Bronze 원본으로 보완합니다. upload_freq_per_week는 아직 계산 불가해 null(nodata)입니다."
         json.dump(cpool_out, f, ensure_ascii=False, indent=2)
 
     now_kst = datetime.datetime.now(KST).isoformat()
     meta = {
         "_comment": "PostgreSQL Silver(vw_video_analysis/dim_channel) + Gold(gold_category_benchmark) 데이터를 집계해서 생성. "
-                    "채널 프로필 사진만 예외적으로 Bronze 원본(channels_detail.jsonl.gz)에서 가져옴. source=pipeline_snapshot.",
+                    "채널 프로필 사진도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 "
+                    "Bronze 원본(channels_detail.jsonl.gz)으로 보완. source=pipeline_snapshot.",
         "last_updated": now_kst,
         "collection_window": "outputs/silver_gold_export 스냅샷 (export_pg_for_dashboard.py 실행 시점의 PostgreSQL Silver/Gold)",
         "source": "pipeline_snapshot",
