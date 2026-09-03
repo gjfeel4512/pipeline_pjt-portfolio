@@ -39,9 +39,12 @@ name: Refresh dashboard data (S3 Silver/Gold)
 
 on:
   schedule:
-    # 매일 KST 08:00 (UTC 23:00 전날) 1회. 더 자주 갱신하고 싶으면 여기 cron만 바꾸면 됨
-    # (예: '0 */6 * * *' = 6시간마다).
-    - cron: '0 23 * * *'
+    # 4시간마다(매시 정각). Bronze(30분)->Silver(40분)->Gold(50분, infra/gold_athena.tf의
+    # gold_compute_athena_schedule "cron(50 */4 * * ? *)") 파이프라인 주기에 맞춘 것 -
+    # 원래는 하루 1회였는데, Gold 자체가 4시간마다만 갱신되므로 그보다 더 자주(예: 1시간
+    # 마다) 돌려도 대부분은 "변경 없음"으로 끝나기만 하고 최신성은 그대로다. 정각으로
+    # 두면 Gold가 갱신되고 최소 1시간 안에는 이 워크플로가 그 결과를 반영한다.
+    - cron: '0 */4 * * *'
   workflow_dispatch: {}  # Actions 탭에서 수동으로도 바로 실행 가능
 
 permissions:
@@ -71,10 +74,15 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION || 'us-west-2' }}
-          AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET }}
-          AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET }}
-          AWS_ATHENA_DATABASE: ${{ vars.AWS_ATHENA_DATABASE }}
-          AWS_ATHENA_OUTPUT_LOCATION: ${{ vars.AWS_ATHENA_OUTPUT_LOCATION }}
+          # 2026-09-03: 위 주석은 "기본값이 실제 값과 같아서 Variables 안 등록해도 된다"고
+          # 돼있었는데 실제로는 여기 || 기본값이 없어서, Variables를 등록 안 하면 빈 문자열이
+          # 넘어가 export 스크립트가 "Invalid bucket name """ 에러로 바로 죽었다(실측 확인).
+          # 주석 내용대로 실제 기본값을 여기 채워서 Variables 미등록 상태에서도 동작하게 함 -
+          # 나중에 버킷/DB가 바뀌면 Repository variables로 재정의해서 코드 수정 없이 덮어쓸 수 있음.
+          AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET || 'goldline-dev-silver-827913617635' }}
+          AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET || 'goldline-dev-gold-827913617635' }}
+          AWS_ATHENA_DATABASE: ${{ vars.AWS_ATHENA_DATABASE || 'goldline_dev_db' }}
+          AWS_ATHENA_OUTPUT_LOCATION: ${{ vars.AWS_ATHENA_OUTPUT_LOCATION || 's3://goldline-dev-gold-827913617635/athena-query-results/' }}
         run: python frontend/scripts/export_s3_for_dashboard.py
 
       - name: Build frontend/mock/*.json

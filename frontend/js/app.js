@@ -42,6 +42,21 @@
     return `<img src="${valid[0]}" data-fallback="${rest}" onerror="window.__avatarFallback(this)" alt="">`;
   }
 
+  const AVATAR_GRADIENTS = [
+    "linear-gradient(135deg, #1baf7a, #12805a)",
+    "linear-gradient(135deg, #2a78d6, #1c5aa8)",
+    "linear-gradient(135deg, #eb6834, #b84e22)"
+  ];
+
+  // 채널 프로필 사진이 없어서 이니셜 배지를 보여줄 때, 같은 채널이면 홈 화면 영상 카드든
+  // 채널 카드든 항상 같은 색이 나오도록 채널 id(또는 이름) 문자열을 해시해서 색을 고정합니다.
+  function gradientForKey(key) {
+    const str = String(key || "");
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+    return AVATAR_GRADIENTS[hash % AVATAR_GRADIENTS.length];
+  }
+
   function setMetaBadge(meta) {
     const badge = document.getElementById("meta-badge");
     const isReal = meta.source === "pipeline_snapshot";
@@ -91,6 +106,8 @@
     // 실제 유튜브 썸네일(video_id 기반 공개 CDN)을 배경으로 쓰고, 카테고리 그라디언트는
     // 이미지가 없거나 로드 실패했을 때만 보이는 두 번째 배경 레이어로 둡니다.
     const thumbStyle = `background-image:url('${Recommend.thumbnailUrl(v.video_id)}'), ${grad};`;
+    const channelInitial = (v.channel_name || "?").slice(0, 1);
+    const channelAvatarGrad = gradientForKey(v.channel_id || v.channel_name);
 
     const el = document.createElement("div");
     el.className = "vcard";
@@ -105,7 +122,7 @@
       <div class="vcard-body">
         <a class="vcard-title" href="${v.url}" target="_blank" rel="noopener">${v.title}</a>
         <div class="vcard-channel">
-          <span class="vcard-channel-avatar">${imgFallbackHtml([v.channel_avatar_url, Recommend.thumbnailUrl(v.video_id)])}</span>
+          <span class="vcard-channel-avatar" style="background:${channelAvatarGrad};">${imgFallbackHtml([v.channel_avatar_url])}${channelInitial}</span>
           <a href="${v.channelUrl}" target="_blank" rel="noopener">${v.channel_name}</a>
           <span>· ${subLine}</span>
         </div>
@@ -158,12 +175,6 @@
   }
 
   /* ---------------- 추천 채널 ---------------- */
-  const AVATAR_GRADIENTS = [
-    "linear-gradient(135deg, #1baf7a, #12805a)",
-    "linear-gradient(135deg, #2a78d6, #1c5aa8)",
-    "linear-gradient(135deg, #eb6834, #b84e22)"
-  ];
-
   function channelCard(c, idx) {
     const initial = c.name.slice(0, 1);
     // 채널 프로필 사진(avatar_url)은 channels.list 원본 응답(outputs/bronze_collect/
