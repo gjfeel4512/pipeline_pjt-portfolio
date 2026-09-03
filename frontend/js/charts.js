@@ -387,11 +387,105 @@ const Charts = (() => {
     root.appendChild(scaleWrap);
   }
 
+  /* ---------------------------------------------------------------- *
+   * Line chart - 여러 시리즈(곡선)를 같은 x축(days) 위에 겹쳐 그림.
+   * series: [{ label, colorVar, points: [y0, y1, ...] }] (points는 x=days[i] 순서와 대응)
+   * 값은 0~1로 정규화돼 있다고 가정(성장곡선 "모양" 비교용 - 절대 조회수 아님).
+   * ---------------------------------------------------------------- */
+  function renderLineChart(root, { days, series, xLabel = "", yLabel = "" }) {
+    root.innerHTML = "";
+    root.style.position = "relative";
+
+    const width = root.clientWidth || 480;
+    const height = 220;
+    const padL = 36;
+    const padR = 12;
+    const padT = 16;
+    const padB = 28;
+    const plotW = width - padL - padR;
+    const plotH = height - padT - padB;
+
+    const maxY = Math.max(0.001, ...series.flatMap((s) => s.points));
+    const minX = Math.min(...days);
+    const maxX = Math.max(...days);
+    const xAt = (d) => padL + ((d - minX) / (maxX - minX || 1)) * plotW;
+    const yAt = (v) => padT + plotH - (v / maxY) * plotH;
+
+    const svg = el("svg", {
+      width: "100%",
+      height,
+      viewBox: `0 0 ${width} ${height}`,
+      role: "img",
+      "aria-label": "시계열 라인 차트"
+    });
+
+    // 격자선(가로 3줄) - 팀 dataviz 규칙(1px 헤어라인)
+    [0, 0.5, 1].forEach((t) => {
+      const y = padT + plotH * (1 - t);
+      svg.appendChild(el("line", { x1: padL, y1: y, x2: padL + plotW, y2: y, class: "viz-gridline" }));
+    });
+
+    // x축 라벨(시작/끝만 - 30일치를 다 찍으면 겹쳐서 안 보임)
+    [minX, maxX].forEach((d) => {
+      const t = el("text", { x: xAt(d), y: height - 6, "text-anchor": "middle", class: "viz-axis-tick" });
+      t.textContent = `${xLabel}${d}${xLabel ? "" : "일"}`;
+      svg.appendChild(t);
+    });
+
+    const tip = ensureTooltip(root);
+
+    series.forEach((s) => {
+      const color = cssVar(s.colorVar) || cssVar("--series-1");
+      const pathD = days
+        .map((d, i) => `${i === 0 ? "M" : "L"}${xAt(d).toFixed(1)},${yAt(s.points[i]).toFixed(1)}`)
+        .join(" ");
+      svg.appendChild(el("path", { d: pathD, fill: "none", stroke: color, "stroke-width": 2.5 }));
+
+      // 각 점마다 투명한 히트 영역을 둬서 호버 시 그 시리즈 값을 보여줌(마지막 점 기준 대표 라벨)
+      const lastIdx = days.length - 1;
+      const dot = el("circle", { cx: xAt(days[lastIdx]), cy: yAt(s.points[lastIdx]), r: 4, fill: color });
+      svg.appendChild(dot);
+
+      const hit = el("circle", { cx: xAt(days[lastIdx]), cy: yAt(s.points[lastIdx]), r: 10, fill: "transparent", style: "cursor:pointer;" });
+      const showTip = (evt) => {
+        setTooltipRows(tip, s.label, [
+          { label: `${yLabel || "값"}(정규화)`, value: s.points[lastIdx].toFixed(2), color }
+        ]);
+        tip.style.display = "block";
+        positionTooltip(root, tip, evt);
+      };
+      hit.addEventListener("pointerenter", showTip);
+      hit.addEventListener("pointermove", showTip);
+      hit.addEventListener("pointerleave", () => clearTooltip(root));
+      svg.appendChild(hit);
+    });
+
+    root.appendChild(svg);
+
+    const legend = document.createElement("div");
+    legend.className = "viz-legend";
+    series.forEach((s) => {
+      const chip = document.createElement("span");
+      chip.className = "viz-legend-chip";
+      const swatch = document.createElement("span");
+      swatch.className = "viz-legend-swatch rect";
+      swatch.style.background = cssVar(s.colorVar);
+      const label = document.createElement("span");
+      label.className = "viz-legend-label";
+      label.textContent = s.label;
+      chip.appendChild(swatch);
+      chip.appendChild(label);
+      legend.appendChild(chip);
+    });
+    root.appendChild(legend);
+  }
+
   return {
     formatCompact,
     fmtDuration,
     renderHBarChart,
     renderLegend,
-    renderHeatmap
+    renderHeatmap,
+    renderLineChart
   };
 })();

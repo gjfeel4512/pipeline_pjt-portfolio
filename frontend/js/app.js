@@ -313,6 +313,8 @@
       labelWidth: 150
     });
 
+    renderMetadataImpact();
+
     const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
     document.getElementById("trend-insight-body").textContent =
       `구독자 대비 조회수가 가장 높았던 채널들을 보면, 대형 채널보다 구독자 10만 명 이하의 채널에서 더 많이 나왔어요. 업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.`;
@@ -321,12 +323,94 @@
       `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
   }
 
+  // spec.md 분석 7(메타데이터 최적화): frontend/scripts/build_metadata_impact.py가
+  // outputs/silver/*.jsonl로 카테고리별 다중회귀(OLS)를 돌려 만든 결과를 막대로 보여줌.
+  // 표본이 30건 미만인 카테고리는 스크립트가 null로 내려주므로(지어내지 않음) nodata 처리.
+  // 통계적으로 유의하지 않은(p>=0.05) 요인은 근거가 약하다는 뜻이라 막대 색을 흐리게(--text-muted) 표시.
+  function renderMetadataImpact() {
+    const result = DATA.metadataImpact ? DATA.metadataImpact[currentCategory] : null;
+    const chartRoot = document.getElementById("metadata-impact-chart");
+    const footnote = document.getElementById("metadata-impact-footnote");
+
+    if (!result) {
+      chartRoot.innerHTML = '<p class="card-footnote">아직 이 카테고리는 표본이 부족해서 분석할 수 없어요 (nodata).</p>';
+      footnote.textContent = "";
+      return;
+    }
+
+    const items = result.features.map((f) => ({
+      label: f.label + (f.significant ? "" : " (근거 부족)"),
+      value: Math.abs(f.effect_pct),
+      colorVar: f.significant ? (f.effect_pct >= 0 ? "--series-3" : "--series-2") : "--text-muted",
+      suffix: "%",
+      _signed: f.effect_pct
+    }));
+
+    Charts.renderHBarChart(chartRoot, {
+      items,
+      valueFormatter: () => "",
+      labelWidth: 150
+    });
+    // renderHBarChart의 valueFormatter는 부호 없는 절대값(막대 길이용)만 받으므로,
+    // 실제 라벨(부호 포함 %)은 렌더링 이후 직접 덮어씀.
+    const valueLabels = chartRoot.querySelectorAll(".viz-value-label");
+    valueLabels.forEach((el, i) => {
+      const v = items[i]._signed;
+      el.textContent = (v >= 0 ? "+" : "") + v.toFixed(1) + "%";
+    });
+
+    footnote.textContent =
+      `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건을 분석한 추정치예요(설명력 R²=${result.r_squared}). ` +
+      `"근거 부족"이라고 표시된 항목은 통계적으로 확실하지 않다는 뜻이니 참고만 해주세요. ` +
+      `이건 상관관계이지 "이렇게 하면 반드시 이렇게 된다"는 인과관계가 아니에요.`;
+  }
+
+  /* ---------------- 심화분석(데모) ---------------- */
+  // spec.md 분석 5(성장곡선 유형화) / 분석 6(판단 시점 회귀): 실제로는 한 영상을
+  // 여러 시점에 걸쳐 추적해야(적응형 시계열) 가능한데, 2026-09-03 기준 실측 영상의
+  // 96%가 스냅샷 1개뿐이라 아직 불가능해서 합성(synthetic) 데이터로 기법만 시연.
+  // 카테고리 필터와 무관하게(currentCategory 미사용) 항상 같은 내용을 보여줌.
+  function renderDemo() {
+    const demo = DATA.syntheticDemo;
+    if (!demo) return;
+
+    const clusterInfo = demo.growth_curve_clusters;
+    const clusterColors = ["--series-1", "--series-2", "--series-3"];
+    Charts.renderLineChart(document.getElementById("growth-cluster-chart"), {
+      days: clusterInfo.days,
+      series: clusterInfo.clusters.map((c, i) => ({
+        label: `${c.label} (${c.sample_count}건)`,
+        colorVar: clusterColors[i % clusterColors.length],
+        points: c.curve
+      })),
+      xLabel: "",
+      yLabel: "조회수"
+    });
+    document.getElementById("growth-cluster-footnote").textContent =
+      `[합성 데이터] ${clusterInfo.note} 실제 영상이 아니라 3가지 곡선 유형을 본떠 만든 예시 데이터예요.`;
+
+    const timing = demo.judgment_timing;
+    Charts.renderHBarChart(document.getElementById("judgment-timing-chart"), {
+      items: timing.results.map((r) => ({
+        label: r.label,
+        value: r.r_squared,
+        colorVar: "--series-1",
+        suffix: ""
+      })),
+      valueFormatter: (n) => n.toFixed(2),
+      labelWidth: 110
+    });
+    document.getElementById("judgment-timing-footnote").textContent =
+      `[합성 데이터] ${timing.note} 실제 영상이 아니라 카테고리 특성을 본떠 만든 예시 데이터예요.`;
+  }
+
   /* ---------------- Tabs ---------------- */
   const TAB_RENDERERS = {
     "tab-home": renderHome,
     "tab-channels": renderChannels,
     "tab-guide": renderGuide,
-    "tab-trend": renderTrend
+    "tab-trend": renderTrend,
+    "tab-demo": renderDemo
   };
 
   function renderActiveTab() {
@@ -353,17 +437,21 @@
     renderCategoryChips();
     setupTabs();
     try {
-      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend] = await Promise.all([
+      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo] = await Promise.all([
         DataSource.fetchMeta(),
         DataSource.fetchVideoPool(),
         DataSource.fetchChannelPool(),
         DataSource.fetchUploadHeatmap(),
-        DataSource.fetchCategoryTrend()
+        DataSource.fetchCategoryTrend(),
+        DataSource.fetchMetadataImpact(),
+        DataSource.fetchSyntheticDemo()
       ]);
       DATA.videoPool = videoPool;
       DATA.channelPool = channelPool;
       DATA.uploadHeatmap = uploadHeatmap;
       DATA.categoryTrend = categoryTrend;
+      DATA.metadataImpact = metadataImpact;
+      DATA.syntheticDemo = syntheticDemo;
       setMetaBadge(meta);
       renderActiveTab();
     } catch (err) {

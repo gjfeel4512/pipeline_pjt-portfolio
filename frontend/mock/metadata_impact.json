@@ -1,0 +1,210 @@
+{
+  "gaming": {
+    "sample_size": 5411,
+    "r_squared": 0.5479,
+    "features": [
+      {
+        "feature": "caption_available",
+        "label": "자막 유무",
+        "effect_pct": 16.0,
+        "p_value": 0.1631,
+        "significant": false
+      },
+      {
+        "feature": "is_weekend",
+        "label": "주말(토/일) 게시 여부",
+        "effect_pct": -37.4,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "tag_count",
+        "label": "태그 개수(1개당)",
+        "effect_pct": -0.1,
+        "p_value": 0.3474,
+        "significant": false
+      },
+      {
+        "feature": "link_count",
+        "label": "설명란 링크 개수(1개당)",
+        "effect_pct": -2.2,
+        "p_value": 0.0107,
+        "significant": true
+      },
+      {
+        "feature": "title_length",
+        "label": "제목 길이(10자당)",
+        "effect_pct": 1.5,
+        "p_value": 0.3417,
+        "significant": false
+      },
+      {
+        "feature": "description_length",
+        "label": "설명 길이(100자당)",
+        "effect_pct": 2.0,
+        "p_value": 0.0016,
+        "significant": true
+      },
+      {
+        "feature": "log_duration",
+        "label": "영상 길이(2배일 때)",
+        "effect_pct": 3.3,
+        "p_value": 0.0308,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_video_count",
+        "label": "채널 누적 업로드 수(2배일 때)",
+        "effect_pct": -32.1,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_age_days",
+        "label": "채널 개설 후 경과일(2배일 때)",
+        "effect_pct": 0.4,
+        "p_value": 0.8509,
+        "significant": false
+      }
+    ]
+  },
+  "autos_vehicles": {
+    "sample_size": 2994,
+    "r_squared": 0.5168,
+    "features": [
+      {
+        "feature": "caption_available",
+        "label": "자막 유무",
+        "effect_pct": 17.0,
+        "p_value": 0.1255,
+        "significant": false
+      },
+      {
+        "feature": "is_weekend",
+        "label": "주말(토/일) 게시 여부",
+        "effect_pct": -2.8,
+        "p_value": 0.6957,
+        "significant": false
+      },
+      {
+        "feature": "tag_count",
+        "label": "태그 개수(1개당)",
+        "effect_pct": 0.4,
+        "p_value": 0.0546,
+        "significant": false
+      },
+      {
+        "feature": "link_count",
+        "label": "설명란 링크 개수(1개당)",
+        "effect_pct": -0.6,
+        "p_value": 0.7424,
+        "significant": false
+      },
+      {
+        "feature": "title_length",
+        "label": "제목 길이(10자당)",
+        "effect_pct": 2.6,
+        "p_value": 0.1653,
+        "significant": false
+      },
+      {
+        "feature": "description_length",
+        "label": "설명 길이(100자당)",
+        "effect_pct": 3.1,
+        "p_value": 0.0024,
+        "significant": true
+      },
+      {
+        "feature": "log_duration",
+        "label": "영상 길이(2배일 때)",
+        "effect_pct": 39.5,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_video_count",
+        "label": "채널 누적 업로드 수(2배일 때)",
+        "effect_pct": -44.8,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_age_days",
+        "label": "채널 개설 후 경과일(2배일 때)",
+        "effect_pct": 23.6,
+        "p_value": 0.0,
+        "significant": true
+      }
+    ]
+  },
+  "film_animation": {
+    "sample_size": 2715,
+    "r_squared": 0.4598,
+    "features": [
+      {
+        "feature": "caption_available",
+        "label": "자막 유무",
+        "effect_pct": 9.0,
+        "p_value": 0.6366,
+        "significant": false
+      },
+      {
+        "feature": "is_weekend",
+        "label": "주말(토/일) 게시 여부",
+        "effect_pct": -11.9,
+        "p_value": 0.1247,
+        "significant": false
+      },
+      {
+        "feature": "tag_count",
+        "label": "태그 개수(1개당)",
+        "effect_pct": 1.5,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "link_count",
+        "label": "설명란 링크 개수(1개당)",
+        "effect_pct": -3.1,
+        "p_value": 0.3034,
+        "significant": false
+      },
+      {
+        "feature": "title_length",
+        "label": "제목 길이(10자당)",
+        "effect_pct": 1.9,
+        "p_value": 0.3856,
+        "significant": false
+      },
+      {
+        "feature": "description_length",
+        "label": "설명 길이(100자당)",
+        "effect_pct": 5.1,
+        "p_value": 0.0002,
+        "significant": true
+      },
+      {
+        "feature": "log_duration",
+        "label": "영상 길이(2배일 때)",
+        "effect_pct": 47.3,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_video_count",
+        "label": "채널 누적 업로드 수(2배일 때)",
+        "effect_pct": -29.5,
+        "p_value": 0.0,
+        "significant": true
+      },
+      {
+        "feature": "log_channel_age_days",
+        "label": "채널 개설 후 경과일(2배일 때)",
+        "effect_pct": -9.0,
+        "p_value": 0.0003,
+        "significant": true
+      }
+    ]
+  },
+  "_comment": "outputs/silver/{category}.jsonl에서 log(views_per_day) ~ 자막유무+주말게시여부+태그수+설명링크수+제목길이+설명길이+log(영상길이)+log(채널누적업로드수)+log(채널개설경과일)+log(구독자수, 통제) 다중회귀(OLS)로 추정. effect_pct는 각 요인 계수를 '해석 가능한 단위 변화당 조회수 %변화'로 환산한 값(라벨 참고). p_value>=0.05(significant=false)면 통계적으로 유의하지 않다는 뜻 - 프론트에서 흐리게 표시하고 확정적으로 말하지 않을 것. 표본 30건 미만 카테고리는 null(nodata)."
+}
