@@ -1,8 +1,11 @@
-# 일일 수집 Lambda: search.list 기반 (youtube_api_daily.py)
+# 일일 수집 Lambda: search.list 기반 증분 수집 (youtube_api_daily.py)
 # - videos.list(chart=mostPopular) 대신 search.list를 써서 이미 뜬 영상만 모이는
 #   survivorship bias를 피함 (다이어그램의 "1. 수집(Extract)" 중 Lambda 경로)
-# - 15분 하드 타임아웃 안에 전체 검색 작업을 못 끝내면 S3 체크포인트를 저장하고 종료,
-#   다음 EventBridge 트리거에서 이어서 진행 (lambda/youtube_api_daily.py 상단 docstring 참고)
+# - 영구 체크포인트(searched_until + known_videos)로 증분 발견 + 재스냅샷.
+#   known_videos는 게시일 KNOWN_VIDEO_MAX_AGE_DAYS 초과 또는 삭제/비공개 전환 시 자동 제거.
+# - Lambda 남은 실행시간이 TIME_BUDGET_SAFETY_SEC 밑으로 떨어지면 배치 처리 중이라도
+#   지금까지 모은 것만 저장하고 종료, 다음 EventBridge 트리거가 이어받음
+#   (lambda/youtube_api_daily.py 상단 docstring 참고)
 data "archive_file" "daily_search_collector" {
   type        = "zip"
   source_file = "${path.module}/../lambda/youtube_api_daily.py"
@@ -25,11 +28,13 @@ resource "aws_lambda_function" "daily_search_collector" {
 
   environment {
     variables = {
-      BUCKET_NAME            = aws_s3_bucket.bronze.id
-      REGION_CODE            = "KR"
-      MAX_RESULTS            = "50"
-      YOUTUBE_API_KEYS       = join(",", var.youtube_api_keys)
-      INITIAL_LOOKBACK_HOURS = "8" # 체크포인트 없을 때(콜드 스타트)만 사용
+      BUCKET_NAME              = aws_s3_bucket.bronze.id
+      REGION_CODE              = "KR"
+      MAX_RESULTS              = "50"
+      YOUTUBE_API_KEYS         = join(",", var.youtube_api_keys)
+      INITIAL_LOOKBACK_HOURS   = "8"  # 체크포인트 없을 때(콜드 스타트)만 사용
+      KNOWN_VIDEO_MAX_AGE_DAYS = "30" # 게시일 이보다 오래되면 known_videos에서 제거
+      TIME_BUDGET_SAFETY_SEC   = "60" # 남은 실행시간이 이 밑이면 배치 중이라도 저장 후 종료
     }
   }
 

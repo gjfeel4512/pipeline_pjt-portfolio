@@ -21,6 +21,12 @@ YouTube search.list 기반 증분 수집 Lambda (4시간 간격 실행 전제)
 - 최초 실행(체크포인트 없음): [now - INITIAL_LOOKBACK_HOURS, now] 부터 시작한다.
   일반적으로는 scripts/seed_search_checkpoint.py 로 기존 S3 데이터에서 최근 며칠치
   video_id 를 미리 채워두고 배포한다.
+- known_videos 는 영원히 안 쌓인다: 매 실행마다 스냅샷하면서 (1) 게시일이
+  KNOWN_VIDEO_MAX_AGE_DAYS 를 넘었거나 (2) videos.list 응답에서 아예 사라진(삭제/비공개
+  전환 추정) video_id 를 제거한다.
+- Lambda 남은 실행시간이 TIME_BUDGET_SAFETY_SEC 밑으로 떨어지면, videos.list/channels.list
+  배치 처리 중이라도 그 시점까지 모은 것만 우아하게 저장하고 종료한다(TimeBudgetExceeded).
+  다음 실행이 나머지를 이어서 스냅샷한다 - known_videos 자체는 그대로 남아있어 유실 없음.
 - 표준 라이브러리(urllib)만 사용 -> googleapiclient 없이 Lambda Layer 불필요.
 """
 
@@ -44,6 +50,12 @@ RELEVANCE_LANGUAGE = os.environ.get("RELEVANCE_LANGUAGE", "ko")
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
 # 체크포인트가 없을 때(콜드 스타트)만 쓰는 초기 조회 구간
 INITIAL_LOOKBACK_HOURS = int(os.environ.get("INITIAL_LOOKBACK_HOURS", "8"))
+# 게시일이 이보다 오래된 영상은 known_videos에서 제거(더 이상 재조회 안 함) -
+# spec.md의 "30일 초과: 수집 중단" 기준과 동일
+KNOWN_VIDEO_MAX_AGE_DAYS = int(os.environ.get("KNOWN_VIDEO_MAX_AGE_DAYS", "30"))
+# 남은 실행시간이 이 값(초) 밑으로 떨어지면 videos.list/channels.list 배치를 더 안 부르고
+# 지금까지 모은 것만 저장 후 종료
+TIME_BUDGET_SAFETY_SEC = int(os.environ.get("TIME_BUDGET_SAFETY_SEC", "60"))
 
 SEARCH_VIDEO_DURATIONS = ["medium", "long"]  # 쇼츠(0~4분 전체) 제외
 
@@ -107,6 +119,17 @@ def get_s3_client():
 # ============================================================
 class QuotaExhaustedError(Exception):
     """보유한 모든 API 키의 하루 할당량이 소진됨"""
+
+
+class TimeBudgetExceeded(Exception):
+    """Lambda 남은 실행시간이 TIME_BUDGET_SAFETY_SEC 밑으로 떨어짐"""
+
+
+def time_running_low(context):
+    """context가 없으면(로컬 실행) 시간 제한 없음 취급."""
+    if context is None or not hasattr(context, "get_remaining_time_in_millis"):
+        return False
+    return context.get_remaining_time_in_millis() < TIME_BUDGET_SAFETY_SEC * 1000
 
 
 class _ApiHttpError(Exception):
@@ -245,21 +268,28 @@ def do_search(category_id, duration, tags, published_after, published_before):
 # ============================================================
 # 2단계: videos.list / channels.list 보강
 # ============================================================
-def enrich_videos(video_ids):
+def enrich_videos(video_ids, context):
+    """남은 실행시간이 부족해지면 그때까지 모은 것만 반환하고 complete=False.
+    (호출부가 부분 결과를 그대로 활용 - 이미 받은 배치를 버리지 않는다)"""
     details = []
     for i in range(0, len(video_ids), 50):
+        if time_running_low(context):
+            return details, False
         batch = video_ids[i:i + 50]
         data = call_with_rotation(
             "videos",
             {"id": ",".join(batch), "part": "snippet,contentDetails,statistics,status,topicDetails"},
         )
         details.extend(data.get("items", []))
-    return details
+    return details, True
 
 
-def enrich_channels(channel_ids):
+def enrich_channels(channel_ids, context):
+    """enrich_videos와 동일한 시간 예산 규칙."""
     details = []
     for i in range(0, len(channel_ids), 50):
+        if time_running_low(context):
+            return details, False
         batch = channel_ids[i:i + 50]
         data = call_with_rotation(
             "channels",
@@ -271,7 +301,7 @@ def enrich_channels(channel_ids):
             },
         )
         details.extend(data.get("items", []))
-    return details
+    return details, True
 
 
 # ============================================================
@@ -451,6 +481,8 @@ def lambda_handler(event, context):
             before = win_end.isoformat().replace("+00:00", "Z")
             for label, cat_id in CATEGORY_IDS.items():
                 for duration in SEARCH_VIDEO_DURATIONS:
+                    if time_running_low(context):
+                        raise TimeBudgetExceeded()
                     resp = do_search(cat_id, duration, CATEGORY_TAGS[label], after, before)
                     for it in resp.get("items", []):
                         vid = it["id"]["videoId"]
@@ -461,17 +493,57 @@ def lambda_handler(event, context):
             print(f"검색 구간 없음(start={win_start} >= end={win_end}) - 갱신만 진행")
     except QuotaExhaustedError:
         stop_reason = "quota_exhausted"
+    except TimeBudgetExceeded:
+        stop_reason = "time_budget"
 
     # --- 2) known_videos 전체 스냅샷 (videos.list / channels.list) ---
     records_by_label = {}
     snapshot_count = 0
+    evicted_count = 0
     if stop_reason is None:
         all_ids = sorted(state["known_videos"])
         try:
-            facts = [extract_video_fact(v) for v in enrich_videos(all_ids)]
+            video_items, videos_complete = enrich_videos(all_ids, context)
+            if not videos_complete:
+                stop_reason = "time_budget"
+            facts = [extract_video_fact(v) for v in video_items]
+
+            # --- known_videos 정리: 게시일이 오래됐거나(30일+) 응답에서 아예 사라진
+            #     (삭제/비공개 전환 추정) video_id는 더 이상 추적 안 함.
+            #     시간 부족으로 이번에 못 받아온 나머지는 손대지 않고 다음 실행에 재시도. ---
+            now_utc = datetime.now(timezone.utc)
+            age_cutoff = now_utc - timedelta(days=KNOWN_VIDEO_MAX_AGE_DAYS)
+            returned_ids = set()
+            for f in facts:
+                returned_ids.add(f["video_id"])
+                pub_at = f.get("published_at")
+                if not pub_at:
+                    continue
+                try:
+                    pub_dt = datetime.fromisoformat(pub_at.replace("Z", "+00:00"))
+                except ValueError:
+                    continue
+                if pub_dt < age_cutoff and f["video_id"] in state["known_videos"]:
+                    del state["known_videos"][f["video_id"]]
+                    evicted_count += 1
+            if videos_complete:
+                # 요청한 all_ids 중 응답에 아예 없던 것만 "사라짐"으로 간주.
+                # (부분 결과일 땐 안 받아온 것과 삭제된 것을 구분 못 하므로 건드리지 않음)
+                for vid in set(all_ids) - returned_ids:
+                    if vid in state["known_videos"]:
+                        del state["known_videos"][vid]
+                        evicted_count += 1
+
             channel_ids = sorted({f["channel_id"] for f in facts if f["channel_id"]})
-            channel_info = build_channel_info(enrich_channels(channel_ids))
+            channel_details, channels_complete = enrich_channels(channel_ids, context)
+            if not channels_complete:
+                stop_reason = "time_budget"
+            channel_info = build_channel_info(channel_details)
             for r in build_flat_records(facts, channel_info):
+                if r["channel_id"] not in channel_info:
+                    # 시간 부족으로 채널 정보를 못 받아온 영상 - 빈 채널 필드로 Silver/Postgres를
+                    # 오염시키지 않도록 이번엔 건너뛰고 다음 실행에서 다시 처리
+                    continue
                 # 파티션(파일 위치)은 이 영상을 잡아낸 검색 카테고리 기준.
                 # 레코드 안의 category_id/category_name 은 YouTube 가 알려준 실제 값 그대로.
                 label = state["known_videos"].get(r["video_id"], "인물_블로그")
@@ -497,6 +569,7 @@ def lambda_handler(event, context):
         stop_reason=stop_reason,
         newly_found=newly_found,
         snapshot_count=snapshot_count,
+        evicted_count=evicted_count,
         known_after=len(state["known_videos"]),
         searched_until=state["searched_until"],
         uploaded_keys=uploaded_keys,
