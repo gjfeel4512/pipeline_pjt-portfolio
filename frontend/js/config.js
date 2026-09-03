@@ -47,7 +47,8 @@ window.APP_CONFIG = {
     uploadHeatmap: "/gold/upload-strategy/heatmap",
     categoryTrend: "/gold/category-trend",
     metadataImpact: "/analysis/metadata-impact",
-    syntheticDemo: "/analysis/synthetic-demo"
+    syntheticDemo: "/analysis/synthetic-demo",
+    topicTrends: "/analysis/topic-trends"
   },
 
   // mock 모드에서 사용할 로컬 파일 매핑
@@ -63,7 +64,10 @@ window.APP_CONFIG = {
     // spec.md 분석 5/6(성장곡선 유형화 / 판단 시점) - 실제 시계열 데이터가 아직 부족해서
     // (2026-09-03 기준 실측 영상의 96%가 스냅샷 1개뿐) 합성(synthetic) 데이터로 기법만
     // 시연. frontend/scripts/build_synthetic_demo.py가 생성 - _is_synthetic:true 필수 확인
-    syntheticDemo: "mock/synthetic_demo.json"
+    syntheticDemo: "mock/synthetic_demo.json",
+    // 태그 기반 주제 군집 + 트렌드(예전/최근 나이보정 상대성과 비교) - 실측 Silver
+    // 데이터 100% 사용(합성 아님). frontend/scripts/build_topic_trends.py가 생성
+    topicTrends: "mock/topic_trends.json"
   },
 
   // 팀 확정 카테고리 (인물·블로그 제외, 2026-09-01 회의 기준)
