@@ -104,29 +104,10 @@ resource "aws_iam_role_policy" "refresh_dashboard" {
   })
 }
 
-# EventBridge 스케줄: Gold 집계(gold_compute_athena, 매시 50분) 15분 뒤 -
-# Gold의 Athena INSERT가 끝날 시간을 확보한다.
-resource "aws_cloudwatch_event_rule" "refresh_dashboard_schedule" {
-  name                = "${local.resource_prefix}-refresh-dashboard-schedule"
-  description         = "Silver/Gold -> frontend/mock/*.json -> CloudFront 갱신 스케줄 - 4시간마다, Gold 집계 15분 뒤"
-  schedule_expression = "cron(5 1,5,9,13,17,21 * * ? *)"
-
-  tags = local.common_tags
-}
-
-resource "aws_cloudwatch_event_target" "refresh_dashboard_target" {
-  rule      = aws_cloudwatch_event_rule.refresh_dashboard_schedule.name
-  target_id = "${local.resource_prefix}-refresh-dashboard"
-  arn       = aws_lambda_function.refresh_dashboard.arn
-}
-
-resource "aws_lambda_permission" "allow_eventbridge_refresh_dashboard" {
-  statement_id  = "AllowExecutionFromEventBridgeRefreshDashboard"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.refresh_dashboard.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.refresh_dashboard_schedule.arn
-}
+# 이 Lambda는 이제 별도 EventBridge 타이머가 아니라 pipeline_orchestrator 상태머신의
+# 마지막 상태(DashboardRefresh)로 호출된다 - Gold 집계 완료 직후 이어서 실행되므로
+# 순서/의존성이 보장된다. (구 refresh_dashboard_schedule / target / lambda_permission
+# 리소스는 infra/pipeline_orchestrator.tf로 편입하며 제거함.)
 
 # CloudWatch Alarm: 대시보드 갱신 Lambda 실패 감지
 resource "aws_cloudwatch_metric_alarm" "refresh_dashboard_errors" {

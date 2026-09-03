@@ -86,6 +86,7 @@ resource "aws_iam_role_policy" "pipeline_orchestrator" {
         Resource = [
           aws_lambda_function.daily_search_collector.arn,
           aws_lambda_function.gold_compute_athena.arn,
+          aws_lambda_function.refresh_dashboard.arn,
         ]
       },
       {
@@ -160,7 +161,7 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
   }
 
   definition = jsonencode({
-    Comment = "Bronze -> Silver -> Gold 를 완전 순차/동기로 실행 (앞 단계 완료 전 다음 단계 시작 금지). Dashboard 갱신은 infra/refresh_dashboard.tf가 별도 스케줄로 담당"
+    Comment = "Bronze -> Silver -> Gold -> DashboardRefresh 를 완전 순차/동기로 실행 (앞 단계 완료 전 다음 단계 시작 금지)"
     StartAt = "BronzeCollect"
     States = {
       BronzeCollect = {
@@ -195,6 +196,23 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
           {
             ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException"]
             IntervalSeconds = 10
+            MaxAttempts     = 2
+            BackoffRate     = 2.0
+          }
+        ]
+        Next = "DashboardRefresh"
+      }
+      # Gold 집계가 끝난 직후 대시보드 데이터(frontend/mock/*.json) 재생성 + S3 sync +
+      # CloudFront 무효화. 별도 EventBridge 타이머 대신 여기서 이어 실행해 Gold와의
+      # 순서/의존성을 보장한다 (refresh_dashboard.tf의 스케줄 리소스는 제거됨).
+      DashboardRefresh = {
+        Type       = "Task"
+        Resource   = aws_lambda_function.refresh_dashboard.arn
+        ResultPath = "$.dashboard_result"
+        Retry = [
+          {
+            ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException", "States.Timeout"]
+            IntervalSeconds = 15
             MaxAttempts     = 2
             BackoffRate     = 2.0
           }
