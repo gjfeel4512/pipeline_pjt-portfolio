@@ -25,6 +25,7 @@
   <button class="tab-button" data-target="tab-channels">추천 채널</button>
   <button class="tab-button" data-target="tab-guide">업로드 가이드</button>
   <button class="tab-button" data-target="tab-trend">카테고리 트렌드</button>
+  <button class="tab-button" data-target="tab-demo">🧪 심화분석(데모)</button>
 </nav>
 
 <main>
@@ -105,12 +106,43 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-title">제목 길이·태그 수·자막이 조회수에 영향을 줄까요?</div>
+      <div class="card-sub">다른 조건이 같을 때, 이 요인 하나만 바뀌면 조회수가 몇 % 달라지는지 추정한 값이에요</div>
+      <div id="metadata-impact-chart"></div>
+      <div class="card-footnote" id="metadata-impact-footnote"></div>
+    </div>
+
     <div class="insight-card">
       <div class="insight-title">✨ 구독자가 적어도 기회는 있어요</div>
       <div class="insight-body" id="trend-insight-body"></div>
     </div>
 
     <div class="section-note" id="trend-footer-note"></div>
+  </section>
+
+  <!-- 심화분석(데모) - 합성 데이터로 기법만 시연 -->
+  <section id="tab-demo" class="tab-panel">
+    <div class="section-note" style="margin-bottom:16px;">
+      ⚠️ 이 탭의 결과는 <strong>실제 수집 데이터가 아니라 합성(synthetic) 데이터</strong>예요.
+      한 영상을 여러 시점에 걸쳐 추적한 데이터가 충분히 쌓여야 이런 분석이 가능한데,
+      아직 그 정도로 데이터가 쌓이지 않아서 파이프라인이 "이런 분석도 할 수 있다"는 걸
+      기법으로만 보여드려요.
+    </div>
+
+    <div class="card">
+      <div class="card-title">영상들의 성장 곡선을 유형별로 나눠봤어요</div>
+      <div class="card-sub">여러 날짜에 걸친 조회수 흐름만 보고, 비슷한 모양끼리 자동으로 묶은 거예요</div>
+      <div id="growth-cluster-chart"></div>
+      <div class="card-footnote" id="growth-cluster-footnote"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">며칠 지켜봐야 정확히 판단할 수 있을까요?</div>
+      <div class="card-sub">업로드 24시간 후 조회수만으로 최종 성과를 얼마나 잘 예측할 수 있는지예요 (1에 가까울수록 24시간만 봐도 충분)</div>
+      <div id="judgment-timing-chart"></div>
+      <div class="card-footnote" id="judgment-timing-footnote"></div>
+    </div>
   </section>
 
 </main>

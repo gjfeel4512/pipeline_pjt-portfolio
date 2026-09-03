@@ -425,6 +425,8 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 .viz-tooltip-name { color: var(--text-secondary); flex: 1; white-space: nowrap; }
 .viz-tooltip-value { color: var(--text-primary); font-variant-numeric: tabular-nums; }
 
+.viz-gridline { stroke: var(--border, #c7cdd6); stroke-width: 1; }
+
 .viz-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 12px; }
 .viz-legend-chip { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-secondary); }
 .viz-legend-swatch.rect { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }

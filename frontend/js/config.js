@@ -45,7 +45,9 @@ window.APP_CONFIG = {
     videoPool: "/videos/pool",
     channelPool: "/channels/pool",
     uploadHeatmap: "/gold/upload-strategy/heatmap",
-    categoryTrend: "/gold/category-trend"
+    categoryTrend: "/gold/category-trend",
+    metadataImpact: "/analysis/metadata-impact",
+    syntheticDemo: "/analysis/synthetic-demo"
   },
 
   // mock 모드에서 사용할 로컬 파일 매핑
@@ -54,7 +56,14 @@ window.APP_CONFIG = {
     videoPool: "mock/video_pool.json",
     channelPool: "mock/channel_pool.json",
     uploadHeatmap: "mock/upload_heatmap.json",
-    categoryTrend: "mock/category_trend.json"
+    categoryTrend: "mock/category_trend.json",
+    // spec.md 분석 7(메타데이터 최적화) - frontend/scripts/build_metadata_impact.py가
+    // outputs/silver/*.jsonl로 다중회귀(OLS)를 돌려서 생성
+    metadataImpact: "mock/metadata_impact.json",
+    // spec.md 분석 5/6(성장곡선 유형화 / 판단 시점) - 실제 시계열 데이터가 아직 부족해서
+    // (2026-09-03 기준 실측 영상의 96%가 스냅샷 1개뿐) 합성(synthetic) 데이터로 기법만
+    // 시연. frontend/scripts/build_synthetic_demo.py가 생성 - _is_synthetic:true 필수 확인
+    syntheticDemo: "mock/synthetic_demo.json"
   },
 
   // 팀 확정 카테고리 (인물·블로그 제외, 2026-09-01 회의 기준)

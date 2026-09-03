@@ -35,6 +35,10 @@ const DataSource = (() => {
     // 업로드 가이드: 요일×시간대 히트맵 + 평균 영상 길이
     fetchUploadHeatmap: () => load("uploadHeatmap"),
     // 카테고리 트렌드: 통계/영상 길이 분포/구독자 규모 비교
-    fetchCategoryTrend: () => load("categoryTrend")
+    fetchCategoryTrend: () => load("categoryTrend"),
+    // 카테고리 트렌드 보조: 제목 길이·태그 수·자막 유무·영상 길이가 조회수에 미치는 영향(회귀분석)
+    fetchMetadataImpact: () => load("metadataImpact"),
+    // 심화분석(데모) 탭: 성장곡선 클러스터링 + 판단 시점 회귀 (합성 데이터, 기법 시연용)
+    fetchSyntheticDemo: () => load("syntheticDemo")
   };
 })();
