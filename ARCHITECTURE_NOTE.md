@@ -500,3 +500,100 @@ terraform import aws_cloudwatch_metric_alarm.refresh_dashboard_errors goldline-d
 `terraform apply`를 마저 진행하면 된다. `pipeline_orchestrator.tf` 쪽(Bronze/Silver/Gold
 오케스트레이터, `dashboard_refresh` 관련 리소스는 이미 뺐음)은 이 충돌과 무관하게 정상
 진행될 것으로 예상됨.
+
+### 배포 완료 (2026-09-03)
+
+위 import들을 마친 뒤 `terraform apply`가 최종적으로 `Apply complete! Resources: 0 added,
+1 changed, 0 destroyed`로 성공함(바뀐 1개는 `aws_kinesis_firehose_delivery_stream.bronze`
+자체 드리프트 보정으로, 이번 작업과는 무관). `0 added`라는 건 `pipeline_orchestrator`
+관련 리소스들(Bronze->Silver->Gold 상태머신, 그 IAM 역할/정책, EventBridge 스케줄, 실패
+알람 등)이 이미 이전 apply 시도(그때는 `refresh_dashboard.tf` 충돌로 도중에 멈췄던 것)에서
+먼저 성공적으로 만들어져 있었다는 뜻 - `refresh_dashboard.tf`의 리소스들과는 서로 의존
+관계가 없는 별개 파일이라, 그쪽이 실패해도 이쪽은 이미 반영이 끝나 있었다.
+
+`outputs.tf`가 출력한 값으로 최종 상태 확인:
+
+- `search_to_silver_state_machine_arn` = `arn:aws:states:us-west-2:827913617635:stateMachine:goldline-dev-search-to-silver`
+- `refresh_dashboard_lambda_name` = `goldline-dev-refresh-dashboard`
+- `frontend_cloudfront_domain` = `dfpt0tfmqgbjr.cloudfront.net`
+
+이제 실제로 도는 자동 스케줄은 두 개뿐이다:
+
+1. `pipeline_orchestrator`(신규) - `var.daily_collector_schedule_expression`(매시 30분)에
+   BronzeCollect -> SilverTransform -> GoldCompute를 완전 순차/동기로 실행
+2. `refresh_dashboard_schedule`(팀원 기존 것 유지) - Gold의 옛 스케줄 15분 뒤(`cron(5 1,5,9,13,17,21 * * ? *)`)에
+   독립적으로 Dashboard(`mock/*.json` + CloudFront 무효화) 갱신
+
+다음 매시 30분 주기에 Step Functions 콘솔(또는 `aws stepfunctions list-executions
+--state-machine-arn arn:aws:states:us-west-2:827913617635:stateMachine:goldline-dev-pipeline-orchestrator`)에서
+`pipeline_orchestrator` 실행이 자동으로 시작되는지, 그리고 `SilverTransform` 단계가
+`search_to_silver` 자식 실행이 끝날 때까지 실제로 기다렸다가 `GoldCompute`로 넘어가는지
+한 번 확인해볼 것.
+
+## 팀원이 Dashboard 갱신을 다시 오케스트레이터 4번째 단계로 편입 (2026-09-03 추가, 최종 확정)
+
+바로 위 섹션에서 "refresh_dashboard.tf 유지, pipeline_orchestrator는 Bronze->Silver->Gold까지만"
+으로 정리했었는데, 이후 팀원(jaeyan42)이 이 결정을 다시 뒤집었다 - `git log`:
+
+```
+2f0508d refactor: 대시보드 갱신을 pipeline-orchestrator 4번째 상태로 편입
+
+refresh_dashboard가 별도 EventBridge 타이머(cron 5 1,5,9,...)로 돌면서
+orchestrator(Bronze->Silver->Gold, cron 30 */4)와 무관하게 실행됐다.
+Gold가 늦거나 실패해도 refresh는 stale Gold로 그냥 돌았고, 의존성 체크가 없었다.
+```
+
+정확한 지적이다 - 바로 위 섹션에서 우리가 "감수하기로 함"이라고 적었던 바로 그
+트레이드오프(Dashboard가 Gold 완료를 확인 안 하고 시간만 보고 도는 문제)를 팀원이
+다시 고친 것. 다만 이번엔 **새 Lambda를 또 만들지 않고, 기존 `infra/refresh_dashboard.tf`의
+`refresh_dashboard` Lambda를 그대로 재사용**해서 중복 없이 깔끔하게 편입시켰다:
+
+- `infra/pipeline_orchestrator.tf`: ASL의 `GoldCompute` 다음에 `DashboardRefresh` Task
+  추가 (`aws_lambda_function.refresh_dashboard.arn` 호출, Retry에 `States.Timeout`도
+  추가). 오케스트레이터 IAM 정책(`InvokeStageLambdas`)에 이 Lambda invoke 권한 추가.
+- `infra/refresh_dashboard.tf`: 독립 스케줄 리소스 3개(`aws_cloudwatch_event_rule.
+  refresh_dashboard_schedule`, `aws_cloudwatch_event_target.refresh_dashboard_target`,
+  `aws_lambda_permission.allow_eventbridge_refresh_dashboard`) 제거. Lambda 자체, IAM
+  정책(frontend 쓰기 + CloudFront invalidation), CloudWatch 에러 알람은 그대로 유지.
+
+**결과**: 이제 Bronze -> Silver -> Gold -> Dashboard 4단계 전부가 `pipeline_orchestrator`
+상태머신 한 실행 안에서 완전 순차/동기로 보장된다. `refresh_dashboard`는 더 이상
+"시간만 보고 도는" 독립 실행이 아니라 Gold 집계가 실제로 끝난 직후에만 실행된다 -
+가장 처음(이 문서 상단 "Bronze/Silver/Gold/Dashboard 완전 순차 자동화" 섹션)에 세웠던
+목표가 최종적으로 완성된 형태.
+
+### 코드 리뷰 중 발견한 문제: 문서 주석이 안 갱신됨 (수정 완료)
+
+팀원의 리팩토링 커밋(`2f0508d`)은 `infra/pipeline_orchestrator.tf`/`infra/refresh_dashboard.tf`의
+실제 리소스만 고쳤고, `pipeline_orchestrator.tf` 파일 최상단의 큰 설명 주석과 ASL/
+EventBridge/CloudWatch 알람 섹션의 안내 주석들은 그대로 남겨뒀다 - 그 주석들은 전부
+바로 이전 상태("Dashboard는 오케스트레이터에서 뺐고 refresh_dashboard.tf가 독립적으로
+처리")를 설명하는 내용이라, 실제 코드(4단계 ASL, DashboardRefresh Task 포함)와
+정반대로 어긋나 있었다. 파일을 위에서부터 읽으면 "이 오케스트레이터는 Gold까지만
+한다"는 잘못된 인상을 받게 되는 상태였음.
+
+**수정 완료**: `infra/pipeline_orchestrator.tf`의 최상단 주석(파일 헤더), ASL 정의
+섹션 주석, EventBridge 스케줄 섹션 주석, CloudWatch 알람 섹션 주석/`alarm_description`을
+전부 현재 4단계(Bronze->Silver->Gold->Dashboard) 구조에 맞게 고쳤고, 헤더에는 이 결정이
+"독립 스케줄 -> 분리(1차 해결) -> 재편입(팀원 최종 리팩토링)" 순으로 바뀌어온 히스토리를
+요약해뒀다. 실제 리소스 정의(ASL, IAM 정책 등)는 이미 올바르게 동작하는 상태였으므로
+기능적인 수정은 없었고 주석/문서만 갱신함.
+
+### 아직 배포 안 됨
+
+로컬 `infra/terraform.tfstate`를 확인해보니(`aws_sfn_state_machine.pipeline_orchestrator`의
+`definition`에 `"DashboardRefresh"` 문자열이 없음), 이 리팩토링은 **아직 `terraform apply`가
+안 된 상태**다 - 코드/git에는 반영됐지만 실제 AWS의 Step Functions 상태머신은 여전히
+3단계(Bronze->Silver->Gold)짜리 이전 정의로 배포돼 있다. 반영하려면:
+
+```
+cd infra
+terraform plan   # DashboardRefresh Task 추가, IAM 정책 변경, refresh_dashboard.tf의
+                  # event_rule/event_target/lambda_permission 3개 삭제가 보일 것
+terraform apply
+```
+
+이번엔 이름이 겹치는 리소스가 없어서(같은 Lambda를 참조만 할 뿐 새로 만들지 않음)
+지난번 같은 `ResourceConflictException`은 없을 것으로 예상됨. apply 후 다음 매시
+30분 주기에 Step Functions 콘솔에서 `DashboardRefresh` 단계까지 정상적으로 이어지는지
+확인해볼 것.
