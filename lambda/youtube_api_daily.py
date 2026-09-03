@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-YouTube search.list 기반 일일 수집 Lambda
-- videos.list(chart=mostPopular) 대신 search.list로 수집 -> 이미 뜬 영상만 모이는
-  survivorship bias가 없음 (신규/소형 채널 영상도 검색어·기간 매칭이면 잡힘)
-- 카테고리(영화·애니메이션/자동차·차량/게임/인물·블로그)별 검색어(q) 태그로
-  search() -> 결과의 video_id/channel_id를 videos.list/channels.list로 보강
-  -> video_id 기준으로 합쳐서 S3 Bronze에 JSON Lines로 저장
-- Lambda 최대 실행시간(15분) 안에 전체 작업을 못 끝내면, 남은 시간이
-  TIME_BUDGET_SAFETY_SEC 밑으로 떨어지는 시점에 지금까지 처리한 만큼만 S3에 올리고
-  체크포인트(S3)를 저장한 뒤 종료한다. EventBridge가 다음 스케줄에 다시 호출하면
-  체크포인트를 읽어 이어서 처리한다 (task 단위로 완료 여부를 기록하므로 재시도해도
-  중복 처리되지 않음 - 이미 완료한 task는 건너뜀).
-- 체크포인트는 실행일(run_date, KST 날짜) 기준 파일이라 날짜가 바뀌면 그날의
-  최근 TOTAL_DAYS_BACK일 구간으로 새로 시작한다. 같은 영상이 다음날 다시 수집되는
-  것은 의도된 동작이다 (조회수 시계열 추적이 이 프로젝트의 핵심 - spec.md 참고).
+YouTube search.list 기반 증분 수집 Lambda (4시간 간격 실행 전제)
+
+동작
+- 영구 체크포인트 1개(S3: bronze/_checkpoints/search_collector_state.json)에
+  * searched_until : 지금까지 검색을 끝낸 시점(다음 검색의 publishedAfter)
+  * known_videos   : {video_id: category_label} - 지금까지 발견한 모든 영상
+  를 기록한다.
+- 매 실행:
+  1) search.list 로 [searched_until, now] 구간의 "신규" 영상만 발견 (카테고리별
+     태그 전부를 q="a"|"b"|... OR 1회로 합쳐서 videoDuration(medium/long)당 1콜)
+  2) known_videos 전체(신규 포함)를 videos.list / channels.list 로 재조회해
+     현재 조회수·구독자 스냅샷을 만든다 -> 시간이 갈수록 4h치, 8h치, 12h치 ...
+     시계열이 Bronze에 누적된다 (같은 영상 재수집은 의도된 동작)
+  3) 카테고리별로 S3 Bronze(JSON Lines)에 업로드
+  4) 전 카테고리 업로드 성공 후에만 searched_until 을 now 로 전진시키고 체크포인트 저장
+     (부분 실패 시 커서를 안 움직이므로 다음 실행이 같은 구간을 다시 훑는다 = 재수집이지
+      유실 아님)
+- 최초 실행(체크포인트 없음): [now - INITIAL_LOOKBACK_HOURS, now] 부터 시작한다.
+  일반적으로는 scripts/seed_search_checkpoint.py 로 기존 S3 데이터에서 최근 며칠치
+  video_id 를 미리 채워두고 배포한다.
 - 표준 라이브러리(urllib)만 사용 -> googleapiclient 없이 Lambda Layer 불필요.
 """
 
@@ -28,7 +34,7 @@ from datetime import datetime, timedelta, timezone
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
 
-# 파티션 키(bronze/search/.../year=/month=/day=)와 run_date/체크포인트 기준: KST(한국시간)
+# 파티션 키(bronze/search/.../year=/month=/day=)와 체크포인트/윈도우 기준: KST(한국시간)
 KST = timezone(timedelta(hours=9))
 
 YOUTUBE_API_KEYS = [k.strip() for k in os.environ.get("YOUTUBE_API_KEYS", "").split(",") if k.strip()]
@@ -36,9 +42,8 @@ BUCKET_NAME = os.environ["BUCKET_NAME"]
 REGION_CODE = os.environ.get("REGION_CODE", "KR")
 RELEVANCE_LANGUAGE = os.environ.get("RELEVANCE_LANGUAGE", "ko")
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
-TOTAL_DAYS_BACK = int(os.environ.get("TOTAL_DAYS_BACK", "7"))
-# 남은 실행시간이 이 값(초) 밑으로 떨어지면 새 task를 시작하지 않고 지금까지 결과를 저장 후 종료
-TIME_BUDGET_SAFETY_SEC = int(os.environ.get("TIME_BUDGET_SAFETY_SEC", "60"))
+# 체크포인트가 없을 때(콜드 스타트)만 쓰는 초기 조회 구간
+INITIAL_LOOKBACK_HOURS = int(os.environ.get("INITIAL_LOOKBACK_HOURS", "8"))
 
 SEARCH_VIDEO_DURATIONS = ["medium", "long"]  # 쇼츠(0~4분 전체) 제외
 
@@ -57,59 +62,34 @@ CATEGORY_SLUGS = {
 }
 CATEGORY_ID_TO_LABEL = {v: k for k, v in CATEGORY_IDS.items()}
 
-# 카테고리별 검색어(q) 태그. 태그를 "번들"(동의어 묶음) 단위로 관리 - 번들 안의 태그는
-# q="a"|"b"|"c" 형태의 OR 검색 1회로 합쳐서 보낸다(do_search 참고). 서로 다른 번들끼리는
-# 여전히 개별 검색.
-# 묶는 기준(2026-09-02 쿼터 절감 분석): (1) 사실상 동의어라 matched_tags 구분이
-# 분석적으로 무의미 (2) 묶은 결과가 (기간×길이) 슬롯당 search API maxResults 캡(50)에
-# 안 걸림(실측 co-occurrence 기반). 캡에 걸릴 위험이 있는 태그(예: 영화 "결말포함"/
-# "영화리뷰", 게임 "신작 게임"/"게임 추천")는 개별 번들로 남겨둠.
-# 실측 검증(2026-09-01) 기반 - 4개 카테고리 검색 결과 video_id 교차 중복 없음 확인.
+# 카테고리별 검색어(q) 태그. 증분 구간이 4~8시간으로 짧아 slot당 결과가 search API
+# maxResults 캡(50)에 한참 못 미치므로, 예전처럼 번들로 쪼갤 필요 없이 카테고리의
+# 태그 전부를 q="a"|"b"|"c" ... OR 1회로 합쳐서 보낸다.
+# (어떤 태그로 걸렸는지는 기록하지 않는다 - 다운스트림에서 아무도 안 씀)
 CATEGORY_TAGS = {
     "영화_애니메이션": [
-        ["영화리뷰"],
-        ["결말포함"],
-        # "해석/요약" 계열 동의어 - 합쳐도 슬롯당 ~8건으로 캡에 여유 충분
-        ["영화 해석", "영화 요약", "영화 비평", "개봉작 리뷰", "영화 몰아보기"],
-        ["영화 추천"],
-        ["박스오피스"],
+        "영화리뷰", "결말포함", "영화 해석", "영화 요약", "영화 비평",
+        "개봉작 리뷰", "영화 몰아보기", "영화 추천", "박스오피스",
     ],
     "자동차_차량": [
-        ["시승기"],
-        # 신차/전기차/비교류 - 합쳐도 슬롯당 ~15건
-        ["신차 리뷰", "전기차 리뷰", "차량 비교", "장기렌트 비교"],
-        # 자동차 리뷰+중고차 리뷰 - 합쳐도 슬롯당 ~16건 (신차 급증 주에도 캡까지 여유 큼)
-        ["자동차 리뷰", "중고차 리뷰"],
-        ["차박"],
+        "시승기", "신차 리뷰", "전기차 리뷰", "차량 비교", "장기렌트 비교",
+        "자동차 리뷰", "중고차 리뷰", "차박",
     ],
     "게임": [
-        # 띄어쓰기만 다른 동일어 - 합쳐도 슬롯당 ~17건
-        ["게임리뷰", "게임 리뷰", "게임 후기"],
-        ["게임 공략", "게임 업데이트"],
-        ["게임 추천"],   # 캡 위험(슬롯당 ~31건) - 개별 유지
-        ["신작 게임"],   # 캡 위험(슬롯당 ~40건) - 개별 유지
-        # 둘 다 "할인/무료" 인텐트, 리뷰류와 겹침 적음
-        ["스팀 할인", "무료 게임"],
+        "게임리뷰", "게임 리뷰", "게임 후기", "게임 공략", "게임 업데이트",
+        "게임 추천", "신작 게임", "스팀 할인", "무료 게임",
     ],
-    # 진짜 브이로그 추적이 아니라, 다른 카테고리로 오분류된 리뷰어를 잡아내는 용도로
-    # 최소화 - 태그 구분 자체가 원래 무의미해서 통째로 한 번들.
-    # (category_id=22는 업로더가 카테고리를 지정 안 했을 때 YouTube가 자동으로 붙이는
-    #  기본값이라 Silver 단계에서 오염 데이터로 분리됨 - 정상 3개 카테고리와 다른 취급)
-    "인물_블로그": [["영화리뷰", "시승기", "게임리뷰"]],
-}
-
-# 카테고리별 검색 구간 길이(일). 실측 밀도 기반으로 태그당 검색 결과가 API 캡(50)에
-# 안 걸리게 조정한 값.
-CATEGORY_WINDOW_DAYS = {
-    "영화_애니메이션":   4,
-    "자동차_차량":      7,
-    "게임":            4,
-    "인물_블로그":      7,
+    # category_id=22는 업로더가 카테고리를 지정 안 했을 때 YouTube가 자동으로 붙이는
+    # 기본값이라 Silver 단계에서 오염 데이터로 분리됨 - 다른 카테고리로 오분류된
+    # 리뷰어를 잡아내는 용도.
+    "인물_블로그": ["영화리뷰", "시승기", "게임리뷰"],
 }
 
 RATE_LIMIT_MAX_RETRIES = 5
 RATE_LIMIT_BASE_DELAY_SEC = 2      # 재시도 대기시간: 2, 4, 8, 16, 32초로 증가
 CALL_PACING_SEC = 1.0              # 매 API 호출 뒤 최소 간격 (분당 속도 제한 예방)
+
+CHECKPOINT_KEY = "bronze/_checkpoints/search_collector_state.json"
 
 s3_client = None
 
@@ -195,101 +175,63 @@ def call_with_rotation(path, params):
 
 
 # ============================================================
-# 시간 예산 (Lambda 15분 하드 타임아웃 대응)
+# 체크포인트 (S3) - 영구 파일 1개
 # ============================================================
-def time_running_low(context):
-    """context가 없으면(로컬 실행) 시간 제한 없음 취급."""
-    if context is None or not hasattr(context, "get_remaining_time_in_millis"):
-        return False
-    return context.get_remaining_time_in_millis() < TIME_BUDGET_SAFETY_SEC * 1000
-
-
-# ============================================================
-# 체크포인트 (S3) - completed_search_tasks(끝난 검색 작업 id 집합)만 기록
-# ============================================================
-def checkpoint_s3_key(run_date):
-    return f"bronze/_checkpoints/search_collector_{run_date}.json"
-
-
-def load_checkpoint(s3, run_date):
+def load_state(s3):
+    """{'searched_until': <iso str|None>, 'known_videos': {video_id: category_label}}.
+    체크포인트 객체가 없을 때만(NoSuchKey/404) 콜드 스타트로 취급한다.
+    그 외 S3 오류(일시적 5xx, throttle, 권한 등)는 절대 '빈 상태'로 뭉개지 말고
+    그대로 raise 한다 - 잘못 삼키면 커서가 리셋된다."""
     from botocore.exceptions import ClientError
-    key = checkpoint_s3_key(run_date)
     try:
-        obj = s3.get_object(Bucket=BUCKET_NAME, Key=key)
+        obj = s3.get_object(Bucket=BUCKET_NAME, Key=CHECKPOINT_KEY)
         data = json.loads(obj["Body"].read().decode("utf-8"))
     except ClientError as e:
         if e.response.get("Error", {}).get("Code") in ("NoSuchKey", "404"):
+            print("체크포인트 없음 - 콜드 스타트")
             data = {}
         else:
             raise
-    return {"completed_search_tasks": set(data.get("completed_search_tasks", []))}
+    return {
+        "searched_until": data.get("searched_until"),
+        "known_videos": dict(data.get("known_videos", {})),
+    }
 
 
-def save_checkpoint(s3, run_date, state):
-    key = checkpoint_s3_key(run_date)
+def save_state(s3, state):
     body = json.dumps(
-        {"completed_search_tasks": sorted(state["completed_search_tasks"])},
+        {
+            "searched_until": state["searched_until"],
+            "known_videos": dict(sorted(state["known_videos"].items())),
+        },
         ensure_ascii=False,
     )
-    s3.put_object(Bucket=BUCKET_NAME, Key=key, Body=body.encode("utf-8"), ContentType="application/json")
+    s3.put_object(
+        Bucket=BUCKET_NAME, Key=CHECKPOINT_KEY,
+        Body=body.encode("utf-8"), ContentType="application/json",
+    )
 
 
-def task_id(category_label, duration, period_index):
-    return f"{category_label}|{duration}|{period_index}"
-
-
-# ============================================================
-# 구간(기간) 생성 - 오늘부터 거슬러 올라가며 TOTAL_DAYS_BACK일을 카테고리별 구간으로 순회
-# ============================================================
-def generate_periods(window_days, total_days_back):
-    """기준 시점을 '내일 자정(00:00 KST)'으로 고정 - 같은 날 여러 번 실행해도
-    구간 경계가 항상 동일해서, 체크포인트가 다른 작업으로 착각하는 일이 없다."""
-    today = datetime.now(KST).date()
-    anchor = datetime.combine(today, datetime.min.time(), tzinfo=KST) + timedelta(days=1)
-    oldest = anchor - timedelta(days=total_days_back)
-    periods = []
-    cursor_end = anchor
-    while cursor_end > oldest:
-        cursor_start = max(cursor_end - timedelta(days=window_days), oldest)
-        periods.append((cursor_start, cursor_end))
-        cursor_end = cursor_start
-    return periods
-
-
-def build_all_tasks():
-    tasks = []
-    for label, cat_id in CATEGORY_IDS.items():
-        tags = CATEGORY_TAGS[label]
-        window_days = CATEGORY_WINDOW_DAYS[label]
-        periods = generate_periods(window_days, TOTAL_DAYS_BACK)
-        for period_index, (period_start, period_end) in enumerate(periods):
-            for duration in SEARCH_VIDEO_DURATIONS:
-                tasks.append({
-                    "category_label": label,
-                    "category_id": cat_id,
-                    "tags": tags,
-                    "duration": duration,
-                    "period_index": period_index,
-                    "period_start": period_start,
-                    "period_end": period_end,
-                })
-    return tasks
+def compute_window(state, now):
+    """이번 실행이 검색할 [start, end). end = 현재 시각(정시 절삭)."""
+    if state["searched_until"]:
+        start = datetime.fromisoformat(state["searched_until"])
+    else:
+        start = now - timedelta(hours=INITIAL_LOOKBACK_HOURS)
+    return start, now
 
 
 # ============================================================
-# 1단계: 번들(동의어 묶음) 하나당 search() 호출. 번들에 태그가 여러 개면
-# q="a"|"b"|"c" 형태의 OR 검색 - CATEGORY_TAGS의 번들 기준 참고.
+# 1단계: 증분 발견 - 카테고리의 태그 전부를 OR 1회로
 # ============================================================
-def do_search(task, tag_bundle):
-    q = "|".join(f'"{t}"' for t in tag_bundle)
-    published_after = task["period_start"].isoformat().replace("+00:00", "Z")
-    published_before = task["period_end"].isoformat().replace("+00:00", "Z")
+def do_search(category_id, duration, tags, published_after, published_before):
+    q = "|".join(f'"{t}"' for t in tags)
     params = {
         "part": "snippet",
         "type": "video",
         "q": q,
-        "videoCategoryId": task["category_id"],
-        "videoDuration": task["duration"],
+        "videoCategoryId": category_id,
+        "videoDuration": duration,
         "order": "date",
         "publishedAfter": published_after,
         "publishedBefore": published_before,
@@ -333,7 +275,7 @@ def enrich_channels(channel_ids):
 
 
 # ============================================================
-# 3단계: video_id 기준으로 search+videos.list+channels.list 응답을 그대로 합침
+# 3단계: video_id 기준으로 videos.list+channels.list 응답을 그대로 합침
 # (Bronze - duration_seconds/video_type/KST 파생/is_valid 같은 가공·검증은 Silver 단계에서)
 # ============================================================
 def extract_video_fact(v):
@@ -378,6 +320,39 @@ def extract_video_fact(v):
     }
 
 
+def build_channel_info(channel_details):
+    info = {}
+    for c in channel_details:
+        stats = c.get("statistics", {})
+        sn = c.get("snippet", {})
+        cd = c.get("contentDetails", {})
+        topic = c.get("topicDetails", {})
+        branding_channel = c.get("brandingSettings", {}).get("channel", {})
+        ch_thumbs = sn.get("thumbnails", {})
+        ch_thumbnail_url = (
+            ch_thumbs.get("high", {}).get("url")
+            or ch_thumbs.get("medium", {}).get("url")
+            or ch_thumbs.get("default", {}).get("url")
+            or ""
+        )
+        info[c["id"]] = {
+            "title": sn.get("title", ""),
+            "channel_description": sn.get("description", ""),
+            "channel_custom_url": sn.get("customUrl", ""),
+            "channel_country": sn.get("country", ""),
+            "channel_published_at": sn.get("publishedAt", ""),
+            "channel_thumbnail_url": ch_thumbnail_url,
+            "channel_topic_categories": topic.get("topicCategories", []),
+            "channel_keywords": branding_channel.get("keywords", ""),
+            "subscriber_count": stats.get("subscriberCount", ""),
+            "hidden_subscriber_count": stats.get("hiddenSubscriberCount", ""),
+            "channel_view_count": stats.get("viewCount", ""),
+            "channel_video_count": stats.get("videoCount", ""),
+            "uploads_playlist_id": cd.get("relatedPlaylists", {}).get("uploads", ""),
+        }
+    return info
+
+
 def build_flat_records(video_facts, channel_info):
     records = []
     collected_at = datetime.now(timezone.utc).isoformat()
@@ -392,7 +367,6 @@ def build_flat_records(video_facts, channel_info):
             "description": vf.get("description", ""),
             "published_at": vf.get("published_at", ""),
             "tags": vf.get("tags", []),
-            "matched_tags": vf.get("matched_tags", []),
             "live_broadcast_content": vf.get("live_broadcast_content", ""),
             "default_audio_language": vf.get("default_audio_language", ""),
             "default_language": vf.get("default_language", ""),
@@ -455,120 +429,76 @@ def upload_records(s3, category_label, run_date, invocation_suffix, records):
 # ============================================================
 def lambda_handler(event, context):
     s3 = get_s3_client()
+    now = datetime.now(KST).replace(minute=0, second=0, microsecond=0)
     run_date = datetime.now(KST).strftime("%Y-%m-%d")
     invocation_suffix = datetime.now(KST).strftime("%H%M%S")
 
-    all_tasks = build_all_tasks()
-    state = load_checkpoint(s3, run_date)
-    remaining = [
-        t for t in all_tasks
-        if task_id(t["category_label"], t["duration"], t["period_index"])
-        not in state["completed_search_tasks"]
-    ]
+    state = load_state(s3)
+    win_start, win_end = compute_window(state, now)
 
     result = {
-        "run_date": run_date,
-        "total_tasks": len(all_tasks),
-        "completed_before": len(state["completed_search_tasks"]),
+        "window": [win_start.isoformat(), win_end.isoformat()],
+        "known_before": len(state["known_videos"]),
     }
 
-    if not remaining:
-        result.update(status="complete", stop_reason=None, processed_this_invocation=0,
-                       completed_total=len(state["completed_search_tasks"]), uploaded_keys=[])
-        print(json.dumps(result, ensure_ascii=False))
-        return result
-
-    buffered = {}  # category_label -> [record, ...] (이번 invocation에서 새로 완료한 task들)
-    written_video_ids_this_run = set()  # 이번 invocation 안에서만 유효한 경계-중복 방지
-    processed = 0
     stop_reason = None
 
-    for task in remaining:
-        if time_running_low(context):
-            stop_reason = "time_budget"
-            break
+    # --- 1) 증분 발견 (신규 video_id 를 known_videos 에 등록) ---
+    newly_found = 0
+    try:
+        if win_start < win_end:
+            after = win_start.isoformat().replace("+00:00", "Z")
+            before = win_end.isoformat().replace("+00:00", "Z")
+            for label, cat_id in CATEGORY_IDS.items():
+                for duration in SEARCH_VIDEO_DURATIONS:
+                    resp = do_search(cat_id, duration, CATEGORY_TAGS[label], after, before)
+                    for it in resp.get("items", []):
+                        vid = it["id"]["videoId"]
+                        if vid not in state["known_videos"]:
+                            state["known_videos"][vid] = label
+                            newly_found += 1
+        else:
+            print(f"검색 구간 없음(start={win_start} >= end={win_end}) - 갱신만 진행")
+    except QuotaExhaustedError:
+        stop_reason = "quota_exhausted"
 
-        tid = task_id(task["category_label"], task["duration"], task["period_index"])
-
-        video_tag_map = {}
+    # --- 2) known_videos 전체 스냅샷 (videos.list / channels.list) ---
+    records_by_label = {}
+    snapshot_count = 0
+    if stop_reason is None:
+        all_ids = sorted(state["known_videos"])
         try:
-            for tag_bundle in task["tags"]:
-                resp = do_search(task, tag_bundle)
-                for it in resp.get("items", []):
-                    vid = it["id"]["videoId"]
-                    # 번들 검색이라 어떤 태그가 걸렸는지는 API가 알려주지 않음 - 번들
-                    # 안의 태그가 애초에 동의어라 구분이 무의미하므로 번들 전체를 기록
-                    video_tag_map.setdefault(vid, set()).update(tag_bundle)
-
-            video_ids = list(video_tag_map.keys())
-            video_details = enrich_videos(video_ids)
-
-            task_video_facts = []
-            for v in video_details:
-                vf = extract_video_fact(v)
-                vf["matched_tags"] = sorted(video_tag_map.get(vf["video_id"], []))
-                task_video_facts.append(vf)
-
-            referenced_channel_ids = list({vf["channel_id"] for vf in task_video_facts})
-            channel_details = enrich_channels(referenced_channel_ids)
+            facts = [extract_video_fact(v) for v in enrich_videos(all_ids)]
+            channel_ids = sorted({f["channel_id"] for f in facts if f["channel_id"]})
+            channel_info = build_channel_info(enrich_channels(channel_ids))
+            for r in build_flat_records(facts, channel_info):
+                # 파티션(파일 위치)은 이 영상을 잡아낸 검색 카테고리 기준.
+                # 레코드 안의 category_id/category_name 은 YouTube 가 알려준 실제 값 그대로.
+                label = state["known_videos"].get(r["video_id"], "인물_블로그")
+                records_by_label.setdefault(label, []).append(r)
+                snapshot_count += 1
         except QuotaExhaustedError:
             stop_reason = "quota_exhausted"
-            break
 
-        channel_info_local = {}
-        for c in channel_details:
-            stats = c.get("statistics", {})
-            sn = c.get("snippet", {})
-            cd = c.get("contentDetails", {})
-            topic = c.get("topicDetails", {})
-            branding_channel = c.get("brandingSettings", {}).get("channel", {})
-            ch_thumbs = sn.get("thumbnails", {})
-            ch_thumbnail_url = (
-                ch_thumbs.get("high", {}).get("url")
-                or ch_thumbs.get("medium", {}).get("url")
-                or ch_thumbs.get("default", {}).get("url")
-                or ""
-            )
-            channel_info_local[c["id"]] = {
-                "title": sn.get("title", ""),
-                "channel_description": sn.get("description", ""),
-                "channel_custom_url": sn.get("customUrl", ""),
-                "channel_country": sn.get("country", ""),
-                "channel_published_at": sn.get("publishedAt", ""),
-                "channel_thumbnail_url": ch_thumbnail_url,
-                "channel_topic_categories": topic.get("topicCategories", []),
-                "channel_keywords": branding_channel.get("keywords", ""),
-                "subscriber_count": stats.get("subscriberCount", ""),
-                "hidden_subscriber_count": stats.get("hiddenSubscriberCount", ""),
-                "channel_view_count": stats.get("viewCount", ""),
-                "channel_video_count": stats.get("videoCount", ""),
-                "uploads_playlist_id": cd.get("relatedPlaylists", {}).get("uploads", ""),
-            }
-
-        records = build_flat_records(task_video_facts, channel_info_local)
-        new_records = [r for r in records if r["video_id"] not in written_video_ids_this_run]
-        written_video_ids_this_run.update(r["video_id"] for r in new_records)
-        buffered.setdefault(task["category_label"], []).extend(new_records)
-
-        state["completed_search_tasks"].add(tid)
-        processed += 1
-
+    # --- 3) 업로드 ---
     uploaded_keys = []
-    for label, records in buffered.items():
+    for label, records in records_by_label.items():
         key = upload_records(s3, label, run_date, invocation_suffix, records)
         if key:
             uploaded_keys.append(key)
 
-    save_checkpoint(s3, run_date, state)
+    # --- 4) 커서 전진은 '검색 완주 + 업로드 성공' 이후에만 ---
+    upload_ok = len(uploaded_keys) == len(records_by_label)
+    if stop_reason is None and win_start < win_end and upload_ok:
+        state["searched_until"] = win_end.isoformat()
+    save_state(s3, state)
 
-    completed_total = len(state["completed_search_tasks"])
-    status = "complete" if completed_total >= len(all_tasks) else "partial"
     result.update(
-        status=status,
         stop_reason=stop_reason,
-        processed_this_invocation=processed,
-        completed_total=completed_total,
-        video_count_this_invocation=len(written_video_ids_this_run),
+        newly_found=newly_found,
+        snapshot_count=snapshot_count,
+        known_after=len(state["known_videos"]),
+        searched_until=state["searched_until"],
         uploaded_keys=uploaded_keys,
     )
     print(json.dumps(result, ensure_ascii=False))

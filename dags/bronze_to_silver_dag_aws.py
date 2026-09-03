@@ -48,6 +48,36 @@ AWS_CLOUDWATCH_LOG_GROUP = os.getenv('AWS_CLOUDWATCH_LOG_GROUP', '/aws/airflow/g
 # Firehose Configuration (Bronze 자동 적재)
 FIREHOSE_STREAM_NAME = os.getenv('FIREHOSE_STREAM_NAME', 'goldline-dev-bronze-stream')
 
+# 증분 처리 체크포인트 (1년치 백필처럼 내용이 안 바뀌는 로컬 파일을 매시간
+# 반복해서 Firehose/Silver로 재전송하는 것을 막기 위함 - 파일별 mtime을 기록해두고
+# mtime이 그대로면 스킵, 새로 추가되거나 수정된 파일만 처리한다)
+FIREHOSE_MANIFEST_PATH = os.path.join(BRONZE_DIR, '.firehose_pushed_manifest.json')
+SILVER_MANIFEST_PATH = os.path.join(BRONZE_DIR, '.silver_transformed_manifest.json')
+
+
+def _load_manifest(path):
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def _save_manifest(path, manifest):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+
+
+def _filter_new_or_changed(jsonl_files, manifest):
+    """manifest에 기록된 mtime과 다르면(=신규 또는 수정됨) 처리 대상으로 남긴다."""
+    result = []
+    for file_path in jsonl_files:
+        p = Path(file_path)
+        current_mtime = p.stat().st_mtime
+        if manifest.get(p.name) != current_mtime:
+            result.append(file_path)
+    return result
+
 # YouTube 카테고리 ID -> 영문 슬러그 매핑 (실제 Bronze 데이터의 category_id 필드 기준)
 CATEGORY_ID_MAP = {
     '1':  'film_animation',   # 영화_애니메이션
@@ -394,10 +424,20 @@ def push_bronze_to_firehose(**context):
     logger.info("=" * 80)
 
     bronze_path = Path(BRONZE_DIR)
-    jsonl_files = sorted(bronze_path.glob('*.jsonl'))
+    all_jsonl_files = sorted(bronze_path.glob('*.jsonl'))
+
+    if not all_jsonl_files:
+        logger.warning(f"No JSONL files found in {BRONZE_DIR}. Skipping Firehose push.")
+        context['task_instance'].xcom_push(key='firehose_push_stats', value={'files_pushed': 0, 'records_sent': 0, 'files': []})
+        return
+
+    firehose_manifest = _load_manifest(FIREHOSE_MANIFEST_PATH)
+    jsonl_files = _filter_new_or_changed(all_jsonl_files, firehose_manifest)
 
     if not jsonl_files:
-        logger.warning(f"No JSONL files found in {BRONZE_DIR}. Skipping Firehose push.")
+        logger.info(
+            f"신규/변경된 백필 파일 없음 ({len(all_jsonl_files)}개 전부 이미 Firehose 전송 완료) - 스킵"
+        )
         context['task_instance'].xcom_push(key='firehose_push_stats', value={'files_pushed': 0, 'records_sent': 0, 'files': []})
         return
 
@@ -418,9 +458,12 @@ def push_bronze_to_firehose(**context):
             push_stats['records_sent'] += sent
             push_stats['files'].append(jsonl_file.name)
             logger.info(f"{jsonl_file.name} -> Firehose 전송 완료 ({sent}건)")
+            firehose_manifest[jsonl_file.name] = jsonl_file.stat().st_mtime
+            _save_manifest(FIREHOSE_MANIFEST_PATH, firehose_manifest)
         except Exception as e:
             logger.error(f"Failed to push {jsonl_file.name} to Firehose: {e}")
             # Firehose 실패해도 파이프라인은 계속 진행 (Silver 변환은 로컬 파일 기준으로 별도 진행)
+            # 실패한 파일은 manifest에 기록하지 않아 다음 실행에 재시도된다
 
     context['task_instance'].xcom_push(key='firehose_push_stats', value=push_stats)
 
@@ -440,17 +483,27 @@ def validate_bronze(**context):
         raise AirflowException(f"Bronze directory not found: {BRONZE_DIR}")
 
     # Find all JSONL files
-    jsonl_files = sorted(bronze_path.glob('*.jsonl'))
+    all_jsonl_files = sorted(bronze_path.glob('*.jsonl'))
 
-    if not jsonl_files:
+    if not all_jsonl_files:
         raise AirflowException(f"No JSONL files found in {BRONZE_DIR}")
 
-    logger.info(f"✓ Found {len(jsonl_files)} Bronze files:")
+    # 이미 Silver로 변환된(mtime 변화 없는) 파일은 제외 - 새로 추가되거나 수정된 파일만 대상
+    silver_manifest = _load_manifest(SILVER_MANIFEST_PATH)
+    jsonl_files = _filter_new_or_changed(all_jsonl_files, silver_manifest)
+
+    logger.info(
+        f"✓ Found {len(all_jsonl_files)} Bronze files total, "
+        f"{len(jsonl_files)} new/changed since last run:"
+    )
     for file in jsonl_files:
         file_size = file.stat().st_size / 1024  # KB
         logger.info(f"  - {file.name} ({file_size:.2f} KB)")
 
-    # Store file list in XCom for next task
+    if not jsonl_files:
+        logger.info("신규/변경된 Bronze 파일 없음 - 이번 실행은 Silver 변환 스킵")
+
+    # Store file list in XCom for next task (신규/변경분만)
     file_list = [str(f) for f in jsonl_files]
     context['task_instance'].xcom_push(key='bronze_files', value=file_list)
 
@@ -468,7 +521,20 @@ def transform_to_silver_task(**context):
     bronze_files = task_instance.xcom_pull(task_ids='validate_bronze', key='bronze_files')
 
     if not bronze_files:
-        raise AirflowException("No Bronze files found from validation task")
+        # 신규/변경된 Bronze 파일이 없는 정상 상태(매시간 반복 실행 중 대부분의 경우) -
+        # summary_task가 참조하므로 0으로 채운 stats는 반드시 push해야 함
+        logger.info("신규/변경된 Bronze 파일이 없어 변환할 것이 없음 - 스킵")
+        task_instance.xcom_push(key='transformation_stats', value={
+            'files_processed': 0,
+            'total_records': 0,
+            'valid_records': 0,
+            'rejected_records': 0,
+            'silver_files_created': [],
+            'rejected_files_created': [],
+        })
+        return
+
+    silver_manifest = _load_manifest(SILVER_MANIFEST_PATH)
 
     silver_path = Path(SILVER_DIR)
     silver_path.mkdir(parents=True, exist_ok=True)
@@ -511,8 +577,13 @@ def transform_to_silver_task(**context):
                         f.write(json.dumps(record, ensure_ascii=False) + '\n')
                 transformation_stats['rejected_files_created'].append(str(rejected_file))
                 logger.info(f"⚠ Saved {len(rejected_records)} rejected records to: {rejected_file}")
+
+            # 이 Bronze 파일은 Silver 변환 완료 - 다음 실행부터는 mtime 안 바뀌면 스킵
+            silver_manifest[Path(bronze_file).name] = Path(bronze_file).stat().st_mtime
+            _save_manifest(SILVER_MANIFEST_PATH, silver_manifest)
         except Exception as e:
             logger.error(f"✗ Failed to process {bronze_file}: {e}")
+            # 실패한 파일은 manifest에 기록하지 않아 다음 실행에 재시도된다
             raise
 
     task_instance.xcom_push(key='transformation_stats', value=transformation_stats)
