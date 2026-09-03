@@ -136,9 +136,9 @@ def main():
     for cat_key, cat_id in CATEGORIES.items():
         sql = VIDEO_ANALYSIS_CTE.format(db=args.database) + f"""
 SELECT video_id, channel_id, category_id, title, duration_seconds, video_type,
-       view_count, like_count, comment_count,
+       view_count, like_count, comment_count, subscriber_count_at_collection,
        published_day_of_week, published_hour_kst,
-       views_per_day, like_rate, comment_rate,
+       video_age_days, views_per_day, like_rate, comment_rate,
        subscriber_segment, duration_bucket, upload_time_bucket
 FROM video_analysis
 WHERE category_id = '{cat_id}'
@@ -148,15 +148,24 @@ WHERE category_id = '{cat_id}'
         rows = coerce_types(
             rows,
             int_fields=("duration_seconds", "view_count", "like_count", "comment_count",
-                        "published_day_of_week", "published_hour_kst"),
+                        "subscriber_count_at_collection",
+                        "published_day_of_week", "published_hour_kst", "video_age_days"),
             float_fields=("views_per_day", "like_rate", "comment_rate"),
         )
         save(f"video_analysis_{cat_key}.json", rows)
 
     print("Silver (dim_channel, 채널별 최신값):")
+    # 컬럼명을 Postgres dim_channel(sql/youtube_pipeline_schema_postgresql.sql)과
+    # 똑같이 맞춘다 - build_dashboard_data.py의 normalize_silver_row()/build_channel_pool()이
+    # ch.get("channel_title")/ch.get("channel_view_count")/ch.get("channel_video_count")로
+    # 읽는데, Glue silver_youtube 컬럼명은 channel_name/channel_total_view_count/
+    # channel_total_video_count라서 그대로 두면 매번 기본값(0)으로 빠져 channel_pool이
+    # 통째로 비게 된다(channel_video_count<=0 필터에 전부 걸림).
     sql = f"""
-SELECT channel_id, channel_name, subscriber_count, channel_thumbnail_url,
-       channel_total_view_count, channel_total_video_count, channel_published_at_utc
+SELECT channel_id, channel_name AS channel_title, subscriber_count, channel_thumbnail_url,
+       channel_total_view_count AS channel_view_count,
+       channel_total_video_count AS channel_video_count,
+       channel_published_at_utc
 FROM (
     SELECT channel_id, channel_name, subscriber_count, channel_thumbnail_url,
            channel_total_view_count, channel_total_video_count, channel_published_at_utc,
@@ -170,7 +179,7 @@ WHERE rn = 1
     rows = fetch_all_rows(athena, qid)
     rows = coerce_types(
         rows,
-        int_fields=("subscriber_count", "channel_total_view_count", "channel_total_video_count"),
+        int_fields=("subscriber_count", "channel_view_count", "channel_video_count"),
     )
     save("dim_channel.json", rows)
 

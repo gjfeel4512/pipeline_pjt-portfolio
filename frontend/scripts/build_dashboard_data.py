@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-outputs/silver_gold_export/*.json (PostgreSQL Silver/Gold를 export_pg_for_dashboard.py로
-내려받은 결과)를 읽어서 frontend/mock/*.json 을 만든다.
+outputs/silver_gold_export/*.json (Silver/Gold를 export_pg_for_dashboard.py(PostgreSQL 경로)
+또는 export_athena_for_dashboard.py(Athena/Glue 경로)로 내려받은 결과 - 둘 다 같은 파일명/스키마로
+씀)를 읽어서 frontend/mock/*.json 을 만든다.
 
 Bronze(outputs/bronze_merged)는 더 이상 읽지 않는다. 채널 프로필 사진도 이제
 Silver(dim_channel.channel_thumbnail_url)에서 우선 가져온다 — 2026-09-03
@@ -351,11 +352,12 @@ def main():
 
     now_kst = datetime.datetime.now(KST).isoformat()
     meta = {
-        "_comment": "PostgreSQL Silver(vw_video_analysis/dim_channel) + Gold(gold_category_benchmark) 데이터를 집계해서 생성. "
+        "_comment": "Silver(vw_video_analysis/dim_channel) + Gold(gold_category_benchmark) 데이터를 집계해서 생성. "
                     "채널 프로필 사진도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 "
                     "Bronze 원본(channels_detail.jsonl.gz)으로 보완. source=pipeline_snapshot.",
         "last_updated": now_kst,
-        "collection_window": "outputs/silver_gold_export 스냅샷 (export_pg_for_dashboard.py 실행 시점의 PostgreSQL Silver/Gold)",
+        "collection_window": "outputs/silver_gold_export 스냅샷 (export_pg_for_dashboard.py 또는 export_athena_for_dashboard.py "
+                              "실행 시점의 Silver/Gold - PostgreSQL/RDS 경로와 Athena/Glue 경로 둘 다 이 파일들을 같은 스키마로 채운다)",
         "source": "pipeline_snapshot",
     }
     with open(f"{OUT_DIR}/meta.json", "w", encoding="utf-8") as f:
