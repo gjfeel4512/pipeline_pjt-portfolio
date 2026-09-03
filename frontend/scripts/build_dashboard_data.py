@@ -123,6 +123,20 @@ def normalize_silver_row(d, channels):
     if day_idx is None or slot_idx is None or age_days is None or views_per_day is None:
         return None
 
+    # video_age_days는 "수집 시점의 나이"라, 재수집되지 않는 영상(1년 백필 등)은 값이
+    # 고정된다 (예: 백필이 게시 1일 후 수집 -> 3일이 더 지나도 계속 1). 화면의
+    # "게시 N일 전"과 트렌드/스테디 분류는 현재 시각 기준이어야 하므로 published_at_utc로
+    # 다시 계산한다. published_at_utc가 없는 export 경로는 기존 age_days로 폴백.
+    published_at = d.get("published_at_utc") or d.get("published_at")
+    days_since_published = age_days
+    if published_at:
+        try:
+            _pub = datetime.datetime.fromisoformat(str(published_at).replace("Z", "+00:00"))
+            _now = datetime.datetime.now(datetime.timezone.utc)
+            days_since_published = max(1, (_now - _pub).days)
+        except (ValueError, TypeError):
+            pass
+
     subscriber_count = ch.get("subscriber_count")
     if subscriber_count is None:
         subscriber_count = d.get("subscriber_count_at_collection") or 0
@@ -145,7 +159,9 @@ def normalize_silver_row(d, channels):
         "comment_count": d.get("comment_count") or 0,
         "duration_sec": d.get("duration_seconds") or 0,
         "duration_bucket_ko": DURATION_BUCKET_KO.get(d.get("duration_bucket"), "20분 이상"),
-        "days_since_published": age_days,
+        "days_since_published": days_since_published,
+        "video_age_days_at_collection": age_days,
+        "published_at": published_at,
         "views_per_day": float(views_per_day),
         # Gold(gold_category_benchmark.median_like_rate)와 같은 정의: 좋아요/조회수.
         "engagement_rate": float(d.get("like_rate") or 0),
@@ -265,7 +281,8 @@ def build_video_pool(videos, avatars):
         out.append({
             "video_id": v["video_id"], "title": v["title"], "channel_id": v["channel_id"],
             "channel_name": v["channel_name"], "subscriber_count": v["subscriber_count"],
-            "days_since_published": v["days_since_published"], "view_count": v["view_count"],
+            "days_since_published": v["days_since_published"], "published_at": v.get("published_at"),
+            "view_count": v["view_count"],
             "like_count": v["like_count"], "duration_sec": v["duration_sec"],
             # Silver(dim_channel) 우선, 아직 안 채워진 채널만 Bronze 원본으로 보완.
             "channel_avatar_url": v.get("channel_thumbnail_url") or avatars.get(v["channel_id"]),
