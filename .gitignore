@@ -52,6 +52,7 @@ test_output/
 **/.terraform/
 *.tfstate
 *.tfstate.backup
+*.tfstate.lock.info
 *.tfplan
 tfplan
 crash.log
