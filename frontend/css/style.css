@@ -304,6 +304,8 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
   border: 1px solid var(--border);
   position: relative; overflow: hidden;
   background: var(--surface-2, #e9ecef);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 10px; font-weight: 700; line-height: 1;
 }
 .vcard-channel-avatar img {
   position: absolute; inset: 0;
