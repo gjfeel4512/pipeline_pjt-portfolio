@@ -552,11 +552,17 @@ def save(name, data):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION", DEFAULT_REGION))
-    ap.add_argument("--silver-bucket", default=os.getenv("AWS_S3_SILVER_BUCKET", DEFAULT_SILVER_BUCKET))
-    ap.add_argument("--gold-bucket", default=os.getenv("AWS_S3_GOLD_BUCKET", DEFAULT_GOLD_BUCKET))
-    ap.add_argument("--athena-database", default=os.getenv("AWS_ATHENA_DATABASE", DEFAULT_ATHENA_DATABASE))
-    ap.add_argument("--athena-output-location", default=os.getenv("AWS_ATHENA_OUTPUT_LOCATION"))
+    # os.getenv("X", 기본값)은 환경변수가 "아예 없을 때"만 기본값을 쓴다. 그런데 GitHub
+    # Actions의 ${{ vars.X }}는 등록 안 된 저장소 변수를 빈 문자열("")로 채워서 넘기므로,
+    # env: AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET }} 처럼 써두면 변수가
+    # 미등록 상태여도 os.getenv에는 ""(빈 문자열, "없음"이 아님)가 전달돼 기본값이 죽는다.
+    # `os.getenv("X") or 기본값`으로 빈 문자열도 "없음"으로 취급해야 "선택 항목, 기본값이
+    # 실제 버킷명과 같아서 안 넣어도 됨"이라는 문서화된 의도대로 동작한다.
+    ap.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION") or DEFAULT_REGION)
+    ap.add_argument("--silver-bucket", default=os.getenv("AWS_S3_SILVER_BUCKET") or DEFAULT_SILVER_BUCKET)
+    ap.add_argument("--gold-bucket", default=os.getenv("AWS_S3_GOLD_BUCKET") or DEFAULT_GOLD_BUCKET)
+    ap.add_argument("--athena-database", default=os.getenv("AWS_ATHENA_DATABASE") or DEFAULT_ATHENA_DATABASE)
+    ap.add_argument("--athena-output-location", default=os.getenv("AWS_ATHENA_OUTPUT_LOCATION") or None)
     ap.add_argument("--local-silver-path", help="S3 대신 로컬 폴더에서 Silver jsonl을 읽는 테스트 모드")
     ap.add_argument("--local-gold-path", help="S3 대신 로컬 폴더에서 Gold json을 읽는 테스트 모드 (선택)")
     args = ap.parse_args()
