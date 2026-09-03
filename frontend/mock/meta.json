@@ -1,6 +1,6 @@
 {
   "_comment": "Silver(vw_video_analysis/dim_channel) + Gold(gold_category_benchmark) 데이터를 집계해서 생성. 채널 프로필 사진도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 Bronze 원본(channels_detail.jsonl.gz)으로 보완. source=pipeline_snapshot.",
-  "last_updated": "2026-09-03T16:32:38.099116+09:00",
+  "last_updated": "2026-09-03T16:43:03.021171+09:00",
   "collection_window": "outputs/silver_gold_export 스냅샷 (export_pg_for_dashboard.py 또는 export_athena_for_dashboard.py 실행 시점의 Silver/Gold - PostgreSQL/RDS 경로와 Athena/Glue 경로 둘 다 이 파일들을 같은 스키마로 채운다)",
   "source": "pipeline_snapshot"
 }

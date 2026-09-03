@@ -11,6 +11,21 @@ Bronze 레코드가 이미 search()+videos.list+channels.list를 join한 평면 
 변환 함수는 bronze_to_silver_dag_aws.py의 transform_to_silver()/validate_record()와
 필드 매핑이 동일 - 그 로직을 그대로 재사용한다(trending_rank 개념 없음: search.list는
 mostPopular 같은 순위 데이터가 아니라 order=date 결과라 순위가 의미 없음).
+
+2026-09-03: 이 DAG와 완전히 동일한 로직(같은 Silver 경로, 같은 파일명 규칙, 멱등적
+쓰기)을 AWS Step Functions 상태머신(infra/stepfunctions.tf의 search_to_silver,
+lambda/stepfn_list_bronze_search.py + lambda/stepfn_transform_search_silver.py)으로
+옮겼고, 이후 infra/pipeline_orchestrator.tf의 마스터 상태머신(pipeline_orchestrator)이
+Bronze(daily_search_collector) 완료를 기다렸다가 이 Step Functions 경로를
+states:startExecution.sync:2로 중첩 실행하는 방식으로 자동화됐다("브론즈 끝나고
+실버 전환, 실버 끝나고 골드 전환 - 앞 단계가 안 끝나면 다음 단계 시작 금지" 요구사항
+때문에, 독립적으로 시간만 보고 도는 이 Airflow DAG의 매시 40분 자동 스케줄로는 그
+순서를 보장할 수 없었음).
+
+dags/silver_to_gold_dag.py(Athena 기반 gold_compute_athena로 대체된 것)와 같은 이유로,
+이 DAG도 삭제하지 않고 자동 스케줄만 영구히 끈다(schedule_interval=None,
+is_paused_upon_creation=True) - 코드는 그대로 보존해서 필요할 때
+`airflow dags trigger search_bronze_to_silver`로 수동 롤백 경로로만 쓸 수 있게 남겨둔다.
 """
 from datetime import datetime, timedelta, timezone
 import json
@@ -45,9 +60,14 @@ DEFAULT_ARGS = {
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
-# Lambda EventBridge 스케줄(매시간 30분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
+# 예전: Lambda EventBridge 스케줄(매시간 30분)보다 10분 늦게 실행해서 새로 생긴 데이터를 처리
 # 주의: Airflow schedule_interval은 표준 5필드 cron(croniter)이라 AWS cron의 '?'/6필드 문법은 못 씀
-SCHEDULE_INTERVAL = '40 * * * *'
+# SCHEDULE_INTERVAL = '40 * * * *'
+# 2026-09-03: infra/pipeline_orchestrator.tf가 Bronze 완료 후 이 DAG와 동일한 로직인
+# Step Functions(search_to_silver)를 직접 중첩 실행하며 대체함에 따라, 이 Airflow DAG의
+# 자동 스케줄은 영구히 끔(None = 수동 트리거만 가능). dags/silver_to_gold_dag.py와
+# 동일한 방식의 수동 롤백 경로로 유지 - 위 docstring 참고.
+SCHEDULE_INTERVAL = None
 
 # lambda/youtube_api_daily.py의 CATEGORY_SLUGS와 동일
 CATEGORY_SLUGS = ['film_animation', 'autos_vehicles', 'gaming', 'people_blogs']
@@ -301,9 +321,11 @@ dag = DAG(
     dag_id=DAG_ID,
     default_args=DEFAULT_ARGS,
     schedule_interval=SCHEDULE_INTERVAL,
-    description='Lambda 일일 수집(daily_search_collector, search.list 기반) 데이터를 Silver로 변환 (S3 -> S3)',
-    tags=['etl', 'silver', 'lambda', 'daily', 'search'],
+    description='[대체됨 - infra/pipeline_orchestrator.tf의 search_to_silver 중첩 실행 참고, 수동 롤백용으로 유지] '
+                'Lambda 일일 수집(daily_search_collector, search.list 기반) 데이터를 Silver로 변환 (S3 -> S3)',
+    tags=['etl', 'silver', 'lambda', 'daily', 'search', 'superseded-by-stepfunctions', 'manual-rollback-only'],
     catchup=False,
+    is_paused_upon_creation=True,
     doc_md=__doc__,
 )
 

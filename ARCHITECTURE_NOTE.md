@@ -26,6 +26,12 @@
   재처리된 결과 S3에 같은 데이터가 두 날짜 파티션에 중복 존재함 - `fact_video_snapshot`
   upsert가 `(video_id, collected_date)` 기준이라 Postgres/Gold에는 영향 없음, S3 저장공간만
   약간 낭비. 정리는 선택사항.)
+- `search_bronze_to_silver_dag.py`도 2026-09-03(같은 날, 더 나중)에 스케줄 비활성화됨 —
+  다른 이유: 이 DAG와 동일한 로직을 옮긴 Step Functions 상태머신(`infra/stepfunctions.tf`의
+  `search_to_silver`)이 `infra/pipeline_orchestrator.tf`의 공식 Silver 실행 경로로 확정되면서,
+  더 이상 독립적으로 자동 실행되면 안 됨(Bronze 완료를 기다리지 않고 매시 40분에 그냥
+  실행되던 것이 "앞 단계 완료 전 다음 단계 시작 금지" 요구사항과 어긋남). 자세한 내용은
+  아래 "Silver Airflow DAG도 수동 트리거 전용으로 전환" 섹션 참고.
 
 ## Gold
 
@@ -52,18 +58,24 @@
   이 데이터에만 의존했으므로 함께 영향받았고, 이후 랭크 추적 자체가 폐지되며 스키마도 완전히
   제거됨 — 아래 "랭크 추적(trending_rank) 스키마 전체 제거" 섹션 참고.
 
-## Step Functions 병렬 경로 (2026-09-03 추가, Airflow는 삭제하지 않음)
+## Step Functions 병렬 경로 (2026-09-03 추가, 이후 Airflow DAG는 수동 롤백 전용으로 전환됨 — 아래 참고)
 
 `search_bronze_to_silver_dag.py`(Lambda→S3→S3, 로컬 의존 없음)와 동일한 로직을
 로컬 Airflow 없이도 돌리기 위해 AWS Step Functions 상태머신을 **추가**했다.
-기존 Airflow DAG는 그대로 두고 병렬로 운영한다 — 둘 다 같은 Silver 경로에
+처음엔 기존 Airflow DAG를 그대로 두고 병렬로 운영했다 — 둘 다 같은 Silver 경로에
 같은 파일명 규칙으로 멱등적(idempotent)으로 쓰기 때문에 중복 실행돼도 데이터가
-깨지지 않는다(PutObject가 같은 키에 같은 내용을 덮어쓸 뿐).
+깨지지 않는다(PutObject가 같은 키에 같은 내용을 덮어쓸 뿐). **이후(같은 날 추가) "Bronze/
+Silver/Gold/Dashboard 완전 순차 자동화" 섹션에서 이 상태머신이 `pipeline_orchestrator`의
+공식 Silver 실행 경로로 확정되면서, Airflow DAG 쪽은 병렬 운영을 그만두고 골드의
+`silver_to_gold_dag.py`와 같은 방식으로 수동 롤백 전용으로 전환했다** — 아래 "Silver
+Airflow DAG도 수동 트리거 전용으로 전환" 섹션 참고.
 
 - `lambda/stepfn_list_bronze_search.py` — 오늘(KST) 파티션의 bronze/search/ 오브젝트 키 목록 조회
 - `lambda/stepfn_transform_search_silver.py` — 키 하나를 Silver로 변환(Map 상태가 병렬 호출)
-- `infra/stepfunctions.tf` — 상태머신 정의 + EventBridge 스케줄(`cron(40 */4 * * ? *)`, Lambda 수집 스케줄 10분 뒤)
-- 인프라 배포: `terraform apply`로 반영 필요 (아직 미배포)
+- `infra/stepfunctions.tf` — 상태머신 정의. 트리거 방식은 이후 두 번 바뀜: 처음엔 자체 EventBridge
+  스케줄(`cron(40 */4 * * ? *)`)이었다가, "Bronze/Silver/Gold/Dashboard 완전 순차 자동화" 섹션에서
+  그 스케줄을 없애고 `infra/pipeline_orchestrator.tf`의 마스터 상태머신이 `.sync:2`로 중첩
+  실행하는 방식으로 바뀜(상태머신 리소스 자체는 그대로 재사용).
 
 ## Gold: Athena/Glue 전환 (2026-09-03 추가, 배포 + 라이브 검증 완료)
 
@@ -259,3 +271,158 @@ Postgres `dim_channel` 테이블(`sql/youtube_pipeline_schema_postgresql.sql`)�
 
 **적용 완료**: PC에 반영해뒀다. 위 3줄(export → build_dashboard_data → deploy_frontend)을
 한 번 더 실행하면 `channels=` 카운트가 0이 아닌 값으로 나오는지 확인할 수 있다.
+
+## Bronze → Silver → Gold → Dashboard 완전 순차 자동화 (2026-09-03 추가)
+
+기존에는 Bronze(`daily_collector_schedule`, 매시 30분) / Silver(`search_to_silver_sfn_schedule`,
+매시 40분) / Gold(`gold_compute_athena_schedule`, 매시 50분)가 각자 독립된 EventBridge
+스케줄로 "시간만 되면" 따로 돌았다. 앞 단계가 늦어지거나 실패해도 다음 단계는 그냥
+시작해버리는 구조라, "브론즈 끝나고 실버 전환, 실버 끝나고 골드 전환 — 작업 끝나지도
+않았는데 넘어가면 안 된다"는 요구에 맞지 않았다. 이번에 이 3개의 독립 스케줄을 하나의
+AWS Step Functions 마스터 상태머신(`pipeline_orchestrator`)으로 묶어서, 앞 단계가
+**완전히 끝나야만** 다음 단계가 시작하도록 강제했다. 추가로 그동안 로컬 PC에서 수동으로
+돌리던 대시보드 갱신(`export_athena_for_dashboard.py` → `build_dashboard_data.py` →
+`deploy_frontend.ps1`의 mock 부분)도 파이프라인 마지막 단계로 자동화했다.
+
+### 새 구조
+
+```
+EventBridge (cron(30 */4 * * ? *), 기존 Bronze 스케줄 그대로 재사용)
+        │
+        ▼
+pipeline_orchestrator (Step Functions, STANDARD)
+  BronzeCollect (Lambda 동기 호출: daily_search_collector)
+        │  완료까지 대기
+        ▼
+  SilverTransform (states:startExecution.sync:2로 search_to_silver 상태머신 중첩 실행)
+        │  자식 실행 완료까지 대기
+        ▼
+  GoldCompute (Lambda 동기 호출: gold_compute_athena)
+        │  완료까지 대기
+        ▼
+  DashboardRefresh (Lambda 동기 호출: dashboard_refresh — 신규)
+        │  Athena에서 Silver/Gold 직접 조회 → frontend S3 버킷 mock/*.json 갱신
+        │  → CloudFront /mock/* 캐시 무효화
+        ▼
+       End
+```
+
+어느 Task든 실패하면(예외 발생) 뒤 단계는 아예 시작되지 않고 실행 전체가 FAILED로
+끝난다 — Catch를 일부러 안 걸었다. `daily_search_collector`(Bronze)는 자체 시간예산이
+부족하면 그때까지 모은 것만 저장하고 "성공"으로 종료하도록 이미 설계되어 있어서
+(`infra/lambda.tf` 주석), 이 Lambda의 한 번 호출이 항상 "이번 회차 Bronze 작업"의
+완결된 단위임 — 그래서 Step Functions가 동기로 기다려도 안전하다.
+
+### 새로 추가된 파일
+
+- `lambda/dashboard_refresh.py` — `frontend/scripts/export_athena_for_dashboard.py`(Athena
+  조회) + `frontend/scripts/build_dashboard_data.py`(핵심 변환 로직, 순수 stdlib만 사용하는
+  5개 파일: video_pool/channel_pool/category_trend/upload_heatmap/meta)을 하나의 Lambda로
+  합친 것. 중간 로컬 파일(`outputs/silver_gold_export/*.json`, `frontend/mock/*.json`) 없이
+  Athena 쿼리 결과를 바로 frontend S3 버킷의 `mock/` 프리픽스에 쓰고 CloudFront invalidation까지
+  한 번에 처리한다. `lambda/gold_compute_athena.py`의 `VIDEO_ANALYSIS_CTE`를 형제 모듈로
+  import해서 재사용(복붙 금지 원칙 유지) — 이 때문에 이 Lambda만 `source_dir`로 `lambda/`
+  폴더 전체를 zip에 담는다(다른 Lambda는 전부 `source_file`로 단일 파일만 담음).
+  **의도적으로 이식하지 않은 것**: Bronze 채널 아바타 폴백(`outputs/bronze_collect/
+  channels_detail.jsonl.gz` 로컬 파일 — Lambda에는 그 파일이 없고, 2026-09-03 수집기 수정
+  이후 신규 채널은 Silver에 이미 값이 있어 영향이 제한적), 그리고 "심화분석" 3종
+  (`build_metadata_impact.py`/`build_synthetic_demo.py`/`build_topic_trends.py` —
+  statsmodels/scikit-learn 의존성이 커서 Lambda Layer 없이는 배포 불가, 원래도 자동화
+  대상이 아니었음. 계속 로컬 수동 스크립트로 남음).
+- `infra/pipeline_orchestrator.tf` — 위 상태머신 정의(ASL) + `dashboard_refresh` Lambda +
+  전용 IAM 역할(자식 실행 시작/조회/중지 권한 + `.sync:2` 패턴에 필요한 EventBridge 관리형
+  규칙 권한 + 3개 Lambda invoke 권한) + `dashboard_refresh`용 추가 IAM 정책(frontend 버킷
+  `mock/*` 쓰기 + CloudFront invalidation — Athena/Glue 조회 권한은 같은 역할(`aws_iam_role.lambda`)을
+  공유하는 `gold_compute_athena_policy`가 이미 부여해둬서 중복 추가 안 함) + 새 EventBridge
+  스케줄(기존 `daily_collector_schedule_expression`, 즉 매시 30분 그대로 재사용) + 실행 실패
+  감지 CloudWatch 알람(`AWS/States` `ExecutionsFailed` 지표 — 4단계 중 어디서 실패하든 이
+  알람 하나로 커버됨).
+
+### 수정된 파일 (독립 스케줄 제거 — 리소스 자체는 그대로 재사용)
+
+- `infra/eventbridge.tf` — `daily_collector_schedule`/`daily_collector_target`/
+  `allow_eventbridge` 3개 리소스(Bronze를 매시 30분에 직접 트리거하던 것) 전부 제거.
+  `daily_search_collector` Lambda 정의(`infra/lambda.tf`)는 그대로 — 이제 오케스트레이터의
+  `BronzeCollect` Task가 이 Lambda를 호출.
+- `infra/stepfunctions.tf` — `search_to_silver_sfn_schedule`/`eventbridge_sfn`(역할)/
+  `eventbridge_start_sfn`(정책)/`search_to_silver_sfn_target` 4개 리소스(Silver를 매시 40분에
+  직접 트리거하던 것) 제거. `search_to_silver` 상태머신 자체와 그 안의 두 Lambda는 그대로 —
+  오케스트레이터의 `SilverTransform` Task가 `.sync:2`로 이 상태머신을 중첩 실행.
+- `infra/gold_athena.tf` — `gold_compute_athena_schedule`/`gold_compute_athena_target`/
+  `allow_eventbridge_gold_compute_athena` 3개 리소스(Gold를 매시 50분에 직접 트리거하던 것)
+  제거. `gold_compute_athena` Lambda, 그 IAM 정책, CloudWatch 에러 알람(개별 Lambda 단위
+  알람 — 오케스트레이터 전체 실패 알람과는 별개로 계속 유지)은 그대로.
+
+### 아직 사용자가 직접 반영해야 함
+
+1. **아직 커밋되지 않음** — 다른 로컬 변경과 마찬가지로 이번 오케스트레이터 관련 변경도
+   로컬에만 반영된 상태.
+2. **`terraform apply` 필요** (`cd infra && terraform fmt && terraform validate && terraform plan`
+   으로 먼저 변경 내역 확인 권장). 예상되는 `plan` 결과:
+   - **추가**: `aws_lambda_function.dashboard_refresh`, `aws_iam_role.pipeline_orchestrator`,
+     `aws_iam_role_policy.pipeline_orchestrator`, `aws_iam_role_policy.dashboard_refresh`,
+     `aws_cloudwatch_log_group.pipeline_orchestrator_sfn`, `aws_sfn_state_machine.pipeline_orchestrator`,
+     `aws_cloudwatch_event_rule.pipeline_orchestrator_schedule`, `aws_iam_role.eventbridge_pipeline_orchestrator`,
+     `aws_iam_role_policy.eventbridge_start_pipeline_orchestrator`,
+     `aws_cloudwatch_event_target.pipeline_orchestrator_target`,
+     `aws_cloudwatch_metric_alarm.pipeline_orchestrator_failed`
+   - **삭제**: `aws_cloudwatch_event_rule.daily_collector_schedule` 외 2개(eventbridge.tf),
+     `aws_cloudwatch_event_rule.search_to_silver_sfn_schedule` 외 3개(stepfunctions.tf),
+     `aws_cloudwatch_event_rule.gold_compute_athena_schedule` 외 2개(gold_athena.tf)
+   - **변경 없음**: `daily_search_collector`, `search_to_silver`, `gold_compute_athena` 등
+     기존 Lambda/상태머신 리소스 자체
+3. **적용 후**: 다음 매시 30분(UTC, 예: KST 09:30/13:30/... — `var.daily_collector_schedule_expression`
+   기준)에 `pipeline_orchestrator` 상태머신이 자동 시작되는지 AWS Step Functions 콘솔(또는
+   `aws stepfunctions list-executions --state-machine-arn <arn>`)에서 한 번 확인 필요. 실행
+   상세 로그는 CloudWatch Logs `/aws/vendedlogs/states/goldline-dev-pipeline-orchestrator`에서
+   볼 수 있음.
+4. **더 이상 수동으로 안 돌려도 되는 것**: `export_athena_for_dashboard.py` /
+   `build_dashboard_data.py` / `deploy_frontend.ps1 all`(mock 데이터 부분)은 이제
+   `pipeline_orchestrator`가 4시간마다 자동으로 대신 처리한다. 단, `frontend/index.html`/
+   `js/`/`css/` 같은 정적 자산이 바뀌었을 때는 여전히 `deploy_frontend.ps1 assets`(또는 `all`)를
+   수동으로 실행해야 함 — `dashboard_refresh` Lambda는 `mock/*.json`만 갱신한다.
+5. **비용**: Step Functions STANDARD 상태전이 비용은 매우 낮음(1000건당 $0.025 수준) —
+   4시간마다 1회, 전체 4단계에 상태전이 10개 안팎이라 사실상 무시 가능한 수준. 새로 추가되는
+   비용은 `dashboard_refresh` Lambda 실행(4시간마다 1회, Athena 쿼리 5개)뿐이고, 이건 기존에
+   로컬 PC에서 수동으로 돌리던 Athena 쿼리를 그대로 옮긴 것이라 실질적인 추가 비용은 거의 없음.
+
+## Silver Airflow DAG도 수동 트리거 전용으로 전환 (2026-09-03 추가)
+
+`dags/silver_to_gold_dag.py`(Gold, Athena로 대체)와 같은 이유로, `dags/search_bronze_to_silver_dag.py`
+(Silver)도 자동 스케줄을 껐다. "브론즈 끝나고 실버 전환, 실버 끝나고 골드 전환 — 앞
+단계가 안 끝났는데 다음 단계 시작하면 안 된다"는 요구사항이 확정되면서, `pipeline_orchestrator`
+(`infra/pipeline_orchestrator.tf`)가 Bronze 완료를 확인한 뒤에만 Silver(Step Functions
+`search_to_silver`)를 시작하는 구조로 자동화 경로를 통일했다. 그런데 이 Airflow DAG는
+Step Functions `search_to_silver`와 완전히 같은 일을 하면서도 자기 자신의 EventBridge 무관한
+Airflow 스케줄(매시 40분)로 독립적으로 계속 돌고 있었다 — Bronze가 끝났든 안 끝났든 시간만
+되면 실행되는 구조라, 데이터가 깨지진 않아도(멱등적 쓰기) "완료 보장 없는 실행"이 계속 병렬로
+남아있는 셈이었다. Gold 때와 같은 기준으로 정리했다.
+
+### 수정한 파일
+
+- `dags/search_bronze_to_silver_dag.py`
+  - `SCHEDULE_INTERVAL`을 `'40 * * * *'`에서 `None`으로 변경(주석으로 이전 값 보존)
+  - `DAG(...)` 생성자에 `is_paused_upon_creation=True` 추가
+  - `description`/`tags`를 `silver_to_gold_dag.py`와 같은 관례로 맞춤
+    (`[대체됨 - ... 참고, 수동 롤백용으로 유지]` 접두사, `superseded-by-stepfunctions`/
+    `manual-rollback-only` 태그 추가)
+  - docstring에 대체 경위(Step Functions `search_to_silver` → `pipeline_orchestrator`의
+    `.sync:2` 중첩 실행)와 수동 롤백 경로로 유지하는 이유를 명시
+
+이 DAG는 **삭제하지 않는다** — 코드와 (연결돼 있다면) 로컬 상태를 그대로 보존해서,
+필요할 때 `airflow dags trigger search_bronze_to_silver`로 언제든 수동 실행할 수 있는
+백업 경로로 남겨둔다(Airflow는 paused 상태에서도 수동/API 트리거는 정상 동작함).
+`dags/bronze_to_silver_dag_aws.py`(배치 백필용, 이미 이전 라운드에 paused)와 `dags/silver_to_gold_dag.py`
+까지 합치면, 이제 이 저장소의 Airflow DAG 3개(Silver 2종 + Gold)가 전부 수동 트리거
+전용이고, 자동 스케줄은 오직 `infra/pipeline_orchestrator.tf`의 Step Functions 경로
+하나로 통일됐다.
+
+### 아직 사용자가 직접 반영해야 함
+
+- 이 변경은 Airflow DAG 파이썬 코드일 뿐이므로 `terraform apply`와는 무관하다 — Airflow가
+  DAG 파일을 다시 스캔하면(기본적으로 몇 분 내 자동 감지) 반영된다. 이미 Airflow가 이
+  DAG를 인식하고 있었다면(과거에 unpause된 상태였다면), 이번 코드 변경만으로는 기존에
+  이미 unpause된 DAG의 실행 중 상태를 되돌리지 못할 수 있다 — Airflow UI에서
+  `search_bronze_to_silver`가 실제로 Paused로 표시되는지 한 번 확인하고, 아니라면 UI에서
+  수동으로 pause 처리할 것.
+- 다른 로컬 변경과 마찬가지로 아직 git 커밋/푸시되지 않았다.

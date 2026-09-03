@@ -12,6 +12,14 @@
 # 1) list_bronze_search (Lambda)   : 오늘 파티션의 신규 .jsonl 키 목록 조회
 # 2) HasKeys (Choice)               : 키가 없으면 바로 종료
 # 3) TransformEachKey (Map, 병렬)   : 키마다 transform_search_to_silver (Lambda) 호출
+#
+# 2026-09-03: 이 상태머신을 트리거하던 독립 EventBridge 스케줄(search_to_silver_sfn_schedule,
+# 매시 40분)을 제거했다. infra/pipeline_orchestrator.tf의 pipeline_orchestrator
+# 상태머신이 Bronze(daily_search_collector) 완료 직후 이 상태머신을
+# states:startExecution.sync:2로 중첩 실행하고 완료까지 대기한다 - "Silver는
+# Bronze가 완전히 끝난 뒤에만 시작"이라는 요구사항 때문에, 더 이상 시간 오프셋
+# (10분 뒤)에 의존하지 않는다. 이 상태머신(search_to_silver) 리소스 자체와 그
+# 안의 두 Lambda는 그대로 재사용된다 - 오케스트레이터가 실행 방식만 바꿨을 뿐.
 # ============================================================================
 
 # ---- Lambda 1: Bronze 오브젝트 키 목록 조회 ----
@@ -198,54 +206,4 @@ resource "aws_sfn_state_machine" "search_to_silver" {
   })
 
   tags = local.common_tags
-}
-
-# ---- EventBridge 스케줄: daily_search_collector Lambda(4시간마다 매시 30분)보다
-#      10분 늦게 실행해서 새로 생긴 Bronze 데이터를 처리 (Airflow DAG와 동일한 오프셋 관례) ----
-resource "aws_cloudwatch_event_rule" "search_to_silver_sfn_schedule" {
-  name                = "${local.resource_prefix}-search-to-silver-sfn-schedule"
-  description         = "search_bronze_to_silver Step Functions 파이프라인 스케줄 (Airflow DAG와 병렬 운영)"
-  schedule_expression = "cron(40 */4 * * ? *)"
-
-  tags = local.common_tags
-}
-
-resource "aws_iam_role" "eventbridge_sfn" {
-  name = "${local.resource_prefix}-eventbridge-sfn-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action    = "sts:AssumeRole"
-        Effect    = "Allow"
-        Principal = { Service = "events.amazonaws.com" }
-      }
-    ]
-  })
-
-  tags = local.common_tags
-}
-
-resource "aws_iam_role_policy" "eventbridge_start_sfn" {
-  name = "${local.resource_prefix}-eventbridge-start-sfn"
-  role = aws_iam_role.eventbridge_sfn.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect   = "Allow"
-        Action   = ["states:StartExecution"]
-        Resource = aws_sfn_state_machine.search_to_silver.arn
-      }
-    ]
-  })
-}
-
-resource "aws_cloudwatch_event_target" "search_to_silver_sfn_target" {
-  rule      = aws_cloudwatch_event_rule.search_to_silver_sfn_schedule.name
-  target_id = "${local.resource_prefix}-search-to-silver-sfn"
-  arn       = aws_sfn_state_machine.search_to_silver.arn
-  role_arn  = aws_iam_role.eventbridge_sfn.arn
 }

@@ -46,6 +46,10 @@ resource "aws_lambda_function" "gold_compute_athena" {
 # 기존 aws_iam_role.lambda(iam.tf)가 갖고 있던 S3 권한(GetObject/PutObject/
 # ListBucket)에 없던 것만 추가: Athena 쿼리 실행, Glue 카탈로그 조회,
 # Gold 버킷 DeleteObject(멱등 재실행을 위한 파티션 purge용).
+#
+# 여기서 부여하는 Athena/Glue 권한(Resource="*")은 같은 role(aws_iam_role.lambda)을
+# 공유하는 infra/pipeline_orchestrator.tf의 dashboard_refresh Lambda도 그대로
+# 물려받는다 - 그쪽에 별도로 같은 정책을 중복 추가하지 않았다.
 resource "aws_iam_role_policy" "gold_compute_athena" {
   name = "${local.resource_prefix}-gold-compute-athena-policy"
   role = aws_iam_role.lambda.id
@@ -99,37 +103,18 @@ resource "aws_iam_role_policy" "gold_compute_athena" {
   })
 }
 
-# EventBridge 스케줄: 4시간마다 매시 50분.
-# 2026-09-03 기준 실제 파이프라인 주기에 맞춘 것 - infra/variables.tf의
-# daily_collector_schedule_expression(브론즈 수집, "30 */4 * * ? *")이 팀원에 의해
-# 4시간 주기로 조정되었고, infra/stepfunctions.tf의 search_to_silver_sfn_schedule
-# (Silver 변환, "40 */4 * * ? *")도 같은 주기다. Gold는 그 10분 뒤(브론즈 30분 ->
-# 실버 40분 -> 골드 50분, 매 4시간)로 맞춘다 - 예전 silver_to_gold_dag.py의
-# "매시 50분"은 Silver가 매시간 갱신되던 시절(지금은 죽은 daily_lambda_to_silver_dag
-# 기준) 값이라 그대로 쓰면 Silver가 갱신되지 않는 3번 중 2번은 헛돌게 된다.
-resource "aws_cloudwatch_event_rule" "gold_compute_athena_schedule" {
-  name                = "${local.resource_prefix}-gold-compute-athena-schedule"
-  description         = "Athena 기반 Gold 집계(gold_compute_athena) Lambda 스케줄 - 4시간마다 매시 50분(Silver 변환 10분 뒤)"
-  schedule_expression = "cron(50 */4 * * ? *)"
+# 2026-09-03: 여기 있던 독립 EventBridge 스케줄(gold_compute_athena_schedule,
+# 매시 50분 - rule/target/permission)을 제거했다. infra/pipeline_orchestrator.tf의
+# pipeline_orchestrator 상태머신이 Silver 완료 직후 이 Lambda를 GoldCompute Task로
+# 동기 호출한다 - "Gold는 Silver가 완전히 끝난 뒤에만 시작"이라는 요구사항 때문에,
+# 더 이상 시간 오프셋(10분 뒤)에 의존하지 않는다. 이 Lambda 리소스 자체는 그대로
+# 재사용된다.
 
-  tags = local.common_tags
-}
-
-resource "aws_cloudwatch_event_target" "gold_compute_athena_target" {
-  rule      = aws_cloudwatch_event_rule.gold_compute_athena_schedule.name
-  target_id = "${local.resource_prefix}-gold-compute-athena"
-  arn       = aws_lambda_function.gold_compute_athena.arn
-}
-
-resource "aws_lambda_permission" "allow_eventbridge_gold_compute_athena" {
-  statement_id  = "AllowExecutionFromEventBridgeGoldComputeAthena"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.gold_compute_athena.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.gold_compute_athena_schedule.arn
-}
-
-# CloudWatch Alarm: Gold 집계 Lambda 실패 감지
+# CloudWatch Alarm: Gold 집계 Lambda 실패 감지. pipeline_orchestrator_failed
+# (infra/pipeline_orchestrator.tf)가 상태머신 전체 실행 실패를 잡아주지만, 이
+# Lambda 자체의 Errors 지표를 별도로 보는 알람은 그대로 남겨둔다 - 오케스트레이터
+# 밖에서(예: 콘솔에서 수동으로) 이 Lambda를 직접 호출한 경우에도 실패를 놓치지
+# 않기 위함.
 resource "aws_cloudwatch_metric_alarm" "gold_compute_athena_errors" {
   alarm_name          = "${local.resource_prefix}-gold-compute-athena-errors"
   comparison_operator = "GreaterThanThreshold"
