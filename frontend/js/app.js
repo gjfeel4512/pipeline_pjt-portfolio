@@ -445,6 +445,51 @@
     });
     document.getElementById("judgment-timing-footnote").textContent =
       `[합성 데이터] ${timing.note} 실제 영상이 아니라 카테고리 특성을 본떠 만든 예시 데이터예요.`;
+
+    const growth = demo.channel_growth;
+    const growthColors = ["--series-1", "--series-2", "--series-3"];
+    Charts.renderLineChart(document.getElementById("channel-growth-chart"), {
+      days: growth.days,
+      series: growth.channels.map((c, i) => ({
+        label: `${c.label} (${fmtInt(c.start_subscribers)}→${fmtInt(c.end_subscribers)}명)`,
+        colorVar: growthColors[i % growthColors.length],
+        points: c.curve
+      })),
+      xLabel: "",
+      yLabel: "구독자"
+    });
+    document.getElementById("channel-growth-footnote").textContent =
+      `[합성 데이터] ${growth.note} 실제 채널이 아니라 3가지 성장 유형을 본떠 만든 예시 데이터예요.`;
+
+    const weekly = demo.weekly_trend;
+    const weeklyColors = ["--series-3", "--series-2", "--series-1"];
+    Charts.renderLineChart(document.getElementById("weekly-trend-chart"), {
+      days: weekly.weeks,
+      series: weekly.categories.map((c, i) => ({
+        label: c.label,
+        colorVar: weeklyColors[i % weeklyColors.length],
+        points: c.curve
+      })),
+      xLabel: "",
+      yLabel: "평균 조회수"
+    });
+    Charts.renderHBarChart(document.getElementById("weekly-trend-badges"), {
+      items: weekly.categories.map((c) => ({
+        label: c.label,
+        value: Math.abs(c.wow_change_pct),
+        colorVar: c.wow_change_pct >= 0 ? "--series-3" : "--series-2",
+        suffix: "%",
+        _signed: c.wow_change_pct
+      })),
+      valueFormatter: () => "",
+      labelWidth: 130
+    });
+    document.querySelectorAll("#weekly-trend-badges .viz-value-label").forEach((el, i) => {
+      const v = weekly.categories[i].wow_change_pct;
+      el.textContent = "지난 주 대비 " + (v >= 0 ? "+" : "") + v.toFixed(1) + "%";
+    });
+    document.getElementById("weekly-trend-footnote").textContent =
+      `[합성 데이터] ${weekly.note} 실제 주간 집계가 아니라 10주치 추이를 본떠 만든 예시 데이터예요.`;
   }
 
   /* ---------------- Tabs ---------------- */
