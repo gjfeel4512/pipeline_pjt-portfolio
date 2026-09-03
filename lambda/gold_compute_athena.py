@@ -221,15 +221,33 @@ SELECT
 FROM ranked
 """
 
+# 2026-09-03 버그 수정: gold_upload_strategy.strategy_rank는 (category_id, subscriber_segment)
+# 안의 "모든" 조합(표본 1~2건짜리 극단치 포함, GROUP BY가 6개 차원이라 조합이 300개 이상)을
+# median_views_per_day로만 랭킹한 값이라 is_recommended(sample_video_count >= 30)를 전혀
+# 고려하지 않는다. 그래서 "strategy_rank = 1 AND is_recommended = true"를 그대로 AND로 걸면
+# 거의 항상 공집합이 됨 - 실측 데이터로 확인해보면 new/early_growth 세그먼트의 rank=1 조합은
+# 표본 2~8건짜리뿐이라 전부 is_recommended=false, 그 결과 gold_new_creator_guide가 매주
+# 0건으로 쌓여왔다(S3에 0바이트 guide.jsonl만 생성). is_recommended=true인 행들만 먼저
+# 걸러낸 뒤 그 안에서 다시 랭킹해야 실제로 표본이 충분한 "1등 조합"이 뽑힌다.
 CREATOR_GUIDE_CANDIDATES_SQL = """
+WITH qualified AS (
+    SELECT category_id, subscriber_segment, video_type, duration_bucket,
+           published_day_of_week, upload_time_bucket, sample_video_count,
+           median_views_per_day, median_like_rate,
+           ROW_NUMBER() OVER (
+               PARTITION BY category_id, subscriber_segment
+               ORDER BY median_views_per_day DESC NULLS LAST
+           ) AS qualified_rank
+    FROM {db}.gold_upload_strategy
+    WHERE analysis_week = '{week}'
+      AND subscriber_segment IN ('new', 'early_growth')
+      AND is_recommended = true
+)
 SELECT category_id, subscriber_segment, video_type, duration_bucket,
        published_day_of_week, upload_time_bucket, sample_video_count,
        median_views_per_day, median_like_rate
-FROM {db}.gold_upload_strategy
-WHERE analysis_week = '{week}'
-  AND subscriber_segment IN ('new', 'early_growth')
-  AND is_recommended = true
-  AND strategy_rank = 1
+FROM qualified
+WHERE qualified_rank = 1
 """
 
 
