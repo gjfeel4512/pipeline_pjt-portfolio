@@ -635,5 +635,5 @@
       }
     }
   ],
-  "_comment": "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. avatar_url만 Bronze 원본에서 가져옴(Silver/Gold에 사진 필드 없음). upload_freq_per_week는 아직 계산 불가해 null(nodata)입니다."
+  "_comment": "PostgreSQL Silver(vw_video_analysis+dim_channel)에서 집계. avatar_url도 이제 Silver(dim_channel.channel_thumbnail_url) 우선이고, 아직 안 채워진 일부 채널만 Bronze 원본으로 보완합니다. upload_freq_per_week는 아직 계산 불가해 null(nodata)입니다."
 }
