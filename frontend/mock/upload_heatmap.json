@@ -1,60 +1,750 @@
 {
-  "_comment": "day: 0=평일 1=토요일 2=일요일 / slot: 0=새벽 1=오전 2=오후 3=저녁 4=심야. avg_views는 해당 요일군·시간대에 올라온 영상의 평균 조회수(예시), avg_duration_sec은 같은 구간 영상들의 평균 길이(초)입니다.",
   "gaming": {
     "cells": [
-      { "day": 0, "slot": 0, "avg_views": 490,  "avg_duration_sec": 360 },
-      { "day": 0, "slot": 1, "avg_views": 740,  "avg_duration_sec": 372 },
-      { "day": 0, "slot": 2, "avg_views": 920,  "avg_duration_sec": 365 },
-      { "day": 0, "slot": 3, "avg_views": 1420, "avg_duration_sec": 388 },
-      { "day": 0, "slot": 4, "avg_views": 1660, "avg_duration_sec": 402 },
-      { "day": 1, "slot": 0, "avg_views": 780,  "avg_duration_sec": 355 },
-      { "day": 1, "slot": 1, "avg_views": 1170, "avg_duration_sec": 368 },
-      { "day": 1, "slot": 2, "avg_views": 1470, "avg_duration_sec": 375 },
-      { "day": 1, "slot": 3, "avg_views": 2250, "avg_duration_sec": 395 },
-      { "day": 1, "slot": 4, "avg_views": 2640, "avg_duration_sec": 410 },
-      { "day": 2, "slot": 0, "avg_views": 750,  "avg_duration_sec": 358 },
-      { "day": 2, "slot": 1, "avg_views": 1130, "avg_duration_sec": 366 },
-      { "day": 2, "slot": 2, "avg_views": 1410, "avg_duration_sec": 374 },
-      { "day": 2, "slot": 3, "avg_views": 2170, "avg_duration_sec": 390 },
-      { "day": 2, "slot": 4, "avg_views": 2540, "avg_duration_sec": 405 }
+      {
+        "day": 0,
+        "slot": 0,
+        "avg_views": 17.5,
+        "avg_duration_sec": 6601,
+        "sample_count": 99
+      },
+      {
+        "day": 0,
+        "slot": 1,
+        "avg_views": 43.1,
+        "avg_duration_sec": 1071,
+        "sample_count": 189
+      },
+      {
+        "day": 0,
+        "slot": 2,
+        "avg_views": 59.1,
+        "avg_duration_sec": 925,
+        "sample_count": 409
+      },
+      {
+        "day": 0,
+        "slot": 3,
+        "avg_views": 123.1,
+        "avg_duration_sec": 1187,
+        "sample_count": 593
+      },
+      {
+        "day": 0,
+        "slot": 4,
+        "avg_views": 36.4,
+        "avg_duration_sec": 1848,
+        "sample_count": 122
+      },
+      {
+        "day": 1,
+        "slot": 0,
+        "avg_views": 11.5,
+        "avg_duration_sec": 5705,
+        "sample_count": 135
+      },
+      {
+        "day": 1,
+        "slot": 1,
+        "avg_views": 24.3,
+        "avg_duration_sec": 1166,
+        "sample_count": 120
+      },
+      {
+        "day": 1,
+        "slot": 2,
+        "avg_views": 46.4,
+        "avg_duration_sec": 1261,
+        "sample_count": 25
+      },
+      {
+        "day": 1,
+        "slot": 3,
+        "avg_views": 228.2,
+        "avg_duration_sec": 1186,
+        "sample_count": 26
+      },
+      {
+        "day": 1,
+        "slot": 4,
+        "avg_views": 19.2,
+        "avg_duration_sec": 6959,
+        "sample_count": 2
+      },
+      {
+        "day": 2,
+        "slot": 0,
+        "avg_views": 60.6,
+        "avg_duration_sec": 970,
+        "sample_count": 7
+      },
+      {
+        "day": 2,
+        "slot": 1,
+        "avg_views": 65.1,
+        "avg_duration_sec": 1282,
+        "sample_count": 38
+      },
+      {
+        "day": 2,
+        "slot": 2,
+        "avg_views": 132.9,
+        "avg_duration_sec": 1165,
+        "sample_count": 73
+      },
+      {
+        "day": 2,
+        "slot": 3,
+        "avg_views": 116.3,
+        "avg_duration_sec": 1760,
+        "sample_count": 72
+      },
+      {
+        "day": 2,
+        "slot": 4,
+        "avg_views": 58.8,
+        "avg_duration_sec": 1671,
+        "sample_count": 19
+      },
+      {
+        "day": 3,
+        "slot": 0,
+        "avg_views": 113.5,
+        "avg_duration_sec": 5201,
+        "sample_count": 24
+      },
+      {
+        "day": 3,
+        "slot": 1,
+        "avg_views": 95.1,
+        "avg_duration_sec": 1239,
+        "sample_count": 38
+      },
+      {
+        "day": 3,
+        "slot": 2,
+        "avg_views": 138.1,
+        "avg_duration_sec": 1661,
+        "sample_count": 69
+      },
+      {
+        "day": 3,
+        "slot": 3,
+        "avg_views": 138.6,
+        "avg_duration_sec": 1244,
+        "sample_count": 84
+      },
+      {
+        "day": 3,
+        "slot": 4,
+        "avg_views": 101.8,
+        "avg_duration_sec": 1866,
+        "sample_count": 21
+      },
+      {
+        "day": 4,
+        "slot": 0,
+        "avg_views": 19.8,
+        "avg_duration_sec": 5157,
+        "sample_count": 29
+      },
+      {
+        "day": 4,
+        "slot": 1,
+        "avg_views": 61.1,
+        "avg_duration_sec": 1526,
+        "sample_count": 71
+      },
+      {
+        "day": 4,
+        "slot": 2,
+        "avg_views": 95.7,
+        "avg_duration_sec": 1212,
+        "sample_count": 208
+      },
+      {
+        "day": 4,
+        "slot": 3,
+        "avg_views": 82.2,
+        "avg_duration_sec": 1113,
+        "sample_count": 331
+      },
+      {
+        "day": 4,
+        "slot": 4,
+        "avg_views": 27.0,
+        "avg_duration_sec": 1221,
+        "sample_count": 66
+      },
+      {
+        "day": 5,
+        "slot": 0,
+        "avg_views": 12.5,
+        "avg_duration_sec": 5301,
+        "sample_count": 63
+      },
+      {
+        "day": 5,
+        "slot": 1,
+        "avg_views": 81.5,
+        "avg_duration_sec": 1054,
+        "sample_count": 262
+      },
+      {
+        "day": 5,
+        "slot": 2,
+        "avg_views": 113.2,
+        "avg_duration_sec": 1047,
+        "sample_count": 396
+      },
+      {
+        "day": 5,
+        "slot": 3,
+        "avg_views": 104.4,
+        "avg_duration_sec": 1156,
+        "sample_count": 366
+      },
+      {
+        "day": 5,
+        "slot": 4,
+        "avg_views": 36.4,
+        "avg_duration_sec": 2246,
+        "sample_count": 66
+      },
+      {
+        "day": 6,
+        "slot": 0,
+        "avg_views": 15.5,
+        "avg_duration_sec": 3953,
+        "sample_count": 73
+      },
+      {
+        "day": 6,
+        "slot": 1,
+        "avg_views": 71.1,
+        "avg_duration_sec": 1288,
+        "sample_count": 236
+      },
+      {
+        "day": 6,
+        "slot": 2,
+        "avg_views": 62.4,
+        "avg_duration_sec": 904,
+        "sample_count": 385
+      },
+      {
+        "day": 6,
+        "slot": 3,
+        "avg_views": 104.4,
+        "avg_duration_sec": 1197,
+        "sample_count": 370
+      },
+      {
+        "day": 6,
+        "slot": 4,
+        "avg_views": 13.8,
+        "avg_duration_sec": 1212,
+        "sample_count": 102
+      }
     ]
   },
   "autos_vehicles": {
     "cells": [
-      { "day": 0, "slot": 0, "avg_views": 210, "avg_duration_sec": 480 },
-      { "day": 0, "slot": 1, "avg_views": 480, "avg_duration_sec": 505 },
-      { "day": 0, "slot": 2, "avg_views": 610, "avg_duration_sec": 512 },
-      { "day": 0, "slot": 3, "avg_views": 980, "avg_duration_sec": 540 },
-      { "day": 0, "slot": 4, "avg_views": 540, "avg_duration_sec": 520 },
-      { "day": 1, "slot": 0, "avg_views": 260,  "avg_duration_sec": 470 },
-      { "day": 1, "slot": 1, "avg_views": 620,  "avg_duration_sec": 515 },
-      { "day": 1, "slot": 2, "avg_views": 1350, "avg_duration_sec": 560 },
-      { "day": 1, "slot": 3, "avg_views": 890,  "avg_duration_sec": 530 },
-      { "day": 1, "slot": 4, "avg_views": 430,  "avg_duration_sec": 500 },
-      { "day": 2, "slot": 0, "avg_views": 240,  "avg_duration_sec": 465 },
-      { "day": 2, "slot": 1, "avg_views": 560,  "avg_duration_sec": 508 },
-      { "day": 2, "slot": 2, "avg_views": 1120, "avg_duration_sec": 545 },
-      { "day": 2, "slot": 3, "avg_views": 760,  "avg_duration_sec": 522 },
-      { "day": 2, "slot": 4, "avg_views": 380,  "avg_duration_sec": 495 }
+      {
+        "day": 0,
+        "slot": 0,
+        "avg_views": 9.4,
+        "avg_duration_sec": 1141,
+        "sample_count": 9
+      },
+      {
+        "day": 0,
+        "slot": 1,
+        "avg_views": 218.3,
+        "avg_duration_sec": 1110,
+        "sample_count": 99
+      },
+      {
+        "day": 0,
+        "slot": 2,
+        "avg_views": 133.1,
+        "avg_duration_sec": 960,
+        "sample_count": 117
+      },
+      {
+        "day": 0,
+        "slot": 3,
+        "avg_views": 114.3,
+        "avg_duration_sec": 1134,
+        "sample_count": 116
+      },
+      {
+        "day": 0,
+        "slot": 4,
+        "avg_views": 103.1,
+        "avg_duration_sec": 1074,
+        "sample_count": 7
+      },
+      {
+        "day": 1,
+        "slot": 0,
+        "avg_views": 8.2,
+        "avg_duration_sec": 483,
+        "sample_count": 14
+      },
+      {
+        "day": 1,
+        "slot": 1,
+        "avg_views": 149.4,
+        "avg_duration_sec": 1161,
+        "sample_count": 77
+      },
+      {
+        "day": 1,
+        "slot": 2,
+        "avg_views": 72.2,
+        "avg_duration_sec": 1084,
+        "sample_count": 106
+      },
+      {
+        "day": 1,
+        "slot": 3,
+        "avg_views": 137.4,
+        "avg_duration_sec": 1218,
+        "sample_count": 159
+      },
+      {
+        "day": 1,
+        "slot": 4,
+        "avg_views": 17.8,
+        "avg_duration_sec": 732,
+        "sample_count": 12
+      },
+      {
+        "day": 2,
+        "slot": 0,
+        "avg_views": 6.0,
+        "avg_duration_sec": 522,
+        "sample_count": 19
+      },
+      {
+        "day": 2,
+        "slot": 1,
+        "avg_views": 398.5,
+        "avg_duration_sec": 1247,
+        "sample_count": 130
+      },
+      {
+        "day": 2,
+        "slot": 2,
+        "avg_views": 61.7,
+        "avg_duration_sec": 1047,
+        "sample_count": 115
+      },
+      {
+        "day": 2,
+        "slot": 3,
+        "avg_views": 119.5,
+        "avg_duration_sec": 1030,
+        "sample_count": 165
+      },
+      {
+        "day": 2,
+        "slot": 4,
+        "avg_views": 44.2,
+        "avg_duration_sec": 994,
+        "sample_count": 12
+      },
+      {
+        "day": 3,
+        "slot": 0,
+        "avg_views": 1.8,
+        "avg_duration_sec": 317,
+        "sample_count": 20
+      },
+      {
+        "day": 3,
+        "slot": 1,
+        "avg_views": 199.3,
+        "avg_duration_sec": 1121,
+        "sample_count": 99
+      },
+      {
+        "day": 3,
+        "slot": 2,
+        "avg_views": 135.7,
+        "avg_duration_sec": 1190,
+        "sample_count": 142
+      },
+      {
+        "day": 3,
+        "slot": 3,
+        "avg_views": 155.4,
+        "avg_duration_sec": 1235,
+        "sample_count": 158
+      },
+      {
+        "day": 3,
+        "slot": 4,
+        "avg_views": 35.0,
+        "avg_duration_sec": 676,
+        "sample_count": 18
+      },
+      {
+        "day": 4,
+        "slot": 0,
+        "avg_views": 65.8,
+        "avg_duration_sec": 763,
+        "sample_count": 15
+      },
+      {
+        "day": 4,
+        "slot": 1,
+        "avg_views": 168.7,
+        "avg_duration_sec": 1136,
+        "sample_count": 135
+      },
+      {
+        "day": 4,
+        "slot": 2,
+        "avg_views": 153.0,
+        "avg_duration_sec": 1004,
+        "sample_count": 152
+      },
+      {
+        "day": 4,
+        "slot": 3,
+        "avg_views": 92.8,
+        "avg_duration_sec": 958,
+        "sample_count": 157
+      },
+      {
+        "day": 4,
+        "slot": 4,
+        "avg_views": 56.3,
+        "avg_duration_sec": 738,
+        "sample_count": 16
+      },
+      {
+        "day": 5,
+        "slot": 0,
+        "avg_views": 17.3,
+        "avg_duration_sec": 486,
+        "sample_count": 15
+      },
+      {
+        "day": 5,
+        "slot": 1,
+        "avg_views": 297.4,
+        "avg_duration_sec": 1274,
+        "sample_count": 166
+      },
+      {
+        "day": 5,
+        "slot": 2,
+        "avg_views": 275.5,
+        "avg_duration_sec": 1662,
+        "sample_count": 112
+      },
+      {
+        "day": 5,
+        "slot": 3,
+        "avg_views": 173.2,
+        "avg_duration_sec": 1032,
+        "sample_count": 76
+      },
+      {
+        "day": 5,
+        "slot": 4,
+        "avg_views": 149.6,
+        "avg_duration_sec": 1210,
+        "sample_count": 13
+      },
+      {
+        "day": 6,
+        "slot": 0,
+        "avg_views": 2.8,
+        "avg_duration_sec": 350,
+        "sample_count": 21
+      },
+      {
+        "day": 6,
+        "slot": 1,
+        "avg_views": 261.8,
+        "avg_duration_sec": 1372,
+        "sample_count": 130
+      },
+      {
+        "day": 6,
+        "slot": 2,
+        "avg_views": 207.9,
+        "avg_duration_sec": 1444,
+        "sample_count": 126
+      },
+      {
+        "day": 6,
+        "slot": 3,
+        "avg_views": 166.6,
+        "avg_duration_sec": 1232,
+        "sample_count": 111
+      },
+      {
+        "day": 6,
+        "slot": 4,
+        "avg_views": 80.3,
+        "avg_duration_sec": 1096,
+        "sample_count": 21
+      }
     ]
   },
   "film_animation": {
     "cells": [
-      { "day": 0, "slot": 0, "avg_views": 320,  "avg_duration_sec": 610 },
-      { "day": 0, "slot": 1, "avg_views": 410,  "avg_duration_sec": 630 },
-      { "day": 0, "slot": 2, "avg_views": 560,  "avg_duration_sec": 645 },
-      { "day": 0, "slot": 3, "avg_views": 1240, "avg_duration_sec": 690 },
-      { "day": 0, "slot": 4, "avg_views": 1480, "avg_duration_sec": 705 },
-      { "day": 1, "slot": 0, "avg_views": 380,  "avg_duration_sec": 615 },
-      { "day": 1, "slot": 1, "avg_views": 690,  "avg_duration_sec": 640 },
-      { "day": 1, "slot": 2, "avg_views": 1560, "avg_duration_sec": 675 },
-      { "day": 1, "slot": 3, "avg_views": 1980, "avg_duration_sec": 720 },
-      { "day": 1, "slot": 4, "avg_views": 1720, "avg_duration_sec": 715 },
-      { "day": 2, "slot": 0, "avg_views": 350,  "avg_duration_sec": 612 },
-      { "day": 2, "slot": 1, "avg_views": 640,  "avg_duration_sec": 638 },
-      { "day": 2, "slot": 2, "avg_views": 1430, "avg_duration_sec": 668 },
-      { "day": 2, "slot": 3, "avg_views": 1650, "avg_duration_sec": 700 },
-      { "day": 2, "slot": 4, "avg_views": 1390, "avg_duration_sec": 692 }
+      {
+        "day": 0,
+        "slot": 0,
+        "avg_views": 8.5,
+        "avg_duration_sec": 2146,
+        "sample_count": 4
+      },
+      {
+        "day": 0,
+        "slot": 1,
+        "avg_views": 252.1,
+        "avg_duration_sec": 978,
+        "sample_count": 25
+      },
+      {
+        "day": 0,
+        "slot": 2,
+        "avg_views": 399.0,
+        "avg_duration_sec": 1003,
+        "sample_count": 72
+      },
+      {
+        "day": 0,
+        "slot": 3,
+        "avg_views": 607.5,
+        "avg_duration_sec": 1032,
+        "sample_count": 117
+      },
+      {
+        "day": 0,
+        "slot": 4,
+        "avg_views": 6.7,
+        "avg_duration_sec": 772,
+        "sample_count": 14
+      },
+      {
+        "day": 1,
+        "slot": 0,
+        "avg_views": 24.0,
+        "avg_duration_sec": 3536,
+        "sample_count": 3
+      },
+      {
+        "day": 1,
+        "slot": 1,
+        "avg_views": 395.1,
+        "avg_duration_sec": 1138,
+        "sample_count": 40
+      },
+      {
+        "day": 1,
+        "slot": 2,
+        "avg_views": 294.8,
+        "avg_duration_sec": 1177,
+        "sample_count": 105
+      },
+      {
+        "day": 1,
+        "slot": 3,
+        "avg_views": 538.5,
+        "avg_duration_sec": 1348,
+        "sample_count": 146
+      },
+      {
+        "day": 1,
+        "slot": 4,
+        "avg_views": 11.0,
+        "avg_duration_sec": 1201,
+        "sample_count": 17
+      },
+      {
+        "day": 2,
+        "slot": 0,
+        "avg_views": 80.5,
+        "avg_duration_sec": 1294,
+        "sample_count": 8
+      },
+      {
+        "day": 2,
+        "slot": 1,
+        "avg_views": 204.1,
+        "avg_duration_sec": 1109,
+        "sample_count": 46
+      },
+      {
+        "day": 2,
+        "slot": 2,
+        "avg_views": 937.7,
+        "avg_duration_sec": 1244,
+        "sample_count": 129
+      },
+      {
+        "day": 2,
+        "slot": 3,
+        "avg_views": 603.4,
+        "avg_duration_sec": 1266,
+        "sample_count": 150
+      },
+      {
+        "day": 2,
+        "slot": 4,
+        "avg_views": 269.2,
+        "avg_duration_sec": 1865,
+        "sample_count": 20
+      },
+      {
+        "day": 3,
+        "slot": 0,
+        "avg_views": 341.9,
+        "avg_duration_sec": 946,
+        "sample_count": 12
+      },
+      {
+        "day": 3,
+        "slot": 1,
+        "avg_views": 325.3,
+        "avg_duration_sec": 1153,
+        "sample_count": 34
+      },
+      {
+        "day": 3,
+        "slot": 2,
+        "avg_views": 810.6,
+        "avg_duration_sec": 1152,
+        "sample_count": 86
+      },
+      {
+        "day": 3,
+        "slot": 3,
+        "avg_views": 507.0,
+        "avg_duration_sec": 1219,
+        "sample_count": 160
+      },
+      {
+        "day": 3,
+        "slot": 4,
+        "avg_views": 28.7,
+        "avg_duration_sec": 1137,
+        "sample_count": 21
+      },
+      {
+        "day": 4,
+        "slot": 0,
+        "avg_views": 37.0,
+        "avg_duration_sec": 1022,
+        "sample_count": 9
+      },
+      {
+        "day": 4,
+        "slot": 1,
+        "avg_views": 845.5,
+        "avg_duration_sec": 1326,
+        "sample_count": 39
+      },
+      {
+        "day": 4,
+        "slot": 2,
+        "avg_views": 569.7,
+        "avg_duration_sec": 1223,
+        "sample_count": 150
+      },
+      {
+        "day": 4,
+        "slot": 3,
+        "avg_views": 611.4,
+        "avg_duration_sec": 1429,
+        "sample_count": 230
+      },
+      {
+        "day": 4,
+        "slot": 4,
+        "avg_views": 131.6,
+        "avg_duration_sec": 1088,
+        "sample_count": 16
+      },
+      {
+        "day": 5,
+        "slot": 0,
+        "avg_views": 11.7,
+        "avg_duration_sec": 850,
+        "sample_count": 8
+      },
+      {
+        "day": 5,
+        "slot": 1,
+        "avg_views": 1137.6,
+        "avg_duration_sec": 1224,
+        "sample_count": 192
+      },
+      {
+        "day": 5,
+        "slot": 2,
+        "avg_views": 235.1,
+        "avg_duration_sec": 1035,
+        "sample_count": 171
+      },
+      {
+        "day": 5,
+        "slot": 3,
+        "avg_views": 285.9,
+        "avg_duration_sec": 1348,
+        "sample_count": 181
+      },
+      {
+        "day": 5,
+        "slot": 4,
+        "avg_views": 133.6,
+        "avg_duration_sec": 1621,
+        "sample_count": 19
+      },
+      {
+        "day": 6,
+        "slot": 0,
+        "avg_views": 17.3,
+        "avg_duration_sec": 842,
+        "sample_count": 13
+      },
+      {
+        "day": 6,
+        "slot": 1,
+        "avg_views": 896.3,
+        "avg_duration_sec": 1131,
+        "sample_count": 67
+      },
+      {
+        "day": 6,
+        "slot": 2,
+        "avg_views": 814.9,
+        "avg_duration_sec": 1234,
+        "sample_count": 164
+      },
+      {
+        "day": 6,
+        "slot": 3,
+        "avg_views": 205.0,
+        "avg_duration_sec": 1466,
+        "sample_count": 124
+      },
+      {
+        "day": 6,
+        "slot": 4,
+        "avg_views": 94.2,
+        "avg_duration_sec": 1918,
+        "sample_count": 6
+      }
     ]
-  }
+  },
+  "_comment": "day: 0=월요일..6=일요일(KST 기준 실제 게시 요일) / slot: 0=새벽 1=오전 2=오후 3=저녁 4=심야. Silver(vw_video_analysis)에서 중앙값으로 집계. sample_count가 0이면 그 구간에 표본이 없어 avg_views가 null(nodata)입니다."
 }

@@ -94,15 +94,51 @@ API가 반환하는 JSON의 필드 이름이 `mock/*.json`과 다르면 `data.js
 - 배포 시 정적 호스팅(S3+CloudFront 등)이라면, 파이프라인 마지막 단계에
   `mock/*.json`(또는 API가 붙었다면 DB) 갱신 → 캐시 무효화 순서로 넣으면 됩니다.
 
+## 2026-09-02 업데이트 — 실제 수집 데이터 연동 (1차)
+
+백엔드 API/DB 연동 전이지만, `outputs/bronze_merged/*.jsonl`(실제 YouTube API 수집
+원본)만으로 `mock/*.json`을 직접 채울 수 있다는 걸 확인해서 우선 이걸로 진행했습니다.
+
+- **`frontend/scripts/build_dashboard_data.py`** — `outputs/bronze_merged/*.jsonl`을
+  읽어서 `sql/compute_gold.sql`과 같은 정의(일평균 조회수 = `view_count / 경과일수`,
+  참여율 = `(좋아요+댓글)/조회수`, 영상 길이·요일·시간대 버킷 등)로 직접 집계해
+  `mock/*.json` 5개를 다시 씁니다. **평균이 아니라 중앙값을 씁니다** — 게임 카테고리처럼
+  긴 라이브 스트림 다시보기가 섞여 있으면 평균이 크게 왜곡되는데(예: 평균 66분 vs 실제
+  중앙값 20분), `compute_gold.sql`도 같은 이유로 `PERCENTILE_CONT(0.5)`(중앙값)를 씁니다.
+  파이프라인이 새 데이터를 수집할 때마다 아래처럼 다시 실행하면 됩니다.
+  ```bash
+  cd Pipeline_pjt   # repo 루트
+  python frontend/scripts/build_dashboard_data.py
+  ```
+- **업로드 가이드 요일**: 이전엔 평일/토요일/일요일 3그룹이었는데, 팀 SQL의
+  `gold_upload_strategy`가 요일을 1~7(월~일) 개별로 집계하는 것에 맞춰 `js/config.js`의
+  `DAY_GROUPS`를 월~일 7개로 바꿨습니다. 히트맵(`charts.js`)이 `dayLabels.length`
+  기준으로 동작해서 별도 코드 수정 없이 7행으로 늘어납니다.
+- **채널 추천(`추천 채널` 탭)**: 파이프라인 Gold 테이블 중엔 채널 단위로 집계된 게
+  없어서, `bronze_merged`의 `channel_total_view_count ÷ channel_total_video_count`
+  (그 채널의 영상당 평균 조회수, 채널 전체 기간 기준)로 직접 계산했습니다. 다만
+  `upload_freq_per_week`(주간 업로드 빈도)는 하루~이틀치 스냅샷만으로는 정확히 셀 수
+  없어서 지금은 `null`(nodata)로 둡니다 — 매일 수집이 쌓이면 계산 로직을 추가하면 됩니다.
+- **"꾸준한(스테디) 영상"도 실제 데이터로 채워집니다.** `bronze_merged`에 최대 1년치
+  과거 영상이 이미 있어서(오래 전에 올라온 영상도 최근에 재수집된 조회수 포함),
+  게시 후 180일 이상 지난 영상 중 일평균 조회수 상위권을 그대로 뽑으면 됩니다. 별도
+  임의(mock) 데이터가 필요하지 않았습니다.
+- **nodata 표시**: 계산할 근거가 아직 없는 값은 화면에 `nodata`라고 그대로 노출합니다
+  (지어내지 않습니다). 예: 카테고리 트렌드의 "지난 기간 대비"(첫 집계라 비교 대상 없음),
+  채널 카드의 "업로드 빈도", 히트맵에서 표본이 0건인 요일×시간대 칸.
+- 헤더 배지와 각 화면 하단 안내 문구는 `mock/meta.json`의 `source` 필드
+  (`"pipeline_snapshot"`)를 보고 "샘플 데이터"가 아니라 "실제 수집 데이터"라고 자동으로
+  표시합니다 (`js/app.js`의 `setMetaBadge`).
+
 ## mock 데이터 파일 구성
 
 | 파일 | 내용 | 비고 |
 |---|---|---|
-| `mock/meta.json` | 마지막 업데이트 시각, 수집 기간 | 헤더 배지에 표시 |
-| `mock/video_pool.json` | 카테고리별 영상 후보군(각 10건) | `recommend.js`가 여기서 트렌드/스테디 Top3를 스코어링해서 뽑습니다. 하드코딩된 추천 목록이 아닙니다 |
-| `mock/channel_pool.json` | 카테고리별 채널 후보군(각 5개) | `recommend.js`가 여기서 추천 채널 Top3를 스코어링해서 뽑습니다 |
-| `mock/upload_heatmap.json` | 요일×시간대 셀별 평균 조회수 + 평균 영상 길이 | day: 0=평일 1=토요일 2=일요일, slot: 0=새벽~4=심야 |
-| `mock/category_trend.json` | 카테고리별 통계, 영상 길이 분포, 구독자 규모별 비교 | |
+| `mock/meta.json` | 마지막 업데이트 시각, 수집 기간, 데이터 출처(source) | 헤더 배지에 표시 |
+| `mock/video_pool.json` | 카테고리별 영상 후보군 | `recommend.js`가 여기서 트렌드/스테디 Top3를 스코어링해서 뽑습니다. 하드코딩된 추천 목록이 아닙니다 |
+| `mock/channel_pool.json` | 카테고리별 채널 후보군 | `recommend.js`가 여기서 추천 채널 Top3를 스코어링해서 뽑습니다. `upload_freq_per_week`는 현재 nodata |
+| `mock/upload_heatmap.json` | 요일×시간대 셀별 평균 조회수 + 평균 영상 길이 | day: 0=월요일 ~ 6=일요일, slot: 0=새벽~4=심야. 표본 0건인 칸은 avg_views가 null(nodata) |
+| `mock/category_trend.json` | 카테고리별 통계, 영상 길이 분포, 구독자 규모별 비교 | `_prev` 필드는 다음 재집계부터 채워짐(현재 nodata) |
 
 ## 코드 구성
 
@@ -121,10 +157,15 @@ API가 반환하는 JSON의 필드 이름이 `mock/*.json`과 다르면 `data.js
 
 ## 남은 작업 / TODO
 
-- [ ] 백엔드 API 연동 — 확정되면 `js/config.js` 3줄만 교체
-- [ ] Bronze 수집기 구현 및 `video_pool.json` / `channel_pool.json`을 실제
-      수집 결과로 교체 (지금은 남은 1주 데이터로 채울지 예시 데이터를 유지할지
-      미정 — 팀 판단 필요)
+- [x] Bronze 실데이터로 `video_pool.json` / `channel_pool.json` / `upload_heatmap.json`
+      / `category_trend.json` 채우기 (`frontend/scripts/build_dashboard_data.py`)
+- [x] 업로드 가이드 요일을 평일/토/일 3그룹 → 월~일 7개 개별로 변경
+- [ ] 백엔드 API 연동 — 확정되면 `js/config.js` 3줄만 교체 (지금은 여전히
+      `USE_MOCK: true` + 스크립트로 만든 `mock/*.json`을 쓰는 방식)
+- [ ] 채널 단위 Gold 집계 테이블(`gold_channel_benchmark` 등) 파이프라인에 추가 — 지금은
+      프론트 스크립트가 `bronze_merged`에서 직접 집계 중, DB 쪽에 생기면 그쪽으로 전환
+- [ ] 채널 `upload_freq_per_week` 계산 — 매일 수집이 며칠 이상 쌓이면 로직 추가
+- [ ] 카테고리 트렌드 "지난 기간 대비"(`_prev`) — 다음 주 재집계부터 실제 값 채워짐
 - [ ] 파이프라인에서 `mock/meta.json`(또는 API의 `/meta`) 매일 갱신하도록 연결
 - [ ] Amazon Bedrock 연동 — 지금은 규칙 기반 템플릿 문장(`recommend.js`)을 씁니다.
       실제로 LLM 설명을 붙이고 싶다면 `explainVideo` / `explainChannel` /

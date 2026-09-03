@@ -1,5 +1,6 @@
 {
-  "_comment": "일 단위 파이프라인이 실행될 때마다 이 파일의 last_updated / collection_window만 갱신하면 화면 상단 배지가 자동으로 최신 날짜를 보여줍니다.",
-  "last_updated": "2026-09-01T09:00:00+09:00",
-  "collection_window": "2026-09-01 ~ 2026-09-08 (수집 진행 중)"
+  "_comment": "PostgreSQL Silver(vw_video_analysis/dim_channel) + Gold(gold_category_benchmark) 데이터를 집계해서 생성. 채널 프로필 사진만 예외적으로 Bronze 원본(channels_detail.jsonl.gz)에서 가져옴. source=pipeline_snapshot.",
+  "last_updated": "2026-09-03T10:05:07.888153+09:00",
+  "collection_window": "outputs/silver_gold_export 스냅샷 (export_pg_for_dashboard.py 실행 시점의 PostgreSQL Silver/Gold)",
+  "source": "pipeline_snapshot"
 }

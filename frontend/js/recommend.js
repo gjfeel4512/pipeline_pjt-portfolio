@@ -27,6 +27,16 @@ const Recommend = (() => {
   const fmtManwon = (n) => (n / 10000).toFixed(1) + "만";
   const videoUrl = (videoId) => `https://www.youtube.com/watch?v=${videoId}`;
   const channelUrl = (channelId) => `https://www.youtube.com/channel/${channelId}`;
+  // YouTube가 공개 제공하는 썸네일 CDN URL (API 키 불필요, video_id만 있으면 조합 가능)
+  const thumbnailUrl = (videoId) => `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+  // 게시일을 "n일 전 / n주 전 / n개월 전 / n년 전"처럼 상대적으로 표현합니다.
+  function fmtAgeRelative(days) {
+    if (days < 7) return `${days}일 전`;
+    if (days < 30) return `${Math.round(days / 7)}주 전`;
+    if (days < 365) return `${Math.round(days / 30)}개월 전`;
+    return `${(days / 365).toFixed(1)}년 전`;
+  }
 
   /* ------------------------------------------------------------------ *
    * 영상 후보군 스코어링
@@ -142,26 +152,42 @@ const Recommend = (() => {
    * "왜 좋은가"는 요일 그룹별로 미리 써둔 규칙 기반 템플릿에서 골라 채웁니다.
    * (추후 Bedrock 등으로 교체할 때는 이 함수 내부만 LLM 호출로 바꾸면 됩니다.)
    * ------------------------------------------------------------------ */
+  // avg_views가 null인 셀은 그 요일×시간대에 표본이 아예 없다는 뜻(nodata)이라
+  // "가장 좋은 시간대" 후보에서 제외합니다.
   function bestCell(cells) {
-    return cells.reduce((best, c) => (c.avg_views > best.avg_views ? c : best), cells[0]);
+    const valid = cells.filter((c) => c.avg_views !== null && c.avg_views !== undefined);
+    if (!valid.length) return null;
+    return valid.reduce((best, c) => (c.avg_views > best.avg_views ? c : best), valid[0]);
   }
 
+  // day: 0=월요일 ... 6=일요일 (요일별 개별 집계, 2026-09-02 결정 반영).
+  // 월~금은 "평일 중에서도 ○요일"로, 토/일은 각각 전용 문구로 안내합니다.
   const DAY_TIP_TEMPLATES = {
-    0: (slot) => `평일 중에서도 ${slot}에 반응이 좋아요. 상대적으로 경쟁이 적은 시간대라 신규 채널에도 추천해요.`,
-    1: (slot) => `주말 중에서도 토요일 ${slot}에 반응이 가장 좋아요. 다만 비슷한 콘텐츠가 몰리는 시간대라 차별화가 중요해요.`,
-    2: (slot) => `일요일 ${slot}에 반응이 좋아요. 다음 주를 준비하며 여유롭게 시청하는 사람이 많은 시간대예요.`
+    weekday: (dayLabel, slot) => `평일 중에서도 ${dayLabel} ${slot}에 반응이 좋아요. 상대적으로 경쟁이 적은 시간대라 신규 채널에도 추천해요.`,
+    5: (dayLabel, slot) => `주말 중에서도 토요일 ${slot}에 반응이 가장 좋아요. 다만 비슷한 콘텐츠가 몰리는 시간대라 차별화가 중요해요.`,
+    6: (dayLabel, slot) => `일요일 ${slot}에 반응이 좋아요. 다음 주를 준비하며 여유롭게 시청하는 사람이 많은 시간대예요.`
   };
 
   function uploadTip(cells) {
     const best = bestCell(cells);
+    if (!best) {
+      return {
+        best: null,
+        dayLabel: null,
+        slotLabel: null,
+        text: "아직 이 카테고리는 요일·시간대별로 비교할 만한 데이터가 충분히 모이지 않았어요 (nodata). 수집이 더 진행되면 채워집니다.",
+        noData: true
+      };
+    }
     const dayLabel = cfg.DAY_GROUPS[best.day];
     const slotLabel = cfg.TIME_SLOTS[best.slot];
-    const template = DAY_TIP_TEMPLATES[best.day] || DAY_TIP_TEMPLATES[0];
+    const template = DAY_TIP_TEMPLATES[best.day] || DAY_TIP_TEMPLATES.weekday;
     return {
       best,
       dayLabel,
       slotLabel,
-      text: template(slotLabel)
+      text: template(dayLabel, slotLabel),
+      noData: false
     };
   }
 
@@ -170,6 +196,8 @@ const Recommend = (() => {
     fmtManwon,
     videoUrl,
     channelUrl,
+    thumbnailUrl,
+    fmtAgeRelative,
     scoreVideoPool,
     pickTrending,
     pickSteady,

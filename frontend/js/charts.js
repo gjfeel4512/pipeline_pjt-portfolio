@@ -225,9 +225,16 @@ const Charts = (() => {
     return `rgb(${c[0]},${c[1]},${c[2]})`;
   }
 
+  // 시:분:초 형식. 1시간 미만이면 "분:초"만 표시합니다(짧은 영상에서 "0:05:23"처럼
+  // 불필요한 "0:" 접두사가 붙지 않도록).
   function fmtDuration(sec) {
-    const m = Math.floor(sec / 60);
-    const s = Math.round(sec % 60);
+    sec = Math.round(sec);
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+    if (h > 0) {
+      return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
     return `${m}:${String(s).padStart(2, "0")}`;
   }
 
@@ -250,11 +257,16 @@ const Charts = (() => {
     const plotH = (cellH + cellGap) * dayLabels.length - cellGap;
     const height = padT + plotH + padB;
 
-    const values = cells.map((c) => c.avg_views);
-    const minV = Math.min(...values);
-    const maxV = Math.max(...values);
+    // avg_views가 null/undefined인 셀은 그 구간에 표본이 없다는 뜻(nodata)이라
+    // 색상 스케일 계산과 "베스트 셀" 후보에서 제외합니다.
+    const validCells = cells.filter((c) => c.avg_views !== null && c.avg_views !== undefined);
+    const values = validCells.map((c) => c.avg_views);
+    const minV = values.length ? Math.min(...values) : 0;
+    const maxV = values.length ? Math.max(...values) : 0;
     const range = maxV - minV || 1;
-    const bestKey = cells.reduce((best, c) => (c.avg_views > best.avg_views ? c : best), cells[0]);
+    const bestKey = validCells.length
+      ? validCells.reduce((best, c) => (c.avg_views > best.avg_views ? c : best), validCells[0])
+      : null;
 
     const svg = el("svg", {
       width: "100%",
@@ -286,18 +298,24 @@ const Charts = (() => {
         const c = cellByKey.get(`${di}-${si}`);
         if (!c) return;
         const v = c.avg_views;
-        const t = range ? (v - minV) / range : 0;
-        const color = lerpColor(SCALE_LOW, SCALE_HIGH, t);
+        const noData = v === null || v === undefined;
+        const t = !noData && range ? (v - minV) / range : 0;
+        const color = noData ? "var(--surface-1, #e7ebf1)" : lerpColor(SCALE_LOW, SCALE_HIGH, t);
         const x = padL + si * (cellW + cellGap);
         const y = padT + di * (cellH + cellGap);
-        const isBest = c === bestKey;
-        const textColor = t > 0.55 ? "#ffffff" : "#0b0b0b";
+        const isBest = !noData && c === bestKey;
+        const textColor = noData ? "var(--text-muted, #8a93a3)" : t > 0.55 ? "#ffffff" : "#0b0b0b";
 
         const g = el("g", { tabindex: "0", style: "cursor:pointer;" });
 
         const rect = el("rect", {
           x, y, width: cellW, height: cellH, rx: 8, fill: color
         });
+        if (noData) {
+          rect.setAttribute("stroke", "var(--border, #c7cdd6)");
+          rect.setAttribute("stroke-width", "1");
+          rect.setAttribute("stroke-dasharray", "4 3");
+        }
         if (isBest) {
           rect.setAttribute("stroke", "#0b0b0b");
           rect.setAttribute("stroke-width", "2");
@@ -311,7 +329,7 @@ const Charts = (() => {
           class: "heatmap-cell-value",
           fill: textColor
         });
-        valueText.textContent = v.toLocaleString("ko-KR");
+        valueText.textContent = noData ? "nodata" : v.toLocaleString("ko-KR");
         g.appendChild(valueText);
 
         if (isBest) {
@@ -326,10 +344,13 @@ const Charts = (() => {
         }
 
         const showTip = (evt) => {
-          setTooltipRows(tip, `${dLabel} · ${sLabel}`, [
-            { label: "평균 조회수", value: v.toLocaleString("ko-KR") + "회", color },
-            { label: "평균 영상 길이", value: fmtDuration(c.avg_duration_sec), color: "transparent" }
-          ]);
+          const rows = noData
+            ? [{ label: "표본", value: "아직 데이터 없음 (nodata)", color: "transparent" }]
+            : [
+                { label: "평균 조회수", value: v.toLocaleString("ko-KR") + "회", color },
+                { label: "평균 영상 길이", value: fmtDuration(c.avg_duration_sec), color: "transparent" }
+              ];
+          setTooltipRows(tip, `${dLabel} · ${sLabel}`, rows);
           tip.style.display = "block";
           positionTooltip(root, tip, evt);
         };

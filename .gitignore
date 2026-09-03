@@ -6,6 +6,7 @@ AIRFLOW_HOME/
 
 # Output
 outputs/silver/
+outputs/silver_gold_export/
 reports/
 logs/airflow/
 *.log

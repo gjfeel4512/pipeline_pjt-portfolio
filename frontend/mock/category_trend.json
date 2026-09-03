@@ -1,59 +1,122 @@
 {
   "gaming": {
-    "avg_views_per_day": 4650,
-    "avg_views_per_day_prev": 4315,
-    "avg_engagement_rate": 0.044,
-    "avg_engagement_rate_prev": 0.0413,
-    "avg_duration_sec": 380,
+    "avg_views_per_day": 67.2,
+    "avg_views_per_day_prev": null,
+    "avg_engagement_rate": 0.0123,
+    "avg_engagement_rate_prev": null,
+    "avg_duration_sec": 1196,
     "duration_distribution": [
-      { "label": "1~5분", "pct": 22 },
-      { "label": "5~10분", "pct": 38 },
-      { "label": "10~20분", "pct": 27 },
-      { "label": "20분 이상", "pct": 13 }
+      {
+        "label": "1~5분",
+        "pct": 2.8
+      },
+      {
+        "label": "5~10분",
+        "pct": 18.1
+      },
+      {
+        "label": "10~20분",
+        "pct": 29.3
+      },
+      {
+        "label": "20분 이상",
+        "pct": 49.8
+      }
     ],
     "subscriber_tiers": [
-      { "label": "소형 (1만~10만)", "ratio": 8.2 },
-      { "label": "중형 (10만~50만)", "ratio": 4.1 },
-      { "label": "대형 (50만 이상)", "ratio": 1.8 }
+      {
+        "label": "소형 (1만~10만)",
+        "ratio": 0.9
+      },
+      {
+        "label": "중형 (10만~50만)",
+        "ratio": 0.9
+      },
+      {
+        "label": "대형 (50만 이상)",
+        "ratio": 0.7
+      }
     ],
-    "sample_size": 10163
+    "sample_size": 5189
   },
   "autos_vehicles": {
-    "avg_views_per_day": 3200,
-    "avg_views_per_day_prev": 3020,
-    "avg_engagement_rate": 0.038,
-    "avg_engagement_rate_prev": 0.0362,
-    "avg_duration_sec": 540,
+    "avg_views_per_day": 139.0,
+    "avg_views_per_day_prev": null,
+    "avg_engagement_rate": 0.0096,
+    "avg_engagement_rate_prev": null,
+    "avg_duration_sec": 1128,
     "duration_distribution": [
-      { "label": "1~5분", "pct": 12 },
-      { "label": "5~10분", "pct": 30 },
-      { "label": "10~20분", "pct": 38 },
-      { "label": "20분 이상", "pct": 20 }
+      {
+        "label": "1~5분",
+        "pct": 5.6
+      },
+      {
+        "label": "5~10분",
+        "pct": 15.9
+      },
+      {
+        "label": "10~20분",
+        "pct": 32.5
+      },
+      {
+        "label": "20분 이상",
+        "pct": 46.0
+      }
     ],
     "subscriber_tiers": [
-      { "label": "소형 (1만~10만)", "ratio": 6.5 },
-      { "label": "중형 (10만~50만)", "ratio": 3.4 },
-      { "label": "대형 (50만 이상)", "ratio": 1.6 }
+      {
+        "label": "소형 (1만~10만)",
+        "ratio": 1.0
+      },
+      {
+        "label": "중형 (10만~50만)",
+        "ratio": 0.6
+      },
+      {
+        "label": "대형 (50만 이상)",
+        "ratio": 0.4
+      }
     ],
-    "sample_size": 7940
+    "sample_size": 2860
   },
   "film_animation": {
-    "avg_views_per_day": 5400,
-    "avg_views_per_day_prev": 4890,
-    "avg_engagement_rate": 0.051,
-    "avg_engagement_rate_prev": 0.047,
-    "avg_duration_sec": 660,
+    "avg_views_per_day": 454.9,
+    "avg_views_per_day_prev": null,
+    "avg_engagement_rate": 0.0083,
+    "avg_engagement_rate_prev": null,
+    "avg_duration_sec": 1217,
     "duration_distribution": [
-      { "label": "1~5분", "pct": 8 },
-      { "label": "5~10분", "pct": 24 },
-      { "label": "10~20분", "pct": 41 },
-      { "label": "20분 이상", "pct": 27 }
+      {
+        "label": "1~5분",
+        "pct": 0.8
+      },
+      {
+        "label": "5~10분",
+        "pct": 9.5
+      },
+      {
+        "label": "10~20분",
+        "pct": 38.5
+      },
+      {
+        "label": "20분 이상",
+        "pct": 51.2
+      }
     ],
     "subscriber_tiers": [
-      { "label": "소형 (1만~10만)", "ratio": 9.4 },
-      { "label": "중형 (10만~50만)", "ratio": 4.8 },
-      { "label": "대형 (50만 이상)", "ratio": 2.1 }
+      {
+        "label": "소형 (1만~10만)",
+        "ratio": 1.0
+      },
+      {
+        "label": "중형 (10만~50만)",
+        "ratio": 0.6
+      },
+      {
+        "label": "대형 (50만 이상)",
+        "ratio": 0.3
+      }
     ],
-    "sample_size": 9280
+    "sample_size": 2598
   }
 }

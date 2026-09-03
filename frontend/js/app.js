@@ -18,9 +18,44 @@
     return `<svg class="play-icon" width="34" height="34" viewBox="0 0 24 24" fill="rgba(255,255,255,0.92)"><path d="M8 5v14l11-7z"></path></svg>`;
   }
 
+  /* ---------------- 프로필 사진 폴백 체인 ----------------
+   * 채널 프로필 사진(avatar_url, channels.list 원본 데이터)이 있으면 그걸 먼저 쓰고,
+   * 로드 실패(또는 애초에 없음)하면 대표/본인 영상 썸네일로, 그것도 실패하면
+   * <img>를 제거해서 옆에 같이 넣어둔 이니셜 텍스트가 드러나게 합니다.
+   * onerror 인라인 핸들러는 전역 스코프에서 실행되므로 window에 붙여둡니다. */
+  window.__avatarFallback = function (img) {
+    const rest = img.getAttribute("data-fallback");
+    if (rest) {
+      const parts = rest.split("|||");
+      const next = parts.shift();
+      img.setAttribute("data-fallback", parts.join("|||"));
+      img.src = next;
+    } else {
+      img.remove();
+    }
+  };
+
+  function imgFallbackHtml(sources) {
+    const valid = sources.filter(Boolean);
+    if (!valid.length) return "";
+    const rest = valid.slice(1).join("|||");
+    return `<img src="${valid[0]}" data-fallback="${rest}" onerror="window.__avatarFallback(this)" alt="">`;
+  }
+
   function setMetaBadge(meta) {
     const badge = document.getElementById("meta-badge");
-    badge.textContent = `${cfg.USE_MOCK ? "샘플(mock) 데이터" : "실시간 데이터"} · 마지막 업데이트 ${meta.last_updated.slice(0, 10)}`;
+    const isReal = meta.source === "pipeline_snapshot";
+    const kindLabel = isReal
+      ? "실제 수집 데이터(파이프라인 스냅샷)"
+      : cfg.USE_MOCK ? "샘플(mock) 데이터" : "실시간 데이터";
+    badge.textContent = `${kindLabel} · 마지막 업데이트 ${meta.last_updated.slice(0, 10)}`;
+
+    const realNote = (about) => `◆ 이 화면의 ${about}는 실제 수집된 데이터를 집계한 결과예요. 파이프라인이 다시 돌 때마다 자동으로 최신화됩니다.`;
+    const sampleNote = (about) => `◆ 이 화면의 ${about}는 예시 데이터입니다. 실제 서비스에서는 최근 수집된 데이터로 자동 갱신됩니다.`;
+    const note = isReal ? realNote : sampleNote;
+    document.getElementById("home-section-note").textContent = note("영상·수치");
+    document.getElementById("channels-section-note").textContent = note("채널·수치");
+    document.getElementById("guide-section-note").textContent = note("시간대별 조회수·영상 길이");
   }
 
   function renderCategoryChips() {
@@ -48,18 +83,20 @@
       : "linear-gradient(135deg, #2a78d6, #1c5aa8)";
     const tag = isTrending ? "🔥 급상승" : "🌱 스테디셀러";
     const reasonClass = isTrending ? "trending" : "steady";
-    const subLine = isTrending
-      ? `${v.channel_name} · 구독자 ${Recommend.fmtManwon(v.subscriber_count)}`
-      : `${v.channel_name} · 게시 ${v.days_since_published}일 전`;
+    // 트렌드/스테디 모두 게시일(상대 표현)과 구독자 수를 함께 보여줍니다.
+    const subLine = `게시 ${Recommend.fmtAgeRelative(v.days_since_published)} · 구독자 ${Recommend.fmtManwon(v.subscriber_count)}`;
     const statsLine = isTrending
       ? `<span>조회수 <strong>${Recommend.fmtManwon(v.view_count)}</strong></span><span>좋아요 <strong>${Recommend.fmtManwon(v.like_count)}</strong></span>`
       : `<span>누적 조회수 <strong>${Recommend.fmtManwon(v.view_count)}</strong></span><span>좋아요 <strong>${Recommend.fmtManwon(v.like_count)}</strong></span>`;
+    // 실제 유튜브 썸네일(video_id 기반 공개 CDN)을 배경으로 쓰고, 카테고리 그라디언트는
+    // 이미지가 없거나 로드 실패했을 때만 보이는 두 번째 배경 레이어로 둡니다.
+    const thumbStyle = `background-image:url('${Recommend.thumbnailUrl(v.video_id)}'), ${grad};`;
 
     const el = document.createElement("div");
     el.className = "vcard";
     el.innerHTML = `
       <a class="thumb-link" href="${v.url}" target="_blank" rel="noopener">
-        <div class="thumb" style="background:${grad};">
+        <div class="thumb" style="${thumbStyle}">
           ${svgPlayIcon()}
           <span class="tag-badge">${tag}</span>
           <span class="dur-badge">${fmtDuration(v.duration_sec)}</span>
@@ -67,7 +104,11 @@
       </a>
       <div class="vcard-body">
         <a class="vcard-title" href="${v.url}" target="_blank" rel="noopener">${v.title}</a>
-        <div class="vcard-channel"><a href="${v.channelUrl}" target="_blank" rel="noopener">${subLine}</a></div>
+        <div class="vcard-channel">
+          <span class="vcard-channel-avatar">${imgFallbackHtml([v.channel_avatar_url, Recommend.thumbnailUrl(v.video_id)])}</span>
+          <a href="${v.channelUrl}" target="_blank" rel="noopener">${v.channel_name}</a>
+          <span>· ${subLine}</span>
+        </div>
         <div class="vcard-stats">${statsLine}</div>
         <div class="vcard-reason ${reasonClass}">${Recommend.explainVideo(v)}</div>
       </div>
@@ -85,21 +126,35 @@
     const tip = Recommend.uploadTip(heatCells);
 
     const callout = document.getElementById("home-tip-callout");
+    const calloutBody = tip.noData
+      ? tip.text
+      : `${tip.dayLabel} ${tip.slotLabel}에 올린 영상들이 조회수가 가장 잘 나왔어요. ${tip.text}`;
     callout.innerHTML = `
       <div class="tip-callout-icon">💡</div>
       <div style="flex:1;">
         <div class="tip-callout-title">이번 주 ${catInfo.label} 카테고리 업로드 추천 타이밍</div>
-        <div class="tip-callout-body">${tip.dayLabel} ${tip.slotLabel}에 올린 영상들이 조회수가 가장 잘 나왔어요. ${tip.text}</div>
+        <div class="tip-callout-body">${calloutBody}</div>
       </div>
     `;
 
+    const noDataNote = (label) =>
+      `<div class="nodata-note">아직 이 카테고리에서 "${label}" 조건에 맞는 영상이 충분하지 않아요 (nodata). 수집이 더 진행되면 채워집니다.</div>`;
+
     const trendingGrid = document.getElementById("trending-grid");
     trendingGrid.innerHTML = "";
-    trending.forEach((v) => trendingGrid.appendChild(videoCard(v, "trending")));
+    if (trending.length) {
+      trending.forEach((v) => trendingGrid.appendChild(videoCard(v, "trending")));
+    } else {
+      trendingGrid.innerHTML = noDataNote("요즘 뜨는 영상");
+    }
 
     const steadyGrid = document.getElementById("steady-grid");
     steadyGrid.innerHTML = "";
-    steady.forEach((v) => steadyGrid.appendChild(videoCard(v, "steady")));
+    if (steady.length) {
+      steady.forEach((v) => steadyGrid.appendChild(videoCard(v, "steady")));
+    } else {
+      steadyGrid.innerHTML = noDataNote("꾸준히 사랑받는 영상");
+    }
   }
 
   /* ---------------- 추천 채널 ---------------- */
@@ -111,11 +166,19 @@
 
   function channelCard(c, idx) {
     const initial = c.name.slice(0, 1);
+    // 채널 프로필 사진(avatar_url)은 channels.list 원본 응답(outputs/bronze_collect/
+    // channels_detail.jsonl.gz)에서 가져온 실제 채널 사진입니다. 커버리지가 100%가 아니라서
+    // (일부 채널은 raw 응답에 없음) 없으면 대표 영상 썸네일로, 그것도 실패하면 이니셜로
+    // 단계적으로 대체합니다.
+    const hasRepThumb = !!(c.representative_video && c.representative_video.video_id);
+    const avatarGrad = AVATAR_GRADIENTS[idx % AVATAR_GRADIENTS.length];
+    const avatarSources = [c.avatar_url, hasRepThumb ? Recommend.thumbnailUrl(c.representative_video.video_id) : null];
+    const avatarInner = `${imgFallbackHtml(avatarSources)}${initial}`;
     const el = document.createElement("div");
     el.className = "chcard";
     el.innerHTML = `
       <div class="chcard-head">
-        <div class="chcard-avatar" style="background:${AVATAR_GRADIENTS[idx % AVATAR_GRADIENTS.length]};">${initial}</div>
+        <div class="chcard-avatar" style="background:${avatarGrad};">${avatarInner}</div>
         <div>
           <div class="chcard-name"><a href="${c.url}" target="_blank" rel="noopener">${c.name}</a></div>
           <div class="chcard-subs">구독자 ${Recommend.fmtManwon(c.subscriber_count)}</div>
@@ -123,7 +186,7 @@
       </div>
       <div class="chcard-highlight">📌 ${Recommend.explainChannel(c)}</div>
       <div class="chcard-desc">
-        영상 1건당 평균 조회수 ${Recommend.fmtManwon(c.avg_views_per_video)} · 참여율 ${fmtPct(c.avg_engagement_rate)} · 주 ${c.upload_freq_per_week}회 업로드
+        영상 1건당 평균 조회수 ${Recommend.fmtManwon(c.avg_views_per_video)} · 참여율 ${fmtPct(c.avg_engagement_rate)}
       </div>
       <div class="chcard-rule"></div>
       <div class="chcard-rep">대표 영상: <a href="${c.representativeUrl}" target="_blank" rel="noopener">"${c.representative_video.title}"</a> · 조회수 ${Recommend.fmtManwon(c.representative_video.view_count)}</div>
@@ -162,10 +225,14 @@
     const durationRow = document.getElementById("duration-row");
     durationRow.innerHTML = "";
     cfg.DAY_GROUPS.forEach((dLabel, di) => {
-      const dayCells = cells.filter((c) => c.day === di);
-      const avg = dayCells.reduce((s, c) => s + c.avg_duration_sec, 0) / dayCells.length;
+      const dayCells = cells.filter((c) => c.day === di && c.avg_duration_sec !== null && c.avg_duration_sec !== undefined);
       const span = document.createElement("span");
-      span.innerHTML = `${dLabel} 평균 영상 길이 <strong>${fmtDuration(avg)}</strong>`;
+      if (dayCells.length) {
+        const avg = dayCells.reduce((s, c) => s + c.avg_duration_sec, 0) / dayCells.length;
+        span.innerHTML = `${dLabel} 평균 영상 길이 <strong>${fmtDuration(avg)}</strong>`;
+      } else {
+        span.innerHTML = `${dLabel} 평균 영상 길이 <strong>nodata</strong>`;
+      }
       durationRow.appendChild(span);
     });
 
@@ -174,7 +241,7 @@
     const checklist = document.getElementById("checklist");
     checklist.innerHTML = "";
     const items = [
-      `${tip.dayLabel} ${tip.slotLabel}에 업로드 예약해보기`,
+      tip.noData ? `업로드 시간대 데이터가 더 쌓이면 추천 시간대가 여기 표시돼요 (nodata)` : `${tip.dayLabel} ${tip.slotLabel}에 업로드 예약해보기`,
       `영상 길이는 ${bestDurationBucketLabel()} 사이로 맞춰보기`,
       `썸네일에 핵심 장면이나 텍스트를 눈에 띄게 넣기`,
       `업로드 직후 커뮤니티 탭에 소식 남기기`
@@ -202,10 +269,15 @@
   }
 
   /* ---------------- 카테고리 트렌드 ---------------- */
-  function statTile({ label, value, delta }) {
+  function statTile({ label, value, delta, noPrevData }) {
     const tile = document.createElement("div");
     tile.className = "stat-tile";
-    const deltaHtml = delta ? `<div class="stat-delta ${delta.good ? "good" : ""}">▲ 지난 기간 대비 ${delta.pct}%</div>` : "";
+    let deltaHtml = "";
+    if (delta) {
+      deltaHtml = `<div class="stat-delta ${delta.good ? "good" : ""}">▲ 지난 기간 대비 ${delta.pct}%</div>`;
+    } else if (noPrevData) {
+      deltaHtml = `<div class="stat-delta nodata">지난 기간 대비 nodata (첫 집계)</div>`;
+    }
     tile.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${value}</div>${deltaHtml}`;
     return tile;
   }
@@ -215,10 +287,18 @@
 
     const grid = document.getElementById("trend-stats");
     grid.innerHTML = "";
-    const viewsDeltaPct = (((trend.avg_views_per_day - trend.avg_views_per_day_prev) / trend.avg_views_per_day_prev) * 100).toFixed(1);
-    const engDeltaPct = (((trend.avg_engagement_rate - trend.avg_engagement_rate_prev) / trend.avg_engagement_rate_prev) * 100).toFixed(1);
-    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: { good: true, pct: viewsDeltaPct } }));
-    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: { good: true, pct: engDeltaPct } }));
+    // prev 값은 "지난 기간 대비" 비교용인데, 아직 실데이터로는 이전 주 스냅샷이 없어서
+    // (파이프라인이 이번이 첫 집계) null(nodata)입니다 — 이 경우 증감 표시를 생략합니다.
+    const hasViewsPrev = trend.avg_views_per_day_prev !== null && trend.avg_views_per_day_prev !== undefined;
+    const hasEngPrev = trend.avg_engagement_rate_prev !== null && trend.avg_engagement_rate_prev !== undefined;
+    const viewsDeltaPct = hasViewsPrev
+      ? (((trend.avg_views_per_day - trend.avg_views_per_day_prev) / trend.avg_views_per_day_prev) * 100).toFixed(1)
+      : null;
+    const engDeltaPct = hasEngPrev
+      ? (((trend.avg_engagement_rate - trend.avg_engagement_rate_prev) / trend.avg_engagement_rate_prev) * 100).toFixed(1)
+      : null;
+    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { good: true, pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
+    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { good: true, pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
     grid.appendChild(statTile({ label: "평균 영상 길이", value: fmtDuration(trend.avg_duration_sec) }));
 
     Charts.renderHBarChart(document.getElementById("duration-dist-chart"), {
@@ -238,7 +318,7 @@
       `구독자 대비 조회수가 가장 높았던 채널들을 보면, 대형 채널보다 구독자 10만 명 이하의 채널에서 더 많이 나왔어요. 업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.`;
 
     document.getElementById("trend-footer-note").textContent =
-      `이 정보는 최근 1년 이내 공개된 일반 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 주기적으로 업데이트됩니다. ◆ 지표 일부는 예시 데이터입니다.`;
+      `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
   }
 
   /* ---------------- Tabs ---------------- */
