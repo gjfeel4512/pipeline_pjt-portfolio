@@ -537,3 +537,273 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
     type = "string"
   }
 }
+
+# ==============================================================================
+# Gold 테이블 3개: transforms/export_gold_to_s3.py가 Postgres gold_* 테이블을
+# analysis_week 파티션의 JSON Lines로 내보낸 결과 (sql/youtube_pipeline_schema_postgresql.sql
+# 스키마와 1:1 대응). Postgres가 실제 조회 대상, 이 테이블들은 Athena로 팀 전체가
+# 쿼리할 수 있게 하는 사본.
+#
+# 주의: export_gold_to_s3.py의 SELECT * 결과에서 analysis_week 컬럼은 파티션 키와
+# 중복되므로 export 시 제거됨 - 그래서 아래 columns 블록엔 analysis_week이 없음
+# (partition_keys에만 있음). 데이터 파일에 파티션 컬럼이 중복으로 들어있으면 Athena가
+# 그 파일을 조용히 무시해서 쿼리 결과가 항상 0행이 되는 문제가 있었음(2026-09-03 확인).
+#
+# 파티션 프로젝션의 interval.unit은 WEEKS가 아니라 DAYS를 씀 - analysis_week 값이
+# 항상 월요일인데, WEEKS 간격을 임의 시작일부터 생성하면 요일이 안 맞아서 절대
+# 매치가 안 되는 문제가 있었음(2026-09-03 확인). DAYS로 매일 후보를 만들면 이 정렬
+# 문제 자체가 없음.
+# ==============================================================================
+resource "aws_glue_catalog_table" "gold_category_benchmark" {
+  name          = "gold_category_benchmark"
+  database_name = aws_glue_catalog_database.pipeline.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    EXTERNAL                                 = "TRUE"
+    "classification"                         = "json"
+    "projection.enabled"                     = "true"
+    "projection.analysis_week.type"          = "date"
+    "projection.analysis_week.format"        = "yyyy-MM-dd"
+    "projection.analysis_week.range"         = "2026-01-01,NOW"
+    "projection.analysis_week.interval"      = "1"
+    "projection.analysis_week.interval.unit" = "DAYS"
+    "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_category_benchmark/analysis_week=$${analysis_week}/"
+  }
+
+  storage_descriptor {
+    location      = "s3://${aws_s3_bucket.gold.id}/gold_category_benchmark/"
+    input_format  = "org.apache.hadoop.mapred.TextInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
+
+    ser_de_info {
+      serialization_library = "org.openx.data.jsonserde.JsonSerDe"
+    }
+
+    columns {
+      name = "category_id"
+      type = "string"
+    }
+    columns {
+      name = "sample_video_count"
+      type = "int"
+    }
+    columns {
+      name = "sample_channel_count"
+      type = "int"
+    }
+    columns {
+      name = "median_duration_seconds"
+      type = "double"
+    }
+    columns {
+      name = "median_views_per_day"
+      type = "double"
+    }
+    columns {
+      name = "median_like_rate"
+      type = "double"
+    }
+    columns {
+      name = "best_upload_time_bucket"
+      type = "string"
+    }
+    columns {
+      name = "best_duration_bucket"
+      type = "string"
+    }
+    columns {
+      name = "best_video_type"
+      type = "string"
+    }
+    columns {
+      name = "created_at_utc"
+      type = "string"
+    }
+  }
+
+  partition_keys {
+    name = "analysis_week"
+    type = "string"
+  }
+}
+
+resource "aws_glue_catalog_table" "gold_upload_strategy" {
+  name          = "gold_upload_strategy"
+  database_name = aws_glue_catalog_database.pipeline.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    EXTERNAL                                 = "TRUE"
+    "classification"                         = "json"
+    "projection.enabled"                     = "true"
+    "projection.analysis_week.type"          = "date"
+    "projection.analysis_week.format"        = "yyyy-MM-dd"
+    "projection.analysis_week.range"         = "2026-01-01,NOW"
+    "projection.analysis_week.interval"      = "1"
+    "projection.analysis_week.interval.unit" = "DAYS"
+    "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_upload_strategy/analysis_week=$${analysis_week}/"
+  }
+
+  storage_descriptor {
+    location      = "s3://${aws_s3_bucket.gold.id}/gold_upload_strategy/"
+    input_format  = "org.apache.hadoop.mapred.TextInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
+
+    ser_de_info {
+      serialization_library = "org.openx.data.jsonserde.JsonSerDe"
+    }
+
+    columns {
+      name = "category_id"
+      type = "string"
+    }
+    columns {
+      name = "subscriber_segment"
+      type = "string"
+    }
+    columns {
+      name = "video_type"
+      type = "string"
+    }
+    columns {
+      name = "duration_bucket"
+      type = "string"
+    }
+    columns {
+      name = "published_day_of_week"
+      type = "int"
+    }
+    columns {
+      name = "upload_time_bucket"
+      type = "string"
+    }
+    columns {
+      name = "sample_video_count"
+      type = "int"
+    }
+    columns {
+      name = "median_views_per_day"
+      type = "double"
+    }
+    columns {
+      name = "p75_views_per_day"
+      type = "double"
+    }
+    columns {
+      name = "median_like_rate"
+      type = "double"
+    }
+    columns {
+      name = "median_comment_rate"
+      type = "double"
+    }
+    columns {
+      name = "median_views_per_subscriber"
+      type = "double"
+    }
+    columns {
+      name = "strategy_rank"
+      type = "int"
+    }
+    columns {
+      name = "is_recommended"
+      type = "boolean"
+    }
+    columns {
+      name = "created_at_utc"
+      type = "string"
+    }
+  }
+
+  partition_keys {
+    name = "analysis_week"
+    type = "string"
+  }
+}
+
+resource "aws_glue_catalog_table" "gold_new_creator_guide" {
+  name          = "gold_new_creator_guide"
+  database_name = aws_glue_catalog_database.pipeline.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    EXTERNAL                                 = "TRUE"
+    "classification"                         = "json"
+    "projection.enabled"                     = "true"
+    "projection.analysis_week.type"          = "date"
+    "projection.analysis_week.format"        = "yyyy-MM-dd"
+    "projection.analysis_week.range"         = "2026-01-01,NOW"
+    "projection.analysis_week.interval"      = "1"
+    "projection.analysis_week.interval.unit" = "DAYS"
+    "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_new_creator_guide/analysis_week=$${analysis_week}/"
+  }
+
+  storage_descriptor {
+    location      = "s3://${aws_s3_bucket.gold.id}/gold_new_creator_guide/"
+    input_format  = "org.apache.hadoop.mapred.TextInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
+
+    ser_de_info {
+      serialization_library = "org.openx.data.jsonserde.JsonSerDe"
+    }
+
+    columns {
+      name = "guide_id"
+      type = "string"
+    }
+    columns {
+      name = "category_id"
+      type = "string"
+    }
+    columns {
+      name = "target_creator_segment"
+      type = "string"
+    }
+    columns {
+      name = "recommended_video_type"
+      type = "string"
+    }
+    columns {
+      name = "recommended_duration_bucket"
+      type = "string"
+    }
+    columns {
+      name = "recommended_day_of_week"
+      type = "int"
+    }
+    columns {
+      name = "recommended_time_bucket"
+      type = "string"
+    }
+    columns {
+      name = "evidence_video_count"
+      type = "int"
+    }
+    columns {
+      name = "evidence_median_views_per_day"
+      type = "double"
+    }
+    columns {
+      name = "evidence_median_like_rate"
+      type = "double"
+    }
+    columns {
+      name = "guide_message"
+      type = "string"
+    }
+    columns {
+      name = "caveat"
+      type = "string"
+    }
+    columns {
+      name = "created_at_utc"
+      type = "string"
+    }
+  }
+
+  partition_keys {
+    name = "analysis_week"
+    type = "string"
+  }
+}
