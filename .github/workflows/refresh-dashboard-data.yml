@@ -1,0 +1,77 @@
+# .github/workflows/refresh-dashboard-data.yml
+#
+# AWS S3 Silver/Gold 데이터를 주기적으로 읽어서 frontend/mock/*.json (대시보드가
+# 실제로 fetch하는 정적 스냅샷)을 재생성하고, 값이 바뀌었으면 커밋/푸시한다.
+#
+# 이 워크플로가 하는 일은 "데이터 최신화"까지다. 대시보드를 실제로 어딘가에
+# 배포(호스팅)하는 건 아직 별도로 정하지 않아서 포함하지 않았다 - 배포 방식이
+# 정해지면(Netlify/Vercel 등) 마지막에 배포 스텝만 추가하면 된다. 그때까지는 이
+# 워크플로가 갱신한 frontend/mock/*.json을 각자 로컬에서 pull 받아 대시보드를 열면
+# 최신 데이터로 보인다.
+#
+# 필요한 저장소 Secrets (Settings -> Secrets and variables -> Actions, 저장소 관리자만
+# 등록 가능 - repo 소유자나 admin 권한이 있는 팀원이 해줘야 함):
+#   AWS_ACCESS_KEY_ID       - S3 Silver/Gold 버킷에 대한 s3:GetObject + s3:ListBucket 권한만
+#   AWS_SECRET_ACCESS_KEY     있으면 충분한, 이 용도 전용 IAM 사용자를 새로 만들어 쓰는 걸 권장
+#                              (팀 계정 루트/관리자 자격증명을 그대로 넣지 말 것)
+# 선택 (기본값이 이미 실제 버킷명/리전과 같아서 안 넣어도 되지만, 나중에 버킷이
+# 바뀌면 코드 수정 없이 여기서만 바꿀 수 있게 Repository variables로 등록 가능):
+#   AWS_DEFAULT_REGION, AWS_S3_SILVER_BUCKET, AWS_S3_GOLD_BUCKET
+#
+# 참고: 이 리포지토리가 private이라도 워크플로 자체는 그대로 동작한다(Actions는
+# private 저장소에서도 무료 티어로 쓸 수 있다 - Pages와는 별개 문제).
+
+name: Refresh dashboard data (S3 Silver/Gold)
+
+on:
+  schedule:
+    # 매일 KST 08:00 (UTC 23:00 전날) 1회. 더 자주 갱신하고 싶으면 여기 cron만 바꾸면 됨
+    # (예: '0 */6 * * *' = 6시간마다).
+    - cron: '0 23 * * *'
+  workflow_dispatch: {}  # Actions 탭에서 수동으로도 바로 실행 가능
+
+permissions:
+  contents: write  # frontend/mock/*.json 변경분을 이 워크플로가 직접 커밋/푸시하기 위함
+
+concurrency:
+  group: refresh-dashboard-data
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install boto3
+
+      - name: Export S3 Silver/Gold -> outputs/silver_gold_export
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION || 'us-west-2' }}
+          AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET }}
+          AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET }}
+        run: python frontend/scripts/export_s3_for_dashboard.py
+
+      - name: Build frontend/mock/*.json
+        run: python frontend/scripts/build_dashboard_data.py
+
+      - name: Commit updated mock data (변경 있을 때만)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- frontend/mock; then
+            echo "변경 없음 - 커밋 생략"
+          else
+            git add frontend/mock
+            git commit -m "chore: refresh dashboard mock data from S3 Silver/Gold"
+            git push
+          fi
