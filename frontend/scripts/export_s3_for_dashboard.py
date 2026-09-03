@@ -16,8 +16,22 @@ build_dashboard_data.py는 outputs/silver_gold_export/ 안의 파일만 보고 �
            --(export_pg_for_dashboard.py)--> outputs/silver_gold_export/*.json
 
 이 스크립트가 대신하는 경로 (PostgreSQL 불필요):
-  S3 Silver(JSONL) + S3 Gold(JSON, PostgreSQL gold_* 테이블의 백업 사본)
-    --(이 스크립트)--> outputs/silver_gold_export/*.json
+  S3 Silver(JSONL, 직접 읽음) + Gold(analysis_week 버저닝 3개 테이블은 Athena로 조회,
+  gold_video_rank_trend는 Glue 카탈로그에 없어서 S3 직접 읽음 - 아래 "Gold를 왜 Athena로
+  읽나" 참고) --(이 스크립트)--> outputs/silver_gold_export/*.json
+
+Gold를 왜 Athena로 읽나 (2026-09, 사용자 요청으로 전환):
+  Gold 3개 테이블(gold_category_benchmark/gold_upload_strategy/gold_new_creator_guide)은
+  infra/glue.tf에 Glue Catalog 테이블로 이미 등록돼 있고(파티션 프로젝션 포함, PR #11/#12),
+  이미 완성된 집계 결과라 Silver처럼 Python으로 재계산할 파생 로직이 없다 - 그냥
+  `SELECT * FROM {table}`이면 충분해서 S3 키를 직접 파싱하며 파티션값을 복원하는 것보다
+  Athena/Glue 카탈로그를 그대로 쓰는 쪽이 더 안전하다(파티션 파싱 버그 걱정 없음, 스키마는
+  Glue 카탈로그가 단일 진실 공급원). gold_video_rank_trend는 트렌딩 순위 추적 기능이
+  제거되면서(ARCHITECTURE_NOTE.md) Glue 테이블이 안 만들어져 있어서 기존 방식(S3 직접
+  읽기, iter_s3_gold_json)을 그대로 쓴다.
+  Silver는 그대로 S3 직접 읽기 유지 - Athena로 옮기려면 vw_video_analysis의 파생 계산
+  전체를 Athena SQL로 다시 써야 하는 큰 재작업이라 이번엔 범위에서 뺌(사용자 확인:
+  "Gold 쓰고 필요하면 Silver까지"라고 했지만 Gold만으로 충분하다고 판단).
 
 Silver 파생 계산(video_age_days/views_per_day/like_rate/duration_bucket/
 upload_time_bucket/subscriber_segment 등)은 원래 PostgreSQL이 두 군데서 나눠서 하던 일이다:
@@ -47,10 +61,19 @@ iter_s3_gold_json()이 신/구 포맷을 모두 읽고 파티션 값을 다시 �
        - `aws configure`로 등록해둔 로컬 프로필
        - 환경변수 AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY (임시자격증명이면 AWS_SESSION_TOKEN도)
        - CI(GitHub Actions 등) 환경이면 그 환경의 Secrets로 주입된 자격증명
-     아래 두 버킷에 대해 s3:ListBucket + s3:GetObject 권한이 있어야 한다
-     (버킷명은 infra/outputs.tf의 terraform output, docker-compose-aws.yml과 동일):
-       - Silver: goldline-dev-silver-827913617635  (환경변수 AWS_S3_SILVER_BUCKET로 재정의 가능)
-       - Gold:   goldline-dev-gold-827913617635    (환경변수 AWS_S3_GOLD_BUCKET로 재정의 가능)
+     아래 권한이 있어야 한다 (버킷명은 infra/outputs.tf의 terraform output,
+     docker-compose-aws.yml과 동일):
+       - Silver 버킷(goldline-dev-silver-827913617635, 환경변수 AWS_S3_SILVER_BUCKET로
+         재정의 가능): s3:ListBucket + s3:GetObject
+       - Gold 버킷(goldline-dev-gold-827913617635, 환경변수 AWS_S3_GOLD_BUCKET로 재정의
+         가능): s3:ListBucket + s3:GetObject (gold_video_rank_trend 직접 읽기용) +
+         s3:PutObject (Athena 쿼리 결과 임시 저장 위치, 기본
+         s3://<gold-bucket>/athena-query-results/ - 환경변수 AWS_ATHENA_OUTPUT_LOCATION로
+         재정의 가능)
+       - Athena/Glue: athena:StartQueryExecution, athena:GetQueryExecution,
+         athena:GetQueryResults, glue:GetTable, glue:GetDatabase, glue:GetPartitions
+         (Gold 3개 버저닝 테이블을 Athena로 SELECT * 하기 위함 - 환경변수
+         AWS_ATHENA_DATABASE로 재정의 가능, 기본 goldline_dev_db)
   2) pip install boto3   (requirements.txt에 이미 포함되어 있음)
 
 사용
@@ -75,6 +98,7 @@ import glob
 import json
 import os
 import re
+import time
 from datetime import date, datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -88,6 +112,31 @@ CATEGORY_SLUGS = {"gaming": "20", "autos_vehicles": "2", "film_animation": "1"}
 DEFAULT_SILVER_BUCKET = "goldline-dev-silver-827913617635"
 DEFAULT_GOLD_BUCKET = "goldline-dev-gold-827913617635"
 DEFAULT_REGION = "us-west-2"
+# infra/glue.tf: aws_glue_catalog_database.pipeline.name = "${replace(resource_prefix, "-", "_")}_db"
+DEFAULT_ATHENA_DATABASE = "goldline_dev_db"
+DEFAULT_ATHENA_OUTPUT_PREFIX = "athena-query-results/"
+ATHENA_POLL_INTERVAL_SEC = 2
+ATHENA_POLL_TIMEOUT_SEC = 120
+
+# infra/glue.tf의 각 Gold 테이블 columns 블록과 동일 - Athena get_query_results가
+# 모든 값을 문자열(VarCharValue)로 돌려주므로, 원래 타입(int/double/boolean)으로
+# 되돌리기 위한 컬럼 목록. 여기 없는 컬럼은 문자열 그대로 둔다.
+GOLD_ATHENA_INT_COLUMNS = {
+    "gold_category_benchmark": {"sample_video_count", "sample_channel_count"},
+    "gold_upload_strategy": {"published_day_of_week", "sample_video_count", "strategy_rank"},
+    "gold_new_creator_guide": {"recommended_day_of_week", "evidence_video_count"},
+}
+GOLD_ATHENA_FLOAT_COLUMNS = {
+    "gold_category_benchmark": {"median_duration_seconds", "median_views_per_day", "median_like_rate"},
+    "gold_upload_strategy": {
+        "median_views_per_day", "p75_views_per_day", "median_like_rate",
+        "median_comment_rate", "median_views_per_subscriber",
+    },
+    "gold_new_creator_guide": {"evidence_median_views_per_day", "evidence_median_like_rate"},
+}
+GOLD_ATHENA_BOOL_COLUMNS = {
+    "gold_upload_strategy": {"is_recommended"},
+}
 
 # transforms/load_silver_to_postgres.py 와 동일
 VIDEO_TYPE_MAP = {"short": "shorts", "medium": "short_form", "long": "long_form"}
@@ -224,6 +273,61 @@ def iter_s3_gold_json(s3, bucket, table, partition_name):
                     row.setdefault(partition_name, partition_value)
             out.append((key, rows))
     return out
+
+
+def _coerce_athena_value(table, column, value):
+    if value is None:
+        return None
+    if column in GOLD_ATHENA_INT_COLUMNS.get(table, ()):
+        return int(value)
+    if column in GOLD_ATHENA_FLOAT_COLUMNS.get(table, ()):
+        return float(value)
+    if column in GOLD_ATHENA_BOOL_COLUMNS.get(table, ()):
+        return value.lower() == "true"
+    return value
+
+
+def query_athena_gold_table(athena, database, table, output_location):
+    """Athena로 `SELECT * FROM {database}.{table}`을 돌려서 list[dict]로 반환한다.
+    파티션 컬럼(analysis_week)도 Athena가 SELECT *에 자동으로 포함해주므로, S3 키에서
+    파티션값을 직접 파싱하던 iter_s3_gold_json()의 역할을 대신한다."""
+    query = f"SELECT * FROM {database}.{table}"
+    start = athena.start_query_execution(
+        QueryString=query,
+        QueryExecutionContext={"Database": database},
+        ResultConfiguration={"OutputLocation": output_location},
+    )
+    query_id = start["QueryExecutionId"]
+
+    waited = 0
+    state = "QUEUED"
+    reason = ""
+    while waited < ATHENA_POLL_TIMEOUT_SEC:
+        status = athena.get_query_execution(QueryExecutionId=query_id)["QueryExecution"]["Status"]
+        state = status["State"]
+        if state in ("SUCCEEDED", "FAILED", "CANCELLED"):
+            reason = status.get("StateChangeReason", "")
+            break
+        time.sleep(ATHENA_POLL_INTERVAL_SEC)
+        waited += ATHENA_POLL_INTERVAL_SEC
+
+    if state != "SUCCEEDED":
+        raise RuntimeError(f"Athena 쿼리 실패 ({table}): state={state} reason={reason}")
+
+    rows = []
+    columns = None
+    paginator = athena.get_paginator("get_query_results")
+    for page in paginator.paginate(QueryExecutionId=query_id):
+        page_rows = page["ResultSet"]["Rows"]
+        if columns is None:
+            # 첫 페이지의 첫 행이 헤더(컬럼명)다.
+            columns = [c.get("VarCharValue") for c in page_rows[0]["Data"]]
+            page_rows = page_rows[1:]
+        for r in page_rows:
+            values = [c.get("VarCharValue") for c in r["Data"]]
+            row = dict(zip(columns, values))
+            rows.append({col: _coerce_athena_value(table, col, val) for col, val in row.items()})
+    return rows
 
 
 def load_local_gold_json(base_path, table):
@@ -451,16 +555,23 @@ def main():
     ap.add_argument("--region", default=os.getenv("AWS_DEFAULT_REGION", DEFAULT_REGION))
     ap.add_argument("--silver-bucket", default=os.getenv("AWS_S3_SILVER_BUCKET", DEFAULT_SILVER_BUCKET))
     ap.add_argument("--gold-bucket", default=os.getenv("AWS_S3_GOLD_BUCKET", DEFAULT_GOLD_BUCKET))
+    ap.add_argument("--athena-database", default=os.getenv("AWS_ATHENA_DATABASE", DEFAULT_ATHENA_DATABASE))
+    ap.add_argument("--athena-output-location", default=os.getenv("AWS_ATHENA_OUTPUT_LOCATION"))
     ap.add_argument("--local-silver-path", help="S3 대신 로컬 폴더에서 Silver jsonl을 읽는 테스트 모드")
     ap.add_argument("--local-gold-path", help="S3 대신 로컬 폴더에서 Gold json을 읽는 테스트 모드 (선택)")
     args = ap.parse_args()
+    if not args.athena_output_location:
+        args.athena_output_location = f"s3://{args.gold_bucket}/{DEFAULT_ATHENA_OUTPUT_PREFIX}"
 
     use_s3 = args.local_silver_path is None
     s3 = None
+    athena = None
     if use_s3:
         import boto3
         s3 = boto3.client("s3", region_name=args.region)
+        athena = boto3.client("athena", region_name=args.region)
         print(f"S3 접속: silver=s3://{args.silver_bucket} gold=s3://{args.gold_bucket} region={args.region}")
+        print(f"Athena 접속: database={args.athena_database} output={args.athena_output_location}")
     else:
         print(f"로컬 테스트 모드: silver={args.local_silver_path} gold={args.local_gold_path or '(없음)'}")
 
@@ -497,13 +608,10 @@ def main():
         video_rows = [v for v in video_rows if v is not None]
         save(f"video_analysis_{cat_key}.json", video_rows)
 
-    print("Gold (analysis_week 버저닝 테이블):")
+    print("Gold (analysis_week 버저닝 테이블, Athena로 조회):")
     for table in GOLD_VERSIONED_TABLES:
         if use_s3:
-            partitions = iter_s3_gold_json(s3, args.gold_bucket, table, "analysis_week")
-            rows = []
-            for _key, part_rows in partitions:
-                rows.extend(part_rows)
+            rows = query_athena_gold_table(athena, args.athena_database, table, args.athena_output_location)
         else:
             rows = load_local_gold_json(args.local_gold_path, table) if args.local_gold_path else []
         save(f"{table}.json", rows)
