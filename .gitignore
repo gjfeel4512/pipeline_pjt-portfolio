@@ -74,3 +74,4 @@ webserver_config.py
 airflow-webserver.pid
 logs/
 response.json
+outputs/bronze_merged/autos_vehicles_2025-10.json
