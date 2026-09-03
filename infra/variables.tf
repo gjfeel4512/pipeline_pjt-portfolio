@@ -75,12 +75,6 @@ variable "daily_collector_schedule_expression" {
   default = "cron(30 */4 * * ? *)"
 }
 
-variable "trending_rank_schedule_expression" {
-  description = "트렌딩 순위 추적 Lambda EventBridge 스케줄 (UTC 기준 cron). 매시 15분마다 실행 - mostPopular=1유닛으로 저비용이라 daily_collector보다 자주 돌려도 부담 없음"
-  type        = string
-  default     = "cron(15 * * * ? *)"
-}
-
 # SNS 알람 설정
 variable "notification_email" {
   description = "파이프라인 알람(SNS)을 받을 이메일. null이면 구독을 생성하지 않음(토픽만 생성)"

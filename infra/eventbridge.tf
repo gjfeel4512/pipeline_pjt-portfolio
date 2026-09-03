@@ -21,27 +21,3 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.daily_collector_schedule.arn
 }
-
-# EventBridge 스케줄: 트렌딩 순위 추적 Lambda를 매시 15분마다 트리거
-# (daily_collector가 매시 30분이라, Silver DAG들끼리 겹치지 않게 15분으로 분리)
-resource "aws_cloudwatch_event_rule" "trending_rank_schedule" {
-  name                = "${local.resource_prefix}-trending-rank-schedule"
-  description         = "트렌딩 순위 추적(chart=mostPopular) Lambda 스케줄"
-  schedule_expression = var.trending_rank_schedule_expression
-
-  tags = local.common_tags
-}
-
-resource "aws_cloudwatch_event_target" "trending_rank_target" {
-  rule      = aws_cloudwatch_event_rule.trending_rank_schedule.name
-  target_id = "${local.resource_prefix}-trending-rank-tracker"
-  arn       = aws_lambda_function.trending_rank_tracker.arn
-}
-
-resource "aws_lambda_permission" "allow_eventbridge_trending_rank" {
-  statement_id  = "AllowExecutionFromEventBridgeTrendingRank"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.trending_rank_tracker.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.trending_rank_schedule.arn
-}
