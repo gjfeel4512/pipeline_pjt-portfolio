@@ -455,6 +455,7 @@ def build_flat_records(video_facts, channel_info):
             "hidden_subscriber_count": ch.get("hidden_subscriber_count"),
             "channel_total_view_count": ch.get("channel_view_count"),
             "channel_total_video_count": ch.get("channel_video_count"),
+            "channel_thumbnail_url": ch.get("channel_thumbnail_url", ""),
             "collected_at_utc": collected_at,
         })
     return records
@@ -618,6 +619,15 @@ def main():
             for c in channel_details:
                 stats = c.get("statistics", {})
                 sn = c.get("snippet", {})
+                # thumbnails는 part=snippet 응답에 이미 포함되어 있던 걸 그동안 버리고
+                # 있었음 - 추가 API 비용 없이 채널 프로필 이미지로 씀
+                ch_thumbs = sn.get("thumbnails", {})
+                ch_thumbnail_url = (
+                    ch_thumbs.get("high", {}).get("url")
+                    or ch_thumbs.get("medium", {}).get("url")
+                    or ch_thumbs.get("default", {}).get("url")
+                    or ""
+                )
                 channel_info_local[c["id"]] = {
                     "title": sn.get("title", ""),
                     "channel_published_at": sn.get("publishedAt", ""),
@@ -625,6 +635,7 @@ def main():
                     "hidden_subscriber_count": stats.get("hiddenSubscriberCount", ""),
                     "channel_view_count": stats.get("viewCount", ""),
                     "channel_video_count": stats.get("videoCount", ""),
+                    "channel_thumbnail_url": ch_thumbnail_url,
                 }
             print(f"    ㄴ 채널 보강 {len(channel_details)}개 저장: {cf}")
         if not ok:

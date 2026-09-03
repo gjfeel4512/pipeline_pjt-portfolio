@@ -315,6 +315,11 @@ def transform_to_silver(record):
             'hidden_subscriber_count': bool(record.get('hidden_subscriber_count', False)),
             'channel_total_view_count': safe_int(record.get('channel_total_view_count')),
             'channel_total_video_count': safe_int(record.get('channel_total_video_count')),
+            # 이 파이프라인(youtube_api_collector.py 1년치 백필)의 Bronze는 아직
+            # uploads_playlist_id/channel_thumbnail_url을 수집하지 않아 현재는 항상
+            # None - 다른 두 Silver DAG와 dim_channel 스키마를 맞추기 위해 필드만 유지
+            'uploads_playlist_id': record.get('uploads_playlist_id') or None,
+            'channel_thumbnail_url': record.get('channel_thumbnail_url') or None,
 
             'collected_at_utc': record.get('collected_at_utc'),
 
