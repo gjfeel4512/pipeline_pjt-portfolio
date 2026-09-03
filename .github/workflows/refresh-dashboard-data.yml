@@ -10,18 +10,27 @@
 #
 # 필요한 저장소 Secrets (Settings -> Secrets and variables -> Actions, 저장소 관리자만
 # 등록 가능 - repo 소유자나 admin 권한이 있는 팀원이 해줘야 함):
-#   AWS_ACCESS_KEY_ID       - 아래 5개 권한이 모두 있어야 함(이 용도 전용 IAM 사용자
+#   AWS_ACCESS_KEY_ID       - 아래 6개 권한이 모두 있어야 함(이 용도 전용 IAM 사용자
 #   AWS_SECRET_ACCESS_KEY     추천, 팀 계정 루트/관리자 자격증명을 그대로 넣지 말 것):
-#                              1) S3 Silver/Gold 버킷: s3:GetObject + s3:ListBucket
-#                              2) S3 프론트엔드 버킷(goldline-dev-frontend-*): s3:PutObject
+#                              1) S3 Silver 버킷: s3:GetObject + s3:ListBucket
+#                              2) S3 Gold 버킷: s3:GetObject + s3:ListBucket (gold_video_rank_trend
+#                                 직접 읽기용) + s3:PutObject (Athena 쿼리 결과 임시 저장,
+#                                 s3://<gold-bucket>/athena-query-results/)
+#                              3) Athena/Glue (Gold 3개 버저닝 테이블 조회용, 2026-09 전환):
+#                                 athena:StartQueryExecution, athena:GetQueryExecution,
+#                                 athena:GetQueryResults, glue:GetTable, glue:GetDatabase,
+#                                 glue:GetPartitions
+#                              4) S3 프론트엔드 버킷(goldline-dev-frontend-*): s3:PutObject
 #                                 + s3:DeleteObject + s3:ListBucket (mock/ 동기화용)
-#                              3) CloudFront 배포(EVDHEA0GFHDS3): cloudfront:CreateInvalidation
-#                              위 2)/3)은 처음엔 없을 수 있음 - 없으면 배포 스텝만 실패하고
+#                              5) CloudFront 배포(EVDHEA0GFHDS3): cloudfront:CreateInvalidation
+#                              위 4)/5)는 처음엔 없을 수 있음 - 없으면 배포 스텝만 실패하고
 #                              (mock 커밋/푸시는 이미 끝난 뒤라) 데이터는 git엔 반영됨.
-# 선택 (기본값이 이미 실제 버킷명/리전/배포ID와 같아서 안 넣어도 되지만, 나중에
+#                              3)이 없으면 "Export S3 Silver/Gold" 스텝 자체가 실패함
+#                              (Gold 데이터가 전부 이걸로 조회되므로 필수).
+# 선택 (기본값이 이미 실제 버킷명/리전/배포ID/DB명과 같아서 안 넣어도 되지만, 나중에
 # 바뀌면 코드 수정 없이 여기서만 바꿀 수 있게 Repository variables로 등록 가능):
-#   AWS_DEFAULT_REGION, AWS_S3_SILVER_BUCKET, AWS_S3_GOLD_BUCKET,
-#   FRONTEND_S3_BUCKET, FRONTEND_CLOUDFRONT_DISTRIBUTION_ID
+#   AWS_DEFAULT_REGION, AWS_S3_SILVER_BUCKET, AWS_S3_GOLD_BUCKET, AWS_ATHENA_DATABASE,
+#   AWS_ATHENA_OUTPUT_LOCATION, FRONTEND_S3_BUCKET, FRONTEND_CLOUDFRONT_DISTRIBUTION_ID
 #
 # 참고: 이 리포지토리가 private이라도 워크플로 자체는 그대로 동작한다(Actions는
 # private 저장소에서도 무료 티어로 쓸 수 있다 - Pages와는 별개 문제).
@@ -64,6 +73,8 @@ jobs:
           AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION || 'us-west-2' }}
           AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET }}
           AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET }}
+          AWS_ATHENA_DATABASE: ${{ vars.AWS_ATHENA_DATABASE }}
+          AWS_ATHENA_OUTPUT_LOCATION: ${{ vars.AWS_ATHENA_OUTPUT_LOCATION }}
         run: python frontend/scripts/export_s3_for_dashboard.py
 
       - name: Build frontend/mock/*.json
