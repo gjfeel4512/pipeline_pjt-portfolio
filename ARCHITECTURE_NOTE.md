@@ -426,3 +426,77 @@ Airflow 스케줄(매시 40분)로 독립적으로 계속 돌고 있었다 — B
   `search_bronze_to_silver`가 실제로 Paused로 표시되는지 한 번 확인하고, 아니라면 UI에서
   수동으로 pause 처리할 것.
 - 다른 로컬 변경과 마찬가지로 아직 git 커밋/푸시되지 않았다.
+
+## `pipeline_orchestrator.tf` vs `refresh_dashboard.tf` 충돌 - Dashboard 갱신은 팀원 구현 유지 (2026-09-03 추가)
+
+`terraform apply` 중 다음 에러가 발생함:
+
+```
+Error: creating Lambda Function (goldline-dev-refresh-dashboard): ResourceConflictException:
+Function already exist: goldline-dev-refresh-dashboard
+  with aws_lambda_function.refresh_dashboard, on refresh_dashboard.tf line 40
+```
+
+### 원인
+
+`infra/refresh_dashboard.tf` + `lambda/refresh_dashboard.py`는 팀원이 이미 별도로 작업해서
+커밋·병합해둔 파일이다(`git log`: 커밋 `e374a89` "대시보드 데이터 갱신을 GitHub Actions에서
+Lambda+EventBridge로 전환" — 원래 `.github/workflows/refresh-dashboard-data.yml`이 하던
+일을 Lambda+EventBridge로 옮긴 것). 이게 이번에 새로 만든 `infra/pipeline_orchestrator.tf`의
+`DashboardRefresh` 단계(`lambda/dashboard_refresh.py`)와 **완전히 같은 일**(Silver/Gold ->
+`frontend/mock/*.json` -> CloudFront 무효화)을 하고 있었다 - 서로 존재를 모르고 병렬로
+같은 문제를 풀어서, `aws_lambda_function` 리소스 이름만 다르고(`refresh_dashboard` vs
+`dashboard_refresh`) 실질적으로 중복이었다. `goldline-dev-refresh-dashboard` Lambda가
+AWS에 이미 존재하는 건 팀원 쪽 Terraform state에서 먼저 apply됐기 때문(이 프로젝트가
+겪어온 "팀 간 state 미공유" 문제의 또 다른 사례 - Glue 테이블 때와 동일한 패턴).
+
+### 결정: `refresh_dashboard.tf` 유지, `pipeline_orchestrator.tf`의 Dashboard 단계 제거
+
+두 구현 중 이미 커밋·병합되어 있던 팀원 것을 유지하기로 했다. `infra/pipeline_orchestrator.tf`에서:
+
+- `data "archive_file" "dashboard_refresh"`, `aws_lambda_function.dashboard_refresh`,
+  `aws_iam_role_policy.dashboard_refresh` 3개 리소스 제거
+- ASL 정의에서 `DashboardRefresh` state 제거 - `GoldCompute`가 이제 상태머신의 마지막 단계(`End: true`)
+- 오케스트레이터 IAM 정책의 `InvokeStageLambdas`에서 `dashboard_refresh` Lambda ARN 제거
+- 알람/스케줄 설명에서 "Dashboard" 언급 제거 (오케스트레이터는 이제 Bronze->Silver->Gold만 책임짐)
+- `lambda/dashboard_refresh.py`는 삭제하지 않고 파일 최상단에 "미사용 - 어떤 Terraform 리소스에서도
+  참조 안 됨" 주석만 추가해서 남겨둠 (참고용)
+
+**중요한 트레이드오프**: `infra/refresh_dashboard.tf`의 스케줄(`cron(5 1,5,9,13,17,21 * * ? *)`,
+Gold의 옛 매시 50분 스케줄 15분 뒤)은 Gold가 실제로 끝났는지 확인하지 않고 시간만 보고 도는
+방식이다. 즉 "브론즈 끝나고 실버 전환, 실버 끝나고 골드 전환 - 앞 단계 안 끝나면 다음 단계
+금지" 요구사항은 **Bronze->Silver->Gold 3단계까지만** `pipeline_orchestrator`가 완전히
+보장하고, 그 뒤의 Dashboard 갱신 단계는 여전히 예전 방식(시간 오프셋)으로 남는다 - 사용자가
+이 트레이드오프를 감수하기로 하고 팀원 구현을 유지하는 쪽을 선택함.
+
+### 지금 `terraform apply` 에러를 해결하려면
+
+`aws_lambda_function.refresh_dashboard`가 AWS에는 이미 있지만 이 로컬 state에는 없어서
+생기는 문제이므로, `terraform import`로 기존 리소스를 로컬 state에 편입시키면 된다
+(Glue 테이블 때와 같은 해법). 먼저 Lambda부터:
+
+```
+cd infra
+terraform import aws_lambda_function.refresh_dashboard goldline-dev-refresh-dashboard
+terraform plan
+```
+
+`plan` 결과를 보고, `refresh_dashboard.tf`에 있는 나머지 리소스(IAM 정책/EventBridge
+규칙·타겟/Lambda 권한/CloudWatch 알람)도 "already exists" 충돌이 나면 — 팀원이 그때
+`apply`까지 끝까지 성공시켰다면 이것들도 이미 AWS에 있을 가능성이 높다 — 아래도 순서대로
+시도할 것(존재하지 않는 리소스를 import하면 그냥 "not found" 에러만 나고 아무 해도
+없으니, 에러 나는 것만 건너뛰고 계속 진행하면 됨):
+
+```
+terraform import aws_iam_role_policy.refresh_dashboard goldline-dev-lambda-role:goldline-dev-refresh-dashboard-policy
+terraform import aws_cloudwatch_event_rule.refresh_dashboard_schedule goldline-dev-refresh-dashboard-schedule
+terraform import aws_cloudwatch_event_target.refresh_dashboard_target goldline-dev-refresh-dashboard-schedule/goldline-dev-refresh-dashboard
+terraform import aws_lambda_permission.allow_eventbridge_refresh_dashboard goldline-dev-refresh-dashboard/AllowExecutionFromEventBridgeRefreshDashboard
+terraform import aws_cloudwatch_metric_alarm.refresh_dashboard_errors goldline-dev-refresh-dashboard-errors
+```
+
+전부 import한 뒤 `terraform plan`을 다시 돌려서 diff가 없거나(팀원 코드와 로컬 코드가
+같으면) 사소한 diff만(팀원이 apply한 뒤 로컬에서 코드를 더 손봤다면) 남는지 확인하고
+`terraform apply`를 마저 진행하면 된다. `pipeline_orchestrator.tf` 쪽(Bronze/Silver/Gold
+오케스트레이터, `dashboard_refresh` 관련 리소스는 이미 뺐음)은 이 충돌과 무관하게 정상
+진행될 것으로 예상됨.

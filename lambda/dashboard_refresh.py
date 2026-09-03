@@ -3,6 +3,15 @@
 """
 lambda/dashboard_refresh.py
 -----------------------------
+[미사용 - 2026-09-03] 이 Lambda는 infra/pipeline_orchestrator.tf에서 네 번째 단계
+(DashboardRefresh)로 배포될 예정이었으나, 팀원이 별도로 이미 커밋·병합해둔
+infra/refresh_dashboard.tf(lambda/refresh_dashboard.py)가 완전히 같은 일을 독립
+EventBridge 스케줄로 하고 있는 게 뒤늦게 발견되어(같은 이름의 Lambda를 서로 다른
+Terraform 리소스로 만들려다 CreateFunction 충돌) 팀 결정으로 그쪽을 유지하기로 함.
+이 파일은 어떤 Terraform 리소스에서도 더 이상 참조되지 않고, AWS에 배포되지도 않는다.
+아래 코드는 참고용으로만 남겨둔다 - 실제로 쓰이는 대시보드 갱신 로직은
+lambda/refresh_dashboard.py를 볼 것.
+-----------------------------
 frontend/scripts/export_athena_for_dashboard.py(Athena -> outputs/silver_gold_export/*.json)
 + frontend/scripts/build_dashboard_data.py(그 json -> frontend/mock/*.json)를 하나로 합쳐
 Lambda 안에서 완결시키는 버전. 두 스크립트는 "로컬 PC에서 파일로 갈아끼우는" 수동 절차를

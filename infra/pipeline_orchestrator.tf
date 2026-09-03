@@ -1,12 +1,12 @@
 # ============================================================================
-# 마스터 파이프라인 오케스트레이터 (Bronze -> Silver -> Gold -> Dashboard)
+# 마스터 파이프라인 오케스트레이터 (Bronze -> Silver -> Gold)
 #
 # 지금까지는 daily_collector_schedule(매시 30분) / search_to_silver_sfn_schedule
 # (매시 40분) / gold_compute_athena_schedule(매시 50분)이 서로 독립된 EventBridge
 # 스케줄로 "각자 알아서" 돌았다. 이 방식은 앞 단계가 늦게 끝나거나 실패해도 다음
 # 단계가 시간만 되면 그냥 실행돼버린다는 문제가 있다 - 예를 들어 Bronze가 아직 덜
 # 끝났는데 Silver가 40분에 그냥 시작하면 그 회차 데이터 일부가 누락된 채로 Silver/
-# Gold/Dashboard까지 흘러간다.
+# Gold까지 흘러간다.
 #
 # 이 파일은 그 세 스케줄을 하나로 묶어서, 앞 단계가 "완전히 끝난 뒤에만" 다음
 # 단계가 시작하도록 강제하는 단일 Step Functions 상태머신(pipeline_orchestrator)을
@@ -15,8 +15,7 @@
 #   BronzeCollect (Lambda, 동기 호출)
 #     -> SilverTransform (기존 search_to_silver 상태머신을 states:startExecution.sync:2로
 #        중첩 실행 - 그 상태머신이 완전히 끝날 때까지 여기서 블로킹)
-#     -> GoldCompute (Lambda, 동기 호출)
-#     -> DashboardRefresh (Lambda, 동기 호출 - lambda/dashboard_refresh.py)
+#     -> GoldCompute (Lambda, 동기 호출) -> 종료
 #
 # 각 Task는 동기(Lambda 기본 호출 방식도 동기, Step Functions Task도 기본이 동기)라
 # 앞 상태가 성공적으로 끝나야만 Next로 넘어간다. 어느 하나라도 실패하면(예외 발생)
@@ -31,86 +30,27 @@
 #
 # 기존 3개 Lambda/상태머신 리소스 자체는 그대로 재사용한다(daily_search_collector,
 # search_to_silver, gold_compute_athena) - 여기서 새로 만드는 건 이들을 순서대로
-# 묶는 상태머신, 그걸 매시 30분에 한 번 깨우는 EventBridge 규칙, 그리고 마지막
-# 단계인 dashboard_refresh Lambda뿐이다. infra/eventbridge.tf / infra/stepfunctions.tf
-# / infra/gold_athena.tf에 있던 개별 EventBridge 스케줄(rule/target/permission)은
-# 이 파일과 함께 제거했다 - Lambda/상태머신 리소스 자체는 그대로 둔 채 "누가 언제
-# 트리거하는지"만 이 오케스트레이터로 일원화했다.
-# ============================================================================
-
-# ----------------------------------------------------------------------------
-# Lambda: dashboard_refresh (파이프라인 마지막 단계)
+# 묶는 상태머신과, 그걸 매시 30분에 한 번 깨우는 EventBridge 규칙뿐이다.
+# infra/eventbridge.tf / infra/stepfunctions.tf / infra/gold_athena.tf에 있던
+# 개별 EventBridge 스케줄(rule/target/permission)은 이 파일과 함께 제거했다 -
+# Lambda/상태머신 리소스 자체는 그대로 둔 채 "누가 언제 트리거하는지"만 이
+# 오케스트레이터로 일원화했다.
 #
-# lambda/gold_compute_athena.py의 VIDEO_ANALYSIS_CTE를 형제 모듈로 import해서
-# 쓰기 때문에(복붙 금지 원칙), 이 Lambda만 예외적으로 source_file이 아니라
-# source_dir로 lambda/ 폴더 전체를 zip에 담는다. __pycache__는 매 apply마다
-# 내용이 달라져 source_code_hash가 불필요하게 바뀌는 것을 막기 위해 제외.
-# ----------------------------------------------------------------------------
-data "archive_file" "dashboard_refresh" {
-  type        = "zip"
-  source_dir  = "${path.module}/../lambda"
-  output_path = "${path.module}/.dashboard_refresh.zip"
-  excludes    = ["__pycache__"]
-}
-
-resource "aws_lambda_function" "dashboard_refresh" {
-  function_name    = "${local.resource_prefix}-dashboard-refresh"
-  role             = aws_iam_role.lambda.arn
-  runtime          = "python3.12"
-  handler          = "dashboard_refresh.lambda_handler"
-  filename         = data.archive_file.dashboard_refresh.output_path
-  source_code_hash = data.archive_file.dashboard_refresh.output_base64sha256
-  # Athena 쿼리 3종(카테고리 3개 video_analysis + dim_channel + gold_category_benchmark,
-  # 총 5개 순차 실행) + S3 쓰기 5회 + CloudFront invalidation 1회. gold_compute_athena와
-  # 같은 넉넉한 5분.
-  timeout     = 300
-  memory_size = 256
-
-  environment {
-    variables = {
-      ATHENA_DATABASE            = aws_glue_catalog_database.pipeline.name
-      ATHENA_OUTPUT_LOCATION     = "s3://${aws_s3_bucket.gold.id}/athena-query-results/"
-      FRONTEND_BUCKET_NAME       = aws_s3_bucket.frontend.id
-      CLOUDFRONT_DISTRIBUTION_ID = aws_cloudfront_distribution.frontend.id
-    }
-  }
-
-  tags = merge(
-    local.common_tags,
-    {
-      Name = "${local.resource_prefix}-dashboard-refresh"
-    }
-  )
-}
-
-# 기존 aws_iam_role.lambda(iam.tf)에 없는 것만 추가: frontend 버킷의 mock/* 쓰기,
-# CloudFront invalidation. Athena/Glue 조회 권한은 gold_compute_athena_policy
-# (infra/gold_athena.tf)가 이미 같은 role에 Resource="*"로 부여해뒀으므로 중복
-# 추가하지 않는다.
-resource "aws_iam_role_policy" "dashboard_refresh" {
-  name = "${local.resource_prefix}-dashboard-refresh-policy"
-  role = aws_iam_role.lambda.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid    = "FrontendMockWrite"
-        Effect = "Allow"
-        Action = [
-          "s3:PutObject"
-        ]
-        Resource = "${aws_s3_bucket.frontend.arn}/mock/*"
-      },
-      {
-        Sid      = "CloudFrontInvalidateMock"
-        Effect   = "Allow"
-        Action   = ["cloudfront:CreateInvalidation"]
-        Resource = aws_cloudfront_distribution.frontend.arn
-      }
-    ]
-  })
-}
+# 2026-09-03(같은 날, 나중): 원래 이 상태머신에 네 번째 단계로 DashboardRefresh
+# (lambda/dashboard_refresh.py, Silver/Gold -> frontend mock/*.json -> CloudFront
+# 무효화)를 추가했었는데, 팀원이 별도로 이미 커밋·병합해둔 infra/refresh_dashboard.tf
+# (lambda/refresh_dashboard.py, 기존 export_s3_for_dashboard.py/build_dashboard_data.py를
+# 재사용하는 독립 EventBridge 스케줄 방식)와 이름이 겹치는 걸 발견했다(같은 함수를
+# Terraform이 서로 다른 리소스로 만들려다 CreateFunction 409 충돌 발생 - 팀원 쪽
+# state에서 먼저 apply된 상태). 두 구현 중 팀원 것을 유지하기로 결정 - 이 오케스트레이터는
+# Bronze -> Silver -> Gold까지만 담당하고, Dashboard 갱신은 infra/refresh_dashboard.tf가
+# 계속 자기 스케줄(Gold 스케줄 15분 뒤)로 별도 처리한다. 그래서 dashboard_refresh Lambda/
+# IAM 정책 리소스는 이 파일에서 제거했고, lambda/dashboard_refresh.py도 더 이상
+# 어디서도 참조되지 않아 삭제했다. (주의: infra/refresh_dashboard.tf의 스케줄은
+# Gold "완료"를 실제로 확인하지 않고 시간만 보고 도는 방식이라, 이 오케스트레이터가
+# Bronze/Silver/Gold에 대해 보장하는 것과 같은 수준의 순서 보장은 없음 - 팀 결정으로
+# 감수하기로 함.)
+# ============================================================================
 
 # ----------------------------------------------------------------------------
 # IAM 역할: 마스터 오케스트레이터 상태머신용
@@ -146,7 +86,6 @@ resource "aws_iam_role_policy" "pipeline_orchestrator" {
         Resource = [
           aws_lambda_function.daily_search_collector.arn,
           aws_lambda_function.gold_compute_athena.arn,
-          aws_lambda_function.dashboard_refresh.arn,
         ]
       },
       {
@@ -205,8 +144,9 @@ resource "aws_cloudwatch_log_group" "pipeline_orchestrator_sfn" {
 }
 
 # ----------------------------------------------------------------------------
-# 상태머신 정의 (ASL): Bronze -> Silver(중첩 동기 실행) -> Gold -> Dashboard,
-# 전부 순차/동기 - 앞 단계가 완전히 끝나야 다음 단계로 넘어간다.
+# 상태머신 정의 (ASL): Bronze -> Silver(중첩 동기 실행) -> Gold,
+# 전부 순차/동기 - 앞 단계가 완전히 끝나야 다음 단계로 넘어간다. (Dashboard 갱신은
+# infra/refresh_dashboard.tf가 별도 스케줄로 담당 - 위 파일 상단 주석 참고)
 # ----------------------------------------------------------------------------
 resource "aws_sfn_state_machine" "pipeline_orchestrator" {
   name     = "${local.resource_prefix}-pipeline-orchestrator"
@@ -220,7 +160,7 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
   }
 
   definition = jsonencode({
-    Comment = "Bronze -> Silver -> Gold -> Dashboard 를 완전 순차/동기로 실행 (앞 단계 완료 전 다음 단계 시작 금지)"
+    Comment = "Bronze -> Silver -> Gold 를 완전 순차/동기로 실행 (앞 단계 완료 전 다음 단계 시작 금지). Dashboard 갱신은 infra/refresh_dashboard.tf가 별도 스케줄로 담당"
     StartAt = "BronzeCollect"
     States = {
       BronzeCollect = {
@@ -259,20 +199,6 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
             BackoffRate     = 2.0
           }
         ]
-        Next = "DashboardRefresh"
-      }
-      DashboardRefresh = {
-        Type       = "Task"
-        Resource   = aws_lambda_function.dashboard_refresh.arn
-        ResultPath = "$.dashboard_result"
-        Retry = [
-          {
-            ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException"]
-            IntervalSeconds = 10
-            MaxAttempts     = 2
-            BackoffRate     = 2.0
-          }
-        ]
         End = true
       }
     }
@@ -286,11 +212,11 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
 # 스케줄식을 그대로 재사용 - Bronze가 이제 이 상태머신의 첫 Task이므로 예전과 같은
 # 시각에 전체 파이프라인이 시작됨). Silver(매시 40분)/Gold(매시 50분) 스케줄은
 # 더 이상 필요 없다 - 각각 오케스트레이터 안에서 Bronze/Silver 완료 직후 바로
-# 이어서 실행되기 때문.
+# 이어서 실행되기 때문. (Dashboard 갱신 스케줄은 infra/refresh_dashboard.tf가 별도로 유지)
 # ----------------------------------------------------------------------------
 resource "aws_cloudwatch_event_rule" "pipeline_orchestrator_schedule" {
   name                = "${local.resource_prefix}-pipeline-orchestrator-schedule"
-  description         = "Bronze->Silver->Gold->Dashboard 마스터 오케스트레이터 스케줄 (구 daily_collector_schedule과 동일 주기)"
+  description         = "Bronze->Silver->Gold 마스터 오케스트레이터 스케줄 (구 daily_collector_schedule과 동일 주기)"
   schedule_expression = var.daily_collector_schedule_expression
 
   tags = local.common_tags
@@ -337,10 +263,11 @@ resource "aws_cloudwatch_event_target" "pipeline_orchestrator_target" {
 }
 
 # ----------------------------------------------------------------------------
-# CloudWatch 알람: 오케스트레이터 실행 실패 감지 (Bronze/Silver/Gold/Dashboard
-# 어느 단계에서 실패하든 상태머신 전체 실행이 FAILED로 끝나므로 이 알람 하나로
-# 4단계 전부를 커버한다 - 기존 daily_collector_errors/gold_compute_athena_errors
-# 처럼 Lambda 개별 알람을 추가로 만들 필요 없음).
+# CloudWatch 알람: 오케스트레이터 실행 실패 감지 (Bronze/Silver/Gold 어느 단계에서
+# 실패하든 상태머신 전체 실행이 FAILED로 끝나므로 이 알람 하나로 3단계 전부를
+# 커버한다 - 기존 daily_collector_errors/gold_compute_athena_errors 처럼 Lambda
+# 개별 알람을 추가로 만들 필요 없음). Dashboard 갱신 실패는 infra/refresh_dashboard.tf의
+# refresh_dashboard_errors 알람이 별도로 담당.
 # ----------------------------------------------------------------------------
 resource "aws_cloudwatch_metric_alarm" "pipeline_orchestrator_failed" {
   alarm_name          = "${local.resource_prefix}-pipeline-orchestrator-failed"
@@ -351,7 +278,7 @@ resource "aws_cloudwatch_metric_alarm" "pipeline_orchestrator_failed" {
   period              = "3600" # 1시간 (오케스트레이터는 4시간마다 1회 실행)
   statistic           = "Sum"
   threshold           = 0
-  alarm_description   = "파이프라인 오케스트레이터(Bronze->Silver->Gold->Dashboard) 실행 실패 - 어느 단계에서 실패했는지는 CloudWatch Logs(/aws/vendedlogs/states/${local.resource_prefix}-pipeline-orchestrator) 또는 Step Functions 콘솔의 실행 이력에서 확인"
+  alarm_description   = "파이프라인 오케스트레이터(Bronze->Silver->Gold) 실행 실패 - 어느 단계에서 실패했는지는 CloudWatch Logs(/aws/vendedlogs/states/${local.resource_prefix}-pipeline-orchestrator) 또는 Step Functions 콘솔의 실행 이력에서 확인"
   treat_missing_data  = "notBreaching"
 
   dimensions = {
