@@ -72,3 +72,8 @@ output "firehose_stream_name" {
 output "glue_database_name" {
   value = aws_glue_catalog_database.pipeline.name
 }
+
+output "search_to_silver_state_machine_arn" {
+  description = "search_bronze_to_silver_dag.py를 대체하는 Step Functions 상태머신 ARN (Airflow와 병렬 운영)"
+  value       = aws_sfn_state_machine.search_to_silver.arn
+}
