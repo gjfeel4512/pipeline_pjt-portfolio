@@ -1,7 +1,7 @@
-# EventBridge 스케줄: 일일 수집 Lambda를 매시 30분마다 트리거
+# EventBridge 스케줄: 증분 수집 Lambda를 4시간마다(매시 30분) 트리거
 resource "aws_cloudwatch_event_rule" "daily_collector_schedule" {
   name                = "${local.resource_prefix}-daily-collector-schedule"
-  description         = "YouTube search.list 기반 일일 수집 Lambda 스케줄"
+  description         = "YouTube search.list 기반 증분 수집 Lambda 스케줄 (체크포인트로 직전 이후 구간만 검색)"
   schedule_expression = var.daily_collector_schedule_expression
 
   tags = local.common_tags

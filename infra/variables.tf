@@ -69,10 +69,10 @@ variable "target_category_ids" {
 }
 
 variable "daily_collector_schedule_expression" {
-  description = "일일 수집 Lambda EventBridge 스케줄 (UTC 기준 cron). 매시 30분마다 실행 (KST 09:30, 10:30, 11:30 ... 매시간 30분). KST는 UTC+9로 '시' 단위 오프셋이라 분(30) 값은 그대로 유지됨"
+  description = "증분 수집 Lambda EventBridge 스케줄 (UTC 기준 cron). 4시간마다 매시 30분에 실행 (UTC 00:30/04:30/.../20:30 = KST 09:30/13:30/.../05:30). Lambda가 체크포인트(searched_until)로 직전 실행 이후 구간만 검색하므로 텀을 좁혀도 쿼터 부담이 작음"
   type        = string
-  # default     = "cron(0 0,8,16 * * ? *)"
-  default = "cron(30 * * * ? *)"
+  # default     = "cron(30 * * * ? *)"       # 매시간
+  default = "cron(30 */4 * * ? *)"
 }
 
 variable "trending_rank_schedule_expression" {

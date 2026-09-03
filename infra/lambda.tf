@@ -16,8 +16,12 @@ resource "aws_lambda_function" "daily_search_collector" {
   handler          = "youtube_api_daily.lambda_handler"
   filename         = data.archive_file.daily_search_collector.output_path
   source_code_hash = data.archive_file.daily_search_collector.output_base64sha256
-  timeout          = 900 # Lambda 최대값(15분) - 남은 시간은 코드가 스스로 체크해 조기 종료
+  timeout          = 900 # Lambda 최대값(15분). 증분 방식이라 보통 수 분 내 종료
   memory_size      = 512
+
+  # 동시 실행 1개로 제한: EventBridge 중복 전달/실행 겹침 시 체크포인트 경합(마지막
+  # 쓰기 승리로 known_videos 일부 유실) 방지. 4시간 텀이라 큐잉될 일도 없음.
+  reserved_concurrent_executions = 1
 
   environment {
     variables = {
@@ -25,8 +29,7 @@ resource "aws_lambda_function" "daily_search_collector" {
       REGION_CODE            = "KR"
       MAX_RESULTS            = "50"
       YOUTUBE_API_KEYS       = join(",", var.youtube_api_keys)
-      TOTAL_DAYS_BACK        = "7"
-      TIME_BUDGET_SAFETY_SEC = "60"
+      INITIAL_LOOKBACK_HOURS = "8" # 체크포인트 없을 때(콜드 스타트)만 사용
     }
   }
 
