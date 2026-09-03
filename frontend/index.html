@@ -27,6 +27,7 @@
   <button class="tab-button" data-target="tab-channels">추천 채널</button>
   <button class="tab-button" data-target="tab-guide">업로드 가이드</button>
   <button class="tab-button" data-target="tab-trend">카테고리 트렌드</button>
+  <button class="tab-button" data-target="tab-reviewers">🔀 리뷰어 후보</button>
   <button class="tab-button" data-target="tab-demo">🧪 심화분석(데모)</button>
 </nav>
 
@@ -35,6 +36,12 @@
   <!-- 홈 -->
   <section id="tab-home" class="tab-panel active">
     <div class="tip-callout" id="home-tip-callout"></div>
+
+    <div class="section-head">
+      <h2 class="section-title">🆕 이번 주 새로 떠오른 영상</h2>
+      <div class="section-sub-inline">최근 7일 이내 업로드 중 반응이 좋은 영상이에요</div>
+    </div>
+    <div class="video-grid" id="new-entries-grid"></div>
 
     <div class="section-head">
       <h2 class="section-title">🔥 요즘 뜨는 영상</h2>
@@ -122,12 +129,34 @@
       <div class="card-footnote" id="topic-trends-footnote"></div>
     </div>
 
+    <div class="card">
+      <div class="card-title">📅 1년치로 재생해봤어요</div>
+      <div class="card-sub">2025.09~2026.09, 1년간의 실제 데이터를 월별로 재생해서 보여드려요.</div>
+      <div class="replay-controls">
+        <button class="replay-play-btn" id="replay-play-btn" type="button">▶ 재생</button>
+        <span class="replay-month-label" id="replay-month-label"></span>
+      </div>
+      <div id="history-replay-chart"></div>
+      <div class="stat-grid" id="history-replay-mover" style="margin-top:16px;"></div>
+      <div class="card-footnote" id="history-replay-footnote"></div>
+    </div>
+
     <div class="insight-card">
       <div class="insight-title">✨ 구독자가 적어도 기회는 있어요</div>
       <div class="insight-body" id="trend-insight-body"></div>
     </div>
 
     <div class="section-note" id="trend-footer-note"></div>
+  </section>
+
+  <!-- 다른 카테고리 리뷰어 후보 (검수 필요) -->
+  <section id="tab-reviewers" class="tab-panel">
+    <div class="section-note" style="margin-bottom:16px;">
+      유튜브가 "인물·블로그"로 자동 분류했지만, 실제로는 영화·자동차·게임 리뷰처럼
+      보이는 채널이에요. 검수 후 반영해주세요.
+    </div>
+    <div id="cross-category-list"></div>
+    <div class="card-footnote" id="cross-category-footnote"></div>
   </section>
 
   <!-- 심화분석(데모) - 합성 데이터로 기법만 시연 -->

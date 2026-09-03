@@ -74,6 +74,18 @@ const Recommend = (() => {
       .slice(0, n);
   }
 
+  // "비교 기준을 절대값 대신 변화율/진입 이벤트로" 요청 대응 - pickTrending과 같은
+  // 중앙값 대비 스코어링 패턴을 그대로 쓰되, 기간을 7일로 좁혀서 "이번 주에 새로
+  // 떠오른" 영상만 추린다. 두 시점을 비교하는 진짜 랭크 변동은 아직 없음(영상별
+  // 다중 스냅샷 미비, 카테고리 트렌드 탭의 "1년 재생" 카드 참고) - 대신 "최근
+  // 게시 + 카테고리 평균 대비 반응 좋음"으로 진입 신호를 근사한다.
+  function pickNewEntries(scoredPool, n = 3, maxDays = 7) {
+    return scoredPool
+      .filter((v) => v.days_since_published <= maxDays)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, n);
+  }
+
   function pickSteady(scoredPool, n = 3) {
     return scoredPool
       .filter((v) => v.days_since_published >= cfg.STEADY_MIN_DAYS)
@@ -200,6 +212,7 @@ const Recommend = (() => {
     fmtAgeRelative,
     scoreVideoPool,
     pickTrending,
+    pickNewEntries,
     pickSteady,
     explainVideo,
     scoreChannelPool,

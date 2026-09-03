@@ -266,6 +266,7 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 }
 .vcard-reason.trending { color: #128a5e; background: color-mix(in srgb, var(--series-3) 12%, transparent); }
 .vcard-reason.steady { color: #1c5aa8; background: color-mix(in srgb, var(--series-1) 10%, transparent); }
+.vcard-reason.new { color: #a3620c; background: color-mix(in srgb, #c77d16 16%, transparent); }
 
 /* --- Channel cards --- */
 .channel-grid {
@@ -384,6 +385,35 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 .stat-delta { font-size: 13px; margin-top: 8px; color: var(--text-muted); }
 .stat-delta.good { color: var(--status-good); }
 .stat-delta.bad { color: var(--status-critical); }
+
+.replay-controls { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.replay-play-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.replay-play-btn:hover { border-color: var(--series-1); }
+.replay-month-label { font-size: 15px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+.xcat-list { display: flex; flex-direction: column; gap: 10px; }
+.xcat-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-1);
+}
+.xcat-row-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.xcat-row-name { font-weight: 700; font-size: 14px; }
+.xcat-row-name a { color: inherit; }
+.xcat-row-name a:hover { color: var(--series-1); }
+.xcat-row-sample { font-size: 12px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.xcat-badge {
+  font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+  color: var(--text-primary);
+}
 
 .insight-card {
   background: linear-gradient(135deg, color-mix(in srgb, var(--series-3) 8%, transparent), color-mix(in srgb, var(--series-1) 6%, transparent));

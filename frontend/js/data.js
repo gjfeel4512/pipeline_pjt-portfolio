@@ -41,6 +41,10 @@ const DataSource = (() => {
     // 심화분석(데모) 탭: 성장곡선 클러스터링 + 판단 시점 회귀 (합성 데이터, 기법 시연용)
     fetchSyntheticDemo: () => load("syntheticDemo"),
     // 카테고리 트렌드 보조: 태그 기반 주제 군집 + 트렌드 (실측 데이터, TF-IDF+KMeans)
-    fetchTopicTrends: () => load("topicTrends")
+    fetchTopicTrends: () => load("topicTrends"),
+    // 카테고리 트렌드 보조: 1년치 실측 백필을 월별로 재생 (실측 데이터, 합성 아님)
+    fetchHistoryReplay: () => load("historyReplay"),
+    // 추천 채널 보조: 다른 카테고리 리뷰어 후보 (검수 필요, 실측 데이터)
+    fetchCrossCategoryReviewers: () => load("crossCategoryReviewers")
   };
 })();

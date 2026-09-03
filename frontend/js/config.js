@@ -48,7 +48,11 @@ window.APP_CONFIG = {
     categoryTrend: "/gold/category-trend",
     metadataImpact: "/analysis/metadata-impact",
     syntheticDemo: "/analysis/synthetic-demo",
-    topicTrends: "/analysis/topic-trends"
+    topicTrends: "/analysis/topic-trends",
+    // 카테고리 트렌드 탭의 "1년 재생" 카드 - 실측 백필 월별 집계 (합성 아님)
+    historyReplay: "/gold/history-replay",
+    // 추천 채널 탭의 "다른 카테고리 리뷰어" 후보 카드
+    crossCategoryReviewers: "/gold/cross-category-reviewers"
   },
 
   // mock 모드에서 사용할 로컬 파일 매핑
@@ -67,7 +71,15 @@ window.APP_CONFIG = {
     syntheticDemo: "mock/synthetic_demo.json",
     // 태그 기반 주제 군집 + 트렌드(예전/최근 나이보정 상대성과 비교) - 실측 Silver
     // 데이터 100% 사용(합성 아님). frontend/scripts/build_topic_trends.py가 생성
-    topicTrends: "mock/topic_trends.json"
+    topicTrends: "mock/topic_trends.json",
+    // 1년치 실측 백필(outputs/silver/silver_{category}_{YYYY-MM}.jsonl)을 월별로
+    // 재생하는 카드용 - 실시간 화면이 밋밋해 보이는 문제 대응. 합성 아님.
+    // frontend/scripts/build_history_replay.py가 생성
+    historyReplay: "mock/history_replay.json",
+    // category_id=22(인물·블로그)로 격리된 rejected 데이터에서 다른 카테고리
+    // 리뷰어로 보이는 채널을 찾아낸 후보 목록(검수 필요, 자동 재분류 아님)
+    // frontend/scripts/build_cross_category_reviewers.py가 생성
+    crossCategoryReviewers: "mock/cross_category_reviewers.json"
   },
 
   // 팀 확정 카테고리 (인물·블로그 제외, 2026-09-01 회의 기준)

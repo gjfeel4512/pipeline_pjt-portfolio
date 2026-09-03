@@ -8,6 +8,8 @@
   const cfg = window.APP_CONFIG;
   let currentCategory = cfg.CATEGORIES[0].key;
   const DATA = {};
+  let replayTimer = null;
+  let replayIdx = 0;
 
   const fmtInt = (n) => Math.round(n).toLocaleString("ko-KR");
   const fmtPct = (n) => (n * 100).toFixed(1) + "%";
@@ -91,18 +93,22 @@
   }
 
   /* ---------------- 홈 ---------------- */
+  // kind별 카드 스타일. "new"(이번 주 신규 진입)는 트렌드 그리드와 다른 색으로
+  // 구분해서 "이건 movers/entry 관점의 다른 리스트다"가 한눈에 보이게 합니다.
+  const VIDEO_CARD_KIND = {
+    trending: { grad: "linear-gradient(135deg, #1baf7a, #12805a)", tag: "🔥 급상승", reasonClass: "trending", viewsLabel: "조회수" },
+    new: { grad: "linear-gradient(135deg, #c77d16, #96590c)", tag: "🆕 신규 진입", reasonClass: "new", viewsLabel: "조회수" },
+    steady: { grad: "linear-gradient(135deg, #2a78d6, #1c5aa8)", tag: "🌱 스테디셀러", reasonClass: "steady", viewsLabel: "누적 조회수" }
+  };
+
   function videoCard(v, kind) {
-    const isTrending = kind === "trending";
-    const grad = isTrending
-      ? "linear-gradient(135deg, #1baf7a, #12805a)"
-      : "linear-gradient(135deg, #2a78d6, #1c5aa8)";
-    const tag = isTrending ? "🔥 급상승" : "🌱 스테디셀러";
-    const reasonClass = isTrending ? "trending" : "steady";
-    // 트렌드/스테디 모두 게시일(상대 표현)과 구독자 수를 함께 보여줍니다.
+    const meta = VIDEO_CARD_KIND[kind] || VIDEO_CARD_KIND.steady;
+    const grad = meta.grad;
+    const tag = meta.tag;
+    const reasonClass = meta.reasonClass;
+    // 트렌드/신규/스테디 모두 게시일(상대 표현)과 구독자 수를 함께 보여줍니다.
     const subLine = `게시 ${Recommend.fmtAgeRelative(v.days_since_published)} · 구독자 ${Recommend.fmtManwon(v.subscriber_count)}`;
-    const statsLine = isTrending
-      ? `<span>조회수 <strong>${Recommend.fmtManwon(v.view_count)}</strong></span><span>좋아요 <strong>${Recommend.fmtManwon(v.like_count)}</strong></span>`
-      : `<span>누적 조회수 <strong>${Recommend.fmtManwon(v.view_count)}</strong></span><span>좋아요 <strong>${Recommend.fmtManwon(v.like_count)}</strong></span>`;
+    const statsLine = `<span>${meta.viewsLabel} <strong>${Recommend.fmtManwon(v.view_count)}</strong></span><span>좋아요 <strong>${Recommend.fmtManwon(v.like_count)}</strong></span>`;
     // 실제 유튜브 썸네일(video_id 기반 공개 CDN)을 배경으로 쓰고, 카테고리 그라디언트는
     // 이미지가 없거나 로드 실패했을 때만 보이는 두 번째 배경 레이어로 둡니다.
     const thumbStyle = `background-image:url('${Recommend.thumbnailUrl(v.video_id)}'), ${grad};`;
@@ -137,6 +143,7 @@
     const catInfo = categoryInfo(currentCategory);
     const pool = DATA.videoPool[currentCategory];
     const scored = Recommend.scoreVideoPool(pool);
+    const newEntries = Recommend.pickNewEntries(scored, 3);
     const trending = Recommend.pickTrending(scored, 3);
     const steady = Recommend.pickSteady(scored, 3);
     const heatCells = DATA.uploadHeatmap[currentCategory].cells;
@@ -156,6 +163,14 @@
 
     const noDataNote = (label) =>
       `<div class="nodata-note">아직 이 카테고리에서 "${label}" 조건에 맞는 영상이 충분하지 않아요 (nodata). 수집이 더 진행되면 채워집니다.</div>`;
+
+    const newEntriesGrid = document.getElementById("new-entries-grid");
+    newEntriesGrid.innerHTML = "";
+    if (newEntries.length) {
+      newEntries.forEach((v) => newEntriesGrid.appendChild(videoCard(v, "new")));
+    } else {
+      newEntriesGrid.innerHTML = noDataNote("이번 주 새로 떠오른 영상");
+    }
 
     const trendingGrid = document.getElementById("trending-grid");
     trendingGrid.innerHTML = "";
@@ -219,6 +234,50 @@
     const grid = document.getElementById("channel-grid");
     grid.innerHTML = "";
     top.forEach((c, i) => grid.appendChild(channelCard(c, i)));
+  }
+
+  // category_id=22 검수 후보 - lambda/youtube_api_daily.py가 "다른 카테고리
+  // 리뷰어 탐지용"으로 같이 수집해두고도 지금까지 아무도 다시 읽지 않던
+  // youtube/silver-rejected/ 데이터를 최소한으로 활용하는 카드입니다. 자동
+  // 재분류/Gold 편입은 하지 않고(검증 없이 편입하면 오히려 품질을 해칠 수 있음)
+  // "검수 후보"로만 보여줍니다. frontend/scripts/build_cross_category_reviewers.py 참고.
+  function renderCrossCategoryReviewers() {
+    const data = DATA.crossCategoryReviewers;
+    const listRoot = document.getElementById("cross-category-list");
+    const footnote = document.getElementById("cross-category-footnote");
+    if (!listRoot) return;
+    if (!data) {
+      listRoot.innerHTML = '<p class="card-footnote">데이터를 불러오지 못했어요 (nodata).</p>';
+      return;
+    }
+    const filtered = data.candidates
+      .filter((c) => c.suggested_category === currentCategory)
+      .slice(0, 10);
+    listRoot.innerHTML = "";
+    if (!filtered.length) {
+      listRoot.innerHTML = '<p class="card-footnote">이 카테고리에서는 아직 발견된 후보가 없어요.</p>';
+    } else {
+      const wrap = document.createElement("div");
+      wrap.className = "xcat-list";
+      const badgeColor = categoryInfo(currentCategory).colorVar || "--series-1";
+      filtered.forEach((c) => {
+        const sample = c.sample_titles[0] || "";
+        const row = document.createElement("div");
+        row.className = "xcat-row";
+        row.innerHTML = `
+          <div class="xcat-row-main">
+            <div class="xcat-row-name"><a href="https://www.youtube.com/channel/${c.channel_id}" target="_blank" rel="noopener">${c.channel_name}</a></div>
+            <div class="xcat-row-sample">${sample}</div>
+          </div>
+          <span class="xcat-badge" style="background:color-mix(in srgb, var(${badgeColor}) 18%, transparent);">${c.matched_video_count}건 감지</span>
+        `;
+        wrap.appendChild(row);
+      });
+      listRoot.appendChild(wrap);
+    }
+    if (footnote) {
+      footnote.textContent = `격리된 데이터 ${data.total_rejected_scanned.toLocaleString("ko-KR")}건 중 키워드로 감지된 후보예요.`;
+    }
   }
 
   /* ---------------- 업로드 가이드 ---------------- */
@@ -328,6 +387,7 @@
 
     renderMetadataImpact();
     renderTopicTrends();
+    renderHistoryReplay();
 
     const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
     document.getElementById("trend-insight-body").textContent =
@@ -421,6 +481,117 @@
       `같은 나이대 또래 대비 상대값으로 비교한 변화율이에요. 표본이 작은 주제는 우연한 변동일 수 있으니 참고만 해주세요.`;
   }
 
+  /* ---------------- 카테고리 트렌드: 1년 재생 ---------------- */
+  // "화면 변화가 밋밋하다"는 피드백 대응 - 실시간 수집은 fact_video_snapshot의
+  // UNIQUE(video_id, collected_date) 제약 때문에 하루 1스냅샷으로 뭉개져서 변화가
+  // 잘 안 보임(별도 스키마 개선 과제). 이미 모아둔 1년치 실측 백필(2025-09~2026-09,
+  // youtube_api_collector.py)을 월별로 재생하면 진짜 변화가 보인다. 카테고리 필터와
+  // 무관하게(currentCategory 미사용) 3개 카테고리를 한번에 비교해서 보여준다.
+  // 합성 데이터 아님 - frontend/scripts/build_history_replay.py 참고.
+  const HISTORY_REPLAY_KEYS = ["gaming", "autos_vehicles", "film_animation"];
+
+  function historyReplayMonths() {
+    const replay = DATA.historyReplay;
+    if (!replay) return [];
+    let longest = null;
+    HISTORY_REPLAY_KEYS.forEach((key) => {
+      const cat = replay[key];
+      if (cat && (!longest || cat.months.length > longest.months.length)) longest = cat;
+    });
+    return longest ? longest.months.map((m) => m.year_month) : [];
+  }
+
+  function renderHistoryReplayFrame() {
+    const replay = DATA.historyReplay;
+    const months = historyReplayMonths();
+    const chartRoot = document.getElementById("history-replay-chart");
+    const label = document.getElementById("replay-month-label");
+    if (!replay || !months.length || !chartRoot) return;
+    const ym = months[replayIdx % months.length];
+    const items = HISTORY_REPLAY_KEYS.map((key) => {
+      const info = categoryInfo(key);
+      const cat = replay[key];
+      const m = cat ? cat.months.find((x) => x.year_month === ym) : null;
+      return {
+        label: (info.label || key) + (m && m.is_partial ? " (집계 중)" : ""),
+        value: m ? m.total_views : 0,
+        colorVar: info.colorVar || "--series-1"
+      };
+    });
+    Charts.renderHBarChart(chartRoot, {
+      items,
+      valueFormatter: Charts.formatCompact,
+      labelWidth: 150
+    });
+    if (label) label.textContent = ym;
+  }
+
+  function stopHistoryReplay() {
+    if (replayTimer) {
+      clearInterval(replayTimer);
+      replayTimer = null;
+    }
+    const btn = document.getElementById("replay-play-btn");
+    if (btn) btn.textContent = "▶ 재생";
+  }
+
+  function toggleHistoryReplay() {
+    const months = historyReplayMonths();
+    if (!months.length) return;
+    const btn = document.getElementById("replay-play-btn");
+    if (replayTimer) {
+      stopHistoryReplay();
+      return;
+    }
+    if (btn) btn.textContent = "⏸ 정지";
+    replayTimer = setInterval(() => {
+      replayIdx = (replayIdx + 1) % months.length;
+      renderHistoryReplayFrame();
+    }, 900);
+  }
+
+  function renderHistoryMoverTiles() {
+    const replay = DATA.historyReplay;
+    const grid = document.getElementById("history-replay-mover");
+    if (!grid) return;
+    grid.innerHTML = "";
+    HISTORY_REPLAY_KEYS.forEach((key) => {
+      const info = categoryInfo(key);
+      const cat = replay ? replay[key] : null;
+      const tile = document.createElement("div");
+      tile.className = "stat-tile";
+      if (!cat || !cat.mover_highlight) {
+        tile.innerHTML = `<div class="stat-label">${info.label || key}</div><div class="stat-value">nodata</div>`;
+        grid.appendChild(tile);
+        return;
+      }
+      const mh = cat.mover_highlight;
+      const up = mh.mom_change_pct >= 0;
+      tile.innerHTML =
+        `<div class="stat-label">${info.label || key} · 가장 크게 움직인 한 달</div>` +
+        `<div class="stat-value">${up ? "+" : ""}${mh.mom_change_pct.toFixed(1)}%</div>` +
+        `<div class="stat-delta ${up ? "good" : "bad"}">${mh.from_month} → ${mh.to_month} 총 조회수 기준</div>`;
+      grid.appendChild(tile);
+    });
+  }
+
+  function renderHistoryReplay() {
+    const replay = DATA.historyReplay;
+    const chartRoot = document.getElementById("history-replay-chart");
+    const footnote = document.getElementById("history-replay-footnote");
+    if (!chartRoot) return;
+    if (!replay) {
+      chartRoot.innerHTML = '<p class="card-footnote">데이터를 불러오지 못했어요 (nodata).</p>';
+      return;
+    }
+    replayIdx = 0;
+    renderHistoryReplayFrame();
+    renderHistoryMoverTiles();
+    if (footnote) {
+      footnote.textContent = "실제 수집된 데이터를 바탕으로 재생한 거예요(합성 데이터 아니에요).";
+    }
+  }
+
   /* ---------------- 심화분석(데모) ---------------- */
   // spec.md 분석 5(성장곡선 유형화) / 분석 6(판단 시점 회귀): 실제로는 한 영상을
   // 여러 시점에 걸쳐 추적해야(적응형 시계열) 가능한데, 2026-09-03 기준 실측 영상의
@@ -511,8 +682,17 @@
     "tab-channels": renderChannels,
     "tab-guide": renderGuide,
     "tab-trend": renderTrend,
+    "tab-reviewers": renderCrossCategoryReviewers,
     "tab-demo": renderDemo
   };
+
+  // 심화분석(데모) 탭은 currentCategory를 아예 안 써서(항상 같은 합성 데이터) 카테고리
+  // 칩을 눌러도 화면이 안 바뀌는 게 당연한데, 칩이 계속 보이면 "왜 안 바뀌지"로
+  // 헷갈릴 수 있어서 이 탭에서만 카테고리 선택 줄을 숨깁니다.
+  function updateCategoryRowVisibility(target) {
+    const row = document.getElementById("category-row");
+    if (row) row.style.display = target === "tab-demo" ? "none" : "";
+  }
 
   function renderActiveTab() {
     const activeBtn = document.querySelector(".tab-button.active");
@@ -529,16 +709,21 @@
         panels.forEach((p) => p.classList.remove("active"));
         btn.classList.add("active");
         document.getElementById(btn.dataset.target).classList.add("active");
+        stopHistoryReplay();
+        updateCategoryRowVisibility(btn.dataset.target);
         renderActiveTab();
       });
     });
+    updateCategoryRowVisibility(document.querySelector(".tab-button.active").dataset.target);
   }
 
   async function init() {
     renderCategoryChips();
     setupTabs();
+    const replayBtn = document.getElementById("replay-play-btn");
+    if (replayBtn) replayBtn.addEventListener("click", toggleHistoryReplay);
     try {
-      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends] = await Promise.all([
+      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends, historyReplay, crossCategoryReviewers] = await Promise.all([
         DataSource.fetchMeta(),
         DataSource.fetchVideoPool(),
         DataSource.fetchChannelPool(),
@@ -546,7 +731,9 @@
         DataSource.fetchCategoryTrend(),
         DataSource.fetchMetadataImpact(),
         DataSource.fetchSyntheticDemo(),
-        DataSource.fetchTopicTrends()
+        DataSource.fetchTopicTrends(),
+        DataSource.fetchHistoryReplay(),
+        DataSource.fetchCrossCategoryReviewers()
       ]);
       DATA.videoPool = videoPool;
       DATA.channelPool = channelPool;
@@ -555,6 +742,8 @@
       DATA.metadataImpact = metadataImpact;
       DATA.syntheticDemo = syntheticDemo;
       DATA.topicTrends = topicTrends;
+      DATA.historyReplay = historyReplay;
+      DATA.crossCategoryReviewers = crossCategoryReviewers;
       setMetaBadge(meta);
       renderActiveTab();
     } catch (err) {
