@@ -6,8 +6,8 @@
 
 - `lambda/youtube_api_daily.py` (search.list 기반, EventBridge `30 * * * ? *`)
   → `s3://.../bronze/search/category={slug}/year=/month=/day=/*.jsonl`
-- `youtube_api_collector.py` (로컬 1년치 백필, search.list 기반)
-  → `outputs/bronze_merged/*.jsonl`
+- `youtube_api_collector.py` (로컬 1년치 백필, search.list 기반) — **일회성 작업, 완료됨(2026-09-03 확인)**
+  → `outputs/bronze_merged/*.jsonl` (54개)
   → `dags/bronze_to_silver_dag_aws.py`의 `push_bronze_to_firehose` 태스크 (파일별 mtime 체크포인트로 신규/변경분만 전송)
   → Kinesis Firehose
   → `s3://.../youtube/bronze/category={slug}/year=/month=/day=/*.gz`
@@ -17,6 +17,15 @@
 - `dags/search_bronze_to_silver_dag.py`, `dags/bronze_to_silver_dag_aws.py` 두 DAG가 각각 위 두 소스를 담당
 - 전부 같은 위치(`s3://.../silver/youtube/silver/category=.../`) 밑에 쓰기 때문에, 파일명 접두사로만 출처가 구분됨
 - `youtube/silver-rejected/...`에는 검증 실패(오염) 레코드가 별도 보관됨
+- `bronze_to_silver_dag_aws.py`는 2026-09-03부터 스케줄 비활성화(`schedule_interval=None`,
+  `is_paused_upon_creation=True`) — 로컬 백필 54개 파일 전부 Firehose 전송(54/54)·Silver 변환(54/54)
+  체크포인트 완료 + S3(`youtube/silver/`, `youtube/silver-rejected/`)에도 실제 존재 확인됨.
+  더 처리할 신규 로컬 파일이 없어 자동 실행을 끄고 수동 트리거 전용으로 전환.
+  (참고: 이 DAG의 `upload_to_s3_task`가 S3 키를 "실행일(오늘)" 기준으로 만들다 보니, 중간에
+  `transforms/backfill_channel_thumbnails.py`가 로컬 파일 mtime을 갱신시켜 전체가 한 번 더
+  재처리된 결과 S3에 같은 데이터가 두 날짜 파티션에 중복 존재함 - `fact_video_snapshot`
+  upsert가 `(video_id, collected_date)` 기준이라 Postgres/Gold에는 영향 없음, S3 저장공간만
+  약간 낭비. 정리는 선택사항.)
 
 ## Gold
 
