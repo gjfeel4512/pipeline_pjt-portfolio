@@ -1,34 +1,33 @@
-# ⚠️ 수집·Silver 경로 두 개 공존 중 (2026-09-01)
+# 데이터 수집 · Silver 변환 경로 (2026-09-03 기준)
 
-지금 이 repo에는 서로 다른 두 가지 수집/Silver 변환 경로가 동시에 존재합니다.
-아직 하나로 합치지 않기로 팀에서 결정했고, **나중에 다시 논의해서 정할 예정**입니다.
-헷갈리지 않도록 여기에 남겨둡니다.
+이전(9/1)에는 서로 다른 두 경로가 공존했지만, 정리되어 지금은 아래 하나의 구조로 통합되어 있습니다.
 
-## 경로 A — Lambda + Airflow (Goldline 팀 기본 설계)
+## 수집 (Bronze)
 
-```
-Lambda(daily_mostpopular_collector) → s3://.../bronze/daily/dt=YYYY-MM-DD/hh=HH/data.json
-    → dags/daily_lambda_to_silver_dag.py → s3://.../silver/youtube/silver/category=.../year=.../
-```
+- `lambda/youtube_api_daily.py` (search.list 기반, EventBridge `30 * * * ? *`)
+  → `s3://.../bronze/search/category={slug}/year=/month=/day=/*.jsonl`
+- `lambda/trending_rank_tracker.py` (`videos.list(chart=mostPopular)` + `channels.list`, EventBridge `15 * * * ? *`)
+  → `s3://.../trending/dt=YYYY-MM-DD/hh=HH/data.json`
+- `youtube_api_collector.py` (로컬 1년치 백필, search.list 기반)
+  → `outputs/bronze_merged/*.jsonl`
+  → `dags/bronze_to_silver_dag_aws.py`의 `push_bronze_to_firehose` 태스크 (파일별 mtime 체크포인트로 신규/변경분만 전송)
+  → Kinesis Firehose
+  → `s3://.../youtube/bronze/category={slug}/year=/month=/day=/*.gz`
 
-- `videos.list(mostPopular)` + `channels.list` 기반, `search.list` 안 씀
-- 수집: EventBridge 스케줄(하루 3회)로 완전 자동
-- 최종 조회: PostgreSQL (`sql/youtube_pipeline_schema_postgresql.sql`)
+## Silver 변환
 
-## 경로 B — search.list + Firehose + Glue/Athena
+- `dags/search_bronze_to_silver_dag.py`, `dags/trending_rank_to_silver_dag.py`, `dags/bronze_to_silver_dag_aws.py` 세 DAG가 각각 위 세 소스를 담당
+- 전부 같은 위치(`s3://.../silver/youtube/silver/category=.../`) 밑에 쓰기 때문에, 파일명 접두사로만 출처가 구분됨
+- `youtube/silver-rejected/...`에는 검증 실패(오염) 레코드가 별도 보관됨
 
-```
-youtube_api_collector.py(search.list 기반) → outputs/bronze_merged/*.jsonl
-    → transforms/push_to_firehose.py 또는 dags/bronze_to_silver_dag_aws.py의
-      push_bronze_to_firehose 태스크 → Kinesis Firehose → s3://.../bronze/youtube/bronze/...
-    → dags/bronze_to_silver_dag_aws.py → s3://.../silver/youtube/silver/...
-```
+## Gold
 
-- Glue Catalog(`bronze_youtube`, `silver_youtube`, `silver_youtube_rejected`)로 Athena 조회 목적
-- ⚠️ 아직 파티션 자동 등록(Glue Crawler / MSCK REPAIR) 미구성 — 지금 상태로는 Athena 조회 시 0건
+- `dags/silver_to_gold_dag.py` → PostgreSQL(`sql/youtube_pipeline_schema_postgresql.sql`, `sql/compute_gold.sql`) 기준으로만 집계 진행 중
+- Glue Catalog / Athena 쪽 Gold 테이블은 아직 없음 (Bronze/Silver는 카탈로그에 있으나 파티션 자동 등록 미구성 상태)
 
-## 알아둘 것
+## 이제는 존재하지 않는 것들 (참고용)
 
-- 두 경로 모두 같은 S3 버킷(`.../silver/youtube/silver/...`) 밑에 쓰기 때문에, 파일명(`silver_daily_*` vs 다른 접두사)으로만 구분됩니다.
-- Gold 레이어(집계·처방 카드)는 **PostgreSQL 기준으로만** 진행 중입니다. Athena 쪽 Gold 테이블은 아직 없습니다.
-- 최종적으로 하나만 남기기로 결정되면, 진 쪽 코드는 삭제하거나 `archive/` 브랜치로 옮기고 이 문서도 지웁니다.
+- `lambda/daily_mostpopular_collector.py`, `dags/daily_lambda_to_silver_dag.py` — mostPopular 기반 구(舊) 경로.
+  `youtube_api_daily.py`(search.list)로 전환하며 삭제(커밋 `6bbe445`), 이후 `trending_rank_tracker.py`가 mostPopular 역할을 별도로 부활시킴
+- `dags/bronze_to_silver_dag.py`(비-aws 버전), `transforms/silver_transform.py`(pandas 기반) — 로컬 전용 초기 버전.
+  `bronze_to_silver_dag_aws.py`로 기능이 흡수되어 삭제(2026-09-03)
