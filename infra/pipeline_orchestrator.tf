@@ -189,7 +189,14 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
         Resource = "arn:aws:states:::states:startExecution.sync:2"
         Parameters = {
           StateMachineArn = aws_sfn_state_machine.search_to_silver.arn
-          "Name.$"        = "States.Format('bronze-to-silver-{}', $$.Execution.Name)"
+          # 2026-09-04: 원래 $$.Execution.Name(부모 오케스트레이터 실행 이름)을 그대로
+          # 붙였는데, EventBridge가 스케줄로 실행을 시작할 때 자동 생성하는 실행 이름이
+          # UUID 두 개를 밑줄로 이어붙인 형태(예: "0de3052f-...-c7eb2ebf63a9_728c2c74-...-
+          # 6fe8f79df8ee", 73자)라서 "bronze-to-silver-" 접두사(17자)를 붙이면 90자가
+          # 되어 Step Functions 실행 이름 제한(80자)을 넘겨 ValidationException이 났다.
+          # 부모/자식 실행 연결은 Step Functions 콘솔이 .sync 호출이면 자동으로 보여주므로
+          # (부모 이름을 자식 이름에 넣지 않아도 추적 가능) 길이가 고정된 UUID로 대체한다.
+          "Name.$" = "States.Format('bronze-to-silver-{}', States.UUID())"
         }
         ResultPath = "$.silver_result"
         Next       = "GoldCompute"
