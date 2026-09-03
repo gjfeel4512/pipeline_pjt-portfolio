@@ -74,10 +74,15 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION || 'us-west-2' }}
-          AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET }}
-          AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET }}
-          AWS_ATHENA_DATABASE: ${{ vars.AWS_ATHENA_DATABASE }}
-          AWS_ATHENA_OUTPUT_LOCATION: ${{ vars.AWS_ATHENA_OUTPUT_LOCATION }}
+          # 2026-09-03: 위 주석은 "기본값이 실제 값과 같아서 Variables 안 등록해도 된다"고
+          # 돼있었는데 실제로는 여기 || 기본값이 없어서, Variables를 등록 안 하면 빈 문자열이
+          # 넘어가 export 스크립트가 "Invalid bucket name """ 에러로 바로 죽었다(실측 확인).
+          # 주석 내용대로 실제 기본값을 여기 채워서 Variables 미등록 상태에서도 동작하게 함 -
+          # 나중에 버킷/DB가 바뀌면 Repository variables로 재정의해서 코드 수정 없이 덮어쓸 수 있음.
+          AWS_S3_SILVER_BUCKET: ${{ vars.AWS_S3_SILVER_BUCKET || 'goldline-dev-silver-827913617635' }}
+          AWS_S3_GOLD_BUCKET: ${{ vars.AWS_S3_GOLD_BUCKET || 'goldline-dev-gold-827913617635' }}
+          AWS_ATHENA_DATABASE: ${{ vars.AWS_ATHENA_DATABASE || 'goldline_dev_db' }}
+          AWS_ATHENA_OUTPUT_LOCATION: ${{ vars.AWS_ATHENA_OUTPUT_LOCATION || 's3://goldline-dev-gold-827913617635/athena-query-results/' }}
         run: python frontend/scripts/export_s3_for_dashboard.py
 
       - name: Build frontend/mock/*.json
