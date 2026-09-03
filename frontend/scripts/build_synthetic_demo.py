@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-spec.md 분석 5(성장 곡선 유형화)/분석 6(성과 판단 시점) 데모용 스크립트.
+"수집은 가능한데 아직 안 쌓여서 못 하는 분석"을 더미(합성) 데이터로 시연하는 스크립트.
+spec.md 분석 5(성장 곡선 유형화)/분석 6(성과 판단 시점) + 채널 성장 속도 + 주간
+재집계 트렌드, 총 4개.
 
-**주의: 이 스크립트는 실제 수집 데이터를 쓰지 않는다.** 두 분석 다 "한 영상을 여러
-시점에 걸쳐 추적한 시계열"이 있어야 되는데, 지금 실제로 수집된 데이터는 96%가
-스냅샷 1개뿐이라(2026-09-03 기준 실측) 통계적으로 의미 있는 결론을 못 낸다.
-그래서 "데이터가 쌓이면 이런 분석을 할 수 있다"는 것만 합성(synthetic) 데이터로
-시연한다 - 프론트엔드에도 "합성 데이터 데모"라고 명확히 표시한다(실제 결론으로
-오인되면 안 됨).
+**주의: 이 스크립트는 실제 수집 데이터를 쓰지 않는다.** 넷 다 "여러 시점에 걸쳐
+추적한 시계열"이 있어야 되는데, 지금은 그 시계열이 쌓일 시간이 아직 안 지났을 뿐
+(파이프라인이 collect할 수 있는 필드/API 호출 자체는 이미 다 있음 - 데이터가
+없어서 못 하는 게 아니라 아직 안 쌓여서 못 하는 것). 그래서 "데이터가 쌓이면 이런
+분석을 할 수 있다"는 것만 합성(synthetic) 데이터로 시연한다 - 프론트엔드에도
+"합성 데이터 데모"라고 명확히 표시한다(실제 결론으로 오인되면 안 됨).
 
 1) 성장 곡선 유형화 (분석 5): 세 가지 원형(급등후급락/완만한롱테일/지연폭발) 곡선에
    노이즈를 섞어 영상 150개(원형당 50개)의 30일치 조회수 곡선을 생성한 뒤, 원형
    라벨을 안 알려주고 K-means(k=3)로 다시 3개 군집을 찾아낸다 - "시계열만 있으면
-   이렇게 유형을 나눌 수 있다"는 기법 시연.
+   이렇게 유형을 나눌 수 있다"는 기법 시연. (필요 데이터: fact_video_stats 다중 스냅샷)
 2) 성과 판단 시점 (분석 6): 카테고리마다 노이즈 크기를 다르게 줘서 T+24h 조회수가
-   T+30d 조회수를 얼마나 잘 예측하는지(R^2) 합성 생성 - spec.md 예시("엔터테인먼트
-   R^2=0.82, 교육 R^2=0.41")와 같은 형태의 결과를 만들어 봄.
+   T+30d 조회수를 얼마나 잘 예측하는지(R^2) 합성 생성. (필요 데이터: 동일)
+3) 채널 성장 속도: dim_channel은 이미 API 호출은 구현돼 있지만 아직 하루치
+   스냅샷만 있어서 "성장 곡선"을 못 그림 - 3가지 성장 유형(꾸준한 성장/초반 급성장
+   후 정체/뒤늦은 성장)의 180일 구독자 추이를 합성해서 시연. (필요 데이터:
+   dim_channel 일 스냅샷 SCD Type 2 누적)
+4) 주간 재집계 트렌드: 지금 "카테고리 트렌드" 탭의 "지난 기간 대비" 배지가
+   nodata인 이유가 바로 이거 - Gold가 이번이 첫 집계라 비교할 지난 주가 없음.
+   10주치 카테고리별 평균 조회수 추이를 합성해서, 매주 재계산이 쌓이면 어떤
+   화면이 되는지 시연. (필요 데이터: Gold 테이블 주 1회 재계산 이력)
 
 실행: repo 루트 어디서든 `python frontend/scripts/build_synthetic_demo.py`
 """
@@ -152,6 +161,105 @@ def build_judgment_timing():
     }
 
 
+# ============================================================
+# 3) 채널 성장 속도 (spec.md 3-3 dim_channel 일 스냅샷 - "왜 필요한가"의 근거를
+#    직접 보여주는 데모: 구독자 수는 지금도 수집하지만 스냅샷이 하루 1개뿐이라
+#    아직 "성장 속도"를 볼 수 없음. 앞으로 dim_channel이 매일 쌓이면 이렇게
+#    구독자 증가 곡선을 유형별로 비교할 수 있다는 것을 시연)
+# ============================================================
+def curve_steady_grower(days, start, end):
+    """꾸준한 성장 - 거의 직선에 가깝게 계속 늘어남"""
+    return start + (end - start) * (days / days[-1])
+
+
+def curve_viral_then_plateau(days, start, end):
+    """초반 급성장 후 정체 - 바이럴 영상 한 번으로 확 늘고 그 뒤론 완만"""
+    t = days / days[-1]
+    return start + (end - start) * (1 - np.exp(-t * 5))
+
+
+def curve_late_bloomer(days, start, end):
+    """뒤늦은 성장 - 초반엔 거의 그대로다가 후반에 갑자기 늘어남"""
+    t = days / days[-1]
+    return start + (end - start) * (1 / (1 + np.exp(-(t - 0.7) * 10)))
+
+
+CHANNEL_ARCHETYPES = [
+    ("steady_grower", "꾸준한 성장형", curve_steady_grower, 8_000, 42_000),
+    ("viral_then_plateau", "초반 급성장 후 정체형", curve_viral_then_plateau, 3_000, 65_000),
+    ("late_bloomer", "뒤늦은 성장형", curve_late_bloomer, 15_000, 30_000),
+]
+CHANNEL_GROWTH_DAYS = np.arange(1, 181)  # 최근 180일
+
+
+def build_channel_growth():
+    channels = []
+    for key, label, fn, start, end in CHANNEL_ARCHETYPES:
+        noise = RNG.normal(0, (end - start) * 0.01, size=len(CHANNEL_GROWTH_DAYS))
+        raw = fn(CHANNEL_GROWTH_DAYS, start, end) + np.cumsum(noise) * 0.05
+        # 구독자 수는 거의 감소하지 않으므로 단조 비감소로 정리
+        monotonic = np.maximum.accumulate(raw)
+        norm = monotonic / monotonic.max()
+        channels.append({
+            "channel_key": key,
+            "label": label,
+            "start_subscribers": int(monotonic[0]),
+            "end_subscribers": int(monotonic[-1]),
+            "curve": [round(float(v), 4) for v in norm],
+        })
+    return {
+        "days": CHANNEL_GROWTH_DAYS.tolist(),
+        "channels": channels,
+        "note": (
+            "spec.md dim_channel 설계상 구독자 수는 '일 1회 스냅샷'으로 매일 쌓아야 하는데, "
+            "아직 하루치(스냅샷 1개)만 있어서 실제로는 이 곡선을 못 그립니다. "
+            "dim_channel이 매일 누적되면 채널마다 성장 패턴(꾸준한 성장/초반 급성장 후 정체/"
+            "뒤늦은 성장)을 이렇게 구분해 볼 수 있다는 것을 곡선 모양으로 시연한 것입니다."
+        ),
+    }
+
+
+# ============================================================
+# 4) 주간 재집계 트렌드 (spec.md fact_hourly_supply/Gold "주 1회 재계산" 및
+#    프론트 "지난 기간 대비" 배지가 지금 nodata인 이유를 직접 보여주는 데모:
+#    Gold 파이프라인이 이번 주에 처음 돌아서 비교할 지난 주 스냅샷이 아직 없음.
+#    매주 쌓이면 이렇게 주간 추이를 볼 수 있다는 것을 시연)
+# ============================================================
+def build_weekly_trend():
+    categories = [
+        ("gaming", "게임", 1400, 0.015),
+        ("autos_vehicles", "자동차·차량", 900, -0.01),
+        ("film_animation", "영화·애니메이션", 1100, 0.005),
+    ]
+    n_weeks = 10
+    weeks = list(range(1, n_weeks + 1))
+    out = []
+    for key, label, base, weekly_drift in categories:
+        series = [base]
+        for _ in range(n_weeks - 1):
+            drift = 1 + weekly_drift + RNG.normal(0, 0.05)
+            series.append(max(1.0, series[-1] * drift))
+        wow_change_pct = round((series[-1] - series[-2]) / series[-2] * 100, 1)
+        norm = np.array(series) / max(series)
+        out.append({
+            "category_key": key,
+            "label": label,
+            "curve": [round(float(v), 4) for v in norm],
+            "latest_avg_views_per_day": round(series[-1], 1),
+            "wow_change_pct": wow_change_pct,
+        })
+    return {
+        "weeks": weeks,
+        "categories": out,
+        "note": (
+            "지금 '카테고리 트렌드' 탭의 '지난 기간 대비' 배지가 nodata인 건 Gold 파이프라인이 "
+            "이번 주에 처음 돌아서 비교할 지난 주 스냅샷이 아직 없기 때문입니다. "
+            "매주 재계산이 쌓이면 이렇게 카테고리별 주간 추이와 전주 대비 증감(%)을 "
+            "볼 수 있게 된다는 것을 시연한 것입니다."
+        ),
+    }
+
+
 def main():
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     out = {
@@ -166,6 +274,8 @@ def main():
         ),
         "growth_curve_clusters": build_growth_curve_clusters(),
         "judgment_timing": build_judgment_timing(),
+        "channel_growth": build_channel_growth(),
+        "weekly_trend": build_weekly_trend(),
     }
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
