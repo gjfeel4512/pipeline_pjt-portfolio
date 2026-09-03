@@ -50,6 +50,20 @@ DAY_LABELS = ["월요일", "화요일", "수요일", "목요일", "금요일", "
 SLOT_LABELS = ["새벽", "오전", "오후", "저녁", "심야"]
 TRENDING_MAX_DAYS = 90
 STEADY_MIN_DAYS = 180
+# build_video_pool()의 트렌드 후보 샘플링용 - views_per_day(조회수÷경과일)만으로
+# 전체를 한 줄 세우면 분모가 작은 최근 1~2일 영상이 구조적으로 상위를 독점해서,
+# 실제로 조회수가 꾸준히 붙고 있는 10~89일차 영상은 후보에 전혀 못 들어가는
+# 문제가 있었다(2026-09-03 진단: gaming 카테고리 트렌드 상위 15개가 전부 1~2일차
+# 영상). "이번 주 새로 뜨는 영상"(pickNewEntries, frontend/js/recommend.js)이
+# 이미 최근 7일 이내 영상에 집중하는 역할을 맡고 있으므로, 여기 트렌드 풀은
+# 최근 편중 없이 0~90일 구간 전체에서 고르게 뽑는다(2026-09-03 결정).
+TRENDING_AGE_BUCKETS = [(0, 7), (8, 30), (31, 60), (61, 90)]
+# 프론트가 각 섹션에 최대 8개(n=8, app.js renderHome())를 채우려 하므로, 구간당
+# 4개씩만 뽑으면(트렌드 점수 하한선까지 거치고 나면) 8개를 못 채우는 경우가 흔했다
+# - 특히 "이번 주" 전용인 0~7일 구간은 그 자체가 상한이라 4개면 무조건 4/8에서
+# 막힌다. 실제 백필 데이터는 구간당 distinct 영상이 최소 몇백 개는 있어서(2026-09-03
+# 확인) 8로 늘려도 데이터가 모자랄 걱정은 없다.
+PICKS_PER_AGE_BUCKET = 8
 KST = datetime.timezone(datetime.timedelta(hours=9))
 
 # vw_video_analysis(Silver)의 duration_bucket/upload_time_bucket 값(영문 코드)을
@@ -267,12 +281,38 @@ def build_heatmap(videos):
     return {"cells": cells}
 
 
+def _top_distinct_videos(candidates, n):
+    """views_per_day 내림차순으로 상위 n개를 고르되, 같은 video_id는 한 번만
+    센다. outputs/silver_gold_export의 fact_video_snapshot export에 동일
+    video_id·동일 값이 그대로 중복된 행이 다수 섞여 있어서(2026-09-03 확인 -
+    gaming 카테고리 기준 distinct 5,243개 중 5,004개가 정확히 2번씩 중복),
+    단순히 [:n]으로 자르면 실제로는 서로 다른 영상이 아니라 같은 영상의
+    중복 행으로 슬롯이 채워지는 경우가 많았다."""
+    ranked = sorted(candidates, key=lambda v: v["views_per_day"], reverse=True)
+    out, seen = [], set()
+    for v in ranked:
+        if v["video_id"] in seen:
+            continue
+        seen.add(v["video_id"])
+        out.append(v)
+        if len(out) >= n:
+            break
+    return out
+
+
 def build_video_pool(videos, avatars):
-    trending = [v for v in videos if v["days_since_published"] <= TRENDING_MAX_DAYS]
-    steady = [v for v in videos if v["days_since_published"] >= STEADY_MIN_DAYS]
-    trending.sort(key=lambda v: v["views_per_day"], reverse=True)
-    steady.sort(key=lambda v: v["views_per_day"], reverse=True)
-    pick = trending[:15] + steady[:15]
+    trending_all = [v for v in videos if v["days_since_published"] <= TRENDING_MAX_DAYS]
+    steady_all = [v for v in videos if v["days_since_published"] >= STEADY_MIN_DAYS]
+
+    # 나이 구간별로 나눠서 각 구간 상위권(views_per_day 기준)을 고르게 섞는다 -
+    # TRENDING_AGE_BUCKETS/PICKS_PER_AGE_BUCKET 정의부 주석 참고.
+    trending = []
+    for lo, hi in TRENDING_AGE_BUCKETS:
+        bucket = [v for v in trending_all if lo <= v["days_since_published"] <= hi]
+        trending.extend(_top_distinct_videos(bucket, PICKS_PER_AGE_BUCKET))
+    steady = _top_distinct_videos(steady_all, 15)
+
+    pick = trending + steady
     seen, out = set(), []
     for v in pick:
         if v["video_id"] in seen:

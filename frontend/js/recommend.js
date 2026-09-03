@@ -67,22 +67,43 @@ const Recommend = (() => {
     }));
   }
 
+  // "이번 주 새로 떠오른 영상"(pickNewEntries)이 게시 <=7일 구간을 전담하므로,
+  // "요즘 뜨는 영상"(pickTrending)은 처음부터 그 구간을 빼고 8일~TRENDING_MAX_DAYS
+  // 일 구간만 본다. 예전에는 트렌드도 <=7일까지 포함해서 최신 영상이 항상 점수를
+  // 휩쓸어가는 바람에 "요즘 뜨는 영상"이 사실상 "며칠 전에 올라온 영상 목록"과
+  // 다를 게 없었다 - 최근영상 편애를 걷어내고, 8일 이상 지난 영상이라도 카테고리
+  // 평균 대비 성과가 좋으면 얼마든지 트렌드에 뜨도록 한다(2026-09-03 결정:
+  // "최근영상 편애 완화 - 최신은 '이번 주' 섹션이 전담"). 백엔드 쪽에서도 같은 날
+  // build_dashboard_data.py의 build_video_pool()을 나이 구간별 샘플링으로 바꿔서
+  // 8~90일 후보 자체가 풀에 고르게 들어오도록 손봤다(views_per_day가 최근 1~2일
+  // 영상을 구조적으로 편애하던 문제).
+  const NEW_ENTRIES_MAX_DAYS = 7;
+
   function pickTrending(scoredPool, n = 3) {
-    return scoredPool
-      .filter((v) => v.days_since_published <= cfg.TRENDING_MAX_DAYS)
+    const eligible = scoredPool.filter(
+      (v) => v.days_since_published > NEW_ENTRIES_MAX_DAYS && v.days_since_published <= cfg.TRENDING_MAX_DAYS
+    );
+    // 점수 하한선(트렌드 후보군 자체의 중앙값) - 그 카테고리에서 "평균 이상"인
+    // 영상만 트렌드로 인정한다(2026-09-03 결정: "트렌드에 점수 하한선 적용").
+    const floor = median(eligible.map((v) => v.score));
+    return eligible
+      .filter((v) => v.score >= floor)
       .sort((a, b) => b.score - a.score)
       .slice(0, n);
   }
 
   // "비교 기준을 절대값 대신 변화율/진입 이벤트로" 요청 대응 - pickTrending과 같은
   // 중앙값 대비 스코어링 패턴을 그대로 쓰되, 기간을 7일로 좁혀서 "이번 주에 새로
-  // 떠오른" 영상만 추린다. 두 시점을 비교하는 진짜 랭크 변동은 아직 없음(영상별
-  // 다중 스냅샷 미비, 카테고리 트렌드 탭의 "1년 재생" 카드 참고) - 대신 "최근
-  // 게시 + 카테고리 평균 대비 반응 좋음"으로 진입 신호를 근사한다.
-  function pickNewEntries(scoredPool, n = 3, maxDays = 7) {
+  // 떠오른" 영상만 추린다. pickTrending이 이미 NEW_ENTRIES_MAX_DAYS(7일) 이하를
+  // 자기 후보군에서 빼므로(위 pickTrending 주석 참고), 두 섹션은 애초에 겹칠 수
+  // 없는 날짜 구간을 나눠 갖는다 - 예전에 있던 excludeIds 파라미터(트렌드에 뽑힌
+  // video_id를 여기서 다시 빼는 방식)는 이제 항상 빈 집합과 같아서 제거했다
+  // (2026-09-03 결정). 정렬 기준은 점수순이 아니라 게시일 최신순으로, "가장
+  // 최근에 올라온 것부터"가 되게 했다(점수는 동률일 때만 tie-break로 씀).
+  function pickNewEntries(scoredPool, n = 3, maxDays = NEW_ENTRIES_MAX_DAYS) {
     return scoredPool
       .filter((v) => v.days_since_published <= maxDays)
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => a.days_since_published - b.days_since_published || b.score - a.score)
       .slice(0, n);
   }
 

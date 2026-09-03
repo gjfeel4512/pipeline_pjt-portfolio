@@ -129,9 +129,9 @@
         <a class="vcard-title" href="${v.url}" target="_blank" rel="noopener">${v.title}</a>
         <div class="vcard-channel">
           <span class="vcard-channel-avatar" style="background:${channelAvatarGrad};">${imgFallbackHtml([v.channel_avatar_url])}${channelInitial}</span>
-          <a href="${v.channelUrl}" target="_blank" rel="noopener">${v.channel_name}</a>
-          <span>· ${subLine}</span>
+          <a class="vcard-channel-name" href="${v.channelUrl}" target="_blank" rel="noopener">${v.channel_name}</a>
         </div>
+        <div class="vcard-meta">${subLine}</div>
         <div class="vcard-stats">${statsLine}</div>
         <div class="vcard-reason ${reasonClass}">${Recommend.explainVideo(v)}</div>
       </div>
@@ -143,9 +143,12 @@
     const catInfo = categoryInfo(currentCategory);
     const pool = DATA.videoPool[currentCategory];
     const scored = Recommend.scoreVideoPool(pool);
-    const newEntries = Recommend.pickNewEntries(scored, 3);
-    const trending = Recommend.pickTrending(scored, 3);
-    const steady = Recommend.pickSteady(scored, 3);
+    // pickTrending은 <=7일을 자기 후보군에서 빼고, pickNewEntries는 <=7일만 보므로
+    // 두 섹션은 날짜 구간이 겹치지 않는다(recommend.js의 pickTrending/pickNewEntries
+    // 주석 참고) - 트렌드에 뽑힌 영상을 여기서 다시 빼는 처리는 필요 없다.
+    const trending = Recommend.pickTrending(scored, 8);
+    const newEntries = Recommend.pickNewEntries(scored, 8);
+    const steady = Recommend.pickSteady(scored, 8);
     const heatCells = DATA.uploadHeatmap[currentCategory].cells;
     const tip = Recommend.uploadTip(heatCells);
 
@@ -717,9 +720,52 @@
     updateCategoryRowVisibility(document.querySelector(".tab-button.active").dataset.target);
   }
 
+
+  // 영상 그리드를 마우스로 좌우 드래그해서 넘겨볼 수 있게. 그리드 컨테이너 자체는
+  // 탭/카테고리를 바꿔도 다시 만들어지지 않고 innerHTML만 갈아끼우므로, 최초 1회만
+  // 바인딩하면 됩니다.
+  function enableDragScroll(el) {
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = false;
+    el.addEventListener("mousedown", (e) => {
+      isDown = true;
+      moved = false;
+      el.classList.add("dragging");
+      startX = e.pageX;
+      startScroll = el.scrollLeft;
+    });
+    const stop = () => {
+      isDown = false;
+      el.classList.remove("dragging");
+    };
+    el.addEventListener("mouseleave", stop);
+    el.addEventListener("mouseup", stop);
+    el.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      el.scrollLeft = startScroll - dx;
+    });
+    // 드래그 중에 카드 링크가 클릭되어 새 탭이 열리는 걸 방지 (약간이라도 움직였으면 클릭 무시)
+    el.addEventListener(
+      "click",
+      (e) => {
+        if (moved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      },
+      true
+    );
+  }
+
   async function init() {
     renderCategoryChips();
     setupTabs();
+    document.querySelectorAll(".video-grid").forEach(enableDragScroll);
     const replayBtn = document.getElementById("replay-play-btn");
     if (replayBtn) replayBtn.addEventListener("click", toggleHistoryReplay);
     try {
