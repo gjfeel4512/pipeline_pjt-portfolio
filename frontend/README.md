@@ -58,7 +58,7 @@ upload_strategy / new_creator_guide)를 그대로 보여주는 **관리자용 �
 오류가 날 수 있습니다. 프로젝트 폴더에서 로컬 서버로 열어주세요.
 
 ```bash
-cd frontend_goldline
+cd frontend
 python -m http.server 8080
 # 브라우저에서 http://localhost:8080 접속
 ```
