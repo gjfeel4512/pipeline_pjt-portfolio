@@ -7,6 +7,8 @@ AIRFLOW_HOME/
 # Output
 outputs/silver/
 outputs/silver_gold_export/
+outputs/bronze_merged/.firehose_pushed_manifest.json
+outputs/bronze_merged/.silver_transformed_manifest.json
 reports/
 logs/airflow/
 *.log
