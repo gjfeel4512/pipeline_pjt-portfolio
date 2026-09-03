@@ -12,10 +12,25 @@ resource "aws_glue_catalog_table" "bronze_youtube" {
   database_name = aws_glue_catalog_database.pipeline.name
   table_type    = "EXTERNAL_TABLE"
 
+  # 파티션 프로젝션: Glue Crawler나 MSCK REPAIR TABLE 없이 Athena가 category/year/month/day
+  # 조합으로 파티션 위치를 계산식으로 알아냄 - 새 파티션(날짜)이 생겨도 등록 작업 불필요.
+  # (2026-09-03: 파티션 미등록으로 Athena가 0건만 반환하던 문제 수정 - ARCHITECTURE_NOTE.md 참고)
   parameters = {
-    EXTERNAL          = "TRUE"
-    "classification"  = "json"
-    "compressionType" = "gzip"
+    EXTERNAL                     = "TRUE"
+    "classification"             = "json"
+    "compressionType"            = "gzip"
+    "projection.enabled"         = "true"
+    "projection.category.type"   = "enum"
+    "projection.category.values" = "film_animation,autos_vehicles,gaming,people_blogs"
+    "projection.year.type"       = "integer"
+    "projection.year.range"      = "2025,2030"
+    "projection.month.type"      = "integer"
+    "projection.month.range"     = "1,12"
+    "projection.month.digits"    = "2"
+    "projection.day.type"        = "integer"
+    "projection.day.range"       = "1,31"
+    "projection.day.digits"      = "2"
+    "storage.location.template"  = "s3://${aws_s3_bucket.bronze.id}/youtube/bronze/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
 
   storage_descriptor {
@@ -27,98 +42,98 @@ resource "aws_glue_catalog_table" "bronze_youtube" {
       serialization_library = "org.openx.data.jsonserde.JsonSerDe"
     }
 
-      columns {
-        name = "category_name"
-        type = "string"
-      }
-      columns {
-        name = "category_id"
-        type = "string"
-      }
-      columns {
-        name = "video_id"
-        type = "string"
-      }
-      columns {
-        name = "title"
-        type = "string"
-      }
-      columns {
-        name = "description"
-        type = "string"
-      }
-      columns {
-        name = "published_at"
-        type = "string"
-      }
-      columns {
-        name = "tags"
-        type = "array<string>"
-      }
-      columns {
-        name = "live_broadcast_content"
-        type = "string"
-      }
-      columns {
-        name = "view_count"
-        type = "string"
-      }
-      columns {
-        name = "like_count"
-        type = "string"
-      }
-      columns {
-        name = "comment_count"
-        type = "string"
-      }
-      columns {
-        name = "duration"
-        type = "string"
-      }
-      columns {
-        name = "definition"
-        type = "string"
-      }
-      columns {
-        name = "caption"
-        type = "string"
-      }
-      columns {
-        name = "privacy_status"
-        type = "string"
-      }
-      columns {
-        name = "channel_id"
-        type = "string"
-      }
-      columns {
-        name = "channel_name"
-        type = "string"
-      }
-      columns {
-        name = "channel_published_at"
-        type = "string"
-      }
-      columns {
-        name = "subscriber_count"
-        type = "string"
-      }
-      columns {
-        name = "hidden_subscriber_count"
-        type = "boolean"
-      }
-      columns {
-        name = "channel_total_view_count"
-        type = "string"
-      }
-      columns {
-        name = "channel_total_video_count"
-        type = "string"
-      }
-      columns {
-        name = "collected_at_utc"
-        type = "string"
-      }
+    columns {
+      name = "category_name"
+      type = "string"
+    }
+    columns {
+      name = "category_id"
+      type = "string"
+    }
+    columns {
+      name = "video_id"
+      type = "string"
+    }
+    columns {
+      name = "title"
+      type = "string"
+    }
+    columns {
+      name = "description"
+      type = "string"
+    }
+    columns {
+      name = "published_at"
+      type = "string"
+    }
+    columns {
+      name = "tags"
+      type = "array<string>"
+    }
+    columns {
+      name = "live_broadcast_content"
+      type = "string"
+    }
+    columns {
+      name = "view_count"
+      type = "string"
+    }
+    columns {
+      name = "like_count"
+      type = "string"
+    }
+    columns {
+      name = "comment_count"
+      type = "string"
+    }
+    columns {
+      name = "duration"
+      type = "string"
+    }
+    columns {
+      name = "definition"
+      type = "string"
+    }
+    columns {
+      name = "caption"
+      type = "string"
+    }
+    columns {
+      name = "privacy_status"
+      type = "string"
+    }
+    columns {
+      name = "channel_id"
+      type = "string"
+    }
+    columns {
+      name = "channel_name"
+      type = "string"
+    }
+    columns {
+      name = "channel_published_at"
+      type = "string"
+    }
+    columns {
+      name = "subscriber_count"
+      type = "string"
+    }
+    columns {
+      name = "hidden_subscriber_count"
+      type = "boolean"
+    }
+    columns {
+      name = "channel_total_view_count"
+      type = "string"
+    }
+    columns {
+      name = "channel_total_video_count"
+      type = "string"
+    }
+    columns {
+      name = "collected_at_utc"
+      type = "string"
+    }
   }
 
   partition_keys {
@@ -148,9 +163,22 @@ resource "aws_glue_catalog_table" "silver_youtube" {
   database_name = aws_glue_catalog_database.pipeline.name
   table_type    = "EXTERNAL_TABLE"
 
+  # 파티션 프로젝션(bronze_youtube 상단 주석 참고)
   parameters = {
-    EXTERNAL         = "TRUE"
-    "classification" = "json"
+    EXTERNAL                     = "TRUE"
+    "classification"             = "json"
+    "projection.enabled"         = "true"
+    "projection.category.type"   = "enum"
+    "projection.category.values" = "film_animation,autos_vehicles,gaming,people_blogs"
+    "projection.year.type"       = "integer"
+    "projection.year.range"      = "2025,2030"
+    "projection.month.type"      = "integer"
+    "projection.month.range"     = "1,12"
+    "projection.month.digits"    = "2"
+    "projection.day.type"        = "integer"
+    "projection.day.range"       = "1,31"
+    "projection.day.digits"      = "2"
+    "storage.location.template"  = "s3://${aws_s3_bucket.silver.id}/youtube/silver/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
 
   storage_descriptor {
@@ -162,142 +190,142 @@ resource "aws_glue_catalog_table" "silver_youtube" {
       serialization_library = "org.openx.data.jsonserde.JsonSerDe"
     }
 
-      columns {
-        name = "video_id"
-        type = "string"
-      }
-      columns {
-        name = "title"
-        type = "string"
-      }
-      columns {
-        name = "description"
-        type = "string"
-      }
-      columns {
-        name = "channel_id"
-        type = "string"
-      }
-      columns {
-        name = "channel_name"
-        type = "string"
-      }
-      columns {
-        name = "category_id"
-        type = "int"
-      }
-      columns {
-        name = "category_name"
-        type = "string"
-      }
-      columns {
-        name = "category_slug"
-        type = "string"
-      }
-      columns {
-        name = "trending_rank"
-        type = "int"
-      }
-      columns {
-        name = "tags"
-        type = "array<string>"
-      }
-      columns {
-        name = "view_count"
-        type = "bigint"
-      }
-      columns {
-        name = "like_count"
-        type = "bigint"
-      }
-      columns {
-        name = "comment_count"
-        type = "bigint"
-      }
-      columns {
-        name = "engagement_rate"
-        type = "double"
-      }
-      columns {
-        name = "duration_iso8601"
-        type = "string"
-      }
-      columns {
-        name = "duration_seconds"
-        type = "int"
-      }
-      columns {
-        name = "video_type"
-        type = "string"
-      }
-      columns {
-        name = "definition"
-        type = "string"
-      }
-      columns {
-        name = "is_hd"
-        type = "boolean"
-      }
-      columns {
-        name = "caption_available"
-        type = "boolean"
-      }
-      columns {
-        name = "privacy_status"
-        type = "string"
-      }
-      columns {
-        name = "live_broadcast_content"
-        type = "string"
-      }
-      columns {
-        name = "is_live_content"
-        type = "boolean"
-      }
-      columns {
-        name = "published_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "published_at_kst"
-        type = "string"
-      }
-      columns {
-        name = "published_year_month"
-        type = "string"
-      }
-      columns {
-        name = "channel_published_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "subscriber_count"
-        type = "bigint"
-      }
-      columns {
-        name = "hidden_subscriber_count"
-        type = "boolean"
-      }
-      columns {
-        name = "channel_total_view_count"
-        type = "bigint"
-      }
-      columns {
-        name = "channel_total_video_count"
-        type = "bigint"
-      }
-      columns {
-        name = "collected_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "is_valid"
-        type = "boolean"
-      }
-      columns {
-        name = "silver_transformed_at_utc"
-        type = "string"
-      }
+    columns {
+      name = "video_id"
+      type = "string"
+    }
+    columns {
+      name = "title"
+      type = "string"
+    }
+    columns {
+      name = "description"
+      type = "string"
+    }
+    columns {
+      name = "channel_id"
+      type = "string"
+    }
+    columns {
+      name = "channel_name"
+      type = "string"
+    }
+    columns {
+      name = "category_id"
+      type = "int"
+    }
+    columns {
+      name = "category_name"
+      type = "string"
+    }
+    columns {
+      name = "category_slug"
+      type = "string"
+    }
+    columns {
+      name = "trending_rank"
+      type = "int"
+    }
+    columns {
+      name = "tags"
+      type = "array<string>"
+    }
+    columns {
+      name = "view_count"
+      type = "bigint"
+    }
+    columns {
+      name = "like_count"
+      type = "bigint"
+    }
+    columns {
+      name = "comment_count"
+      type = "bigint"
+    }
+    columns {
+      name = "engagement_rate"
+      type = "double"
+    }
+    columns {
+      name = "duration_iso8601"
+      type = "string"
+    }
+    columns {
+      name = "duration_seconds"
+      type = "int"
+    }
+    columns {
+      name = "video_type"
+      type = "string"
+    }
+    columns {
+      name = "definition"
+      type = "string"
+    }
+    columns {
+      name = "is_hd"
+      type = "boolean"
+    }
+    columns {
+      name = "caption_available"
+      type = "boolean"
+    }
+    columns {
+      name = "privacy_status"
+      type = "string"
+    }
+    columns {
+      name = "live_broadcast_content"
+      type = "string"
+    }
+    columns {
+      name = "is_live_content"
+      type = "boolean"
+    }
+    columns {
+      name = "published_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "published_at_kst"
+      type = "string"
+    }
+    columns {
+      name = "published_year_month"
+      type = "string"
+    }
+    columns {
+      name = "channel_published_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "subscriber_count"
+      type = "bigint"
+    }
+    columns {
+      name = "hidden_subscriber_count"
+      type = "boolean"
+    }
+    columns {
+      name = "channel_total_view_count"
+      type = "bigint"
+    }
+    columns {
+      name = "channel_total_video_count"
+      type = "bigint"
+    }
+    columns {
+      name = "collected_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "is_valid"
+      type = "boolean"
+    }
+    columns {
+      name = "silver_transformed_at_utc"
+      type = "string"
+    }
   }
 
   partition_keys {
@@ -327,9 +355,22 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
   database_name = aws_glue_catalog_database.pipeline.name
   table_type    = "EXTERNAL_TABLE"
 
+  # 파티션 프로젝션(bronze_youtube 상단 주석 참고)
   parameters = {
-    EXTERNAL         = "TRUE"
-    "classification" = "json"
+    EXTERNAL                     = "TRUE"
+    "classification"             = "json"
+    "projection.enabled"         = "true"
+    "projection.category.type"   = "enum"
+    "projection.category.values" = "film_animation,autos_vehicles,gaming,people_blogs"
+    "projection.year.type"       = "integer"
+    "projection.year.range"      = "2025,2030"
+    "projection.month.type"      = "integer"
+    "projection.month.range"     = "1,12"
+    "projection.month.digits"    = "2"
+    "projection.day.type"        = "integer"
+    "projection.day.range"       = "1,31"
+    "projection.day.digits"      = "2"
+    "storage.location.template"  = "s3://${aws_s3_bucket.silver.id}/youtube/silver-rejected/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
 
   storage_descriptor {
@@ -341,142 +382,142 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
       serialization_library = "org.openx.data.jsonserde.JsonSerDe"
     }
 
-      columns {
-        name = "video_id"
-        type = "string"
-      }
-      columns {
-        name = "title"
-        type = "string"
-      }
-      columns {
-        name = "description"
-        type = "string"
-      }
-      columns {
-        name = "channel_id"
-        type = "string"
-      }
-      columns {
-        name = "channel_name"
-        type = "string"
-      }
-      columns {
-        name = "category_id"
-        type = "int"
-      }
-      columns {
-        name = "category_name"
-        type = "string"
-      }
-      columns {
-        name = "category_slug"
-        type = "string"
-      }
-      columns {
-        name = "trending_rank"
-        type = "int"
-      }
-      columns {
-        name = "tags"
-        type = "array<string>"
-      }
-      columns {
-        name = "view_count"
-        type = "bigint"
-      }
-      columns {
-        name = "like_count"
-        type = "bigint"
-      }
-      columns {
-        name = "comment_count"
-        type = "bigint"
-      }
-      columns {
-        name = "engagement_rate"
-        type = "double"
-      }
-      columns {
-        name = "duration_iso8601"
-        type = "string"
-      }
-      columns {
-        name = "duration_seconds"
-        type = "int"
-      }
-      columns {
-        name = "video_type"
-        type = "string"
-      }
-      columns {
-        name = "definition"
-        type = "string"
-      }
-      columns {
-        name = "is_hd"
-        type = "boolean"
-      }
-      columns {
-        name = "caption_available"
-        type = "boolean"
-      }
-      columns {
-        name = "privacy_status"
-        type = "string"
-      }
-      columns {
-        name = "live_broadcast_content"
-        type = "string"
-      }
-      columns {
-        name = "is_live_content"
-        type = "boolean"
-      }
-      columns {
-        name = "published_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "published_at_kst"
-        type = "string"
-      }
-      columns {
-        name = "published_year_month"
-        type = "string"
-      }
-      columns {
-        name = "channel_published_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "subscriber_count"
-        type = "bigint"
-      }
-      columns {
-        name = "hidden_subscriber_count"
-        type = "boolean"
-      }
-      columns {
-        name = "channel_total_view_count"
-        type = "bigint"
-      }
-      columns {
-        name = "channel_total_video_count"
-        type = "bigint"
-      }
-      columns {
-        name = "collected_at_utc"
-        type = "string"
-      }
-      columns {
-        name = "is_valid"
-        type = "boolean"
-      }
-      columns {
-        name = "silver_transformed_at_utc"
-        type = "string"
-      }
+    columns {
+      name = "video_id"
+      type = "string"
+    }
+    columns {
+      name = "title"
+      type = "string"
+    }
+    columns {
+      name = "description"
+      type = "string"
+    }
+    columns {
+      name = "channel_id"
+      type = "string"
+    }
+    columns {
+      name = "channel_name"
+      type = "string"
+    }
+    columns {
+      name = "category_id"
+      type = "int"
+    }
+    columns {
+      name = "category_name"
+      type = "string"
+    }
+    columns {
+      name = "category_slug"
+      type = "string"
+    }
+    columns {
+      name = "trending_rank"
+      type = "int"
+    }
+    columns {
+      name = "tags"
+      type = "array<string>"
+    }
+    columns {
+      name = "view_count"
+      type = "bigint"
+    }
+    columns {
+      name = "like_count"
+      type = "bigint"
+    }
+    columns {
+      name = "comment_count"
+      type = "bigint"
+    }
+    columns {
+      name = "engagement_rate"
+      type = "double"
+    }
+    columns {
+      name = "duration_iso8601"
+      type = "string"
+    }
+    columns {
+      name = "duration_seconds"
+      type = "int"
+    }
+    columns {
+      name = "video_type"
+      type = "string"
+    }
+    columns {
+      name = "definition"
+      type = "string"
+    }
+    columns {
+      name = "is_hd"
+      type = "boolean"
+    }
+    columns {
+      name = "caption_available"
+      type = "boolean"
+    }
+    columns {
+      name = "privacy_status"
+      type = "string"
+    }
+    columns {
+      name = "live_broadcast_content"
+      type = "string"
+    }
+    columns {
+      name = "is_live_content"
+      type = "boolean"
+    }
+    columns {
+      name = "published_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "published_at_kst"
+      type = "string"
+    }
+    columns {
+      name = "published_year_month"
+      type = "string"
+    }
+    columns {
+      name = "channel_published_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "subscriber_count"
+      type = "bigint"
+    }
+    columns {
+      name = "hidden_subscriber_count"
+      type = "boolean"
+    }
+    columns {
+      name = "channel_total_view_count"
+      type = "bigint"
+    }
+    columns {
+      name = "channel_total_video_count"
+      type = "bigint"
+    }
+    columns {
+      name = "collected_at_utc"
+      type = "string"
+    }
+    columns {
+      name = "is_valid"
+      type = "boolean"
+    }
+    columns {
+      name = "silver_transformed_at_utc"
+      type = "string"
+    }
   }
 
   partition_keys {
