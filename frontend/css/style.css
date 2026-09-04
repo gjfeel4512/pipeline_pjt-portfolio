@@ -23,6 +23,15 @@
   --status-warning: #fab219;
   --status-serious: #ec835a;
   --status-critical: #d03b3b;
+
+  /* 옅은 색상 배경(tint) 위에 얹는 텍스트 전용 토큰 - 다크모드에서 배경이
+     어두워져도 대비가 유지되도록 라이트/다크 값을 따로 정의한다
+     (2026-09-04, 다크모드에서 팁/추천 텍스트가 배경과 겹쳐 안 보이던 문제 수정) */
+  --tint-green-text: #128a5e;
+  --tint-blue-text: #1c5aa8;
+  --tint-orange-text: #a3620c;
+  --tint-amber-text: #8a5b00;
+  --tint-amber-text-soft: #5c3f00;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +55,12 @@
     --status-warning: #fbbf24;
     --status-serious: #f0975f;
     --status-critical: #f16d6d;
+
+    --tint-green-text: #5fd9a4;
+    --tint-blue-text: #8ab4f5;
+    --tint-orange-text: #e8a659;
+    --tint-amber-text: #f5c542;
+    --tint-amber-text-soft: #d9b26b;
   }
 }
 
@@ -132,7 +147,7 @@ header.app-header {
 .category-chip:hover { color: var(--text-primary); }
 .category-chip.active {
   background: color-mix(in srgb, var(--series-3) 14%, transparent);
-  color: #128a5e;
+  color: var(--tint-green-text);
   border-color: color-mix(in srgb, var(--series-3) 45%, transparent);
 }
 
@@ -197,6 +212,10 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 /* 카테고리 트렌드 탭: grid 없이 세로로 쌓이는 .card(제목길이/태그/자막, 태그 자동 분류,
    1년치 재생)들 사이 간격 - .advice-card/.insight-card와 같은 20px 기준으로 맞춤 */
 #tab-trend > .card { margin-top: 20px; }
+/* 심화분석(데모) 탭도 마찬가지로 .card가 세로로 쌓이는데 간격 규칙이 없었음
+   (2026-09-04) - #tab-trend와 동일하게 20px로 통일. 첫 카드 위 .section-note의
+   margin-bottom(16px)과는 마진 상쇄(collapsing)로 자연스럽게 20px만 적용됨. */
+#tab-demo > .card { margin-top: 20px; }
 @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
 /* --- Weekly tip callout (홈) --- */
@@ -296,9 +315,9 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 .vcard-reason {
   font-size: 12px; border-radius: 8px; padding: 8px 10px; line-height: 1.5;
 }
-.vcard-reason.trending { color: #128a5e; background: color-mix(in srgb, var(--series-3) 12%, transparent); }
-.vcard-reason.steady { color: #1c5aa8; background: color-mix(in srgb, var(--series-1) 10%, transparent); }
-.vcard-reason.new { color: #a3620c; background: color-mix(in srgb, #c77d16 16%, transparent); }
+.vcard-reason.trending { color: var(--tint-green-text); background: color-mix(in srgb, var(--series-3) 12%, transparent); }
+.vcard-reason.steady { color: var(--tint-blue-text); background: color-mix(in srgb, var(--series-1) 10%, transparent); }
+.vcard-reason.new { color: var(--tint-orange-text); background: color-mix(in srgb, #c77d16 16%, transparent); }
 
 /* --- Channel cards --- */
 .channel-grid {
@@ -351,7 +370,7 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
   width: 100%; height: 100%; object-fit: cover;
 }
 .chcard-highlight {
-  font-size: 13px; font-weight: 700; color: #128a5e;
+  font-size: 13px; font-weight: 700; color: var(--tint-green-text);
   background: color-mix(in srgb, var(--series-3) 12%, transparent);
   border-radius: 9px; padding: 10px 12px;
 }
@@ -403,8 +422,8 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
   border: 1px solid color-mix(in srgb, var(--status-warning) 40%, transparent);
   border-radius: 16px; padding: 20px 22px;
 }
-.tip-card-title { font-size: 13px; font-weight: 700; color: #8a5b00; margin-bottom: 8px; }
-.tip-card-body { font-size: 13px; color: #5c3f00; line-height: 1.7; }
+.tip-card-title { font-size: 13px; font-weight: 700; color: var(--tint-amber-text); margin-bottom: 8px; }
+.tip-card-body { font-size: 13px; color: var(--tint-amber-text-soft); line-height: 1.7; }
 
 /* --- Category trend --- */
 .stat-grid {

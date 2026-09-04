@@ -76,8 +76,22 @@ const Charts = (() => {
 
   function positionTooltip(root, tip, evt) {
     const rootRect = root.getBoundingClientRect();
-    const x = evt.clientX - rootRect.left + 14;
-    const y = evt.clientY - rootRect.top + 14;
+    const tipRect = tip.getBoundingClientRect();
+    const offset = 14;
+
+    // 기본은 커서 오른쪽 아래. 화면(뷰포트) 밖으로 나가면 반대쪽으로 붙인다.
+    let x = evt.clientX - rootRect.left + offset;
+    if (evt.clientX + offset + tipRect.width > window.innerWidth) {
+      x = evt.clientX - rootRect.left - offset - tipRect.width;
+    }
+    if (x < 0) x = 0;
+
+    let y = evt.clientY - rootRect.top + offset;
+    if (evt.clientY + offset + tipRect.height > window.innerHeight) {
+      y = evt.clientY - rootRect.top - offset - tipRect.height;
+    }
+    if (y < 0) y = 0;
+
     tip.style.left = x + "px";
     tip.style.top = y + "px";
   }
