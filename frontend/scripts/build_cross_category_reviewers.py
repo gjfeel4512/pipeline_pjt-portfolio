@@ -22,19 +22,35 @@ outputs/silver/rejected/rejected_people_blogs_*.jsonl을 제목/태그 키워드
 한다 - 우연히 단어 하나 겹친 걸로 확정하지 않는다는, 이 리포에서 이미 쓰고 있는
 "지어내지 않는다" 원칙과 동일하게 맞춘 것.
 
+2026-09-04: lambda/reviewer_candidates_apply.py가 (사람이 Step Functions
+reviewer_candidate_review 상태머신으로 검토를 마친 뒤) S3에 남기는
+review/reviewed_channels.json을 읽어서, 이미 승인/거부로 결정된 채널은 원본 reject
+데이터를 지우지 않은 채로 이 스크립트의 출력(=대시보드 "리뷰어 후보" 탭)에서만
+제외한다. --gold-bucket을 안 주면(또는 S3 접근이 안 되면) 이 필터링은 그냥
+건너뛴다 - AWS 자격증명 없이도 로컬 전용으로 계속 쓸 수 있어야 하므로 실패로 죽지
+않는다.
+
 출력: frontend/mock/cross_category_reviewers.json
-실행: repo 루트 어디서든 `python frontend/scripts/build_cross_category_reviewers.py`
+실행:
+  python frontend/scripts/build_cross_category_reviewers.py --gold-bucket <GOLD_BUCKET_NAME>
+  (--gold-bucket을 생략하면 이미 검토한 채널 필터링 없이 예전과 동일하게 동작)
 """
+import argparse
 import glob
 import json
 import os
 from collections import defaultdict
+
+import boto3
+from botocore.exceptions import ClientError, NoCredentialsError
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT = os.path.dirname(FRONTEND_DIR)
 SILVER_DIR = f"{ROOT}/outputs/silver"
 OUT_PATH = f"{FRONTEND_DIR}/mock/cross_category_reviewers.json"
+# lambda/reviewer_candidates_apply.py가 쓰는 것과 동일한 키 - 이미 검토된 채널 목록.
+REVIEWED_KEY = "review/reviewed_channels.json"
 
 CATEGORY_LABELS = {"film_animation": "영화·애니메이션", "autos_vehicles": "자동차·차량", "gaming": "게임"}
 
@@ -72,9 +88,35 @@ def classify(text):
     return winners[0], best
 
 
+def load_reviewed_channel_ids(gold_bucket):
+    """이미 승인/거부로 결정된 channel_id 집합. gold_bucket이 없거나 S3에 접근할 수
+    없으면(자격증명 없음 등) 필터링 없이 빈 집합을 돌려주고 경고만 출력한다 - 이
+    스크립트는 AWS 없이도 계속 동작해야 한다."""
+    if not gold_bucket:
+        return set()
+    try:
+        s3 = boto3.client("s3")
+        body = s3.get_object(Bucket=gold_bucket, Key=REVIEWED_KEY)["Body"].read()
+        return {r["channel_id"] for r in json.loads(body)}
+    except ClientError as e:
+        if e.response["Error"]["Code"] in ("NoSuchKey", "404"):
+            return set()
+        print(f"경고: {REVIEWED_KEY} 조회 실패({e}) - 이미 검토한 채널 필터링 없이 진행합니다.")
+        return set()
+    except NoCredentialsError:
+        print("경고: AWS 자격증명이 없어 이미 검토한 채널 필터링을 건너뜁니다.")
+        return set()
+
+
 def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--gold-bucket", default=os.environ.get("GOLD_BUCKET_NAME"),
+                    help="review/reviewed_channels.json이 있는 Gold S3 버킷 (생략 시 필터링 없이 동작)")
+    args = p.parse_args()
+    reviewed_ids = load_reviewed_channel_ids(args.gold_bucket)
     channels = defaultdict(lambda: {"video_count": 0, "channel_name": None, "score_by_cat": defaultdict(int), "sample_titles": []})
     total_rejected = 0
+    total_skipped_reviewed = 0
     pattern = f"{SILVER_DIR}/rejected/rejected_people_blogs_*.jsonl"
     for path in sorted(glob.glob(pattern)):
         with open(path, encoding="utf-8") as f:
@@ -85,6 +127,9 @@ def main():
                 d = json.loads(line)
                 total_rejected += 1
                 if str(d.get("category_id")) != "22":
+                    continue
+                if d.get("channel_id") in reviewed_ids:
+                    total_skipped_reviewed += 1
                     continue
                 text = (d.get("title") or "") + " " + " ".join(d.get("tags") or [])
                 result = classify(text)
@@ -114,6 +159,7 @@ def main():
     out = {
         "candidates": candidates,
         "total_rejected_scanned": total_rejected,
+        "total_skipped_already_reviewed": total_skipped_reviewed,
         "_comment": (
             "category_id=22(인물·블로그)로 격리된 outputs/silver/rejected/rejected_people_blogs_*.jsonl을 "
             "제목/태그 키워드로 훑어서, 실제로는 영화/자동차/게임 리뷰인데 YouTube가 카테고리를 "
@@ -126,7 +172,8 @@ def main():
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
-    print(f"scanned {total_rejected} rejected records -> {len(candidates)} candidate channels")
+    print(f"scanned {total_rejected} rejected records -> {len(candidates)} candidate channels "
+          f"({total_skipped_reviewed}건은 이미 검토됨 - 제외)")
     print(f"-> {OUT_PATH}")
     print("DONE")
 
