@@ -152,6 +152,7 @@ CALL_PACING_SEC = 1.0              # 매 API 호출 뒤 최소 간격 (분당 �
 CHECKPOINT_KEY = "bronze/_checkpoints/search_collector_state.json"
 
 s3_client = None
+cloudwatch_client = None
 
 
 def get_s3_client():
@@ -160,6 +161,14 @@ def get_s3_client():
         import boto3
         s3_client = boto3.client("s3")
     return s3_client
+
+
+def get_cloudwatch_client():
+    global cloudwatch_client
+    if cloudwatch_client is None:
+        import boto3
+        cloudwatch_client = boto3.client("cloudwatch")
+    return cloudwatch_client
 
 
 # ============================================================
@@ -214,17 +223,23 @@ def _api_get(path, params, key):
 
 _current_key_index = 0
 
+# YouTube Data API v3 쿼터 단가(유닛) - part 파라미터와 무관하게 엔드포인트당 고정.
+# spec.md "8. 수집 전략과 쿼터" 참고: search.list=100, videos.list/channels.list=1.
+QUOTA_COST_PER_CALL = {"search": 100, "videos": 1, "channels": 1}
+quota_units_used = 0  # 이번 Lambda 실행(invocation) 동안 누적 - lambda_handler 끝에서 CloudWatch로 전송
+
 
 def call_with_rotation(path, params):
     """분당 속도 제한이면 지수 백오프로 같은 키 재시도, 하루 할당량 소진이면 다음 키로 전환.
     성공 시 응답 dict 반환. 모든 키 소진 시 QuotaExhaustedError."""
-    global _current_key_index
+    global _current_key_index, quota_units_used
     while _current_key_index < len(YOUTUBE_API_KEYS):
         key = YOUTUBE_API_KEYS[_current_key_index]
         rate_limit_retries = 0
         while True:
             try:
                 data = _api_get(path, params, key)
+                quota_units_used += QUOTA_COST_PER_CALL.get(path, 0)
                 time.sleep(CALL_PACING_SEC)
                 return data
             except _ApiHttpError as e:
@@ -755,9 +770,29 @@ def lambda_handler(event, context):
         known_after=len(state["known_videos"]),
         searched_until=state["searched_until"],
         uploaded_keys=uploaded_keys,
+        quota_units_used=quota_units_used,
     )
     print(json.dumps(result, ensure_ascii=False))
+    emit_run_metrics(quota_units_used, snapshot_count)
     return result
+
+
+def emit_run_metrics(quota_used, bronze_records_written):
+    """CloudWatch 커스텀 메트릭(수치) - 알람의 "에러 유무"만으로는 안 보이는 것들:
+    이번 실행에서 실제로 쓴 YouTube API 쿼터(일일 10,000 예산 대비 추세를 보려고)와
+    Bronze에 실제로 기록한 레코드 수(API가 조용히 0건만 돌려주는 이상 상황은 에러가
+    아니라서 기존 알람에 안 잡힘). 메트릭 전송 실패가 수집 자체를 실패시키면 안 되므로
+    예외를 삼킨다(관측 대상이지 핵심 로직이 아님)."""
+    try:
+        get_cloudwatch_client().put_metric_data(
+            Namespace="Pipeline/PJT",
+            MetricData=[
+                {"MetricName": "YouTubeApiQuotaUsed", "Value": float(quota_used), "Unit": "Count"},
+                {"MetricName": "BronzeRecordsWritten", "Value": float(bronze_records_written), "Unit": "Count"},
+            ],
+        )
+    except Exception as e:  # noqa: BLE001 - 관측용 부가 기능, 본 실행을 절대 막지 않음
+        print(f"CloudWatch 메트릭 전송 실패(무시하고 계속): {e}")
 
 
 if __name__ == "__main__":
