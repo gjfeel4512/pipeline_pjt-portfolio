@@ -166,18 +166,65 @@ const Recommend = (() => {
     return [...scoredPool].sort((a, b) => b.score - a.score).slice(0, n);
   }
 
-  // "왜 이 채널인가" 규칙 기반 하이라이트 문구
+  // channel_id를 시드로 목록에서 하나를 결정적으로 고른다 - 같은 채널은 새로고침해도
+  // 항상 같은 문구가 나오되(그래야 산만하지 않음), 조건이 같은 여러 채널 사이에는
+  // 다양한 표현이 섞이도록 하기 위함 (gradientForKey와 같은 방식, app.js 참고).
+  function pickVariant(list, seedKey) {
+    const str = String(seedKey || "");
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+    return list[hash % list.length];
+  }
+
+  // "구독자 규모별로 비교해봤어요" 차트(app.js renderTrend)와 같은 절대 기준
+  // (build_dashboard_data.py의 tiers_def: 소형 10만 미만/중형 10만~50만/대형 50만 이상).
+  const CHANNEL_TIER_SMALL_MAX = 100_000;
+  const CHANNEL_TIER_LARGE_MIN = 500_000;
+
+  // "왜 이 채널인가" 규칙 기반 하이라이트 문구.
+  // 2026-09-04: 예전엔 "구독자 수 < 후보군 전체 median"만 보고 "소형 채널"이라고
+  // 표시했는데, 이 median이 후보군 전체(대형 채널도 섞여있는 집합) 기준이다 보니
+  // 구독자 수십만~100만대인 채널도 "소형 채널" 문구가 뜨는 문제가 있었다(사용자
+  // 리포트 - 추천 채널이 거의 다 같은 문구였음). 이제는 실제 구독자 규모 구간으로
+  // 판단하고, 조건별로 여러 문구 중 하나를 골라 다양성도 준다.
   function explainChannel(c) {
+    const subsLabel = `${fmtManwon(c.subscriber_count)} 명`;
+
     if (c.avg_engagement_rate >= 0.06 && c.engagementVsMedian >= 1.3) {
-      return `참여율이 ${(c.avg_engagement_rate * 100).toFixed(1)}%로 카테고리 평균보다 훨씬 높아요`;
+      const pct = (c.avg_engagement_rate * 100).toFixed(1);
+      return pickVariant([
+        `참여율이 ${pct}%로 카테고리 평균보다 훨씬 높아요`,
+        `좋아요·댓글 반응이 유난히 활발한 채널이에요 (참여율 ${pct}%)`
+      ], c.channel_id);
     }
-    if (c.upload_freq_per_week >= 3) {
-      return `업로드 주기·시간대가 일정해서 참고하기 좋아요`;
+    if (c.upload_freq_per_week && c.upload_freq_per_week >= 3) {
+      return pickVariant([
+        `업로드 주기·시간대가 일정해서 참고하기 좋아요`,
+        `꾸준한 업로드 페이스를 유지하고 있어서 루틴을 참고하기 좋아요`
+      ], c.channel_id);
     }
-    if (c.subscriber_count < c.medSubs) {
-      return `소형 채널인데도 성장 사례로 참고하기 좋아요`;
+    if (c.subscriber_count < CHANNEL_TIER_SMALL_MAX && c.viewsPerSubVsMedian >= 1.3) {
+      return pickVariant([
+        `소형 채널(구독자 ${subsLabel})인데도 구독자 대비 조회수가 평균의 ${c.viewsPerSubVsMedian.toFixed(1)}배예요`,
+        `구독자 ${subsLabel} 규모의 소형 채널인데 성장세가 눈에 띄어요`
+      ], c.channel_id);
     }
-    return `구독자 대비 조회수 성과가 꾸준히 좋은 채널이에요`;
+    if (c.subscriber_count >= CHANNEL_TIER_LARGE_MIN) {
+      return pickVariant([
+        `구독자 ${subsLabel}의 대형 채널답게 조회수 성과가 안정적이에요`,
+        `이미 자리 잡은 대형 채널인데도 구독자 대비 조회수 반응이 꾸준해요`
+      ], c.channel_id);
+    }
+    if (c.viewsPerSubVsMedian >= 1.5) {
+      return pickVariant([
+        `구독자 대비 조회수가 카테고리 평균의 ${c.viewsPerSubVsMedian.toFixed(1)}배예요`,
+        `중형 채널 중에서는 구독자 대비 조회수 성과가 상위권이에요`
+      ], c.channel_id);
+    }
+    return pickVariant([
+      `구독자 대비 조회수 성과가 꾸준히 좋은 채널이에요`,
+      `구독자 규모에 비해 조회수 반응이 안정적으로 좋은 채널이에요`
+    ], c.channel_id);
   }
 
   /* ------------------------------------------------------------------ *

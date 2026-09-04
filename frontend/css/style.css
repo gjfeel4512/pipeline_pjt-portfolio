@@ -67,10 +67,24 @@ header.app-header {
   padding: 22px 32px;
   border-bottom: 1px solid var(--border);
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.app-header-row {
+  display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+}
+/* 팀명 - 가운데 정렬, 아래 .app-title(22px)의 2배 크기, 노란색(--series-4) */
+.app-team {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--series-4);
+  text-align: center;
 }
 .app-title { font-size: 22px; font-weight: 700; }
 .app-subtitle { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
@@ -409,20 +423,6 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 .stat-delta { font-size: 13px; margin-top: 8px; color: var(--text-muted); }
 .stat-delta.good { color: var(--status-good); }
 .stat-delta.bad { color: var(--status-critical); }
-
-.replay-controls { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.replay-play-btn {
-  border: 1px solid var(--border);
-  background: var(--surface-1);
-  color: var(--text-primary);
-  border-radius: 10px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.replay-play-btn:hover { border-color: var(--series-1); }
-.replay-month-label { font-size: 15px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
 
 .xcat-list { display: flex; flex-direction: column; gap: 10px; }
 .xcat-row {

@@ -236,8 +236,11 @@ def build_category_trend(videos, gold_rows):
         for v in videos:
             buckets[v["duration_bucket_ko"]] = buckets.get(v["duration_bucket_ko"], 0) + 1
         order = ["1분 이하", "1~5분", "5~10분", "10~20분", "20분 이상"]
+        # count: 프론트(app.js)가 "요즘 잘 되는 영상 길이는?" 차트에서 막대 자체는
+        # 기존처럼 %로 보여주되, 마우스오버 툴팁에는 실제 영상 건수를 보여주기 위한
+        # 값(백분율을 sample_size로 역산하지 않고, 여기서 직접 센 정확한 값).
         dist = [
-            {"label": b, "pct": round(buckets[b] / len(videos) * 100, 1)}
+            {"label": b, "pct": round(buckets[b] / len(videos) * 100, 1), "count": buckets[b]}
             for b in order if buckets.get(b)
         ]
 
@@ -250,7 +253,9 @@ def build_category_trend(videos, gold_rows):
             vals = [v["view_count"] / v["subscriber_count"] for v in videos
                     if lo <= v["subscriber_count"] < hi]
             if vals and overall_med:
-                tiers.append({"label": label, "ratio": round(statistics.median(vals) / overall_med, 1)})
+                # count: 프론트가 이 구간 막대 자체는 "배수"로 보여주고, 툴팁에는
+                # 표본 채널 수(몇 개 영상이 이 구간 계산에 들어갔는지)를 보여주기 위함.
+                tiers.append({"label": label, "ratio": round(statistics.median(vals) / overall_med, 1), "count": len(vals)})
 
     return {
         "avg_views_per_day": avg_vpd,

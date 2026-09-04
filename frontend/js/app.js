@@ -8,8 +8,6 @@
   const cfg = window.APP_CONFIG;
   let currentCategory = cfg.CATEGORIES[0].key;
   const DATA = {};
-  let replayTimer = null;
-  let replayIdx = 0;
 
   const fmtInt = (n) => Math.round(n).toLocaleString("ko-KR");
   const fmtPct = (n) => (n * 100).toFixed(1) + "%";
@@ -62,10 +60,12 @@
   function setMetaBadge(meta) {
     const badge = document.getElementById("meta-badge");
     const isReal = meta.source === "pipeline_snapshot";
-    const kindLabel = isReal
-      ? "실제 수집 데이터(파이프라인 스냅샷)"
-      : cfg.USE_MOCK ? "샘플(mock) 데이터" : "실시간 데이터";
-    badge.textContent = `${kindLabel} · 마지막 업데이트 ${meta.last_updated.slice(0, 10)}`;
+    // last_updated는 항상 "...+09:00"(KST)로 기록되므로, Date로 파싱해서 뷰어
+    // 브라우저 타임존으로 바꾸지 않고 문자열 그대로 날짜/시:분만 잘라서 씀
+    // (보는 사람 상관없이 항상 파이프라인이 돈 한국 시간 그대로 보여주기 위함).
+    const updatedDate = meta.last_updated.slice(0, 10);
+    const updatedTime = meta.last_updated.slice(11, 16);
+    badge.textContent = `마지막 업데이트 ${updatedDate} ${updatedTime}`;
 
     const realNote = (about) => `◆ 이 화면의 ${about}는 실제 수집된 데이터를 집계한 결과예요. 파이프라인이 다시 돌 때마다 자동으로 최신화됩니다.`;
     const sampleNote = (about) => `◆ 이 화면의 ${about}는 예시 데이터입니다. 실제 서비스에서는 최근 수집된 데이터로 자동 갱신됩니다.`;
@@ -377,14 +377,19 @@
     grid.appendChild(statTile({ label: "평균 영상 길이", value: fmtDuration(trend.avg_duration_sec) }));
 
     Charts.renderHBarChart(document.getElementById("duration-dist-chart"), {
-      items: trend.duration_distribution.map((d) => ({ label: d.label, value: d.pct, colorVar: "--series-3" })),
+      // 막대/라벨은 그대로 %로 보여주고, 마우스오버 툴팁만 실제 영상 건수로 보여준다
+      // (build_dashboard_data.py의 duration_distribution.count - 사용자 요청).
+      items: trend.duration_distribution.map((d) => ({ label: d.label, value: d.pct, colorVar: "--series-3", count: d.count })),
       valueFormatter: (n) => n + "%",
+      tooltipFormatter: (d) => `${fmtInt(d.count)}개`,
       labelWidth: 88
     });
 
     Charts.renderHBarChart(document.getElementById("subscriber-tier-chart"), {
-      items: trend.subscriber_tiers.map((d) => ({ label: d.label, value: d.ratio, colorVar: "--series-1" })),
+      // 막대는 배수 그대로, 툴팁은 그 배수를 계산한 표본 채널 수(다른 정보)로 보여줌.
+      items: trend.subscriber_tiers.map((d) => ({ label: d.label, value: d.ratio, colorVar: "--series-1", count: d.count })),
       valueFormatter: (n) => n.toFixed(1) + "배",
+      tooltipFormatter: (d) => `표본 ${fmtInt(d.count)}건`,
       labelWidth: 150
     });
 
@@ -420,12 +425,16 @@
       value: Math.abs(f.effect_pct),
       colorVar: f.significant ? (f.effect_pct >= 0 ? "--series-3" : "--series-2") : "--text-muted",
       suffix: "%",
-      _signed: f.effect_pct
+      _signed: f.effect_pct,
+      pValue: f.p_value,
+      significant: f.significant
     }));
 
     Charts.renderHBarChart(chartRoot, {
       items,
       valueFormatter: () => "",
+      // 막대 라벨(부호 있는 %)과 다른 정보로, 그 추정치의 통계적 유의성(p-value)을 보여줌.
+      tooltipFormatter: (d) => `p-value ${d.pValue.toFixed(3)} (${d.significant ? "통계적으로 유의함" : "근거 부족"})`,
       labelWidth: 150
     });
     // renderHBarChart의 valueFormatter는 부호 없는 절대값(막대 길이용)만 받으므로,
@@ -469,13 +478,19 @@
         label: c.top_terms.slice(0, 3).join(" · ") || `주제 ${c.cluster_id}`,
         value: c.median_views_per_day,
         colorVar: !hasTrend ? "--text-muted" : c.trend_pct >= 0 ? "--series-3" : "--series-2",
-        suffix: trendText
+        suffix: trendText,
+        sampleCount: c.sample_count,
+        olderSample: c.older_sample,
+        recentSample: c.recent_sample
       };
     });
 
     Charts.renderHBarChart(chartRoot, {
       items,
-      labelWidth: 170
+      labelWidth: 170,
+      // 막대(일평균 조회수 + 변화율)와 다른 정보로, 그 주제의 표본 건수(예전/최근
+      // 절반 분할 기준)를 보여줌.
+      tooltipFormatter: (d) => `표본 ${fmtInt(d.sampleCount)}건 (예전 ${fmtInt(d.olderSample)} · 최근 ${fmtInt(d.recentSample)})`
     });
 
     footnote.textContent =
@@ -501,56 +516,45 @@
       const cat = replay[key];
       if (cat && (!longest || cat.months.length > longest.months.length)) longest = cat;
     });
-    return longest ? longest.months.map((m) => m.year_month) : [];
+    if (!longest) return [];
+    // 아직 집계 중(is_partial)인 마지막 달은 빼고, 수집이 완료된 달만 보여준다
+    // (사용자 요청 - 점선/집계중 표시 없이 "완료된 1년치"만 보여줌).
+    const partialMonths = new Set();
+    HISTORY_REPLAY_KEYS.forEach((key) => {
+      const cat = replay[key];
+      if (!cat) return;
+      cat.months.forEach((m) => { if (m.is_partial) partialMonths.add(m.year_month); });
+    });
+    return longest.months.map((m) => m.year_month).filter((ym) => !partialMonths.has(ym));
   }
 
-  function renderHistoryReplayFrame() {
+  // 2026-09-04: 재생 버튼으로 한 달씩 넘겨보던 막대 차트를 없애고, 완료된 1년치를
+  // 선 하나로 한 번에 보여주는 정적 차트로 바꿈 - "재생해도 변화 자체가 한눈에 안
+  // 보인다"는 피드백 대응. 특정 달의 정확한 값은 그 위치에 마우스를 올리면 재생선
+  // (세로 점선) + 툴팁으로 보여준다 (Charts.renderHistoryLineChart 참고).
+  function renderHistoryChart() {
     const replay = DATA.historyReplay;
     const months = historyReplayMonths();
     const chartRoot = document.getElementById("history-replay-chart");
-    const label = document.getElementById("replay-month-label");
     if (!replay || !months.length || !chartRoot) return;
-    const ym = months[replayIdx % months.length];
-    const items = HISTORY_REPLAY_KEYS.map((key) => {
+
+    const series = HISTORY_REPLAY_KEYS.map((key) => {
       const info = categoryInfo(key);
       const cat = replay[key];
-      const m = cat ? cat.months.find((x) => x.year_month === ym) : null;
+      const byMonth = new Map((cat ? cat.months : []).map((m) => [m.year_month, m]));
       return {
-        label: (info.label || key) + (m && m.is_partial ? " (집계 중)" : ""),
-        value: m ? m.total_views : 0,
-        colorVar: info.colorVar || "--series-1"
+        key,
+        label: info.label || key,
+        colorVar: info.colorVar || "--series-1",
+        points: months.map((m) => (byMonth.has(m) ? byMonth.get(m).total_views : null))
       };
     });
-    Charts.renderHBarChart(chartRoot, {
-      items,
-      valueFormatter: Charts.formatCompact,
-      labelWidth: 150
+
+    Charts.renderHistoryLineChart(chartRoot, {
+      months,
+      series,
+      valueFormatter: Charts.formatCompact
     });
-    if (label) label.textContent = ym;
-  }
-
-  function stopHistoryReplay() {
-    if (replayTimer) {
-      clearInterval(replayTimer);
-      replayTimer = null;
-    }
-    const btn = document.getElementById("replay-play-btn");
-    if (btn) btn.textContent = "▶ 재생";
-  }
-
-  function toggleHistoryReplay() {
-    const months = historyReplayMonths();
-    if (!months.length) return;
-    const btn = document.getElementById("replay-play-btn");
-    if (replayTimer) {
-      stopHistoryReplay();
-      return;
-    }
-    if (btn) btn.textContent = "⏸ 정지";
-    replayTimer = setInterval(() => {
-      replayIdx = (replayIdx + 1) % months.length;
-      renderHistoryReplayFrame();
-    }, 900);
   }
 
   function renderHistoryMoverTiles() {
@@ -587,11 +591,10 @@
       chartRoot.innerHTML = '<p class="card-footnote">데이터를 불러오지 못했어요 (nodata).</p>';
       return;
     }
-    replayIdx = 0;
-    renderHistoryReplayFrame();
+    renderHistoryChart();
     renderHistoryMoverTiles();
     if (footnote) {
-      footnote.textContent = "실제 수집된 데이터를 바탕으로 재생한 거예요(합성 데이터 아니에요).";
+      footnote.textContent = "실제 수집된 완료된 1년치 데이터예요(합성 데이터 아니에요). 그래프에 마우스를 올리면 그 달의 정확한 값을 볼 수 있어요.";
     }
   }
 
@@ -712,7 +715,6 @@
         panels.forEach((p) => p.classList.remove("active"));
         btn.classList.add("active");
         document.getElementById(btn.dataset.target).classList.add("active");
-        stopHistoryReplay();
         updateCategoryRowVisibility(btn.dataset.target);
         renderActiveTab();
       });
@@ -766,8 +768,6 @@
     renderCategoryChips();
     setupTabs();
     document.querySelectorAll(".video-grid").forEach(enableDragScroll);
-    const replayBtn = document.getElementById("replay-play-btn");
-    if (replayBtn) replayBtn.addEventListener("click", toggleHistoryReplay);
     try {
       const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends, historyReplay, crossCategoryReviewers] = await Promise.all([
         DataSource.fetchMeta(),

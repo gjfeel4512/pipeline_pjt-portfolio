@@ -3,19 +3,25 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>튜브가이드 · 크리에이터를 위한 인사이트</title>
+<title>유튜브가이드 · 크리에이터를 위한 인사이트</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7820054334424004"
      crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
 <header class="app-header">
-  <div>
-    <div class="app-title">튜브가이드 · 크리에이터를 위한 인사이트</div>
-    <div class="app-subtitle">카테고리별로 잘 되고 있는 영상과 채널, 업로드 타이밍을 확인해보세요</div>
+  <div class="app-team">Gold Line</div>
+  <div class="app-header-row">
+    <div>
+      <div class="app-title">유튜브가이드 · 크리에이터를 위한 인사이트</div>
+      <div class="app-subtitle">카테고리별로 잘 되고 있는 영상과 채널, 업로드 타이밍을 확인해보세요</div>
+    </div>
+    <span id="meta-badge" class="meta-badge"></span>
   </div>
-  <span id="meta-badge" class="meta-badge"></span>
 </header>
 
 <div id="error-banner"></div>
@@ -130,12 +136,8 @@
     </div>
 
     <div class="card">
-      <div class="card-title">📅 1년치로 재생해봤어요</div>
-      <div class="card-sub">2025.09~2026.09, 1년간의 실제 데이터를 월별로 재생해서 보여드려요.</div>
-      <div class="replay-controls">
-        <button class="replay-play-btn" id="replay-play-btn" type="button">▶ 재생</button>
-        <span class="replay-month-label" id="replay-month-label"></span>
-      </div>
+      <div class="card-title">📅 지난 1년, 이렇게 흘러왔어요</div>
+      <div class="card-sub">수집이 완료된 월별 실제 총 조회수 추이예요. 그래프에 마우스를 올리면 그 달의 정확한 값을 볼 수 있어요.</div>
       <div id="history-replay-chart"></div>
       <div class="stat-grid" id="history-replay-mover" style="margin-top:16px;"></div>
       <div class="card-footnote" id="history-replay-footnote"></div>

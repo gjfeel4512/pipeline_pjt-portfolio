@@ -102,7 +102,10 @@ const Charts = (() => {
     return out + "…";
   }
 
-  function renderHBarChart(root, { items, valueFormatter = formatCompact, labelWidth = 132 }) {
+    // tooltipFormatter(d): 툴팁에 보여줄 값을 막대 라벨과 다르게 커스텀하고 싶을 때만
+  // 넘긴다(예: 막대/라벨은 %로 보여주되 툴팁은 실제 건수로 보여주는 경우). 안 넘기면
+  // 기존처럼 막대 라벨과 같은 값(valueFormatter(d.value) + suffix)을 그대로 보여준다.
+  function renderHBarChart(root, { items, valueFormatter = formatCompact, labelWidth = 132, tooltipFormatter = null }) {
     root.innerHTML = "";
     root.style.position = "relative";
 
@@ -169,9 +172,10 @@ const Charts = (() => {
       svg.appendChild(trackG);
 
       const tip = ensureTooltip(root);
+      const tooltipValue = tooltipFormatter ? tooltipFormatter(d) : valueFormatter(d.value) + (d.suffix || "");
       const showTip = (evt) => {
         setTooltipRows(tip, d.label, [
-          { label: "값", value: valueFormatter(d.value) + (d.suffix || ""), color }
+          { label: "값", value: tooltipValue, color }
         ]);
         tip.style.display = "block";
         positionTooltip(root, tip, evt);
@@ -480,12 +484,178 @@ const Charts = (() => {
     root.appendChild(legend);
   }
 
+  /* ---------------------------------------------------------------- *
+   * History line chart - 카테고리 트렌드 탭의 "지난 1년, 이렇게 흘러왔어요".
+   * 2026-09-04: 재생 버튼으로 한 달씩 넘겨보던 방식을 없애고, 완료된 기간 전체를
+   * 선 하나로 한 번에 보여주는 정적 차트로 바꿈. 특정 달의 정확한 값은 그 위치에
+   * 마우스를 올렸을 때만 세로 안내선(크로스헤어) + 툴팁으로 보여준다(사용자 요청).
+   * months: ["2025-09", ...] (집계 중인 달은 호출부에서 이미 제외하고 넘겨줌)
+   * series: [{ key, label, colorVar, points: number[] (months와 같은 길이, 값 없으면 null) }]
+   * ---------------------------------------------------------------- */
+  function fmtMonthShort(ym) {
+    // "2025-09" -> "25.09" (연도가 겹치는 두 해를 구분하려면 월만으론 부족해서 2자리 연도 포함)
+    return ym.slice(2).replace("-", ".");
+  }
+
+  // 점(월)이 비어있는(null) 구간은 선을 잇지 않고 끊어서 그린다 - 카테고리마다
+  // 실제 수집된 개월 수가 다를 수 있는데, 그냥 이어버리면 값이 0으로 떨어지는
+  // 것처럼 보여서 오해를 준다.
+  function buildLineSegments(points) {
+    const segments = [];
+    let current = [];
+    for (let i = 0; i < points.length; i++) {
+      const v = points[i];
+      if (v === null || v === undefined) {
+        if (current.length > 1) segments.push(current);
+        current = [];
+        continue;
+      }
+      current.push(i);
+    }
+    if (current.length > 1) segments.push(current);
+    return segments;
+  }
+
+  function renderHistoryLineChart(root, { months, series, valueFormatter = formatCompact }) {
+    root.innerHTML = "";
+    root.style.position = "relative";
+
+    const width = root.clientWidth || 480;
+    const height = 260;
+    const padL = 44;
+    const padR = 16;
+    const padT = 16;
+    const padB = 28;
+    const plotW = width - padL - padR;
+    const plotH = height - padT - padB;
+
+    const allPoints = series.flatMap((s) => s.points.filter((v) => v !== null && v !== undefined));
+    const maxY = Math.max(1, ...allPoints);
+    const n = months.length;
+    const xAt = (i) => padL + (n <= 1 ? plotW / 2 : (i / (n - 1)) * plotW);
+    const yAt = (v) => padT + plotH - (Math.max(0, v || 0) / maxY) * plotH;
+
+    const svg = el("svg", {
+      width: "100%",
+      height,
+      viewBox: `0 0 ${width} ${height}`,
+      role: "img",
+      "aria-label": "월별 추이 선 그래프"
+    });
+
+    // 가로 격자선 + y축 값 라벨(팀 dataviz 규칙: 1px 헤어라인, 값은 항상 라벨로도 표시)
+    [0, 0.5, 1].forEach((t) => {
+      const y = padT + plotH * (1 - t);
+      svg.appendChild(el("line", { x1: padL, y1: y, x2: padL + plotW, y2: y, class: "viz-gridline" }));
+      const label = el("text", { x: padL - 8, y: y + 4, "text-anchor": "end", class: "viz-axis-tick" });
+      label.textContent = valueFormatter(maxY * t);
+      svg.appendChild(label);
+    });
+
+    // x축 월 라벨 - 달이 많으면(9개 초과) 한 칸씩 걸러서 겹치지 않게
+    const showEvery = n > 9 ? 2 : 1;
+    months.forEach((ym, i) => {
+      if (i % showEvery !== 0 && i !== n - 1) return;
+      const label = el("text", { x: xAt(i), y: height - 8, "text-anchor": "middle", class: "viz-axis-tick" });
+      label.textContent = fmtMonthShort(ym);
+      svg.appendChild(label);
+    });
+
+    // 크로스헤어(세로 안내선) - 평소엔 숨겨두고, 마우스를 올린 달 위치에서만 보여줌
+    const crosshair = el("line", {
+      x1: padL, y1: padT, x2: padL, y2: padT + plotH,
+      stroke: cssVar("--baseline"), "stroke-width": 1.5, "stroke-dasharray": "3,3"
+    });
+    crosshair.style.display = "none";
+    svg.appendChild(crosshair);
+
+    series.forEach((s) => {
+      const color = cssVar(s.colorVar) || cssVar("--series-1");
+      buildLineSegments(s.points).forEach((idxs) => {
+        const d = idxs.map((i, k) => `${k === 0 ? "M" : "L"}${xAt(i).toFixed(1)},${yAt(s.points[i]).toFixed(1)}`).join(" ");
+        svg.appendChild(el("path", { d, fill: "none", stroke: color, "stroke-width": 2.5 }));
+      });
+      months.forEach((ym, i) => {
+        const v = s.points[i];
+        if (v === null || v === undefined) return;
+        svg.appendChild(el("circle", { cx: xAt(i), cy: yAt(v), r: 3, fill: color }));
+      });
+    });
+
+    const tip = ensureTooltip(root);
+
+    // 달(월)마다 하나씩, 그 열 전체 높이를 덮는 투명 히트 영역 - 3개 카테고리 선이
+    // 겹쳐 있어도 그 달 위 아무 곳에나 마우스를 올리면 한 번에 다 보여주기 위함
+    // (점 하나하나를 정확히 맞춰 올려야 하는 방식보다 훨씬 쓰기 편함).
+    const colW = n > 1 ? plotW / (n - 1) : plotW;
+    months.forEach((ym, i) => {
+      const hit = el("rect", {
+        x: xAt(i) - colW / 2,
+        y: padT,
+        width: colW,
+        height: plotH,
+        fill: "transparent",
+        style: "cursor:pointer;"
+      });
+      const showTip = (evt) => {
+        crosshair.setAttribute("x1", xAt(i));
+        crosshair.setAttribute("x2", xAt(i));
+        crosshair.style.display = "block";
+
+        // 값이 높은 순서로 정렬해서 보여줌(사용자 요청) - 문자열로 포맷하기 전에
+        // 숫자 그대로 비교/정렬해야 함(포맷된 문자열은 "1.2M" 같은 식이라 정렬 불가).
+        const rows = series
+          .filter((s) => s.points[i] !== null && s.points[i] !== undefined)
+          .slice()
+          .sort((a, b) => b.points[i] - a.points[i])
+          .map((s) => ({
+            label: s.label,
+            value: Math.round(s.points[i]).toLocaleString("ko-KR"),
+            color: cssVar(s.colorVar) || cssVar("--series-1")
+          }));
+        if (rows.length) {
+          setTooltipRows(tip, fmtMonthShort(ym), rows);
+          tip.style.display = "block";
+          positionTooltip(root, tip, evt);
+        }
+      };
+      const hideTip = () => {
+        crosshair.style.display = "none";
+        clearTooltip(root);
+      };
+      hit.addEventListener("pointerenter", showTip);
+      hit.addEventListener("pointermove", showTip);
+      hit.addEventListener("pointerleave", hideTip);
+      svg.appendChild(hit);
+    });
+
+    root.appendChild(svg);
+
+    const legend = document.createElement("div");
+    legend.className = "viz-legend";
+    series.forEach((s) => {
+      const chip = document.createElement("span");
+      chip.className = "viz-legend-chip";
+      const swatch = document.createElement("span");
+      swatch.className = "viz-legend-swatch rect";
+      swatch.style.background = cssVar(s.colorVar);
+      const label = document.createElement("span");
+      label.className = "viz-legend-label";
+      label.textContent = s.label;
+      chip.appendChild(swatch);
+      chip.appendChild(label);
+      legend.appendChild(chip);
+    });
+    root.appendChild(legend);
+  }
+
   return {
     formatCompact,
     fmtDuration,
     renderHBarChart,
     renderLegend,
     renderHeatmap,
-    renderLineChart
+    renderLineChart,
+    renderHistoryLineChart
   };
 })();
