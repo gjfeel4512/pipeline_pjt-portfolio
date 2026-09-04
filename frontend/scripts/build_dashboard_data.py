@@ -151,6 +151,14 @@ def normalize_silver_row(d, channels):
         except (ValueError, TypeError):
             pass
 
+    # export의 views_per_day도 "수집 시점 나이"가 분모라, 영상 나이가 스냅샷 사이
+    # 하루를 넘기면 조회수가 늘었는데도 값이 줄어든다. 그러면 _top_distinct_videos가
+    # 옛 스냅샷을 골라 카드에 갱신 안 된 조회수가 뜬다. days_since_published(현재
+    # 시각 기준)로 다시 계산한다.
+    view_count = d.get("view_count") or 0
+    if days_since_published:
+        views_per_day = view_count / days_since_published
+
     subscriber_count = ch.get("subscriber_count")
     if subscriber_count is None:
         subscriber_count = d.get("subscriber_count_at_collection") or 0
@@ -186,8 +194,22 @@ def normalize_silver_row(d, channels):
 
 def load_silver_videos(cat_key, channels):
     rows = load_json(f"video_analysis_{cat_key}.json", [])
-    out = []
+    # video_analysis_*.json에는 한 영상의 수집 스냅샷이 날짜별로 다 들어있다
+    # (4시간마다 기존 video_id 재조회 -> 조회수 시계열이 Silver에 누적됨).
+    # 대시보드 카드/랭킹/중앙값은 "현재 상태" 기준이어야 하므로 video_id별로
+    # collected_at_utc가 가장 늦은 스냅샷 1개만 남긴다. (남기지 않으면 옛 스냅샷이
+    # 랭킹에 섞여 조회수가 갱신 안 된 것처럼 보인다.) collected_at_utc는 수집기가
+    # 항상 UTC(+00:00) ISO8601로 쓰므로 문자열 비교 = 시간 비교.
+    latest = {}
     for d in rows:
+        vid = d.get("video_id")
+        if not vid:
+            continue
+        cur = latest.get(vid)
+        if cur is None or (d.get("collected_at_utc") or "") > (cur.get("collected_at_utc") or ""):
+            latest[vid] = d
+    out = []
+    for d in latest.values():
         v = normalize_silver_row(d, channels)
         if v:
             out.append(v)
