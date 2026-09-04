@@ -6,9 +6,9 @@ resource "aws_sns_topic" "pipeline_alerts" {
 }
 
 resource "aws_sns_topic_subscription" "pipeline_alerts_email" {
-  count = var.notification_email == null ? 0 : 1
+  for_each = toset(var.notification_emails)
 
   topic_arn = aws_sns_topic.pipeline_alerts.arn
   protocol  = "email"
-  endpoint  = var.notification_email
+  endpoint  = each.value
 }

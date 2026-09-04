@@ -15,7 +15,7 @@ log_retention_days = 30
 
 # 알람 수신 이메일 - apply하면 SNS 구독이 생성되고, 받은 확인 메일의 링크를 눌러야
 # 알람이 실제로 전달됨 (pipeline-orchestrator-failed / refresh-dashboard-errors).
-notification_email = "jaeyoung5751@gmail.com"
+notification_emails = ["jaeyoung5751@gmail.com", "gjfeel4512@gmail.com", "yoonmo335@gmail.com"]
 
 # 태그
 tags = {

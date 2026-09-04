@@ -76,8 +76,8 @@ variable "daily_collector_schedule_expression" {
 }
 
 # SNS 알람 설정
-variable "notification_email" {
-  description = "파이프라인 알람(SNS)을 받을 이메일. null이면 구독을 생성하지 않음(토픽만 생성)"
-  type        = string
-  default     = null
+variable "notification_emails" {
+  description = "파이프라인 알람(SNS)을 받을 이메일 목록 (여러 명 가능). 빈 리스트면 구독을 생성하지 않음(토픽만 생성)"
+  type        = list(string)
+  default     = []
 }
