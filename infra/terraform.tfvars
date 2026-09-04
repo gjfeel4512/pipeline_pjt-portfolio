@@ -13,10 +13,9 @@ s3_lifecycle_days     = 30
 # CloudWatch 설정
 log_retention_days = 30
 
-# 알람 수신 이메일 - 여기에 실제 주소를 넣고 apply하면 SNS 구독이 생성되고,
-# 받은 확인 메일의 링크를 눌러야 알람이 실제로 전달됨 (안 넣으면 SNS 토픽만 있고
-# 구독자 0이라 pipeline-orchestrator-failed 등 알람이 아무 데도 안 감).
-# notification_email = "you@example.com"
+# 알람 수신 이메일 - apply하면 SNS 구독이 생성되고, 받은 확인 메일의 링크를 눌러야
+# 알람이 실제로 전달됨 (pipeline-orchestrator-failed / refresh-dashboard-errors).
+notification_email = "jaeyoung5751@gmail.com"
 
 # 태그
 tags = {
