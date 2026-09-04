@@ -412,12 +412,27 @@ def dedup_latest(rows, key_fn):
     collected_at_utc_dt가 가장 최근인 것만 남긴다. PostgreSQL의
     'ON CONFLICT ... DO UPDATE'(마지막에 적재된 값으로 덮어씀)와 같은 결과를 내기 위한
     것으로, 결정적인 결과를 위해 "마지막으로 처리한 행" 대신 "collected_at_utc가 가장
-    늦은 행"을 기준으로 삼는다."""
+    늦은 행"을 기준으로 삼는다.
+
+    export 원본에는 같은 영상·같은 collected_at_utc인데 채널 보강 유무만 다른 중복
+    행이 대량으로 섞여 있다(gaming distinct의 ~95%가 2배 중복). collected_at_utc_dt가
+    동점이면 예전엔 '먼저 순회된 행'이 그냥 남아서, 썸네일 없는 쪽이 이기면 그 채널이
+    dim_channel/thumb_by_channel에서 통째로 빠졌다. 동점일 때는 channel_thumbnail_url이
+    채워진 행을 우선해 남긴다(그 외 순서/동작은 그대로)."""
     best = {}
     for row in rows:
         k = key_fn(row)
         cur = best.get(k)
-        if cur is None or row["collected_at_utc_dt"] > cur["collected_at_utc_dt"]:
+        if cur is None:
+            best[k] = row
+            continue
+        if row["collected_at_utc_dt"] > cur["collected_at_utc_dt"]:
+            best[k] = row
+        elif (
+            row["collected_at_utc_dt"] == cur["collected_at_utc_dt"]
+            and row.get("channel_thumbnail_url")
+            and not cur.get("channel_thumbnail_url")
+        ):
             best[k] = row
     return list(best.values())
 
