@@ -273,7 +273,11 @@ def purge_partition(prefix):
     return len(keys)
 
 
+athena_bytes_scanned = 0  # 이번 실행에서 run_query() 누적 호출로 스캔한 바이트 총합
+
+
 def run_query(sql, timeout_sec=120):
+    global athena_bytes_scanned
     resp = athena.start_query_execution(
         QueryString=sql,
         QueryExecutionContext={"Database": ATHENA_DATABASE},
@@ -286,6 +290,9 @@ def run_query(sql, timeout_sec=120):
         r = athena.get_query_execution(QueryExecutionId=qid)
         state = r["QueryExecution"]["Status"]["State"]
         if state == "SUCCEEDED":
+            # 쿼리 비용(스캔 바이트) 추세를 보려는 것 - 알람은 "성공/실패"만 보므로
+            # 쿼리가 갈수록 더 많은 데이터를 훑게 되는 건 알람에 안 잡힌다.
+            athena_bytes_scanned += r["QueryExecution"].get("Statistics", {}).get("DataScannedInBytes", 0)
             return qid
         if state in ("FAILED", "CANCELLED"):
             reason = r["QueryExecution"]["Status"].get("StateChangeReason", "unknown")
@@ -410,7 +417,28 @@ def lambda_handler(event, context):
     result["queries"]["gold_new_creator_guide_candidates"] = qid3
     result["gold_new_creator_guide_count"] = len(guide_records)
 
+    result["athena_bytes_scanned"] = athena_bytes_scanned
+
     logger.info("=" * 70)
     logger.info("Gold 집계 완료: %s", json.dumps(result, ensure_ascii=False))
     logger.info("=" * 70)
+    emit_run_metrics(athena_bytes_scanned, len(guide_records))
     return result
+
+
+def emit_run_metrics(bytes_scanned, guide_count):
+    """CloudWatch 커스텀 메트릭(수치) - 실패 여부만 보는 기존 알람에는 안 잡히는 두 가지:
+    쿼리 비용 추세(AthenaDataScannedBytes)와 이번 주 실제로 생성된 gold_new_creator_guide
+    건수(과거에 랭킹 필터 버그로 매주 0건이 나온 적이 있었음 - 성공했지만 사실상 빈
+    결과였던 경우, 실행 자체는 안 실패해서 기존 알람이 못 잡았다). 메트릭 전송 실패가
+    본 집계를 실패로 만들면 안 되므로 예외를 삼킨다."""
+    try:
+        boto3.client("cloudwatch", region_name=AWS_REGION).put_metric_data(
+            Namespace="Pipeline/PJT",
+            MetricData=[
+                {"MetricName": "AthenaDataScannedBytes", "Value": float(bytes_scanned), "Unit": "Bytes"},
+                {"MetricName": "GoldNewCreatorGuideCount", "Value": float(guide_count), "Unit": "Count"},
+            ],
+        )
+    except Exception as e:  # noqa: BLE001 - 관측용 부가 기능, 본 실행을 절대 막지 않음
+        logger.warning("CloudWatch 메트릭 전송 실패(무시하고 계속): %s", e)
