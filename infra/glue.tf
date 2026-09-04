@@ -26,16 +26,18 @@ resource "aws_glue_catalog_table" "bronze_youtube" {
     # 파티션 프로젝션은 range 안의 모든 조합(year x month x day)에 대해 S3 LIST를
     # 날려 파일 존재를 확인한다 - 파티션 술어 없는 쿼리(gold_compute_athena.py)는
     # 2025~2030 x 1~12 x 1~31 = 8,928개 prefix를 매번 뒤졌고, 그게 9월 S3 요금의
-    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 이 프로젝트는 2026-09에만
-    # 데이터가 있고 곧 teardown이라 실제 존재 구간으로 좁힌다(8,928 -> 40, ~223x).
-    # 주의: 10월 이후로 넘어가면 month.range를 "9,10" 등으로 넓혀야 함(안 그러면
+    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 곧 teardown이라 실제 존재
+    # 구간으로 좁힌다: Bronze는 month=08/day=31 ~ month=09/day=04, Silver는 09/02~04.
+    # month.range x day.range는 카테시안 곱이라 "8월은 25~31, 9월은 1~9"처럼 월별로
+    # 다른 day 범위를 못 준다 -> day는 1,31 통으로 둔다. 8,928 -> 4x1x2x31 = 248 (~36x).
+    # 주의: 10월 이후로 넘어가면 month.range를 "8,10" 등으로 넓혀야 함(안 그러면
     # 그달 데이터가 프로젝션에서 빠져 쿼리에 안 잡힘).
     "projection.year.range"     = "2026,2026"
     "projection.month.type"     = "integer"
-    "projection.month.range"    = "9,9"
+    "projection.month.range"    = "8,9"
     "projection.month.digits"   = "2"
     "projection.day.type"       = "integer"
-    "projection.day.range"      = "1,10"
+    "projection.day.range"      = "1,31"
     "projection.day.digits"     = "2"
     "storage.location.template" = "s3://${aws_s3_bucket.bronze.id}/youtube/bronze/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
@@ -181,16 +183,18 @@ resource "aws_glue_catalog_table" "silver_youtube" {
     # 파티션 프로젝션은 range 안의 모든 조합(year x month x day)에 대해 S3 LIST를
     # 날려 파일 존재를 확인한다 - 파티션 술어 없는 쿼리(gold_compute_athena.py)는
     # 2025~2030 x 1~12 x 1~31 = 8,928개 prefix를 매번 뒤졌고, 그게 9월 S3 요금의
-    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 이 프로젝트는 2026-09에만
-    # 데이터가 있고 곧 teardown이라 실제 존재 구간으로 좁힌다(8,928 -> 40, ~223x).
-    # 주의: 10월 이후로 넘어가면 month.range를 "9,10" 등으로 넓혀야 함(안 그러면
+    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 곧 teardown이라 실제 존재
+    # 구간으로 좁힌다: Bronze는 month=08/day=31 ~ month=09/day=04, Silver는 09/02~04.
+    # month.range x day.range는 카테시안 곱이라 "8월은 25~31, 9월은 1~9"처럼 월별로
+    # 다른 day 범위를 못 준다 -> day는 1,31 통으로 둔다. 8,928 -> 4x1x2x31 = 248 (~36x).
+    # 주의: 10월 이후로 넘어가면 month.range를 "8,10" 등으로 넓혀야 함(안 그러면
     # 그달 데이터가 프로젝션에서 빠져 쿼리에 안 잡힘).
     "projection.year.range"     = "2026,2026"
     "projection.month.type"     = "integer"
-    "projection.month.range"    = "9,9"
+    "projection.month.range"    = "8,9"
     "projection.month.digits"   = "2"
     "projection.day.type"       = "integer"
-    "projection.day.range"      = "1,10"
+    "projection.day.range"      = "1,31"
     "projection.day.digits"     = "2"
     "storage.location.template" = "s3://${aws_s3_bucket.silver.id}/youtube/silver/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
@@ -412,16 +416,18 @@ resource "aws_glue_catalog_table" "silver_youtube_rejected" {
     # 파티션 프로젝션은 range 안의 모든 조합(year x month x day)에 대해 S3 LIST를
     # 날려 파일 존재를 확인한다 - 파티션 술어 없는 쿼리(gold_compute_athena.py)는
     # 2025~2030 x 1~12 x 1~31 = 8,928개 prefix를 매번 뒤졌고, 그게 9월 S3 요금의
-    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 이 프로젝트는 2026-09에만
-    # 데이터가 있고 곧 teardown이라 실제 존재 구간으로 좁힌다(8,928 -> 40, ~223x).
-    # 주의: 10월 이후로 넘어가면 month.range를 "9,10" 등으로 넓혀야 함(안 그러면
+    # 거의 전부였다(USW2-Requests-Tier1 ~85만건 = $4.3). 곧 teardown이라 실제 존재
+    # 구간으로 좁힌다: Bronze는 month=08/day=31 ~ month=09/day=04, Silver는 09/02~04.
+    # month.range x day.range는 카테시안 곱이라 "8월은 25~31, 9월은 1~9"처럼 월별로
+    # 다른 day 범위를 못 준다 -> day는 1,31 통으로 둔다. 8,928 -> 4x1x2x31 = 248 (~36x).
+    # 주의: 10월 이후로 넘어가면 month.range를 "8,10" 등으로 넓혀야 함(안 그러면
     # 그달 데이터가 프로젝션에서 빠져 쿼리에 안 잡힘).
     "projection.year.range"     = "2026,2026"
     "projection.month.type"     = "integer"
-    "projection.month.range"    = "9,9"
+    "projection.month.range"    = "8,9"
     "projection.month.digits"   = "2"
     "projection.day.type"       = "integer"
-    "projection.day.range"      = "1,10"
+    "projection.day.range"      = "1,31"
     "projection.day.digits"     = "2"
     "storage.location.template" = "s3://${aws_s3_bucket.silver.id}/youtube/silver-rejected/category=$${category}/year=$${year}/month=$${month}/day=$${day}/"
   }
@@ -650,7 +656,7 @@ resource "aws_glue_catalog_table" "gold_category_benchmark" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-09-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW = ~250일치 prefix를 refresh마다 LIST)
+    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_category_benchmark/analysis_week=$${analysis_week}/"
@@ -724,7 +730,7 @@ resource "aws_glue_catalog_table" "gold_upload_strategy" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-09-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW = ~250일치 prefix를 refresh마다 LIST)
+    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_upload_strategy/analysis_week=$${analysis_week}/"
@@ -818,7 +824,7 @@ resource "aws_glue_catalog_table" "gold_new_creator_guide" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-09-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW = ~250일치 prefix를 refresh마다 LIST)
+    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_new_creator_guide/analysis_week=$${analysis_week}/"
