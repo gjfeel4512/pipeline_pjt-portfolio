@@ -37,6 +37,56 @@ FRONTEND_BUCKET = os.environ.get("FRONTEND_S3_BUCKET", "goldline-dev-frontend-82
 CLOUDFRONT_DISTRIBUTION_ID = os.environ.get("CLOUDFRONT_DISTRIBUTION_ID", "EVDHEA0GFHDS3")
 SCRIPT_NAMES = ("export_s3_for_dashboard.py", "build_dashboard_data.py")
 
+# 방금 만든 mock에 실제로 노출되는 video_id 전부를 여기에 써두면, daily_search_collector가
+# 매 실행마다 이걸 읽어서 그 영상들 조회수를 계속 갱신한다(백필/스테디로 known_videos에서
+# 빠진 영상도 화면에 떠 있는 동안은 라이브). daily_search_collector의 PINNED_KEY와 동일 경로.
+BRONZE_BUCKET = os.environ.get("AWS_S3_BRONZE_BUCKET", "goldline-dev-bronze-827913617635")
+PINNED_KEY = "bronze/_checkpoints/pinned_video_ids.json"
+SLUG_TO_LABEL = {
+    "film_animation": "영화_애니메이션",
+    "autos_vehicles": "자동차_차량",
+    "gaming": "게임",
+    "people_blogs": "인물_블로그",
+}
+
+
+def _collect_video_ids(mock_dir):
+    """mock/*.json 안의 모든 video_id를 {video_id: category_label}로 모은다.
+    video_pool.json은 카테고리 슬러그로 키가 나뉘어 있어 라벨을 정확히 붙일 수 있고,
+    나머지(channel_pool, history_replay 등)는 라벨 ""로 둔다(수집기가 videos.list의
+    실제 categoryId로 파티션을 정함)."""
+    def walk(node):
+        out = []
+        if isinstance(node, dict):
+            vid = node.get("video_id")
+            if isinstance(vid, str) and vid:
+                out.append(vid)
+            for v in node.values():
+                out += walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                out += walk(v)
+        return out
+
+    pinned = {}
+    for name in os.listdir(mock_dir):
+        if not name.endswith(".json"):
+            continue
+        try:
+            with open(os.path.join(mock_dir, name), encoding="utf-8") as f:
+                data = json.load(f)
+        except (ValueError, OSError):
+            continue
+        if name == "video_pool.json" and isinstance(data, dict):
+            for slug, rows in data.items():
+                label = SLUG_TO_LABEL.get(slug, "")
+                for vid in walk(rows):
+                    pinned[vid] = pinned.get(vid) or label
+        else:
+            for vid in walk(data):
+                pinned.setdefault(vid, "")
+    return pinned
+
 
 def _prepare_writable_copy():
     """/var/task/frontend/scripts/*.py(읽기 전용, 배포 패키지) -> /tmp/app/frontend/scripts/*.py
@@ -89,6 +139,20 @@ def lambda_handler(event, context):
         )
         uploaded.append(name)
     print(f"S3 업로드 완료: {uploaded} -> s3://{FRONTEND_BUCKET}/mock/")
+
+    # 3.5) 대시보드에 노출되는 video_id 전부를 핀 목록으로 갱신(덮어쓰기).
+    #      daily_search_collector가 다음 실행부터 이걸 읽어 해당 영상 조회수를 계속 갱신.
+    try:
+        pinned = _collect_video_ids(os.path.join(APP_DIR, "frontend", "mock"))
+        s3.put_object(
+            Bucket=BRONZE_BUCKET,
+            Key=PINNED_KEY,
+            Body=json.dumps(dict(sorted(pinned.items())), ensure_ascii=False).encode("utf-8"),
+            ContentType="application/json",
+        )
+        print(f"핀 목록 갱신: {len(pinned)}개 -> s3://{BRONZE_BUCKET}/{PINNED_KEY}")
+    except Exception as e:  # 핀 목록 실패가 대시보드 갱신 전체를 깨뜨리진 않게
+        print(f"핀 목록 갱신 실패(무시하고 계속): {e}")
 
     # 4) CloudFront /mock/* 캐시 무효화 (frontend.tf가 /mock/*에 짧은 TTL을 걸어뒀지만,
     #    다음 요청까지 기다리지 않고 바로 반영되게 즉시 무효화)

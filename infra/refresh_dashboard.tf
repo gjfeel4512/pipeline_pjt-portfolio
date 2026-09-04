@@ -51,8 +51,11 @@ resource "aws_lambda_function" "refresh_dashboard" {
 
   environment {
     variables = {
-      AWS_S3_SILVER_BUCKET       = aws_s3_bucket.silver.id
-      AWS_S3_GOLD_BUCKET         = aws_s3_bucket.gold.id
+      AWS_S3_SILVER_BUCKET = aws_s3_bucket.silver.id
+      AWS_S3_GOLD_BUCKET   = aws_s3_bucket.gold.id
+      # 대시보드에 노출되는 video_id를 bronze/_checkpoints/pinned_video_ids.json에
+      # 써서 daily_search_collector가 그 영상들 조회수를 계속 갱신하게 한다.
+      AWS_S3_BRONZE_BUCKET       = aws_s3_bucket.bronze.id
       AWS_ATHENA_DATABASE        = aws_glue_catalog_database.pipeline.name
       AWS_ATHENA_OUTPUT_LOCATION = "s3://${aws_s3_bucket.gold.id}/athena-query-results/"
       FRONTEND_S3_BUCKET         = aws_s3_bucket.frontend.id

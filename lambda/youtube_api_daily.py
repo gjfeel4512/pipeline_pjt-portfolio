@@ -151,6 +151,15 @@ CALL_PACING_SEC = 1.0              # 매 API 호출 뒤 최소 간격 (분당 �
 
 CHECKPOINT_KEY = "bronze/_checkpoints/search_collector_state.json"
 
+# refresh_dashboard Lambda가 mock을 만든 직후, 대시보드에 실제로 노출되는 video_id
+# 전부를 {video_id: category_label}로 여기에 덮어쓴다(~200개). 이 수집기는 매 실행마다
+# 이 목록을 읽어서 known_videos와 합쳐 스냅샷한다 - 백필/스테디(30일+) 영상이라
+# known_videos에서 빠진 것도, 화면에 떠 있는 동안은 조회수가 계속 갱신되게 하려는 것.
+# known_videos와 달리 나이(KNOWN_VIDEO_MAX_AGE_DAYS)로는 안 지우고, videos.list에서
+# 아예 사라진(삭제) 경우만 그 회차 스냅샷에서 빠진다. 화면에서 내려가면 다음 refresh가
+# 이 파일에서 빼주므로 무한히 안 쌓인다.
+PINNED_KEY = "bronze/_checkpoints/pinned_video_ids.json"
+
 s3_client = None
 cloudwatch_client = None
 
@@ -278,12 +287,25 @@ def load_state(s3):
             data = {}
         else:
             raise
+    # refresh_dashboard가 쓴 핀 목록(대시보드에 노출 중인 video_id). 없으면 빈 dict -
+    # 첫 배포 직후엔 아직 없을 수 있고, 그땐 known_videos만 스냅샷(다음 회차부터 합쳐짐).
+    pinned = {}
+    try:
+        pobj = s3.get_object(Bucket=BUCKET_NAME, Key=PINNED_KEY)
+        pinned = dict(json.loads(pobj["Body"].read().decode("utf-8")))
+    except ClientError as e:
+        if e.response.get("Error", {}).get("Code") not in ("NoSuchKey", "404"):
+            raise  # 일시적 오류를 '핀 없음'으로 뭉개지 않는다
+        print("핀 목록 없음 - known_videos만 스냅샷")
+
     return {
         "searched_until": data.get("searched_until"),
         "known_videos": dict(data.get("known_videos", {})),
         # {video_id: 발견 시점 조회수/구독자 비율} - discover_trending()이 채운다.
         # known_videos의 부분집합이며, known_videos에서 evict될 때 같이 제거된다.
         "trending": dict(data.get("trending", {})),
+        # {video_id: category_label} - refresh_dashboard가 소유. 이 수집기는 읽기만 한다.
+        "pinned": pinned,
     }
 
 
@@ -694,7 +716,8 @@ def lambda_handler(event, context):
     snapshot_count = 0
     evicted_count = 0
     if stop_reason is None:
-        all_ids = sorted(state["known_videos"])
+        # known_videos + 핀(대시보드 노출 중) 합집합을 스냅샷한다.
+        all_ids = sorted(set(state["known_videos"]) | set(state["pinned"]))
         try:
             video_items, videos_complete = enrich_videos(all_ids, context)
             if not videos_complete:
@@ -716,7 +739,13 @@ def lambda_handler(event, context):
                     pub_dt = datetime.fromisoformat(pub_at.replace("Z", "+00:00"))
                 except ValueError:
                     continue
-                if pub_dt < age_cutoff and f["video_id"] in state["known_videos"]:
+                # 핀은 나이로 안 지운다(대시보드에 떠 있는 동안은 계속 갱신). 진짜
+                # 삭제(응답에서 사라짐)만 아래 videos_complete 블록에서 known_videos에서 빠짐.
+                if (
+                    pub_dt < age_cutoff
+                    and f["video_id"] in state["known_videos"]
+                    and f["video_id"] not in state["pinned"]
+                ):
                     del state["known_videos"][f["video_id"]]
                     state["trending"].pop(f["video_id"], None)
                     evicted_count += 1
@@ -739,9 +768,15 @@ def lambda_handler(event, context):
                     # 시간 부족으로 채널 정보를 못 받아온 영상 - 빈 채널 필드로 Silver/Postgres를
                     # 오염시키지 않도록 이번엔 건너뛰고 다음 실행에서 다시 처리
                     continue
-                # 파티션(파일 위치)은 이 영상을 잡아낸 검색 카테고리 기준.
+                # 파티션(파일 위치): known_videos(검색 카테고리) -> 핀 목록(대시보드
+                # 카테고리) -> YouTube 실제 category_id 순으로 라벨을 정한다.
                 # 레코드 안의 category_id/category_name 은 YouTube 가 알려준 실제 값 그대로.
-                label = state["known_videos"].get(r["video_id"], "인물_블로그")
+                label = (
+                    state["known_videos"].get(r["video_id"])
+                    or state["pinned"].get(r["video_id"])
+                    or CATEGORY_ID_TO_LABEL.get(r.get("category_id", ""))
+                    or "인물_블로그"
+                )
                 records_by_label.setdefault(label, []).append(r)
                 snapshot_count += 1
         except QuotaExhaustedError:
@@ -765,6 +800,7 @@ def lambda_handler(event, context):
         newly_found=newly_found,
         trending_added=trending_added,
         trending_tracked=len(state["trending"]),
+        pinned_count=len(state["pinned"]),
         snapshot_count=snapshot_count,
         evicted_count=evicted_count,
         known_after=len(state["known_videos"]),
