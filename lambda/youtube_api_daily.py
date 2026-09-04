@@ -10,7 +10,12 @@ YouTube search.list 기반 증분 수집 Lambda (4시간 간격 실행 전제)
   를 기록한다.
 - 매 실행:
   1) search.list 로 [searched_until, now] 구간의 "신규" 영상만 발견 (카테고리별
-     태그 전부를 q="a"|"b"|... OR 1회로 합쳐서 videoDuration(medium/long)당 1콜)
+     태그 전부를 q="a"|"b"|... OR 1회로 합쳐서 videoDuration(medium/long)당 1콜,
+     결과가 50을 넘으면 nextPageToken을 SEARCH_MAX_PAGES까지 따라감)
+  1b) chart=mostPopular(TRENDING_CATEGORY_IDS)에서 쇼츠가 아니고 게시 4일 이내이며
+     조회수/구독자 비율이 TRENDING_SUB_RATIO_MIN 이상인 "구독자 대비 떡상" 영상만
+     추가로 known_videos에 넣는다(발견 시점 비율은 state["trending"]에 기록 ->
+     스냅샷 레코드의 discovered_via="trending", trending_sub_ratio 로 노출).
   2) known_videos 전체(신규 포함)를 videos.list / channels.list 로 재조회해
      현재 조회수·구독자 스냅샷을 만든다 -> 시간이 갈수록 4h치, 8h치, 12h치 ...
      시계열이 Bronze에 누적된다 (같은 영상 재수집은 의도된 동작)
@@ -32,6 +37,7 @@ YouTube search.list 기반 증분 수집 Lambda (4시간 간격 실행 전제)
 
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -58,6 +64,39 @@ KNOWN_VIDEO_MAX_AGE_DAYS = int(os.environ.get("KNOWN_VIDEO_MAX_AGE_DAYS", "30"))
 TIME_BUDGET_SAFETY_SEC = int(os.environ.get("TIME_BUDGET_SAFETY_SEC", "60"))
 
 SEARCH_VIDEO_DURATIONS = ["medium", "long"]  # 쇼츠(0~4분 전체) 제외
+# search.list 결과가 slot당 maxResults(50)를 넘을 때 nextPageToken을 몇 페이지까지
+# 따라갈지. 태그를 늘리면 게임 같은 카테고리는 4h 구간에도 50을 넘길 수 있어
+# 뒤쪽(오래된 쪽)이 잘려나간다 - 커서가 이미 전진한 뒤라 다음 실행도 그 구간을
+# 다시 안 훑으므로 영구 사각지대가 됨.
+# 비용: search.list는 페이지당 100유닛. 2페이지 x 8 slot = 최악 1600유닛/run,
+# 6회/일이면 최악 9600유닛/일(키 1개 한도 10k에 근접) - 단 2번째 페이지는 해당
+# slot이 4h에 50건을 넘을 때만 호출되므로 실측은 대부분 1페이지(800유닛/run)에
+# 머문다. 여러 키 로테이션이 안전망. 빠듯하면 env로 1로 낮출 것.
+SEARCH_MAX_PAGES = int(os.environ.get("SEARCH_MAX_PAGES", "2"))
+
+# ------------------------------------------------------------
+# 인기 급상승(chart=mostPopular) 기반 '구독자 대비 떡상' 신규 영상 추적
+# ------------------------------------------------------------
+# 태그 검색과 별개 축: YouTube가 급상승으로 띄운 영상 중, (1) 쇼츠 아님
+# (2) 게시 TRENDING_MAX_AGE_DAYS일 이내의 신선한 영상 (3) 조회수 / 구독자수가
+# TRENDING_SUB_RATIO_MIN 이상 - 즉 "채널 구독자 규모로는 설명이 안 되는" 영상만
+# known_videos에 추가한다. 구독자 대비 그냥 나올 만한 조회수(비율 ~1)는 신호가
+# 아니므로 버린다. 추가된 영상은 state["trending"]에 발견 시점 비율을 남겨서,
+# 이후 스냅샷 레코드에 discovered_via="trending"으로 표시된다.
+#
+# 주의: 예전에 삭제된 mostPopular 수집 경로와 달리, 여기서 찾은 video_id는 별도
+# 파일/스키마가 아니라 known_videos -> 기존 스냅샷 -> 같은 Bronze 레코드로
+# 일원화되어 흐른다. 쇼츠 필터는 이 함수가 유일한 게이트다(Silver는 쇼츠를
+# video_type='short'로 라벨만 하고 걸러내지 않음).
+TRENDING_ENABLED = os.environ.get("TRENDING_ENABLED", "1") == "1"
+# mostPopular + videoCategoryId 조합을 지원하는 카테고리만. 22(인물_블로그)는
+# Silver가 category_id=22를 오염으로 reject하므로 제외.
+TRENDING_CATEGORY_IDS = [
+    c.strip() for c in os.environ.get("TRENDING_CATEGORY_IDS", "1,2,20").split(",") if c.strip()
+]
+TRENDING_MAX_AGE_DAYS = int(os.environ.get("TRENDING_MAX_AGE_DAYS", "4"))
+TRENDING_SUB_RATIO_MIN = float(os.environ.get("TRENDING_SUB_RATIO_MIN", "5.0"))
+TRENDING_MIN_DURATION_SEC = 240  # Silver get_video_type()의 short 경계와 동일
 
 # 카테고리 ID (YouTube 공식 videoCategoryId)
 CATEGORY_IDS = {
@@ -82,14 +121,23 @@ CATEGORY_TAGS = {
     "영화_애니메이션": [
         "영화리뷰", "결말포함", "영화 해석", "영화 요약", "영화 비평",
         "개봉작 리뷰", "영화 몰아보기", "영화 추천", "박스오피스",
+        # 2026-09-04 확장: 어휘가 다른 리뷰/요약 영상까지 포착
+        "영화 결말", "스포 주의", "넷플릭스 추천", "OTT 추천", "드라마 리뷰",
+        "애니 리뷰", "애니메이션 추천", "신작 영화", "영화 정보",
     ],
     "자동차_차량": [
         "시승기", "신차 리뷰", "전기차 리뷰", "차량 비교", "장기렌트 비교",
         "자동차 리뷰", "중고차 리뷰", "차박",
+        # 2026-09-04 확장
+        "국산차 리뷰", "수입차 리뷰", "출고기", "자동차 뉴스", "신차 공개",
+        "제로백", "하이브리드 리뷰", "SUV 리뷰",
     ],
     "게임": [
         "게임리뷰", "게임 리뷰", "게임 후기", "게임 공략", "게임 업데이트",
         "게임 추천", "신작 게임", "스팀 할인", "무료 게임",
+        # 2026-09-04 확장
+        "게임 플레이", "플레이 영상", "게임 실황", "공략집", "게임 뉴스",
+        "인디게임", "콘솔 게임", "모바일 게임", "신작 리뷰",
     ],
     # category_id=22는 업로더가 카테고리를 지정 안 했을 때 YouTube가 자동으로 붙이는
     # 기본값이라 Silver 단계에서 오염 데이터로 분리됨 - 다른 카테고리로 오분류된
@@ -218,6 +266,9 @@ def load_state(s3):
     return {
         "searched_until": data.get("searched_until"),
         "known_videos": dict(data.get("known_videos", {})),
+        # {video_id: 발견 시점 조회수/구독자 비율} - discover_trending()이 채운다.
+        # known_videos의 부분집합이며, known_videos에서 evict될 때 같이 제거된다.
+        "trending": dict(data.get("trending", {})),
     }
 
 
@@ -226,6 +277,7 @@ def save_state(s3, state):
         {
             "searched_until": state["searched_until"],
             "known_videos": dict(sorted(state["known_videos"].items())),
+            "trending": dict(sorted(state.get("trending", {}).items())),
         },
         ensure_ascii=False,
     )
@@ -262,7 +314,17 @@ def do_search(category_id, duration, tags, published_after, published_before):
         "relevanceLanguage": RELEVANCE_LANGUAGE,
         "maxResults": MAX_RESULTS,
     }
-    return call_with_rotation("search", params)
+    # nextPageToken을 SEARCH_MAX_PAGES까지 따라가 slot의 뒷부분(오래된 쪽)이
+    # 잘려나가는 사각지대를 막는다. 합쳐서 단일 응답 모양({"items": [...]})으로 반환.
+    items = []
+    for _ in range(SEARCH_MAX_PAGES):
+        data = call_with_rotation("search", params)
+        items.extend(data.get("items", []))
+        token = data.get("nextPageToken")
+        if not token:
+            break
+        params = dict(params, pageToken=token)
+    return {"items": items}
 
 
 # ============================================================
@@ -383,12 +445,15 @@ def build_channel_info(channel_details):
     return info
 
 
-def build_flat_records(video_facts, channel_info):
+def build_flat_records(video_facts, channel_info, trending_meta=None):
+    trending_meta = trending_meta or {}
     records = []
     collected_at = datetime.now(timezone.utc).isoformat()
     for vf in video_facts:
         cid = vf.get("channel_id", "")
         ch = channel_info.get(cid, {})
+        vid = vf.get("video_id", "")
+        trend_ratio = trending_meta.get(vid)
         records.append({
             "category_name": CATEGORY_ID_TO_LABEL.get(vf.get("category_id", ""), ""),
             "category_id": vf.get("category_id", ""),
@@ -429,6 +494,11 @@ def build_flat_records(video_facts, channel_info):
             "channel_total_view_count": ch.get("channel_view_count"),
             "channel_total_video_count": ch.get("channel_video_count"),
             "uploads_playlist_id": ch.get("uploads_playlist_id", ""),
+            # 이 영상을 어떻게 발견했나: 태그 검색("search") vs 인기 급상승("trending").
+            # trending이면 발견 시점의 조회수/구독자 비율도 같이 남긴다(임계값은
+            # TRENDING_SUB_RATIO_MIN, 다운스트림에서 자유롭게 재필터 가능).
+            "discovered_via": "trending" if trend_ratio is not None else "search",
+            "trending_sub_ratio": trend_ratio,
             "collected_at_utc": collected_at,
         })
     return records
@@ -452,6 +522,104 @@ def upload_records(s3, category_label, run_date, invocation_suffix, records):
     key = bronze_s3_key(category_label, run_date, invocation_suffix)
     s3.put_object(Bucket=BUCKET_NAME, Key=key, Body=body.encode("utf-8"), ContentType="application/x-ndjson")
     return key
+
+
+# ============================================================
+# 1b단계: 인기 급상승에서 '구독자 대비 떡상' 신규 영상 발굴
+# ============================================================
+def _safe_int(v):
+    try:
+        return int(v)
+    except (ValueError, TypeError):
+        return None
+
+
+def _iso8601_duration_seconds(s):
+    """PT#H#M#S -> 초. Silver parse_iso8601_duration()과 동일 규칙."""
+    if not s or not isinstance(s, str):
+        return None
+    m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", s)
+    if not m:
+        return None
+    h, mi, se = m.groups()
+    total = int(h or 0) * 3600 + int(mi or 0) * 60 + int(se or 0)
+    return total or None
+
+
+def discover_trending(state, context):
+    """chart=mostPopular 목록에서 (1) 쇼츠 아님 (2) 게시 TRENDING_MAX_AGE_DAYS일 이내
+    (3) 조회수/구독자 >= TRENDING_SUB_RATIO_MIN 인 신규 영상만 known_videos + state['trending']
+    에 추가하고, 추가한 개수를 반환한다."""
+    now_utc = datetime.now(timezone.utc)
+    age_cutoff = now_utc - timedelta(days=TRENDING_MAX_AGE_DAYS)
+
+    # {video_id: (channel_id, view_count, category_label)}
+    candidates = {}
+    for cat_id in TRENDING_CATEGORY_IDS:
+        label = CATEGORY_ID_TO_LABEL.get(cat_id)
+        if not label:
+            continue
+        if time_running_low(context):
+            raise TimeBudgetExceeded()
+        try:
+            data = call_with_rotation("videos", {
+                "chart": "mostPopular",
+                "videoCategoryId": cat_id,
+                "regionCode": REGION_CODE,
+                "maxResults": MAX_RESULTS,
+                "part": "snippet,contentDetails,statistics",
+            })
+        except RuntimeError as e:
+            # 일부 카테고리는 mostPopular 미지원 -> videoChartNotFound(400)
+            print(f"    트렌딩 조회 건너뜀(cat={cat_id}): {e}")
+            continue
+        for it in data.get("items", []):
+            vid = it.get("id")
+            if not vid or vid in state["known_videos"]:
+                continue
+            sn = it.get("snippet", {})
+            dur = _iso8601_duration_seconds(it.get("contentDetails", {}).get("duration"))
+            if dur is None or dur < TRENDING_MIN_DURATION_SEC:
+                continue  # 쇼츠/불명 - 이 함수가 유일한 쇼츠 게이트다
+            try:
+                pub_dt = datetime.fromisoformat(sn.get("publishedAt", "").replace("Z", "+00:00"))
+            except (ValueError, AttributeError):
+                continue
+            if pub_dt < age_cutoff:
+                continue  # 신선하지 않음
+            vc = _safe_int(it.get("statistics", {}).get("viewCount"))
+            if vc is None:
+                continue
+            candidates[vid] = (sn.get("channelId", ""), vc, label)
+
+    if not candidates:
+        return 0
+
+    # 후보 채널 구독자수 조회 (1유닛/배치)
+    ch_ids = sorted({c for (c, _v, _l) in candidates.values() if c})
+    subs = {}
+    for i in range(0, len(ch_ids), 50):
+        if time_running_low(context):
+            raise TimeBudgetExceeded()
+        data = call_with_rotation("channels", {"id": ",".join(ch_ids[i:i + 50]), "part": "statistics"})
+        for c in data.get("items", []):
+            st = c.get("statistics", {})
+            if str(st.get("hiddenSubscriberCount")).lower() == "true":
+                continue
+            subs[c["id"]] = _safe_int(st.get("subscriberCount"))
+
+    added = 0
+    for vid, (cid, vc, label) in candidates.items():
+        sub = subs.get(cid)
+        if not sub or sub <= 0:
+            continue  # 구독자 비공개/0 -> 비율 판단 불가
+        ratio = vc / sub
+        if ratio < TRENDING_SUB_RATIO_MIN:
+            continue  # 구독자 규모로 설명되는 조회수 -> 신호 아님
+        state["known_videos"][vid] = label
+        state["trending"][vid] = round(ratio, 2)
+        added += 1
+    return added
 
 
 # ============================================================
@@ -496,6 +664,16 @@ def lambda_handler(event, context):
     except TimeBudgetExceeded:
         stop_reason = "time_budget"
 
+    # --- 1b) 인기 급상승에서 '구독자 대비 떡상' 신규 영상 추가 ---
+    trending_added = 0
+    if stop_reason is None and TRENDING_ENABLED:
+        try:
+            trending_added = discover_trending(state, context)
+        except QuotaExhaustedError:
+            stop_reason = "quota_exhausted"
+        except TimeBudgetExceeded:
+            stop_reason = "time_budget"
+
     # --- 2) known_videos 전체 스냅샷 (videos.list / channels.list) ---
     records_by_label = {}
     snapshot_count = 0
@@ -525,6 +703,7 @@ def lambda_handler(event, context):
                     continue
                 if pub_dt < age_cutoff and f["video_id"] in state["known_videos"]:
                     del state["known_videos"][f["video_id"]]
+                    state["trending"].pop(f["video_id"], None)
                     evicted_count += 1
             if videos_complete:
                 # 요청한 all_ids 중 응답에 아예 없던 것만 "사라짐"으로 간주.
@@ -532,6 +711,7 @@ def lambda_handler(event, context):
                 for vid in set(all_ids) - returned_ids:
                     if vid in state["known_videos"]:
                         del state["known_videos"][vid]
+                        state["trending"].pop(vid, None)
                         evicted_count += 1
 
             channel_ids = sorted({f["channel_id"] for f in facts if f["channel_id"]})
@@ -539,7 +719,7 @@ def lambda_handler(event, context):
             if not channels_complete:
                 stop_reason = "time_budget"
             channel_info = build_channel_info(channel_details)
-            for r in build_flat_records(facts, channel_info):
+            for r in build_flat_records(facts, channel_info, state["trending"]):
                 if r["channel_id"] not in channel_info:
                     # 시간 부족으로 채널 정보를 못 받아온 영상 - 빈 채널 필드로 Silver/Postgres를
                     # 오염시키지 않도록 이번엔 건너뛰고 다음 실행에서 다시 처리
@@ -568,6 +748,8 @@ def lambda_handler(event, context):
     result.update(
         stop_reason=stop_reason,
         newly_found=newly_found,
+        trending_added=trending_added,
+        trending_tracked=len(state["trending"]),
         snapshot_count=snapshot_count,
         evicted_count=evicted_count,
         known_after=len(state["known_videos"]),

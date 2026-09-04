@@ -154,6 +154,12 @@ def transform_to_silver(record):
 
             'collected_at_utc': record.get('collected_at_utc'),
 
+            # 발견 경로: 'search'(태그 검색) | 'trending'(인기 급상승, 구독자 대비
+            # 조회수 비율 TRENDING_SUB_RATIO_MIN 이상). trending_sub_ratio는 발견
+            # 시점의 조회수/구독자 비율(그 외에는 None) - Bronze 수집기에서 계산.
+            'discovered_via': record.get('discovered_via', 'search'),
+            'trending_sub_ratio': record.get('trending_sub_ratio'),
+
             'is_valid': validate_record(record),
             'silver_transformed_at_utc': datetime.utcnow().isoformat(),
             'source': 'daily_search_collector_stepfn',

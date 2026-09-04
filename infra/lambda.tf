@@ -35,6 +35,15 @@ resource "aws_lambda_function" "daily_search_collector" {
       INITIAL_LOOKBACK_HOURS   = "8"  # 체크포인트 없을 때(콜드 스타트)만 사용
       KNOWN_VIDEO_MAX_AGE_DAYS = "30" # 게시일 이보다 오래되면 known_videos에서 제거
       TIME_BUDGET_SAFETY_SEC   = "60" # 남은 실행시간이 이 밑이면 배치 중이라도 저장 후 종료
+      SEARCH_MAX_PAGES         = "2"  # slot당 50건 초과 시 nextPageToken 추적 페이지 수
+
+      # 인기 급상승(chart=mostPopular) 기반 '구독자 대비 떡상' 신규 영상 추적.
+      # 끄려면 TRENDING_ENABLED=0. 비율 임계값은 조회수/구독자수 - 5.0이면 조회수가
+      # 구독자수의 5배 이상인 영상만 (코드/데이터 보고 조정).
+      TRENDING_ENABLED       = "1"
+      TRENDING_CATEGORY_IDS  = "1,2,20" # 22(인물_블로그)는 Silver가 reject하므로 제외
+      TRENDING_MAX_AGE_DAYS  = "4"      # 게시 4일 이내만 (신선한 떡상만)
+      TRENDING_SUB_RATIO_MIN = "5.0"
     }
   }
 
