@@ -44,40 +44,61 @@ CATEGORIES = {"gaming": "게임", "autos_vehicles": "자동차·차량", "film_a
 N_CLUSTERS = 6
 MIN_HALF_SAMPLE = 10  # 이 값보다 표본이 적은 절반은 trend_pct를 null 처리
 
+# AWS_S3_SILVER_BUCKET이 있으면 S3에서 직접 읽는다(Lambda 자동화용,
+# frontend/scripts/export_s3_for_dashboard.py의 iter_s3_silver_jsonl과 동일한
+# 키 규칙). 없으면 로컬 outputs/silver/{category}.jsonl을 그대로 읽는다.
+SILVER_BUCKET = os.environ.get("AWS_S3_SILVER_BUCKET")
+
+
+def iter_silver_lines(cat_key):
+    if SILVER_BUCKET:
+        import boto3
+        s3 = boto3.client("s3")
+        prefix = f"youtube/silver/category={cat_key}/"
+        paginator = s3.get_paginator("list_objects_v2")
+        for page in paginator.paginate(Bucket=SILVER_BUCKET, Prefix=prefix):
+            for obj in page.get("Contents", []):
+                if not obj["Key"].endswith(".jsonl"):
+                    continue
+                body = s3.get_object(Bucket=SILVER_BUCKET, Key=obj["Key"])["Body"].read().decode("utf-8")
+                yield from body.splitlines()
+    else:
+        path = f"{SILVER_DIR}/{cat_key}.jsonl"
+        if not os.path.exists(path):
+            return
+        with open(path, encoding="utf-8") as f:
+            yield from f
+
 
 def load_category(cat_key):
-    path = f"{SILVER_DIR}/{cat_key}.jsonl"
     rows = []
-    if not os.path.exists(path):
-        return pd.DataFrame()
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            if not d.get("is_valid"):
-                continue
-            tags = [t.strip() for t in (d.get("tags") or []) if t and t.strip()]
-            if not tags:
-                continue
-            try:
-                published = pd.Timestamp(d["published_at_utc"])
-                collected = pd.Timestamp(d["collected_at_utc"])
-            except (KeyError, ValueError, TypeError):
-                continue
-            age_days = max(1, (collected - published).total_seconds() / 86400)
-            view_count = d.get("view_count") or 0
-            if view_count <= 0:
-                continue
-            rows.append({
-                "video_id": d.get("video_id"),
-                "title": d.get("title") or "",
-                "tags": tags,
-                "published_at": published,
-                "age_days": age_days,
-                "views_per_day": view_count / age_days,
-            })
+    for line in iter_silver_lines(cat_key):
+        line = line.strip()
+        if not line:
+            continue
+        d = json.loads(line)
+        if not d.get("is_valid"):
+            continue
+        tags = [t.strip() for t in (d.get("tags") or []) if t and t.strip()]
+        if not tags:
+            continue
+        try:
+            published = pd.Timestamp(d["published_at_utc"])
+            collected = pd.Timestamp(d["collected_at_utc"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        age_days = max(1, (collected - published).total_seconds() / 86400)
+        view_count = d.get("view_count") or 0
+        if view_count <= 0:
+            continue
+        rows.append({
+            "video_id": d.get("video_id"),
+            "title": d.get("title") or "",
+            "tags": tags,
+            "published_at": published,
+            "age_days": age_days,
+            "views_per_day": view_count / age_days,
+        })
     return pd.DataFrame(rows)
 
 
