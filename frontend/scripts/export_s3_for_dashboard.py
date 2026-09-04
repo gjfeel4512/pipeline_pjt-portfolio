@@ -517,7 +517,21 @@ def build_video_row(row):
     }
 
 
-def build_channel_row(row):
+def build_channel_row(row, thumb_by_channel=None):
+    # channel_thumbnail_url은 "채널의 전체 최신 수집 행"과 다른 기준으로 보완한다.
+    # dedup_latest(all_prepared, channel_id)가 고르는 행은 그 채널이 마지막으로
+    # 수집된 시점 기준 전체 필드 스냅샷일 뿐이라, 2026-09-03 수집기 수정 이후로
+    # 그 채널의 새 영상이 한 번도 수집되지 않았으면 최신 행 자체가 옛날 데이터라
+    # channel_thumbnail_url이 비어있을 수 있다(다른 필드는 최신인데 썸네일만
+    # 옛날 값인 게 아니라, 애초에 그 채널의 마지막 수집 자체가 옛날이라는 뜻).
+    # thumb_by_channel은 "같은 채널의 여러 수집 행 중 썸네일이 있는 행만 모아서
+    # 그 중 최신"으로 별도로 구한 값 - 다른 카테고리/시점에라도 이 채널 썸네일이
+    # 한 번이라도 수집된 적이 있으면 그 값을 쓴다. (Bronze 폴백은 Lambda 배포
+    # zip에 outputs/bronze_collect/가 포함되지 않아 실제로는 작동하지 않는다 -
+    # build_dashboard_data.py의 load_channel_avatars() 참고.)
+    thumb = row["channel_thumbnail_url"]
+    if not thumb and thumb_by_channel:
+        thumb = thumb_by_channel.get(row["channel_id"])
     return {
         "channel_id": row["channel_id"],
         "channel_title": row["channel_name"] or row["channel_id"],
@@ -527,7 +541,7 @@ def build_channel_row(row):
         "channel_view_count": row["channel_total_view_count"],
         "channel_video_count": row["channel_total_video_count"],
         "uploads_playlist_id": row["uploads_playlist_id"],
-        "channel_thumbnail_url": row["channel_thumbnail_url"],
+        "channel_thumbnail_url": thumb,
         "last_collected_at_utc": row["collected_at_utc_raw"],
     }
 
@@ -606,7 +620,12 @@ def main():
 
     print("dim_channel 구성 (채널별 최신 수집 레코드 기준):")
     channel_rows = dedup_latest(all_prepared, lambda r: r["channel_id"])
-    save("dim_channel.json", [build_channel_row(r) for r in channel_rows])
+    # 썸네일은 "채널당 전체 최신 행" 기준이 아니라 "썸네일이 있는 행 중 최신" 기준으로
+    # 따로 보완한다 - build_channel_row()의 주석 참고.
+    thumb_rows = [r for r in all_prepared if r.get("channel_thumbnail_url")]
+    latest_thumb_rows = dedup_latest(thumb_rows, lambda r: r["channel_id"])
+    thumb_by_channel = {r["channel_id"]: r["channel_thumbnail_url"] for r in latest_thumb_rows}
+    save("dim_channel.json", [build_channel_row(r, thumb_by_channel) for r in channel_rows])
 
     print("Silver (vw_video_analysis 재현, 카테고리별):")
     for cat_key in CATEGORY_SLUGS:

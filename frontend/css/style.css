@@ -179,6 +179,10 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
 .card-footnote { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 18px; }
+
+/* 카테고리 트렌드 탭: grid 없이 세로로 쌓이는 .card(제목길이/태그/자막, 태그 자동 분류,
+   1년치 재생)들 사이 간격 - .advice-card/.insight-card와 같은 20px 기준으로 맞춤 */
+#tab-trend > .card { margin-top: 20px; }
 @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
 /* --- Weekly tip callout (홈) --- */
