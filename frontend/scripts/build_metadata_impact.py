@@ -46,6 +46,32 @@ ROOT = os.path.dirname(FRONTEND_DIR)
 SILVER_DIR = f"{ROOT}/outputs/silver"
 OUT_PATH = f"{FRONTEND_DIR}/mock/metadata_impact.json"
 
+# AWS_S3_SILVER_BUCKET이 있으면 S3에서 직접 읽는다(Lambda 자동화용,
+# frontend/scripts/export_s3_for_dashboard.py의 iter_s3_silver_jsonl과 동일한
+# 키 규칙). 없으면 로컬 outputs/silver/{category}.jsonl을 그대로 읽는다(로컬
+# 개발/디버깅용 - 기존 동작 그대로 유지).
+SILVER_BUCKET = os.environ.get("AWS_S3_SILVER_BUCKET")
+
+
+def iter_silver_lines(cat_key):
+    if SILVER_BUCKET:
+        import boto3
+        s3 = boto3.client("s3")
+        prefix = f"youtube/silver/category={cat_key}/"
+        paginator = s3.get_paginator("list_objects_v2")
+        for page in paginator.paginate(Bucket=SILVER_BUCKET, Prefix=prefix):
+            for obj in page.get("Contents", []):
+                if not obj["Key"].endswith(".jsonl"):
+                    continue
+                body = s3.get_object(Bucket=SILVER_BUCKET, Key=obj["Key"])["Body"].read().decode("utf-8")
+                yield from body.splitlines()
+    else:
+        path = f"{SILVER_DIR}/{cat_key}.jsonl"
+        if not os.path.exists(path):
+            return
+        with open(path, encoding="utf-8") as f:
+            yield from f
+
 CATEGORIES = {"gaming": "게임", "autos_vehicles": "자동차·차량", "film_animation": "영화·애니메이션"}
 URL_RE = re.compile(r"https?://")
 
@@ -69,60 +95,56 @@ FEATURES = [
 
 
 def load_category(cat_key):
-    path = f"{SILVER_DIR}/{cat_key}.jsonl"
     rows = []
-    if not os.path.exists(path):
-        return pd.DataFrame()
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            d = json.loads(line)
-            if not d.get("is_valid"):
-                continue
+    for line in iter_silver_lines(cat_key):
+        line = line.strip()
+        if not line:
+            continue
+        d = json.loads(line)
+        if not d.get("is_valid"):
+            continue
+        try:
+            published = pd.Timestamp(d["published_at_utc"])
+            collected = pd.Timestamp(d["collected_at_utc"])
+        except (KeyError, ValueError, TypeError):
+            continue
+        age_days = max(1, (collected - published).total_seconds() / 86400)
+        view_count = d.get("view_count") or 0
+        subscriber_count = d.get("subscriber_count") or 0
+        duration_seconds = d.get("duration_seconds") or 0
+        channel_video_count = d.get("channel_total_video_count") or 0
+        if view_count <= 0 or duration_seconds <= 0 or channel_video_count <= 0:
+            continue
+
+        channel_age_days = None
+        ch_pub = d.get("channel_published_at_utc")
+        if ch_pub:
             try:
-                published = pd.Timestamp(d["published_at_utc"])
-                collected = pd.Timestamp(d["collected_at_utc"])
-            except (KeyError, ValueError, TypeError):
-                continue
-            age_days = max(1, (collected - published).total_seconds() / 86400)
-            view_count = d.get("view_count") or 0
-            subscriber_count = d.get("subscriber_count") or 0
-            duration_seconds = d.get("duration_seconds") or 0
-            channel_video_count = d.get("channel_total_video_count") or 0
-            if view_count <= 0 or duration_seconds <= 0 or channel_video_count <= 0:
-                continue
+                channel_age_days = max(1, (published - pd.Timestamp(ch_pub)).total_seconds() / 86400)
+            except (ValueError, TypeError):
+                channel_age_days = None
+        if channel_age_days is None:
+            continue
 
-            channel_age_days = None
-            ch_pub = d.get("channel_published_at_utc")
-            if ch_pub:
-                try:
-                    channel_age_days = max(1, (published - pd.Timestamp(ch_pub)).total_seconds() / 86400)
-                except (ValueError, TypeError):
-                    channel_age_days = None
-            if channel_age_days is None:
-                continue
+        try:
+            dow = pd.Timestamp(d["published_at_kst"]).isoweekday()  # 1=월 ... 7=일
+        except (KeyError, ValueError, TypeError):
+            continue
 
-            try:
-                dow = pd.Timestamp(d["published_at_kst"]).isoweekday()  # 1=월 ... 7=일
-            except (KeyError, ValueError, TypeError):
-                continue
-
-            description = d.get("description") or ""
-            rows.append({
-                "views_per_day": view_count / age_days,
-                "caption_available": 1 if d.get("caption_available") else 0,
-                "is_weekend": 1 if dow in (6, 7) else 0,
-                "tag_count": len(d.get("tags") or []),
-                "title_length": len(d.get("title") or ""),
-                "description_length": len(description),
-                "link_count": len(URL_RE.findall(description)),
-                "duration_seconds": duration_seconds,
-                "channel_video_count": channel_video_count,
-                "channel_age_days": channel_age_days,
-                "subscriber_count": subscriber_count,
-            })
+        description = d.get("description") or ""
+        rows.append({
+            "views_per_day": view_count / age_days,
+            "caption_available": 1 if d.get("caption_available") else 0,
+            "is_weekend": 1 if dow in (6, 7) else 0,
+            "tag_count": len(d.get("tags") or []),
+            "title_length": len(d.get("title") or ""),
+            "description_length": len(description),
+            "link_count": len(URL_RE.findall(description)),
+            "duration_seconds": duration_seconds,
+            "channel_video_count": channel_video_count,
+            "channel_age_days": channel_age_days,
+            "subscriber_count": subscriber_count,
+        })
     return pd.DataFrame(rows)
 
 

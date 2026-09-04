@@ -1,0 +1,33 @@
+# lambda/analysis_refresh.py용 컨테이너 이미지 Lambda.
+# pandas/statsmodels/scikit-learn을 쓰는데, zip 기반 Lambda(레이어 포함 압축 해제
+# 250MB 제한)로는 이 조합이 위험할 정도로 커서(numpy+pandas+scipy+statsmodels+
+# scikit-learn 합치면 흔히 300MB+) 컨테이너 이미지(최대 10GB, 이 제한 자체가 없음)로
+# 배포한다.
+#
+# 빌드/푸시(리포지토리 루트에서 실행 - lambda/, frontend/scripts/ 둘 다 필요해서 빌드
+# 컨텍스트가 루트여야 함):
+#   docker build -f lambda/Dockerfile.analysis_refresh -t goldline-analysis-refresh .
+#   aws ecr get-login-password --region us-west-2 | docker login --username AWS \
+#       --password-stdin <account-id>.dkr.ecr.us-west-2.amazonaws.com
+#   docker tag goldline-analysis-refresh:latest \
+#       <account-id>.dkr.ecr.us-west-2.amazonaws.com/goldline-dev-analysis-refresh:latest
+#   docker push <account-id>.dkr.ecr.us-west-2.amazonaws.com/goldline-dev-analysis-refresh:latest
+
+FROM public.ecr.aws/lambda/python:3.12
+
+# requirements.txt와 동일 버전(pandas/numpy)으로 고정 - 로컬 개발 환경과 결과가
+# 갈리지 않게. statsmodels/scikit-learn도 requirements.txt에 같은 버전으로 추가해둠.
+RUN pip install --no-cache-dir \
+    pandas==2.1.4 \
+    numpy==1.26.3 \
+    scipy==1.11.4 \
+    statsmodels==0.14.1 \
+    scikit-learn==1.4.0 \
+    boto3==1.33.6
+
+COPY lambda/analysis_refresh.py ${LAMBDA_TASK_ROOT}/analysis_refresh.py
+COPY frontend/scripts/build_metadata_impact.py ${LAMBDA_TASK_ROOT}/frontend/scripts/build_metadata_impact.py
+COPY frontend/scripts/build_topic_trends.py ${LAMBDA_TASK_ROOT}/frontend/scripts/build_topic_trends.py
+COPY frontend/scripts/build_synthetic_demo.py ${LAMBDA_TASK_ROOT}/frontend/scripts/build_synthetic_demo.py
+
+CMD ["analysis_refresh.lambda_handler"]
