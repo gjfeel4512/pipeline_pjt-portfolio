@@ -211,6 +211,21 @@ resource "aws_sfn_state_machine" "pipeline_orchestrator" {
             IntervalSeconds = 10
             MaxAttempts     = 2
             BackoffRate     = 2.0
+          },
+          {
+            # 2026-09-04 13:30 실행이 이걸로 실패해서 수동 복구함(manual-recovery-*):
+            # Athena INSERT INTO가 파티션 프로젝션 대상 파티션을 "No partition found
+            # with values [...]"로 못 찾는 간헐적 오류(최근 9회 중 1회) - 알려진
+            # Athena 파티션 프로젝션 + INSERT 조합의 일관성 이슈로 보임(S3
+            # storage.location.template 경로 해석이 INSERT 시점에 아직 안정화 안 된
+            # 것으로 추정). gold_compute_athena.py의 run_query()가 실패 시 일반
+            # RuntimeError를 던지므로(Lambda 관점에선 처리 안 된 예외 -
+            # errorType="RuntimeError") 여기서 짧게 재시도하면 대부분 다음 시도에서
+            # 해결됨.
+            ErrorEquals     = ["RuntimeError"]
+            IntervalSeconds = 20
+            MaxAttempts     = 2
+            BackoffRate     = 2.0
           }
         ]
         Next = "DashboardRefresh"
