@@ -1,284 +1,201 @@
 {
   "gaming": {
-    "sample_size": 4521,
-    "median_split_date": "2026-03-22",
+    "sample_size": 2134,
+    "median_split_date": "2026-06-15",
     "clusters": [
+      {
+        "cluster_id": 0,
+        "top_terms": [
+          "게임"
+        ],
+        "channel_count": 217,
+        "sample_count": 483,
+        "median_views_per_day": 174.1,
+        "trend_pct": -34.5,
+        "older_sample": 269,
+        "recent_sample": 214
+      },
       {
         "cluster_id": 1,
         "top_terms": [
-          "혜안"
+          "공포게임"
         ],
-        "sample_count": 109,
-        "median_views_per_day": 6670.6,
-        "trend_pct": -16.9,
-        "older_sample": 43,
-        "recent_sample": 66
-      },
-      {
-        "cluster_id": 3,
-        "top_terms": [
-          "에욱",
-          "빠른별",
-          "올스타",
-          "헬리오스",
-          "MIC 첵"
-        ],
-        "sample_count": 60,
-        "median_views_per_day": 1857.7,
-        "trend_pct": -84.5,
-        "older_sample": 13,
-        "recent_sample": 47
-      },
-      {
-        "cluster_id": 4,
-        "top_terms": [
-          "스팀게임",
-          "로블록스",
-          "신작게임",
-          "게임추천",
-          "게임리뷰"
-        ],
-        "sample_count": 3171,
-        "median_views_per_day": 91.7,
-        "trend_pct": -14.3,
-        "older_sample": 1621,
-        "recent_sample": 1550
+        "channel_count": 95,
+        "sample_count": 211,
+        "median_views_per_day": 140.6,
+        "trend_pct": -71.1,
+        "older_sample": 103,
+        "recent_sample": 108
       },
       {
         "cluster_id": 2,
         "top_terms": [
-          "게임",
-          "공포게임",
-          "스트리머",
-          "공포",
+          "스팀게임"
+        ],
+        "channel_count": 110,
+        "sample_count": 364,
+        "median_views_per_day": 85.6,
+        "trend_pct": 34.4,
+        "older_sample": 192,
+        "recent_sample": 172
+      },
+      {
+        "cluster_id": 3,
+        "top_terms": [
+          "신작게임"
+        ],
+        "channel_count": 79,
+        "sample_count": 262,
+        "median_views_per_day": 67.0,
+        "trend_pct": 143.3,
+        "older_sample": 114,
+        "recent_sample": 148
+      },
+      {
+        "cluster_id": 4,
+        "top_terms": [
           "종합게임"
         ],
-        "sample_count": 730,
-        "median_views_per_day": 79.3,
-        "trend_pct": 202.2,
-        "older_sample": 376,
-        "recent_sample": 354
-      },
-      {
-        "cluster_id": 5,
-        "top_terms": [
-          "스팀 할인 추천",
-          "PC 게임 추천",
-          "스팀 게임 추천",
-          "오픈월드",
-          "Steam"
-        ],
-        "sample_count": 237,
-        "median_views_per_day": 49.7,
-        "trend_pct": -20.2,
-        "older_sample": 116,
-        "recent_sample": 121
-      },
-      {
-        "cluster_id": 0,
-        "top_terms": [
-          "모바일게임",
-          "모바일게임추천",
-          "신작모바일게임",
-          "모바일게임 추천",
-          "게임추천"
-        ],
-        "sample_count": 214,
-        "median_views_per_day": 43.8,
-        "trend_pct": 0.6,
-        "older_sample": 91,
-        "recent_sample": 123
+        "channel_count": 97,
+        "sample_count": 150,
+        "median_views_per_day": 50.3,
+        "trend_pct": -11.1,
+        "older_sample": 58,
+        "recent_sample": 92
       }
     ]
   },
   "autos_vehicles": {
-    "sample_size": 2454,
-    "median_split_date": "2026-03-26",
+    "sample_size": 1102,
+    "median_split_date": "2026-06-16",
     "clusters": [
+      {
+        "cluster_id": 0,
+        "top_terms": [
+          "자동차"
+        ],
+        "channel_count": 48,
+        "sample_count": 312,
+        "median_views_per_day": 607.5,
+        "trend_pct": 25.3,
+        "older_sample": 162,
+        "recent_sample": 150
+      },
       {
         "cluster_id": 1,
         "top_terms": [
-          "수입차",
-          "국산차",
-          "신차소개",
-          "한승훈",
-          "우파푸른하늘"
+          "시승기"
         ],
-        "sample_count": 244,
-        "median_views_per_day": 1200.9,
-        "trend_pct": -6.1,
-        "older_sample": 127,
-        "recent_sample": 117
-      },
-      {
-        "cluster_id": 3,
-        "top_terms": [
-          "#카스라이팅",
-          "스즈키"
-        ],
-        "sample_count": 60,
-        "median_views_per_day": 891.0,
-        "trend_pct": -26.8,
-        "older_sample": 11,
-        "recent_sample": 49
+        "channel_count": 66,
+        "sample_count": 410,
+        "median_views_per_day": 487.5,
+        "trend_pct": 50.2,
+        "older_sample": 220,
+        "recent_sample": 190
       },
       {
         "cluster_id": 2,
         "top_terms": [
-          "자동차리뷰",
-          "시승기",
-          "리뷰",
-          "자동차시승기",
-          "홍시카"
+          "벤츠"
         ],
-        "sample_count": 340,
-        "median_views_per_day": 301.3,
-        "trend_pct": -34.4,
-        "older_sample": 181,
-        "recent_sample": 159
+        "channel_count": 36,
+        "sample_count": 108,
+        "median_views_per_day": 467.7,
+        "trend_pct": -11.0,
+        "older_sample": 52,
+        "recent_sample": 56
+      },
+      {
+        "cluster_id": 3,
+        "top_terms": [
+          "자동차리뷰"
+        ],
+        "channel_count": 41,
+        "sample_count": 216,
+        "median_views_per_day": 447.8,
+        "trend_pct": 34.9,
+        "older_sample": 104,
+        "recent_sample": 112
       },
       {
         "cluster_id": 4,
         "top_terms": [
-          "전기차",
-          "시승기",
-          "벤츠",
-          "bmw",
-          "자동차리뷰"
+          "전기차"
         ],
-        "sample_count": 1595,
-        "median_views_per_day": 124.1,
-        "trend_pct": -12.4,
-        "older_sample": 798,
-        "recent_sample": 797
-      },
-      {
-        "cluster_id": 0,
-        "top_terms": [
-          "오토바이",
-          "바이크",
-          "모터사이클",
-          "오토바이시승기",
-          "바이크시승기"
-        ],
-        "sample_count": 53,
-        "median_views_per_day": 104.7,
-        "trend_pct": -29.6,
-        "older_sample": 28,
-        "recent_sample": 25
-      },
-      {
-        "cluster_id": 5,
-        "top_terms": [
-          "car",
-          "자동차",
-          "오토헤럴드",
-          "autoherald",
-          "auto"
-        ],
-        "sample_count": 162,
-        "median_views_per_day": 45.7,
-        "trend_pct": -21.6,
-        "older_sample": 82,
-        "recent_sample": 80
+        "channel_count": 58,
+        "sample_count": 156,
+        "median_views_per_day": 410.1,
+        "trend_pct": -24.6,
+        "older_sample": 70,
+        "recent_sample": 86
       }
     ]
   },
   "film_animation": {
-    "sample_size": 2140,
-    "median_split_date": "2026-05-15",
+    "sample_size": 1180,
+    "median_split_date": "2026-06-23",
     "clusters": [
       {
-        "cluster_id": 5,
+        "cluster_id": 0,
         "top_terms": [
-          "무비트립",
-          "드라마리뷰",
-          "드라마추천",
-          "넷플릭스스릴러",
           "영화추천"
         ],
-        "sample_count": 104,
-        "median_views_per_day": 6653.5,
-        "trend_pct": 428.1,
-        "older_sample": 42,
-        "recent_sample": 62
-      },
-      {
-        "cluster_id": 4,
-        "top_terms": [
-          "영화리뷰결말포함",
-          "영화리뷰",
-          "결말포함",
-          "영화추천",
-          "영화소개"
-        ],
-        "sample_count": 434,
-        "median_views_per_day": 639.4,
-        "trend_pct": -25.6,
-        "older_sample": 255,
+        "channel_count": 98,
+        "sample_count": 411,
+        "median_views_per_day": 1149.2,
+        "trend_pct": -10.6,
+        "older_sample": 232,
         "recent_sample": 179
-      },
-      {
-        "cluster_id": 2,
-        "top_terms": [
-          "영화 리뷰",
-          "영화 추천",
-          "결말 포함",
-          "영화 결말포함",
-          "영화 소개"
-        ],
-        "sample_count": 173,
-        "median_views_per_day": 587.3,
-        "trend_pct": 1.1,
-        "older_sample": 70,
-        "recent_sample": 103
       },
       {
         "cluster_id": 1,
         "top_terms": [
-          "영화리뷰",
-          "영화",
-          "결말포함",
-          "스릴러",
-          "드라마"
+          "넷플릭스"
         ],
-        "sample_count": 1011,
-        "median_views_per_day": 313.8,
-        "trend_pct": -38.7,
-        "older_sample": 472,
-        "recent_sample": 539
+        "channel_count": 57,
+        "sample_count": 297,
+        "median_views_per_day": 1028.7,
+        "trend_pct": 269.5,
+        "older_sample": 146,
+        "recent_sample": 151
+      },
+      {
+        "cluster_id": 2,
+        "top_terms": [
+          "영화"
+        ],
+        "channel_count": 107,
+        "sample_count": 612,
+        "median_views_per_day": 846.0,
+        "trend_pct": 34.0,
+        "older_sample": 334,
+        "recent_sample": 278
       },
       {
         "cluster_id": 3,
         "top_terms": [
-          "영화 몰아보기",
-          "영화",
-          "영화리뷰",
-          "영화 결말포함",
           "결말포함"
         ],
-        "sample_count": 167,
-        "median_views_per_day": 289.5,
-        "trend_pct": 15.2,
-        "older_sample": 89,
-        "recent_sample": 78
+        "channel_count": 135,
+        "sample_count": 713,
+        "median_views_per_day": 692.9,
+        "trend_pct": 60.1,
+        "older_sample": 354,
+        "recent_sample": 359
       },
       {
-        "cluster_id": 0,
+        "cluster_id": 4,
         "top_terms": [
-          "명작",
-          "평점",
-          "아마존",
-          "디즈니",
-          "리뷰"
+          "영화리뷰"
         ],
-        "sample_count": 251,
-        "median_views_per_day": 240.1,
-        "trend_pct": 20.6,
-        "older_sample": 142,
-        "recent_sample": 109
+        "channel_count": 169,
+        "sample_count": 805,
+        "median_views_per_day": 689.7,
+        "trend_pct": 7.1,
+        "older_sample": 412,
+        "recent_sample": 393
       }
     ]
   },
-  "_comment": "outputs/silver/{category}.jsonl의 태그를 TF-IDF+KMeans(k<=6)로 군집화해 '주제'를 자동 추출(사람이 이름 붙인 카테고리 아님, 군집 중심에서 가중치 높은 태그 5개가 top_terms). trend_pct는 게시일 중앙값으로 나눈 이전/최근 절반의 '같은 나이대 또래 대비 상대 성과(norm_vpd)' 중앙값 변화율(%) - 양수면 최근에 더 잘 나가는 주제, 음수면 예전보다 덜 나가는 주제. (주의: 처음엔 나이 보정 없이 raw views_per_day로 계산했다가 모든 군집에서 +200~1400%라는 비현실적인 값이 나와서 검증해보니, 최근 영상일수록 아직 초기 조회 몰림 구간이라 값이 구조적으로 부풀어 보이는 편향임을 확인 - 나이대 10분위 또래 중앙값 대비 정규화한 뒤 비교하도록 수정함.) median_views_per_day(막대 길이용 랭킹)는 정규화 전 원값. 절반 표본이 10건 미만이면 trend_pct=null(nodata, 지어내지 않음). 합성 데이터 아님, 실측 Silver 데이터 100% 사용."
+  "_comment": "outputs/silver/{category}.jsonl의 태그 중 자기 채널명(또는 그 일부)으로 보이는 자기 홍보성 태그를 제외한 뒤(_strip_channel_promo_tags), 그 태그를 쓴 서로 다른 채널 수(channel_count, 영상 수 아님 - 한 채널이 반복해서 단 태그는 1표로만 반영)로 랭킹해 카테고리별 상위 5개(TOP_N_TAGS) '개별 태그'를 뽑음(사람이 이름 붙인 카테고리 아님, 여러 태그를 묶지 않고 하나씩 노출 - top_terms는 태그 1개짜리 리스트). 화면 표시 순서(막대 길이)는 채널 수가 아니라 median_views_per_day 내림차순. trend_pct는 게시일 중앙값으로 나눈 이전/최근 절반의 '같은 나이대 또래 대비 상대 성과(norm_vpd)' 중앙값 변화율(%) - 양수면 최근에 더 잘 나가는 주제, 음수면 예전보다 덜 나가는 주제. (주의: 처음엔 나이 보정 없이 raw views_per_day로 계산했다가 모든 항목에서 +200~1400%라는 비현실적인 값이 나와서 검증해보니, 최근 영상일수록 아직 초기 조회 몰림 구간이라 값이 구조적으로 부풀어 보이는 편향임을 확인 - 나이대 10분위 또래 중앙값 대비 정규화한 뒤 비교하도록 수정함.) median_views_per_day(막대 길이용 랭킹)는 정규화 전 원값. 절반 표본이 10건 미만이면 trend_pct=null(nodata, 지어내지 않음). 합성 데이터 아님, 실측 Silver 데이터 100% 사용."
 }

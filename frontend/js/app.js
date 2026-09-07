@@ -444,6 +444,10 @@
       const v = items[i]._signed;
       el.textContent = (v >= 0 ? "+" : "") + v.toFixed(1) + "%";
     });
+    // 방금 덮어쓴 텍스트가 길어져서(부호 있는 %) 막대 끝에서 화면 밖으로 나가면
+    // 잘려 보이던 문제 수정 - renderHBarChart는 위에서 이미 한 번 보정했지만, 그때는
+    // valueFormatter가 빈 문자열이라 지금 이 텍스트로 다시 한 번 확인해야 한다.
+    Charts.fixOverflowingValueLabels(chartRoot);
 
     footnote.textContent =
       `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건을 분석한 추정치예요(설명력 R²=${result.r_squared}). ` +
@@ -451,10 +455,15 @@
       `이건 상관관계이지 "이렇게 하면 반드시 이렇게 된다"는 인과관계가 아니에요.`;
   }
 
-  // 태그 기반 주제 군집 + 트렌드(사용자 요청): frontend/scripts/build_topic_trends.py가
-  // outputs/silver/*.jsonl의 태그를 TF-IDF+KMeans로 군집화해 "주제"를 자동 추출하고,
-  // 게시일 중앙값으로 나눈 예전/최근 절반의 나이보정 상대성과 변화율(trend_pct)을 계산.
-  // 실측 데이터 100% 사용(합성 아님) - 원래 나이보정 없이 계산했다가 모든 군집이
+  // 태그 기반 "요즘 뜨는 주제" top5(사용자 요청): frontend/scripts/build_topic_trends.py가
+  // outputs/silver/*.jsonl의 태그 중 자기 채널명(또는 그 일부)으로 보이는 자기
+  // 홍보성 태그를 뺀 뒤, 그 태그를 쓴 서로 다른 채널 수(channel_count - 한 채널이
+  // 영상을 아무리 많이 올려도 1표로만 반영)로 랭킹해 카테고리별 상위 5개 "개별
+  // 태그"를 뽑는다(2026-09-07부터 - 예전엔 TF-IDF+KMeans로 여러 태그를 군집으로
+  // 묶어서 보여줬는데, 여러 태그가 한 막대에 뭉쳐 보이는 문제 + 한 채널이 반복해서
+  // 단 태그가 트렌드처럼 보이는 문제 둘 다를 사용자 피드백으로 고침). 게시일
+  // 중앙값으로 나눈 예전/최근 절반의 나이보정 상대성과 변화율(trend_pct)을 계산.
+  // 실측 데이터 100% 사용(합성 아님) - 원래 나이보정 없이 계산했다가 모든 태그가
   // +200~1400%로 나와서 비현실적이라 검증해보니 최근 영상일수록 아직 초기 조회
   // 몰림 구간이라 값이 부풀어 보이는 편향이었음(스크립트 _comment 참고) - 나이대
   // 또래 대비 상대값으로 정규화해서 고침.
@@ -475,28 +484,43 @@
         ? ` · ${c.trend_pct >= 0 ? "+" : ""}${c.trend_pct.toFixed(1)}%${c.trend_pct >= 0 ? " ▲" : " ▼"}`
         : " · 표본부족(nodata)";
       return {
-        label: c.top_terms.slice(0, 3).join(" · ") || `주제 ${c.cluster_id}`,
+        label: c.top_terms[0] || `주제 ${c.cluster_id}`,
         value: c.median_views_per_day,
         colorVar: !hasTrend ? "--text-muted" : c.trend_pct >= 0 ? "--series-3" : "--series-2",
         suffix: trendText,
         sampleCount: c.sample_count,
         olderSample: c.older_sample,
-        recentSample: c.recent_sample
+        recentSample: c.recent_sample,
+        channelCount: c.channel_count
       };
     });
 
     Charts.renderHBarChart(chartRoot, {
       items,
-      labelWidth: 170,
-      // 막대(일평균 조회수 + 변화율)와 다른 정보로, 그 주제의 표본 건수(예전/최근
-      // 절반 분할 기준)를 보여줌.
-      tooltipFormatter: (d) => `표본 ${fmtInt(d.sampleCount)}건 (예전 ${fmtInt(d.olderSample)} · 최근 ${fmtInt(d.recentSample)})`
+      // 태그가 "국산차 · 수입차 · 신차소개"처럼 여러 개 묶인 라벨이었을 때 쓰던
+      // 170px 그대로 두면, 지금은 짧은 개별 태그("게임", "넷플릭스" 등)라 라벨과
+      // 막대 사이에 빈 공간이 넓게 남는다 - 그래서 라벨 칸 너비를 짧은 개별
+      // 태그에 맞춰 100px로 줄여서 막대가 글씨 옆에 더 붙어 보이게 했다(모든
+      // 막대는 지금처럼 같은 위치(x=100)에서 시작 - 항목마다 다르게 시작하지
+      // 않음, 사용자 요청 2026-09-07). 100px이면 지금까지 나온 태그 중 가장 긴
+      // "자동차리뷰"(5자)도 안 잘리고 들어간다(truncateToWidth 참고).
+      labelWidth: 100,
+      // 태그가 짧은 개별 단어라 오른쪽 정렬("end", 기본값)로 두면 라벨 칸
+      // 왼쪽에 빈 공간이 많이 남아 그래프가 카드 왼쪽 끝이 아니라 가운데쯤에
+      // 떠 있는 것처럼 보였음(사용자 리포트, 2026-09-07) - 왼쪽 정렬로 변경.
+      labelAlign: "start",
+      // 막대(일평균 조회수 + 변화율)와 다른 정보로, 그 태그의 표본 건수(예전/최근
+      // 절반 분할 기준)와 몇 개의 서로 다른 채널이 쓴 태그인지(channel_count -
+      // top5 선정 기준)를 같이 보여줌.
+      tooltipFormatter: (d) =>
+        `표본 ${fmtInt(d.sampleCount)}건 (예전 ${fmtInt(d.olderSample)} · 최근 ${fmtInt(d.recentSample)}) · 채널 ${fmtInt(d.channelCount)}개`
     });
 
     footnote.textContent =
-      `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건의 태그를 자동으로 묶은 결과예요(주제 이름은 사람이 붙인 게 ` +
-      `아니라 태그 군집에서 뽑은 키워드예요). 막대 길이는 일평균 조회수, %는 ${result.median_split_date} 기준 예전/최근 절반을 ` +
-      `같은 나이대 또래 대비 상대값으로 비교한 변화율이에요. 표본이 작은 주제는 우연한 변동일 수 있으니 참고만 해주세요.`;
+      `실제 영상 ${result.sample_size.toLocaleString("ko-KR")}건의 태그 중, 서로 다른 채널 수 기준으로 가장 널리 쓰인 태그 ` +
+      `top5예요(한 채널이 반복해서 단 태그는 1표로만 반영 - 태그 이름은 사람이 붙인 게 ` +
+      `아니라 실제 데이터에서 그대로 뽑은 값이에요). 막대 길이는 일평균 조회수, %는 ${result.median_split_date} 기준 예전/최근 절반을 ` +
+      `같은 나이대 또래 대비 상대값으로 비교한 변화율이에요. 표본이 작은 태그는 우연한 변동일 수 있으니 참고만 해주세요.`;
   }
 
   /* ---------------- 카테고리 트렌드: 1년 재생 ---------------- */
@@ -678,6 +702,8 @@
       const v = weekly.categories[i].wow_change_pct;
       el.textContent = "지난 주 대비 " + (v >= 0 ? "+" : "") + v.toFixed(1) + "%";
     });
+    // "지난 주 대비 +12.3%"처럼 텍스트가 길어서 막대 끝에서 화면 밖으로 잘리던 문제 수정.
+    Charts.fixOverflowingValueLabels(document.getElementById("weekly-trend-badges"));
     document.getElementById("weekly-trend-footnote").textContent =
       `[합성 데이터] ${weekly.note} 실제 주간 집계가 아니라 10주치 추이를 본떠 만든 예시 데이터예요.`;
   }

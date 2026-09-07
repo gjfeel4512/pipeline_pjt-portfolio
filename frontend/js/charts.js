@@ -96,6 +96,81 @@ const Charts = (() => {
     tip.style.top = y + "px";
   }
 
+  // 막대가 길어서 값 라벨(.viz-value-label)이 막대 끝에 붙어 그려질 때, 그 텍스트가
+  // SVG 오른쪽 경계를 넘어가면 브라우저가 잘라버려서(SVG 기본 overflow: hidden)
+  // 안 보이는 문제가 있었다(2026-09-07). renderHBarChart 내부에서 만드는 값 라벨뿐
+  // 아니라, app.js가 렌더링 이후에 직접 textContent를 덮어쓰는 경우(부호 있는 %,
+  // "지난 주 대비" 같은 긴 문구)에는 renderHBarChart가 만들 당시엔 빈 텍스트라 자체
+  // 로직만으로는 못 잡아서, 별도로 내보내서 app.js에서도 덮어쓴 직후 호출하게 한다.
+  // 값 라벨을 "막대 끝 바깥쪽"에 두는 게 기본인데, 두 경우에 문제가 생긴다:
+  //  1) 항목들 값 차이가 커서 막대 하나가 plotW를 거의 다 채우면(1등 항목 등),
+  //     그 라벨이 앉을 자리가 SVG 오른쪽 경계 밖으로 나가 잘려서 안 보이던 문제
+  //     (2026-09-07 1차 수정 - 왼쪽으로 당기기만 했었음).
+  //  2) 그렇게 당기기만 하면 이번엔 라벨이 막대 자체 위에 그대로 겹쳐서, 기본
+  //     글자색(--text-primary, 검정 계열)이 막대 색과 뒤섞여 잘 안 보이는("가려짐")
+  //     문제가 새로 생김(사용자 리포트, 2026-09-07 2차 수정).
+  // 매번 "막대 끝 바깥쪽에 놓았을 때 화면 안에 들어가는가"부터 새로 계산해서:
+  //  - 들어가면: 기존처럼 막대 바깥쪽, 기본 글자색, 왼쪽 정렬(막대에서 시작).
+  //  - 안 들어가면: 막대 "안쪽"으로 옮기고, 흰색 + 오른쪽 정렬(막대 끝에 붙임)로
+  //    바꿔서 막대 색과 상관없이 항상 읽히게 한다 - 물결선(축 압축)까지는 아니어도
+  //    "값이 가려서 안 보이는" 문제 자체는 이걸로 해결됨.
+  // renderHBarChart가 처음 만들 때 한 번, app.js가 렌더링 이후 텍스트를 다시
+  // 덮어쓰는 곳(부호 있는 %, "지난 주 대비" 등)에서 또 한 번 호출되므로, 이전
+  // 호출에서 이미 안쪽/바깥쪽으로 바뀐 상태와 상관없이 항상 막대 위치 기준으로
+  // 새로 계산한다(멱등성 - 몇 번을 다시 호출해도 같은 결과).
+  // 배경색(hex)에 대해 흰 글씨/검은 글씨 중 어느 쪽이 더 잘 보이는지 판단한다.
+  // (WCAG 상대휘도 계산 - 값이 높을수록(밝을수록) 검은 글씨가 낫다.) 막대 색은
+  // colorVar로 데이터마다/테마(라이트·다크모드)마다 달라질 수 있어서, "안쪽엔
+  // 무조건 흰색"으로 고정하면 밝은 색 막대(예: 노란 계열)에서 다시 안 보이는
+  // 문제가 재발할 수 있다 - 그래서 막대의 실제 렌더링 색을 읽어 매번 계산한다.
+  function pickContrastText(hexColor) {
+    const m = /^#?([0-9a-f]{6})$/i.exec((hexColor || "").trim());
+    if (!m) return "#fff";
+    const int = parseInt(m[1], 16);
+    const r = (int >> 16) & 255, g = (int >> 8) & 255, b = int & 255;
+    const lin = (c) => {
+      const s = c / 255;
+      return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+    const luminance = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+    return luminance > 0.45 ? "#1a1a1a" : "#fff";
+  }
+
+  function fixOverflowingValueLabels(root) {
+    const svg = root.querySelector("svg");
+    if (!svg || !svg.viewBox || !svg.viewBox.baseVal) return;
+    const width = svg.viewBox.baseVal.width;
+    const margin = 8; // leftPad와 동일한 값 - 양쪽 끝 최소 여백
+    const rows = svg.querySelectorAll(".viz-hbar-row");
+    const valueLabels = svg.querySelectorAll(".viz-value-label");
+    valueLabels.forEach((textEl, i) => {
+      if (!textEl.textContent) return;
+      const row = rows[i];
+      const bar = row ? row.querySelector("rect") : null;
+      if (!bar) return;
+      const barEnd = parseFloat(bar.getAttribute("x")) + parseFloat(bar.getAttribute("width"));
+      let textWidth;
+      try {
+        textWidth = textEl.getComputedTextLength();
+      } catch (e) {
+        return; // 아직 렌더링 전이면(레이아웃 미확정) 그냥 둔다
+      }
+      const outsideX = barEnd + 10;
+      if (outsideX + textWidth <= width - margin) {
+        // 막대 바깥쪽에 다 들어감 - 기본 배치(대부분의 경우 여기 해당).
+        textEl.setAttribute("x", outsideX);
+        textEl.removeAttribute("text-anchor");
+        textEl.style.fill = "";
+      } else {
+        // 바깥쪽에 자리가 없음 - 막대 안쪽, 오른쪽 정렬(막대 끝에 붙임)로 옮기고,
+        // 막대의 실제 색과 대비되는 글자색(흰색/검은색)을 매번 새로 계산해서 쓴다.
+        textEl.setAttribute("x", Math.max(margin, barEnd - 8));
+        textEl.setAttribute("text-anchor", "end");
+        textEl.style.fill = pickContrastText(bar.getAttribute("fill"));
+      }
+    });
+  }
+
   /* ---------------------------------------------------------------- *
    * Horizontal bar chart - part comparison / magnitude compare
    * items: [{ label, value, colorVar, suffix }]
@@ -119,7 +194,13 @@ const Charts = (() => {
     // tooltipFormatter(d): 툴팁에 보여줄 값을 막대 라벨과 다르게 커스텀하고 싶을 때만
   // 넘긴다(예: 막대/라벨은 %로 보여주되 툴팁은 실제 건수로 보여주는 경우). 안 넘기면
   // 기존처럼 막대 라벨과 같은 값(valueFormatter(d.value) + suffix)을 그대로 보여준다.
-  function renderHBarChart(root, { items, valueFormatter = formatCompact, labelWidth = 132, tooltipFormatter = null }) {
+  // labelAlign: "end"(기본값, 기존 동작 유지 - 라벨을 막대 쪽에 붙여 오른쪽 정렬)
+  // 또는 "start"(라벨을 카드 왼쪽 끝에 붙여 왼쪽 정렬). 라벨 텍스트가 짧을 때
+  // "end"로 두면 라벨 칸(labelWidth) 왼쪽에 빈 공간이 많이 남아서 그래프 전체가
+  // 왼쪽 끝이 아니라 가운데쯤에 떠 있는 것처럼 보이는 문제가 있어(2026-09-07,
+  // "요즘 뜨는 주제" 카드 - 태그가 짧은 개별 태그로 바뀌면서 생김) 이 옵션을
+  // 추가했다. 다른 차트는 기본값 그대로라 영향 없음.
+  function renderHBarChart(root, { items, valueFormatter = formatCompact, labelWidth = 132, labelAlign = "end", tooltipFormatter = null }) {
     root.innerHTML = "";
     root.style.position = "relative";
 
@@ -147,9 +228,9 @@ const Charts = (() => {
       const color = cssVar(d.colorVar) || cssVar("--series-1");
 
       const label = el("text", {
-        x: labelW - 12,
+        x: labelAlign === "start" ? leftPad : labelW - 12,
         y: y + barH / 2 + 5,
-        "text-anchor": "end",
+        "text-anchor": labelAlign === "start" ? "start" : "end",
         class: "viz-axis-label"
       });
       label.textContent = truncateToWidth(d.label, labelW - 18);
@@ -182,8 +263,13 @@ const Charts = (() => {
         class: "viz-value-label"
       });
       valueLabel.textContent = valueFormatter(d.value) + (d.suffix || "");
-      svg.appendChild(valueLabel);
+      // 2026-09-07 3차 수정: 라벨을 막대 "바깥쪽"에 그릴 때는 순서가 상관없었지만,
+      // fixOverflowingValueLabels가 라벨을 막대 "안쪽"으로 옮기는 경우 SVG는 그린
+      // 순서대로 겹쳐 그리므로(나중에 그린 게 위) 라벨을 막대(trackG)보다 먼저
+      // 추가하면 막대가 그 위를 덮어버려 글씨가 안 보이게 된다. 그래서 항상
+      // 막대(trackG)를 먼저, 값 라벨을 나중에 추가해서 라벨이 항상 위에 오게 한다.
       svg.appendChild(trackG);
+      svg.appendChild(valueLabel);
 
       const tip = ensureTooltip(root);
       const tooltipValue = tooltipFormatter ? tooltipFormatter(d) : valueFormatter(d.value) + (d.suffix || "");
@@ -207,6 +293,7 @@ const Charts = (() => {
     });
 
     root.appendChild(svg);
+    fixOverflowingValueLabels(root);
   }
 
   function renderLegend(root, items) {
@@ -670,6 +757,7 @@ const Charts = (() => {
     renderLegend,
     renderHeatmap,
     renderLineChart,
-    renderHistoryLineChart
+    renderHistoryLineChart,
+    fixOverflowingValueLabels
   };
 })();

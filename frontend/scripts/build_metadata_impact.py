@@ -75,6 +75,20 @@ def iter_silver_lines(cat_key):
 CATEGORIES = {"gaming": "게임", "autos_vehicles": "자동차·차량", "film_animation": "영화·애니메이션"}
 URL_RE = re.compile(r"https?://")
 
+# 2026-09-07: 두 가지 문제를 같이 고친다.
+# (1) outputs/silver/{category}.jsonl은 한 영상이 4시간마다 재수집되며 여러 스냅샷이
+#     그대로 누적돼 있는데(dedup 안 됨), 여기선 그걸 다 "독립된 관측치"처럼 회귀에
+#     넣고 있었다 - 실제로는 같은 영상이 여러 번 중복 반영되는 것(의사반복,
+#     pseudoreplication)이라 표준오차/p-value가 과신되는 방향으로 편향된다.
+#     -> video_id별로 collected_at_utc가 가장 늦은 스냅샷 1개만 남긴다
+#     (build_dashboard_data.py의 load_silver_videos()와 동일한 패턴).
+# (2) 위 dedup만 하면 "영상 1개 = 1표"는 되지만, 수집 기간이 계속 길어질수록
+#     회귀 표본에 몇 년 전 영상까지 계속 섞여서 "요즘" 트렌드가 옛날 데이터에
+#     점점 희석된다. -> 게시일 기준 최근 LOOKBACK_DAYS 이내 영상만 사용한다.
+#     (팀 논의 후 6개월로 결정 - 카테고리당 한 달에 대략 200~430건씩 수집되고
+#     있어 6개월이면 표본 30건 기준을 넉넉히 넘긴다.)
+LOOKBACK_DAYS = 180
+
 # (내부 변수명, 프론트 표시용 한글 라벨, 해석 방식)
 #   "binary": 계수를 "있음 vs 없음 %"로 환산
 #   "per_unit": 계수를 "1 단위 변화당 %"로 환산
@@ -133,6 +147,10 @@ def load_category(cat_key):
 
         description = d.get("description") or ""
         rows.append({
+            # dedup 전용 - 회귀에는 안 씀(fit_category의 x_cols에 없음)
+            "video_id": d.get("video_id"),
+            "collected_at_utc": d.get("collected_at_utc") or "",
+            "published_at": published,
             "views_per_day": view_count / age_days,
             "caption_available": 1 if d.get("caption_available") else 0,
             "is_weekend": 1 if dow in (6, 7) else 0,
@@ -145,7 +163,20 @@ def load_category(cat_key):
             "channel_age_days": channel_age_days,
             "subscriber_count": subscriber_count,
         })
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return df
+
+    # (2) 최근 LOOKBACK_DAYS 이내 게시된 영상만 - 오래된 영상이 계속 쌓여서
+    # "요즘" 트렌드가 희석되는 걸 막는다.
+    cutoff = pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=LOOKBACK_DAYS)
+    df = df[df["published_at"] >= cutoff]
+
+    # (1) video_id별로 collected_at_utc가 가장 늦은 스냅샷 1개만 남긴다
+    # (같은 영상의 여러 시점 스냅샷이 서로 다른 관측치처럼 중복 반영되는 것 방지).
+    df = df.sort_values("collected_at_utc").drop_duplicates("video_id", keep="last")
+
+    return df.drop(columns=["video_id", "collected_at_utc", "published_at"])
 
 
 def fit_category(df):

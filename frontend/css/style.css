@@ -477,6 +477,12 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
   fill: var(--text-primary);
   font-size: 14px;
   font-weight: 700;
+  /* 2026-09-07: 값 라벨이 막대 위(안쪽)에 겹쳐 그려질 수 있게 되면서, 라벨의
+     글자 잉크 영역이 막대의 호버/툴팁용 히트 영역(.viz-hbar-row 안의 투명
+     rect) 위를 가로챌 수 있었다. 라벨은 항상 시각적 표시용이지 상호작용
+     대상이 아니므로 포인터 이벤트를 무시하게 해서 호버 동작이 그대로
+     막대(트랙) 쪽으로 가도록 한다. */
+  pointer-events: none;
 }
 .viz-hbar-row { cursor: pointer; }
 .viz-hbar-row:focus { outline: none; }
