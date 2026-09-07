@@ -656,7 +656,7 @@ resource "aws_glue_catalog_table" "gold_category_benchmark" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
+    "projection.analysis_week.range"         = "2026-08-01,NOW+1DAYS" # 존재 구간만, 상한에 1일 버퍼(KST/UTC 시차로 이번 주 월요일 새벽 실행 시 UTC 기준 NOW가 아직 전날이라 partition-not-found 나는 문제 방지, 2026-09-07 확인). 원래 2026-01-01,NOW. 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_category_benchmark/analysis_week=$${analysis_week}/"
@@ -730,7 +730,7 @@ resource "aws_glue_catalog_table" "gold_upload_strategy" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
+    "projection.analysis_week.range"         = "2026-08-01,NOW+1DAYS" # 존재 구간만, 상한에 1일 버퍼(KST/UTC 시차로 이번 주 월요일 새벽 실행 시 UTC 기준 NOW가 아직 전날이라 partition-not-found 나는 문제 방지, 2026-09-07 확인). 원래 2026-01-01,NOW. 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_upload_strategy/analysis_week=$${analysis_week}/"
@@ -824,7 +824,7 @@ resource "aws_glue_catalog_table" "gold_new_creator_guide" {
     "projection.enabled"                     = "true"
     "projection.analysis_week.type"          = "date"
     "projection.analysis_week.format"        = "yyyy-MM-dd"
-    "projection.analysis_week.range"         = "2026-08-01,NOW" # 존재 구간만 (원래 2026-01-01,NOW). 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
+    "projection.analysis_week.range"         = "2026-08-01,NOW+1DAYS" # 존재 구간만, 상한에 1일 버퍼(KST/UTC 시차로 이번 주 월요일 새벽 실행 시 UTC 기준 NOW가 아직 전날이라 partition-not-found 나는 문제 방지, 2026-09-07 확인). 원래 2026-01-01,NOW. 실제 데이터는 analysis_week=2026-08-31 (그 주 월요일) 하나뿐 - 시작을 09-01로 잡으면 배제되므로 08-01부터.
     "projection.analysis_week.interval"      = "1"
     "projection.analysis_week.interval.unit" = "DAYS"
     "storage.location.template"              = "s3://${aws_s3_bucket.gold.id}/gold_new_creator_guide/analysis_week=$${analysis_week}/"
