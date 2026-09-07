@@ -21,12 +21,12 @@ data "archive_file" "refresh_dashboard" {
     filename = "refresh_dashboard.py"
   }
   # frontend/scripts/의 기존 스크립트를 그대로 재사용(복제/재작성 안 함) - 로컬
-  # 개발자용 export_s3_for_dashboard.py/build_dashboard_data.py와 Lambda가 항상
-  # 같은 코드를 실행하도록 보장한다. 배포 패키지 안에서도 frontend/scripts/ 라는
-  # 같은 상대 경로에 두는 이유는, 두 스크립트가 __file__ 위치를 기준으로
-  # outputs/, frontend/mock/ 경로를 계산하기 때문(lambda/refresh_dashboard.py의
-  # _prepare_writable_copy() 참고 - 실행 전에 /tmp로 복사해서 그 계산이 쓰기
-  # 가능한 위치를 가리키게 만든다).
+  # 개발자용 export_s3_for_dashboard.py/build_dashboard_data.py/
+  # build_cross_category_reviewers.py와 Lambda가 항상 같은 코드를 실행하도록
+  # 보장한다. 배포 패키지 안에서도 frontend/scripts/ 라는 같은 상대 경로에 두는
+  # 이유는, 이 스크립트들이 __file__ 위치를 기준으로 outputs/, frontend/mock/
+  # 경로를 계산하기 때문(lambda/refresh_dashboard.py의 _prepare_writable_copy()
+  # 참고 - 실행 전에 /tmp로 복사해서 그 계산이 쓰기 가능한 위치를 가리키게 만든다).
   source {
     content  = file("${path.module}/../frontend/scripts/export_s3_for_dashboard.py")
     filename = "frontend/scripts/export_s3_for_dashboard.py"
@@ -34,6 +34,15 @@ data "archive_file" "refresh_dashboard" {
   source {
     content  = file("${path.module}/../frontend/scripts/build_dashboard_data.py")
     filename = "frontend/scripts/build_dashboard_data.py"
+  }
+  # 대시보드 "리뷰어 후보" 탭(frontend/mock/cross_category_reviewers.json)을 생성.
+  # 이전에는 이 스크립트를 자동으로 재실행하는 경로가 전혀 없어서, 사람이 후보를
+  # 승인/거부해 review/reviewed_channels.json이 바뀌어도 이 탭은 계속 예전 상태로
+  # 남아 있었다(2026-09-07 수정) - refresh_dashboard.py가 --gold-bucket/
+  # --silver-bucket을 넘겨 S3 기반으로 이 스크립트를 실행한다.
+  source {
+    content  = file("${path.module}/../frontend/scripts/build_cross_category_reviewers.py")
+    filename = "frontend/scripts/build_cross_category_reviewers.py"
   }
 }
 
@@ -45,8 +54,10 @@ resource "aws_lambda_function" "refresh_dashboard" {
   filename         = data.archive_file.refresh_dashboard.output_path
   source_code_hash = data.archive_file.refresh_dashboard.output_base64sha256
   # Silver 3개 카테고리 S3 페이지네이션 읽기 + Athena 쿼리 3개(제출+폴링) +
-  # mock/*.json 8개 업로드 + CloudFront invalidation. 넉넉하게 5분.
-  timeout     = 300
+  # 리뷰어 후보용 people_blogs reject 레코드 S3 페이지네이션 읽기 + mock/*.json
+  # 6개 업로드 + CloudFront invalidation. 스크립트 3개가 순차 실행되므로(각각
+  # 최대 240/60/120초) 여유 있게 7분.
+  timeout     = 420
   memory_size = 512
 
   environment {
@@ -74,7 +85,9 @@ resource "aws_lambda_function" "refresh_dashboard" {
 # aws_iam_role.lambda(iam.tf)는 이미 Bronze/Silver/Gold S3 GetObject/PutObject/
 # ListBucket을 갖고 있고, gold_compute_athena.tf의 정책이 같은 role에 Athena
 # 쿼리/Glue 카탈로그 조회 권한도 이미 붙여놨다(공유 role이라 여기서 또 안 붙여도
-# 됨). 여기서는 아직 아무 Lambda도 갖고 있지 않던 두 가지만 추가한다: 프론트엔드
+# 됨) - build_cross_category_reviewers.py가 읽는 Silver의 people_blogs reject
+# 레코드와 Gold의 review/reviewed_channels.json도 이 권한으로 이미 커버된다.
+# 여기서는 아직 아무 Lambda도 갖고 있지 않던 두 가지만 추가한다: 프론트엔드
 # S3 버킷 쓰기, CloudFront 무효화.
 resource "aws_iam_role_policy" "refresh_dashboard" {
   name = "${local.resource_prefix}-refresh-dashboard-policy"

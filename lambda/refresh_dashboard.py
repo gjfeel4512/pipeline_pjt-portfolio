@@ -15,14 +15,28 @@ GitHub Actions를 쓰던 이유는 "mock/*.json을 git에 커밋해서 다들 pu
 gold_compute_athena 등)과 같은 방식.
 
 기존 스크립트를 다시 쓰지 않고 그대로 재사용한다:
-  frontend/scripts/export_s3_for_dashboard.py - Silver(S3 직접) + Gold(Athena) 읽기
-  frontend/scripts/build_dashboard_data.py    - 그 결과로 frontend/mock/*.json 생성
-둘 다 이미 실제 AWS로 검증된 스크립트라 로직을 복제/재작성하지 않고, subprocess로
-그대로 실행한다. 단, 두 스크립트 모두 자기 파일 위치(__file__)를 기준으로
+  frontend/scripts/export_s3_for_dashboard.py       - Silver(S3 직접) + Gold(Athena) 읽기
+  frontend/scripts/build_dashboard_data.py          - 그 결과로 frontend/mock/*.json 생성
+  frontend/scripts/build_cross_category_reviewers.py - Silver의 격리된 people_blogs
+                                                        reject 레코드를 스캔해서
+                                                        frontend/mock/cross_category_reviewers.json
+                                                        (대시보드 "리뷰어 후보" 탭)을 생성
+셋 다 이미 실제 AWS로 검증된 스크립트라 로직을 복제/재작성하지 않고, subprocess로
+그대로 실행한다. 단, 세 스크립트 모두 자기 파일 위치(__file__)를 기준으로
 outputs/, frontend/mock/ 경로를 계산하는데, Lambda 배포 패키지(/var/task)는
 읽기 전용이라 그 경로에 못 쓴다 - 그래서 실행 전에 /tmp(Lambda에서 쓰기 가능한
 유일한 영역)로 스크립트를 복사해서, 같은 상대 경로 구조(frontend/scripts/...)를
-그대로 유지한 채 그 밑에서 실행한다. 이러면 두 스크립트를 한 줄도 안 고쳐도 된다.
+그대로 유지한 채 그 밑에서 실행한다. 이러면 세 스크립트를 한 줄도 안 고쳐도 된다.
+
+2026-09-07: build_cross_category_reviewers.py를 이 흐름에 새로 추가했다. 전에는
+어떤 자동화 경로(수동 Lambda 호출이든 pipeline_orchestrator 4시간 주기든)도 이
+스크립트를 호출하지 않아서, 사람이 Step Functions reviewer_candidate_review
+워크플로로 채널을 승인/거부해 review/reviewed_channels.json이 갱신돼도, 대시보드
+"리뷰어 후보" 탭이 읽는 frontend/mock/cross_category_reviewers.json은 아무도 다시
+만들지 않아 계속 예전 후보 목록 그대로 남아 있었다. 이 스크립트는 로컬
+outputs/silver/rejected/*.jsonl을 전제로 만들어졌지만(--silver-bucket 옵션 추가 전),
+Lambda의 /tmp에는 그 파일이 없으므로 --silver-bucket을 줘서 S3를 직접 스캔하게 한다
+(lambda/reviewer_candidates_generate.py와 동일한 스캔 방식).
 """
 import json
 import os
@@ -35,12 +49,16 @@ import boto3
 APP_DIR = "/tmp/app"
 FRONTEND_BUCKET = os.environ.get("FRONTEND_S3_BUCKET", "goldline-dev-frontend-827913617635")
 CLOUDFRONT_DISTRIBUTION_ID = os.environ.get("CLOUDFRONT_DISTRIBUTION_ID", "EVDHEA0GFHDS3")
-SCRIPT_NAMES = ("export_s3_for_dashboard.py", "build_dashboard_data.py")
+SCRIPT_NAMES = ("export_s3_for_dashboard.py", "build_dashboard_data.py", "build_cross_category_reviewers.py")
 
 # 방금 만든 mock에 실제로 노출되는 video_id 전부를 여기에 써두면, daily_search_collector가
 # 매 실행마다 이걸 읽어서 그 영상들 조회수를 계속 갱신한다(백필/스테디로 known_videos에서
 # 빠진 영상도 화면에 떠 있는 동안은 라이브). daily_search_collector의 PINNED_KEY와 동일 경로.
 BRONZE_BUCKET = os.environ.get("AWS_S3_BRONZE_BUCKET", "goldline-dev-bronze-827913617635")
+# build_cross_category_reviewers.py에 --gold-bucket/--silver-bucket으로 그대로 넘길 값.
+# 이 Lambda의 환경변수(infra/refresh_dashboard.tf)에 이미 있는 것과 동일한 버킷.
+GOLD_BUCKET = os.environ.get("AWS_S3_GOLD_BUCKET")
+SILVER_BUCKET = os.environ.get("AWS_S3_SILVER_BUCKET")
 PINNED_KEY = "bronze/_checkpoints/pinned_video_ids.json"
 SLUG_TO_LABEL = {
     "film_animation": "영화_애니메이션",
@@ -90,7 +108,7 @@ def _collect_video_ids(mock_dir):
 
 def _prepare_writable_copy():
     """/var/task/frontend/scripts/*.py(읽기 전용, 배포 패키지) -> /tmp/app/frontend/scripts/*.py
-    (쓰기 가능). 상대 위치가 같아야 두 스크립트의 __file__ 기반 경로 계산이
+    (쓰기 가능). 상대 위치가 같아야 스크립트들의 __file__ 기반 경로 계산이
     /tmp/app을 ROOT로 잡는다."""
     src_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend", "scripts")
     dst_dir = os.path.join(APP_DIR, "frontend", "scripts")
@@ -100,9 +118,9 @@ def _prepare_writable_copy():
     return dst_dir
 
 
-def _run_script(dst_dir, name, timeout_sec):
+def _run_script(dst_dir, name, timeout_sec, extra_args=None):
     result = subprocess.run(
-        [sys.executable, os.path.join(dst_dir, name)],
+        [sys.executable, os.path.join(dst_dir, name), *(extra_args or [])],
         cwd=APP_DIR,
         env=dict(os.environ),  # Lambda 실행 역할의 임시자격증명이 이미 들어있음(boto3가 자동 사용)
         capture_output=True,
@@ -123,6 +141,18 @@ def lambda_handler(event, context):
 
     # 2) 그 결과로 frontend/mock/*.json 생성 -> /tmp/app/frontend/mock/*.json
     _run_script(dst_dir, "build_dashboard_data.py", timeout_sec=60)
+
+    # 2.5) 대시보드 "리뷰어 후보" 탭: Silver의 격리된 people_blogs reject 레코드를 S3에서
+    #      직접 스캔해서 frontend/mock/cross_category_reviewers.json을 다시 만든다.
+    #      --gold-bucket을 줘서 review/reviewed_channels.json(사람이 이미 승인/거부한
+    #      채널)을 반영하고, --silver-bucket을 줘서 로컬 파일 없이 /tmp 환경에서도
+    #      동작하게 한다.
+    _run_script(
+        dst_dir,
+        "build_cross_category_reviewers.py",
+        timeout_sec=120,
+        extra_args=["--gold-bucket", GOLD_BUCKET, "--silver-bucket", SILVER_BUCKET],
+    )
 
     # 3) mock/*.json을 프론트엔드 S3 버킷의 /mock/ 로 업로드
     s3 = boto3.client("s3")

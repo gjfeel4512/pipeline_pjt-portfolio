@@ -30,10 +30,26 @@ review/reviewed_channels.json을 읽어서, 이미 승인/거부로 결정된 �
 건너뛴다 - AWS 자격증명 없이도 로컬 전용으로 계속 쓸 수 있어야 하므로 실패로 죽지
 않는다.
 
+2026-09-07: lambda/refresh_dashboard.py가 4시간 주기 오케스트레이션의 일부로 이
+스크립트를 직접 실행하도록 붙였다(전에는 아무도 자동으로 재실행하지 않아서, 사람이
+리뷰어 후보를 승인/거부해도 대시보드 "리뷰어 후보" 탭에는 계속 예전 후보 목록이
+그대로 남아있었다 - review/reviewed_channels.json은 갱신되는데 이 스크립트의 출력
+frontend/mock/cross_category_reviewers.json은 아무도 다시 만들지 않았기 때문).
+Lambda의 /tmp 환경에는 로컬 outputs/silver/rejected/*.jsonl이 없으므로,
+--silver-bucket을 주면 로컬 glob 대신 S3(youtube/silver-rejected/category=people_blogs/)를
+lambda/reviewer_candidates_generate.py와 동일한 방식(list_objects_v2 페이지네이션)으로
+직접 스캔한다. --silver-bucket을 생략하면 기존과 동일하게 로컬 파일을 읽는다 - 로컬
+개발자 워크플로(scripts/run-local.bat 등)는 전혀 바뀌지 않는다.
+
 출력: frontend/mock/cross_category_reviewers.json
 실행:
+  # 로컬(기존과 동일)
   python frontend/scripts/build_cross_category_reviewers.py --gold-bucket <GOLD_BUCKET_NAME>
   (--gold-bucket을 생략하면 이미 검토한 채널 필터링 없이 예전과 동일하게 동작)
+
+  # S3 기반(Lambda/로컬 Silver 파일이 없는 환경)
+  python frontend/scripts/build_cross_category_reviewers.py \
+      --gold-bucket <GOLD_BUCKET_NAME> --silver-bucket <SILVER_BUCKET_NAME>
 """
 import argparse
 import glob
@@ -51,6 +67,9 @@ SILVER_DIR = f"{ROOT}/outputs/silver"
 OUT_PATH = f"{FRONTEND_DIR}/mock/cross_category_reviewers.json"
 # lambda/reviewer_candidates_apply.py가 쓰는 것과 동일한 키 - 이미 검토된 채널 목록.
 REVIEWED_KEY = "review/reviewed_channels.json"
+# lambda/reviewer_candidates_generate.py의 REJECTED_PREFIX와 동일 - --silver-bucket
+# 스캔 시 이 prefix 밑을 페이지네이션으로 읽는다.
+REJECTED_PREFIX = "youtube/silver-rejected/category=people_blogs/"
 
 CATEGORY_LABELS = {"film_animation": "영화·애니메이션", "autos_vehicles": "자동차·차량", "gaming": "게임"}
 
@@ -108,40 +127,71 @@ def load_reviewed_channel_ids(gold_bucket):
         return set()
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--gold-bucket", default=os.environ.get("GOLD_BUCKET_NAME"),
-                    help="review/reviewed_channels.json이 있는 Gold S3 버킷 (생략 시 필터링 없이 동작)")
-    args = p.parse_args()
-    reviewed_ids = load_reviewed_channel_ids(args.gold_bucket)
-    channels = defaultdict(lambda: {"video_count": 0, "channel_name": None, "score_by_cat": defaultdict(int), "sample_titles": []})
-    total_rejected = 0
-    total_skipped_reviewed = 0
+def _iter_local_lines():
+    """기존 동작: outputs/silver/rejected/rejected_people_blogs_*.jsonl을 그대로 읽는다."""
     pattern = f"{SILVER_DIR}/rejected/rejected_people_blogs_*.jsonl"
     for path in sorted(glob.glob(pattern)):
         with open(path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
-                if not line:
-                    continue
-                d = json.loads(line)
-                total_rejected += 1
-                if str(d.get("category_id")) != "22":
-                    continue
-                if d.get("channel_id") in reviewed_ids:
-                    total_skipped_reviewed += 1
-                    continue
-                text = (d.get("title") or "") + " " + " ".join(d.get("tags") or [])
-                result = classify(text)
-                if not result:
-                    continue
-                cat, score = result
-                ch = channels[d.get("channel_id")]
-                ch["channel_name"] = d.get("channel_name")
-                ch["video_count"] += 1
-                ch["score_by_cat"][cat] += score
-                if len(ch["sample_titles"]) < 3:
-                    ch["sample_titles"].append(d.get("title"))
+                if line:
+                    yield line
+
+
+def _iter_s3_lines(silver_bucket):
+    """lambda/reviewer_candidates_generate.py의 iter_rejected_lines()와 동일한 방식
+    (list_objects_v2 페이지네이션)으로 S3의 REJECTED_PREFIX 밑을 직접 읽는다. Lambda의
+    /tmp 환경처럼 로컬 outputs/silver/가 없는 곳에서 이 스크립트를 돌려야 할 때 쓴다."""
+    s3 = boto3.client("s3")
+    paginator = s3.get_paginator("list_objects_v2")
+    for page in paginator.paginate(Bucket=silver_bucket, Prefix=REJECTED_PREFIX):
+        for obj in page.get("Contents", []):
+            body = s3.get_object(Bucket=silver_bucket, Key=obj["Key"])["Body"].read().decode("utf-8")
+            for line in body.splitlines():
+                line = line.strip()
+                if line:
+                    yield line
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--gold-bucket", default=os.environ.get("GOLD_BUCKET_NAME"),
+                    help="review/reviewed_channels.json이 있는 Gold S3 버킷 (생략 시 필터링 없이 동작)")
+    p.add_argument("--silver-bucket", default=None,
+                    help="지정하면 로컬 outputs/silver/rejected/ 대신 S3(youtube/silver-rejected/"
+                         "category=people_blogs/)를 직접 스캔한다. 로컬 Silver 파일이 없는 환경"
+                         "(예: lambda/refresh_dashboard.py의 /tmp)에서 실행할 때 사용. 생략하면"
+                         " 기존과 동일하게 로컬 파일을 읽는다.")
+    args = p.parse_args()
+    reviewed_ids = load_reviewed_channel_ids(args.gold_bucket)
+    channels = defaultdict(lambda: {"video_count": 0, "channel_name": None, "score_by_cat": defaultdict(int), "sample_titles": []})
+    total_rejected = 0
+    total_skipped_reviewed = 0
+
+    lines = _iter_s3_lines(args.silver_bucket) if args.silver_bucket else _iter_local_lines()
+    for line in lines:
+        try:
+            d = json.loads(line)
+        except json.JSONDecodeError:
+            # 오염 데이터(malformed_json)일 수 있음 - 이 레코드만 건너뛴다.
+            continue
+        total_rejected += 1
+        if str(d.get("category_id")) != "22":
+            continue
+        if d.get("channel_id") in reviewed_ids:
+            total_skipped_reviewed += 1
+            continue
+        text = (d.get("title") or "") + " " + " ".join(d.get("tags") or [])
+        result = classify(text)
+        if not result:
+            continue
+        cat, score = result
+        ch = channels[d.get("channel_id")]
+        ch["channel_name"] = d.get("channel_name")
+        ch["video_count"] += 1
+        ch["score_by_cat"][cat] += score
+        if len(ch["sample_titles"]) < 3:
+            ch["sample_titles"].append(d.get("title"))
 
     candidates = []
     for channel_id, info in channels.items():
