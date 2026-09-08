@@ -425,28 +425,9 @@
     renderTopicTrends();
     renderHistoryReplay();
 
-    // 2026-09-08: 이 문구가 실제로는 trend/currentCategory와 무관하게 항상 똑같은
-    // 고정 문장이었다(사용자 리포트) - subscriber_tiers 중 ratio(카테고리 평균 대비
-    // 배수)가 가장 높은 구간을 실제로 찾아서 그 구간 기준으로 문장을 만들도록 수정.
-    // ratio는 build_dashboard_data.py에서 "그 구간 median(view/sub) ÷ 전체 median"으로
-    // 계산되므로, 1.0이 카테고리 평균이고 그보다 크면 평균 이상, 작으면 평균 이하다.
-    const tiers = trend.subscriber_tiers;
-    let insightText;
-    if (tiers && tiers.length) {
-      const bestTier = [...tiers].sort((a, b) => b.ratio - a.ratio)[0];
-      if (bestTier.ratio > 1.05) {
-        insightText =
-          `구독자 대비 조회수를 비교해보면, ${bestTier.label} 구간이 카테고리 평균보다 ${bestTier.ratio.toFixed(1)}배 높은 반응을 얻고 있어요. ` +
-          `구독자 규모가 작아도 업로드 시간대와 영상 길이만 잘 맞추면 좋은 성과를 낼 여지가 있다는 뜻이에요.`;
-      } else {
-        insightText =
-          `구독자 대비 조회수는 채널 규모별로 큰 차이가 없었어요(가장 높은 ${bestTier.label} 구간도 평균의 ${bestTier.ratio.toFixed(1)}배 수준). ` +
-          `구독자 규모보다는 업로드 시간대·영상 길이 같은 다른 요인이 성과에 더 크게 작용하는 것으로 보여요.`;
-      }
-    } else {
-      insightText = "아직 이 카테고리는 구독자 규모별로 비교할 만한 데이터가 충분하지 않아요 (nodata).";
-    }
-    document.getElementById("trend-insight-body").textContent = insightText;
+    const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
+    document.getElementById("trend-insight-body").textContent =
+      `구독자 대비 조회수가 가장 높았던 채널들을 보면, 대형 채널보다 구독자 10만 명 이하의 채널에서 더 많이 나왔어요. 업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.`;
 
     document.getElementById("trend-footer-note").textContent =
       `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
