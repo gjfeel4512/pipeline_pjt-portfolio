@@ -44,6 +44,12 @@ data "archive_file" "refresh_dashboard" {
     content  = file("${path.module}/../frontend/scripts/build_cross_category_reviewers.py")
     filename = "frontend/scripts/build_cross_category_reviewers.py"
   }
+  # 홈 탭 "AI 요약" 카드용 - 방금 만든 mock/*.json을 Bedrock(Claude Haiku)에 넘겨
+  # 카테고리별 브리핑을 생성한다(frontend/scripts/build_home_summary.py 참고).
+  source {
+    content  = file("${path.module}/../frontend/scripts/build_home_summary.py")
+    filename = "frontend/scripts/build_home_summary.py"
+  }
 }
 
 resource "aws_lambda_function" "refresh_dashboard" {
@@ -115,6 +121,35 @@ resource "aws_iam_role_policy" "refresh_dashboard" {
           "cloudfront:CreateInvalidation"
         ]
         Resource = aws_cloudfront_distribution.frontend.arn
+      }
+    ]
+  })
+}
+
+# 홈 탭 "AI 요약"(build_home_summary.py)이 쓰는 Bedrock 호출 권한. us.anthropic.claude-
+# haiku-4-5-...는 cross-region inference profile이라(온디맨드 직접 호출 불가 -
+# InvokeModel 시 "inference profile 필요" 에러) profile ARN과, 그 profile이 실제로
+# 라우팅하는 3개 리전(us-east-1/us-east-2/us-west-2)의 foundation-model ARN을 전부
+# 허용해야 한다(둘 중 하나만 있으면 AccessDenied).
+resource "aws_iam_role_policy" "home_summary_bedrock" {
+  name = "${local.resource_prefix}-home-summary-bedrock-policy"
+  role = aws_iam_role.lambda.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "BedrockInvokeHaiku"
+        Effect = "Allow"
+        Action = [
+          "bedrock:InvokeModel"
+        ]
+        Resource = [
+          "arn:aws:bedrock:us-west-2:${data.aws_caller_identity.current.account_id}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+          "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+          "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+        ]
       }
     ]
   })

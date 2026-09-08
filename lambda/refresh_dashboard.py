@@ -49,7 +49,12 @@ import boto3
 APP_DIR = "/tmp/app"
 FRONTEND_BUCKET = os.environ.get("FRONTEND_S3_BUCKET", "goldline-dev-frontend-827913617635")
 CLOUDFRONT_DISTRIBUTION_ID = os.environ.get("CLOUDFRONT_DISTRIBUTION_ID", "EVDHEA0GFHDS3")
-SCRIPT_NAMES = ("export_s3_for_dashboard.py", "build_dashboard_data.py", "build_cross_category_reviewers.py")
+SCRIPT_NAMES = (
+    "export_s3_for_dashboard.py",
+    "build_dashboard_data.py",
+    "build_cross_category_reviewers.py",
+    "build_home_summary.py",
+)
 
 # 방금 만든 mock에 실제로 노출되는 video_id 전부를 여기에 써두면, daily_search_collector가
 # 매 실행마다 이걸 읽어서 그 영상들 조회수를 계속 갱신한다(백필/스테디로 known_videos에서
@@ -153,6 +158,17 @@ def lambda_handler(event, context):
         timeout_sec=120,
         extra_args=["--gold-bucket", GOLD_BUCKET, "--silver-bucket", SILVER_BUCKET],
     )
+
+    # 2.6) 홈 탭 "AI 요약" - 방금 만든 mock/*.json + S3의 최신 metadata_impact/
+    #      topic_trends/synthetic_demo.json을 팩트 시트로 압축해 Bedrock에 넘겨
+    #      카테고리별 브리핑을 생성한다(frontend/mock/home_summary.json). 부가 기능이라
+    #      실패해도 대시보드 갱신 전체를 막지 않도록 스크립트 자체가 내부에서 예외를
+    #      삼키고 항상 exit 0으로 끝나지만, 혹시 모를 경우를 위해 여기서도 한 번 더
+    #      감싼다(핀 목록 갱신과 동일한 방어).
+    try:
+        _run_script(dst_dir, "build_home_summary.py", timeout_sec=120)
+    except Exception as e:
+        print(f"홈 AI 요약 생성 실패(무시하고 계속): {e}")
 
     # 3) mock/*.json을 프론트엔드 S3 버킷의 /mock/ 로 업로드
     s3 = boto3.client("s3")

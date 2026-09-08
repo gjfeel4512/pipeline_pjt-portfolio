@@ -43,6 +43,8 @@ const DataSource = (() => {
     // 카테고리 트렌드 보조: 1년치 실측 백필을 월별로 재생 (실측 데이터, 합성 아님)
     fetchHistoryReplay: () => load("historyReplay"),
     // 추천 채널 보조: 다른 카테고리 리뷰어 후보 (검수 필요, 실측 데이터)
-    fetchCrossCategoryReviewers: () => load("crossCategoryReviewers")
+    fetchCrossCategoryReviewers: () => load("crossCategoryReviewers"),
+    // 홈 탭 AI 요약: 카테고리별 브리핑 (AWS Bedrock 생성)
+    fetchHomeSummary: () => load("homeSummary")
   };
 })();
