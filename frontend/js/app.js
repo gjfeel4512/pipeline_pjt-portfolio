@@ -480,8 +480,14 @@
 
     renderSubscriberTierInsight(trend.subscriber_tiers);
 
-    document.getElementById("trend-footer-note").textContent =
-      `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
+    // "지난 기간 대비" 두 지표(조회수/참여율) 모두에 실제 prev 데이터가 쌓이기 전까지는
+    // 안내 문구(◆)를 붙이고, 둘 다 실제 비교값이 뜨기 시작하면 문구를 자동으로 뗍니다.
+    const hasBothPrev = hasViewsPrev && hasEngPrev;
+    const trendNoteBase = `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다.`;
+    const trendNoteDelta = hasBothPrev
+      ? ""
+      : ` ◆ "지난 기간 대비" 수치는 재집계부터 표시돼요(이번이 첫 집계).`;
+    document.getElementById("trend-footer-note").textContent = trendNoteBase + trendNoteDelta;
   }
 
   // spec.md 분석 7(메타데이터 최적화): frontend/scripts/build_metadata_impact.py가
