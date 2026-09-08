@@ -319,8 +319,10 @@ const Charts = (() => {
   /* ---------------------------------------------------------------- *
    * Heatmap - 요일 그룹 x 시간대, 순차형(1 quantitative var) 블루 스케일
    * dayLabels: ["평일","토요일","일요일"]  slotLabels: ["새벽","오전",...]
-   * cells: [{ day: idx, slot: idx, avg_views, avg_duration_sec }]
-   * 값(avg_views)으로 색을 정하고, 툴팁에는 조회수와 평균 영상 길이를 함께 보여줍니다.
+   * cells: [{ day: idx, slot: idx, avg_views, avg_duration_sec, sample_count }]
+   * 값(avg_views)으로 색을 정하고, 툴팁에는 조회수·평균 영상 길이·표본 수(sample_count -
+   * 2026-09-08 추가, 표본이 적으면 평균이 우연히 튈 수 있다는 걸 바로 보여주기 위함)를
+   * 함께 보여줍니다.
    * best 셀(최댓값)에는 별 아이콘으로 "가장 반응 좋은 시간대"를 표시합니다.
    * ---------------------------------------------------------------- */
   function lerpColor(hexA, hexB, t) {
@@ -449,11 +451,20 @@ const Charts = (() => {
         }
 
         const showTip = (evt) => {
+          // 2026-09-08: 이 시간대에 몇 개 영상을 보고 계산한 평균인지(sample_count)를
+          // 툴팁에 같이 보여달라는 요청 - 표본이 적으면 평균값이 우연히 튈 수 있다는
+          // 걸 바로 옆에서 확인할 수 있게 한다. upload_heatmap.json 셀에 이미
+          // sample_count 필드가 있어서(build_dashboard_data.py) 데이터 쪽은 안
+          // 건드리고 툴팁 표시 줄만 추가하면 된다.
+          // charts.js는 app.js와 별개의 스코프(IIFE)라 app.js의 fmtInt를 못 쓰므로,
+          // 이 파일 다른 곳(v.toLocaleString 등)과 같은 방식으로 직접 포맷한다.
+          const sampleCountText = (c.sample_count || 0).toLocaleString("ko-KR");
           const rows = noData
-            ? [{ label: "표본", value: "아직 데이터 없음 (nodata)", color: "transparent" }]
+            ? [{ label: "표본", value: `아직 데이터 없음 (nodata, ${sampleCountText}건)`, color: "transparent" }]
             : [
                 { label: "평균 조회수", value: v.toLocaleString("ko-KR") + "회", color },
-                { label: "평균 영상 길이", value: fmtDuration(c.avg_duration_sec), color: "transparent" }
+                { label: "평균 영상 길이", value: fmtDuration(c.avg_duration_sec), color: "transparent" },
+                { label: "표본 수", value: sampleCountText + "건", color: "transparent" }
               ];
           setTooltipRows(tip, `${dLabel} · ${sLabel}`, rows);
           tip.style.display = "block";
