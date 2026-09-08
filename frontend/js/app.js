@@ -349,7 +349,10 @@
     tile.className = "stat-tile";
     let deltaHtml = "";
     if (delta) {
-      deltaHtml = `<div class="stat-delta ${delta.good ? "good" : ""}">▲ 지난 기간 대비 ${delta.pct}%</div>`;
+      const isDown = parseFloat(delta.pct) < 0;
+      const arrow = isDown ? "▼" : "▲";
+      const trendClass = isDown ? "bad" : "good";
+      deltaHtml = `<div class="stat-delta ${trendClass}">${arrow} 지난 기간 대비 ${delta.pct}%</div>`;
     } else if (noPrevData) {
       deltaHtml = `<div class="stat-delta nodata">지난 기간 대비 nodata (첫 집계)</div>`;
     }
@@ -372,8 +375,8 @@
     const engDeltaPct = hasEngPrev
       ? (((trend.avg_engagement_rate - trend.avg_engagement_rate_prev) / trend.avg_engagement_rate_prev) * 100).toFixed(1)
       : null;
-    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { good: true, pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
-    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { good: true, pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
+    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
+    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
     grid.appendChild(statTile({ label: "평균 영상 길이", value: fmtDuration(trend.avg_duration_sec) }));
 
     Charts.renderHBarChart(document.getElementById("duration-dist-chart"), {
