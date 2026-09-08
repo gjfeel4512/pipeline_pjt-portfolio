@@ -518,8 +518,14 @@
     Charts.renderHBarChart(chartRoot, {
       items,
       valueFormatter: () => "",
-      // 막대 라벨(부호 있는 %)과 다른 정보로, 그 추정치의 통계적 유의성(p-value)을 보여줌.
-      tooltipFormatter: (d) => `p-value ${d.pValue.toFixed(3)} (${d.significant ? "통계적으로 유의함" : "근거 부족"})`,
+      // 막대 라벨(부호 있는 %)과 다른 정보로, 그 추정치의 통계적 유의성을 보여줌.
+      // p-value 숫자만 보여주면 무슨 뜻인지 알기 어렵다는 피드백(2026-09-08)으로,
+      // "판정"을 사람이 읽을 수 있는 문장으로 먼저 보여주고, p-value는 그 판단 기준(0.05)과
+      // 비교해서 보여줘서 숫자 자체도 어떻게 읽는지 알 수 있게 함.
+      tooltipFormatter: (d) => [
+        { label: "판정", value: d.significant ? "통계적으로 유의미한 차이" : "근거 부족 (아직 우연일 수 있어요)" },
+        { label: "p-value", value: `${d.pValue.toFixed(3)} (기준 0.05보다 ${d.significant ? "낮음" : "높음"})` }
+      ],
       labelWidth: 150
     });
     // renderHBarChart의 valueFormatter는 부호 없는 절대값(막대 길이용)만 받으므로,

@@ -272,11 +272,15 @@ const Charts = (() => {
       svg.appendChild(valueLabel);
 
       const tip = ensureTooltip(root);
-      const tooltipValue = tooltipFormatter ? tooltipFormatter(d) : valueFormatter(d.value) + (d.suffix || "");
+      const tooltipResult = tooltipFormatter ? tooltipFormatter(d) : valueFormatter(d.value) + (d.suffix || "");
+      // tooltipFormatter가 [{label, value}, ...] 배열을 반환하면 그 줄들을 그대로 여러 행으로
+      // 보여주고(예: 통계적 판정 + p-value를 따로따로), 지금까지처럼 문자열 하나만 반환하면
+      // "값" 한 줄로 보여준다(기존 호출부와 하위 호환).
+      const tooltipRows = Array.isArray(tooltipResult)
+        ? tooltipResult.map((r, i) => ({ label: r.label, value: r.value, color: r.color !== undefined ? r.color : (i === 0 ? color : "transparent") }))
+        : [{ label: "값", value: tooltipResult, color }];
       const showTip = (evt) => {
-        setTooltipRows(tip, d.label, [
-          { label: "값", value: tooltipValue, color }
-        ]);
+        setTooltipRows(tip, d.label, tooltipRows);
         tip.style.display = "block";
         positionTooltip(root, tip, evt);
         bar.setAttribute("opacity", "0.85");
