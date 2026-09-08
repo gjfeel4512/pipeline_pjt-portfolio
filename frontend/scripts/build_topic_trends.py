@@ -111,10 +111,17 @@ def _strip_channel_promo_tags(df):
       자기 태그가 안 지워지는 버그가 있었음 - 사용자 리포트로 발견, 2026-09-07).
     - 채널명에 부분 포함되는 태그: 이 카테고리에서 그 태그를 쓰는 서로 다른
       채널 수가 SELF_TAG_MAX_CHANNELS 이하일 때만 제거(여러 채널이 공통으로
-      쓰는 진짜 장르 태그는 채널명과 우연히 겹쳐도 보존됨).
+      쓰는 진짜 장르 태그는 채널명과 우연히 겹쳐도 보존됨). 이 "채널 수"는
+      원본 태그 문자열이 아니라 정규화된 태그 기준으로 센다 - 원본 기준으로
+      세면 같은 태그를 철자만 다르게 쓴 경우(대소문자/공백/괄호 차이 등) 서로
+      다른 키로 쪼개져서 실제로는 여러 채널이 같이 쓰는 태그인데도 채널 수가
+      낮게 잡혀 잘못 제거될 수 있다(2026-09-08, tag_count_fix 브랜치에서 발견).
     - 태그가 다 제거돼 빈 리스트가 된 영상은 이후 랭킹 대상에서 제외한다(빈 태그로
       지어내지 않음 - 파일 상단 docstring에서 밝힌 "태그 없는 영상 제외" 원칙과
       동일선상).
+    - 채택된 태그는 항상 원본 문자열 그대로 남긴다(정규화는 비교/카운트에만
+      쓰고, 최종 결과에 정규화된 문자열이 노출되면 안 됨 - 한 번 이 실수로
+      화면에 태그가 뭉개져 나온 적이 있었음, 2026-09-07).
     """
     if df.empty:
         return df
@@ -123,7 +130,9 @@ def _strip_channel_promo_tags(df):
     for _, row in df.iterrows():
         cid = row["channel_id"] or row["channel_name"]
         for t in row["tags"]:
-            tag_channels[t].add(cid)
+            t_norm = _normalize_tag_text(t)
+            if t_norm:
+                tag_channels[t_norm].add(cid)
 
     def filter_row(row):
         ch_norm = _normalize_tag_text(row["channel_name"])
@@ -137,9 +146,9 @@ def _strip_channel_promo_tags(df):
                 continue
             if t_norm == ch_norm:
                 continue  # 완전 일치 - 무조건 제거
-            if t_norm in ch_norm and len(tag_channels[t]) <= SELF_TAG_MAX_CHANNELS:
+            if t_norm in ch_norm and len(tag_channels[t_norm]) <= SELF_TAG_MAX_CHANNELS:
                 continue  # 부분 포함 + 소수 채널만 사용 - 제거
-            kept.append(t)
+            kept.append(t)  # 원본 문자열 유지(정규화 값 아님)
         return kept
 
     df = df.copy()

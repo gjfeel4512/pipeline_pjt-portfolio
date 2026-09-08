@@ -1,73 +1,73 @@
 {
   "gaming": {
-    "sample_size": 2134,
-    "median_split_date": "2026-06-15",
+    "sample_size": 2562,
+    "median_split_date": "2026-07-05",
     "clusters": [
       {
         "cluster_id": 0,
         "top_terms": [
           "게임"
         ],
-        "channel_count": 217,
-        "sample_count": 483,
-        "median_views_per_day": 174.1,
-        "trend_pct": -34.5,
-        "older_sample": 269,
-        "recent_sample": 214
+        "channel_count": 234,
+        "sample_count": 528,
+        "median_views_per_day": 145.9,
+        "trend_pct": -60.1,
+        "older_sample": 321,
+        "recent_sample": 207
       },
       {
         "cluster_id": 1,
         "top_terms": [
           "공포게임"
         ],
-        "channel_count": 95,
-        "sample_count": 211,
-        "median_views_per_day": 140.6,
-        "trend_pct": -71.1,
-        "older_sample": 103,
-        "recent_sample": 108
+        "channel_count": 101,
+        "sample_count": 220,
+        "median_views_per_day": 133.1,
+        "trend_pct": -90.2,
+        "older_sample": 125,
+        "recent_sample": 95
       },
       {
         "cluster_id": 2,
         "top_terms": [
-          "스팀게임"
+          "신작게임"
         ],
-        "channel_count": 110,
-        "sample_count": 364,
-        "median_views_per_day": 85.6,
-        "trend_pct": 34.4,
-        "older_sample": 192,
-        "recent_sample": 172
+        "channel_count": 86,
+        "sample_count": 316,
+        "median_views_per_day": 129.1,
+        "trend_pct": 592.4,
+        "older_sample": 130,
+        "recent_sample": 186
       },
       {
         "cluster_id": 3,
         "top_terms": [
-          "신작게임"
+          "스팀게임"
         ],
-        "channel_count": 79,
-        "sample_count": 262,
-        "median_views_per_day": 67.0,
-        "trend_pct": 143.3,
-        "older_sample": 114,
-        "recent_sample": 148
+        "channel_count": 116,
+        "sample_count": 405,
+        "median_views_per_day": 96.8,
+        "trend_pct": 234.2,
+        "older_sample": 230,
+        "recent_sample": 175
       },
       {
         "cluster_id": 4,
         "top_terms": [
           "종합게임"
         ],
-        "channel_count": 97,
-        "sample_count": 150,
-        "median_views_per_day": 50.3,
-        "trend_pct": -11.1,
-        "older_sample": 58,
-        "recent_sample": 92
+        "channel_count": 101,
+        "sample_count": 157,
+        "median_views_per_day": 51.7,
+        "trend_pct": -47.1,
+        "older_sample": 67,
+        "recent_sample": 90
       }
     ]
   },
   "autos_vehicles": {
-    "sample_size": 1102,
-    "median_split_date": "2026-06-16",
+    "sample_size": 1139,
+    "median_split_date": "2026-06-20",
     "clusters": [
       {
         "cluster_id": 0,
@@ -75,125 +75,125 @@
           "자동차"
         ],
         "channel_count": 48,
-        "sample_count": 312,
-        "median_views_per_day": 607.5,
-        "trend_pct": 25.3,
-        "older_sample": 162,
-        "recent_sample": 150
+        "sample_count": 316,
+        "median_views_per_day": 692.8,
+        "trend_pct": -3.3,
+        "older_sample": 169,
+        "recent_sample": 147
       },
       {
         "cluster_id": 1,
-        "top_terms": [
-          "시승기"
-        ],
-        "channel_count": 66,
-        "sample_count": 410,
-        "median_views_per_day": 487.5,
-        "trend_pct": 50.2,
-        "older_sample": 220,
-        "recent_sample": 190
-      },
-      {
-        "cluster_id": 2,
         "top_terms": [
           "벤츠"
         ],
         "channel_count": 36,
         "sample_count": 108,
-        "median_views_per_day": 467.7,
-        "trend_pct": -11.0,
-        "older_sample": 52,
-        "recent_sample": 56
+        "median_views_per_day": 528.8,
+        "trend_pct": -3.5,
+        "older_sample": 51,
+        "recent_sample": 57
+      },
+      {
+        "cluster_id": 2,
+        "top_terms": [
+          "시승기"
+        ],
+        "channel_count": 66,
+        "sample_count": 414,
+        "median_views_per_day": 523.5,
+        "trend_pct": 15.0,
+        "older_sample": 223,
+        "recent_sample": 191
       },
       {
         "cluster_id": 3,
         "top_terms": [
-          "자동차리뷰"
+          "전기차"
         ],
-        "channel_count": 41,
-        "sample_count": 216,
-        "median_views_per_day": 447.8,
-        "trend_pct": 34.9,
-        "older_sample": 104,
-        "recent_sample": 112
+        "channel_count": 59,
+        "sample_count": 160,
+        "median_views_per_day": 465.2,
+        "trend_pct": -24.3,
+        "older_sample": 73,
+        "recent_sample": 87
       },
       {
         "cluster_id": 4,
         "top_terms": [
-          "전기차"
+          "자동차리뷰"
         ],
-        "channel_count": 58,
-        "sample_count": 156,
-        "median_views_per_day": 410.1,
-        "trend_pct": -24.6,
-        "older_sample": 70,
-        "recent_sample": 86
+        "channel_count": 42,
+        "sample_count": 220,
+        "median_views_per_day": 459.0,
+        "trend_pct": 20.4,
+        "older_sample": 106,
+        "recent_sample": 114
       }
     ]
   },
   "film_animation": {
-    "sample_size": 1180,
-    "median_split_date": "2026-06-23",
+    "sample_size": 1270,
+    "median_split_date": "2026-07-02",
     "clusters": [
       {
         "cluster_id": 0,
         "top_terms": [
-          "영화추천"
+          "넷플릭스"
         ],
-        "channel_count": 98,
-        "sample_count": 411,
-        "median_views_per_day": 1149.2,
-        "trend_pct": -10.6,
-        "older_sample": 232,
-        "recent_sample": 179
+        "channel_count": 58,
+        "sample_count": 306,
+        "median_views_per_day": 1107.0,
+        "trend_pct": 304.6,
+        "older_sample": 155,
+        "recent_sample": 151
       },
       {
         "cluster_id": 1,
         "top_terms": [
-          "넷플릭스"
+          "영화추천"
         ],
-        "channel_count": 57,
-        "sample_count": 297,
-        "median_views_per_day": 1028.7,
-        "trend_pct": 269.5,
-        "older_sample": 146,
-        "recent_sample": 151
+        "channel_count": 106,
+        "sample_count": 439,
+        "median_views_per_day": 1091.7,
+        "trend_pct": -0.4,
+        "older_sample": 250,
+        "recent_sample": 189
       },
       {
         "cluster_id": 2,
         "top_terms": [
           "영화"
         ],
-        "channel_count": 107,
-        "sample_count": 612,
-        "median_views_per_day": 846.0,
-        "trend_pct": 34.0,
-        "older_sample": 334,
-        "recent_sample": 278
+        "channel_count": 110,
+        "sample_count": 635,
+        "median_views_per_day": 839.6,
+        "trend_pct": 42.2,
+        "older_sample": 361,
+        "recent_sample": 274
       },
       {
         "cluster_id": 3,
         "top_terms": [
-          "결말포함"
+          "영화리뷰"
         ],
-        "channel_count": 135,
-        "sample_count": 713,
-        "median_views_per_day": 692.9,
-        "trend_pct": 60.1,
-        "older_sample": 354,
-        "recent_sample": 359
+        "channel_count": 177,
+        "sample_count": 849,
+        "median_views_per_day": 689.7,
+        "trend_pct": 19.1,
+        "older_sample": 441,
+        "recent_sample": 408
       },
       {
         "cluster_id": 4,
         "top_terms": [
-          "영화리뷰"
+          "결말포함"
         ],
-        "channel_count": 169,
-        "sample_count": 805,
+        "channel_count": 140,
+        "sample_count": 747,
         "median_views_per_day": 689.7,
-        "trend_pct": 7.1,
-        "older_sample": 412,
-        "recent_sample": 393
+        "trend_pct": 78.9,
+        "older_sample": 388,
+        "recent_sample": 359
       }
     ]
   },
