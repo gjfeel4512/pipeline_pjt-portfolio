@@ -152,6 +152,34 @@
     const heatCells = DATA.uploadHeatmap[currentCategory].cells;
     const tip = Recommend.uploadTip(heatCells);
 
+    // AI 요약 카드 - refresh_dashboard 람다(4시간 주기)가 build_home_summary.py로
+    // 생성한 카테고리별 브리핑(AWS Bedrock). 아직 한 번도 생성 안 됐거나 그 카테고리만
+    // 생성 실패한 적이 있으면(build_home_summary.py 참고 - 실패해도 이전 값 유지) 카드
+    // 자체를 숨긴다(없는 내용을 지어내지 않음).
+    const aiSummaryCard = document.getElementById("home-ai-summary");
+    const homeSummary = (DATA.homeSummary || {})[currentCategory];
+    if (homeSummary && homeSummary.summary) {
+      const generatedLabel = homeSummary.generated_at
+        ? new Date(homeSummary.generated_at).toLocaleString("ko-KR", {
+            month: "numeric",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+          })
+        : "";
+      aiSummaryCard.hidden = false;
+      aiSummaryCard.innerHTML = `
+        <div class="ai-summary-icon">✨</div>
+        <div style="flex:1;">
+          <div class="ai-summary-title">AI 요약${generatedLabel ? ` · ${generatedLabel} 기준` : ""}</div>
+          <div class="ai-summary-body">${homeSummary.summary}</div>
+        </div>
+      `;
+    } else {
+      aiSummaryCard.hidden = true;
+      aiSummaryCard.innerHTML = "";
+    }
+
     const callout = document.getElementById("home-tip-callout");
     const calloutBody = tip.noData
       ? tip.text
@@ -795,7 +823,7 @@
     setupTabs();
     document.querySelectorAll(".video-grid").forEach(enableDragScroll);
     try {
-      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends, historyReplay, crossCategoryReviewers] = await Promise.all([
+      const [meta, videoPool, channelPool, uploadHeatmap, categoryTrend, metadataImpact, syntheticDemo, topicTrends, historyReplay, crossCategoryReviewers, homeSummary] = await Promise.all([
         DataSource.fetchMeta(),
         DataSource.fetchVideoPool(),
         DataSource.fetchChannelPool(),
@@ -805,7 +833,14 @@
         DataSource.fetchSyntheticDemo(),
         DataSource.fetchTopicTrends(),
         DataSource.fetchHistoryReplay(),
-        DataSource.fetchCrossCategoryReviewers()
+        DataSource.fetchCrossCategoryReviewers(),
+        // AI 요약은 부가 기능(build_home_summary.py가 아직 한 번도 안 돌았으면
+        // mock/home_summary.json 자체가 없어 404가 남) - 이거 하나 때문에 홈 화면
+        // 전체가 에러 배너로 막히면 안 되므로 실패를 여기서 흡수한다.
+        DataSource.fetchHomeSummary().catch((err) => {
+          console.warn("홈 AI 요약 로드 실패(무시, 카드 숨김):", err.message);
+          return {};
+        })
       ]);
       DATA.videoPool = videoPool;
       DATA.channelPool = channelPool;
@@ -816,6 +851,7 @@
       DATA.topicTrends = topicTrends;
       DATA.historyReplay = historyReplay;
       DATA.crossCategoryReviewers = crossCategoryReviewers;
+      DATA.homeSummary = homeSummary;
       setMetaBadge(meta);
       renderActiveTab();
     } catch (err) {

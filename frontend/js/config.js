@@ -52,7 +52,9 @@ window.APP_CONFIG = {
     // 카테고리 트렌드 탭의 "1년 재생" 카드 - 실측 백필 월별 집계 (합성 아님)
     historyReplay: "/gold/history-replay",
     // 추천 채널 탭의 "다른 카테고리 리뷰어" 후보 카드
-    crossCategoryReviewers: "/gold/cross-category-reviewers"
+    crossCategoryReviewers: "/gold/cross-category-reviewers",
+    // 홈 탭 "AI 요약" 카드 - 카테고리별 브리핑(AWS Bedrock 생성)
+    homeSummary: "/home/summary"
   },
 
   // mock 모드에서 사용할 로컬 파일 매핑
@@ -79,7 +81,11 @@ window.APP_CONFIG = {
     // category_id=22(인물·블로그)로 격리된 rejected 데이터에서 다른 카테고리
     // 리뷰어로 보이는 채널을 찾아낸 후보 목록(검수 필요, 자동 재분류 아님)
     // frontend/scripts/build_cross_category_reviewers.py가 생성
-    crossCategoryReviewers: "mock/cross_category_reviewers.json"
+    crossCategoryReviewers: "mock/cross_category_reviewers.json",
+    // 홈 탭 "AI 요약" 카드 - refresh_dashboard 람다(4시간 주기)가 build_home_summary.py로
+    // 생성. 카테고리별 { summary, generated_at }. 실측 데이터 기반 브리핑(Bedrock 생성이라
+    // 표현이 매번 조금씩 달라질 수 있음)
+    homeSummary: "mock/home_summary.json"
   },
 
   // 팀 확정 카테고리 (인물·블로그 제외, 2026-09-01 회의 기준)
