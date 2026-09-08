@@ -16,16 +16,14 @@
  * (인물·블로그 제외), 쇼츠/숏폼은 수집 단계에서 이미 제외되므로 화면에서도 다루지
  * 않습니다. 3개 카테고리 모두 트렌드·스테디 추천을 동일하게 보여줍니다.
  *
- * 지금은 백엔드 API가 아직 없어서 USE_MOCK = true 로 두고 mock/*.json 정적 파일을
- * 읽어옵니다. 백엔드가 API를 완성하면 아래 3줄만 바꾸면 됩니다:
- *   USE_MOCK → false, API_BASE_URL, ENDPOINTS
- * data.js / charts.js / recommend.js / app.js는 손댈 필요 없습니다(응답 필드명이
- * mock/*.json과 다르면 data.js의 각 fetchXxx 함수에서 매핑만 추가해주세요).
+ * 이 프로젝트는 별도 백엔드 API 없이, refresh_dashboard Lambda가 계산 결과를
+ * mock/*.json 자리에 직접 덮어쓰고 CloudFront 캐시를 무효화하는 정적 파일
+ * 구조로 확정되었습니다. data.js는 아래 MOCK_FILES 매핑을 그대로 fetch합니다.
  *
  * === 매일 갱신되는 화면으로 유지하는 방법 ===
  * 이 프론트는 정적 파일이라 "자동으로 매일 값이 바뀌는" 백엔드는 아닙니다. 대신:
- *   - 파이프라인(Airflow 등)이 하루 1회 mock/*.json (또는 실 API가 붙은 뒤에는
- *     DB/API 응답)을 그날 수집 결과로 덮어씁니다.
+ *   - 파이프라인(refresh_dashboard Lambda)이 하루 1회 mock/*.json을 그날
+ *     수집/계산 결과로 덮어씁니다.
  *   - 프론트는 캐시 없이 페이지를 열 때마다 fetch()로 새로 읽어오므로, 파일/응답만
  *     최신이면 화면도 자동으로 최신 상태가 됩니다.
  *   - mock/meta.json 의 last_updated 값이 헤더의 "마지막 업데이트" 배지에 그대로
@@ -33,31 +31,7 @@
  *     사용자에게 보입니다.
  */
 window.APP_CONFIG = {
-  // true: mock/*.json 로컬 파일 사용, false: 실제 API 호출
-  USE_MOCK: true,
-
-  // 실제 백엔드 API의 베이스 URL (백엔드팀이 확정하면 채워주세요)
-  API_BASE_URL: "https://REPLACE_ME.execute-api.ap-northeast-2.amazonaws.com/prod",
-
-  // 각 화면이 필요로 하는 데이터의 엔드포인트 경로 (백엔드 API 완성 후 매핑)
-  ENDPOINTS: {
-    meta: "/meta",
-    videoPool: "/videos/pool",
-    channelPool: "/channels/pool",
-    uploadHeatmap: "/gold/upload-strategy/heatmap",
-    categoryTrend: "/gold/category-trend",
-    metadataImpact: "/analysis/metadata-impact",
-    syntheticDemo: "/analysis/synthetic-demo",
-    topicTrends: "/analysis/topic-trends",
-    // 카테고리 트렌드 탭의 "1년 재생" 카드 - 실측 백필 월별 집계 (합성 아님)
-    historyReplay: "/gold/history-replay",
-    // 추천 채널 탭의 "다른 카테고리 리뷰어" 후보 카드
-    crossCategoryReviewers: "/gold/cross-category-reviewers",
-    // 홈 탭 "AI 요약" 카드 - 카테고리별 브리핑(AWS Bedrock 생성)
-    homeSummary: "/home/summary"
-  },
-
-  // mock 모드에서 사용할 로컬 파일 매핑
+  // 화면 데이터로 쓰는 정적 JSON 파일 매핑 (파이프라인이 매일 이 경로에 그대로 덮어씀)
   MOCK_FILES: {
     meta: "mock/meta.json",
     videoPool: "mock/video_pool.json",

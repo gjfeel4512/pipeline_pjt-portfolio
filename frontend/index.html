@@ -105,7 +105,13 @@
 
   <!-- 카테고리 트렌드 -->
   <section id="tab-trend" class="tab-panel">
+    <div class="insight-card">
+      <div class="insight-title" id="trend-insight-title">✨ 구독자가 적어도 기회는 있어요</div>
+      <div class="insight-body" id="trend-insight-body"></div>
+    </div>
+
     <div class="stat-grid" id="trend-stats"></div>
+    <div class="card-footnote">이벤트·경품 등으로 갑자기 튄 값 하나에 흔들리지 않도록, 평균이 아니라 중앙값으로 계산했어요.</div>
 
     <div class="grid-2">
       <div class="card">
@@ -118,7 +124,7 @@
         <div class="card-title">구독자 규모별로 비교해봤어요</div>
         <div class="card-sub">구독자 수 대비 조회수 비율의 중앙값이에요</div>
         <div id="subscriber-tier-chart"></div>
-        <div class="card-footnote">💡 구독자가 적어도 구독자 대비 조회수 반응은 오히려 더 좋을 수 있어요.</div>
+        <div class="card-footnote" id="subscriber-tier-footnote"></div>
       </div>
     </div>
 
@@ -142,11 +148,6 @@
       <div id="history-replay-chart"></div>
       <div class="stat-grid" id="history-replay-mover" style="margin-top:16px;"></div>
       <div class="card-footnote" id="history-replay-footnote"></div>
-    </div>
-
-    <div class="insight-card">
-      <div class="insight-title">✨ 구독자가 적어도 기회는 있어요</div>
-      <div class="insight-body" id="trend-insight-body"></div>
     </div>
 
     <div class="section-note" id="trend-footer-note"></div>

@@ -377,12 +377,65 @@
     tile.className = "stat-tile";
     let deltaHtml = "";
     if (delta) {
-      deltaHtml = `<div class="stat-delta ${delta.good ? "good" : ""}">▲ 지난 기간 대비 ${delta.pct}%</div>`;
+      const isDown = parseFloat(delta.pct) < 0;
+      const arrow = isDown ? "▼" : "▲";
+      const trendClass = isDown ? "bad" : "good";
+      deltaHtml = `<div class="stat-delta ${trendClass}">${arrow} 지난 기간 대비 ${delta.pct}%</div>`;
     } else if (noPrevData) {
       deltaHtml = `<div class="stat-delta nodata">지난 기간 대비 nodata (첫 집계)</div>`;
     }
     tile.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${value}</div>${deltaHtml}`;
     return tile;
+  }
+
+  // 카테고리 트렌드 상단 인사이트 카드 - 구독자 규모별 비교(subscriber_tiers) 데이터에서
+  // 실제로 반응이 가장 좋았던 구간을 찾아 문구를 그때그때 만든다(카테고리 고정 문구 아님).
+  function renderSubscriberTierInsight(tiers) {
+    const titleEl = document.getElementById("trend-insight-title");
+    const bodyEl = document.getElementById("trend-insight-body");
+    const footnoteEl = document.getElementById("subscriber-tier-footnote");
+
+    if (!tiers || !tiers.length) {
+      titleEl.textContent = "✨ 구독자 규모별 비교";
+      bodyEl.textContent = "아직 구독자 규모별로 비교할 만큼 표본이 모이지 않았어요 (nodata).";
+      footnoteEl.textContent = "아직 비교할 만큼 표본이 모이지 않았어요 (nodata).";
+      return;
+    }
+
+    const RANGE_DESC = {
+      "소형": "구독자 10만 명 이하의",
+      "중형": "구독자 10만~50만 명대",
+      "대형": "구독자 50만 명 이상"
+    };
+    const TIER_COPY = {
+      "소형": {
+        title: "✨ 구독자가 적어도 기회는 있어요",
+        closing: "업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.",
+        footnote: "💡 구독자가 적어도 구독자 대비 조회수 반응은 오히려 더 좋을 수 있어요."
+      },
+      "중형": {
+        title: "✨ 지금은 중형 채널의 반응이 가장 좋아요",
+        closing: "이제 막 자리잡기 시작한 채널이 업로드 시간대와 영상 길이를 잘 맞추면 반응을 크게 늘릴 수 있는 구간이라는 뜻이에요.",
+        footnote: "💡 지금은 중형 채널의 구독자 대비 조회수 반응이 가장 좋아요."
+      },
+      "대형": {
+        title: "✨ 지금은 대형 채널이 유리해요",
+        closing: "아직은 구독자가 많을수록 유리한 편이니, 소형·중형 채널이라면 업로드 시간대·영상 길이 같은 세부 전략에 더 신경 쓰는 게 좋아요.",
+        footnote: "💡 지금은 구독자가 많을수록 구독자 대비 조회수 반응도 좋은 편이에요."
+      }
+    };
+
+    const sorted = [...tiers].sort((a, b) => b.ratio - a.ratio);
+    const winner = sorted[0];
+    const winnerName = winner.label.split(" ")[0];
+    const others = sorted.slice(1).map((t) => t.label.split(" ")[0]);
+    const copy = TIER_COPY[winnerName] || TIER_COPY["소형"];
+
+    titleEl.textContent = copy.title;
+    const comparePhrase = others.length ? `${others.join("·")} 채널보다 ` : "";
+    bodyEl.textContent =
+      `구독자 대비 조회수가 가장 높았던 채널들을 보면, ${comparePhrase}${RANGE_DESC[winnerName] || winner.label} 채널에서 더 많이 나왔어요(구독자 대비 조회수 배수 ${winner.ratio.toFixed(1)}배). ${copy.closing}`;
+    footnoteEl.textContent = copy.footnote;
   }
 
   function renderTrend() {
@@ -400,8 +453,8 @@
     const engDeltaPct = hasEngPrev
       ? (((trend.avg_engagement_rate - trend.avg_engagement_rate_prev) / trend.avg_engagement_rate_prev) * 100).toFixed(1)
       : null;
-    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { good: true, pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
-    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { good: true, pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
+    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
+    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
     grid.appendChild(statTile({ label: "평균 영상 길이", value: fmtDuration(trend.avg_duration_sec) }));
 
     Charts.renderHBarChart(document.getElementById("duration-dist-chart"), {
@@ -425,12 +478,16 @@
     renderTopicTrends();
     renderHistoryReplay();
 
-    const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
-    document.getElementById("trend-insight-body").textContent =
-      `구독자 대비 조회수가 가장 높았던 채널들을 보면, 대형 채널보다 구독자 10만 명 이하의 채널에서 더 많이 나왔어요. 업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.`;
+    renderSubscriberTierInsight(trend.subscriber_tiers);
 
-    document.getElementById("trend-footer-note").textContent =
-      `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
+    // "지난 기간 대비" 두 지표(조회수/참여율) 모두에 실제 prev 데이터가 쌓이기 전까지는
+    // 안내 문구(◆)를 붙이고, 둘 다 실제 비교값이 뜨기 시작하면 문구를 자동으로 뗍니다.
+    const hasBothPrev = hasViewsPrev && hasEngPrev;
+    const trendNoteBase = `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다.`;
+    const trendNoteDelta = hasBothPrev
+      ? ""
+      : ` ◆ "지난 기간 대비" 수치는 재집계부터 표시돼요(이번이 첫 집계).`;
+    document.getElementById("trend-footer-note").textContent = trendNoteBase + trendNoteDelta;
   }
 
   // spec.md 분석 7(메타데이터 최적화): frontend/scripts/build_metadata_impact.py가
@@ -461,8 +518,14 @@
     Charts.renderHBarChart(chartRoot, {
       items,
       valueFormatter: () => "",
-      // 막대 라벨(부호 있는 %)과 다른 정보로, 그 추정치의 통계적 유의성(p-value)을 보여줌.
-      tooltipFormatter: (d) => `p-value ${d.pValue.toFixed(3)} (${d.significant ? "통계적으로 유의함" : "근거 부족"})`,
+      // 막대 라벨(부호 있는 %)과 다른 정보로, 그 추정치의 통계적 유의성을 보여줌.
+      // p-value 숫자만 보여주면 무슨 뜻인지 알기 어렵다는 피드백(2026-09-08)으로,
+      // "판정"을 사람이 읽을 수 있는 문장으로 먼저 보여주고, p-value는 그 판단 기준(0.05)과
+      // 비교해서 보여줘서 숫자 자체도 어떻게 읽는지 알 수 있게 함.
+      tooltipFormatter: (d) => [
+        { label: "판정", value: d.significant ? "통계적으로 유의미한 차이" : "근거 부족 (아직 우연일 수 있어요)" },
+        { label: "p-value", value: `${d.pValue.toFixed(3)} (기준 0.05보다 ${d.significant ? "낮음" : "높음"})` }
+      ],
       labelWidth: 150
     });
     // renderHBarChart의 valueFormatter는 부호 없는 절대값(막대 길이용)만 받으므로,

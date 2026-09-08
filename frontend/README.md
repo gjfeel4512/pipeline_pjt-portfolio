@@ -16,7 +16,7 @@ upload_strategy / new_creator_guide)를 그대로 보여주는 **관리자용 �
 2. **트렌드(최근)/꾸준한 영상 추천은 게임·자동차·차량·영화·애니메이션 3개
    카테고리 모두에서 동일하게 제공** (카테고리별로 어느 쪽을 우선할지 나누지
    않기로 함). 남은 1주 실제 수집 데이터로 채울지, 당분간 예시 데이터로 채울지는
-   추후 판단 — 지금은 `USE_MOCK=true`로 예시 데이터를 씁니다.
+   추후 판단 — 아래 "2026-09-02 업데이트"에서 실제 수집 데이터로 채웠습니다.
 3. **추천 영상·추천 채널에 유튜브 바로가기 하이퍼링크 제공** — `video_id` /
    `channel_id`로 URL을 직접 조합합니다 (`js/recommend.js`의 `videoUrl` /
    `channelUrl`).
@@ -65,34 +65,20 @@ python -m http.server 8080
 
 (VSCode의 Live Server 확장을 써도 됩니다.)
 
-## 실제 API로 교체하는 방법
-
-`js/config.js` 파일 하나만 고치면 됩니다.
-
-```js
-USE_MOCK: false,
-API_BASE_URL: "https://실제-API-주소",
-ENDPOINTS: { ... }
-```
-
-`data.js`, `charts.js`, `recommend.js`, `app.js`는 손댈 필요 없습니다. 단, 실제
-API가 반환하는 JSON의 필드 이름이 `mock/*.json`과 다르면 `data.js`의 각
-`fetchXxx` 함수 리턴값을 실제 응답 구조에 맞게 매핑하는 코드를 추가해야 할 수
-있습니다.
-
 ## 매일 갱신되는 화면으로 유지하는 방법 (남은 1주 운영)
 
 이 프론트는 정적 파일이라 스스로 매일 값을 바꾸지는 않습니다. 대신:
 
-- 파이프라인(Airflow 등)이 하루 1회 `mock/*.json`(또는 실 API 연동 후에는
-  DB/API 응답)을 그날 수집 결과로 덮어씁니다.
+- 파이프라인(refresh_dashboard Lambda)이 하루 1회 `mock/*.json`을 그날
+  수집/계산 결과로 덮어씁니다.
 - `data.js`는 캐시 없이(`cache: "no-store"`) 페이지를 열 때마다 새로 fetch하므로,
   파일/응답만 최신이면 새로고침만으로 화면도 최신 상태가 됩니다.
 - `mock/meta.json`의 `last_updated` 값이 헤더의 "마지막 업데이트" 배지에 그대로
   표시되므로, 파이프라인이 이 값만 매일 갱신해줘도 "언제 기준 데이터인지"가
   사용자에게 보입니다.
-- 배포 시 정적 호스팅(S3+CloudFront 등)이라면, 파이프라인 마지막 단계에
-  `mock/*.json`(또는 API가 붙었다면 DB) 갱신 → 캐시 무효화 순서로 넣으면 됩니다.
+- 실제 배포(S3+CloudFront)에서는 파이프라인 마지막 단계에 `mock/*.json` 갱신
+  → CloudFront 캐시 무효화 순서로 되어 있습니다 (`infra/refresh_dashboard.tf`,
+  `lambda/refresh_dashboard.py`).
 
 ## 2026-09-02 업데이트 — 실제 수집 데이터 연동 (1차)
 
@@ -142,8 +128,8 @@ API가 반환하는 JSON의 필드 이름이 `mock/*.json`과 다르면 `data.js
 
 ## 코드 구성
 
-- `js/config.js` — 카테고리 정의, mock/실 API 전환 스위치, 엔드포인트 매핑
-- `js/data.js` — fetch 래퍼 (mock 파일 또는 실 API 중 하나를 투명하게 호출)
+- `js/config.js` — 카테고리 정의, 화면이 읽는 정적 JSON 파일(`MOCK_FILES`) 매핑
+- `js/data.js` — fetch 래퍼 (`MOCK_FILES` 경로의 JSON을 캐시 없이 fetch)
 - `js/recommend.js` — 추천 스코어링(중앙값·구독자 정규화) + 규칙 기반 템플릿 문장
 - `js/charts.js` — 의존성 없는 SVG 차트 렌더러 (가로 막대, 히트맵)
 - `js/app.js` — 4개 화면 조립, 카테고리/탭 전환, 유튜브 링크 연결
@@ -160,13 +146,13 @@ API가 반환하는 JSON의 필드 이름이 `mock/*.json`과 다르면 `data.js
 - [x] Bronze 실데이터로 `video_pool.json` / `channel_pool.json` / `upload_heatmap.json`
       / `category_trend.json` 채우기 (`frontend/scripts/build_dashboard_data.py`)
 - [x] 업로드 가이드 요일을 평일/토/일 3그룹 → 월~일 7개 개별로 변경
-- [ ] 백엔드 API 연동 — 확정되면 `js/config.js` 3줄만 교체 (지금은 여전히
-      `USE_MOCK: true` + 스크립트로 만든 `mock/*.json`을 쓰는 방식)
+- [x] 백엔드 API 연동 계획 폐기 — S3+CloudFront 정적 파일 구조로 최종 확정
+      (`js/config.js`의 `USE_MOCK`/`API_BASE_URL`/`ENDPOINTS` 제거)
 - [ ] 채널 단위 Gold 집계 테이블(`gold_channel_benchmark` 등) 파이프라인에 추가 — 지금은
       프론트 스크립트가 `bronze_merged`에서 직접 집계 중, DB 쪽에 생기면 그쪽으로 전환
 - [ ] 채널 `upload_freq_per_week` 계산 — 매일 수집이 며칠 이상 쌓이면 로직 추가
 - [ ] 카테고리 트렌드 "지난 기간 대비"(`_prev`) — 다음 주 재집계부터 실제 값 채워짐
-- [ ] 파이프라인에서 `mock/meta.json`(또는 API의 `/meta`) 매일 갱신하도록 연결
+- [ ] 파이프라인에서 `mock/meta.json` 매일 갱신하도록 연결
 - [ ] Amazon Bedrock 연동 — 지금은 규칙 기반 템플릿 문장(`recommend.js`)을 씁니다.
       실제로 LLM 설명을 붙이고 싶다면 `explainVideo` / `explainChannel` /
       `uploadTip` 내부만 교체

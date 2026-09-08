@@ -486,7 +486,7 @@ h2.section-title { font-size: 19px; font-weight: 700; margin: 0; }
   border: 1px solid color-mix(in srgb, var(--series-3) 25%, transparent);
   border-radius: 16px;
   padding: 20px 26px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .insight-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
 .insight-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
