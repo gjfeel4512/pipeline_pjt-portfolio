@@ -4,8 +4,9 @@
 frontend/scripts/build_home_summary.py
 ----------------------------------------
 홈 탭 "AI 요약" 카드용 데이터를 만든다. frontend/mock/{video_pool,channel_pool,
-upload_heatmap,category_trend}.json(이 스크립트를 부르는 4시간 주기 refresh_dashboard
-파이프라인이 바로 직전에 만든 것)과 frontend/mock/{metadata_impact,topic_trends,
+upload_heatmap}.json(이 스크립트를 부르는 4시간 주기 refresh_dashboard 파이프라인이
+바로 직전에 만든 것 - category_trend.json은 2026-09-08 팩트 시트에서 제외했다. 아래
+참고)과 frontend/mock/{metadata_impact,topic_trends,
 synthetic_demo}.json(별도의 하루 1회 analysis_refresh 람다가 만들어 이미 S3에 올려둔
 것 - 이 4시간 파이프라인은 만들지 않으므로 S3에서 직접 받아온다)을 카테고리별 "팩트
 시트"로 압축해서, AWS Bedrock(Claude Haiku, us.anthropic.claude-haiku-4-5-...)에 한
@@ -18,9 +19,9 @@ lambda/refresh_dashboard.py의 _run_script()가 RuntimeError를 던져서 전체
 카테고리만 건너뛰고(이전 S3 값이 있으면 유지) 스크립트는 항상 정상 종료한다.
 
 실행: repo 루트 어디서든 `python frontend/scripts/build_home_summary.py`
-(frontend/mock/{video_pool,channel_pool,upload_heatmap,category_trend}.json이 로컬에
-이미 있어야 함 - build_dashboard_data.py를 먼저 실행. FRONTEND_S3_BUCKET 환경변수가
-있으면 나머지 3개 파일을 S3에서 받아오고, 없으면 그 부분만 생략하고 진행)
+(frontend/mock/{video_pool,channel_pool,upload_heatmap}.json이 로컬에 이미 있어야 함
+- build_dashboard_data.py를 먼저 실행. FRONTEND_S3_BUCKET 환경변수가 있으면 나머지
+3개 파일을 S3에서 받아오고, 없으면 그 부분만 생략하고 진행)
 """
 import datetime
 import json
@@ -93,7 +94,7 @@ def _best_heatmap_slot(heatmap):
     return f"{day} {slot} (평균 조회수 {_fmt_views(best['avg_views'])}, 표본 {best.get('sample_count', 0)}건)"
 
 
-def build_fact_sheet(cat_key, video_pool, channel_pool, upload_heatmap, category_trend,
+def build_fact_sheet(cat_key, video_pool, channel_pool, upload_heatmap,
                       metadata_impact, topic_trends, synthetic_demo):
     """원본 JSON을 그대로 프롬프트에 넣지 않고, 카테고리당 핵심 몇 줄만 뽑는다
     (토큰/비용 절약 + 모델이 근거 없는 얘기를 지어낼 여지 축소)."""
@@ -123,26 +124,39 @@ def build_fact_sheet(cat_key, video_pool, channel_pool, upload_heatmap, category
             f"{c.get('name', '')}(구독자 {_fmt_views(c.get('subscriber_count'))})" for c in top_channels
         ))
 
-    ct = (category_trend or {}).get(cat_key) or {}
-    if ct.get("avg_views_per_day") is not None:
-        lines.append(
-            f"카테고리 전체 일평균 조회수 {ct['avg_views_per_day']}, "
-            f"참여율 {ct.get('avg_engagement_rate')}, 표본 {ct.get('sample_size')}건"
-        )
+    # 2026-09-08: category_trend.json의 일평균 조회수/참여율은 여기 넣었더니 AI가
+    # "이 숫자를 기준으로 기획하세요" 식으로 뭘 하라는 건지 불명확한 문장만 만들어내서
+    # (사용자 피드백) 팩트 시트에서 뺐다 - 태그 트렌드/업로드 타이밍/메타데이터 영향처럼
+    # 곧바로 실행 가능한 조언으로 이어지는 항목에만 집중시킨다. 이 숫자 자체는 어차피
+    # "카테고리 트렌드" 탭에 그대로 노출되고 있어서 안 보여줘도 정보가 사라지지 않는다.
 
     mi = (metadata_impact or {}).get(cat_key) or {}
     sig = [f for f in (mi.get("features") or []) if f.get("significant") and f.get("effect_pct") is not None]
-    sig = sorted(sig, key=lambda f: abs(f["effect_pct"]), reverse=True)[:2]
+    # 2026-09-08: 자막처럼 실제로 "이렇게 하세요"로 바로 옮길 수 있는 유의미 요소가
+    # 상위 2개 밖으로 밀려서 요약에 안 보인 적이 있어(사용자 피드백) 3개로 늘렸다.
+    sig = sorted(sig, key=lambda f: abs(f["effect_pct"]), reverse=True)[:3]
     if sig:
-        lines.append("성과에 유의미한 영향을 준 요소: " + "; ".join(
+        lines.append("성과에 유의미한 영향을 준 요소(포맷 관련 조언에 활용): " + "; ".join(
             f"{f.get('label')} ({f['effect_pct']:+.1f}%)" for f in sig
         ))
 
+    # 2026-09-08: "요즘 뜨는 태그" top5(build_topic_trends.py가 median_views_per_day
+    # 내림차순으로 이미 정렬해둠) 중 성과 상위 태그를 "이런 태그를 써보라"는 구체적인
+    # 추천으로 제공 - 트렌드 변화율이 가장 큰 태그 1개만으로는 "무슨 태그를 써야
+    # 하는지" 답이 안 됐다는 사용자 피드백 반영.
     tt = (topic_trends or {}).get(cat_key) or {}
-    clusters = [c for c in (tt.get("clusters") or []) if c.get("trend_pct") is not None]
-    clusters.sort(key=lambda c: abs(c["trend_pct"]), reverse=True)
-    if clusters:
-        c = clusters[0]
+    tt_clusters = tt.get("clusters") or []
+    if tt_clusters:
+        recommended = [
+            (c.get("top_terms") or ["?"])[0] for c in tt_clusters[:3] if c.get("top_terms")
+        ]
+        if recommended:
+            lines.append("영상당 조회수가 높은 편이라 태그로 써볼 만한 것들: " + ", ".join(f"'{t}'" for t in recommended))
+
+    trending_clusters = [c for c in tt_clusters if c.get("trend_pct") is not None]
+    trending_clusters.sort(key=lambda c: abs(c["trend_pct"]), reverse=True)
+    if trending_clusters:
+        c = trending_clusters[0]
         tag = (c.get("top_terms") or ["?"])[0]
         lines.append(f"요즘 가장 트렌드 변화가 큰 태그: '{tag}' ({c['trend_pct']}% 변화)")
 
@@ -162,8 +176,10 @@ def summarize_with_bedrock(client, cat_name, fact_lines):
         f"당신은 유튜브 크리에이터를 위한 데이터 대시보드의 브리핑 작성자입니다. "
         f"아래는 '{cat_name}' 카테고리에 대해 방금 집계된 지표입니다.\n\n{facts}\n\n"
         "이 지표들을 바탕으로, 크리에이터가 한눈에 읽을 수 있는 3~4문장짜리 한국어 "
-        "브리핑을 작성하세요. 숫자를 인용하되 과장하지 말고, 친근하지만 담백한 톤으로 "
-        "쓰세요. 브리핑 문장만 출력하고 다른 설명은 붙이지 마세요."
+        "브리핑을 작성하세요. 특히 자막 같은 포맷 요소나 추천 태그처럼 크리에이터가 "
+        "바로 실행에 옮길 수 있는 항목이 지표에 있으면 반드시 구체적으로 언급하세요. "
+        "숫자를 인용하되 과장하지 말고, 친근하지만 담백한 톤으로 쓰세요. 브리핑 문장만 "
+        "출력하고 다른 설명은 붙이지 마세요."
     )
     body = json.dumps({
         "anthropic_version": "bedrock-2023-05-31",
@@ -183,7 +199,6 @@ def main():
     video_pool = _load_local("video_pool.json")
     channel_pool = _load_local("channel_pool.json")
     upload_heatmap = _load_local("upload_heatmap.json")
-    category_trend = _load_local("category_trend.json")
     metadata_impact = _load_from_s3("metadata_impact.json")
     topic_trends = _load_from_s3("topic_trends.json")
     synthetic_demo = _load_from_s3("synthetic_demo.json")
@@ -195,7 +210,7 @@ def main():
 
     for cat_key, cat_name in CATEGORIES.items():
         fact_lines = build_fact_sheet(
-            cat_key, video_pool, channel_pool, upload_heatmap, category_trend,
+            cat_key, video_pool, channel_pool, upload_heatmap,
             metadata_impact, topic_trends, synthetic_demo,
         )
         summary = None
