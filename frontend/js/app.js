@@ -388,6 +388,56 @@
     return tile;
   }
 
+  // 카테고리 트렌드 상단 인사이트 카드 - 구독자 규모별 비교(subscriber_tiers) 데이터에서
+  // 실제로 반응이 가장 좋았던 구간을 찾아 문구를 그때그때 만든다(카테고리 고정 문구 아님).
+  function renderSubscriberTierInsight(tiers) {
+    const titleEl = document.getElementById("trend-insight-title");
+    const bodyEl = document.getElementById("trend-insight-body");
+    const footnoteEl = document.getElementById("subscriber-tier-footnote");
+
+    if (!tiers || !tiers.length) {
+      titleEl.textContent = "✨ 구독자 규모별 비교";
+      bodyEl.textContent = "아직 구독자 규모별로 비교할 만큼 표본이 모이지 않았어요 (nodata).";
+      footnoteEl.textContent = "아직 비교할 만큼 표본이 모이지 않았어요 (nodata).";
+      return;
+    }
+
+    const RANGE_DESC = {
+      "소형": "구독자 10만 명 이하의",
+      "중형": "구독자 10만~50만 명대",
+      "대형": "구독자 50만 명 이상"
+    };
+    const TIER_COPY = {
+      "소형": {
+        title: "✨ 구독자가 적어도 기회는 있어요",
+        closing: "업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.",
+        footnote: "💡 구독자가 적어도 구독자 대비 조회수 반응은 오히려 더 좋을 수 있어요."
+      },
+      "중형": {
+        title: "✨ 지금은 중형 채널의 반응이 가장 좋아요",
+        closing: "이제 막 자리잡기 시작한 채널이 업로드 시간대와 영상 길이를 잘 맞추면 반응을 크게 늘릴 수 있는 구간이라는 뜻이에요.",
+        footnote: "💡 지금은 중형 채널의 구독자 대비 조회수 반응이 가장 좋아요."
+      },
+      "대형": {
+        title: "✨ 지금은 대형 채널이 유리해요",
+        closing: "아직은 구독자가 많을수록 유리한 편이니, 소형·중형 채널이라면 업로드 시간대·영상 길이 같은 세부 전략에 더 신경 쓰는 게 좋아요.",
+        footnote: "💡 지금은 구독자가 많을수록 구독자 대비 조회수 반응도 좋은 편이에요."
+      }
+    };
+
+    const sorted = [...tiers].sort((a, b) => b.ratio - a.ratio);
+    const winner = sorted[0];
+    const winnerName = winner.label.split(" ")[0];
+    const others = sorted.slice(1).map((t) => t.label.split(" ")[0]);
+    const copy = TIER_COPY[winnerName] || TIER_COPY["소형"];
+
+    titleEl.textContent = copy.title;
+    const comparePhrase = others.length ? `${others.join("·")} 채널보다 ` : "";
+    bodyEl.textContent =
+      `구독자 대비 조회수가 가장 높았던 채널들을 보면, ${comparePhrase}${RANGE_DESC[winnerName] || winner.label} 채널에서 더 많이 나왔어요(구독자 대비 조회수 배수 ${winner.ratio.toFixed(1)}배). ${copy.closing}`;
+    footnoteEl.textContent = copy.footnote;
+  }
+
   function renderTrend() {
     const trend = DATA.categoryTrend[currentCategory];
 
@@ -428,9 +478,7 @@
     renderTopicTrends();
     renderHistoryReplay();
 
-    const smallTierLabel = trend.subscriber_tiers[0].label.split(" ")[0];
-    document.getElementById("trend-insight-body").textContent =
-      `구독자 대비 조회수가 가장 높았던 채널들을 보면, 대형 채널보다 구독자 10만 명 이하의 채널에서 더 많이 나왔어요. 업로드 시간대와 영상 길이만 잘 맞춰도 구독자 규모와 상관없이 좋은 반응을 얻을 수 있는 여지가 있다는 뜻이에요.`;
+    renderSubscriberTierInsight(trend.subscriber_tiers);
 
     document.getElementById("trend-footer-note").textContent =
       `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다. ◆ "지난 기간 대비" 수치는 다음 주 재집계부터 표시돼요(이번이 첫 집계라 nodata).`;
