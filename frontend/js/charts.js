@@ -638,15 +638,25 @@ const Charts = (() => {
 
     const width = root.clientWidth || 480;
     const height = 260;
-    const padL = 44;
     const padR = 16;
     const padT = 16;
     const padB = 28;
-    const plotW = width - padL - padR;
-    const plotH = height - padT - padB;
 
     const allPoints = series.flatMap((s) => s.points.filter((v) => v !== null && v !== undefined));
     const maxY = Math.max(1, ...allPoints);
+
+    // y축 왼쪽 여백(padL) - 고정폭(44px)이었더니 조회수가 억 단위로 커지면
+    // "107.1M" 같은 라벨이 폭을 넘어서 SVG 밖으로 잘려 보이던 문제(2026-09-08
+    // 사용자 리포트, 앞자리 "1"이 잘려서 "07.1M"처럼 보임) -> 실제로 찍힐 y축
+    // 눈금 라벨(0 / 절반 / 최대값) 중 가장 긴 것의 폭을 재서 여백을 동적으로
+    // 넉넉하게 잡는다. 라벨이 짧을 때(예: "1.2K")는 기존처럼 44px을 그대로 씀.
+    const yTickLabels = [0, 0.5, 1].map((t) => valueFormatter(maxY * t));
+    const maxYLabelWidth = Math.max(...yTickLabels.map(estimateTextWidth));
+    const padL = Math.max(44, maxYLabelWidth + 20);
+
+    const plotW = width - padL - padR;
+    const plotH = height - padT - padB;
+
     const n = months.length;
     const xAt = (i) => padL + (n <= 1 ? plotW / 2 : (i / (n - 1)) * plotW);
     const yAt = (v) => padT + plotH - (Math.max(0, v || 0) / maxY) * plotH;
@@ -668,8 +678,13 @@ const Charts = (() => {
       svg.appendChild(label);
     });
 
-    // x축 월 라벨 - 달이 많으면(9개 초과) 한 칸씩 걸러서 겹치지 않게
-    const showEvery = n > 9 ? 2 : 1;
+    // x축 월 라벨 - "YY.MM" 라벨끼리 겹칠 만큼 촘촘할 때만 최소한으로 걸러서
+    // 보여주고, 그 외에는 항상 달마다 전부 보여준다(예전엔 9개 초과면 무조건
+    // 한 칸씩 걸렀는데, 카드 너비가 넉넉해도 매번 절반만 보여서 사용자가
+    // 불편해함 - 2026-09-08 사용자 리포트).
+    const xColW = n > 1 ? plotW / (n - 1) : plotW;
+    const monthLabelWidth = estimateTextWidth("25.09");
+    const showEvery = Math.max(1, Math.ceil((monthLabelWidth + 6) / xColW));
     months.forEach((ym, i) => {
       if (i % showEvery !== 0 && i !== n - 1) return;
       const label = el("text", { x: xAt(i), y: height - 8, "text-anchor": "middle", class: "viz-axis-tick" });
