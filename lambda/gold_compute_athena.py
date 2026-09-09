@@ -69,7 +69,7 @@ s3 = boto3.client("s3", region_name=AWS_REGION)
 # 두 함수 모두 바뀌면 이 CTE도 같이 바꿔야 한다.
 # ----------------------------------------------------------------------------
 VIDEO_ANALYSIS_CTE = """
-WITH video_analysis AS (
+WITH video_analysis_raw AS (
     SELECT
         video_id, channel_id, CAST(category_id AS VARCHAR) AS category_id, title,
         duration_seconds,
@@ -120,13 +120,40 @@ WITH video_analysis AS (
             WHEN hour(from_iso8601_timestamp(published_at_kst)) BETWEEN 12 AND 17 THEN 'afternoon'
             WHEN hour(from_iso8601_timestamp(published_at_kst)) BETWEEN 18 AND 21 THEN 'evening'
             ELSE 'night'
-        END AS upload_time_bucket
+        END AS upload_time_bucket,
+        -- 2026-09-09 버그 수정(사용자 리포트: "지난 기간 대비" 증감률이 비정상적으로
+        -- 큼): silver_youtube는 영상 1건 x 수집일 1건의 스냅샷을 그대로 계속 쌓아두는
+        -- 시계열 테이블이라(sql/youtube_pipeline_schema_postgresql.sql의
+        -- fact_video_snapshot 설계 그대로) 같은 영상이 추적 기간 동안 여러 스냅샷으로
+        -- 중복으로 잡힌다. frontend/scripts/build_dashboard_data.py의
+        -- load_silver_videos()는 이미 "video_id별로 collected_at_utc가 가장 늦은
+        -- 스냅샷 1개만 남긴다"는 동일한 처리를 하고 있는데(그 이유: "남기지 않으면
+        -- 옛 스냅샷이 랭킹에 섞여 조회수가 갱신 안 된 것처럼 보인다"), 정작 이 Gold
+        -- 집계 SQL에는 그 처리가 빠져 있었다. 그 결과 median_views_per_day 등이 매주
+        -- 계속 쌓이는 중복 스냅샷 구성에 따라 흔들리고, "지난 기간 대비"가 실제
+        -- 트렌드가 아니라 이 흔들림을 보여주고 있었다. 아래 video_analysis(필터링
+        -- 단계)에서 video_id별 최신 스냅샷 1개만 남겨서, load_silver_videos()와
+        -- 동일한 "현재 상태 스냅샷"을 이 SQL도 보게 한다.
+        ROW_NUMBER() OVER (
+            PARTITION BY video_id
+            ORDER BY collected_at_utc DESC
+        ) AS rn
     FROM {db}.silver_youtube
     WHERE is_valid = true
       AND video_type IN ('short', 'medium', 'long')
       AND published_at_kst IS NOT NULL AND published_at_kst <> ''
       AND published_at_utc IS NOT NULL AND published_at_utc <> ''
       AND collected_at_utc IS NOT NULL AND collected_at_utc <> ''
+),
+video_analysis AS (
+    SELECT
+        video_id, channel_id, category_id, title, duration_seconds, video_type,
+        view_count, like_count, comment_count,
+        published_day_of_week, published_hour_kst, video_age_days, views_per_day,
+        like_rate, comment_rate, subscriber_count_at_collection, subscriber_segment,
+        duration_bucket, upload_time_bucket
+    FROM video_analysis_raw
+    WHERE rn = 1
 )
 """
 
@@ -167,7 +194,7 @@ best_type AS (
 agg AS (
     SELECT
         category_id,
-        CAST(COUNT(*) AS INTEGER) AS sample_video_count,
+        CAST(COUNT(DISTINCT video_id) AS INTEGER) AS sample_video_count,
         CAST(COUNT(DISTINCT channel_id) AS INTEGER) AS sample_channel_count,
         approx_percentile(CAST(duration_seconds AS DOUBLE), 0.5) AS median_duration_seconds,
         approx_percentile(views_per_day, 0.5) AS median_views_per_day,
@@ -192,7 +219,7 @@ UPLOAD_STRATEGY_SQL = "INSERT INTO {db}.gold_upload_strategy\n" + VIDEO_ANALYSIS
     SELECT
         category_id, subscriber_segment, video_type, duration_bucket,
         published_day_of_week, upload_time_bucket,
-        CAST(COUNT(*) AS INTEGER) AS sample_video_count,
+        CAST(COUNT(DISTINCT video_id) AS INTEGER) AS sample_video_count,
         approx_percentile(views_per_day, 0.5) AS median_views_per_day,
         approx_percentile(views_per_day, 0.75) AS p75_views_per_day,
         approx_percentile(like_rate, 0.5) AS median_like_rate,
