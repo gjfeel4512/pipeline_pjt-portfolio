@@ -229,7 +229,6 @@ def build_category_trend(videos, gold_rows):
     단위에서 같은 방식(중앙값)으로 직접 계산한다. duration_distribution/
     subscriber_tiers는 Gold에 없는 값이라 항상 Silver에서 계산한다."""
     latest = gold_rows[0] if gold_rows else None
-    prev = gold_rows[1] if len(gold_rows) > 1 else None
 
     if latest is not None:
         avg_vpd = latest.get("median_views_per_day")
@@ -247,10 +246,12 @@ def build_category_trend(videos, gold_rows):
     else:
         return None
 
-    avg_vpd_prev = prev.get("median_views_per_day") if prev else None
-    avg_eng_prev = prev.get("median_like_rate") if prev else None
-    avg_vpd_prev = round(float(avg_vpd_prev), 1) if avg_vpd_prev is not None else None
-    avg_eng_prev = round(float(avg_eng_prev), 4) if avg_eng_prev is not None else None
+    # 2026-09-09: "지난 기간 대비" %는 사용자 요청으로 화면에서 완전히 제거했다.
+    # (사유: gold_category_benchmark가 "이번 주" 파티션만 매번 덮어써서 prev는 지난 주에
+    # 저장된 값을 그대로 쓰는데, 마침 이번 주 중복 스냅샷 dedup 버그를 고치면서
+    # "고친 이번 주 값" vs "아직 안 고쳐진 지난 주 값"을 비교하는 꼴이 되어 증감률이
+    # 실제 트렌드가 아니라 이 불일치를 보여주고 있었다. 다음 주부터는 두 값이 모두
+    # 정상화된 SQL로 계산되지만, 혼란을 피하기 위해 비교 자체를 없애기로 했다.)
 
     dist, tiers = [], []
     if videos:
@@ -281,9 +282,7 @@ def build_category_trend(videos, gold_rows):
 
     return {
         "avg_views_per_day": avg_vpd,
-        "avg_views_per_day_prev": avg_vpd_prev,
         "avg_engagement_rate": avg_eng,
-        "avg_engagement_rate_prev": avg_eng_prev,
         "avg_duration_sec": avg_dur,
         "duration_distribution": dist,
         "subscriber_tiers": tiers,

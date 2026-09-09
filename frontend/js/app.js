@@ -372,19 +372,12 @@
   }
 
   /* ---------------- 카테고리 트렌드 ---------------- */
-  function statTile({ label, value, delta, noPrevData }) {
+  // 2026-09-09: "지난 기간 대비" %는 사용자 요청으로 제거했다(사유: build_dashboard_data.py의
+  // 같은 날짜 주석 참고 - 이번 주 dedup 버그 수정과 지난 주 값 비교가 뒤섞여 오해를 줄 수 있어서).
+  function statTile({ label, value }) {
     const tile = document.createElement("div");
     tile.className = "stat-tile";
-    let deltaHtml = "";
-    if (delta) {
-      const isDown = parseFloat(delta.pct) < 0;
-      const arrow = isDown ? "▼" : "▲";
-      const trendClass = isDown ? "bad" : "good";
-      deltaHtml = `<div class="stat-delta ${trendClass}">${arrow} 지난 기간 대비 ${delta.pct}%</div>`;
-    } else if (noPrevData) {
-      deltaHtml = `<div class="stat-delta nodata">지난 기간 대비 nodata (첫 집계)</div>`;
-    }
-    tile.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${value}</div>${deltaHtml}`;
+    tile.innerHTML = `<div class="stat-label">${label}</div><div class="stat-value">${value}</div>`;
     return tile;
   }
 
@@ -443,18 +436,8 @@
 
     const grid = document.getElementById("trend-stats");
     grid.innerHTML = "";
-    // prev 값은 "지난 기간 대비" 비교용인데, 아직 실데이터로는 이전 주 스냅샷이 없어서
-    // (파이프라인이 이번이 첫 집계) null(nodata)입니다 — 이 경우 증감 표시를 생략합니다.
-    const hasViewsPrev = trend.avg_views_per_day_prev !== null && trend.avg_views_per_day_prev !== undefined;
-    const hasEngPrev = trend.avg_engagement_rate_prev !== null && trend.avg_engagement_rate_prev !== undefined;
-    const viewsDeltaPct = hasViewsPrev
-      ? (((trend.avg_views_per_day - trend.avg_views_per_day_prev) / trend.avg_views_per_day_prev) * 100).toFixed(1)
-      : null;
-    const engDeltaPct = hasEngPrev
-      ? (((trend.avg_engagement_rate - trend.avg_engagement_rate_prev) / trend.avg_engagement_rate_prev) * 100).toFixed(1)
-      : null;
-    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회", delta: hasViewsPrev ? { pct: viewsDeltaPct } : null, noPrevData: !hasViewsPrev }));
-    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate), delta: hasEngPrev ? { pct: engDeltaPct } : null, noPrevData: !hasEngPrev }));
+    grid.appendChild(statTile({ label: "평균 조회수 (하루 기준)", value: fmtInt(trend.avg_views_per_day) + "회" }));
+    grid.appendChild(statTile({ label: "평균 참여율 (좋아요+댓글 / 조회수)", value: fmtPct(trend.avg_engagement_rate) }));
     grid.appendChild(statTile({ label: "평균 영상 길이", value: fmtDuration(trend.avg_duration_sec) }));
 
     Charts.renderHBarChart(document.getElementById("duration-dist-chart"), {
@@ -480,14 +463,8 @@
 
     renderSubscriberTierInsight(trend.subscriber_tiers);
 
-    // "지난 기간 대비" 두 지표(조회수/참여율) 모두에 실제 prev 데이터가 쌓이기 전까지는
-    // 안내 문구(◆)를 붙이고, 둘 다 실제 비교값이 뜨기 시작하면 문구를 자동으로 뗍니다.
-    const hasBothPrev = hasViewsPrev && hasEngPrev;
-    const trendNoteBase = `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다.`;
-    const trendNoteDelta = hasBothPrev
-      ? ""
-      : ` ◆ "지난 기간 대비" 수치는 재집계부터 표시돼요(이번이 첫 집계).`;
-    document.getElementById("trend-footer-note").textContent = trendNoteBase + trendNoteDelta;
+    document.getElementById("trend-footer-note").textContent =
+      `이 정보는 실제 수집된 영상 ${fmtInt(trend.sample_size)}건(${categoryInfo(currentCategory).label})을 분석한 결과예요. 데이터는 파이프라인이 갱신될 때마다 최신화됩니다.`;
   }
 
   // spec.md 분석 7(메타데이터 최적화): frontend/scripts/build_metadata_impact.py가
